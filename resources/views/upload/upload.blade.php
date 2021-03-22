@@ -5,7 +5,6 @@
       {{ csrf_field() }}
 
       <div class="next-button">
-        <!--次のページへ ボタン-->
         <button type="submit" class="btn btn-primary">登録する</button>
       </div>
    </form>
