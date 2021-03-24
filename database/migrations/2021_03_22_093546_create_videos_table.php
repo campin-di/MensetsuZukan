@@ -15,11 +15,12 @@ class CreateVideosTable extends Migration
     {
       Schema::create('videos', function (Blueprint $table) {
           $table->id();
-          $table->string('name')->nullable();
-          $table->string('link')->unipue();
-          $table->string('others_ids')->nullable();
+          $table->string('title')->nullable();
+          $table->string('url')->unipue();
+          $table->string('common_url')->nullable();
           $table->integer('score')->nullable();
           $table->string('review')->nullable();
+          $table->string('question')->nullable();
           $table->integer('views')->nullable();
           $table->integer('good')->nullable();
           $table->integer('st_id')->nullable();

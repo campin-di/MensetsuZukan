@@ -12,6 +12,12 @@
           </th>
         </tr>
         <tr>
+          <th height="75px">タイトル</th>
+          <th class="right-block">
+            <input type="text" name="title" class="form-control" placeholder="タイトルを入力してください。">
+          </th>
+        </tr>
+        <tr>
           <th height="75px">点数</th>
           <th class="right-block">
             <input type="number" name="score" min="0" max="100" class="form-control" placeholder="点数を入力してください。">
