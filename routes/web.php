@@ -11,6 +11,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/upload', 'UploadController@index')->name('upload');
+//サービス内に動画をアップロードするルーティング
+Route::get('/upload', 'UploadController@show')->name('upload');
 
-Route::post('/upload/register', 'UploadController@register')->name('uploadRegister');
+Route::get('/upload/form', "UploadController@show")->name("form.show");
+Route::post('/upload/form', "UploadController@post")->name("form.post");
+
+Route::get('/upload/form/confirm', "UploadController@confirm")->name("form.confirm");
+Route::post('/upload/form/confirm', "UploadController@send")->name("form.send");
+
+Route::get('/upload/form/thanks', "UploadController@complete")->name("form.complete");
+//===========================================

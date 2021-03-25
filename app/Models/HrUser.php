@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class HrUser extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+      
+    ];
+
+    public function videos()
+    {
+      return $this->hasMany('App\Models\Video');
+    }
+
+
 }
