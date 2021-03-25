@@ -13,39 +13,8 @@ use Validator;
 部分処理と書いているところ以外はコピペで使い回しできると思う。
 ==============================*/
 
-class UploadController extends Controller
+class FormController extends Controller
 {
-
-  /*
-  public function index()
-  {
-      return view('\upload\form');
-  }
-  public function register(Request $request)
-  {
-    $stData = User::where('username', $request->st_username)->first();
-    $hrData = HrUser::where('username', $request->hrusername)->first();
-
-    $question = $request->question;
-    $title = $stData->username . "さんの". $question . "に対する答え方";
-    $commonUrlArray = explode("&t=", $request->url);
-
-    $video = new Video;
-    $video->title = $title;
-    $video->url = $request->url;
-    $video->common_url = $commonUrlArray[0];
-    $video->question = $question;
-    $video->st_id = $stData->id;
-    $video->hr_id = $hrData->id;
-    $video->score = $request->score;
-    $video->review = $request->review;
-    $video->views = 0;
-    $video->good = 0;
-    $video->save();
-
-    return view('\upload\registered');
-  }
-  */
 
     private $formItems = ["name", "title", "body"];
 
@@ -70,7 +39,7 @@ class UploadController extends Controller
 /*
       $validator = Validator::make($input, $this->validator);
       if($validator->fails()){
-        return redirect()->action("UploadController@show")
+        return redirect()->action("FormController@show")
           ->withInput()
           ->withErrors($validator);
       }
@@ -80,7 +49,7 @@ class UploadController extends Controller
       //セッションに書き込む
       $request->session()->put("form_input", $input);
 
-      return redirect()->action("UploadController@confirm");
+      return redirect()->action("FormController@confirm");
     }
 
     function confirm(Request $request){
@@ -89,7 +58,7 @@ class UploadController extends Controller
 
       //セッションに値が無い時はフォームに戻る
       if(!$input){
-        return redirect()->action("UploadController@show");
+        return redirect()->action("FormController@show");
       }
       return view("upload/form_confirm",["input" => $input]);
     }
@@ -100,13 +69,13 @@ class UploadController extends Controller
 
       //戻るボタンが押された時
       if($request->has("back")){
-        return redirect()->action("UploadController@show")
+        return redirect()->action("FormController@show")
           ->withInput($input);
       }
 
       //セッションに値が無い時はフォームに戻る
       if(!$input){
-        return redirect()->action("UploadController@show");
+        return redirect()->action("FormController@show");
       }
 
       //=====処理内容====================================
@@ -137,7 +106,7 @@ class UploadController extends Controller
       //セッションを空にする
       $request->session()->forget("form_input");
 
-      return redirect()->action("UploadController@complete");
+      return redirect()->action("FormController@complete");
     }
 
     function complete(){

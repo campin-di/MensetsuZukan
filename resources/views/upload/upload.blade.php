@@ -6,15 +6,15 @@
       {{ csrf_field() }}
       <table>
         <tr>
-          <th height="75px">リンク</th>
+          <th height="75px">URL</th>
           <th class="right-block">
-            <input type="text" name="youtube_link" class="form-control" placeholder="リンクを入力してください。">
+            <input type="text" name="url" class="form-control" placeholder="URLを入力してください。">
           </th>
         </tr>
         <tr>
-          <th height="75px">タイトル</th>
+          <th height="75px">質問</th>
           <th class="right-block">
-            <input type="text" name="title" class="form-control" placeholder="タイトルを入力してください。">
+            <input type="text" name="question" class="form-control" placeholder="タイトルを入力してください。">
           </th>
         </tr>
         <tr>
@@ -36,9 +36,9 @@
           </th>
         </tr>
         <tr>
-          <th height="75px">人事のユーザー名</th>
+          <th height="75px">人事のユーザ名</th>
           <th class="right-block">
-            <input type="text" name="hr_username" class="form-control" placeholder="人事のユーザ名を入力してください。">
+            <input type="text" name="hrusername" class="form-control" placeholder="人事のユーザ名を入力してください。">
           </th>
         </tr>
       </table>

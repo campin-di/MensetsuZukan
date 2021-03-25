@@ -1,6 +1,6 @@
 @extends('layouts.common')
 @section('content')
   <div class="container">
-    Finish
+    アップロードが完了しました。
   </div>
 @endsection

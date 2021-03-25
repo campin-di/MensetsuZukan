@@ -14,17 +14,17 @@ class CreateHrUsersTable extends Migration
     public function up()
     {
         Schema::create('hr_users', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
+            $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at');
             $table->string('password');
             $table->integer('status');
             $table->integer('company_id');
             $table->string('details_id');
             $table->string('plan');
-            $table->string('hr_introduction');
-            $table->string('schedule');
+            $table->string('schedule')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
