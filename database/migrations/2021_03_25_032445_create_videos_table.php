@@ -28,7 +28,7 @@ class CreateVideosTable extends Migration
           $table->timestamps();
 
           $table->foreign('st_id')->references('id')->on('users')->onDelete('no action');
-          //$table->foreign('hr_id')->references('id')->on('hr_users')->onDelete('no action');
+          $table->foreign('hr_id')->references('id')->on('hr_users')->onDelete('no action');
       });
     }
 
