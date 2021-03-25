@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -22,44 +23,24 @@ class VideosTableSeeder extends Seeder
       //0~24
       $urlArray = [
         //【就活】新聞も読まないクソザコ就活生向け「主要業界を理解する」アーカイブ【21卒】
-        "https://www.youtube.com/watch?v=zAkK9qlCAbM&t=628s",
-        "https://www.youtube.com/watch?v=zAkK9qlCAbM&t=750s",
-        "https://www.youtube.com/watch?v=zAkK9qlCAbM&t=932s",
-        "https://www.youtube.com/watch?v=zAkK9qlCAbM&t=1008s",
-        "https://www.youtube.com/watch?v=zAkK9qlCAbM&t=1465s",
+        "628", "750", "932","1158", "1520",
         //【21卒】人気業界の現実を知る 深堀り編Vol.1【就活】
-        "https://www.youtube.com/watch?v=p54Cg2N617A&t=115s",
-        "https://www.youtube.com/watch?v=p54Cg2N617A&t=253s",
-        "https://www.youtube.com/watch?v=p54Cg2N617A&t=404s",
-        "https://www.youtube.com/watch?v=p54Cg2N617A&t=640s",
-        "https://www.youtube.com/watch?v=p54Cg2N617A&t=640s",
+        "115", "253", "640", "2924","3529",
         //【21卒】学生の盲目的な大手志向を解消する業界研究LIVE 第2弾【就活】
-        "https://www.youtube.com/watch?v=VOllbtgmSQA&t=77s",
-        "https://www.youtube.com/watch?v=VOllbtgmSQA&t=1388s",
-        "https://www.youtube.com/watch?v=VOllbtgmSQA&t=3338s",
-        "https://www.youtube.com/watch?v=VOllbtgmSQA&t=4810s",
-        "https://www.youtube.com/watch?v=VOllbtgmSQA&t=5582s",
+        "77", "445", "1388", "2183", "2454",
         //【21卒】「コンサル・IT業界」を俺が全解説する やりたい事ない就活生は全員集合！ 【就活】
-        "https://www.youtube.com/watch?v=zJReZO1ND6c&t=250s",
-        "https://www.youtube.com/watch?v=zJReZO1ND6c&t=360s",
-        "https://www.youtube.com/watch?v=zJReZO1ND6c&t=645s",
-        "https://www.youtube.com/watch?v=zJReZO1ND6c&t=1200s",
-        "https://www.youtube.com/watch?v=zJReZO1ND6c&t=1834s",
+        "250", "360", "645", "815", "1200",
         //危ない会社予報士による主要30業種景気予測
-        "https://www.youtube.com/watch?v=eqBA9wEeglg&t=1052s",
-        "https://www.youtube.com/watch?v=eqBA9wEeglg&t=1300s",
-        "https://www.youtube.com/watch?v=eqBA9wEeglg&t=1518s",
-        "https://www.youtube.com/watch?v=eqBA9wEeglg&t=2180s",
-        "https://www.youtube.com/watch?v=eqBA9wEeglg&t=4530s",
+        "1052", "1405", "1518", "2180", "2436",
       ];
 
       //0 ~ 4
       $commonUrlArray = [
-        "https://www.youtube.com/watch?v=zAkK9qlCAbM",
-        "https://www.youtube.com/watch?v=p54Cg2N617A",
-        "https://www.youtube.com/watch?v=VOllbtgmSQA",
-        "https://www.youtube.com/watch?v=zJReZO1ND6c",
-        "https://www.youtube.com/watch?v=eqBA9wEeglg",
+        "zAkK9qlCAbM",
+        "p54Cg2N617A",
+        "VOllbtgmSQA",
+        "zJReZO1ND6c",
+        "eqBA9wEeglg",
       ];
 
       //0 ~ 24
@@ -88,14 +69,16 @@ class VideosTableSeeder extends Seeder
          それも１ページに、５～６個程度の言葉しかなく、基本的に学生向きかと思います。",
       ];
 
-      $zero24 = mt_rand(0, 24);
 
       for ($i = 0; $i < 1000; $i++)
       {
+        $random_date = [rand(2017, 2020), rand(1, 12), rand(1,31)];
+        $zero24 = mt_rand(0, 24);
+
         $data = [
           'title' => $usernameArray[mt_rand(0, 4)]. 'さんの「'. $questionArray[$zero24] . '」に対する答え方。',
-          'url' => $urlArray[$zero24],
-          'common_url' => $commonUrlArray[round($zero24/5)],
+          'url' => 'https://www.youtube.com/embed/' . $commonUrlArray[floor($zero24/5)] . '?start=' . $urlArray[$zero24],
+          'common_url' => $commonUrlArray[floor($zero24/5)],
           'question' => $questionArray[$zero24],
           'st_id' => mt_rand(1, 5),
           'hr_id' => mt_rand(1, 5),
@@ -103,25 +86,12 @@ class VideosTableSeeder extends Seeder
           'review' => $contentArray[mt_rand(0, 9)],
           'views' => mt_rand(0, 50),
           'good' => mt_rand(0, 50),
+          'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
+          'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
+
         ];
 
         DB::table('videos')->insert([$data]);
       }
-      /*
-      DB::table('videos')->insert([
-        [
-          'title' => $usernameArray[mt_rand(0, 4)]. 'さんの「'. $questionArray[$zero24] . '」に対する答え方。',
-          'url' => $urlArray[$zero24],
-          'common_url' => round($commonUrlArray[$zero24]/5),
-          'question' => $questionArray[$zero24],
-          'st_id' => mt_rand(1, 5),
-          'hr_id' => mt_rand(1, 5),
-          'score' => mt_rand(30, 100),
-          'review' => $content_array[mt_rand(0, 9)],
-          'views' => mt_rand(0, 50),
-          'good' => mt_rand(0, 50),
-        ],
-      ]);
-      */
     }
 }

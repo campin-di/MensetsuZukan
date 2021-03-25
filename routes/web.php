@@ -12,7 +12,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-
 //サービス内に動画をアップロードするルーティング
 Route::get('/upload', 'UploadController@show')->name('upload');
 
