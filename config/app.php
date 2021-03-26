@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', '面接図鑑'),
 
     /*
     |--------------------------------------------------------------------------
@@ -228,7 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'DiffDate' => app\Common\DiffDateClass::class,
-
+        'VideoDisplay' => app\Common\VideoDisplayClass::class,
     ],
 
 ];

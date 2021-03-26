@@ -15,38 +15,6 @@ use Validator;
 
 class UploadController extends Controller
 {
-
-  /*
-  public function index()
-  {
-      return view('\upload\form');
-  }
-  public function register(Request $request)
-  {
-    $stData = User::where('username', $request->st_username)->first();
-    $hrData = HrUser::where('username', $request->hrusername)->first();
-
-    $question = $request->question;
-    $title = $stData->username . "さんの". $question . "に対する答え方";
-    $commonUrlArray = explode("&t=", $request->url);
-
-    $video = new Video;
-    $video->title = $title;
-    $video->url = $request->url;
-    $video->common_url = $commonUrlArray[0];
-    $video->question = $question;
-    $video->st_id = $stData->id;
-    $video->hr_id = $hrData->id;
-    $video->score = $request->score;
-    $video->review = $request->review;
-    $video->views = 0;
-    $video->good = 0;
-    $video->save();
-
-    return view('\upload\registered');
-  }
-  */
-
     private $formItems = ["name", "title", "body"];
 
     private $validator = [

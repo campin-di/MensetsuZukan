@@ -9,7 +9,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//top to home
 Route::get('/home', 'HomeController@index')->name('home');
+
+//home to watch
+Route::get('/watch/{id}', 'WatchController@index')->name('watch');
+
+//to mypage
+Route::get('/mypage', 'MypageController@index')->name('mypage');
 
 
 //サービス内に動画をアップロードするルーティング
