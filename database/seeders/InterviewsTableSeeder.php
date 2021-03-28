@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use DateTime;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class VideosTableSeeder extends Seeder
+class InterviewsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,14 +14,7 @@ class VideosTableSeeder extends Seeder
     public function run()
     {
       //0 ~ 4
-      $usernameArray = [
-        [
-          "nobita", "doraemon", "takeshi11", "shizukaChan", "dekisugikun"
-        ],
-        [
-          1, 2, 3, 4, 5
-        ]
-      ];
+      $userIdArray = [ 1, 2, 3, 4, 5];
 
       //0~24
       $urlArray = [
@@ -40,25 +31,13 @@ class VideosTableSeeder extends Seeder
       ];
 
       //0 ~ 4
-      $commonUrlArray = [
-        "zAkK9qlCAbM",
-        "p54Cg2N617A",
-        "VOllbtgmSQA",
-        "zJReZO1ND6c",
-        "eqBA9wEeglg",
-      ];
+      $commonUrlArray = [ "zAkK9qlCAbM", "p54Cg2N617A", "VOllbtgmSQA", "zJReZO1ND6c", "eqBA9wEeglg" ];
 
       //0 ~ 24
-      $questionArray = [
-        "自己紹介をお願いします。", "あなたの強み・長所を教えてください。", "あなたの弱み・短所を教えてください。", "学生時代で最も頑張ったことを教えてください。", "学生時代に出した成果を教えてください。",
-        "課外活動の内容を教えてください。", "サークルやクラブ活動の内容を教えてください。", "リーダーシップを取った経験はありますか？", "まわりの方のあなたへの評価を教えてください。", "学生時代に学んだ事は何ですか。",
-        "自分の大学生活を一言で表してください。", "成功体験を教えてください。", "失敗体験を教えてください。", "今まで一番感動したことを教えてください。", "今までで一番うれしかったことは何ですか。",
-        "今までで一番悔しかったことは何ですか。", "あなたが一番長く続けてきたことは何ですか。", "○○大学に入った理由を教えてください。", "履修した中で、最も有意義な授業を教えてください。", "休学/留年した理由を教えてください。",
-        "趣味を教えてください。", "尊敬する人を教えてください。", "今まで一番感動したことを教えてください。", "あなたの大切にしている言葉を教えてください。", "あなたの夢を教えてください。",
-      ];
+      $theNumberOfQuestions = 24;
 
       // 0 ~ 9
-      $contentArray = [
+      $reviewArray = [
         "到着も早く、きちんと梱包されていてとても良かったです。",
         "無理なお願いありがとうございました！どうしようかと思いましたが本当に助かりました！",
         "豹柄ほいので少し気になりますが良いです。カメラの上あたりが少しヒビがあったが返品が面倒臭いので我慢します。",
@@ -75,29 +54,43 @@ class VideosTableSeeder extends Seeder
       ];
 
 
-      for ($i = 0; $i < 500; $i++)
+      for ($i = 0; $i < 100; $i++)
       {
         $random_date = [rand(2017, 2020), rand(1, 12), rand(1,31)];
         $zero24 = mt_rand(0, 24);
-        $zero4 = mt_rand(0, 4);
+        $zero100 = mt_rand(50, 100);
 
         $data = [
-          'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionArray[$zero24] . '」に対する答え方。',
-          'url' => 'https://www.youtube.com/embed/' . $commonUrlArray[floor($zero24/5)] . '?start=' . $urlArray[$zero24],
-          'common_url' => $commonUrlArray[floor($zero24/5)],
-          'question' => $questionArray[$zero24],
-          'st_id' => $usernameArray[1][$zero4],
-          'hr_id' => mt_rand(1, 5),
-          'score' => mt_rand(30, 100),
-          'review' => $contentArray[mt_rand(0, 9)],
-          'views' => mt_rand(0, 50),
-          'good' => mt_rand(0, 50),
+          'st_id' => $userIdArray[mt_rand(0, 4)],
+          'hr_id' => $userIdArray[mt_rand(0, 4)],
+          'date' => $random_date[0].'-'.$random_date[1].'-'.$random_date[2],
+          'password' => Hash::make('password'),
+          'available' => 1,
+          'url' => 'https://www.youtube.com/',
+          'question_1_id' => mt_rand(1, $theNumberOfQuestions),
+          'question_1_score' => $zero100,
+          'question_3_review' => $reviewArray[mt_rand(0, 9)],
+          'question_2_id' => mt_rand(1, $theNumberOfQuestions),
+          'question_2_score' => $zero100,
+          'question_2_review' => $reviewArray[mt_rand(0, 9)],
+          'question_3_id' => mt_rand(1, $theNumberOfQuestions),
+          'question_3_score' => $zero100,
+          'question_3_review' => $reviewArray[mt_rand(0, 9)],
+          'question_4_id' => mt_rand(1, $theNumberOfQuestions),
+          'question_4_score' => $zero100,
+          'question_4_review' => $reviewArray[mt_rand(0, 9)],
+          'question_5_id' => mt_rand(1, $theNumberOfQuestions),
+          'question_5_score' => $zero100,
+          'question_5_review' => $reviewArray[mt_rand(0, 9)],
+          'question_6_id' => mt_rand(1, $theNumberOfQuestions),
+          'question_6_score' => $zero100,
+          'question_6_review' => $reviewArray[mt_rand(0, 9)],
           'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
           'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
-
         ];
 
         DB::table('videos')->insert([$data]);
       }
     }
+
 }
