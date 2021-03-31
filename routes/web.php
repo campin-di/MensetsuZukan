@@ -22,6 +22,8 @@ Route::get('/watch/{id}', 'WatchController@index')->name('watch');
 //to mypage
 Route::get('/mypage', 'MypageController@index')->name('mypage');
 
+//from mypage to detail Page
+Route::get('/mypage/detail', 'MypageController@detail')->name('mypage.detail');
 
 //サービス内に動画をアップロードするルーティング
 Route::get('/upload', 'UploadController@show')->name('upload');

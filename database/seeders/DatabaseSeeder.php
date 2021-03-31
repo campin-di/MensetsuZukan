@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         VideosTableSeeder::class,
         InterviewsTableSeeder::class,
         QuestionsTableSeeder::class,
+        StProfilesTableSeeder::class,
       ]);
     }
 }
