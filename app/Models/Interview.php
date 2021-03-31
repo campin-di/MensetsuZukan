@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Video extends Model
+class Interview extends Model
 {
     use HasFactory;
 
@@ -14,13 +14,8 @@ class Video extends Model
       return $this->belongsTo('App\Models\User');
     }
 
-    public function hrUser()
+    public function hr_user()
     {
-      return $this->belongsTo('App\Models\HrUser');
-    }
-
-    public function question()
-    {
-      return $this->belongsTo('App\Models\Question');
+      return $this->belongsTo('App\Models\HrUser', 'hr_id');
     }
 }

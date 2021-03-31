@@ -3,19 +3,47 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 use App\Models\User;
+use App\Models\Video;
+use App\Models\Interview;
+
+use App\Common\VideoDisplayClass;
 
 class MypageController extends Controller
 {
   public function index()
   {
     $userId = Auth::user()->id;
+    $userData = User::find($userId);
 
-    $mypageCollection = concat([]);
+    $userDataArray = [
+      'id' => $userData->id,
+      'name' => $userData->name,
+      'username' => $userData->username,
+    ];
 
-    return view('mypage/mypage',[
+    $pastVideos = Video::where('st_id', $userId)->get();
+    $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
+    $interviewReservations = Interview::where('st_id', $userId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
+
+    $interviewReservationsCollection = collect();
+    foreach ($interviewReservations as $interviewReservation) {
+      $interviewReservationsCollection = $interviewReservationsCollection->concat([
+        [
+          'name' => $interviewReservation->hr_user->name,
+          'date' => $interviewReservation->date,
+          'url' => $interviewReservation->url,
+        ],
+      ]);
+    }
+
+    return view('mypage/mypage', [
+      'userDataArray' => $userDataArray,
+      'pastVideosCollection' => $pastVideosCollection,
+      'interviewReservationsCollection' => $interviewReservationsCollection,
     ]);
   }
 }

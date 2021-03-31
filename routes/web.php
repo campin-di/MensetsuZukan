@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
+    $loginFlag = Auth::check();
+    if($loginFlag){
+      return redirect()->action('HomeController@index');
+    }
     return view('top');
 });
 
