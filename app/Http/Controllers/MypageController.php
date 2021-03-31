@@ -7,6 +7,7 @@ use Auth;
 
 use App\Models\User;
 use App\Models\Video;
+use App\Models\Interview;
 
 use App\Common\VideoDisplayClass;
 
@@ -18,19 +19,31 @@ class MypageController extends Controller
     $userData = User::find($userId);
 
     $userDataArray = [
-        'id' => $userData->id,
-        'name' => $userData->name,
-        'username' => $userData->username,
-      ];
+      'id' => $userData->id,
+      'name' => $userData->name,
+      'username' => $userData->username,
+    ];
 
-    //TODO::今は重くなりすぎるのでtake()を使用しているが、後々JSを用いて変更する。
-    $pastVideos = Video::where('st_id', $userId)->take(10)->get();
-
+    $pastVideos = Video::where('st_id', $userId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
+
+    $interviewReservations = Interview::where('st_id', $userId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
+
+    $interviewReservationsCollection = collect();
+    foreach ($interviewReservations as $interviewReservation) {
+      $interviewReservationsCollection = $interviewReservationsCollection->concat([
+        [
+          'name' => $interviewReservation->hr_user->name,
+          'date' => $interviewReservation->date,
+          'url' => $interviewReservation->url,
+        ],
+      ]);
+    }
 
     return view('mypage/mypage', [
       'userDataArray' => $userDataArray,
       'pastVideosCollection' => $pastVideosCollection,
+      'interviewReservationsCollection' => $interviewReservationsCollection,
     ]);
   }
 }

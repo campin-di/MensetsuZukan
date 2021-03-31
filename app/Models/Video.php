@@ -18,4 +18,9 @@ class Video extends Model
     {
       return $this->belongsTo('App\Models\HrUser');
     }
+
+    public function question()
+    {
+      return $this->belongsTo('App\Models\Question');
+    }
 }

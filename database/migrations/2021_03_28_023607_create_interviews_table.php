@@ -13,7 +13,7 @@ class CreateInterviewsTable extends Migration
      */
     public function up()
     {
-        //TODO:Modelへの親子記述を行う
+        //TODO:Modelでの親子記述を行う
 
         Schema::create('interviews', function (Blueprint $table) {
           $table->increments('id');
@@ -23,18 +23,24 @@ class CreateInterviewsTable extends Migration
           $table->string('password')->unipue();
           $table->string('available')->nullable();
           $table->string('url')->nullable();
+          $table->integer('question_1_id')->nullable();
           $table->integer('question_1_score')->nullable();
-          $table->integer('question_1_review')->nullable();
+          $table->string('question_1_review')->nullable();
+          $table->integer('question_2_id')->nullable();
           $table->integer('question_2_score')->nullable();
-          $table->integer('question_2_review')->nullable();
+          $table->string('question_2_review')->nullable();
+          $table->integer('question_3_id')->nullable();
           $table->integer('question_3_score')->nullable();
-          $table->integer('question_3_review')->nullable();
+          $table->string('question_3_review')->nullable();
+          $table->integer('question_4_id')->nullable();
           $table->integer('question_4_score')->nullable();
-          $table->integer('question_4_review')->nullable();
+          $table->string('question_4_review')->nullable();
+          $table->integer('question_5_id')->nullable();
           $table->integer('question_5_score')->nullable();
-          $table->integer('question_5_review')->nullable();
+          $table->string('question_5_review')->nullable();
+          $table->integer('question_6_id')->nullable();
           $table->integer('question_6_score')->nullable();
-          $table->integer('question_6_review')->nullable();
+          $table->string('question_6_review')->nullable();
           $table->timestamps();
 
           $table->foreign('st_id')->references('id')->on('users')->onDelete('no action');

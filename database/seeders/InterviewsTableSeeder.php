@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use DateTime;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class InterviewsTableSeeder extends Seeder
 {
@@ -53,8 +56,7 @@ class InterviewsTableSeeder extends Seeder
          それも１ページに、５～６個程度の言葉しかなく、基本的に学生向きかと思います。",
       ];
 
-
-      for ($i = 0; $i < 100; $i++)
+      for ($i = 0; $i < 24; $i++)
       {
         $random_date = [rand(2017, 2020), rand(1, 12), rand(1,31)];
         $zero24 = mt_rand(0, 24);
@@ -89,7 +91,7 @@ class InterviewsTableSeeder extends Seeder
           'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
         ];
 
-        DB::table('videos')->insert([$data]);
+        DB::table('interviews')->insert([$data]);
       }
     }
 

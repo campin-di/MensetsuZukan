@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Video;
+use App\Models\Question;
 
 use App\Common\DiffDateClass;
 
@@ -19,10 +20,12 @@ class VideoDisplayClass
       foreach ($videos as $video) {
 
         $diffDate = DiffDateClass::diffDate($video->created_at);
-        $otherQuestions = Video::where('common_url', $video->common_url)->where('question', '!=', $video->question)->groupBy('question')->get('question');
 
         $stUsername = User::find($video->st_id)->username;
         $hrName = HrUser::find($video->hr_id)->name;
+
+        $question = Question::find($video->question_id)->name;
+        $otherQuestionsArray = Video::with('question')->where('common_url', $video->common_url)->where('question_id', '!=', $video->question_id)->select('question_id')->get();
 
         $videosCollection = $videosCollection->concat([
           [
@@ -35,8 +38,8 @@ class VideoDisplayClass
             'review'=> $video->review,
             'diffDate' => $diffDate,
 
-            'question' => $video->question,
-            'otherQuestions' => $otherQuestions,
+            'question' => $question,
+            'otherQuestionsArray' => $otherQuestionsArray,
 
             'stUsername' => $stUsername,
             'hrName' => $hrName,

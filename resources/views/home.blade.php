@@ -9,9 +9,9 @@
 
         <div class="d-flex justify-content-start">
           <div class="mx-2 btn btn-primary">{{ $video['question']}}</div>
-          @foreach($video['otherQuestions'] as $otherquestion)
+          @foreach($video['otherQuestionsArray'] as $otherQuestion)
             <div class="mx-2 btn btn-secondary">
-              {{ $otherquestion->question }}
+              {{ $otherQuestion['question']->name }}
             </div>
           @endforeach
         </div>

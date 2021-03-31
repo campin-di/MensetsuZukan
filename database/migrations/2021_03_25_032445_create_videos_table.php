@@ -18,7 +18,7 @@ class CreateVideosTable extends Migration
           $table->string('title')->nullable();
           $table->string('url')->unipue();
           $table->string('common_url')->nullable();
-          $table->string('question')->nullable();
+          $table->integer('question_id');
           $table->integer('st_id')->unsigned();
           $table->integer('hr_id')->unsigned();
           $table->integer('score')->nullable();

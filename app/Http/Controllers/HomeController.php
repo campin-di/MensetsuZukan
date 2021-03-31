@@ -10,8 +10,6 @@ use App\Models\Video;
 
 use App\Common\VideoDisplayClass;
 
-
-
 class HomeController extends Controller
 {
     /**
