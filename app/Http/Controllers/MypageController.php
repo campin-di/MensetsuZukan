@@ -8,6 +8,7 @@ use Auth;
 use App\Models\User;
 use App\Models\Video;
 use App\Models\Interview;
+use App\Models\St_profile;
 
 use App\Common\VideoDisplayClass;
 
@@ -44,6 +45,16 @@ class MypageController extends Controller
       'userDataArray' => $userDataArray,
       'pastVideosCollection' => $pastVideosCollection,
       'interviewReservationsCollection' => $interviewReservationsCollection,
+    ]);
+  }
+
+  public function detail()
+  {
+    $userId = Auth::user()->id;
+    $stProfileDetails = St_profile::where('st_id', $userId)->get();
+
+    return view('mypage/detail', [
+      'stProfileDetails' => $stProfileDetails,
     ]);
   }
 }
