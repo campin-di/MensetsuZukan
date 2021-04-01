@@ -3,7 +3,6 @@
 
 <div class="container">
     @foreach($videosCollection as $video)
-    <a href="{{ route('watch', $video['id'])}}">
         <iframe width="560" height="315" src="{{ $video['url'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
         {{ $video['title'] }}<br>
 
@@ -22,9 +21,10 @@
         人事からのレビュー：{{ $video['review'] }}<br>
         投稿日：{{ $video['diffDate'] }}<br>
 
-        学生ユーザ名：{{ $video['stUsername'] }}<br>
+        <a href="{{ route('mypage.theirPage', $video['stUsername']) }}">
+          学生ユーザ名：{{ $video['stUsername'] }}<br>
+        </a>
         人事名：{{ $video['hrName'] }}
-    </a>
     @endforeach
 
     <hr>

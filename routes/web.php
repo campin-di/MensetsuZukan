@@ -19,11 +19,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 //home to watch
 Route::get('/watch/{id}', 'WatchController@index')->name('watch');
 
-/*=== mypage関係 =============================================================*/
+//from mypage to detail Page
+Route::get('/mypage/detail', 'MypageController@myDetail')->name('mypage.detail');
+
+/*=== マイページ関係 =============================================================*/
 //to mypage
 Route::get('/mypage', 'MypageController@index')->name('mypage');
 
-/*--- 基本情報の変更 -----------*/
+/*--- 基本情報の変更 -------------------------*/
 Route::get('/mypage/edit/basic', "MypageBasicController@show")->name("mypage.basic.show");
 Route::post('/mypage/edit/basic', "MypageBasicController@post")->name("mypage.basic.post");
 
@@ -31,9 +34,9 @@ Route::get('/mypage/edit/basic/confirm', "MypageBasicController@confirm")->name(
 Route::post('/mypage/edit/basic/confirm', "MypageBasicController@send")->name("mypage.basic.send");
 
 Route::get('/mypage/edit/basic/thanks', "MypageBasicController@complete")->name("mypage.basic.complete");
-/*------------------------------------------*/
+/*--- end:基本情報の変更 ---------------------*/
 
-/*--- 詳細プロフィールの変更 -----------*/
+/*--- 詳細プロフィールの変更 -----------------*/
 Route::get('/mypage/edit/detail', "MypageDetailController@show")->name("mypage.detail.show");
 Route::post('/mypage/edit/detail', "MypageDetailController@post")->name("mypage.detail.post");
 
@@ -41,10 +44,14 @@ Route::get('/mypage/edit/detail/confirm', "MypageDetailController@confirm")->nam
 Route::post('/mypage/edit/detail/confirm', "MypageDetailController@send")->name("mypage.detail.send");
 
 Route::get('/mypage/edit/detail/thanks', "MypageDetailController@complete")->name("mypage.detail.complete");
-/*------------------------------------------*/
+/*--- end:詳細プロフィールの変更 ------------*/
 
-//from mypage to detail Page
-Route::get('/mypage/detail', 'MypageController@detail')->name('mypage.detail');
+// from watch to theirPage
+Route::get('/mypage/{username}', 'MypageController@TheirPage')->name('mypage.theirPage');
+
+// from theirPage to detail
+Route::get('/mypage/{username}/detail', 'MypageController@TheirDetail')->name('mypage.theirDetail');
+
 /*=== end:mypage関係 =========================================================*/
 
 //サービス内に動画をアップロードするルーティング
