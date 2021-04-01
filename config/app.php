@@ -229,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DiffDate' => app\Common\DiffDateClass::class,
         'VideoDisplay' => app\Common\VideoDisplayClass::class,
+        'SessionForm' => app\Common\SessionFormClass::class,
     ],
 
 ];

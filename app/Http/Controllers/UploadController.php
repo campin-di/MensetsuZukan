@@ -101,7 +101,6 @@ class UploadController extends Controller
       //================================================
       //================================================
 
-
       //セッションを空にする
       $request->session()->forget("form_input");
 
