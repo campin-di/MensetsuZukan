@@ -26,7 +26,7 @@
 			<tr>
 				<th height="75px">質問</th>
 				<th class="right-block">
-					<input type="text" name="question" class="form-control" placeholder="タイトルを入力してください。">
+					<input type="number" name="question_id" class="form-control" placeholder="タイトルを入力してください。">
 				</th>
 			</tr>
 			<tr>

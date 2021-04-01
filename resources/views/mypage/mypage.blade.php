@@ -9,7 +9,7 @@
   </div>
 
   <a href="{{ route('mypage.detail') }}" class="mx-2 btn btn-primary">詳しいプロフィール</a>
-  <a href="" class="mx-2 btn btn-primary">基本情報を編集する</a>
+  <a href="{{ route('mypage.basic.show') }}" class="mx-2 btn btn-primary">基本情報を編集する</a>
 
   <h2>面接予定</h2>
   @foreach($interviewReservationsCollection as $interviewReservation)
