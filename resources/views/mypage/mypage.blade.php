@@ -14,11 +14,12 @@
   <h2>面接予定</h2>
   @foreach($interviewReservationsCollection as $interviewReservation)
   <div>
-    <a href="{{ $interviewReservation['url'] }}">
+    <a href="{{ route('interview.preStart', $interviewReservation['id']) }}">
       {{ $interviewReservation['name'] }}
       {{ $interviewReservation['date'] }}
     </a>
   </div>
+  <hr>
   @endforeach
 
   <h2>過去の面接</h2>

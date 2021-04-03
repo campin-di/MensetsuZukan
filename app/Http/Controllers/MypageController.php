@@ -27,15 +27,15 @@ class MypageController extends Controller
     $pastVideos = Video::where('st_id', $userId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::where('st_id', $userId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
+    $interviewReservations = Interview::where('st_id', $userId)->with('hr_user')->select('id', 'hr_id', 'date', 'url')->get();
 
     $interviewReservationsCollection = collect();
     foreach ($interviewReservations as $interviewReservation) {
       $interviewReservationsCollection = $interviewReservationsCollection->concat([
         [
+          'id' => $interviewReservation->id,
           'name' => $interviewReservation->hr_user->name,
           'date' => $interviewReservation->date,
-          'url' => $interviewReservation->url,
         ],
       ]);
     }
@@ -72,7 +72,7 @@ class MypageController extends Controller
 
     $interviewReservations = Interview::where('st_id', $userId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
 
-    return view('mypage/theirpage', [
+    return view('mypage/their_page', [
       'username' => $username,
       'pastVideosCollection' => $pastVideosCollection,
     ]);
@@ -83,7 +83,7 @@ class MypageController extends Controller
     $userId = User::where('username', $username)->first()->id;
     $stProfileDetails = St_profile::where('st_id', $userId)->get();
 
-    return view('mypage/theirdetail', [
+    return view('mypage/their_detail', [
       'stProfileDetails' => $stProfileDetails,
     ]);
   }

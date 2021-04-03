@@ -19,10 +19,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 //home to watch
 Route::get('/watch/{id}', 'WatchController@index')->name('watch');
 
-//from mypage to detail Page
-Route::get('/mypage/detail', 'MypageController@myDetail')->name('mypage.detail');
+//mypage to interviewDetails
+Route::get('/interview/pre/{id}', 'InterviewController@preStart')->name('interview.preStart');
 
 /*=== マイページ関係 =============================================================*/
+// mypage to detail Page
+Route::get('/mypage/detail', 'MypageController@myDetail')->name('mypage.detail');
+
 //to mypage
 Route::get('/mypage', 'MypageController@index')->name('mypage');
 
