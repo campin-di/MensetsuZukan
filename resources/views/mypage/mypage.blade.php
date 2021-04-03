@@ -22,6 +22,8 @@
   <hr>
   @endforeach
 
+  <a href="{{ route('interview.search') }}">面接を予約する</a>
+
   <h2>過去の面接</h2>
   @foreach($pastVideosCollection as $video)
     <a href="{{ route('watch', $video['id'])}}">

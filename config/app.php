@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'ja_JP',
 
     /*
     |--------------------------------------------------------------------------
@@ -229,7 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DiffDate' => app\Common\DiffDateClass::class,
         'VideoDisplay' => app\Common\VideoDisplayClass::class,
-        'SessionForm' => app\Common\SessionFormClass::class,
+        'CutString' => app\Common\CutStringClass::class,
     ],
 
 ];

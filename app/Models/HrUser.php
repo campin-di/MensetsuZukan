@@ -21,5 +21,4 @@ class HrUser extends Model
       return $this->hasMany('App\Models\Interview');
     }
 
-
 }

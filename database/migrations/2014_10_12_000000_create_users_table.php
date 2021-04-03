@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('university_id');
             $table->unsignedInteger('faculty_id');
             $table->unsignedInteger('department_id');
-            $table->unsignedInteger('details_id');
             $table->string('plan');
 
             $table->rememberToken();

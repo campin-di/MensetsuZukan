@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         InterviewsTableSeeder::class,
         QuestionsTableSeeder::class,
         StProfilesTableSeeder::class,
+        HrProfilesTableSeeder::class,
+        CompaniesTableSeeder::class,
       ]);
     }
 }

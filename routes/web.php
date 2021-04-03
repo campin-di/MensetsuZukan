@@ -57,6 +57,10 @@ Route::get('/mypage/{username}/detail', 'MypageController@TheirDetail')->name('m
 
 /*=== end:mypage関係 =========================================================*/
 
+// to 人事を探す(search) page
+Route::get('/interview/search', 'InterviewController@search')->name('interview.search');
+
+
 //サービス内に動画をアップロードするルーティング
 Route::get('/upload', 'UploadController@show')->name('upload');
 
