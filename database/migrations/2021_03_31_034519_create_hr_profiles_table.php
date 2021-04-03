@@ -13,10 +13,15 @@ class CreateHrProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('hr_profiles', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+      Schema::create('hr_profiles', function (Blueprint $table) {
+          $table->increments('id');
+          $table->integer('hr_id')->unsigned();
+          $table->string('introduction', 1000)->nullable();
+          $table->string('pr', 1000)->nullable();
+          $table->timestamps();
+
+          $table->foreign('hr_id')->references('id')->on('hr_users')->onDelete('no action');
+      });
     }
 
     /**

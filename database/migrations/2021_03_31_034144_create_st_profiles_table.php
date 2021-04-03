@@ -14,12 +14,14 @@ class CreateStProfilesTable extends Migration
     public function up()
     {
         Schema::create('st_profiles', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->integer('st_id')->unsigned();
-            $table->string('pr')->nullable();
-            $table->string('gakuchika')->nullable();
-            $table->string('frustration')->nullable();
+            $table->string('pr', 1000)->nullable();
+            $table->string('gakuchika', 1000)->nullable();
+            $table->string('frustration', 1000)->nullable();
             $table->timestamps();
+
+            $table->foreign('st_id')->references('id')->on('users')->onDelete('no action');
         });
     }
 

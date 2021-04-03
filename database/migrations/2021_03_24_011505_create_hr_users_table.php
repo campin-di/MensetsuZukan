@@ -22,11 +22,11 @@ class CreateHrUsersTable extends Migration
             $table->string('password');
             $table->integer('status');
             $table->integer('company_id');
-            $table->string('details_id');
             $table->string('plan');
             $table->string('schedule')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
         });
     }
 
