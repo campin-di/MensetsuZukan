@@ -11,7 +11,15 @@ Route::get('/', function () {
     return view('top');
 });
 
+/*=== 認証関係 =============================================================*/
 Auth::routes();
+
+Route::prefix('hr')->namespace('Hr')->name('hr.')->group(function(){
+    Auth::routes();
+
+    Route::get('/home', 'HrHomeController@index')->name('hr_home');
+});
+/*=== end:認証関係 =========================================================*/
 
 //top to home
 Route::get('/home', 'HomeController@index')->name('home');
@@ -23,11 +31,11 @@ Route::get('/watch/{id}', 'WatchController@index')->name('watch');
 Route::get('/interview/pre/{id}', 'InterviewController@preStart')->name('interview.preStart');
 
 /*=== マイページ関係 =============================================================*/
-// mypage to detail Page
-Route::get('/mypage/detail', 'MypageController@myDetail')->name('mypage.detail');
-
 //to mypage
 Route::get('/mypage', 'MypageController@index')->name('mypage');
+
+// mypage to detail Page
+Route::get('/mypage/detail', 'MypageController@myDetail')->name('mypage.detail');
 
 /*--- 基本情報の変更 -------------------------*/
 Route::get('/mypage/edit/basic', "MypageBasicController@show")->name("mypage.basic.show");
@@ -56,6 +64,13 @@ Route::get('/mypage/{username}', 'MypageController@TheirPage')->name('mypage.the
 Route::get('/mypage/{username}/detail', 'MypageController@TheirDetail')->name('mypage.theirDetail');
 
 /*=== end:mypage関係 =========================================================*/
+
+/*=== 人事マイページ関係 =============================================================*/
+// to HrMypage
+Route::get('/hrMypage/hrMypage', 'HrMypageController@index')->name('hrMypage');
+
+
+/*=== end:人事マイページ関係 =========================================================*/
 
 // to 人事を探す(search) page
 Route::get('/interview/search', 'InterviewController@search')->name('interview.search');
