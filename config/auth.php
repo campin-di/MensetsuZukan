@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'user',
         'passwords' => 'users',
     ],
 
@@ -36,11 +36,14 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'user' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        'hr' => [
+            'driver' => 'session',
+            'provider' => 'hr_users',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,6 +72,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'hr_users' => [
+          'driver' => 'eloquent',
+          'model' => App\Models\HrUser::class,
         ],
 
         // 'users' => [
@@ -99,6 +106,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'hr_users' => [
+          'provider' => 'hr_users',
+          'table' => 'password_resets',
+          'expire' => 60,
+          'throttle' => 60,
+      ],
     ],
 
     /*

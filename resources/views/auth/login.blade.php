@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">学生ログイン</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -64,6 +64,7 @@
                                 @endif
                             </div>
                         </div>
+                        <a class="nav-link" href="{{ route('hr.login') }}">採用担当者の方はコチラ</a>
                     </form>
                 </div>
             </div>
