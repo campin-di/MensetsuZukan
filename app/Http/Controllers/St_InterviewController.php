@@ -8,7 +8,7 @@ use App\Common\CutStringClass;
 use App\Models\Hr_profile;
 use App\Models\Interview;
 
-class InterviewController extends Controller
+class St_InterviewController extends Controller
 {
   public function preStart($id)
   {

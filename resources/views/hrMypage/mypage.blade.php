@@ -5,24 +5,14 @@
   <h1>マイページ</h1>
   <div>
     {{ $userDataArray['name'] }}
-    {{ $userDataArray['username'] }}
+    {{ '@'.$userDataArray['username'] }}
   </div>
 
-  <a href="{{ route('mypage.detail') }}" class="mx-2 btn btn-primary">詳しいプロフィール</a>
-  <a href="{{ route('mypage.basic.show') }}" class="mx-2 btn btn-primary">基本情報を編集する</a>
+  <a href="{{ route('hr_mypage.detail', $userDataArray['id']) }}" class="mx-2 btn btn-primary">詳しいプロフィール</a>
 
-  <h2>面接予定</h2>
-  @foreach($interviewReservationsCollection as $interviewReservation)
-  <div>
-    <a href="{{ route('interview.preStart', $interviewReservation['id']) }}">
-      {{ $interviewReservation['name'] }}
-      {{ $interviewReservation['date'] }}
-    </a>
-  </div>
   <hr>
-  @endforeach
 
-  <a href="{{ route('interview.search') }}">面接を予約する</a>
+  <a href="">{{ $userDataArray['name'] }}と面接を予約する。</a>
 
   <h2>過去の面接</h2>
   @foreach($pastVideosCollection as $video)

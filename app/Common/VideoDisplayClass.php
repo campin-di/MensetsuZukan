@@ -43,6 +43,7 @@ class VideoDisplayClass
 
             'stUsername' => $stUsername,
             'hrName' => $hrName,
+            'hrId' => $video->hr_id,
           ],
         ]);
       }

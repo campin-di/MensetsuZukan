@@ -24,7 +24,9 @@
         <a href="{{ route('mypage.theirPage', $video['stUsername']) }}">
           学生ユーザ名：{{ $video['stUsername'] }}<br>
         </a>
-        人事名：{{ $video['hrName'] }}
+        <a href="{{ route('hr_mypage', $video['hrId']) }}">
+          人事名：{{ $video['hrName'] }}
+        </a>
     @endforeach
 
     <hr>
