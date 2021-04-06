@@ -66,9 +66,11 @@ Route::get('/mypage/{username}/detail', 'St_MypageController@TheirDetail')->name
 /*=== end:mypage関係 =========================================================*/
 
 /*=== 人事マイページ関係 =============================================================*/
-// to HrMypage
-Route::get('/hrMypage/hrMypage', 'St_HrMypageController@index')->name('hrMypage');
+// to hrMypage
+Route::get('/hrMypage/mypage/{id}', 'St_HrMypageController@index')->name('hr_mypage');
 
+// from hrMypage to detail
+Route::get('/hrMypage/mypage/{id}/detail', 'St_HrMypageController@detail')->name('hr_mypage.detail');
 
 /*=== end:人事マイページ関係 =========================================================*/
 
