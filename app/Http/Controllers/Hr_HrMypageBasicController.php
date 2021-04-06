@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 
-use App\Models\St_profile;
-
-class MypageDetailController extends Controller
+class Hr_HrMypageBasicController extends Controller
 {
   /*=== 基本情報の変更処理 ====================================================*/
 
@@ -22,12 +21,7 @@ class MypageDetailController extends Controller
   ];
 
   function show(){
-    $userId = Auth::user()->id;
-    $profile = St_profile::where('st_id', $userId)->first();
-
-    return view("mypage/detail/form",[
-      'profile' => $profile,
-    ]);
+    return view("hr/hrMypage/basic/form");
   }
 
   function post(Request $request){
@@ -39,7 +33,7 @@ class MypageDetailController extends Controller
   /*
     $validator = Validator::make($input, $this->validator);
     if($validator->fails()){
-      return redirect()->action("MypageDetailController@show")
+      return redirect()->action("MypageBasicController@show")
         ->withInput()
         ->withErrors($validator);
     }
@@ -47,56 +41,55 @@ class MypageDetailController extends Controller
     //================================================
     //================================================
     //セッションに書き込む
-    $request->session()->put("detail_input", $input);
+    $request->session()->put("input", $input);
 
-    return redirect()->action("MypageDetailController@confirm");
+    return redirect()->action("Hr_HrMypageBasicController@confirm");
   }
 
   function confirm(Request $request){
     //セッションから値を取り出す
-    $input = $request->session()->get("detail_input");
+    $input = $request->session()->get("input");
 
     //セッションに値が無い時はフォームに戻る
     if(!$input){
-      return redirect()->action("MypageDetailController@show");
+      return redirect()->action("Hr_HrMypageBasicController@show");
     }
-    return view("mypage/detail/form_confirm",["input" => $input]);
+    return view("hr/hrMypage/basic/form_confirm",["input" => $input]);
   }
 
   function send(Request $request){
     //セッションから値を取り出す
-    $input = $request->session()->get("detail_input");
+    $input = $request->session()->get("input");
 
     //戻るボタンが押された時
     if($request->has("back")){
-      return redirect()->action("MypageDetailController@show")
+      return redirect()->action("Hr_HrMypageBasicController@show")
         ->withInput($input);
     }
 
     //セッションに値が無い時はフォームに戻る
     if(!$input){
-      return redirect()->action("MypageDetailController@show");
+      return redirect()->action("Hr_HrMypageBasicController@show");
     }
 
     //=====処理内容====================================
     //================================================
-    $userId = Auth::user()->id;
-    \DB::table('st_profiles')->where('id', $userId)->update([
-            'pr' => $input["pr"],
-            'gakuchika' => $input["gakuchika"],
-            'frustration' => $input["frustration"],
+    $userId = Auth::guard('hr')->id();
+    \DB::table('hr_users')->where('id', $userId)->update([
+            'username' => $input["username"],
+            'password' => Hash::make($input["password"]),
         ]);
     //================================================
     //================================================
 
     //セッションを空にする
-    $request->session()->forget("detail_input");
+    $request->session()->forget("input");
 
-    return redirect()->action("MypageDetailController@complete");
+    return redirect()->action("Hr_HrMypageBasicController@complete");
   }
 
   function complete(){
-    return view("mypage/detail/form_complete");
+    return view("hr/hrMypage/basic/form_complete");
   }
 
   /*===========================================================================*/

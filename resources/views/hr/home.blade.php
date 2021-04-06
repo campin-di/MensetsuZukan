@@ -3,7 +3,7 @@
 
 <div class="container">
     @foreach($videosCollection as $video)
-    <a href="{{ route('watch', $video['id'])}}">
+    <a href="{{ route('hr.watch', $video['id'])}}">
         <iframe width="560" height="315" src="{{ $video['url'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
         {{ $video['title'] }}<br>
 
@@ -24,6 +24,6 @@
     </a>
     @endforeach
 
-  <a class="nav-link" href="{{ route('upload') }}">アップロード</a>
+  <a class="nav-link" href="{{ route('hr.upload') }}">アップロード</a>
 </div>
 @endsection
