@@ -23,6 +23,7 @@ class HrHomeController extends Controller
         $this->middleware('auth:hr');
     }
 
+
     /**
      * Show the application dashboard.
      *
