@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Common\DiffDateClass;
+use App\Common\VideoDisplayClass;
 
 use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Video;
 
-use App\Common\VideoDisplayClass;
-
-class WatchController extends Controller
+class St_WatchController extends Controller
 {
   public function index($id)
   {
@@ -47,4 +46,5 @@ class WatchController extends Controller
       'otherVideosCollection' => $otherVideosCollection,
     ]);
   }
+
 }

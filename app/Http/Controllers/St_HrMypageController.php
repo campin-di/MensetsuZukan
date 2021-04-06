@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Common\VideoDisplayClass;
 
-class HrMypageController extends Controller
+class St_HrMypageController extends Controller
 {
   public function index()
   {

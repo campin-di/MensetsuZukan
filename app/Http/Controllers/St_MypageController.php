@@ -12,7 +12,7 @@ use App\Models\St_profile;
 
 use App\Common\VideoDisplayClass;
 
-class MypageController extends Controller
+class St_MypageController extends Controller
 {
   public function index()
   {
@@ -64,7 +64,7 @@ class MypageController extends Controller
 
     //自分のユーザネームをクリックした場合
     if($loginId == $userId){
-      return redirect()->action("MypageController@index", $loginId);
+      return redirect()->action("St_MypageController@index", $loginId);
     }
 
     $pastVideos = Video::where('st_id', $userId)->get();
@@ -87,4 +87,5 @@ class MypageController extends Controller
       'stProfileDetails' => $stProfileDetails,
     ]);
   }
+
 }

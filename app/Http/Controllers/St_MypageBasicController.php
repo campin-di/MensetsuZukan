@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 
-class MypageBasicController extends Controller
+class St_MypageBasicController extends Controller
 {
   /*=== 基本情報の変更処理 ====================================================*/
 
@@ -33,7 +33,7 @@ class MypageBasicController extends Controller
   /*
     $validator = Validator::make($input, $this->validator);
     if($validator->fails()){
-      return redirect()->action("MypageBasicController@show")
+      return redirect()->action("St_MypageBasicController@show")
         ->withInput()
         ->withErrors($validator);
     }
@@ -43,7 +43,7 @@ class MypageBasicController extends Controller
     //セッションに書き込む
     $request->session()->put("input", $input);
 
-    return redirect()->action("MypageBasicController@confirm");
+    return redirect()->action("St_MypageBasicController@confirm");
   }
 
   function confirm(Request $request){
@@ -52,7 +52,7 @@ class MypageBasicController extends Controller
 
     //セッションに値が無い時はフォームに戻る
     if(!$input){
-      return redirect()->action("MypageBasicController@show");
+      return redirect()->action("St_MypageBasicController@show");
     }
     return view("mypage/basic/form_confirm",["input" => $input]);
   }
@@ -63,13 +63,13 @@ class MypageBasicController extends Controller
 
     //戻るボタンが押された時
     if($request->has("back")){
-      return redirect()->action("MypageBasicController@show")
+      return redirect()->action("St_MypageBasicController@show")
         ->withInput($input);
     }
 
     //セッションに値が無い時はフォームに戻る
     if(!$input){
-      return redirect()->action("MypageBasicController@show");
+      return redirect()->action("St_MypageBasicController@show");
     }
 
     //=====処理内容====================================
@@ -85,7 +85,7 @@ class MypageBasicController extends Controller
     //セッションを空にする
     $request->session()->forget("input");
 
-    return redirect()->action("MypageBasicController@complete");
+    return redirect()->action("St_MypageBasicController@complete");
   }
 
   function complete(){

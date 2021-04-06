@@ -7,7 +7,7 @@ use Auth;
 
 use App\Models\St_profile;
 
-class MypageDetailController extends Controller
+class St_St_MypageDetailController extends Controller
 {
   /*=== 基本情報の変更処理 ====================================================*/
 
@@ -39,7 +39,7 @@ class MypageDetailController extends Controller
   /*
     $validator = Validator::make($input, $this->validator);
     if($validator->fails()){
-      return redirect()->action("MypageDetailController@show")
+      return redirect()->action("St_MypageDetailController@show")
         ->withInput()
         ->withErrors($validator);
     }
@@ -49,7 +49,7 @@ class MypageDetailController extends Controller
     //セッションに書き込む
     $request->session()->put("detail_input", $input);
 
-    return redirect()->action("MypageDetailController@confirm");
+    return redirect()->action("St_MypageDetailController@confirm");
   }
 
   function confirm(Request $request){
@@ -58,7 +58,7 @@ class MypageDetailController extends Controller
 
     //セッションに値が無い時はフォームに戻る
     if(!$input){
-      return redirect()->action("MypageDetailController@show");
+      return redirect()->action("St_MypageDetailController@show");
     }
     return view("mypage/detail/form_confirm",["input" => $input]);
   }
@@ -69,13 +69,13 @@ class MypageDetailController extends Controller
 
     //戻るボタンが押された時
     if($request->has("back")){
-      return redirect()->action("MypageDetailController@show")
+      return redirect()->action("St_MypageDetailController@show")
         ->withInput($input);
     }
 
     //セッションに値が無い時はフォームに戻る
     if(!$input){
-      return redirect()->action("MypageDetailController@show");
+      return redirect()->action("St_MypageDetailController@show");
     }
 
     //=====処理内容====================================
@@ -92,7 +92,7 @@ class MypageDetailController extends Controller
     //セッションを空にする
     $request->session()->forget("detail_input");
 
-    return redirect()->action("MypageDetailController@complete");
+    return redirect()->action("St_MypageDetailController@complete");
   }
 
   function complete(){
