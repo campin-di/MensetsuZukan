@@ -13,14 +13,18 @@
 
   <h2>面接予定</h2>
   @foreach($interviewReservationsCollection as $interviewReservation)
+    <div>
+      <a href="{{ route('hr.interview.preStart', $interviewReservation['id']) }}">
+        {{ $interviewReservation['name'] }} {{ $interviewReservation['date'] }}
+      </a>
+    </div>
+    <hr>
+  @endforeach
   <div>
-    <a href="{{ route('hr.interview.preStart', $interviewReservation['id']) }}">
-      {{ $interviewReservation['name'] }}
-      {{ $interviewReservation['date'] }}
+    <a href="{{ route('hr.interview.schedule.add') }}" class="mx-2 btn btn-primary">
+      面接可能日程を追加する。
     </a>
   </div>
-  <hr>
-  @endforeach
 
   <h2>過去の面接</h2>
   @foreach($pastVideosCollection as $video)
