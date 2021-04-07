@@ -230,6 +230,8 @@ return [
         'DiffDate' => app\Common\DiffDateClass::class,
         'VideoDisplay' => app\Common\VideoDisplayClass::class,
         'CutString' => app\Common\CutStringClass::class,
+        'IsBool' => app\Common\IsBoolClass::class,
+        'Add2DatabaseClass' => app\Common\Add2DatabaseClass::class,
     ],
 
 ];

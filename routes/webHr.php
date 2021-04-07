@@ -4,12 +4,26 @@ use Illuminate\Support\Facades\Route;
 
     //prefix('hr')は指定箇所のルートの先頭に'hr.'をつける
 
-
     //home to watch
     Route::get('/watch/{id}', 'Hr_WatchController@index')->name('hr.watch');
 
     //mypage to interviewDetails
     Route::get('/interview/pre/{id}', 'Hr_InterviewController@preStart')->name('hr.interview.preStart');
+
+    /*=== スケジュール登録 関係 ===============================================*/
+    //mypage to schedule adding function
+    Route::get('/interview/schedule/add', 'Hr_ScheduleController@add')->name('hr.interview.schedule.add');
+
+    //mypage to schedule adding function
+    Route::post('/interview/schedule/post', 'Hr_ScheduleController@post')->name('hr.interview.schedule.post');
+
+    Route::get('/interview/schedule/confirm', "Hr_ScheduleController@confirm")->name('hr.interview.schedule.confirm');
+    Route::post('/interview/schedule/confirm', "Hr_ScheduleController@send")->name('hr.interview.schedule.send');
+
+    Route::get('/interview/schedule/thanks', "Hr_ScheduleController@complete")->name('hr.interview.schedule.complete');
+
+    /*=== end:スケジュール登録 関係 ===============================================*/
+
 
     /*=== マイページ関係 =============================================================*/
     //to mypage
