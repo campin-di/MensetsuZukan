@@ -33,14 +33,7 @@ class Hr_ScheduleController extends Controller
 
     $input = $request->all();
 
-    /*
-        foreach ($input['time'] as $item) {
-          // code...
-          echo $item . '<br>';
-        }
-    */
     //=====部分処理====================================
-    //================================================
 /*
     $validator = Validator::make($input, $this->validator);
     if($validator->fails()){
@@ -50,7 +43,7 @@ class Hr_ScheduleController extends Controller
     }
 */
     //================================================
-    //================================================
+    
     //セッションに書き込む
     $request->session()->put("form_input", $input);
 
@@ -84,16 +77,17 @@ class Hr_ScheduleController extends Controller
     }
 
     //=====処理内容====================================
+    $userId = Auth::guard('hr')->id();
     $timeArray = ['eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twentyone'];
 
     $schedule = new Schedule;
+    $schedule->hr_id = $userId;
     $schedule->date = $input['date'];
     foreach ($timeArray as $time) {
       $schedule->$time = IsBoolClass::IsBool($time, $input['time']);
     }
     $schedule->save();
 
-    $userId = Auth::guard('hr')->id();
 
     $alreadyData = HrUser::find($userId)->schedule;
     \DB::table('hr_users')->where('id', $userId)->update([

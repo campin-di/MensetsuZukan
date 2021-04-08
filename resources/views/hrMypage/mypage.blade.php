@@ -12,7 +12,7 @@
 
   <hr>
 
-  <a href="">{{ $userDataArray['name'] }}と面接を予約する。</a>
+  <a href="{{ route('interview.schedule', $userDataArray['id']) }}">{{ $userDataArray['name'] }}と面接を予約する。</a>
 
   <h2>過去の面接</h2>
   @foreach($pastVideosCollection as $video)

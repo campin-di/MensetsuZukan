@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         StProfilesTableSeeder::class,
         HrProfilesTableSeeder::class,
         CompaniesTableSeeder::class,
+        SchedulesTableSeeder::class,
       ]);
     }
 }

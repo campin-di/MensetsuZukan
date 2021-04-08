@@ -30,6 +30,17 @@ Route::get('/watch/{id}', 'St_WatchController@index')->name('watch');
 //mypage to interviewDetails
 Route::get('/interview/pre/{id}', 'St_InterviewController@preStart')->name('interview.preStart');
 
+/*=== スケジュール登録 関係 ===============================================*/
+
+//mypage to schedule adding function
+Route::post('/interview/schedule/post', 'St_ScheduleController@post')->name('interview.schedule.post');
+
+Route::get('/interview/schedule/confirm', "St_ScheduleController@confirm")->name('interview.schedule.confirm');
+Route::post('/interview/schedule/confirm', "St_ScheduleController@send")->name('interview.schedule.send');
+
+Route::get('/interview/schedule/thanks', "St_ScheduleController@complete")->name('interview.schedule.complete');
+/*=== end:スケジュール登録 関係 ===============================================*/
+
 /*=== マイページ関係 =============================================================*/
 //to mypage
 Route::get('/mypage', 'St_MypageController@index')->name('mypage');
@@ -77,15 +88,17 @@ Route::get('/hrMypage/mypage/{id}/detail', 'St_HrMypageController@detail')->name
 // to 人事を探す(search) page
 Route::get('/interview/search', 'St_InterviewController@search')->name('interview.search');
 
+// to 面接スケジュール page
+Route::get('/interview/schedule/{id}', 'St_ScheduleController@schedule')->name('interview.schedule');
 
 //サービス内に動画をアップロードするルーティング
-Route::get('/upload', 'St_UploadController@show')->name('upload');
+Route::get('/upload', 'UploadController@show')->name('upload');
 
-Route::get('/upload/form', 'St_UploadController@show')->name("form.show");
-Route::post('/upload/form', 'St_UploadController@post')->name("form.post");
+Route::get('/upload/form', 'UploadController@show')->name("form.show");
+Route::post('/upload/form', 'UploadController@post')->name("form.post");
 
-Route::get('/upload/form/confirm', 'St_UploadController@confirm')->name("form.confirm");
-Route::post('/upload/form/confirm', 'St_UploadController@send')->name("form.send");
+Route::get('/upload/form/confirm', 'UploadController@confirm')->name("form.confirm");
+Route::post('/upload/form/confirm', 'UploadController@send')->name("form.send");
 
-Route::get('/upload/form/thanks', 'St_UploadController@complete')->name("form.complete");
+Route::get('/upload/form/thanks', 'UploadController@complete')->name("form.complete");
 //===========================================

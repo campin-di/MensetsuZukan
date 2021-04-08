@@ -7,7 +7,7 @@ use Auth;
 
 use App\Models\St_profile;
 
-class St_St_MypageDetailController extends Controller
+class St_MypageDetailController extends Controller
 {
   /*=== 基本情報の変更処理 ====================================================*/
 

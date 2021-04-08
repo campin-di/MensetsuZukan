@@ -32,6 +32,7 @@ class HrUserFactory extends Factory
         'password' => Hash::make('password'),
         'status' => 1,
         'company_id' => mt_rand(0, 99),
+        //'schedule_ids' => mt_rand(0, 30). ','. mt_rand(0, 30). ','. mt_rand(0, 30),
         'plan' => 'paid',
         'remember_token' => Str::random(10),
       ];
