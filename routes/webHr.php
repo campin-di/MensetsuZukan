@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Route;
     Route::post('/interview/schedule/confirm', "Hr_ScheduleController@send")->name('hr.interview.schedule.send');
 
     Route::get('/interview/schedule/thanks', "Hr_ScheduleController@complete")->name('hr.interview.schedule.complete');
-
     /*=== end:スケジュール登録 関係 ===============================================*/
 
 
@@ -77,13 +76,13 @@ use Illuminate\Support\Facades\Route;
 
 
     //サービス内に動画をアップロードするルーティング
-    Route::get('/upload', 'Hr_UploadController@show')->name('hr.upload');
+    Route::get('/upload', 'UploadController@show')->name('hr.upload');
 
-    Route::get('/upload/form', "Hr_UploadController@show")->name('hr.form.show');
-    Route::post('/upload/form', "Hr_UploadController@post")->name('hr.form.post');
+    Route::get('/upload/form', "UploadController@show")->name('hr.form.show');
+    Route::post('/upload/form', "UploadController@post")->name('hr.form.post');
 
-    Route::get('/upload/form/confirm', "Hr_UploadController@confirm")->name('hr.form.confirm');
-    Route::post('/upload/form/confirm', "Hr_UploadController@send")->name('hr.form.send');
+    Route::get('/upload/form/confirm', "UploadController@confirm")->name('hr.form.confirm');
+    Route::post('/upload/form/confirm', "UploadController@send")->name('hr.form.send');
 
-    Route::get('/upload/form/thanks', "Hr_UploadController@complete")->name('hr.form.complete');
+    Route::get('/upload/form/thanks', "UploadController@complete")->name('hr.form.complete');
     //===========================================

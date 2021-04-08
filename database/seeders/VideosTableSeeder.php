@@ -87,7 +87,7 @@ class VideosTableSeeder extends Seeder
             'common_url' => $commonUrl,
             'question_id' => $question_id,
             'st_id' => $st_id,
-            'hr_id' => mt_rand(1, 5),
+            'hr_id' => mt_rand(1, 29),
             'score' => mt_rand(30, 100),
             'review' => $contentArray[mt_rand(0, 9)],
             'views' => mt_rand(0, 50),

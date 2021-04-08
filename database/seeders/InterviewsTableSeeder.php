@@ -16,9 +16,6 @@ class InterviewsTableSeeder extends Seeder
      */
     public function run()
     {
-      //0 ~ 4
-      $userIdArray = [ 1, 2, 3, 4, 5];
-
       //0~24
       $urlArray = [
         //【就活】新聞も読まないクソザコ就活生向け「主要業界を理解する」アーカイブ【21卒】
@@ -63,8 +60,8 @@ class InterviewsTableSeeder extends Seeder
         $zero100 = mt_rand(50, 100);
 
         $data = [
-          'st_id' => $userIdArray[mt_rand(0, 4)],
-          'hr_id' => $userIdArray[mt_rand(0, 4)],
+          'st_id' => mt_rand(1, 50),
+          'hr_id' => mt_rand(1, 30),
           'date' => $random_date[0].'-'.$random_date[1].'-'.$random_date[2],
           'password' => Hash::make('password'),
           'available' => 1,

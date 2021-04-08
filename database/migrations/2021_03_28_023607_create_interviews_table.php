@@ -20,7 +20,7 @@ class CreateInterviewsTable extends Migration
           $table->integer('st_id')->unsigned();
           $table->integer('hr_id')->unsigned();
           $table->string('date')->nullable();
-          $table->string('password')->unipue();
+          $table->string('password')->default('p@ssw0rd');
           $table->string('available')->nullable();
           $table->string('url')->nullable();
           $table->integer('question_1_id')->nullable();
