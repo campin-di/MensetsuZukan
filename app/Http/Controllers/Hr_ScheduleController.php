@@ -43,7 +43,7 @@ class Hr_ScheduleController extends Controller
     }
 */
     //================================================
-    
+
     //セッションに書き込む
     $request->session()->put("form_input", $input);
 
@@ -88,11 +88,6 @@ class Hr_ScheduleController extends Controller
     }
     $schedule->save();
 
-
-    $alreadyData = HrUser::find($userId)->schedule;
-    \DB::table('hr_users')->where('id', $userId)->update([
-      'schedule' => Add2DatabaseClass::add2Database($alreadyData, $schedule->id)
-    ]);
     //================================================
 
     //セッションを空にする

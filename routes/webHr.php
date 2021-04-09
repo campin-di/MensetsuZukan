@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
     //mypage to schedule adding function
     Route::get('/interview/schedule/add', 'Hr_ScheduleController@add')->name('hr.interview.schedule.add');
 
-    //mypage to schedule adding function
+    //form to comfirm page
     Route::post('/interview/schedule/post', 'Hr_ScheduleController@post')->name('hr.interview.schedule.post');
 
     Route::get('/interview/schedule/confirm', "Hr_ScheduleController@confirm")->name('hr.interview.schedule.confirm');
@@ -23,6 +23,31 @@ use Illuminate\Support\Facades\Route;
     Route::get('/interview/schedule/thanks', "Hr_ScheduleController@complete")->name('hr.interview.schedule.complete');
     /*=== end:スケジュール登録 関係 ===============================================*/
 
+    /*=== 質問リスト登録 関係 ===============================================*/
+    //pre_start to question form
+    Route::get('/interview/question/add/{id}', 'Hr_InterviewController@add')->name('hr.interview.question.add');
+
+    //question form to comfirm page
+    Route::post('/interview/question/post', 'Hr_InterviewController@post')->name('hr.interview.question.post');
+
+    Route::get('/interview/question/confirm', "Hr_InterviewController@confirm")->name('hr.interview.question.confirm');
+    Route::post('/interview/question/confirm', "Hr_InterviewController@send")->name('hr.interview.question.send');
+
+    Route::get('/interview/question/thanks', "Hr_InterviewController@complete")->name('hr.interview.question.complete');
+    /*=== end:質問リスト登録 関係 ===============================================*/
+
+    /*=== 採点機能 関係 ===============================================*/
+    //pre_start to scoring form
+    Route::get('/interview/score/add/{id}', 'Hr_InterviewController@add')->name('hr.interview.question.add');
+
+    //scoring form to comfirm page
+    Route::post('/interview/score/post', 'Hr_InterviewController@post')->name('hr.interview.question.post');
+
+    Route::get('/interview/score/confirm', "Hr_InterviewController@confirm")->name('hr.interview.question.confirm');
+    Route::post('/interview/score/confirm', "Hr_InterviewController@send")->name('hr.interview.question.send');
+
+    Route::get('/interview/score/thanks', "Hr_InterviewController@complete")->name('hr.interview.question.complete');
+    /*=== end:採点機能 関係 ===============================================*/
 
     /*=== マイページ関係 =============================================================*/
     //to mypage

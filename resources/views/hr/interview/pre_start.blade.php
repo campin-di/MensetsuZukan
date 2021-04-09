@@ -8,9 +8,13 @@
   日時：{{ $interviewInfo->date }}
   URL：{{ $interviewInfo->url }}
   <div>
-    <a href="">
-      面接を開始する。
-    </a>
+    <a href="{{ route('hr.interview.question.add', $interviewInfo->id) }}">質問リストを作成する。</a>
+  </div>
+  <div>
+    <a href="">面接を開始する。</a>
+  </div>
+  <div>
+    <a href="{{ route('hr.interview.score.form', $interviewInfo->id) }}">面接を採点する。</a>
   </div>
 </div>
 @endsection
