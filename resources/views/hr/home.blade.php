@@ -24,6 +24,6 @@
     </a>
     @endforeach
 
-  <a class="nav-link" href="{{ route('hr.upload') }}">アップロード</a>
+  <a class="nav-link" href="{{ route('upload') }}">アップロード</a>
 </div>
 @endsection

@@ -14,7 +14,7 @@
     <a href="">面接を開始する。</a>
   </div>
   <div>
-    <a href="{{ route('hr.interview.score.form', $interviewInfo->id) }}">面接を採点する。</a>
+    <a href="{{ route('hr.interview.scoring.form', $interviewInfo->id) }}">面接を採点する。</a>
   </div>
 </div>
 @endsection
