@@ -38,15 +38,15 @@ use Illuminate\Support\Facades\Route;
 
     /*=== 採点機能 関係 ===============================================*/
     //pre_start to scoring form
-    Route::get('/interview/score/add/{id}', 'Hr_InterviewController@add')->name('hr.interview.question.add');
+    Route::get('/interview/scoring/form/{id}', 'Hr_ScoringController@form')->name('hr.interview.scoring.form');
 
     //scoring form to comfirm page
-    Route::post('/interview/score/post', 'Hr_InterviewController@post')->name('hr.interview.question.post');
+    Route::post('/interview/scoring/post', 'Hr_ScoringController@post')->name('hr.interview.scoring.post');
 
-    Route::get('/interview/score/confirm', "Hr_InterviewController@confirm")->name('hr.interview.question.confirm');
-    Route::post('/interview/score/confirm', "Hr_InterviewController@send")->name('hr.interview.question.send');
+    Route::get('/interview/scoring/confirm', "Hr_ScoringController@confirm")->name('hr.interview.scoring.confirm');
+    Route::post('/interview/scoring/confirm', "Hr_ScoringController@send")->name('hr.interview.scoring.send');
 
-    Route::get('/interview/score/thanks', "Hr_InterviewController@complete")->name('hr.interview.question.complete');
+    Route::get('/interview/scoring/thanks', "Hr_ScoringController@complete")->name('hr.interview.scoring.complete');
     /*=== end:採点機能 関係 ===============================================*/
 
     /*=== マイページ関係 =============================================================*/
@@ -98,16 +98,3 @@ use Illuminate\Support\Facades\Route;
 
     // to 人事を探す(search) page
     Route::get('/interview/search', 'Hr_InterviewController@search')->name('hr.interview.search');
-
-
-    //サービス内に動画をアップロードするルーティング
-    Route::get('/upload', 'UploadController@show')->name('hr.upload');
-
-    Route::get('/upload/form', "UploadController@show")->name('hr.form.show');
-    Route::post('/upload/form', "UploadController@post")->name('hr.form.post');
-
-    Route::get('/upload/form/confirm', "UploadController@confirm")->name('hr.form.confirm');
-    Route::post('/upload/form/confirm', "UploadController@send")->name('hr.form.send');
-
-    Route::get('/upload/form/thanks', "UploadController@complete")->name('hr.form.complete');
-    //===========================================

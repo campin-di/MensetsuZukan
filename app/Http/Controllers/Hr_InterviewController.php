@@ -113,8 +113,6 @@ class Hr_InterviewController extends Controller
 
     for ($index = 1; $index <= 6; $index++) {
       $questionData = Question::where('name', $input['question-'.$index]);
-      $questionData->increment('times');
-
       $questionId = 'question_'. $index. '_id';
 
       $interview->$questionId = $questionData->first()->id;
@@ -132,6 +130,4 @@ class Hr_InterviewController extends Controller
   function complete(){
     return view("hr/interview/question/form_complete");
   }
-
-
 }
