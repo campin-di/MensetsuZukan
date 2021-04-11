@@ -34,7 +34,7 @@
     <div>
       @foreach($otherVideosCollection as $otherVideo)
         <a href="{{ route('watch', $otherVideo['id'])}}">
-          <iframe width="280" height="157.5" src="{{ $otherVideo['url'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+          <img src="{{ $otherVideo['thumbnailsUrl'] }}" width="240" height="120">
           {{ $otherVideo['title'] }}<br>
           {{ $otherVideo['question']->name }}<br>
           いいね：{{ $otherVideo['good'] }}<br>

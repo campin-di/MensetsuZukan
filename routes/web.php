@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 
+//テスト
+Route::get('youtube/channels/{id}/titles', 'YoutubeController@getListByChannelId');
+
+
 Route::get('/', function () {
     $loginFlag = Auth::check();
     if($loginFlag){
