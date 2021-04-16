@@ -78,7 +78,7 @@ class Hr_ScheduleController extends Controller
 
     //=====処理内容====================================
     $userId = Auth::guard('hr')->id();
-    $timeArray = ['eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twentyone'];
+    $timeArray = ['nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twentyone'];
 
     $schedule = new Schedule;
     $schedule->hr_id = $userId;

@@ -16,12 +16,12 @@
       </div>
       @foreach($schedules as $schedule)
         <input type="radio" name="date" value="{{ $schedule->date }}"> {{ $schedule->date }}
+        <input type="hidden" name="hr_id" value="{{ $schedule->hr_id }}">
 
         @foreach($timeArray as $key => $time)
           @if($schedule->$key == 1)
             <div>
               <input type="radio" name="time" value="{{ $key }}"> {{ $time }}
-              <input type="hidden" name="id" value="{{ $schedule->id }}">
             </div>
           @endif
         @endforeach

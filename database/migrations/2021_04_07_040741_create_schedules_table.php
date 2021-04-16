@@ -17,7 +17,6 @@ class CreateSchedulesTable extends Migration
             $table->id();
             $table->integer('hr_id')->unsigned();
             $table->date('date');
-            $table->boolean('eight');
             $table->boolean('nine');
             $table->boolean('ten');
             $table->boolean('eleven');

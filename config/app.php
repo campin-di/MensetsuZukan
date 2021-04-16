@@ -189,7 +189,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -232,6 +231,8 @@ return [
         'CutString' => app\Common\CutStringClass::class,
         'IsBool' => app\Common\IsBoolClass::class,
         'Add2DatabaseClass' => app\Common\Add2DatabaseClass::class,
+        'Meeting' => app\Common\MeetingClass::class,
+
     ],
 
 ];

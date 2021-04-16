@@ -16,6 +16,14 @@ class InterviewsTableSeeder extends Seeder
      */
     public function run()
     {
+
+      $timeArray = [
+        "8:00 - 9:00", "9:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00",
+        "12:00 - 13:00", "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00",
+        "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00", "19:00 - 20:00",
+        "20:00 - 21:00", "21:00 - 22:00"
+      ];
+
       //0~24
       $urlArray = [
         //【就活】新聞も読まないクソザコ就活生向け「主要業界を理解する」アーカイブ【21卒】
@@ -63,6 +71,7 @@ class InterviewsTableSeeder extends Seeder
           'st_id' => mt_rand(1, 50),
           'hr_id' => mt_rand(1, 30),
           'date' => $random_date[0].'-'.$random_date[1].'-'.$random_date[2],
+          'time' => $timeArray[mt_rand(0, 13)],
           'password' => Hash::make('password'),
           'available' => 1,
           'url' => 'https://www.youtube.com/',

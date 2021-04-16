@@ -20,8 +20,9 @@ class CreateInterviewsTable extends Migration
           $table->integer('st_id')->unsigned();
           $table->integer('hr_id')->unsigned();
           $table->string('date')->nullable();
+          $table->string('time')->nullable();
           $table->string('password')->default('p@ssw0rd');
-          $table->string('available')->nullable();
+          $table->string('available')->nullable(); //0:質問リスト作成前、1:質問リスト作成後、2:面接終了後
           $table->string('url')->nullable();
           $table->integer('question_1_id')->nullable();
           $table->integer('question_1_score')->nullable();

@@ -11,7 +11,6 @@
       <input type="date" name="date" class="form-control">
     </div>
     <div>
-      <input type="checkbox" name="time[]" value="eight"  > 8:00 - 9:00
       <input type="checkbox" name="time[]" value="nine" > 9:00 - 10:00
       <input type="checkbox" name="time[]" value="ten"> 10:00 - 11:00
       <input type="checkbox" name="time[]" value="eleven"> 11:00 - 12:00<br>
