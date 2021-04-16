@@ -32,7 +32,7 @@ Route::get('/home', 'St_HomeController@index')->name('home');
 Route::get('/watch/{id}', 'St_WatchController@index')->name('watch');
 
 //mypage to interviewDetails
-Route::get('/interview/pre/{id}', 'St_InterviewController@preStart')->name('interview.preStart');
+Route::get('/interview/detail/{id}', 'St_InterviewController@detail')->name('interview.detail');
 
 /*=== スケジュール登録 関係 ===============================================*/
 

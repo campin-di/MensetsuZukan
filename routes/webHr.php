@@ -7,8 +7,12 @@ use Illuminate\Support\Facades\Route;
     //home to watch
     Route::get('/watch/{id}', 'Hr_WatchController@index')->name('hr.watch');
 
-    //mypage to interviewDetails
-    Route::get('/interview/pre/{id}', 'Hr_InterviewController@preStart')->name('hr.interview.preStart');
+    //mypage to interview detail
+    Route::get('/interview/detail/{id}', 'Hr_InterviewController@detail')->name('hr.interview.detail');
+
+    //interview detail to interview preStart
+    Route::get('/interview/pre/{id}', 'Hr_InterviewController@pre')->name('hr.interview.pre');
+
 
     /*=== スケジュール登録 関係 ===============================================*/
     //mypage to schedule adding function
@@ -24,7 +28,7 @@ use Illuminate\Support\Facades\Route;
     /*=== end:スケジュール登録 関係 ===============================================*/
 
     /*=== 質問リスト登録 関係 ===============================================*/
-    //pre_start to question form
+    //detail to question form
     Route::get('/interview/question/add/{id}', 'Hr_InterviewController@add')->name('hr.interview.question.add');
 
     //question form to comfirm page
@@ -37,7 +41,7 @@ use Illuminate\Support\Facades\Route;
     /*=== end:質問リスト登録 関係 ===============================================*/
 
     /*=== 採点機能 関係 ===============================================*/
-    //pre_start to scoring form
+    //detail to scoring form
     Route::get('/interview/scoring/form/{id}', 'Hr_ScoringController@form')->name('hr.interview.scoring.form');
 
     //scoring form to comfirm page

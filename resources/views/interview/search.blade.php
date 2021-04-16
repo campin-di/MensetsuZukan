@@ -5,7 +5,7 @@
   <h1>人事を探す</h1>
   @foreach($hrCollection as $hr)
   <div>
-    <a href="{{ route('mypage') }}">
+    <a href="{{ route('interview.schedule', $hr['id']) }}">
       {{ $hr['name'] }}<br>
     </a>
       {{ $hr['introduction'] }}
