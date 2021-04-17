@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
     //interview detail to interview preStart
     Route::get('/interview/pre/{id}', 'Hr_InterviewController@pre')->name('hr.interview.pre');
 
+    /*=== オファー機能 関係 ===============================================*/
+    //detail to scoring form
+    Route::get('/offer/form/{id}', 'Hr_OfferController@form')->name('hr.offer.form');
+
+    //scoring form to comfirm page
+    Route::post('/offer/post', 'Hr_OfferController@post')->name('hr.offer.post');
+
+    Route::get('/offer/confirm', "Hr_OfferController@confirm")->name('hr.offer.confirm');
+    Route::post('/offer/confirm', "Hr_OfferController@send")->name('hr.offer.send');
+
+    Route::get('/offer/thanks', "Hr_OfferController@complete")->name('hr.offer.complete');
+    /*=== end:オファー機能 関係 ===============================================*/
 
     /*=== スケジュール登録 関係 ===============================================*/
     //mypage to schedule adding function
