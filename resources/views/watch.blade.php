@@ -35,8 +35,9 @@
       @foreach($otherVideosCollection as $otherVideo)
         <a href="{{ route('watch', $otherVideo['id'])}}">
           <img src="{{ $otherVideo['thumbnailsUrl'] }}" width="240" height="120">
+          <br>
           {{ $otherVideo['title'] }}<br>
-          {{ $otherVideo['question']->name }}<br>
+          {{ $otherVideo['question'] }}<br>
           いいね：{{ $otherVideo['good'] }}<br>
           投稿日：{{ $otherVideo['diffDate'] }}<br>
           視聴回数：{{ $otherVideo['views'] }}回<br>

@@ -4,8 +4,10 @@
 <div class="container">
     @foreach($videosCollection as $video)
     <a href="{{ route('hr.watch', $video['id'])}}">
-        <iframe width="560" height="315" src="{{ $video['url'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
-        {{ $video['title'] }}<br>
+      <div>
+        <img src="{{ $video['thumbnailsUrl'] }}" width="360" height="240">
+      </div>
+      {{ $video['title'] }}<br>
 
         <div class="d-flex justify-content-start">
           <div class="mx-2 btn btn-primary">{{ $video['question']}}</div>
