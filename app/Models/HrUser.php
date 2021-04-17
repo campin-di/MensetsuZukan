@@ -53,4 +53,9 @@ class HrUser extends Authenticatable
       return $this->hasMany('App\Models\Interview');
     }
 
+    public function company()
+    {
+      return $this->belongsTo('App\Models\Company');
+    }
+
 }
