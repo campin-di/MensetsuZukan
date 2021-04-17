@@ -31,29 +31,7 @@ class St_WatchController extends Controller
 
     //$otherVideosCollection == 他の質問に対する動画
     $otherVideos =  Video::where('common_url', $video[0]->common_url)->where('question_id', '!=', $video[0]->question_id)->take(10)->get();
-    $otherVideosCollection = collect([]);
-
-    foreach ($otherVideos as $otherVideo) {
-      $thumbnailsUrl = $youtube->videos->listVideos('statistics,snippet', array(
-        'id' => $otherVideo->common_url,
-      ))[0]['snippet']['thumbnails']['high']['url'];
-
-      $diffDate = DiffDateClass::diffDate($otherVideo->created_at);
-
-      $otherVideosCollection = $otherVideosCollection->concat([
-        [
-          'id' => $otherVideo->id,
-          'thumbnailsUrl' => $thumbnailsUrl,
-          'url' => $otherVideo->url,
-          'title' => $otherVideo->title,
-          'score' => $otherVideo->score,
-          'views' => $otherVideo->views,
-          'good'  => $otherVideo->good,
-          'diffDate' => $diffDate,
-          'question' => $otherVideo->question,
-        ],
-      ]);
-    }
+    $otherVideosCollection = VideoDisplayClass::VideoDisplay($otherVideos);
 
     return view('watch',[
       'videosCollection' => $videosCollection,

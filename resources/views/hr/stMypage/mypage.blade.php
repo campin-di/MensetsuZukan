@@ -13,7 +13,9 @@
   <h2>過去の面接</h2>
   @foreach($pastVideosCollection as $video)
     <a href="{{ route('hr.watch', $video['id'])}}">
-      <iframe width="560" height="315" src="{{ $video['url'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      <div>
+        <img src="{{ $video['thumbnailsUrl'] }}" width="360" height="240">
+      </div>
       {{ $video['title'] }}<br>
 
       <div class="d-flex justify-content-start">

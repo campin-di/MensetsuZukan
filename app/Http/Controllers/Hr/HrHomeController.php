@@ -31,7 +31,7 @@ class HrHomeController extends Controller
      */
     public function index()
     {
-      $videos = Video::take(5)->get();
+      $videos = Video::take(10)->get();
 
       $videosCollection = VideoDisplayClass::VideoDisplay($videos);
 
