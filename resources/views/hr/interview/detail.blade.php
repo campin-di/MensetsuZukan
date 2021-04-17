@@ -17,7 +17,7 @@
     </div>
   @elseif($flag == 1)
     <div>
-      <a href="" class="btn btn-warning">質問リストを変更する。</a>
+      <a href="{{ route('hr.interview.question.edit', $interviewInfo->id) }}" class="btn btn-warning">質問リストを変更する。</a>
     </div>
     <div>
       <a href="" class="btn btn-success">質問シートをダウンロードする。</a>

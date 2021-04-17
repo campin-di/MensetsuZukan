@@ -29,15 +29,28 @@ use Illuminate\Support\Facades\Route;
 
     /*=== 質問リスト登録 関係 ===============================================*/
     //detail to question form
-    Route::get('/interview/question/add/{id}', 'Hr_InterviewController@add')->name('hr.interview.question.add');
+    Route::get('/interview/question/add/{id}', 'Hr_QuestionListController@add')->name('hr.interview.question.add');
 
     //question form to comfirm page
-    Route::post('/interview/question/post', 'Hr_InterviewController@post')->name('hr.interview.question.post');
+    Route::post('/interview/question/post', 'Hr_QuestionListController@post')->name('hr.interview.question.post');
 
-    Route::get('/interview/question/confirm', "Hr_InterviewController@confirm")->name('hr.interview.question.confirm');
-    Route::post('/interview/question/confirm', "Hr_InterviewController@send")->name('hr.interview.question.send');
+    Route::get('/interview/question/confirm', "Hr_QuestionListController@confirm")->name('hr.interview.question.confirm');
+    Route::post('/interview/question/confirm', "Hr_QuestionListController@send")->name('hr.interview.question.send');
 
-    Route::get('/interview/question/thanks', "Hr_InterviewController@complete")->name('hr.interview.question.complete');
+    Route::get('/interview/question/thanks', "Hr_QuestionListController@complete")->name('hr.interview.question.complete');
+    /*=== end:質問リスト登録 関係 ===============================================*/
+
+    /*=== 質問リスト編集 関係 ===============================================*/
+    //detail to question form
+    Route::get('/interview/question/add/{id}', 'Hr_QuestionListController@edit')->name('hr.interview.question.edit');
+
+    //question form to comfirm page
+    Route::post('/interview/question/post', 'Hr_QuestionListController@editPost')->name('hr.interview.question.edit.post');
+
+    Route::get('/interview/question/confirm', "Hr_QuestionListController@editConfirm")->name('hr.interview.question.edit.confirm');
+    Route::post('/interview/question/confirm', "Hr_QuestionListController@editSend")->name('hr.interview.question.edit.send');
+
+    Route::get('/interview/question/thanks', "Hr_QuestionListController@editComplete")->name('hr.interview.question.edit.complete');
     /*=== end:質問リスト登録 関係 ===============================================*/
 
     /*=== 採点機能 関係 ===============================================*/
