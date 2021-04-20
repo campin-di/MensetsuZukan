@@ -28,8 +28,17 @@ Route::prefix('hr')->namespace('Hr')->name('hr.')->group(function(){
 Route::post('register/pre_check', 'Auth\PreRegisterController@pre_check')->name('register.pre_check');
 // メール　to 本登録フォーム
 Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
-// 本登録フォーム to 本登録確認画面
-Route::post('register/main_check/{token}', 'Auth\RegisterController@mainCheck')->name('register.main.check');
+// 本登録フォーム1 to 本登録フォーム2
+Route::post('register/2', 'Auth\RegisterController@showForm2')->name('register2');
+// 本登録フォーム1 to 本登録フォーム3
+Route::post('register/3', 'Auth\RegisterController@showForm3')->name('register3');
+
+//Route::post('register/3', 'Auth\RegisterController@showForm3')->name('register3');
+
+//　本登録フォーム to 本登録確認画面
+Route::post('register/main/post', 'Auth\RegisterController@post')->name('register.main.post');
+
+Route::get('register/main/confirm', "Auth\RegisterController@confirm")->name('register.main.confirm');
 // 本登録確認画面 to 本登録完了画面
 Route::post('register/main_register', 'Auth\RegisterController@mainRegister')->name('register.main.registered');
 /*=== end:認証関係 =========================================================*/

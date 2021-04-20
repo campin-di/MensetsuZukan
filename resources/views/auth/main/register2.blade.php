@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">本会員登録</div>
+        <div class="card-header">本会員登録2</div>
 
         @isset($message)
           <div class="card-body">
@@ -15,34 +15,34 @@
 
         @empty($message)
         <div class="card-body">
-          <form method="POST" action="{{ route('register2') }}">
+          <form method="POST" action="{{ route('register3') }}">
           @csrf
           <div class="form-group row">
-            <label for="name" class="col-md-4 col-form-label text-md-right">名前</label>
+            <label for="name" class="col-md-4 col-form-label text-md-right">大学名・学部名・学科名</label>
             <div class="col-md-6">
-              <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
+              <input id="name" type="text" class="form-control{{ $errors->has('university') ? ' is-invalid' : '' }}" name="university" value="{{ old('university') }}" required>
 
-              @if ($errors->has('name'))
+              @if ($errors->has('university'))
                 <span class="invalid-feedback">
-                  <strong>{{ $errors->first('name') }}</strong>
+                  <strong>{{ $errors->first('university') }}</strong>
                 </span>
               @endif
             </div>
           </div>
 
           <div class="form-group row">
-          <label for="username" class="col-md-4 col-form-label text-md-right">ユーザネーム</label>
+          <label for="username" class="col-md-4 col-form-label text-md-right">志望業界</label>
             <div class="col-md-6">
-              <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required>
+              <input id="username" type="text" class="form-control{{ $errors->has('industry') ? ' is-invalid' : '' }}" name="industry" value="{{ old('industry') }}" required>
 
-              @if ($errors->has('username'))
+              @if ($errors->has('industry'))
                 <span class="invalid-feedback">
-                  <strong>{{ $errors->first('username') }}</strong>
+                  <strong>{{ $errors->first('industry') }}</strong>
                 </span>
               @endif
             </div>
           </div>
-{{--
+
           <div class="form-group row">
             <label for="graduate_year" class="col-md-4 col-form-label text-md-right">卒業年度</label>
             <div class="col-md-6">
@@ -71,14 +71,11 @@
               </div>
             </div>
           </div>
---}}
-
-          <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>
 
           <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">
               <button type="submit" class="btn btn-primary">
-              　→　
+              　→　 
               </button>
             </div>
           </div>
