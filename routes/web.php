@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //テスト
-Route::get('youtube/channels/{id}/titles', 'YoutubeController@getListByChannelId');
+//Route::get('youtube/channels/{id}/titles', 'YoutubeController@getListByChannelId');
 
 
 Route::get('/', function () {
@@ -23,6 +23,15 @@ Route::prefix('hr')->namespace('Hr')->name('hr.')->group(function(){
 
     Route::get('/home', 'HrHomeController@index')->name('hr_home');
 });
+
+// 仮会員登録ページ to 仮会員登録確認ページ
+Route::post('register/pre_check', 'Auth\PreRegisterController@pre_check')->name('register.pre_check');
+// メール　to 本登録フォーム
+Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
+// 本登録フォーム to 本登録確認画面
+Route::post('register/main_check/{token}', 'Auth\RegisterController@mainCheck')->name('register.main.check');
+// 本登録確認画面 to 本登録完了画面
+Route::post('register/main_register', 'Auth\RegisterController@mainRegister')->name('register.main.registered');
 /*=== end:認証関係 =========================================================*/
 
 //top to home
