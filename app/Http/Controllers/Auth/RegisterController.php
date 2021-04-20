@@ -83,12 +83,7 @@ class RegisterController extends Controller
           $message->from('mensetsu_zukan@example.com');
           $message->to('yuu.yoshi12@outlook.com');
         });
-        /*
 
-        $email = new EmailVerification($user);
-        Mail::to($user->email)->send($email);
-
-        */
         return $user;
     }
 
@@ -124,39 +119,133 @@ class RegisterController extends Controller
         }
     }
 
-   public function mainCheck(Request $request)
-   {
-     $request->validate([
-       'name' => 'required|string',
-       'username' => 'required|string',
-       'graduate_year' => 'required|numeric',
-     ]);
+     public function showForm2(Request $request)
+     {
+         $request->validate([
+           'name' => 'required|string',
+           'username' => 'required|string',
+         ]);
 
-     //データ保持用
-     $email_token = $request->token;
+         $input = $request->all();
 
-     $user = new User();
-     $user->name = $request->name;
-     $user->username = $request->username;
-     $user->graduate_year = $request->graduate_year;
+         //=====部分処理====================================
+     /*
+         $validator = Validator::make($input, $this->validator);
+         if($validator->fails()){
+           return redirect()->action("Hr_OfferController@show")
+             ->withInput()
+             ->withErrors($validator);
+         }
+     */
+         //================================================
 
-     return view('auth.main.register_check', compact('user','email_token'));
-   }
+         //セッションに書き込む
+         $request->session()->put("register_input", $input);
 
-   public function mainRegister(Request $request)
-   {
+         return view('auth.main.register2');
+     }
 
-     echo $request->token;
+     public function showForm3(Request $request)
+     {
 
-     $user = User::where('email_verify_token', $request->token)->first();
-     $user->status = config('const.USER_STATUS.REGISTER');
-     $user->name = $request->name;
+         $input = $request->all();
 
-     $user->username = $request->username;
-     $user->graduate_year = $request->graduate_year;
-     $user->save();
+         //=====部分処理====================================
+     /*
+         $validator = Validator::make($input, $this->validator);
+         if($validator->fails()){
+           return redirect()->action("Hr_OfferController@show")
+             ->withInput()
+             ->withErrors($validator);
+         }
+     */
+         //================================================
 
-     return view('auth.main.registered');
-   }
+         //セッションに書き込む
+         $request->session()->put("register2_input", $input);
 
+         return view('auth.main.register3');
+     }
+
+     public function post(Request $request)
+     {
+       $input = $request->all();
+
+/*
+       if($input['plan'] == 'audience'){
+         return redirect()->action("Auth\RegisterController@credit");
+       }
+*/
+       //=====部分処理====================================
+   /*
+       $validator = Validator::make($input, $this->validator);
+       if($validator->fails()){
+         return redirect()->action("Hr_OfferController@show")
+           ->withInput()
+           ->withErrors($validator);
+       }
+   */
+       //================================================
+
+       //セッションに書き込む
+       $request->session()->put("register3_input", $input);
+
+       return redirect()->action("Auth\RegisterController@confirm");
+     }
+
+     function confirm(Request $request){
+       //セッションから値を取り出す
+       $register_input = $request->session()->get("register_input");
+       $register2_input = $request->session()->get("register2_input");
+       $register3_input = $request->session()->get("register3_input");
+
+       //セッションに値が無い時はホームに戻る
+       if(!($register_input && $register2_input && $register3_input)){
+         return redirect()->route('home');
+       }
+       return view('auth.main.register_comfirm', compact('register_input', 'register2_input', 'register3_input'));
+     }
+
+     public function mainRegister(Request $request)
+     {
+       //セッションから値を取り出す
+       $register_input = $request->session()->get("register_input");
+       $register2_input = $request->session()->get("register2_input");
+       $register3_input = $request->session()->get("register3_input");
+
+       //戻るボタンが押された時
+       if($request->has("back")){
+         return redirect()->route('home');
+       }
+
+       //セッションに値が無い時はフォームに戻る
+       if(!($register_input && $register2_input)){
+         return redirect()->route('home');
+       }
+
+       //=====処理内容====================================
+       $user = User::where('email_verify_token', $register_input['email_verify_token'])->first();
+       $user->name = $register_input['name'];
+       $user->username = $register_input['username'];
+       $user->university_id = 1;
+       $user->graduate_year = $register2_input['graduate_year'];
+       if($register3_input['plan'] == 'contributor'){
+         $user->status = config('const.USER_STATUS.PRE_CONTRIBUTOR');
+       } else{
+         $user->status = config('const.USER_STATUS.AUDIENCE');
+       }
+       $user->save();
+       //================================================
+
+       //セッションを空にする
+       $request->session()->forget("register_input");
+       $request->session()->forget("register2_input");
+       $request->session()->forget("register3_input");
+
+       return view("auth.main.registered");
+     }
+
+     function credit(Request $request){
+       return view('auth.main.register_credit');
+     }
 }

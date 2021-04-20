@@ -7,6 +7,22 @@
             <div class="card">
                 <div class="card-header">本会員登録確認</div>
 
+                <form method="post" action="{{ route('register.main.registered') }}">
+                	@csrf
+                  @foreach($register_input as $item)
+                    {{ $item }}
+                  @endforeach
+
+                  @foreach($register2_input as $item)
+                    {{ $item }}
+                  @endforeach
+
+                	<input name="back" type="submit" value="戻る" />
+                	<input type="submit" value="送信" />
+
+                </form>
+
+{{--
                 <div class="card-body">
                     <form method="POST" action="{{ route('register.main.registered', ['token' => $email_token]) }}">
                         @csrf
@@ -44,6 +60,7 @@
                             </div>
                         </div>
                     </form>
+--}}
                 </div>
             </div>
         </div>
