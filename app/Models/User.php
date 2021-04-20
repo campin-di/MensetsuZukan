@@ -17,6 +17,12 @@ class User extends Authenticatable
      * @var array
      */
 
+     protected $fillable = [
+         'name', 'email', 'password',
+         'email_verified', 'email_verify_token',
+         'status',
+     ];
+
     //$guarded は変更できないカラム
     protected $guarded = [
       'details_id',

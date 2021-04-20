@@ -13,16 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
 
     use RegistersUsers;
 
@@ -61,7 +51,6 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -85,4 +74,18 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    //=== 仮会員登録機能 ======================================================*/
+    public function pre_check(Request $request){
+      $this->validator($request->all())->validate();
+      //flash data
+      $request->flashOnly('email');
+
+      $bridge_request = $request->all();
+      // password マスキング
+      $bridge_request['password_mask'] = '******';
+
+      return view('auth.register_check')->with($bridge_request);
+    }
+
 }
