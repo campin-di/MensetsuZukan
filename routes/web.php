@@ -124,3 +124,7 @@ Route::post('/upload/form/confirm', 'UploadController@send')->name("form.send");
 
 Route::get('/upload/form/thanks', 'UploadController@complete')->name("form.complete");
 //===========================================
+
+
+Route::get('/subscription', 'StripeController@subscription')->name('stripe.subscription');
+Route::post('/subscription/afterpay', 'StripeController@afterpay')->name('stripe.afterpay');
