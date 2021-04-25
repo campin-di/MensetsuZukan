@@ -26,7 +26,8 @@
 <body>
   @include('parts.header')
   @yield('content')
-  <script src="{{ mix('js/app.js') }}"></script>
+  <script src="{{ mix('js/app.js') }}" defer></script>
+  <script src="https://js.stripe.com/v3/"></script>
 </body>
 
 </html>

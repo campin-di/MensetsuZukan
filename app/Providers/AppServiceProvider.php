@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Schema::defaultStringLength(191);
+        URL::forceScheme('http');    //公開時は”https”に変更する。
+
+        //全ページに対して現在年を渡す
+        View::composer('*', function($view)
+        {
+            $view->with('year', date('Y'));
+        });
     }
 }

@@ -126,8 +126,6 @@ class St_ScheduleController extends Controller
     $hr_id = $schedule->hr_id;
 
     $meeting = new MeetingClass();
-
-
     $time = $input['time'];
     $battingData = Batting::where('date', $date)->where('time', $time);
 
