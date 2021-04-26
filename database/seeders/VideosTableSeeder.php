@@ -20,8 +20,8 @@ class VideosTableSeeder extends Seeder
         [ "nobita", "doraemon", "takeshi11", "shizukaChan", "dekisugikun" ],
         [ 1, 2, 3, 4, 5 ]
       ];
-
-      //0~24
+/*
+      //0~34
       $urlArray = [
         //【就活】新聞も読まないクソザコ就活生向け「主要業界を理解する」アーカイブ【21卒】
         "628", "750", "932","1158", "1520",
@@ -33,18 +33,40 @@ class VideosTableSeeder extends Seeder
         "250", "360", "645", "815", "1200",
         //危ない会社予報士による主要30業種景気予測
         "1052", "1405", "1518", "2180", "2436",
+        //【圧迫面接チャレンジ】コンサル志望 国公立大学生篇｜Vol.653
+        "0", "42", "143", "196", "308",
+        //【圧迫面接チャレンジ】(物流業界志望 関西学院篇）｜Vol.653
+        "0", "68", "291", "604", "615",
+        //裏事情】EC座談会（楽天/Amazon/アマゾンなど）｜Vol.644
+        "0", "134", "192", "224", "270",
       ];
 
-      //0 ~ 4
+      //0 ~ 7
       $commonUrlArray = [
         "zAkK9qlCAbM" => [1, 2, 3, 4, 5],
         "p54Cg2N617A" => [6, 7, 8, 9, 10],
         "VOllbtgmSQA" => [11, 12, 13, 14, 15],
         "zJReZO1ND6c" => [16, 17, 18, 19, 20],
         "eqBA9wEeglg" => [21, 22, 23, 24, 25],
+        "mjAXr6xA3ns" => [1, 3, 5, 7, 9],
+        "mzlJjFuA4Dw" => [2, 4, 6, 8, 10],
+        "yeK5dn1OPUc" => [2, 3, 5, 7, 11],
       ];
 
-      //0 ~ 25
+*/
+      $commonUrlArray = [
+        "zAkK9qlCAbM" => [628, 750, 932, 1158, 1520],
+        "p54Cg2N617A" => [115, 253, 640, 2924, 3529],
+        "VOllbtgmSQA" => [77, 445, 1388, 2183, 2454],
+        "zJReZO1ND6c" => [250, 360, 645, 815, 1200],
+        "eqBA9wEeglg" => [1052, 1405, 1518, 2180, 2436],
+        "mjAXr6xA3ns" => [0, 42, 143, 196, 308],
+        "mzlJjFuA4Dw" => [0, 68, 291, 604, 615],
+        "yeK5dn1OPUc" => [0, 134, 192, 224, 270],
+      ];
+
+
+      //0 ~ 24
       $questionTextArray = [
         "自己紹介をお願いします。", "あなたの強み・長所を教えてください。", "あなたの弱み・短所を教えてください。", "学生時代で最も頑張ったことを教えてください。", "学生時代に出した成果を教えてください。",
         "課外活動の内容を教えてください。", "サークルやクラブ活動の内容を教えてください。", "リーダーシップを取った経験はありますか？", "まわりの方のあなたへの評価を教えてください。", "学生時代に学んだ事は何ですか。",
@@ -63,40 +85,66 @@ class VideosTableSeeder extends Seeder
         "雪の影響で到着が遅かったです！商品は無事届きました！",
         "とても早い商品到着で満足です！又、良い商品を期待します！",
         "自分が日常使える語彙は限られている！との自覚から、類語辞典や慣用句辞典をいくつか持っています。今はやや文字数の多い慣用句に関心があって本書を購入しました。<br>
-         本辞典の工夫は言いたい事柄を分類見出しから探し、一覧的に確かめることができるところにあります。また、巻末には収録慣用句が五十音で並んでいるので、ある慣用句を起点として似たような意味合いの句を探すこともできます。<br>
          行ったり来たりしながら絞り込んでいく作業を支えてくれる一冊です。",
         "とても早く到着し満足しました！梱包も問題有りませんでした！",
         "よく耳にする簡単な言葉が多く、総じて語彙が少ない感じがします。<br>
          それも１ページに、５～６個程度の言葉しかなく、基本的に学生向きかと思います。",
       ];
 
-      foreach($commonUrlArray as $commonUrl => $questionArray){
-        $random_date = [rand(2017, 2020), rand(1, 12), rand(1,31)];
-        $zero4 = mt_rand(0, 4);
-        $zero24 = mt_rand(0, 24);
-        foreach ($questionArray as $question_id) {
-          if($question_id > 4){
-            $st_id = floor($question_id/5);
-          } else {
-            $st_id = $question_id;
-          }
+        foreach($commonUrlArray as $commonUrl => $startSecondArray){
+          $random_date = [rand(2017, 2020), rand(1, 12), rand(1,31)];
+          $zero4 = mt_rand(0, 4);
+          $zero19 = mt_rand(0, 19);
 
-          $data = [
-            'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$question_id] . '」に対する答え方。',
-            'url' => 'https://www.youtube.com/embed/' . $commonUrl . '?start=' . $urlArray[$zero24],
-            'common_url' => $commonUrl,
-            'question_id' => $question_id,
-            'st_id' => $st_id,
-            'hr_id' => mt_rand(1, 29),
-            'score' => mt_rand(30, 100),
-            'review' => $contentArray[mt_rand(0, 9)],
-            'views' => mt_rand(0, 50),
-            'good' => mt_rand(0, 50),
-            'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
-            'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
-          ];
-          DB::table('videos')->insert([$data]);
+          foreach ($startSecondArray as $startSecond) {
+            $data = [
+              'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
+              'url' => 'https://www.youtube.com/embed/' . $commonUrl . '?start=' . $startSecond,
+              'common_url' => $commonUrl,
+              'question_id' => $zero19+1,
+              'st_id' => $usernameArray[1][$zero4],
+              'hr_id' => mt_rand(1, 29),
+              'score' => mt_rand(30, 100),
+              'review' => $contentArray[mt_rand(0, 9)],
+              'views' => mt_rand(0, 50),
+              'good' => mt_rand(0, 50),
+              'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
+              'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
+            ];
+            DB::table('videos')->insert([$data]);
+            $zero19++;
+          }
+        }
+/*
+      for($i=0; $i < 4; $i++){
+        foreach($commonUrlArray as $commonUrl => $questionArray){
+          $random_date = [rand(2017, 2020), rand(1, 12), rand(1,31)];
+          $zero4 = mt_rand(0, 4);
+          foreach ($questionArray as $question_id) {
+            if($question_id > 4){
+              $st_id = floor($question_id/5);
+            } else {
+              $st_id = $question_id;
+            }
+
+            $data = [
+              'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$question_id] . '」に対する答え方。',
+              'url' => 'https://www.youtube.com/embed/' . $commonUrl . '?start=' . $urlArray[mt_rand(0, 34)],
+              'common_url' => $commonUrl,
+              'question_id' => $question_id,
+              'st_id' => $st_id,
+              'hr_id' => mt_rand(1, 29),
+              'score' => mt_rand(30, 100),
+              'review' => $contentArray[mt_rand(0, 9)],
+              'views' => mt_rand(0, 50),
+              'good' => mt_rand(0, 50),
+              'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
+              'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
+            ];
+            DB::table('videos')->insert([$data]);
+          }
         }
       }
+      */
     }
 }

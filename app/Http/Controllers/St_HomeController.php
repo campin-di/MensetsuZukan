@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use DateTime;
 
 use App\Models\Video;
+use App\Models\Question;
 
 use App\Common\VideoDisplayClass;
 
@@ -29,11 +30,17 @@ class St_HomeController extends Controller
    */
   public function index()
   {
-    $videos = Video::take(10)->get();
+    $questionsData = Question::get('name');
+    $questions = [];
+    foreach ($questionsData as $question) {
+      array_push($questions, $question->name);
+    }
 
+    $videos = Video::get();
     $videosCollection = VideoDisplayClass::VideoDisplay($videos);
 
     return view('home',[
+      'questions' => $questions,
       'videosCollection' => $videosCollection,
     ]);
   }

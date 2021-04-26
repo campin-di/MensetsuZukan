@@ -3,6 +3,11 @@
 
 <div class="container">
   <h1>マイページ</h1>
+
+  @if($userDataArray['plan'] == "admin")
+    <a class="nav-link" href="{{ route('upload') }}">アップロード</a>
+  @endif
+
   <div>
     {{ $userDataArray['name'] }}
     {{ $userDataArray['username'] }}

@@ -1,0 +1,21 @@
+.inner-body{
+  max-width: 1000px;
+  overflow-x: hidden;
+}
+
+.button-box{
+  max-width: 1200px;
+  display:flex;
+  flex-wrap: nowrap;
+  overflow-x:scroll;
+  margin: 25px 0 50px 5%;
+}
+
+.button-box button{
+  margin: 0 10px;
+  border-radius: 20px;
+}
+
+.button-box button p{
+  white-space: nowrap;
+}
