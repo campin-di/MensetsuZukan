@@ -22,6 +22,7 @@ class St_MypageController extends Controller
     $userDataArray = [
       'name' => $userData->name,
       'username' => $userData->username,
+      'plan' => $userData->plan,
     ];
 
     $pastVideos = Video::where('st_id', $userId)->get();
