@@ -18,15 +18,19 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
           [
-            'name' => '吉田裕哉',
-            'username' => 'YuU4i2',
             'email' => 'yuu.yoshi12@outlook.jp',
             'password' => Hash::make('password'),
-            'status' => 1,
+            'username' => 'YuU4i2',
+            'name' => '吉田裕哉',
+            'kana_name' => 'ヨシダユウヤ',
+            'gender' => '1',
+            'plan' => 'contributor',
+            'graduate_year' => '2022',
+            'major' => '2',
             'university_id' => 1,
             'faculty_id' => 3,
             'department_id' => 5,
-            'plan' => 'contributor',
+            'status' => 1,
             'remember_token' => Str::random(10),
           ],
         ]);

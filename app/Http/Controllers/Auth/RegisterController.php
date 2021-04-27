@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\St_profile;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -17,17 +18,6 @@ use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
     /**
@@ -122,7 +112,9 @@ class RegisterController extends Controller
      public function showForm2(Request $request)
      {
          $request->validate([
+           'gender' => 'required|digits_between:1,2',
            'name' => 'required|string',
+           'kana_name' => 'required|string',
            'username' => 'required|string',
          ]);
 
@@ -167,6 +159,27 @@ class RegisterController extends Controller
          return view('auth.main.register3');
      }
 
+     public function showForm4(Request $request)
+     {
+         $input = $request->all();
+
+         //=====部分処理====================================
+     /*
+         $validator = Validator::make($input, $this->validator);
+         if($validator->fails()){
+           return redirect()->action("Hr_OfferController@show")
+             ->withInput()
+             ->withErrors($validator);
+         }
+     */
+         //================================================
+
+         //セッションに書き込む
+         $request->session()->put("register3_input", $input);
+
+         return view('auth.main.register4');
+     }
+
      public function post(Request $request)
      {
        $input = $request->all();
@@ -188,7 +201,7 @@ class RegisterController extends Controller
        //================================================
 
        //セッションに書き込む
-       $request->session()->put("register3_input", $input);
+       $request->session()->put("register4_input", $input);
 
        return redirect()->action("Auth\RegisterController@confirm");
      }
@@ -198,9 +211,10 @@ class RegisterController extends Controller
        $register_input = $request->session()->get("register_input");
        $register2_input = $request->session()->get("register2_input");
        $register3_input = $request->session()->get("register3_input");
+       $register4_input = $request->session()->get("register4_input");
 
        //セッションに値が無い時はホームに戻る
-       if(!($register_input && $register2_input && $register3_input)){
+       if(!($register_input && $register2_input && $register3_input && $register4_input)){
          return redirect()->route('home');
        }
        return view('auth.main.register_comfirm', compact('register_input', 'register2_input', 'register3_input'));
@@ -212,6 +226,7 @@ class RegisterController extends Controller
        $register_input = $request->session()->get("register_input");
        $register2_input = $request->session()->get("register2_input");
        $register3_input = $request->session()->get("register3_input");
+       $register4_input = $request->session()->get("register4_input");
 
        //戻るボタンが押された時
        if($request->has("back")){
@@ -226,13 +241,31 @@ class RegisterController extends Controller
        //=====処理内容====================================
        $user = User::where('email_verify_token', $register_input['email_verify_token'])->first();
        $user->name = $register_input['name'];
+       $user->kana_name = $register_input['kana_name'];
        $user->username = $register_input['username'];
        $user->university_id = 1;
        $user->graduate_year = $register2_input['graduate_year'];
-       if($register3_input['plan'] == 'contributor'){
-         $user->status = config('const.USER_STATUS.PRE_CONTRIBUTOR');
+       $user->gender = $register_input['gender'];
+       $user->status = config('const.USER_STATUS.UNAVAILABLE');
+       if($register4_input['plan'] == '投稿者プラン'){
+         $user->plan = "contributor";
        } else{
-         $user->status = config('const.USER_STATUS.AUDIENCE');
+         $user->plan = "audience";
+       }
+       $user->save();
+
+       $user =  St_profile::create([
+         'st_id' => $user->id,
+         'company_type' => $register3_input['company_type'],
+         'industry_id' => 1,
+         'jobtype' => $register3_input['jobtype'],
+       ]);
+
+       if(!is_null($register3_input['workplace'])){
+         $user->workplace = $register3_input['workplace'];
+       }
+       if(!is_null($register3_input['start_time'])){
+         $use3r->start_time = $register3_input['start_time'];
        }
        $user->save();
        //================================================
@@ -241,6 +274,7 @@ class RegisterController extends Controller
        $request->session()->forget("register_input");
        $request->session()->forget("register2_input");
        $request->session()->forget("register3_input");
+       $request->session()->forget("register4_input");
 
        return view("auth.main.registered");
      }

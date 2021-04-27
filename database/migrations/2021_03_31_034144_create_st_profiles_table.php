@@ -16,12 +16,22 @@ class CreateStProfilesTable extends Migration
         Schema::create('st_profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('st_id')->unsigned();
-            $table->string('pr', 1000)->nullable();
-            $table->string('gakuchika', 1000)->nullable();
-            $table->string('frustration', 1000)->nullable();
+            $table->string('company_type');
+            $table->integer('industry_id')->unsigned();
+            $table->string('jobtype');
+            $table->string('workplace')->default("設定されていません。");
+            $table->string('start_time')->default("設定されていません。");
+            $table->string('introduction', 1000)->default('設定されていません。');
+            $table->string('strengths', 1000)->default('設定されていません。');
+            $table->string('gakuchika', 1000)->default('設定されていません。');
+            $table->string('personality', 1000)->default('設定されていません。');
+            $table->integer('toeic')->unsigned()->default(0);
+            $table->integer('english')->unsigned()->default(0);
+            $table->string('other_language')->default('設定されていません。');
+            $table->string('qualification')->default('設定されていません。');
             $table->timestamps();
 
-            $table->foreign('st_id')->references('id')->on('users')->onDelete('no action');
+            //$table->foreign('st_id')->references('id')->on('users')->onDelete('no action');
         });
     }
 
