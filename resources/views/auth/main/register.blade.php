@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">本会員登録</div>
+        <div class="card-header">STEP１</div>
 
         @isset($message)
           <div class="card-body">
@@ -17,6 +17,34 @@
         <div class="card-body">
           <form method="POST" action="{{ route('register2') }}">
           @csrf
+
+          <div class="form-group row">
+            <label for="gender" class="col-md-4 col-form-label text-md-right">性別</label>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6">
+                  <select id="gender" class="form-control" name="gender">
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                  </select>
+                  @if ($errors->has('gender'))
+                    <span class="help-block">
+                      <strong>{{ $errors->first('gender') }}</strong>
+                    </span>
+                  @endif
+                </div>
+              </div>
+
+              <div class="row col-md-6 col-md-offset-4">
+                @if ($errors->has('graduate'))
+                  <span class="help-block">
+                    <strong>{{ $errors->first('graduate') }}</strong>
+                  </span>
+                @endif
+              </div>
+            </div>
+          </div>
+
           <div class="form-group row">
             <label for="name" class="col-md-4 col-form-label text-md-right">名前</label>
             <div class="col-md-6">
@@ -25,6 +53,19 @@
               @if ($errors->has('name'))
                 <span class="invalid-feedback">
                   <strong>{{ $errors->first('name') }}</strong>
+                </span>
+              @endif
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="kana_name" class="col-md-4 col-form-label text-md-right">フリガナ</label>
+            <div class="col-md-6">
+              <input id="kana_name" type="text" class="form-control{{ $errors->has('kana_name') ? ' is-invalid' : '' }}" name="kana_name" value="{{ old('kana_name') }}" required>
+
+              @if ($errors->has('kana_name'))
+                <span class="invalid-feedback">
+                  <strong>{{ $errors->first('kana_name') }}</strong>
                 </span>
               @endif
             </div>
@@ -42,36 +83,6 @@
               @endif
             </div>
           </div>
-{{--
-          <div class="form-group row">
-            <label for="graduate_year" class="col-md-4 col-form-label text-md-right">卒業年度</label>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-6">
-                  <select id="graduate_year" class="form-control" name="graduate_year">
-                    <option value="">----</option>
-                    @for ($i = 2022; $i <= 2025; $i++)
-                      <option value="{{ $i }}" @if(old('graduate_year') == $i) selected @endif>{{ $i }}</option>
-                    @endfor
-                  </select>
-                  @if ($errors->has('graduate_year'))
-                    <span class="help-block">
-                      <strong>{{ $errors->first('graduate_year') }}</strong>
-                    </span>
-                  @endif
-                </div>年卒
-              </div>
-
-              <div class="row col-md-6 col-md-offset-4">
-                @if ($errors->has('graduate'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('graduate') }}</strong>
-                  </span>
-                @endif
-              </div>
-            </div>
-          </div>
---}}
 
           <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>
 

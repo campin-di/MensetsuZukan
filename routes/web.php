@@ -30,8 +30,10 @@ Route::post('register/pre_check', 'Auth\PreRegisterController@pre_check')->name(
 Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
 // 本登録フォーム1 to 本登録フォーム2
 Route::post('register/2', 'Auth\RegisterController@showForm2')->name('register2');
-// 本登録フォーム1 to 本登録フォーム3
+// 本登録フォーム2 to 本登録フォーム3
 Route::post('register/3', 'Auth\RegisterController@showForm3')->name('register3');
+// 本登録フォーム3 to 本登録フォーム4
+Route::post('register/4', 'Auth\RegisterController@showForm4')->name('register4');
 
 //Route::post('register/3', 'Auth\RegisterController@showForm3')->name('register3');
 
