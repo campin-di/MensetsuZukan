@@ -27,13 +27,12 @@ class HrUserFactory extends Factory
     {
       return [
         'name' => $this->faker->name,
-        'username' => $this->faker->unique()->userName,
         'email' => $this->faker->unique()->companyEmail,
         'password' => Hash::make('password'),
         'status' => 1,
-        'company_id' => mt_rand(0, 99),
+        'company' => $this->faker->company,
         //'schedule_ids' => mt_rand(0, 30). ','. mt_rand(0, 30). ','. mt_rand(0, 30),
-        'plan' => 'paid',
+        'plan' => 'offer',
         'remember_token' => Str::random(10),
       ];
     }

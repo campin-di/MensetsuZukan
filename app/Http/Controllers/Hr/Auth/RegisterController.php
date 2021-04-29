@@ -6,10 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\HrUser;
+use App\Models\Hr_profile;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailVerification;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -50,9 +56,13 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+      /*
         return Validator::make($data, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+        */
+        return Validator::make($data, [
         ]);
     }
 
@@ -64,28 +74,233 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return HrUser::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'status' => 1,
-            'company_id' => 1,
-            'plan' => 'free',
-            'password' => Hash::make($data['password']),
+      $user = HrUser::create([
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+        'email_verify_token' => base64_encode($data['email']),
+        'status' => config('const.USER_STATUS.PRE_REGISTER'),
+      ]);
+
+      Mail::send('hr.auth.email.pre_register', ['token' => $user['email_verify_token'] ], function ($message) use ($data){
+        $message->subject('仮登録が完了しました');
+        $message->from('mensetsu_zukan@example.com');
+        $message->to($data['email']);
+      });
+
+      return $user;
+    }
+
+    public function register(Request $request)
+    {
+      event(new Registered($user = $this->create( $request->all() )));
+
+      return view('hr.auth.registered');
+    }
+
+    public function showForm($email_token)
+    {
+        // 使用可能なトークンか
+        if ( !HrUser::where('email_verify_token',$email_token)->exists() )
+        {
+            return view('hr.auth.main.register')->with('message', '無効なトークンです。');
+        } else {
+            $user = HrUser::where('email_verify_token', $email_token)->first();
+            // 本登録済みユーザーか
+            if ($user->status == config('const.USER_STATUS.REGISTER')) //REGISTER=1
+            {
+                logger("status". $user->status );
+                return view('hr.auth.main.register')->with('message', 'すでに本登録されています。ログインして利用してください。');
+            }
+            // ユーザーステータス更新
+            $user->status = config('const.USER_STATUS.MAIL_AUTHED');
+            $user->email_verified_at = Carbon::now('asia/Tokyo');
+            if($user->save()) {
+                return view('hr.auth.main.register', compact('email_token'));
+            } else{
+                return view('hr.auth.main.register')->with('message', 'メール認証に失敗しました。再度、メールからリンクをクリックしてください。');
+            }
+        }
+    }
+
+    public function showForm2(Request $request)
+    {
+        $request->validate([
+          'gender' => 'required|digits_between:1,2',
+          'name' => 'required|string',
+          'kana_name' => 'required|string',
         ]);
+
+        $input = $request->all();
+
+        //=====部分処理====================================
+    /*
+        $validator = Validator::make($input, $this->validator);
+        if($validator->fails()){
+          return redirect()->action("Hr_OfferController@show")
+            ->withInput()
+            ->withErrors($validator);
+        }
+    */
+        //================================================
+
+        //セッションに書き込む
+        $request->session()->put("register_input", $input);
+
+        return view('hr.auth.main.register2');
     }
 
-    //=== 仮会員登録機能 ======================================================*/
-    public function pre_check(Request $request){
-      $this->validator($request->all())->validate();
-      //flash data
-      $request->flashOnly('email');
+    public function showForm3(Request $request)
+    {
+        $input = $request->all();
 
-      $bridge_request = $request->all();
-      // password マスキング
-      $bridge_request['password_mask'] = '******';
+        echo '<pre>';
+        print_r($input);
+        echo '</pre>';
 
-      return view('auth.register_check')->with($bridge_request);
+        //=====部分処理====================================
+    /*
+        $validator = Validator::make($input, $this->validator);
+        if($validator->fails()){
+          return redirect()->action("Hr_OfferController@show")
+            ->withInput()
+            ->withErrors($validator);
+        }
+    */
+        //================================================
+
+        //セッションに書き込む
+        $request->session()->put("register2_input", $input);
+
+        return view('hr.auth.main.register3');
     }
 
+    public function showForm4(Request $request)
+    {
+        $input = $request->all();
+
+        //=====部分処理====================================
+    /*
+        $validator = Validator::make($input, $this->validator);
+        if($validator->fails()){
+          return redirect()->action("Hr_OfferController@show")
+            ->withInput()
+            ->withErrors($validator);
+        }
+    */
+        //================================================
+
+        //セッションに書き込む
+        $request->session()->put("register3_input", $input);
+
+        return view('hr.auth.main.register4');
+    }
+
+    public function post(Request $request)
+    {
+      $input = $request->all();
+
+/*
+      if($input['plan'] == 'audience'){
+        return redirect()->action("Hr\Auth\RegisterController@credit");
+      }
+*/
+      //=====部分処理====================================
+  /*
+      $validator = Validator::make($input, $this->validator);
+      if($validator->fails()){
+        return redirect()->action("Hr_OfferController@show")
+          ->withInput()
+          ->withErrors($validator);
+      }
+  */
+      //================================================
+
+      //セッションに書き込む
+      $request->session()->put("register4_input", $input);
+
+      return redirect()->action("Hr\Auth\RegisterController@confirm");
+    }
+
+    function confirm(Request $request){
+      //セッションから値を取り出す
+      $register_input = $request->session()->get("register_input");
+      $register2_input = $request->session()->get("register2_input");
+      $register3_input = $request->session()->get("register3_input");
+      $register4_input = $request->session()->get("register4_input");
+
+      //セッションに値が無い時はホームに戻る
+      if(!($register_input && $register2_input && $register3_input && $register4_input)){
+        return redirect()->route('home');
+      }
+      return view('auth.main.register_comfirm', compact('register_input', 'register2_input', 'register3_input'));
+    }
+
+    public function mainRegister(Request $request)
+    {
+      //セッションから値を取り出す
+      $register_input = $request->session()->get("register_input");
+      $register2_input = $request->session()->get("register2_input");
+      $register3_input = $request->session()->get("register3_input");
+      $register4_input = $request->session()->get("register4_input");
+
+      //戻るボタンが押された時
+      if($request->has("back")){
+        return redirect()->route('home');
+      }
+
+      //セッションに値が無い時はフォームに戻る
+      if(!($register_input && $register2_input)){
+        return redirect()->route('home');
+      }
+
+      //=====処理内容====================================
+      $user = HrUser::where('email_verify_token', $register_input['email_verify_token'])->first();
+      $user->name = $register_input['name'];
+      $user->kana_name = $register_input['kana_name'];
+      $user->gender = $register_input['gender'];
+
+      $user->company = $register2_input['company'];
+      $user->industry = $register2_input['industry'];
+      $user->location = $register2_input['location'];
+      $user->company_type = $register2_input['company_type'];
+
+      $user->status = config('const.USER_STATUS.UNAVAILABLE');
+
+      if($register4_input['plan'] == 'オファープラン'){
+        $user->plan = "offer";
+      } else{
+        $user->plan = "hr";
+      }
+
+      if(!is_null($register3_input['position'])){
+        $user->position = $register3_input['position'];
+      }
+      if(!is_null($register3_input['workplace'])){
+        $user->workplace = $register3_input['workplace'];
+      }
+      if(!is_null($register3_input['summary'])){
+        $user->summary = $register3_input['summary'];
+      }
+      if(!is_null($register3_input['recruitment'])){
+        $user->recruitment = $register3_input['recruitment'];
+      }
+      if(!is_null($register3_input['site'])){
+        $user->site = $register3_input['site'];
+      }
+
+      $user->save();
+      //================================================
+
+      //セッションを空にする
+      $request->session()->forget("register_input");
+      $request->session()->forget("register2_input");
+      $request->session()->forget("register3_input");
+      $request->session()->forget("register4_input");
+
+      return view("auth.main.registered");
+    }
+
+    function credit(Request $request){
+      return view('auth.main.register_credit');
+    }
 }

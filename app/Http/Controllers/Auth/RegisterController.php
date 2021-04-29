@@ -64,14 +64,14 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'email_verify_token' => base64_encode($data['email']),
-            'status' => 0,
+            'status' => config('const.USER_STATUS.PRE_REGISTER')
         ]);
 
         //Mail::to($st->email)->send(new OfferMail($offer));
-        Mail::send('auth.email.pre_register', ['token' => $user['email_verify_token']], function ($message) {
+        Mail::send('auth.email.pre_register', ['token' => $user['email_verify_token']], function ($message) use ($data){
           $message->subject('仮登録が完了しました');
           $message->from('mensetsu_zukan@example.com');
-          $message->to('yuu.yoshi12@outlook.com');
+          $message->to($data['email']);
         });
 
         return $user;

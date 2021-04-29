@@ -1,4 +1,4 @@
-@extends('layouts.common')
+@extends('layouts.common_hr')
 
 @section('content')
 <div class="container">
@@ -15,7 +15,7 @@
 
         @empty($message)
         <div class="card-body">
-          <form method="POST" action="{{ route('register2') }}">
+          <form method="POST" action="{{ route('hr.register2') }}">
           @csrf
 
           <div class="form-group row">
@@ -58,19 +58,6 @@
               @if ($errors->has('kana_name'))
                 <span class="invalid-feedback">
                   <strong>{{ $errors->first('kana_name') }}</strong>
-                </span>
-              @endif
-            </div>
-          </div>
-
-          <div class="form-group row">
-          <label for="username" class="col-md-4 col-form-label text-md-right">ユーザネーム</label>
-            <div class="col-md-6">
-              <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required>
-
-              @if ($errors->has('username'))
-                <span class="invalid-feedback">
-                  <strong>{{ $errors->first('username') }}</strong>
                 </span>
               @endif
             </div>

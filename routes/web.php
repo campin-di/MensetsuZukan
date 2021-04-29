@@ -2,11 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-//テスト
-//Route::get('youtube/channels/{id}/titles', 'YoutubeController@getListByChannelId');
-
-
 Route::get('/', function () {
     $loginFlag = Auth::check();
     if($loginFlag){
@@ -26,6 +21,7 @@ Route::prefix('hr')->namespace('Hr')->name('hr.')->group(function(){
 
 // 仮会員登録ページ to 仮会員登録確認ページ
 Route::post('register/pre_check', 'Auth\PreRegisterController@pre_check')->name('register.pre_check');
+
 // メール　to 本登録フォーム
 Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
 // 本登録フォーム1 to 本登録フォーム2
@@ -34,8 +30,6 @@ Route::post('register/2', 'Auth\RegisterController@showForm2')->name('register2'
 Route::post('register/3', 'Auth\RegisterController@showForm3')->name('register3');
 // 本登録フォーム3 to 本登録フォーム4
 Route::post('register/4', 'Auth\RegisterController@showForm4')->name('register4');
-
-//Route::post('register/3', 'Auth\RegisterController@showForm3')->name('register3');
 
 //　本登録フォーム to 本登録確認画面
 Route::post('register/main/post', 'Auth\RegisterController@post')->name('register.main.post');

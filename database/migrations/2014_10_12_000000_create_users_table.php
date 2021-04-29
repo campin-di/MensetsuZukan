@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->string('kana_name')->nullable();
             $table->tinyInteger('gender')->unsigned()->nullable()->comment('1 : 男性, 2 : 女性');
-            $table->string('plan');
+            $table->string('plan')->nullable();
             $table->integer('graduate_year')->nullable();
             $table->tinyInteger('major')->unsigned()->nullable()->comment('1 : 文系, 2 : 理系');
             $table->unsignedInteger('university_id')->default(0);
