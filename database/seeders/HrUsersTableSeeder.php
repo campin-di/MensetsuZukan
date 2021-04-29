@@ -19,12 +19,11 @@ class HrUsersTableSeeder extends Seeder
       DB::table('hr_users')->insert([
         [
           'name' => '吉裕',
-          'username' => 'yuu412',
-          'email' => 'yuu.yoshi12@outlook.jp',
+          'email' => 'y00.y0shi12@outlook.jp',
           'password' => Hash::make('paspaspas'),
           'status' => 1,
-          'company_id' => mt_rand(0, 99),
-          'plan' => 'paid',
+          'company' => 'ソフトバンク株式会社',
+          'plan' => 'hr',
           'remember_token' => Str::random(10),
         ],
       ]);

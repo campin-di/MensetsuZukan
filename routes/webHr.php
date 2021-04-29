@@ -2,7 +2,26 @@
 
 use Illuminate\Support\Facades\Route;
 
-    //prefix('hr')は指定箇所のルートの先頭に'hr.'をつける
+    /*=== 認証関係 =============================================================*/
+    // 仮会員登録ページ to 仮会員登録確認ページ
+    Route::post('/register/pre_check', 'Hr\Auth\PreRegisterController@pre_check')->name('hr.register.pre_check');
+
+    // メール　to 本登録フォーム
+    Route::get('/register/verify/{token}', 'Hr\Auth\RegisterController@showForm');
+    // 本登録フォーム1 to 本登録フォーム2
+    Route::post('/register/2', 'Hr\Auth\RegisterController@showForm2')->name('hr.register2');
+    // 本登録フォーム2 to 本登録フォーム3
+    Route::post('/register/3', 'Hr\Auth\RegisterController@showForm3')->name('hr.register3');
+    // 本登録フォーム3 to 本登録フォーム4
+    Route::post('/register/4', 'Hr\Auth\RegisterController@showForm4')->name('hr.register4');
+
+    //　本登録フォーム to 本登録確認画面
+    Route::post('/register/main/post', 'Hr\Auth\RegisterController@post')->name('hr.register.main.post');
+
+    Route::get('/register/main/confirm', "Hr\Auth\RegisterController@confirm")->name('hr.register.main.confirm');
+    // 本登録確認画面 to 本登録完了画面
+    Route::post('/register/main_register', 'Hr\Auth\RegisterController@mainRegister')->name('hr.register.main.registered');
+    /*=== end:認証関係 =========================================================*/
 
     //home to watch
     Route::get('/watch/{id}', 'Hr_WatchController@index')->name('hr.watch');

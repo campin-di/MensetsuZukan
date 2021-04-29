@@ -1,4 +1,4 @@
-@extends('layouts.common')
+@extends('layouts.common_hr')
 
 @section('content')
 <div class="container">
@@ -15,12 +15,12 @@
 
         @empty($message)
         <div class="card-body">
-          <form method="POST" action="{{ route('register.main.post') }}">
+          <form method="POST" action="{{ route('hr.register.main.post') }}">
           @csrf
 
           <select name="plan">
-            <option value="投稿者プラン">投稿者プラン</option>
-            <option value="視聴者プラン">視聴者プラン</option>
+            <option value="面接官プラン">面接官プラン</option>
+            <option value="オファープラン">オファープラン</option>
           </select>
 
           <div class="form-group row mb-0">

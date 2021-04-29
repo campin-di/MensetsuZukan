@@ -13,22 +13,34 @@ class CreateHrUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('hr_users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at');
-            $table->string('password');
-            $table->integer('status');
-            $table->integer('company_id');
-            //$table->string('schedule_ids')->nullable();
-            $table->string('plan');
+      Schema::create('hr_users', function (Blueprint $table) {
+        $table->increments('id');
+        $table->string('email')->unique();
+        $table->string('password');
+        $table->string('name')->nullable();
+        $table->string('kana_name')->nullable();
+        $table->tinyInteger('gender')->unsigned()->nullable()->comment('1 : 男性, 2 : 女性');
+        $table->string('plan')->nullable();
+        $table->string('company')->nullable();
+        $table->string('company_type')->nullable();
+        $table->string('industry')->nullable();
+        $table->string('location')->nullable();
+        $table->string('position')->default('設定されていません。');
+        $table->string('workplace')->default('設定されていません。');
+        $table->string('summary')->default('設定されていません。');
+        $table->string('recruitment')->default('設定されていません。');
+        $table->string('site')->default('設定されていません。');
+        $table->string('introduction', 1000)->default('設定されていません。');
+        $table->string('pr', 1000)->default('設定されていません。');
 
-            $table->rememberToken();
-            $table->timestamps();
+        $table->integer('status')->comment('0:仮登録, 1:本登録, 2:メール認証済, 10:視聴不可, 11:視聴可, 99:退会済, 100:管理者');
+        //$table->string('schedule_ids')->nullable();
+        $table->timestamp('email_verified_at');
+        $table->string('email_verify_token')->nullable();
 
-        });
+        $table->rememberToken();
+        $table->timestamps();
+      });
     }
 
     /**
