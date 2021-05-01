@@ -2,7 +2,7 @@
 @section('content')
 <div class="header-wrapper">
   <div>
-    <img src="./img/面接図鑑.png" alt="ロゴ">
+    <img src="{{ asset('/img/logo_origin.png') }}" alt="ロゴ">
     <P>
       現役人事が採点した<br>
       就活生の面接が見放題！

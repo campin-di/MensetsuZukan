@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
             'university_id' => 1,
             'faculty_id' => 3,
             'department_id' => 5,
-            'status' => 1,
+            'status' => 10,
             'remember_token' => Str::random(10),
           ],
         ]);

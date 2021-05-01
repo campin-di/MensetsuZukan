@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
 use App\Models\Hr_profile;
 use App\Models\Interview;
 use App\Models\Question;
@@ -27,7 +28,7 @@ class Hr_ScoringController extends Controller
       $interview = Interview::with('question1:id,name')->with('question2:id,name')
                  ->with('question3:id,name')->with('question4:id,name')
                  ->with('question5:id,name')->with('question6:id,name')
-                 ->select('id', 'question_1_id', 'question_2_id', 'question_3_id', 'question_4_id', 'question_5_id', 'question_6_id')->find($id);
+                 ->select('id', 'url', 'question_1_id', 'question_2_id', 'question_3_id', 'question_4_id', 'question_5_id', 'question_6_id')->find($id);
 
       $questionArray = ['question1', 'question2', 'question3', 'question4', 'question5', 'question6'];
 
@@ -99,9 +100,13 @@ class Hr_ScoringController extends Controller
 
         $interview->$scoreCollumn = $input[$inputScoreName];
         $interview->$reviewCollumn = $input[$inputReviewName];
-        $interview->available = 2;
+        $interview->available = 9;
       }
       $interview->save();
+
+      $stUser = User::find($interview->st_id);
+      $stUser->status = config('const.USER_STATUS.AVAILABLE');
+      $stUser->save();
       //================================================
 
       //セッションを空にする

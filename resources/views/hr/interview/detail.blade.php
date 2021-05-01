@@ -25,10 +25,11 @@
     <div>
       <a href="{{ route('hr.interview.pre', $interviewInfo->id) }}" class="btn btn-primary">面接を開始する。</a>
     </div>
-  @else　
+  @elseif($flag == 2)
     <div>
-      <a href="">面接が終了した。</a>
+      <a href="{{ route('hr.interview.scoring.form', $interviewInfo->id) }}">面接が終了した。</a>
     </div>
+  @else
   @endif
 
 

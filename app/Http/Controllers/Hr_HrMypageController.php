@@ -28,7 +28,7 @@ class Hr_HrMypageController extends Controller
     $pastVideos = Video::where('hr_id', $userId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::where('hr_id', $userId)->with('st_user')->select('id', 'st_id', 'date', 'url')->get();
+    $interviewReservations = Interview::where('available', '!=', 9)->where('hr_id', $userId)->with('st_user')->select('id', 'st_id', 'date', 'url')->get();
 
     $interviewReservationsCollection = collect();
     foreach ($interviewReservations as $interviewReservation) {

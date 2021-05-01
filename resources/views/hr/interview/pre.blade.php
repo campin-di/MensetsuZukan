@@ -8,7 +8,8 @@
     <a href="{{ route('hr.interview.detail', $interviewInfo->id) }}">戻る</a>
   </div>
   <div>
-    <a href="{{ $interviewInfo->url }}" target="_blank">面接を開始する</a>
+    <a id="interview_url" href="{{ route('hr.interview.scoring.form', $interviewInfo->id) }}">面接を開始する</a>
   </div>
 </div>
+
 @endsection

@@ -17,7 +17,7 @@ class SchedulesTableSeeder extends Seeder
     {
       {
         for($i = 1; $i <= 40; $i++) {
-          $random_date = [2021, mt_rand(4, 6), mt_rand(1,29)];
+          $random_date = [2021, mt_rand(1, 6), mt_rand(1,29)];
           $data = [
             'hr_id' => mt_rand(1, 29),
             'date' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
