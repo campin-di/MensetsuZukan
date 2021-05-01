@@ -23,6 +23,12 @@ use Illuminate\Support\Facades\Route;
     Route::post('/register/main_register', 'Hr\Auth\RegisterController@mainRegister')->name('hr.register.main.registered');
     /*=== end:認証関係 =========================================================*/
 
+    //redirect to pre contributor page
+    Route::get('/pre/hr', 'Hr\HrHomeController@preHr')->name('pre.hr');
+
+    //redirect to pre audience page
+    Route::get('/pre/offer', 'Hr\HrHomeController@preOffer')->name('pre.offer');
+
     //home to watch
     Route::get('/watch/{id}', 'Hr_WatchController@index')->name('hr.watch');
 

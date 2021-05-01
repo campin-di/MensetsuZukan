@@ -21,7 +21,9 @@ class St_WatchController extends Controller
   {
     //=====もし視聴不可状態のときはリダイレクト===================================
     if($redirect = RedirectClass::stRedirect()){
-      return redirect()->action($redirect);
+      if($redirect){
+        return redirect()->action($redirect);
+      }
     }
     //==========================================================================
 

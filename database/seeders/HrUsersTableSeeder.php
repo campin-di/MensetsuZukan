@@ -20,7 +20,7 @@ class HrUsersTableSeeder extends Seeder
           'name' => '吉裕',
           'email' => 'yuu.y0shi12@outlook.jp',
           'password' => Hash::make('password'),
-          'status' => 1,
+          'status' => 10,
           'company' => 'ソフトバンク株式会社',
           'plan' => 'hr',
           'remember_token' => Str::random(10),
