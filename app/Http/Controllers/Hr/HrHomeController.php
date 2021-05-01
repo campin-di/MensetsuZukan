@@ -24,7 +24,6 @@ class HrHomeController extends Controller
         $this->middleware('auth:hr');
     }
 
-
     /**
      * Show the application dashboard.
      *
@@ -32,7 +31,6 @@ class HrHomeController extends Controller
      */
     public function index()
     {
-
       $questionsData = Question::get('name');
       $questions = [];
       foreach ($questionsData as $question) {
@@ -45,6 +43,20 @@ class HrHomeController extends Controller
       return view('hr.home',[
         'questions' => $questions,
         'videosCollection' => $videosCollection,
+      ]);
+    }
+
+    public function preHr()
+    {
+
+      return view('hr.unavailable.hr',[
+      ]);
+    }
+
+    public function preOffer()
+    {
+
+      return view('hr.unavailable.offer',[
       ]);
     }
 }

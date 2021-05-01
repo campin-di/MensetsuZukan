@@ -29,6 +29,12 @@
         </a>
     @endforeach
 
+{{--
+    <div>
+      <a href="{{ route('hr.offer.form', $username) }}" class="mx-2 btn btn-primary">オファーする</a>
+    </div>
+--}}
+
     <hr>
 
     <div>

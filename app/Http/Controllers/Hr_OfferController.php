@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OfferMail;
+use App\Common\RedirectClass;
 
 use Auth;
 use App\Models\User;
@@ -25,6 +26,14 @@ class Hr_OfferController extends Controller
 
   public function form($username)
   {
+    //=====もし視聴不可状態のときはリダイレクト===================================
+    if($redirect = RedirectClass::hrRedirect()){
+      if($redirect){
+        return redirect()->action($redirect);
+      }
+    }
+    //==========================================================================
+
     return view('hr/offer/form',[
       'username' => $username,
     ]);
