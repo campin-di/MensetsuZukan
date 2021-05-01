@@ -232,6 +232,7 @@ return [
         'IsBool' => app\Common\IsBoolClass::class,
         'Add2DatabaseClass' => app\Common\Add2DatabaseClass::class,
         'Meeting' => app\Common\MeetingClass::class,
+        'RedirectClass' => app\Common\RedirectClass::class,
 
     ],
 

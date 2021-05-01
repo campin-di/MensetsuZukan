@@ -39,6 +39,12 @@ Route::get('register/main/confirm', "Auth\RegisterController@confirm")->name('re
 Route::post('register/main_register', 'Auth\RegisterController@mainRegister')->name('register.main.registered');
 /*=== end:認証関係 =========================================================*/
 
+//redirect to pre contributor page
+Route::get('/pre/contributor', 'St_HomeController@preContributor')->name('pre.contributor');
+
+//redirect to pre audience page
+Route::get('/pre/audience', 'St_HomeController@preAudience')->name('pre.audience');
+
 //top to home
 Route::get('/home', 'St_HomeController@index')->name('home');
 

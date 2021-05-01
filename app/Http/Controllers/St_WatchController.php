@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Common\DiffDateClass;
 use App\Common\VideoDisplayClass;
+use App\Common\RedirectClass;
 
 use Google_Client;
 use Google_Service_YouTube;
@@ -18,6 +19,12 @@ class St_WatchController extends Controller
 {
   public function index($id)
   {
+    //=====もし視聴不可状態のときはリダイレクト===================================
+    if($redirect = RedirectClass::stRedirect()){
+      return redirect()->action($redirect);
+    }
+    //==========================================================================
+
     // Googleへの接続情報のインスタンスを作成と設定
     $client = new Google_Client();
     $client->setDeveloperKey(env('GOOGLE_API_KEY'));

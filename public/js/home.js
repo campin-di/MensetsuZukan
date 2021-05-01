@@ -2,7 +2,7 @@ let elements = document.getElementsByClassName("question-selected");
 elements = Array.from(elements);
 
 //クリックしたタグのコンテンツだけを表示する関数
-const displayNoneElement = (question) =>{
+const displayNoneElement = (question) => {
   elements.forEach(element => {
     if(question === "ALL"){
       //ALLが選択されたときは、クラス名"content-box"を全て表示

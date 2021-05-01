@@ -1,7 +1,7 @@
 @extends('layouts.common_hr')
 @section('content')
 
-<div class="container">
+<div class="container" onload>
   <h1>面接採点を開始する。</h1>
   <div>
     面接採点は必ず、面接終了後に行ってください。<br>
@@ -32,5 +32,8 @@
     </div>
   </form>
 </div>
-<script src="{{ asset('/js/score.js') }}"></script>
+<script type="text/javascript">
+  let interview = @json($interview);
+</script>
+<script src="{{ asset('/js/hr/interview/scoring/form.js') }}"></script>
 @endsection

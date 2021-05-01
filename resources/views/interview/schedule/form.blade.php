@@ -4,7 +4,7 @@
 <div class="container">
   <h1>面接を予約する。</h1>
   <div>
-    {{ $hrUser->name }} {{ '@'.$hrUser->username }}
+    {{ $hrUser->name }}
   </div>
 
   @if($is_schedule)

@@ -265,7 +265,7 @@ class RegisterController extends Controller
          $user->workplace = $register3_input['workplace'];
        }
        if(!is_null($register3_input['start_time'])){
-         $use3r->start_time = $register3_input['start_time'];
+         $user->start_time = $register3_input['start_time'];
        }
        $user->save();
        //================================================

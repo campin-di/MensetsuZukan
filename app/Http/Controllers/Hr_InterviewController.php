@@ -28,6 +28,7 @@ class Hr_InterviewController extends Controller
     if($now->min($startedInterview) == $startedInterview) {
       \DB::table('interviews')->where('id', $id)->update([
         'available' => 2,
+        'url' => 'done',
       ]);
     }
 

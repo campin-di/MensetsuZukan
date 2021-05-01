@@ -73,15 +73,15 @@ use Illuminate\Support\Facades\Route;
 
     /*=== 質問リスト編集 関係 ===============================================*/
     //detail to question form
-    Route::get('/interview/question/add/{id}', 'Hr_QuestionListController@edit')->name('hr.interview.question.edit');
+    Route::get('/interview/question/edit/{id}', 'Hr_QuestionListController@edit')->name('hr.interview.question.edit');
 
     //question form to comfirm page
-    Route::post('/interview/question/post', 'Hr_QuestionListController@editPost')->name('hr.interview.question.edit.post');
+    Route::post('/interview/question/edit/post', 'Hr_QuestionListController@editPost')->name('hr.interview.question.edit.post');
 
-    Route::get('/interview/question/confirm', "Hr_QuestionListController@editConfirm")->name('hr.interview.question.edit.confirm');
-    Route::post('/interview/question/confirm', "Hr_QuestionListController@editSend")->name('hr.interview.question.edit.send');
+    Route::get('/interview/question/edit/confirm', "Hr_QuestionListController@editConfirm")->name('hr.interview.question.edit.confirm');
+    Route::post('/interview/question/edit/confirm', "Hr_QuestionListController@editSend")->name('hr.interview.question.edit.send');
 
-    Route::get('/interview/question/thanks', "Hr_QuestionListController@editComplete")->name('hr.interview.question.edit.complete');
+    Route::get('/interview/question/edit/thanks', "Hr_QuestionListController@editComplete")->name('hr.interview.question.edit.complete');
     /*=== end:質問リスト登録 関係 ===============================================*/
 
     /*=== 採点機能 関係 ===============================================*/

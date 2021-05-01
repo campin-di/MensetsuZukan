@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -19,8 +18,8 @@ class HrUsersTableSeeder extends Seeder
       DB::table('hr_users')->insert([
         [
           'name' => '吉裕',
-          'email' => 'y00.y0shi12@outlook.jp',
-          'password' => Hash::make('paspaspas'),
+          'email' => 'yuu.y0shi12@outlook.jp',
+          'password' => Hash::make('password'),
           'status' => 1,
           'company' => 'ソフトバンク株式会社',
           'plan' => 'hr',

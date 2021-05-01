@@ -32,6 +32,7 @@ class HrHomeController extends Controller
      */
     public function index()
     {
+
       $questionsData = Question::get('name');
       $questions = [];
       foreach ($questionsData as $question) {

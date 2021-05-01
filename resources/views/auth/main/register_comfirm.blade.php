@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">本会員登録確認</div>
 
-                <form method="post" action="{{ route('hr.register.main.registered') }}">
+                <form method="post" action="{{ route('register.main.registered') }}">
                 	@csrf
                   @foreach($register_input as $item)
                     {{ $item }}

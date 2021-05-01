@@ -153,10 +153,6 @@ class RegisterController extends Controller
     {
         $input = $request->all();
 
-        echo '<pre>';
-        print_r($input);
-        echo '</pre>';
-
         //=====部分処理====================================
     /*
         $validator = Validator::make($input, $this->validator);
