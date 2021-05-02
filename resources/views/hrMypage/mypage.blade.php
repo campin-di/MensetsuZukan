@@ -5,7 +5,7 @@
   <h1>マイページ</h1>
   <div>
     {{ $userDataArray['name'] }}
-    {{ '@'.$userDataArray['username'] }}
+    {{ $userDataArray['company'] }}
   </div>
 
   <a href="{{ route('hr_mypage.detail', $userDataArray['id']) }}" class="mx-2 btn btn-primary">詳しいプロフィール</a>

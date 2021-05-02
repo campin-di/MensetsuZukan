@@ -4,7 +4,7 @@
 <div class="container">
   <h1>オファー</h1>
   <div>
-    {{ $username }}
+    {{ $stName }}
   </div>
   <form method="post" action="{{ route('hr.offer.post') }}">
     @csrf
@@ -29,7 +29,7 @@
 
     </table>
     <div class="next-button">
-      <input type="hidden" name="username" value="{{ $username }}">
+      <input type="hidden" name="stId" value="{{ $stId }}">
       <input class="btn btn-primary" type="submit" value="送信" />
     </div>
   </form>

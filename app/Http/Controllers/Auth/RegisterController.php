@@ -46,7 +46,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255'],
+            'nickname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -115,7 +115,7 @@ class RegisterController extends Controller
            'gender' => 'required|digits_between:1,2',
            'name' => 'required|string',
            'kana_name' => 'required|string',
-           'username' => 'required|string',
+           'nickname' => 'required|string',
          ]);
 
          $input = $request->all();
@@ -242,7 +242,7 @@ class RegisterController extends Controller
        $user = User::where('email_verify_token', $register_input['email_verify_token'])->first();
        $user->name = $register_input['name'];
        $user->kana_name = $register_input['kana_name'];
-       $user->username = $register_input['username'];
+       $user->nickname = $register_input['nickname'];
        $user->university_id = 1;
        $user->graduate_year = $register2_input['graduate_year'];
        $user->gender = $register_input['gender'];

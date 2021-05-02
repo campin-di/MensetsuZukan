@@ -64,13 +64,13 @@
           </div>
 
           <div class="form-group row">
-          <label for="username" class="col-md-4 col-form-label text-md-right">ユーザネーム</label>
+          <label for="nickname" class="col-md-4 col-form-label text-md-right">ニックネーム</label>
             <div class="col-md-6">
-              <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required>
+              <input id="nickname" type="text" class="form-control{{ $errors->has('nickname') ? ' is-invalid' : '' }}" name="nickname" value="{{ old('nickname') }}" required>
 
-              @if ($errors->has('username'))
+              @if ($errors->has('nickname'))
                 <span class="invalid-feedback">
-                  <strong>{{ $errors->first('username') }}</strong>
+                  <strong>{{ $errors->first('nickname') }}</strong>
                 </span>
               @endif
             </div>

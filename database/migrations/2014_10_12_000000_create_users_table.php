@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('username')->unique()->nullable();
+            $table->string('nickname')->unique()->nullable();
             $table->string('name')->nullable();
             $table->string('kana_name')->nullable();
             $table->tinyInteger('gender')->unsigned()->nullable()->comment('1 : 男性, 2 : 女性');

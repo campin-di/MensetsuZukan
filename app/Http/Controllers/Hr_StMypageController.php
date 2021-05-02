@@ -13,25 +13,26 @@ use App\Models\Interview;
 
 class Hr_StMypageController extends Controller
 {
-  public function index($username)
+  public function index($stId)
   {
-    $userId = User::where('username', $username)->first()->id;
+    $user = User::find($stId);
 
-    $pastVideos = Video::where('st_id', $userId)->get();
+    $pastVideos = Video::where('st_id', $stId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::where('st_id', $userId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
+    $interviewReservations = Interview::where('st_id', $stId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
 
     return view('hr/stMypage/mypage', [
-      'username' => $username,
+      'stId' => $stId,
+      'stName' => $user->name,
+      'nickname' => $user->nickname,
       'pastVideosCollection' => $pastVideosCollection,
     ]);
   }
 
-  public function detail($username)
+  public function detail($stId)
   {
-    $userId = User::where('username', $username)->first()->id;
-    $profile = St_profile::where('st_id', $userId)->first();
+    $profile = St_profile::where('st_id', $stId)->first();
 
     $profileCollection = collect();
 
@@ -52,7 +53,6 @@ class Hr_StMypageController extends Controller
         ],
       ]);
     }
-
 
     return view('hr/stMypage/detail', [
       'profileCollection' => $profileCollection,

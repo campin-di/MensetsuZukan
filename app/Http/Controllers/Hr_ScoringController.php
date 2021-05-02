@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\HrUser;
 use App\Models\Hr_profile;
 use App\Models\Interview;
 use App\Models\Question;
@@ -107,6 +108,10 @@ class Hr_ScoringController extends Controller
       $stUser = User::find($interview->st_id);
       $stUser->status = config('const.USER_STATUS.AVAILABLE');
       $stUser->save();
+
+      $hrUser = HrUser::find($interview->hr_id);
+      $hrUser->status = config('const.USER_STATUS.AVAILABLE');
+      $hrUser->save();
       //================================================
 
       //セッションを空にする

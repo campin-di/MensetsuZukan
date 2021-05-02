@@ -36,7 +36,9 @@ class VideoDisplayClass
 
         $diffDate = DiffDateClass::diffDate($video->created_at);
 
-        $stUsername = User::find($video->st_id)->username;
+        $stUser = User::find($video->st_id);
+        $stNickname = $stUser->nickname;
+        $stName = $stUser->name;
         $hrName = HrUser::find($video->hr_id)->name;
 
         $question = Question::find($video->question_id)->name;
@@ -57,9 +59,11 @@ class VideoDisplayClass
             'question' => $question,
             'otherQuestionsArray' => $otherQuestionsArray,
 
-            'stUsername' => $stUsername,
+            'stNickname' => $stNickname,
             'hrName' => $hrName,
             'hrId' => $video->hr_id,
+            'stName' => $stName,
+            'stId' => $video->st_id,
           ],
         ]);
       }

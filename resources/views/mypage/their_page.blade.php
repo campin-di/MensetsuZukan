@@ -4,10 +4,10 @@
 <div class="container">
   <h1>マイページ</h1>
   <div>
-    {{ $username }}
+    {{ $nickname }}
   </div>
 
-  <a href="{{ route('mypage.theirDetail', $username) }}" class="mx-2 btn btn-primary">詳しいプロフィール</a>
+  <a href="{{ route('mypage.theirDetail', $stId) }}" class="mx-2 btn btn-primary">詳しいプロフィール</a>
 
   <h2>過去の面接</h2>
   @foreach($pastVideosCollection as $video)

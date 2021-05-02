@@ -136,10 +136,10 @@ use Illuminate\Support\Facades\Route;
     /*--- end:詳細プロフィールの変更 ------------*/
 
     // from watch to stMypage
-    Route::get('/mypage/{username}', 'Hr_StMypageController@index')->name('hr.stMypage');
+    Route::get('/mypage/{id}', 'Hr_StMypageController@index')->name('hr.stMypage');
 
     // from stMypage to detail
-    Route::get('/mypage/{username}/detail', 'Hr_StMypageController@detail')->name('hr.stMypage.detail');
+    Route::get('/mypage/{id}/detail', 'Hr_StMypageController@detail')->name('hr.stMypage.detail');
 
     /*=== end:mypage関係 =========================================================*/
 
