@@ -24,7 +24,7 @@ class Hr_OfferController extends Controller
     */
   ];
 
-  public function form($username)
+  public function form($stId)
   {
     //=====もし視聴不可状態のときはリダイレクト===================================
     if($redirect = RedirectClass::hrRedirect()){
@@ -35,7 +35,8 @@ class Hr_OfferController extends Controller
     //==========================================================================
 
     return view('hr/offer/form',[
-      'username' => $username,
+      'stName' => User::find($stId)->name,
+      'stId' => $stId,
     ]);
   }
 
@@ -69,7 +70,13 @@ class Hr_OfferController extends Controller
     if(!$input){
       return redirect()->route('hr.hr_home');
     }
-    return view("hr/offer/form_confirm",['input' => $input]);
+
+    $stUser = User::find($input['stId']);
+    return view("hr/offer/form_confirm",[
+      'stName' => $stUser->name,
+      'offerContent' => $input['offer_content'],
+      'message' => $input['message'],
+    ]);
   }
 
   function send(Request $request){
@@ -90,7 +97,7 @@ class Hr_OfferController extends Controller
     $userId = Auth::guard('hr')->id();
     $hr = HrUser::with('company')->find($userId);
 
-    $st = User::where('username', $input['username'])->first();
+    $st = User::find($input['stId'])->first();
 
     $offer = new Offer;
     $offer->hr_id = $userId;
@@ -100,7 +107,7 @@ class Hr_OfferController extends Controller
     $offer->save();
     //Mail::to($st->email)->send(new OfferMail($offer));
     Mail::send('hr/offer/mail/example1', ['offer' => $offer, 'hr' => $hr, 'st' => $st], function ($message) use ($offer, $hr, $st){
-      $message->subject($hr->company->name. 'からオファーがありました！');
+      $message->subject($hr->company. 'からオファーがありました！');
       $message->from($hr->email, $hr->name);
       $message->to($st->email)->cc('mensetsu_zukan@example.com');
     });

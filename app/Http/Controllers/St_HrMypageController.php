@@ -19,7 +19,7 @@ class St_HrMypageController extends Controller
     $userDataArray = [
       'id' => $id,
       'name' => $userData->name,
-      'username' => $userData->username,
+      'company' => $userData->company,
     ];
 
     $pastVideos = Video::where('hr_id', $userData->id)->get();
@@ -34,25 +34,15 @@ class St_HrMypageController extends Controller
   }
   public function detail($id)
   {
-    $profile = Hr_profile::where('hr_id', $id)->first();
+    $profile = HrUser::find($id);
 
     $profileCollection = collect();
-
-    if(is_null($profile)){
-      $profileCollection = $profileCollection->concat([
-        [
-          'introduction' => "設定されていません。",
-          'pr' => "設定されていません。",
-        ],
-      ]);
-    } else {
-      $profileCollection = $profileCollection->concat([
-        [
-          'introduction' => $profile->introduction,
-          'pr' => $profile->pr,
-        ],
-      ]);
-    }
+    $profileCollection = $profileCollection->concat([
+      [
+        'introduction' => $profile->introduction,
+        'pr' => $profile->pr,
+      ],
+    ]);
 
     return view('hrMypage/detail', [
       'profileCollection' => $profileCollection,

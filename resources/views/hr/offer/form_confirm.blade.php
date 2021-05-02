@@ -4,13 +4,13 @@
 <form method="post" action="{{ route('hr.offer.send') }}">
 	@csrf
 	<div>
-		{{ $input['username'] }}
+		{{ $stName }}
 	</div>
 	<div>
-		{{ $input['offer_content'] }}
+		{{ $offerContent }}
 	</div>
 	<div>
-		{{ $input['message'] }}
+		{{ $message }}
 	</div>
 
 	<input name="back" type="submit" value="戻る" />

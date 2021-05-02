@@ -58,32 +58,37 @@ class St_MypageController extends Controller
     ]);
   }
 
-  public function TheirPage($username)
+  public function TheirPage($stId)
   {
     $loginId = Auth::user()->id;
-    $userId = User::where('username', $username)->first()->id;
 
     //自分のユーザネームをクリックした場合
-    if($loginId == $userId){
+    if($loginId == $stId){
       return redirect()->action("St_MypageController@index", $loginId);
     }
 
-    $pastVideos = Video::where('st_id', $userId)->get();
+    $pastVideos = Video::where('st_id', $stId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::where('st_id', $userId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
+    $interviewReservations = Interview::where('st_id', $stId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
 
     return view('mypage/their_page', [
-      'username' => $username,
+      'stId' => $stId,
+      'nickname' => User::find($stId)->nickname,
       'pastVideosCollection' => $pastVideosCollection,
     ]);
   }
 
-  public function theirDetail($username)
+  public function theirDetail($stId)
   {
-    $userId = User::where('username', $username)->first()->id;
-    $stProfileDetails = St_profile::where('st_id', $userId)->get();
-
+    $stProfileDetails = User::find($stId);
+/*
+    $detailsArray = [
+      '' => ,
+      '' => ,
+      '' => ,
+    ]
+*/
     return view('mypage/their_detail', [
       'stProfileDetails' => $stProfileDetails,
     ]);

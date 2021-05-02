@@ -21,19 +21,13 @@
         人事からのレビュー：{{ $video['review'] }}<br>
         投稿日：{{ $video['diffDate'] }}<br>
 
-        <a href="{{ route('mypage.theirPage', $video['stUsername']) }}">
-          学生ユーザ名：{{ $video['stUsername'] }}<br>
+        <a href="{{ route('mypage.theirPage', $video['stId']) }}">
+          学生ユーザ名：{{ $video['stNickname'] }}<br>
         </a>
         <a href="{{ route('hr_mypage', $video['hrId']) }}">
           人事名：{{ $video['hrName'] }}
         </a>
     @endforeach
-
-{{--
-    <div>
-      <a href="{{ route('hr.offer.form', $username) }}" class="mx-2 btn btn-primary">オファーする</a>
-    </div>
---}}
 
     <hr>
 

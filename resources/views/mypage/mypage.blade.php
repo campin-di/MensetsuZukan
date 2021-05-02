@@ -10,7 +10,7 @@
 
   <div>
     {{ $userDataArray['name'] }}
-    {{ $userDataArray['username'] }}
+    {{ $userDataArray['nickname'] }}
   </div>
 
   <a href="{{ route('mypage.detail') }}" class="mx-2 btn btn-primary">詳しいプロフィール</a>
