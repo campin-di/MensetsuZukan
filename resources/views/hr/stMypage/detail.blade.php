@@ -3,18 +3,23 @@
 
 <div class="container">
   <h1>詳しいプロフィール</h1>
-  <h2>自己紹介</h2>
   <div>
-    {{ $profileCollection[0]['pr'] }}
+    <h2>強み</h2>
+    <div>
+      {{ $profileDetailArray['strengths'] }}
+    </div>
+    <h2>ガクチカ</h2>
+    <div>
+      {{ $profileDetailArray['gakuchika'] }}
+    </div>
+    <h2>私の性格</h2>
+    <div>
+      {{ $profileDetailArray['personality'] }}
+    </div>
   </div>
-  <h2>ガクチカ</h2>
-  <div>
-    {{ $profileCollection[0]['gakuchika'] }}
-  </div>
-  <h2>挫折経験</h2>
-  <div>
-    {{ $profileCollection[0]['frustration'] }}
-  </div>
+</div>
 
+<div>
+  <a href="{{ route('hr.offer.form', $stId }}" class="mx-2 btn btn-primary">オファーする</a>
 </div>
 @endsection

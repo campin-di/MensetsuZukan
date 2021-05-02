@@ -51,7 +51,7 @@ class HrProfilesTableSeeder extends Seeder
           'pr' => $prArray[mt_rand(0, 9)],
         ];
 
-        DB::table('hr_profiles')->insert([$data]);
+        //DB::table('hr_profiles')->insert([$data]);
       }
     }
 }

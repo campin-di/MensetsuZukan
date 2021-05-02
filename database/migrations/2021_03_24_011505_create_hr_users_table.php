@@ -50,6 +50,7 @@ class CreateHrUsersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('hr_profiles');
         Schema::dropIfExists('hr_users');
     }
 }

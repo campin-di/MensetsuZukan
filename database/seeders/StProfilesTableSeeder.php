@@ -71,7 +71,7 @@ class StProfilesTableSeeder extends Seeder
           'personality' => $personalityArray[$zero9],
         ];
 
-        DB::table('st_profiles')->insert([$data]);
+        //DB::table('st_profiles')->insert([$data]);
       }
     }
 }

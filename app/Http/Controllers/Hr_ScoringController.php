@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\HrUser;
-use App\Models\Hr_profile;
 use App\Models\Interview;
 use App\Models\Question;
 

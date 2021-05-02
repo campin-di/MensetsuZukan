@@ -32,30 +32,26 @@ class Hr_StMypageController extends Controller
 
   public function detail($stId)
   {
-    $profile = St_profile::where('st_id', $stId)->first();
+    $userData = User::find($stId);
 
-    $profileCollection = collect();
-
-    if(is_null($profile)){
-      $profileCollection = $profileCollection->concat([
-        [
-          'pr' => "設定されていません。",
-          'gakuchika' => "設定されていません。",
-          'frustration' => "設定されていません。",
-        ],
-      ]);
-    } else {
-      $profileCollection = $profileCollection->concat([
-        [
-          'pr' => $profile->pr,
-          'gakuchika' => $profile->gakuchika,
-          'frustration' => $profile->gakuchika,
-        ],
-      ]);
-    }
+    $profileDetailArray = [
+      'companyType' => $userData->company_type,
+      'industry' => $userData->industry,
+      'jobtype' => $userData->jobtype,
+      'workplace' => $userData->workplace,
+      'startTime' => $userData->start_time,
+      'strengths' => $userData->strengths,
+      'gakuchika' => $userData->gakuchika,
+      'personality' => $userData->personality,
+      'toeic' => $userData->toeic,
+      'english' => $userData->english,
+      'otherLanguage' => $userData->other_language,
+      'qualification' => $userData->qualification,
+    ];
 
     return view('hr/stMypage/detail', [
-      'profileCollection' => $profileCollection,
+      'stId' => $stId,
+      'profileDetailArray' => $profileDetailArray,
     ]);
   }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\Models\Hr_profile;
+use App\Models\HrUser;
 
 class Hr_HrMypageDetailController extends Controller
 {
@@ -22,28 +22,18 @@ class Hr_HrMypageDetailController extends Controller
 
   function show(){
     $userId = Auth::guard('hr')->id();
-    $profile = hr_profile::where('hr_id', $userId)->first();
+    $userData = HrUser::find($userId);
 
-    $profileCollection = collect();
-
-    if(is_null($profile)){
-      $profileCollection = $profileCollection->concat([
-        [
-          'introduction' => "設定されていません。",
-          'pr' => "設定されていません。"
-        ],
-      ]);
-    } else {
-      $profileCollection = $profileCollection->concat([
-        [
-          'introduction' => $profile->introduction,
-          'pr' => $profile->pr
-        ],
-      ]);
-    }
+    $profileDetailArray = [
+      'company' => $userData->company,
+      'companyType' => $userData->company_type,
+      'industry' => $userData->industry,
+      'position' => $userData->position,
+      'pr' => $userData->pr,
+    ];
 
     return view("hr/hrMypage/detail/form",[
-      'profileCollection' => $profileCollection,
+      'profileDetailArray' => $profileDetailArray,
     ]);
   }
 
@@ -96,13 +86,35 @@ class Hr_HrMypageDetailController extends Controller
     }
 
     //=====処理内容====================================
-    //================================================
+
     $userId = Auth::guard('hr')->id();
-    \DB::table('hr_profiles')->where('hr_id', $userId)->update([
-          'pr' => $input['pr'],
-          'introduction' => $input['introduction'],
-        ]);
-    //================================================
+    $user = HrUser::find($userId);
+    $user->company = $input['company'];
+    $user->industry = $input['industry'];
+    $user->location = $input['location'];
+    $user->company_type = $input['company_type'];
+
+    if(!is_null($input['position'])){
+      $user->position = $input['position'];
+    }
+    if(!is_null($input['workplace'])){
+      $user->workplace = $input['workplace'];
+    }
+    if(!is_null($input['summary'])){
+      $user->summary = $input['summary'];
+    }
+    if(!is_null($input['recruitment'])){
+      $user->recruitment = $input['recruitment'];
+    }
+    if(!is_null($input['site'])){
+      $user->site = $input['site'];
+    }
+
+    if(!is_null($input['pr'])){
+      $user->pr = $input['pr'];
+    }
+    $user->save();
+
     //================================================
 
     //セッションを空にする
@@ -114,7 +126,4 @@ class Hr_HrMypageDetailController extends Controller
   function complete(){
     return view("hr/hrMypage/detail/form_complete");
   }
-
-  /*===========================================================================*/
-
 }

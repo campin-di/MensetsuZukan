@@ -8,7 +8,6 @@ use Auth;
 use App\Models\User;
 use App\Models\Video;
 use App\Models\Interview;
-use App\Models\St_profile;
 
 use App\Common\VideoDisplayClass;
 
@@ -21,7 +20,7 @@ class St_MypageController extends Controller
 
     $userDataArray = [
       'name' => $userData->name,
-      'username' => $userData->username,
+      'nickname' => $userData->nickname,
       'plan' => $userData->plan,
     ];
 
@@ -50,11 +49,25 @@ class St_MypageController extends Controller
 
   public function myDetail()
   {
-    $userId = Auth::user()->id;
-    $stProfileDetails = St_profile::where('st_id', $userId)->get();
+    $userData = Auth::user();
+
+    $profileDetailArray = [
+      'companyType' => $userData->company_type,
+      'industry' => $userData->industry_id,
+      'jobtype' => $userData->jobtype,
+      'workplace' => $userData->workplace,
+      'startTime' => $userData->start_time,
+      'strengths' => $userData->strengths,
+      'gakuchika' => $userData->gakuchika,
+      'personality' => $userData->personality,
+      'toeic' => $userData->toeic,
+      'english' => $userData->english,
+      'otherLanguage' => $userData->other_language,
+      'qualification' => $userData->qualification,
+    ];
 
     return view('mypage/detail', [
-      'stProfileDetails' => $stProfileDetails,
+      'profileDetailArray' => $profileDetailArray,
     ]);
   }
 
@@ -81,16 +94,25 @@ class St_MypageController extends Controller
 
   public function theirDetail($stId)
   {
-    $stProfileDetails = User::find($stId);
-/*
-    $detailsArray = [
-      '' => ,
-      '' => ,
-      '' => ,
-    ]
-*/
+    $userData = User::find($stId);
+
+    $profileDetailArray = [
+      'companyType' => $userData->company_type,
+      'industry' => $userData->industry_id,
+      'jobtype' => $userData->jobtype,
+      'workplace' => $userData->workplace,
+      'startTime' => $userData->start_time,
+      'strengths' => $userData->strengths,
+      'gakuchika' => $userData->gakuchika,
+      'personality' => $userData->personality,
+      'toeic' => $userData->toeic,
+      'english' => $userData->english,
+      'otherLanguage' => $userData->other_language,
+      'qualification' => $userData->qualification,
+    ];
+
     return view('mypage/their_detail', [
-      'stProfileDetails' => $stProfileDetails,
+      'profileDetailArray' => $profileDetailArray,
     ]);
   }
 

@@ -151,4 +151,4 @@ use Illuminate\Support\Facades\Route;
     /*=== end:人事マイページ関係 =========================================================*/
 
     // to 人事を探す(search) page
-    Route::get('/interview/search', 'Hr_InterviewController@search')->name('hr.interview.search');
+//    Route::get('/interview/search', 'Hr_InterviewController@search')->name('hr.interview.search');
