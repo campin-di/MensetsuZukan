@@ -24,11 +24,6 @@ class User extends Authenticatable
          'status',
      ];
 
-    //$guarded は変更できないカラム
-    protected $guarded = [
-      'details_id',
-    ];
-
     /**
      * The attributes that should be hidden for arrays.
      *

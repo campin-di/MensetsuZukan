@@ -28,6 +28,22 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('faculty_id')->default(0);
             $table->unsignedInteger('department_id')->default(0);
             $table->integer('status')->comment('0:仮登録, 1:本登録, 2:メール認証済, 10:視聴不可, 11:視聴可, 99:退会済, 100:管理者');
+
+            //stProfile分
+            $table->string('company_type')->nullable();
+            $table->integer('industry_id')->unsigned()->nullable();;
+            $table->string('jobtype')->nullable();
+            $table->string('workplace')->default("設定されていません。");
+            $table->string('start_time')->default("設定されていません。");
+            $table->string('introduction', 1000)->default('設定されていません。');
+            $table->string('strengths', 1000)->default('設定されていません。');
+            $table->string('gakuchika', 1000)->default('設定されていません。');
+            $table->string('personality', 1000)->default('設定されていません。');
+            $table->integer('toeic')->unsigned()->default(0);
+            $table->integer('english')->unsigned()->default(0);
+            $table->string('other_language')->default('設定されていません。');
+            $table->string('qualification')->default('設定されていません。');
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('email_verify_token')->nullable();
 
@@ -41,11 +57,11 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down(){
         Schema::dropIfExists('videos');
         Schema::dropIfExists('questions');
         Schema::dropIfExists('interviews');
         Schema::dropIfExists('users');
+
     }
 }

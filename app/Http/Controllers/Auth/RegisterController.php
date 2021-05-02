@@ -247,27 +247,24 @@ class RegisterController extends Controller
        $user->graduate_year = $register2_input['graduate_year'];
        $user->gender = $register_input['gender'];
        $user->status = config('const.USER_STATUS.UNAVAILABLE');
+       $user->company_type = $register3_input['company_type'];
+       $user->industry_id = 1;
+       $user->jobtype = $register3_input['jobtype'];
+
        if($register4_input['plan'] == '投稿者プラン'){
          $user->plan = "contributor";
        } else{
          $user->plan = "audience";
        }
-       $user->save();
-
-       $user =  St_profile::create([
-         'st_id' => $user->id,
-         'company_type' => $register3_input['company_type'],
-         'industry_id' => 1,
-         'jobtype' => $register3_input['jobtype'],
-       ]);
-
        if(!is_null($register3_input['workplace'])){
          $user->workplace = $register3_input['workplace'];
        }
        if(!is_null($register3_input['start_time'])){
          $user->start_time = $register3_input['start_time'];
        }
+
        $user->save();
+
        //================================================
 
        //セッションを空にする

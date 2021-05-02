@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         VideosTableSeeder::class,
         InterviewsTableSeeder::class,
         QuestionsTableSeeder::class,
-        StProfilesTableSeeder::class,
-        HrProfilesTableSeeder::class,
+        //StProfilesTableSeeder::class,
+        //HrProfilesTableSeeder::class,
         CompaniesTableSeeder::class,
         SchedulesTableSeeder::class,
       ]);

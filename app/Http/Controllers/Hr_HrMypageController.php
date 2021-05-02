@@ -7,7 +7,6 @@ use Auth;
 
 use App\Models\User;
 use App\Models\HrUser;
-use App\Models\Hr_profile;
 use App\Models\Video;
 use App\Models\Interview;
 
@@ -50,11 +49,20 @@ class Hr_HrMypageController extends Controller
 
   public function myDetail()
   {
-    $userId = Auth::guard('hr')->id();
-    $hrProfileDetail = Hr_profile::find($userId)->first();
+    $hrId = Auth::guard('hr')->id();
+    $userData = HrUser::find($hrId);
+
+    $profileDetailArray = [
+      'company' => $userData->company,
+      'companyType' => $userData->company_type,
+      'industry' => $userData->industry,
+      'position' => $userData->position,
+      'pr' => $userData->pr,
+    ];
 
     return view('hr/hrMypage/detail', [
-      'hrProfileDetail' => $hrProfileDetail,
+      'hrId' => $hrId,
+      'profileDetailArray' => $profileDetailArray,
     ]);
   }
 

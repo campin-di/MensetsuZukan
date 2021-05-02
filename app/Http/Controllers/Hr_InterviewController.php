@@ -7,7 +7,6 @@ use Carbon\Carbon;
 use App\Common\CutStringClass;
 use App\Common\MeetingClass;
 
-use App\Models\Hr_profile;
 use App\Models\Interview;
 use App\Models\Question;
 
@@ -50,9 +49,10 @@ class Hr_InterviewController extends Controller
     ]);
   }
 
+/*
   public function search()
   {
-    $hrs = Hr_profile::with('hr_user')->get();
+    $hrs = HrUser::get();
 
     $hrCollection = collect([]);
     foreach ($hrs as $hr) {
@@ -68,4 +68,5 @@ class Hr_InterviewController extends Controller
       'hrCollection' => $hrCollection,
     ]);
   }
+  */
 }

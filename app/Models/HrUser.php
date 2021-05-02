@@ -17,11 +17,6 @@ class HrUser extends Authenticatable
      * @var array
      */
 
-    //$guarded は変更できないカラム
-    protected $guarded = [
-      'details_id',
-    ];
-
     /**
      * The attributes that should be hidden for arrays.
      *
