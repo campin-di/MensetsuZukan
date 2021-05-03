@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\St_profile;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -15,6 +14,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailVerification;
 use Carbon\Carbon;
+use App\Common\ReturnIndustryClass;
+use App\Common\ReturnJobtypeClass;
+use App\Common\ReturnPrefecturesClass;
 
 class RegisterController extends Controller
 {
@@ -111,25 +113,39 @@ class RegisterController extends Controller
 
      public function showForm2(Request $request)
      {
-         $request->validate([
-           'gender' => 'required|digits_between:1,2',
-           'name' => 'required|string',
-           'kana_name' => 'required|string',
-           'nickname' => 'required|string',
-         ]);
-
          $input = $request->all();
 
-         //=====部分処理====================================
-     /*
-         $validator = Validator::make($input, $this->validator);
-         if($validator->fails()){
-           return redirect()->action("Hr_OfferController@show")
-             ->withInput()
-             ->withErrors($validator);
-         }
-     */
-         //================================================
+         //== Validator処理 ======================================================
+         $rules = [
+           //全角カナだけ通す正規表現：regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u'
+           'gender' => 'required|digits_between:1,2',
+           'lastname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
+           'firstname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
+           'kana_lastname' => 'required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
+           'kana_firstname' => 'required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
+           'nickname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
+         ];
+         $messages = [
+           'gender.required' => '性別を選択してください。',
+           'lastname.required' => '「性」を入力してください。',
+           'lastname.regex' => '日本語で入力してください。',
+           'lastname.string' => '文字列を入力してください。',
+           'firstname.required' => '「名」を入力してください。',
+           'firstname.regex' => '日本語で入力してください。',
+           'firstname.string' => '文字列を入力してください。',
+           'kana_lastname.required' => 'フリガナを入力してください。',
+           'kana_lastname.string' => '文字列を入力してください。',
+           'kana_lastname.regex' => 'カタカナで入力してください。',
+           'kana_firstname.required' => 'フリガナを入力してください。',
+           'kana_firstname.string' => '文字列を入力してください。',
+           'kana_firstname.regex' => 'カタカナで入力してください。',
+           'nickname.required' => 'ニックネームを入力してください。',
+           'nickname.string' => '文字列を入力してください。',
+           'nickname.regex' => '日本語で入力してください。',
+         ];
+         $validator = Validator::make($input, $rules, $messages);
+         $validated = $validator->validate(); //元のページにリダイレクトしてくれる。
+         //=======================================================================
 
          //セッションに書き込む
          $request->session()->put("register_input", $input);
@@ -137,42 +153,55 @@ class RegisterController extends Controller
          return view('auth.main.register2');
      }
 
+     public function redirectShowForm2()
+     {
+       return view('auth.main.register2');
+     }
+
      public function showForm3(Request $request)
      {
+       $input = $request->all();
 
-         $input = $request->all();
+       //== Validator処理 ======================================================
+       $rules = [
+         'university' => 'required|string|ends_with:大学',
+         'faculty' => 'required|string|ends_with:学部,学群,学域',
+         'development' => 'required|string|ends_with:学科',
+         'graduate_year' => 'required|digits:4',
+       ];
+       $messages = [
+         'university.required' => '大学名を入力してください。',
+         'university.string' => '日本語で入力してください。',
+         'university.ends_with' => '〇〇大学の形式で入力してください。',
+         'faculty.required' => '学部名を入力してください。',
+         'faculty.string' => '日本語で入力してください。',
+         'faculty.ends_with' => '〇〇学部/学群/学域の形式で入力してください。',
+         'development.required' => '学科名を入力してください。',
+         'development.string' => '日本語で入力してください。',
+         'development.ends_with' => '〇〇学科/コース/類の形式で入力してください。',
+         'graduate_year.required' => '卒業年度を選択してください。',
+       ];
+       $validator = Validator::make($input, $rules, $messages);
+       $validated = $validator->validate(); //元のページにリダイレクトしてくれる。
+       //=======================================================================
 
-         //=====部分処理====================================
-     /*
-         $validator = Validator::make($input, $this->validator);
-         if($validator->fails()){
-           return redirect()->action("Hr_OfferController@show")
-             ->withInput()
-             ->withErrors($validator);
-         }
-     */
-         //================================================
+       //セッションに書き込む
+       $request->session()->put("register2_input", $input);
 
-         //セッションに書き込む
-         $request->session()->put("register2_input", $input);
-
-         return view('auth.main.register3');
+       $industryArray = ReturnIndustryClass::returnIndustry();
+       $jobtypeArray = ReturnJobtypeClass::returnJobtype();
+       $prefecturesArray = ReturnPrefecturesClass::returnPrefectures();
+       return view('auth.main.register3',[
+         'industryArray' => $industryArray,
+         'jobtypeArray' => $jobtypeArray,
+         'prefecturesArray' => $prefecturesArray,
+       ]);
      }
+
 
      public function showForm4(Request $request)
      {
          $input = $request->all();
-
-         //=====部分処理====================================
-     /*
-         $validator = Validator::make($input, $this->validator);
-         if($validator->fails()){
-           return redirect()->action("Hr_OfferController@show")
-             ->withInput()
-             ->withErrors($validator);
-         }
-     */
-         //================================================
 
          //セッションに書き込む
          $request->session()->put("register3_input", $input);
@@ -183,22 +212,6 @@ class RegisterController extends Controller
      public function post(Request $request)
      {
        $input = $request->all();
-
-/*
-       if($input['plan'] == 'audience'){
-         return redirect()->action("Auth\RegisterController@credit");
-       }
-*/
-       //=====部分処理====================================
-   /*
-       $validator = Validator::make($input, $this->validator);
-       if($validator->fails()){
-         return redirect()->action("Hr_OfferController@show")
-           ->withInput()
-           ->withErrors($validator);
-       }
-   */
-       //================================================
 
        //セッションに書き込む
        $request->session()->put("register4_input", $input);
@@ -213,11 +226,33 @@ class RegisterController extends Controller
        $register3_input = $request->session()->get("register3_input");
        $register4_input = $request->session()->get("register4_input");
 
+       $gender = "男";
+       if($register_input['gender'] == 2){
+         $gender = '女';
+       }
+
+       $confirmArray = [
+         '性別' => $gender,
+         '名前' => $register_input['lastname']. ' '. $register_input['firstname'],
+         'フリガナ' => $register_input['kana_lastname']. ' '. $register_input['kana_firstname'],
+         'ニックネーム' => $register_input['nickname'],
+         '大学名' => $register2_input['university'],
+         '学部名' => $register2_input['faculty'],
+         '学科名' => $register2_input['development'],
+         '卒業年度' => $register2_input['graduate_year'],
+         '志望する企業タイプ' => $register3_input['company_type'],
+         '志望業界' => $register3_input['industry'],
+         '志望職種' => $register3_input['jobtype'],
+         '志望勤務地' => $register3_input['workplace'],
+         '就活開始時期' => $register3_input['start_time'],
+         'プラン' => $register4_input['plan'],
+       ];
+
        //セッションに値が無い時はホームに戻る
        if(!($register_input && $register2_input && $register3_input && $register4_input)){
          return redirect()->route('home');
        }
-       return view('auth.main.register_comfirm', compact('register_input', 'register2_input', 'register3_input'));
+       return view('auth.main.register_comfirm', compact('confirmArray'));
      }
 
      public function mainRegister(Request $request)
@@ -240,15 +275,15 @@ class RegisterController extends Controller
 
        //=====処理内容====================================
        $user = User::where('email_verify_token', $register_input['email_verify_token'])->first();
-       $user->name = $register_input['name'];
-       $user->kana_name = $register_input['kana_name'];
+       $user->name = $register_input['lastname']. ' '. $register_input['firstname'];
+       $user->kana_name = $register_input['kana_lastname']. ' '. $register_input['kana_firstname'];
        $user->nickname = $register_input['nickname'];
        $user->university_id = 1;
        $user->graduate_year = $register2_input['graduate_year'];
        $user->gender = $register_input['gender'];
        $user->status = config('const.USER_STATUS.UNAVAILABLE');
        $user->company_type = $register3_input['company_type'];
-       $user->industry_id = 1;
+       $user->industry = $register3_input['industry'];
        $user->jobtype = $register3_input['jobtype'];
 
        if($register4_input['plan'] == '投稿者プラン'){

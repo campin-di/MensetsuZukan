@@ -15,6 +15,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailVerification;
 use Carbon\Carbon;
+use App\Common\ReturnIndustryClass;
+use App\Common\ReturnJobtypeClass;
+use App\Common\ReturnPrefecturesClass;
 
 class RegisterController extends Controller
 {
@@ -123,66 +126,91 @@ class RegisterController extends Controller
 
     public function showForm2(Request $request)
     {
-        $request->validate([
-          'gender' => 'required|digits_between:1,2',
-          'name' => 'required|string',
-          'kana_name' => 'required|string',
-        ]);
+      $input = $request->all();
 
-        $input = $request->all();
-
-        //=====部分処理====================================
-    /*
-        $validator = Validator::make($input, $this->validator);
-        if($validator->fails()){
-          return redirect()->action("Hr_OfferController@show")
-            ->withInput()
-            ->withErrors($validator);
-        }
-    */
-        //================================================
+      //== Validator処理 ======================================================
+      $rules = [
+        //全角カナだけ通す正規表現：regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u'
+        'gender' => 'required|digits_between:1,2',
+        'lastname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
+        'firstname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
+        'kana_lastname' => 'required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
+        'kana_firstname' => 'required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
+      ];
+      $messages = [
+        'gender.required' => '性別を選択してください。',
+        'lastname.required' => '「性」を入力してください。',
+        'lastname.regex' => '日本語で入力してください。',
+        'lastname.string' => '文字列を入力してください。',
+        'firstname.required' => '「名」を入力してください。',
+        'firstname.regex' => '日本語で入力してください。',
+        'firstname.string' => '文字列を入力してください。',
+        'kana_lastname.required' => 'フリガナを入力してください。',
+        'kana_lastname.string' => '文字列を入力してください。',
+        'kana_lastname.regex' => 'カタカナで入力してください。',
+        'kana_firstname.required' => 'フリガナを入力してください。',
+        'kana_firstname.string' => '文字列を入力してください。',
+        'kana_firstname.regex' => 'カタカナで入力してください。',
+      ];
+      $validator = Validator::make($input, $rules, $messages);
+      $validated = $validator->validate(); //元のページにリダイレクトしてくれる。
+      //=======================================================================
 
         //セッションに書き込む
         $request->session()->put("register_input", $input);
 
-        return view('hr.auth.main.register2');
+        $industryArray = ReturnIndustryClass::returnIndustry();
+        $prefecturesArray = ReturnPrefecturesClass::returnPrefectures();
+        return view('hr.auth.main.register2',[
+          'industryArray' => $industryArray,
+          'prefecturesArray' => $prefecturesArray,
+        ]);
     }
 
     public function showForm3(Request $request)
     {
         $input = $request->all();
 
-        //=====部分処理====================================
-    /*
-        $validator = Validator::make($input, $this->validator);
-        if($validator->fails()){
-          return redirect()->action("Hr_OfferController@show")
-            ->withInput()
-            ->withErrors($validator);
-        }
-    */
-        //================================================
-
         //セッションに書き込む
         $request->session()->put("register2_input", $input);
 
-        return view('hr.auth.main.register3');
+        $prefecturesArray = ReturnPrefecturesClass::returnPrefectures();
+        return view('hr.auth.main.register3',[
+          'prefecturesArray' => $prefecturesArray,
+        ]);
+    }
+
+    //リダイレクト時にGETメソッドが送られるため
+    public function redirectShowForm3()
+    {
+      $prefecturesArray = ReturnPrefecturesClass::returnPrefectures();
+      return view('hr.auth.main.register3',[
+        'prefecturesArray' => $prefecturesArray,
+      ]);
     }
 
     public function showForm4(Request $request)
     {
         $input = $request->all();
 
-        //=====部分処理====================================
-    /*
-        $validator = Validator::make($input, $this->validator);
-        if($validator->fails()){
-          return redirect()->action("Hr_OfferController@show")
-            ->withInput()
-            ->withErrors($validator);
-        }
-    */
-        //================================================
+        //== Validator処理 ======================================================
+        $rules = [
+          'position' => 'nullable|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
+          'summary' => 'nullable|string',
+          'site' => 'nullable|url',
+          'recruitment' => 'nullable|url',
+        ];
+        $messages = [
+          'position.string' => '文字列で入力してください。',
+          'position.regex' => '日本語で入力してください。',
+          'position.summary' => '文字列で入力してください。',
+          'site.url' => 'URLの形式で入力してください。',
+          'recruitment.url' => 'URLの形式で入力してください。',
+        ];
+        $validator = Validator::make($input, $rules, $messages);
+        $validated = $validator->validate(); //元のページにリダイレクトしてくれる。
+        //=======================================================================
+
 
         //セッションに書き込む
         $request->session()->put("register3_input", $input);
@@ -193,22 +221,6 @@ class RegisterController extends Controller
     public function post(Request $request)
     {
       $input = $request->all();
-
-/*
-      if($input['plan'] == 'audience'){
-        return redirect()->action("Hr\Auth\RegisterController@credit");
-      }
-*/
-      //=====部分処理====================================
-  /*
-      $validator = Validator::make($input, $this->validator);
-      if($validator->fails()){
-        return redirect()->action("Hr_OfferController@show")
-          ->withInput()
-          ->withErrors($validator);
-      }
-  */
-      //================================================
 
       //セッションに書き込む
       $request->session()->put("register4_input", $input);
@@ -223,11 +235,57 @@ class RegisterController extends Controller
       $register3_input = $request->session()->get("register3_input");
       $register4_input = $request->session()->get("register4_input");
 
+      $gender = "男";
+      if($register_input['gender'] == 2){
+        $gender = '女';
+      }
+
+      $position = "未入力";
+      if(!is_null($register3_input['position'])){
+        $position = $register3_input['position'];
+      }
+
+      $workplace = "未入力";
+      if(!is_null($register3_input['workplace'])){
+        $workplace = $register3_input['workplace'];
+      }
+
+      $summary = "未入力";
+      if(!is_null($register3_input['summary'])){
+        $summary = $register3_input['summary'];
+      }
+
+      $site = "未入力";
+      if(!is_null($register3_input['site'])){
+        $site = $register3_input['site'];
+      }
+
+      $recruitment = "未入力";
+      if(!is_null($register3_input['recruitment'])){
+        $recruitment = $register3_input['recruitment'];
+      }
+
+      $confirmArray = [
+        '性別' => $gender,
+        '名前' => $register_input['lastname']. ' '. $register_input['firstname'],
+        'フリガナ' => $register_input['kana_lastname']. ' '. $register_input['kana_firstname'],
+        '企業名' => $register2_input['company'],
+        '所属業界' => $register2_input['industry'],
+        '本社所在地' => $register2_input['location'],
+        '企業区分' => $register2_input['company_type'],
+        '役職' => $position,
+        '主な勤務地' => $workplace,
+        '事業概要' => $summary,
+        '企業ページURL' => $site,
+        '募集要項URL' => $recruitment,
+        'プラン' => $register4_input['plan'],
+      ];
+
       //セッションに値が無い時はホームに戻る
       if(!($register_input && $register2_input && $register3_input && $register4_input)){
         return redirect()->route('home');
       }
-      return view('auth.main.register_comfirm', compact('register_input', 'register2_input', 'register3_input'));
+      return view('hr.auth.main.register_comfirm', compact('confirmArray'));
     }
 
     public function mainRegister(Request $request)
@@ -250,10 +308,9 @@ class RegisterController extends Controller
 
       //=====処理内容====================================
       $user = HrUser::where('email_verify_token', $register_input['email_verify_token'])->first();
-      $user->name = $register_input['name'];
-      $user->kana_name = $register_input['kana_name'];
+      $user->name = $register_input['lastname']. ' '. $register_input['firstname'];
+      $user->kana_name = $register_input['kana_lastname']. ' '. $register_input['kana_firstname'];
       $user->gender = $register_input['gender'];
-
       $user->company = $register2_input['company'];
       $user->industry = $register2_input['industry'];
       $user->location = $register2_input['location'];

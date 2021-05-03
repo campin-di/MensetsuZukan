@@ -27,6 +27,12 @@ class HrUser extends Authenticatable
         'remember_token',
     ];
 
+    protected $fillable = [
+        'name', 'email', 'password',
+        'email_verified', 'email_verify_token',
+        'status',
+    ];
+
     /**
      * The attributes that should be cast to native types.
      *

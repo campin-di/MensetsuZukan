@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">STEP２</div>
+        <div class="card-header">STEP2</div>
 
         @isset($message)
           <div class="card-body">
@@ -19,9 +19,9 @@
           @csrf
 
           <div class="form-group row">
-            <label for="name" class="col-md-4 col-form-label text-md-right">大学名・学部名・学科名</label>
+            <label for="university" class="col-md-4 col-form-label text-md-right">大学名*</label>
             <div class="col-md-6">
-              <input id="name" type="text" class="form-control{{ $errors->has('university') ? ' is-invalid' : '' }}" name="university" value="{{ old('university') }}" required>
+              <input id="university" type="text" class="form-control{{ $errors->has('university') ? ' is-invalid' : '' }}" name="university" value="{{ old('university') }}" required>
 
               @if ($errors->has('university'))
                 <span class="invalid-feedback">
@@ -30,9 +30,33 @@
               @endif
             </div>
           </div>
+          <div class="form-group row">
+            <label for="faculty" class="col-md-4 col-form-label text-md-right">学部名*</label>
+            <div class="col-md-6">
+              <input id="faculty" type="text" class="form-control{{ $errors->has('faculty') ? ' is-invalid' : '' }}" name="faculty" value="{{ old('faculty') }}" required>
+
+              @if ($errors->has('faculty'))
+                <span class="invalid-feedback">
+                  <strong>{{ $errors->first('faculty') }}</strong>
+                </span>
+              @endif
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="development" class="col-md-4 col-form-label text-md-right">学科名*</label>
+            <div class="col-md-6">
+              <input id="development" type="text" class="form-control{{ $errors->has('development') ? ' is-invalid' : '' }}" name="development" value="{{ old('development') }}" required>
+
+              @if ($errors->has('development'))
+                <span class="invalid-feedback">
+                  <strong>{{ $errors->first('development') }}</strong>
+                </span>
+              @endif
+            </div>
+          </div>
 
           <div class="form-group row">
-            <label for="graduate_year" class="col-md-4 col-form-label text-md-right">卒業年度</label>
+            <label for="graduate_year" class="col-md-4 col-form-label text-md-right">卒業年度*</label>
             <div class="col-md-6">
               <div class="row">
                 <div class="col-md-6">

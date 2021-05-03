@@ -10,8 +10,12 @@ use Illuminate\Support\Facades\Route;
     Route::get('/register/verify/{token}', 'Hr\Auth\RegisterController@showForm');
     // 本登録フォーム1 to 本登録フォーム2
     Route::post('/register/2', 'Hr\Auth\RegisterController@showForm2')->name('hr.register2');
+    Route::get('/register/2', 'Hr\Auth\RegisterController@showForm2')->name('hr.register2');
+
     // 本登録フォーム2 to 本登録フォーム3
     Route::post('/register/3', 'Hr\Auth\RegisterController@showForm3')->name('hr.register3');
+    Route::get('/register/3', 'Hr\Auth\RegisterController@redirectshowForm3')->name('hr.register3.redirect');
+
     // 本登録フォーム3 to 本登録フォーム4
     Route::post('/register/4', 'Hr\Auth\RegisterController@showForm4')->name('hr.register4');
 
