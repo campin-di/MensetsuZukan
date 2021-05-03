@@ -15,6 +15,16 @@
       ここに書きます。<br>
     </p>
     <img class="pc-img" src="./img/.png" alt="PCイラスト">
+  </div>
+</div>
+
+<div>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('register') }}">新規会員登録</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+  </li>
 </div>
 
 @endsection

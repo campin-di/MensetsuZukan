@@ -17,9 +17,8 @@
         <div class="card-body">
           <form method="POST" action="{{ route('hr.register2') }}">
           @csrf
-
           <div class="form-group row">
-            <label for="gender" class="col-md-4 col-form-label text-md-right">性別</label>
+            <label for="gender" class="col-md-4 col-form-label text-md-right">性別*</label>
             <div class="col-md-6">
               <div class="row">
                 <div class="col-md-6">
@@ -38,26 +37,40 @@
           </div>
 
           <div class="form-group row">
-            <label for="name" class="col-md-4 col-form-label text-md-right">名前</label>
+            <label for="lastname" class="col-md-4 col-form-label text-md-right">氏名*</label>
             <div class="col-md-6">
-              <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
-
-              @if ($errors->has('name'))
+              <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required>
+              @if ($errors->has('lastname'))
                 <span class="invalid-feedback">
-                  <strong>{{ $errors->first('name') }}</strong>
+                  <strong>{{ $errors->first('lastname') }}</strong>
+                </span>
+              @endif
+
+              <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" required>
+              @if ($errors->has('firstname'))
+                <span class="invalid-feedback">
+                  <strong>{{ $errors->first('firstname') }}</strong>
                 </span>
               @endif
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="kana_name" class="col-md-4 col-form-label text-md-right">フリガナ</label>
+            <label for="kana_lastname" class="col-md-4 col-form-label text-md-right">フリガナ*</label>
             <div class="col-md-6">
-              <input id="kana_name" type="text" class="form-control{{ $errors->has('kana_name') ? ' is-invalid' : '' }}" name="kana_name" value="{{ old('kana_name') }}" required>
+              <input id="kana_lastname" type="text" class="form-control{{ $errors->has('kana_lastname') ? ' is-invalid' : '' }}" name="kana_lastname" value="{{ old('kana_lastname') }}" required>
 
-              @if ($errors->has('kana_name'))
+              @if ($errors->has('kana_lastname'))
                 <span class="invalid-feedback">
-                  <strong>{{ $errors->first('kana_name') }}</strong>
+                  <strong>{{ $errors->first('kana_lastname') }}</strong>
+                </span>
+              @endif
+
+              <input id="kana_firstname" type="text" class="form-control{{ $errors->has('kana_firstname') ? ' is-invalid' : '' }}" name="kana_firstname" value="{{ old('kana_firstname') }}" required>
+
+              @if ($errors->has('kana_firstname'))
+                <span class="invalid-feedback">
+                  <strong>{{ $errors->first('kana_firstname') }}</strong>
                 </span>
               @endif
             </div>

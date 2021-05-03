@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('nickname')->unique()->nullable();
+            $table->string('nickname')->nullable();
             $table->string('name')->nullable();
             $table->string('kana_name')->nullable();
             $table->tinyInteger('gender')->unsigned()->nullable()->comment('1 : 男性, 2 : 女性');
@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
 
             //stProfile分
             $table->string('company_type')->nullable();
-            $table->integer('industry_id')->unsigned()->nullable();;
+            $table->string('industry')->nullable();
             $table->string('jobtype')->nullable();
             $table->string('workplace')->default("設定されていません。");
             $table->string('start_time')->default("設定されていません。");

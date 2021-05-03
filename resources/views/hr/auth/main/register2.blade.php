@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">STEP２</div>
+        <div class="card-header">STEP2</div>
 
         @isset($message)
           <div class="card-body">
@@ -19,9 +19,9 @@
           @csrf
 
           <div class="form-group row">
-            <label for="name" class="col-md-4 col-form-label text-md-right">企業名*</label>
+            <label for="company" class="col-md-4 col-form-label text-md-right">企業名*</label>
             <div class="col-md-6">
-              <input id="name" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="例：株式会社ぱむ" required>
+              <input id="company" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="例：株式会社ぱむ" required>
 
               @if ($errors->has('company'))
                 <span class="invalid-feedback">
@@ -32,15 +32,15 @@
           </div>
 
           <div class="form-group row">
-          <label for="industry" class="col-md-4 col-form-label text-md-right">業界区分*</label>
+          <label for="industry" class="col-md-4 col-form-label text-md-right">所属業界*</label>
             <div class="col-md-6">
               <div class="row">
                 <div class="col-md-6">
                   <select id="industry" class="form-control" name="industry" required>
-                    <option value="">業界区分を選択してください。</option>
-                    <option value="IT" @if(old('industry') == "IT") selected @endif>IT</option>
-                    <option value="食品" @if(old('industry') == "食品") selected @endif>食品</option>
-                    <option value="人材" @if(old('industry') == "人材") selected @endif>人材</option>
+                    <option value="">所属企業の業界を選択してください。</option>
+                    @foreach($industryArray as $industry)
+                      <option value="{{ $industry }}" @if(old('industry') == "{{ $industry }}") selected @endif>{{ $industry }}</option>
+                    @endforeach
                   </select>
                   @if ($errors->has('industry'))
                     <span class="help-block">
@@ -59,9 +59,13 @@
                 <div class="col-md-6">
                   <select id="location" class="form-control" name="location" required>
                     <option value="">本社所在地を選択してください。</option>
-                    <option value="北海道" @if(old('location') == "北海道") selected @endif>北海道</option>
-                    <option value="青森県" @if(old('location') == "青森県") selected @endif>青森県</option>
-                    <option value="岩手県" @if(old('location') == "岩手県") selected @endif>岩手県</option>
+                    @foreach($prefecturesArray as $area => $prefectureArray)
+                      <optgroup label="{{ $area }}">
+                        @foreach($prefectureArray as $prefecture)
+                          <option value="{{ $prefecture }}" @if(old('location') == "{{ $prefecture }}") selected @endif>{{ $prefecture }}</option>
+                        @endforeach
+                      </optgroup>
+                    @endforeach
                   </select>
                   @if ($errors->has('location'))
                     <span class="help-block">

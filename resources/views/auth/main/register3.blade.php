@@ -46,9 +46,9 @@
                   <div class="col-md-6">
                     <select id="industry" class="form-control" name="industry" required>
                       <option value="">志望業界を選択してください。</option>
-                      <option value="IT" @if(old('industry') == "IT") selected @endif>IT</option>
-                      <option value="食品" @if(old('industry') == "食品") selected @endif>食品</option>
-                      <option value="人材" @if(old('industry') == "人材") selected @endif>人材</option>
+                      @foreach($industryArray as $industry)
+                        <option value="{{ $industry }}" @if(old('industry') == "{{ $industry }}") selected @endif>{{ $industry }}</option>
+                      @endforeach
                     </select>
                     @if ($errors->has('industry'))
                       <span class="help-block">
@@ -68,9 +68,9 @@
                     <select id="jobtype" class="form-control" name="jobtype" required>
                       <option value="">希望職種を選択してください。</option>
                       <option value="営業職" @if(old('jobtype') == "営業職") selected @endif>営業職</option>
-                      <option value="技術職" @if(old('jobtype') == "技術職") selected @endif>技術職</option>
-                      <option value="事務職" @if(old('jobtype') == "事務職") selected @endif>事務職</option>
-                    </select>
+                      @foreach($jobtypeArray as $jobtype)
+                        <option value="{{ $jobtype }}" @if(old('jobtype') == "{{ $jobtype }}") selected @endif>{{ $jobtype }}</option>
+                      @endforeach                    </select>
                     @if ($errors->has('jobtype'))
                       <span class="help-block">
                         <strong>{{ $errors->first('jobtype') }}</strong>
@@ -82,15 +82,19 @@
             </div>
 
             <div class="form-group row">
-            <label for="jobtype" class="col-md-4 col-form-label text-md-right">志望勤務地</label>
+            <label for="workplace" class="col-md-4 col-form-label text-md-right">志望勤務地*</label>
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-md-6">
-                    <select id="workplace" class="form-control" name="workplace">
+                    <select id="workplace" class="form-control" name="workplace" required>
                       <option value="">勤務地を選択してください。</option>
-                      <option value="東京都" @if(old('workplace') == "東京都") selected @endif>東京都</option>
-                      <option value="大阪府" @if(old('workplace') == "大阪府") selected @endif>大阪府</option>
-                      <option value="福岡県" @if(old('workplace') == "福岡県") selected @endif>福岡県</option>
+                      @foreach($prefecturesArray as $area => $prefectureArray)
+                        <optgroup label="{{ $area }}">
+                          @foreach($prefectureArray as $prefecture)
+                            <option value="{{ $prefecture }}" @if(old('workplace') == "{{ $prefecture }}") selected @endif>{{ $prefecture }}</option>
+                          @endforeach
+                        </optgroup>
+                      @endforeach
                     </select>
                     @if ($errors->has('workplace'))
                       <span class="help-block">
@@ -103,7 +107,7 @@
             </div>
 
             <div class="form-group row">
-            <label for="start_time" class="col-md-4 col-form-label text-md-right">就活を開始したのはいつですか？</label>
+            <label for="start_time" class="col-md-4 col-form-label text-md-right">就活を開始したのはいつですか？*</label>
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-md-6">
