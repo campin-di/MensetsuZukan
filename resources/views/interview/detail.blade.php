@@ -13,7 +13,7 @@
     </a>
   </div>
   <div>
-    <a href="{{ route('interview.cancel') }}">面接をキャンセルする</a>
+    <a href="{{ route('interview.cancel.confirm', $interviewInfo->id) }}">面接をキャンセルする</a>
   </div>
 
   <a href="{{ route('mypage') }}">マイページに戻る</a>
