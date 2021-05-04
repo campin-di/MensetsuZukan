@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Common\CutStringClass;
-
 use App\Models\HrUser;
 use App\Models\Interview;
+use App\Models\Schedule;
+use App\Common\CutStringClass;
+use App\Common\ReturnTimeArrayClass;
+
 
 class St_InterviewController extends Controller
 {
@@ -37,5 +39,28 @@ class St_InterviewController extends Controller
     return view('interview/search', [
       'hrCollection' => $hrCollection,
     ]);
+  }
+
+  public function cancelConfirm($id)
+  {
+    return view('interview/cancel/confirm', compact('id'));
+  }
+
+  public function cancel($id)
+  {
+    $interviewInfo = Interview::with('hr_user')->find($id);
+    $hrSchedule = Schedule::where('hr_id', $interviewInfo->hr_id)->where('date', $interviewInfo->date)->first();
+
+    $timeArray = ReturnTimeArrayClass::returnTimeArray();
+    foreach ($timeArray as $key => $value) {
+      if($value == $interviewInfo->time){
+        $hrSchedule->$key = 1;
+        $hrSchedule->save();
+      }
+    }
+
+    $interviewInfo->delete();
+    
+    return view('interview/cancel/complete');
   }
 }

@@ -56,8 +56,10 @@ Route::get('/watch/{id}', 'St_WatchController@index')->name('watch');
 //mypage to interviewDetails
 Route::get('/interview/detail/{id}', 'St_InterviewController@detail')->name('interview.detail');
 
-//interviewDetails to cancel
-//Route::get('/interview/cancel/{id}', 'St_InterviewController@cancel')->name('interview.cancel');
+//interviewDetails to cancel-confirm
+Route::get('/interview/cancel/{id}/confirm', 'St_InterviewController@cancelConfirm')->name('interview.cancel.confirm');
+
+Route::post('/interview/cancel/{id}', 'St_InterviewController@cancel')->name('interview.cancel');
 /*=== スケジュール登録 関係 ===============================================*/
 
 //mypage to schedule adding function
