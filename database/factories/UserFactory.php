@@ -34,9 +34,9 @@ class UserFactory extends Factory
         'plan' => 'contributor',
         'graduate_year' => '2023',
         'major' => mt_rand(1, 2),
-        'university_id' => 1,
-        'faculty_id' => 3,
-        'department_id' => 5,
+        'university' => '岡山大学',
+        'faculty' => '理学部',
+        'department' => '物理学科',
         'status' => mt_rand(1, 50),
         'remember_token' => Str::random(10),
       ];

@@ -79,6 +79,12 @@ class RegisterController extends Controller
         return $user;
     }
 
+    public function choice(Request $request)
+    {
+
+      return view('auth.choice');
+    }
+
     public function register(Request $request)
     {
       event(new Registered($user = $this->create( $request->all() )));
@@ -166,8 +172,8 @@ class RegisterController extends Controller
        $rules = [
          'university' => 'required|string|ends_with:大学',
          'faculty' => 'required|string|ends_with:学部,学群,学域',
-         'development' => 'required|string|ends_with:学科',
-         'graduate_year' => 'required|digits:4',
+         'department' => 'required|string|ends_with:学科',
+         'graduate_year' => 'required',
        ];
        $messages = [
          'university.required' => '大学名を入力してください。',
@@ -176,9 +182,9 @@ class RegisterController extends Controller
          'faculty.required' => '学部名を入力してください。',
          'faculty.string' => '日本語で入力してください。',
          'faculty.ends_with' => '〇〇学部/学群/学域の形式で入力してください。',
-         'development.required' => '学科名を入力してください。',
-         'development.string' => '日本語で入力してください。',
-         'development.ends_with' => '〇〇学科/コース/類の形式で入力してください。',
+         'department.required' => '学科名を入力してください。',
+         'department.string' => '日本語で入力してください。',
+         'department.ends_with' => '〇〇学科/コース/類の形式で入力してください。',
          'graduate_year.required' => '卒業年度を選択してください。',
        ];
        $validator = Validator::make($input, $rules, $messages);
@@ -238,7 +244,7 @@ class RegisterController extends Controller
          'ニックネーム' => $register_input['nickname'],
          '大学名' => $register2_input['university'],
          '学部名' => $register2_input['faculty'],
-         '学科名' => $register2_input['development'],
+         '学科名' => $register2_input['department'],
          '卒業年度' => $register2_input['graduate_year'],
          '志望する企業タイプ' => $register3_input['company_type'],
          '志望業界' => $register3_input['industry'],
@@ -278,7 +284,9 @@ class RegisterController extends Controller
        $user->name = $register_input['lastname']. ' '. $register_input['firstname'];
        $user->kana_name = $register_input['kana_lastname']. ' '. $register_input['kana_firstname'];
        $user->nickname = $register_input['nickname'];
-       $user->university_id = 1;
+       $user->university = $register2_input['university'];
+       $user->faculty = $register2_input['faculty'];
+       $user->department = $register2_input['department'];
        $user->graduate_year = $register2_input['graduate_year'];
        $user->gender = $register_input['gender'];
        $user->status = config('const.USER_STATUS.UNAVAILABLE');

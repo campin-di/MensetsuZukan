@@ -22,13 +22,14 @@ class Hr_WatchController extends Controller
     $video = Video::where('id', $id)->get();
 
     $videosCollection = VideoDisplayClass::VideoDisplay($video);
+    $mainVideo = current($videosCollection)[0];
 
     //$otherVideosCollection == 他の質問に対する動画
     $otherVideos =  Video::where('common_url', $video[0]->common_url)->where('question_id', '!=', $video[0]->question_id)->take(10)->get();
     $otherVideosCollection = VideoDisplayClass::VideoDisplay($otherVideos);
 
     return view('hr\watch',[
-      'videosCollection' => $videosCollection,
+      'mainVideo' => $mainVideo,
       'otherVideosCollection' => $otherVideosCollection,
     ]);
   }

@@ -43,13 +43,13 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="development" class="col-md-4 col-form-label text-md-right">学科名*</label>
+            <label for="department" class="col-md-4 col-form-label text-md-right">学科名*</label>
             <div class="col-md-6">
-              <input id="development" type="text" class="form-control{{ $errors->has('development') ? ' is-invalid' : '' }}" name="development" value="{{ old('development') }}" required>
+              <input id="department" type="text" class="form-control{{ $errors->has('department') ? ' is-invalid' : '' }}" name="department" value="{{ old('department') }}" required>
 
-              @if ($errors->has('development'))
+              @if ($errors->has('department'))
                 <span class="invalid-feedback">
-                  <strong>{{ $errors->first('development') }}</strong>
+                  <strong>{{ $errors->first('department') }}</strong>
                 </span>
               @endif
             </div>
