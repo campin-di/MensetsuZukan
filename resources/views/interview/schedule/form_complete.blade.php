@@ -1,8 +1,10 @@
 @extends('layouts.common')
 @section('content')
 
-<h3>完了</h3>
-<p>送信しました!</p>
+<div>
+  面接予約が完了しました。
+</div>
 
+<a href="{{ route('home') }}">トップページに戻る</a>
 <a href="{{ route('mypage') }}">マイページに戻る</a>
 @endsection

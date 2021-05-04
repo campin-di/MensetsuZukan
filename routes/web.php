@@ -19,9 +19,10 @@ Route::prefix('hr')->namespace('Hr')->name('hr.')->group(function(){
     Route::get('/home', 'HrHomeController@index')->name('hr_home');
 });
 
+// top to 学生or人事選択ぺージ
+Route::get('register/choice', 'Auth\RegisterController@choice')->name('register.choice');
 // 仮会員登録ページ to 仮会員登録確認ページ
 Route::post('register/pre_check', 'Auth\PreRegisterController@pre_check')->name('register.pre_check');
-
 // メール　to 本登録フォーム
 Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
 // 本登録フォーム1 to 本登録フォーム2
@@ -55,6 +56,8 @@ Route::get('/watch/{id}', 'St_WatchController@index')->name('watch');
 //mypage to interviewDetails
 Route::get('/interview/detail/{id}', 'St_InterviewController@detail')->name('interview.detail');
 
+//interviewDetails to cancel
+//Route::get('/interview/cancel/{id}', 'St_InterviewController@cancel')->name('interview.cancel');
 /*=== スケジュール登録 関係 ===============================================*/
 
 //mypage to schedule adding function

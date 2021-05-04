@@ -12,6 +12,7 @@ use App\Models\Interview;
 use App\Models\Batting;
 
 use App\Common\MeetingClass;
+use App\Common\ReturnTimeArrayClass;
 
 class St_ScheduleController extends Controller
 {
@@ -31,21 +32,7 @@ class St_ScheduleController extends Controller
       $is_schedule = 1;
     }
 
-    $timeArray = [
-      'nine' => "9:00 - 10:00",
-      'ten' => "10:00 - 11:00",
-      'eleven' => "11:00 - 12:00",
-      'twelve' => "12:00 - 13:00",
-      'thirteen' => "13:00 - 14:00",
-      'fourteen' => "14:00 - 15:00",
-      'fifteen' => "15:00 - 16:00",
-      'sixteen' => "16:00 - 17:00",
-      'seventeen' => "17:00 - 18:00",
-      'eighteen' => "18:00 - 19:00",
-      'nineteen' => "19:00 - 20:00",
-      'twenty' => "20:00 - 21:00",
-      'twentyone' => "21:00 - 22:00"
-    ];
+    $timeArray = ReturnTimeArrayClass::returnTimeArray();
 
     return view('interview/schedule/form', [
       'hrUser' => $hrUser,
@@ -59,20 +46,8 @@ class St_ScheduleController extends Controller
   {
     $input = $request->all();
 
-    //=====部分処理====================================
-/*
-    $validator = Validator::make($input, $this->validator);
-    if($validator->fails()){
-      return redirect()->action("St_ScheduleController@show")
-        ->withInput()
-        ->withErrors($validator);
-    }
-*/
-    //================================================
-
     //セッションに書き込む
     $request->session()->put("form_input", $input);
-
 
     return redirect()->action("St_ScheduleController@confirm");
   }
@@ -85,7 +60,17 @@ class St_ScheduleController extends Controller
     if(!$input){
       return redirect()->action("St_InterviewController@search");
     }
-    return view("interview/schedule/form_confirm",['input' => $input]);
+
+    $date = $input['date'];
+
+    $timeArray = ReturnTimeArrayClass::returnTimeArray();
+    foreach ($timeArray as $key => $value) {
+      if($key == $input['time']){
+        $time = $value;
+      }
+    }
+
+    return view("interview/schedule/form_confirm", compact('date', 'time'));
   }
 
   function send(Request $request){
@@ -107,21 +92,7 @@ class St_ScheduleController extends Controller
     }
 
     //=====処理内容====================================
-    $timeArray = [
-      'nine' => "9:00 - 10:00",
-      'ten' => "10:00 - 11:00",
-      'eleven' => "11:00 - 12:00",
-      'twelve' => "12:00 - 13:00",
-      'thirteen' => "13:00 - 14:00",
-      'fourteen' => "14:00 - 15:00",
-      'fifteen' => "15:00 - 16:00",
-      'sixteen' => "16:00 - 17:00",
-      'seventeen' => "17:00 - 18:00",
-      'eighteen' => "18:00 - 19:00",
-      'nineteen' => "19:00 - 20:00",
-      'twenty' => "20:00 - 21:00",
-      'twentyone' => "21:00 - 22:00"
-    ];
+    $timeArray = ReturnTimeArrayClass::returnTimeArray();
 
     $hr_id = $schedule->hr_id;
 

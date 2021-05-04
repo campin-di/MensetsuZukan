@@ -29,7 +29,7 @@
                           <a class="dropdown-item" href="{{ route('logout') }}"
                              onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">
-                              {{ __('Logout') }}
+                              ログアウト
                           </a>
 
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -43,7 +43,7 @@
                   </li>
                   @if (Route::has('hr.register'))
                     <li class="nav-item">
-                      <a class="nav-link" href="{{ route('hr.register') }}">新規登録</a>
+                      <a class="nav-link" href="{{ route('register.choice') }}">新規会員登録</a>
                     </li>
                   @endif
                 @endauth

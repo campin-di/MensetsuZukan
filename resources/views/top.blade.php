@@ -8,11 +8,9 @@
       就活生の面接が見放題！
     </p>
     <p>
-      サービス紹介をここに書きます。<br>
-      サービスの紹介をここに書きます。サービスの紹介<br>
-      ここに書きます。サービスの紹介をここに<br>
-      書きます。サービス紹介を  <br>
-      ここに書きます。<br>
+      他の就活生は、いったいどんな面接をしているの？<br>
+      あらゆる業界の人事・学生の面接が得点付きで見放題！<br>
+      自身が面接を受けると、企業からのオファーも貰えます！<br>
     </p>
     <img class="pc-img" src="./img/.png" alt="PCイラスト">
   </div>
@@ -20,7 +18,7 @@
 
 <div>
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('register') }}">新規会員登録</a>
+    <a class="nav-link" href="{{ route('register.choice') }}">新規会員登録</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="{{ route('login') }}">ログイン</a>

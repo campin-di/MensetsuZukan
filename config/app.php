@@ -235,7 +235,7 @@ return [
         'RedirectClass' => app\Common\RedirectClass::class,
         'ReturnIndustryClass' => app\Common\ReturnIndustryClass::class,
         'ReturnPrefecturesClass' => app\Common\ReturnPrefecturesClass::class,
-
+        'ReturnTimeArrayClass' => app\Common\ReturnTimeArrayClass::class,
     ],
 
 ];

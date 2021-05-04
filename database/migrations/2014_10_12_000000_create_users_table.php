@@ -24,9 +24,9 @@ class CreateUsersTable extends Migration
             $table->string('plan')->nullable();
             $table->integer('graduate_year')->nullable();
             $table->tinyInteger('major')->unsigned()->nullable()->comment('1 : 文系, 2 : 理系');
-            $table->unsignedInteger('university_id')->default(0);
-            $table->unsignedInteger('faculty_id')->default(0);
-            $table->unsignedInteger('department_id')->default(0);
+            $table->string('university')->nullable();
+            $table->string('faculty')->nullable();
+            $table->string('department')->nullable();
             $table->integer('status')->comment('0:仮登録, 1:本登録, 2:メール認証済, 10:視聴不可, 11:視聴可, 99:退会済, 100:管理者');
 
             //stProfile分
