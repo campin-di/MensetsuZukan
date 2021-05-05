@@ -94,11 +94,14 @@ class Hr_QuestionListController extends Controller
     //セッションを空にする
     $request->session()->forget("form_input");
 
-    return redirect()->action("Hr_QuestionListController@complete");
+    return redirect()->route('hr.interview.question.complete', [$interview->id]);
+
+    //return redirect()->action('Hr_QuestionListController@complete', [$interview->id]);
   }
 
-  function complete(){
-    return view("hr/interview/question/form_complete");
+  function complete($id){
+
+    return view('hr/interview/question/form_complete', compact('id'));
   }
   //====end : 登録===================================================================
 

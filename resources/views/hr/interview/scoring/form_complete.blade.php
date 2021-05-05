@@ -1,8 +1,12 @@
 @extends('layouts.common_hr')
 @section('content')
 
-<h3>完了</h3>
-<p>送信しました!</p>
+  <h3>採点を完了しました。</h3>
 
-<a href="{{ route('hr.mypage') }}">マイページに戻る</a>
+  <div>
+    <a href="{{ route('hr.hr_home') }}">トップページに戻る</a>
+  </div>
+  <div>
+    <a href="{{ route('hr.mypage') }}">マイページに戻る</a>
+  </div>
 @endsection

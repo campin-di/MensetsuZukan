@@ -60,7 +60,7 @@ class St_InterviewController extends Controller
     }
 
     $interviewInfo->delete();
-    
+
     return view('interview/cancel/complete');
   }
 }
