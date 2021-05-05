@@ -78,7 +78,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/interview/question/confirm', "Hr_QuestionListController@confirm")->name('hr.interview.question.confirm');
     Route::post('/interview/question/confirm', "Hr_QuestionListController@send")->name('hr.interview.question.send');
 
-    Route::get('/interview/question/thanks', "Hr_QuestionListController@complete")->name('hr.interview.question.complete');
+    Route::get('/interview/question/{id}/thanks', "Hr_QuestionListController@complete")->name('hr.interview.question.complete');
     /*=== end:質問リスト登録 関係 ===============================================*/
 
     /*=== 質問リスト編集 関係 ===============================================*/

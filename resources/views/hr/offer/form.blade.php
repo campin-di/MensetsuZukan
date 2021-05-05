@@ -30,7 +30,7 @@
     </table>
     <div class="next-button">
       <input type="hidden" name="stId" value="{{ $stId }}">
-      <input class="btn btn-primary" type="submit" value="送信" />
+      <input class="btn btn-primary" type="submit" value=" → " />
     </div>
   </form>
 </div>
