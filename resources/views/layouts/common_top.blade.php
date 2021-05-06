@@ -44,8 +44,7 @@
     <meta name="theme-color" content="#fafafa">
   </head>
   <body>
-    @include('parts.header_hr')
     @yield('content')
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
   </body>
 </html>

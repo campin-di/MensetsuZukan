@@ -11,7 +11,7 @@
   <a href="{{ route('hr.mypage') }}">マイページに戻る</a>
 </div>
 <div>
-  <a href="{{ route('interview.detail', $id) }}">面接情報の詳細ページに戻る</a>
+  <a href="{{ route('hr.interview.detail', $id) }}">面接情報の詳細ページに戻る</a>
 </div>
 
 @endsection
