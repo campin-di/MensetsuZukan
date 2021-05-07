@@ -1,0 +1,463 @@
+/* === begin: 共通部分 =================================================*/
+h1{
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+h2{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.flex{
+  display: flex;
+}
+
+.center{
+  text-align: center;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: ファーストビュー 部分 =================================================*/
+.firstview-wrapper{
+  background-image: url(../img/top/firstview-background.png);
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.firstview-content{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.firstview-logo{
+  width: 200px;
+  margin: 25px 0 0 0;
+}
+
+.firstview-content p{
+  color: #FFF;
+  font-weight: bold;
+}
+
+.firstview-main-msg{
+  font-size: 22px;
+  margin: 30px 0 10px;
+  padding-bottom: 15px;
+  border-bottom: solid 1px #FFF;
+}
+
+.firstview-sub-msg{
+  font-size: 14px;
+  padding-bottom: 15px;
+  border-bottom: solid 1px #FFF;
+}
+
+.firstview-register-wrapper{
+  margin: 10px auto;
+  text-align: center;
+}
+
+.firstview-register-upper{
+  color: #6B8BE9;
+  font-weight: bold;
+}
+
+.firstview-register-wrapper span{
+  font-size: 14px;
+}
+
+.firstview-register-button{
+  margin: 5px auto;
+  width: 80%;
+  height: 50px;
+  color: #FFF;
+  font-weight: bold;
+  line-height: 3;
+  border-radius: 30px;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+/* === end: ファーストビュー 部分 =================================================*/
+
+/* === begin: 固定ボタン 部分 =================================================*/
+.bottom-fixed-button{
+  display: flex;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  z-index: 999;
+}
+.bottom-fixed-button li{
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  list-style: none;
+  line-height: 3;
+}
+.bottom-fixed-button li a{
+  color: #FFF;
+  font-weight: bold;
+}
+
+.bottom-button-left{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.bottom-button-right{
+  background: linear-gradient(to right, #FEAA92, #FF96AD);
+}
+/* === end: 固定ボタン 部分 =================================================*/
+
+/* === begin: "面接図鑑の特徴" 部分 =================================================*/
+.features-wrapper{
+  margin-top: 75px;
+}
+.features-wrapper h1{
+  margin-bottom: 30px;
+}
+
+.features-content-wrapper{
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px 5%;
+  box-shadow: 0 0 6px #CCC;
+}
+.features-content .left-child{
+  width: 65%;
+}
+.features-content .right-child{
+  width: 35%;
+}
+.features-content .right-child img{
+  width: 100%;
+}
+
+.features-content-wrapper::after{
+  display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-right: 60px solid transparent;
+	border-top: 60px solid #D5E3FF;
+	content: "";
+  z-index: -1;
+}
+.features-content-wrapper span{
+  position: absolute;
+  font-size: 38px;
+  color: #6B8BE9;
+  font-weight: bold;
+  top: 5px;
+  left: 10px;
+}
+
+.features-content-description{
+  font-size: 14px;
+}
+
+.features-content{
+  margin: 25px auto 10px;
+}
+/* === end: "面接図鑑の特徴" 部分 =================================================*/
+
+/* === begin: "サービス概要" 部分 =================================================*/
+.outline-wrapper{
+  margin: 200px 0 0 0;
+  color: #FFF;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  position: relative;
+  z-index: 1;
+}
+.outline-wrapper h1{
+  font-size: 20px;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin: 10px auto 25px;
+  border-bottom: solid 1px #FFF;
+}
+
+.outline-upper-background{
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  margin-top: -50px;
+}
+
+.outline-logo{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.outline-logo img{
+  width: 125px;
+}
+.outline-description{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.outline-achievement-wrapper{
+  margin-bottom: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.outline-achievement{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin: 10px auto 0px;
+}
+
+.outline-achievement-value{
+  font-size: 36px;
+  margin: 0 10px;
+}
+
+.outline-achievement-comment{
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  right: 10%;
+}
+
+.outline-iframe-wrapper iframe{
+  width: 90%;
+  min-width: 336px;
+  min-height: 189px;
+}
+
+/*=== begin: iframe要素のアスペクト比を保ったまま可変の大きさにする方法 ========*/
+.outline-iframe-wrapper {
+    position: relative;
+    width: 100%;
+}
+.outline-iframe-wrapper:before {
+    content:"";
+    display: block;
+    padding-top: 56.25%;
+}
+.outline-iframe-wrapper iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 90%;
+    height: 100%;
+}
+/*=== end ========*/
+/* === end: "サービス概要" 部分 =================================================*/
+
+/* === begin: "プランの説明" 部分 =================================================*/
+.plan-wrapper{
+  margin: 150px auto 100px;
+}
+
+.plan{
+  margin: 30px auto 0;
+}
+.plan h2{
+  color: #6B8BE9;
+}
+
+.plan-description {
+  width: 95%;
+  margin: 5px auto 25px;
+}
+.plan-description ol li{
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.plan-description ol div{
+  font-size: 12px;
+}
+/* === end: "プランの説明" 部分 =================================================*/
+
+/* === begin: "プランの説明" 部分 =================================================*/
+.contributor-wrapper h1{
+  width: 100%;
+  padding: 20px 0;
+  color: #FFF;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.contributor-step{
+  margin: 50px auto 0;
+}
+.contributor-step h2{
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: solid 2px #555;
+}
+.contributor-step h3{
+  font-size: 22px;
+  font-weight: bold;
+  color: #6B8BE9;
+  margin-top: 15px;
+}
+
+.contributor-content-wrapper{
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px 5%;
+}
+.contributor-content-wrapper .left-child{
+  width: 65%;
+}
+.contributor-content-wrapper .right-child{
+  width: 35%;
+}
+.contributor-content-wrapper .right-child img{
+  width: 100%;
+}
+
+.contributor-content-description{
+  font-size: 14px;
+}
+
+.contributor-content-left-img{
+  margin-right: 20px;
+}
+
+.audience-wrapper{
+  margin-top: 50px;
+}
+.audience-wrapper h1{
+  width: 100%;
+  padding: 20px 0;
+  color: #FFF;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.audience-step{
+  margin: 50px auto 0;
+}
+.audience-step h2{
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: solid 2px #555;
+}
+.audience-step h3{
+  font-size: 22px;
+  font-weight: bold;
+  color: #6B8BE9;
+  margin-top: 15px;
+}
+
+.audience-content-wrapper{
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px 5%;
+}
+.audience-content-wrapper .left-child{
+  width: 65%;
+}
+.audience-content-wrapper .right-child{
+  width: 35%;
+}
+.audience-content-wrapper .right-child img{
+  width: 100%;
+}
+
+.audience-content-description{
+  font-size: 14px;
+}
+
+.audience-content-left-img{
+  margin-right: 20px;
+}
+/* === end: "プランの説明" 部分 =================================================*/
+
+/* === begin: "利用料金" 部分 =================================================*/
+.cost-wrapper {
+  margin: 100px auto 50px;
+  background-color: #F5FAFF;
+  text-align: center;
+}
+
+.cost-title-upper{
+  color: #555;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.cost-img-description{
+  font-size: 14px;
+  color: #555;
+}
+
+.cost-promotion{
+  margin: 50px 0 25px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.cost-promotion-price{
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.cost-promotion-price span{
+  font-size: 50px;
+  color: #FF98AB;
+  margin: 0 5px;
+}
+/* === end: "利用料金" 部分 =================================================*/
+
+/* === begin: "新規会員登録はここから" 部分 =================================================*/
+.promotion-wrapper{
+  text-align: center;
+}
+
+.promotion{
+  margin: 50px auto;
+}
+.promotion span{
+  color: #6B8BE9;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.promotion-button{
+  margin: 5px auto;
+  width: 80%;
+  height: 50px;
+  color: #FFF;
+  font-weight: bold;
+  line-height: 3;
+  border-radius: 30px;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+/* === end: "新規会員登録はここから" 部分 =================================================*/
+
+/* === begin: "フッター" 部分 =================================================*/
+.footer{
+  margin: 50px auto;
+  padding: 100px 0 5px;
+  text-align: center;
+  background: linear-gradient(#f8fafc, #6B8BE9);
+  color: #FFFFFF;
+}
+.footer .flex{
+  justify-content: space-around;
+  width: 60%;
+  margin: 0 auto 10px;
+}
+.footer .flex a{
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+.footer {
+  font-size: 12px;
+}
+/* === end: "フッター" 部分 =================================================*/
