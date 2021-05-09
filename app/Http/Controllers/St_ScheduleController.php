@@ -23,7 +23,7 @@ class St_ScheduleController extends Controller
 
     if(!$scheduleData->exists()){
       $is_schedule = 0;
-      return view('interview/schedule/form', [
+      return view('st/interview/schedule/form', [
         'hrUser' => $hrUser,
         'is_schedule' => $is_schedule,
       ]);
@@ -34,7 +34,7 @@ class St_ScheduleController extends Controller
 
     $timeArray = ReturnTimeArrayClass::returnTimeArray();
 
-    return view('interview/schedule/form', [
+    return view('st/interview/schedule/form', [
       'hrUser' => $hrUser,
       'schedules' => $schedules,
       'timeArray' => $timeArray,
@@ -70,7 +70,7 @@ class St_ScheduleController extends Controller
       }
     }
 
-    return view("interview/schedule/form_confirm", compact('date', 'time'));
+    return view('st/interview/schedule/form_confirm', compact('date', 'time'));
   }
 
   function send(Request $request){
@@ -147,7 +147,7 @@ class St_ScheduleController extends Controller
   }
 
   function complete(){
-    return view("interview/schedule/form_complete");
+    return view('st/interview/schedule/form_complete');
   }
 
 }

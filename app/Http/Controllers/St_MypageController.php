@@ -40,7 +40,7 @@ class St_MypageController extends Controller
       ]);
     }
 
-    return view('mypage/mypage', [
+    return view('st/mypage/mypage', [
       'userDataArray' => $userDataArray,
       'pastVideosCollection' => $pastVideosCollection,
       'interviewReservationsCollection' => $interviewReservationsCollection,
@@ -66,7 +66,7 @@ class St_MypageController extends Controller
       'qualification' => $userData->qualification,
     ];
 
-    return view('mypage/detail', [
+    return view('st/mypage/detail', [
       'profileDetailArray' => $profileDetailArray,
     ]);
   }
@@ -85,7 +85,7 @@ class St_MypageController extends Controller
 
     $interviewReservations = Interview::where('st_id', $stId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
 
-    return view('mypage/their_page', [
+    return view('st/mypage/their_page', [
       'stId' => $stId,
       'nickname' => User::find($stId)->nickname,
       'pastVideosCollection' => $pastVideosCollection,
@@ -111,7 +111,7 @@ class St_MypageController extends Controller
       'qualification' => $userData->qualification,
     ];
 
-    return view('mypage/their_detail', [
+    return view('st/mypage/their_detail', [
       'profileDetailArray' => $profileDetailArray,
     ]);
   }

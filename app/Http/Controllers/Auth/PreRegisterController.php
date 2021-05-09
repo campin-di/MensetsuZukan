@@ -26,6 +26,6 @@ class PreRegisterController extends Controller
     // password マスキング
     $bridge_request['password_mask'] = '******';
 
-    return view('auth.register_check')->with($bridge_request);
+    return view('st/auth.register_check')->with($bridge_request);
   }
 }

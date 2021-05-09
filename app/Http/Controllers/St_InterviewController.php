@@ -16,7 +16,7 @@ class St_InterviewController extends Controller
   {
     $interviewInfo = Interview::with('hr_user')->find($id);
 
-    return view('interview/detail', [
+    return view('st/interview/detail', [
       'interviewInfo' => $interviewInfo,
     ]);
   }
@@ -36,14 +36,14 @@ class St_InterviewController extends Controller
       ]);
     }
 
-    return view('interview/search', [
+    return view('st/interview/search', [
       'hrCollection' => $hrCollection,
     ]);
   }
 
   public function cancelConfirm($id)
   {
-    return view('interview/cancel/confirm', compact('id'));
+    return view('st/interview/cancel/confirm', compact('id'));
   }
 
   public function cancel($id)
@@ -61,6 +61,6 @@ class St_InterviewController extends Controller
 
     $interviewInfo->delete();
 
-    return view('interview/cancel/complete');
+    return view('st/interview/cancel/complete');
   }
 }

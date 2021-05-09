@@ -2,6 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
+    Route::get('/', function () {
+        $loginFlag = Auth::guard('hr')->check();
+        echo $loginFlag;
+        if($loginFlag){
+          return redirect()->action('Hr\HrHomeController@index');
+        }
+        return view('top');
+    });
+
     /*=== 認証関係 =============================================================*/
     // 仮会員登録ページ to 仮会員登録確認ページ
     Route::post('/register/pre_check', 'Hr\Auth\PreRegisterController@pre_check')->name('hr.register.pre_check');

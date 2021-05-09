@@ -25,7 +25,7 @@ class St_MypageDetailController extends Controller
     $userId = Auth::user()->id;
     $profile = St_profile::where('st_id', $userId)->first();
 
-    return view("mypage/detail/form",[
+    return view('st/mypage/detail/form',[
       'profile' => $profile,
     ]);
   }
@@ -60,7 +60,7 @@ class St_MypageDetailController extends Controller
     if(!$input){
       return redirect()->action("St_MypageDetailController@show");
     }
-    return view("mypage/detail/form_confirm",["input" => $input]);
+    return view('st/mypage/detail/form_confirm',["input" => $input]);
   }
 
   function send(Request $request){
@@ -96,7 +96,7 @@ class St_MypageDetailController extends Controller
   }
 
   function complete(){
-    return view("mypage/detail/form_complete");
+    return view('st/mypage/detail/form_complete');
   }
 
   /*===========================================================================*/
