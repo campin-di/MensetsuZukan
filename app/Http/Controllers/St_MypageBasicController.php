@@ -21,7 +21,7 @@ class St_MypageBasicController extends Controller
   ];
 
   function show(){
-    return view("mypage/basic/form");
+    return view('st/mypage/basic/form');
   }
 
   function post(Request $request){
@@ -54,7 +54,7 @@ class St_MypageBasicController extends Controller
     if(!$input){
       return redirect()->action("St_MypageBasicController@show");
     }
-    return view("mypage/basic/form_confirm",["input" => $input]);
+    return view('st/mypage/basic/form_confirm', ["input" => $input]);
   }
 
   function send(Request $request){
@@ -89,7 +89,7 @@ class St_MypageBasicController extends Controller
   }
 
   function complete(){
-    return view("mypage/basic/form_complete");
+    return view('st/mypage/basic/form_complete');
   }
 
   /*===========================================================================*/

@@ -349,10 +349,10 @@ class RegisterController extends Controller
       $request->session()->forget("register3_input");
       $request->session()->forget("register4_input");
 
-      return view("auth.main.registered");
+      return view('hr.auth.main.registered');
     }
 
     function credit(Request $request){
-      return view('auth.main.register_credit');
+      return view('hr.auth.main.register_credit');
     }
 }

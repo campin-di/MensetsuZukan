@@ -82,14 +82,14 @@ class RegisterController extends Controller
     public function choice(Request $request)
     {
 
-      return view('auth.choice');
+      return view('st/auth.choice');
     }
 
     public function register(Request $request)
     {
       event(new Registered($user = $this->create( $request->all() )));
 
-      return view('auth.registered');
+      return view('st/auth.registered');
     }
 
     public function showForm($email_token)
@@ -97,22 +97,22 @@ class RegisterController extends Controller
         // 使用可能なトークンか
         if ( !User::where('email_verify_token',$email_token)->exists() )
         {
-            return view('auth.main.register')->with('message', '無効なトークンです。');
+            return view('st/auth.main.register')->with('message', '無効なトークンです。');
         } else {
             $user = User::where('email_verify_token', $email_token)->first();
             // 本登録済みユーザーか
             if ($user->status == config('const.USER_STATUS.REGISTER')) //REGISTER=1
             {
                 logger("status". $user->status );
-                return view('auth.main.register')->with('message', 'すでに本登録されています。ログインして利用してください。');
+                return view('st/auth.main.register')->with('message', 'すでに本登録されています。ログインして利用してください。');
             }
             // ユーザーステータス更新
             $user->status = config('const.USER_STATUS.MAIL_AUTHED');
             $user->email_verified_at = Carbon::now('asia/Tokyo');
             if($user->save()) {
-                return view('auth.main.register', compact('email_token'));
+                return view('st/auth.main.register', compact('email_token'));
             } else{
-                return view('auth.main.register')->with('message', 'メール認証に失敗しました。再度、メールからリンクをクリックしてください。');
+                return view('st/auth.main.register')->with('message', 'メール認証に失敗しました。再度、メールからリンクをクリックしてください。');
             }
         }
     }
@@ -156,12 +156,12 @@ class RegisterController extends Controller
          //セッションに書き込む
          $request->session()->put("register_input", $input);
 
-         return view('auth.main.register2');
+         return view('st/auth.main.register2');
      }
 
      public function redirectShowForm2()
      {
-       return view('auth.main.register2');
+       return view('st/auth.main.register2');
      }
 
      public function showForm3(Request $request)
@@ -197,7 +197,7 @@ class RegisterController extends Controller
        $industryArray = ReturnIndustryClass::returnIndustry();
        $jobtypeArray = ReturnJobtypeClass::returnJobtype();
        $prefecturesArray = ReturnPrefecturesClass::returnPrefectures();
-       return view('auth.main.register3',[
+       return view('st/auth.main.register3',[
          'industryArray' => $industryArray,
          'jobtypeArray' => $jobtypeArray,
          'prefecturesArray' => $prefecturesArray,
@@ -212,7 +212,7 @@ class RegisterController extends Controller
          //セッションに書き込む
          $request->session()->put("register3_input", $input);
 
-         return view('auth.main.register4');
+         return view('st/auth.main.register4');
      }
 
      public function post(Request $request)
@@ -258,7 +258,7 @@ class RegisterController extends Controller
        if(!($register_input && $register2_input && $register3_input && $register4_input)){
          return redirect()->route('home');
        }
-       return view('auth.main.register_comfirm', compact('confirmArray'));
+       return view('st/auth.main.register_comfirm', compact('confirmArray'));
      }
 
      public function mainRegister(Request $request)
@@ -316,10 +316,10 @@ class RegisterController extends Controller
        $request->session()->forget("register3_input");
        $request->session()->forget("register4_input");
 
-       return view("auth.main.registered");
+       return view('st/auth.main.registered');
      }
 
      function credit(Request $request){
-       return view('auth.main.register_credit');
+       return view('st/auth.main.register_credit');
      }
 }

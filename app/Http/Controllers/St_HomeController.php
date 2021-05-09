@@ -49,7 +49,7 @@ class St_HomeController extends Controller
     $videos = Video::get();
     $videosCollection = VideoDisplayClass::VideoDisplay($videos);
 
-    return view('home',[
+    return view('st.home',[
       'questions' => $questions,
       'videosCollection' => $videosCollection,
     ]);
@@ -58,14 +58,14 @@ class St_HomeController extends Controller
   public function preContributor()
   {
 
-    return view('unavailable.contributor',[
+    return view('st.unavailable.contributor',[
     ]);
   }
 
   public function preAudience()
   {
 
-    return view('unavailable.audience',[
+    return view('st.unavailable.audience',[
     ]);
   }
 
