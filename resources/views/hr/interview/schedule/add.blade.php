@@ -1,6 +1,5 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
-
 <div class="container">
   <h1>面接可能日程を追加する。</h1>
   <form method="post" action="{{ route('hr.interview.schedule.post') }}">

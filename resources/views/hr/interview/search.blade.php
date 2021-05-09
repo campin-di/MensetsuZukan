@@ -1,6 +1,5 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
-
 <div class="container">
   <h1>人事を探す</h1>
   @foreach($hrCollection as $hr)

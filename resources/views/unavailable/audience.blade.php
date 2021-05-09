@@ -1,4 +1,4 @@
-@extends('layouts.common')
+@extends('layouts.st.common')
 @section('content')
 <a href="">
   支払い情報を登録する

@@ -1,4 +1,4 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
 
 <h3>質問リストの作成を完了しました。</h3>

@@ -1,6 +1,5 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
-
 <div class="container">
   <h1>面接の情報</h1>
   名前：{{ $interviewInfo->hr_user->name }}
