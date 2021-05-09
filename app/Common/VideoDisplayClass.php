@@ -24,7 +24,6 @@ class VideoDisplayClass
       // 接続情報のインスタンスを用いてYoutubeのデータへアクセス可能なインスタンスを生成
       $youtube = new Google_Service_YouTube($client);
 
-
       $count = $videos->count();
 
       $videosCollection = collect([]);
