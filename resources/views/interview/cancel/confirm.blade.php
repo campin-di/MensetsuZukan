@@ -1,4 +1,4 @@
-@extends('layouts.common')
+@extends('layouts.st.common')
 @section('content')
 <form method="post" action="{{ route('interview.cancel', $id) }}">
 	@csrf

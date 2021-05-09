@@ -1,6 +1,5 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
-
   <h3>採点を完了しました。</h3>
 
   <div>

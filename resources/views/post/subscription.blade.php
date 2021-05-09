@@ -1,4 +1,4 @@
-@extends('layouts.common')
+@extends('layouts.st.common')
 <link href="{{ asset('css/stripe.css') }}" rel="stylesheet">
 
 @section('content')

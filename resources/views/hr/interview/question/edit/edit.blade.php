@@ -1,6 +1,5 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
-
 <div class="container">
   <h1>質問リストを変更する。</h1>
   <div>

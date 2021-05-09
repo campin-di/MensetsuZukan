@@ -1,4 +1,4 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
 <div class="container">
 	<h3>フォーム</h3>

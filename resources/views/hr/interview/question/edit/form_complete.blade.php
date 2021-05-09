@@ -1,4 +1,4 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
 
 <h3>完了</h3>

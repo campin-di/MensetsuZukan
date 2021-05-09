@@ -1,4 +1,4 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
 <h1>オファー内容の確認</h1>
 <form method="post" action="{{ route('hr.offer.send') }}">

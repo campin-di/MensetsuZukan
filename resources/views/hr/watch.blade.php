@@ -1,6 +1,5 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
-
 <div class="container">
     <iframe width="560" height="315" src="{{ $mainVideo['url'] }}" title="YouTube mainVideo player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
     {{ $mainVideo['title'] }}<br>

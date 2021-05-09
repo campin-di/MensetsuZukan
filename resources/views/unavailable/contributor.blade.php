@@ -1,4 +1,4 @@
-@extends('layouts.common')
+@extends('layouts.st.common')
 @section('content')
   <a href="{{ route('interview.search') }}">
     面接官を探す

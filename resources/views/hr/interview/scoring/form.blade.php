@@ -1,6 +1,5 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
-
 <div class="container" onload>
   <h1>面接採点を開始する。</h1>
   <div>

@@ -1,4 +1,4 @@
-@extends('layouts.common_hr')
+@extends('layouts.hr.common')
 @section('content')
 <h3>確認</h3>
 <form method="post" action="{{ route('hr.interview.question.edit.send') }}">

@@ -16,10 +16,10 @@
     <!-- end:ODP -->
 
     <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <!-- begin:CSS -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/parts/header.css') }}" rel="stylesheet">
     <!-- end:CSS -->
 
     <!-- begin:JS -->
@@ -44,7 +44,7 @@
     <meta name="theme-color" content="#fafafa">
   </head>
   <body>
-    @include('parts.header')
+    @include('parts.st.header.normal')
     @yield('content')
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="https://js.stripe.com/v3/"></script>
