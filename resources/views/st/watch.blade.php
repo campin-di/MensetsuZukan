@@ -1,52 +1,119 @@
 @extends('layouts.st.common')
+<link href="{{ asset('/css/st/watch.css') }}" rel="stylesheet">
 @section('content')
 
-<div class="container">
-    <iframe width="560" height="315" src="{{ $mainVideo['url'] }}" title="YouTube mainVideo player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
-    {{ $mainVideo['title'] }}<br>
+  <div class="container">
+    <div class="video-iframe">
+      <iframe src="{{ $mainVideo['url'] }}" title="YouTube mainVideo player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 
-    <div class="d-flex justify-content-start">
-      <div class="mx-2 btn btn-primary">{{ $mainVideo['question']}}</div>
+    <div class="video-title">
+      {{ $mainVideo['title'] }}
+    </div>
+    <div class="video-view-good-wrapper flex">
+      <div class="video-view">
+        {{ $mainVideo['views'] }}回視聴・{{ $mainVideo['diffDate'] }}
+      </div>
+      <div class="video-good">
+        ♥：{{ $mainVideo['good'] }}
+      </div>
+    </div>
+
+    <div class="other-question-wrapper">
+      <div class="other-question-selected">{{ $mainVideo['question']}}</div>
       @foreach($mainVideo['otherQuestionsArray'] as $otherQuestion)
-        <div class="mx-2 btn btn-secondary">
+        <div class="other-question">
           {{ $otherQuestion['question']->name }}
         </div>
       @endforeach
     </div>
 
-    得点：{{ $mainVideo['score']}}点<br>
-    視聴回数：{{ $mainVideo['views'] }}回<br>
-    いいね：{{ $mainVideo['good'] }}<br>
-    投稿日：{{ $mainVideo['diffDate'] }}<br>
+    <div class="video-user-score-wrapper flex">
+      <div class="left-child">
+        <div class="video-st-user">
+          学生：
+          <a href="{{ route('mypage.theirPage', $mainVideo['stId']) }}">
+            {{ $mainVideo['stNickname'] }}<br>
+          </a>
+        </div>
+        <div class="video-hr-user">
+          人事：
+          <a href="{{ route('hr_mypage', $mainVideo['hrId']) }}">
+            {{ $mainVideo['hrName'] }}
+          </a>
+        </div>
+      </div>
+      <div class="right-child video-score">
+        {{ $mainVideo['score']}}点
+      </div>
+    </div>
 
-    <a href="{{ route('mypage.theirPage', $mainVideo['stId']) }}">
-      学生ユーザ名：{{ $mainVideo['stNickname'] }}<br>
-    </a>
-    <a href="{{ route('hr_mypage', $mainVideo['hrId']) }}">
-      人事名：{{ $mainVideo['hrName'] }}
-    </a>
-    <hr>
+    <div class="other-videos-wrapper">
+      <div class="other-videos-title-wrapper flex">
+        <div class="other-videos-title">
+          <h2>面接中にされた他の質問</h2>
+        </div>
+        <div class="other-videos-mark">
+          ▼
+        </div>
+      </div>
 
-    <div>
-      <h2>面接中にされた他の質問</h2>
       @foreach($otherVideosCollection as $otherVideo)
-        <a href="{{ route('watch', $otherVideo['id'])}}">
-          <div>
-            <img src="{{ $otherVideo['thumbnailsUrl'] }}" width="240" height="120">
+        <div class="other-video flex">
+          <div class="left-child">
+            <a href="{{ route('watch', $otherVideo['id'])}}">
+              <div class="other-video-thumbnail">
+                <img src="{{ $otherVideo['thumbnailsUrl'] }}">
+              </div>
+            </a>
           </div>
-          {{ $otherVideo['title'] }}<br>
-          {{ $otherVideo['question'] }}<br>
-          いいね：{{ $otherVideo['good'] }}<br>
-          投稿日：{{ $otherVideo['diffDate'] }}<br>
-          視聴回数：{{ $otherVideo['views'] }}回<br>
-          得点：{{ $otherVideo['score'] }}点<br>
-        </a>
+          <div class="right-child">
+            <div class="other-video-title">
+              <a href="{{ route('watch', $otherVideo['id'])}}">
+                コンテンツのタイトルがここに表示されます。
+                <!-- 文字数カットの処理をJSで書いたらコメントアウト
+                {{ $otherVideo['title'] }}
+                -->
+              </a>
+            </div>
+            <div class="other-video-views-score-wrapper flex">
+              <div class="other-video-views">
+                <div class="pc flex">
+                  <div class="other-video-good">
+                    ♥　{{ $otherVideo['good'] }}
+                  </div>
+                  <div class="other-video-date">
+                    〇　{{ $otherVideo['diffDate'] }}
+                  </div>
+                </div>
+                {{ $mainVideo['views'] }}回視聴
+              </div>
+              <div class="other-video-score">
+                {{ $mainVideo['score']}}点
+              </div>
+            </div>
+          </div>
+        </div>
       @endforeach
     </div>
 
-    <h2>人事からのレビュー</h2>
-    <div>
-      {{ $mainVideo['review'] }}
-    <div>
+    <div class="review-wrapper">
+      <div class="review-title-wrapper flex">
+        <div class="review-title">
+          <h2>人事からのレビュー</h2>
+        </div>
+        <div class="review-mark">
+          ▼
+        </div>
+      </div>
+      <div class="review">
+        <a href="{{ route('hr_mypage', $mainVideo['hrId']) }}">
+          {{ $mainVideo['hrName'] }}
+        </a>
+        <p>
+          {{ $mainVideo['review'] }}
+        </p>
+      </div>
+    </div>
 </div>
 @endsection
