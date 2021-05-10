@@ -66,7 +66,7 @@ section {
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   width: 100%;
   max-width: 1000px;
   overflow-x: hidden;
@@ -74,7 +74,7 @@ body {
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
-  color: #212529;
+  color: #333333;
   text-align: left;
   background-color: #f8fafc;
 }
@@ -7334,6 +7334,11 @@ button.bg-dark:focus {
 }
 
 @media (min-width: 992px) {
+/*
+  body{
+    background-image: url(../img/background-pc.png);
+  }
+  */
   .d-lg-none {
     display: none !important;
   }

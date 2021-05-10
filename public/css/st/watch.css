@@ -1,0 +1,333 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #f8fafc;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 再生動画 部分 =================================================*/
+/*=== begin: iframe要素のアスペクト比を保ったまま可変の大きさにする方法 ========*/
+.video-iframe {
+    position: relative;
+    width: 100%;
+}
+.video-iframe:before {
+    content:"";
+    display: block;
+    padding-top: 56.25%;
+}
+.video-iframe iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100%;
+}
+/*=== end ========*/
+
+.video-title{
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px auto;
+}
+
+.video-view-good-wrapper{
+  font-size: 14px;
+  justify-content: space-between;
+}
+
+.other-question-wrapper{
+  margin: 15px auto;
+  display: flex;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+.other-question-wrapper div{
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.other-question-selected{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  color: #FFF;
+}
+
+.other-question{
+  background-color: #D5E3FF;
+}
+
+.video-user-score-wrapper{
+  justify-content: space-between;
+}
+.video-user-score-wrapper .right-child{
+  color: #FFF;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 2.5;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  background-color: #E6B422;
+  border-radius: 5px;
+}
+
+.video-st-user{
+  font-size: 16px;
+}
+/* === end: 再生動画 部分 =================================================*/
+
+/* === begin: 他の質問の動画 部分 =================================================*/
+.other-videos-wrapper{
+  margin-top: 40px;
+}
+
+.other-videos-title-wrapper{
+  justify-content: space-between;
+  border: solid 1.5px #D5E3FF;
+  padding: 5px 10px 0px;
+  margin-bottom: 20px;
+}
+
+.other-videos-title h2{
+  line-height: 2;
+  font-size: 18px;
+}
+
+.other-videos-mark{
+  line-height: 2;
+  color: #6B8BE9;
+}
+
+.other-video .left-child{
+  width: 35%;
+  margin-right: 5%;
+}
+.other-video .right-child{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.other-video{
+  margin-bottom: 10px;
+}
+
+.other-video-thumbnail{
+    position: relative;
+    width: 100%;
+}
+.other-video-thumbnail:before {
+    content:"";
+    display: block;
+    padding-top: 56.25%;
+}
+.other-video-thumbnail img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.other-video-title a{
+  font-size: 14px;
+  color: #333;
+}
+
+.other-video-views-score-wrapper{
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.other-video-views{
+  font-size: 14px;
+}
+
+.other-video-score{
+  color: #FFF;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 2.5;
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  margin-right: 10px;
+  background-color: #E6B422;
+  border-radius: 5px;
+}
+/* === end: 他の質問の動画 部分 =================================================*/
+
+/* === begin: 人事のレビュー 部分 =================================================*/
+.review-wrapper{
+  margin: 40px auto;
+}
+
+.review-title-wrapper{
+  justify-content: space-between;
+  border: solid 1.5px #D5E3FF;
+  padding: 5px 10px 0px;
+  margin-bottom: 20px;
+}
+
+.review-title h2{
+  line-height: 2;
+  font-size: 18px;
+}
+
+.review-mark{
+  line-height: 2;
+  color: #6B8BE9;
+}
+
+.review{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.review a{
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+/* === end: 人事のレビュー 部分 =================================================*/
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none:
+  }
+  .pc{
+    display: block;
+  }
+
+
+  .video-iframe{
+    width: 100vw;
+    padding: 0 10vw;
+    margin-left: -15vw;
+    background-color: #000;
+  }
+
+  .video-iframe iframe{
+    max-width: 1008px;
+  }
+
+  .video-title{
+    font-size: 24px;
+    margin: 30px auto;
+  }
+
+  .video-view-good-wrapper{
+    font-size: 18px;
+  }
+
+  .other-question-wrapper {
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+  }
+  .other-question-wrapper div {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .video-user-score-wrapper{
+    align-items: center;
+  }
+  .video-user-score-wrapper .left-child{
+    display: flex;
+  }
+  .video-user-score-wrapper .right-child{
+    font-size: 28px;
+    line-height: 3;
+    width: 300px;
+    height: 75px;
+    border-radius: 10px;
+  }
+
+  .video-st-user{
+    font-size: 18px;
+    margin-right: 20px;
+  }
+
+  .video-hr-user{
+    font-size: 18px;
+  }
+
+  .other-videos-title-wrapper{
+    padding: 10px 20px 0px;
+  }
+
+  .other-videos-title h2 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .other-videos-mark{
+    font-size: 24px;
+  }
+
+  .other-video {
+      margin-bottom: 20px;
+  }
+
+  .other-video-title a {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .other-video-views-score-wrapper {
+    align-items: center;
+  }
+
+  .other-video-views{
+    font-size: 18px;
+  }
+  .other-video-views .flex{
+    flex-direction: column;
+  }
+
+  .other-video-score{
+    font-size: 28px;
+    line-height: 2.5;
+    width: 250px;
+    height: 60px;
+    border-radius: 10px;
+  }
+
+  .review-title-wrapper {
+    padding: 10px 20px 0px;
+  }
+
+  .review-title h2 {
+    font-size: 22px;
+  }
+
+  .review-mark {
+    font-size: 22px;
+    line-height: 2;
+  }
+
+  .review a{
+    font-size: 24px;
+  }
+  .review p{
+    font-size: 18px;
+  }
+}

@@ -1,4 +1,4 @@
-@extends('layouts.st.common_home')
+@extends('layouts.st.common')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/st/home.css') }}">
 
