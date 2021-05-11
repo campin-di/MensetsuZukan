@@ -14,9 +14,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailVerification;
 use Carbon\Carbon;
-use App\Common\ReturnIndustryClass;
-use App\Common\ReturnJobtypeClass;
-use App\Common\ReturnPrefecturesClass;
+use App\Common\ReturnUserInformationArrayClass;
 
 class RegisterController extends Controller
 {
@@ -70,7 +68,7 @@ class RegisterController extends Controller
         ]);
 
         //Mail::to($st->email)->send(new OfferMail($offer));
-        Mail::send('auth.email.pre_register', ['token' => $user['email_verify_token']], function ($message) use ($data){
+        Mail::send('st.auth.email.pre_register', ['token' => $user['email_verify_token']], function ($message) use ($data){
           $message->subject('仮登録が完了しました');
           $message->from('mensetsu_zukan@example.com');
           $message->to($data['email']);
@@ -194,14 +192,12 @@ class RegisterController extends Controller
        //セッションに書き込む
        $request->session()->put("register2_input", $input);
 
-       $industryArray = ReturnIndustryClass::returnIndustry();
-       $jobtypeArray = ReturnJobtypeClass::returnJobtype();
-       $prefecturesArray = ReturnPrefecturesClass::returnPrefectures();
-       return view('st/auth.main.register3',[
-         'industryArray' => $industryArray,
-         'jobtypeArray' => $jobtypeArray,
-         'prefecturesArray' => $prefecturesArray,
-       ]);
+       $industryArray = ReturnUserInformationArrayClass::returnIndustry();
+       $jobtypeArray = ReturnUserInformationArrayClass::returnJobtype();
+       $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+       $toeicArray = ReturnUserInformationArrayClass::returnToeicArray();
+
+       return view('st/auth.main.register3',compact('industryArray', 'jobtypeArray', 'prefecturesArray', 'toeicArray'));
      }
 
 
@@ -292,7 +288,8 @@ class RegisterController extends Controller
        $user->status = config('const.USER_STATUS.UNAVAILABLE');
        $user->company_type = $register3_input['company_type'];
        $user->industry = $register3_input['industry'];
-       $user->jobtype = $register3_input['jobtype'];
+       $user->english_level = $register3_input['english_level'];
+       $user->toeic = $register3_input['toeic'];
 
        if($register4_input['plan'] == '投稿者プラン'){
          $user->plan = "contributor";
@@ -318,7 +315,6 @@ class RegisterController extends Controller
 
        return view('st/auth.main.registered');
      }
-
      function credit(Request $request){
        return view('st/auth.main.register_credit');
      }

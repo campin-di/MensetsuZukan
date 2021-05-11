@@ -25,7 +25,7 @@ class CreateHrUsersTable extends Migration
         $table->string('company_type')->nullable();
         $table->string('industry')->nullable();
         $table->string('location')->nullable();
-        $table->string('position')->default('設定されていません。');
+        $table->string('selection_phase')->default('設定されていません。');
         $table->string('workplace')->default('設定されていません。');
         $table->string('summary')->default('設定されていません。');
         $table->string('recruitment')->default('設定されていません。');

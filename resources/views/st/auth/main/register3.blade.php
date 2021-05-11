@@ -112,14 +112,60 @@
                   <div class="col-md-6">
                     <select id="start_time" class="form-control" name="start_time">
                       <option value="">選択してください。</option>
-                      <option value="それ以前" @if(old('start_time') == "それ以前") selected @endif>それ以前</option>
-                      <option value="大学3年生前期" @if(old('start_time') == "大学3年生前期") selected @endif>大学3年生前期</option>
-                      <option value="大学3年生後期" @if(old('start_time') == "大学3年生後期") selected @endif>大学3年生後期</option>
-                      <option value="それ以降" @if(old('start_time') == "それ以降") selected @endif>それ以降</option>
+                      <option value="直近1ヶ月以内" @if(old('start_time') == "直近1ヶ月以内") selected @endif>直近1ヶ月以内</option>
+                      <option value="直近3ヶ月以内" @if(old('start_time') == "直近3ヶ月以内") selected @endif>直近3ヶ月以内</option>
+                      <option value="半年以内" @if(old('start_time') == "半年以内") selected @endif>半年以内</option>
+                      <option value="1年以内" @if(old('start_time') == "1年以内") selected @endif>1年以内</option>
+                      <option value="1年半以内" @if(old('start_time') == "1年半以内") selected @endif>1年半以内</option>
+                      <option value="2年以内" @if(old('start_time') == "2年以内") selected @endif>2年以内</option>
+                      <option value="2年以前" @if(old('start_time') == "2年以前") selected @endif>2年以前</option>
                     </select>
                     @if ($errors->has('start_time'))
                       <span class="help-block">
                         <strong>{{ $errors->first('start_time') }}</strong>
+                      </span>
+                    @endif
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+            <label for="english" class="col-md-4 col-form-label text-md-right">英語レベル*</label>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <select id="english" class="form-control" name="english" required>
+                      <option value="">英語レベルを選択してください。</option>
+                      <option value="日常会話レベル" @if(old('english') == "日常会話レベル") selected @endif>日常会話レベル</option>
+                      <option value="ディベートレベル" @if(old('english') == "ディベートレベル") selected @endif>ディベートレベル</option>
+                      <option value="ビジネスレベル" @if(old('english') == "ビジネスレベル") selected @endif>ビジネスレベル</option>
+                      <option value="ネイティブレベル" @if(old('english') == "ネイティブレベル") selected @endif>ネイティブレベル</option>
+                    </select>
+                    @if ($errors->has('english'))
+                      <span class="help-block">
+                        <strong>{{ $errors->first('english') }}</strong>
+                      </span>
+                    @endif
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+            <label for="toeic" class="col-md-4 col-form-label text-md-right">TOEICスコア*</label>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <select id="toeic" class="form-control" name="toeic" required>
+                      <option value="">TOEICスコアを選択してください。</option>
+                      @foreach($toeicArray as $toeic)
+                        <option value="{{ $toeic }}" @if(old('toeic') == "{{ $toeic }}") selected @endif>{{ $toeic }}</option>
+                      @endforeach
+                    </select>
+                    @if ($errors->has('toeic'))
+                      <span class="help-block">
+                        <strong>{{ $errors->first('toeic') }}</strong>
                       </span>
                     @endif
                   </div>

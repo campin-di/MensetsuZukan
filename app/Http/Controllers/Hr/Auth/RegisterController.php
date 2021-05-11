@@ -15,9 +15,8 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailVerification;
 use Carbon\Carbon;
-use App\Common\ReturnIndustryClass;
-use App\Common\ReturnJobtypeClass;
-use App\Common\ReturnPrefecturesClass;
+use App\Common\ReturnUserInformationArrayClass;
+
 
 class RegisterController extends Controller
 {
@@ -147,10 +146,10 @@ class RegisterController extends Controller
         'firstname.string' => '文字列を入力してください。',
         'kana_lastname.required' => 'フリガナを入力してください。',
         'kana_lastname.string' => '文字列を入力してください。',
-        'kana_lastname.regex' => 'カタカナで入力してください。',
+        'kana_lastname.regex' => '全角カタカナで入力してください。',
         'kana_firstname.required' => 'フリガナを入力してください。',
         'kana_firstname.string' => '文字列を入力してください。',
-        'kana_firstname.regex' => 'カタカナで入力してください。',
+        'kana_firstname.regex' => '全角カタカナで入力してください。',
       ];
       $validator = Validator::make($input, $rules, $messages);
       $validated = $validator->validate(); //元のページにリダイレクトしてくれる。
@@ -159,12 +158,10 @@ class RegisterController extends Controller
         //セッションに書き込む
         $request->session()->put("register_input", $input);
 
-        $industryArray = ReturnIndustryClass::returnIndustry();
-        $prefecturesArray = ReturnPrefecturesClass::returnPrefectures();
-        return view('hr.auth.main.register2',[
-          'industryArray' => $industryArray,
-          'prefecturesArray' => $prefecturesArray,
-        ]);
+        $industryArray = ReturnUserInformationArrayClass::returnIndustry();
+        $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+        $companyTypeArray = ReturnUserInformationArrayClass::returnCompanyTypeArray();
+        return view('hr.auth.main.register2', compact('industryArray', 'prefecturesArray', 'companyTypeArray'));
     }
 
     public function showForm3(Request $request)
@@ -174,19 +171,18 @@ class RegisterController extends Controller
         //セッションに書き込む
         $request->session()->put("register2_input", $input);
 
-        $prefecturesArray = ReturnPrefecturesClass::returnPrefectures();
-        return view('hr.auth.main.register3',[
-          'prefecturesArray' => $prefecturesArray,
-        ]);
+        $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+        $selectionPhaseArray = ReturnUserInformationArrayClass::returnSelectionPhaseArray();
+
+        return view('hr.auth.main.register3',compact('prefecturesArray', 'selectionPhaseArray'));
     }
 
     //リダイレクト時にGETメソッドが送られるため
     public function redirectShowForm3()
     {
-      $prefecturesArray = ReturnPrefecturesClass::returnPrefectures();
-      return view('hr.auth.main.register3',[
-        'prefecturesArray' => $prefecturesArray,
-      ]);
+      $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+      $selectionPhaseArray = ReturnUserInformationArrayClass::returnSelectionPhaseArray();
+      return view('hr.auth.main.register3',compact('prefecturesArray', 'selectionPhaseArray'));
     }
 
     public function showForm4(Request $request)
@@ -240,9 +236,9 @@ class RegisterController extends Controller
         $gender = '女';
       }
 
-      $position = "未入力";
-      if(!is_null($register3_input['position'])){
-        $position = $register3_input['position'];
+      $selection_phase = "未入力";
+      if(!is_null($register3_input['selection_phase'])){
+        $selection_phase = $register3_input['selection_phase'];
       }
 
       $workplace = "未入力";
@@ -273,7 +269,7 @@ class RegisterController extends Controller
         '所属業界' => $register2_input['industry'],
         '本社所在地' => $register2_input['location'],
         '企業区分' => $register2_input['company_type'],
-        '役職' => $position,
+        '担当選考フェーズ' => $selection_phase,
         '主な勤務地' => $workplace,
         '事業概要' => $summary,
         '企業ページURL' => $site,
@@ -324,8 +320,8 @@ class RegisterController extends Controller
         $user->plan = "hr";
       }
 
-      if(!is_null($register3_input['position'])){
-        $user->position = $register3_input['position'];
+      if(!is_null($register3_input['selection_phase'])){
+        $user->selection_phase = $register3_input['selection_phase'];
       }
       if(!is_null($register3_input['workplace'])){
         $user->workplace = $register3_input['workplace'];

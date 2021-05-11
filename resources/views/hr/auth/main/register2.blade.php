@@ -83,9 +83,9 @@
                 <div class="col-md-6">
                   <select id="company_type" class="form-control" name="company_type" required>
                     <option value="">属する企業区分を選択してください。</option>
-                    <option value="東証一部" @if(old('company_type') == "東証一部") selected @endif>東証一部</option>
-                    <option value="マザーズ" @if(old('company_type') == "マザーズ") selected @endif>マザーズ</option>
-                    <option value="未上場" @if(old('company_type') == "未上場") selected @endif>未上場</option>
+                    @foreach($companyTypeArray as $companyType)
+                      <option value="{{ $companyType }}" @if(old('company_type') == "{{ $companyType }}") selected @endif>{{ $companyType }}</option>
+                    @endforeach
                   </select>
                   @if ($errors->has('company_type'))
                     <span class="help-block">

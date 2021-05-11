@@ -32,6 +32,8 @@ Route::get('register/2', 'Auth\RegisterController@redirectShowForm2')->name('red
 Route::post('register/3', 'Auth\RegisterController@showForm3')->name('register3');
 // 本登録フォーム3 to 本登録フォーム4
 Route::post('register/4', 'Auth\RegisterController@showForm4')->name('register4');
+// 本登録フォーム4 to 本登録フォーム（投稿者専用）
+Route::post('register/plan', 'Auth\RegisterController@showFormPlan')->name('register.plan');
 
 //　本登録フォーム to 本登録確認画面
 Route::post('register/main/post', 'Auth\RegisterController@post')->name('register.main.post');
