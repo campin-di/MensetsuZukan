@@ -33,14 +33,14 @@ class CreateUsersTable extends Migration
             $table->string('company_type')->nullable();
             $table->string('industry')->nullable();
             $table->string('jobtype')->nullable();
-            $table->string('workplace')->default("設定されていません。");
-            $table->string('start_time')->default("設定されていません。");
+            $table->string('workplace')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('english')->nullable();
+            $table->string('toeic')->nullable();
             $table->string('introduction', 1000)->default('設定されていません。');
             $table->string('strengths', 1000)->default('設定されていません。');
             $table->string('gakuchika', 1000)->default('設定されていません。');
             $table->string('personality', 1000)->default('設定されていません。');
-            $table->integer('toeic')->unsigned()->default(0);
-            $table->integer('english')->unsigned()->default(0);
             $table->string('other_language')->default('設定されていません。');
             $table->string('qualification')->default('設定されていません。');
 

@@ -18,15 +18,22 @@
             @csrf
 
             <div class="form-group row">
-              <label for="position" class="col-md-4 col-form-label text-md-right" required>役職</label>
+            <label for="selection_phase" class="col-md-4 col-form-label text-md-right">普段担当する選考フェーズ</label>
               <div class="col-md-6">
-                <input id="position" type="text" class="form-control{{ $errors->has('position') ? ' is-invalid' : '' }}" name="position" value="{{ old('position') }}">
-
-                @if ($errors->has('position'))
-                  <span class="invalid-feedback">
-                    <strong>{{ $errors->first('position') }}</strong>
-                  </span>
-                @endif
+                <div class="row">
+                  <div class="col-md-6">
+                    <select id="selection_phase" class="form-control" name="selection_phase">
+                      @foreach($selectionPhaseArray as $phase)
+                        <option value="{{ $phase }}" @if(old('selection_phase') == "{{ $phase }}") selected @endif>{{ $phase }}</option>
+                      @endforeach
+                    </select>
+                    @if ($errors->has('selection_phase'))
+                      <span class="help-block">
+                        <strong>{{ $errors->first('selection_phase') }}</strong>
+                      </span>
+                    @endif
+                  </div>
+                </div>
               </div>
             </div>
 

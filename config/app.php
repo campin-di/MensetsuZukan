@@ -233,9 +233,7 @@ return [
         'Add2DatabaseClass' => app\Common\Add2DatabaseClass::class,
         'Meeting' => app\Common\MeetingClass::class,
         'RedirectClass' => app\Common\RedirectClass::class,
-        'ReturnIndustryClass' => app\Common\ReturnIndustryClass::class,
-        'ReturnPrefecturesClass' => app\Common\ReturnPrefecturesClass::class,
-        'ReturnTimeArrayClass' => app\Common\ReturnTimeArrayClass::class,
+        'ReturnUserInformationArrayClass' => app\Common\ReturnUserInformationArrayClass::class,
     ],
 
 ];
