@@ -1,21 +1,210 @@
-.inner-body{
-  max-width: 1000px;
-  overflow-x: hidden;
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none;
 }
 
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #f8fafc;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 質問タグ部分 =================================================*/
 .button-box{
   max-width: 1200px;
   display:flex;
   flex-wrap: nowrap;
   overflow-x:scroll;
-  margin: 25px 0 50px 5%;
+  margin: 25px 0 50px 0;
+  padding-bottom: 10px;
 }
 
 .button-box button{
-  margin: 0 10px;
-  border-radius: 20px;
+  margin: 0 5px;
+  border-radius: 30px;
+  padding: 5px 10px;
+  border: 1px solid #EEE;
 }
 
 .button-box button p{
+  margin: 0;
   white-space: nowrap;
 }
+
+/* === begin: スクロールバー デザイン 変更部 ===========================================*/
+.button-box::-webkit-scrollbar {
+  width: 7px;
+  height: 8px;
+}
+.button-box::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border-radius: 10px;
+}
+.button-box::-webkit-scrollbar-track {
+  background: rgba(100,100,100, .1);
+  margin-left: 10px;
+}
+/* === end: スクロールバー デザイン 変更部 ===========================================*/
+/* === end: 質問タグ部分 =================================================*/
+
+/* === begin: 動画コンテンツ部分 =================================================*/
+.video-wrapper{
+  margin-top: 30px;
+}
+
+.video-thumbnail{
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+    background-color: #000;
+}
+.video-thumbnail:before {
+    content:"";
+    display: block;
+    padding-top: 56.25%;
+}
+.video-thumbnail img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+}
+
+.video-title{
+  font-size: 18px;
+  color: #333;
+  margin: 10px auto;
+  width: 90%;
+  font-weight: bold;
+}
+
+.video-view-good-wrapper{
+  width: 90%;
+  margin: 0 auto;
+  font-size: 14px;
+  justify-content: space-between;
+}
+
+.other-question-wrapper{
+  margin: 15px auto 15px 5%;
+  display: flex;
+  white-space: nowrap;
+  overflow-x: scroll;
+  padding-bottom: 5px;
+}
+.other-question-wrapper div{
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+/* === begin: スクロールバー デザイン 変更部 ===========================================*/
+.other-question-wrapper::-webkit-scrollbar {
+  width: 3px;
+  height: 7px;
+}
+.other-question-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border-radius: 10px;
+}
+.other-question-wrapper::-webkit-scrollbar-track {
+  background: rgba(100,100,100, .1);
+  margin-left: 10px;
+}
+/* === end: スクロールバー デザイン 変更部 ===========================================*/
+/* === end: 質問タグ部分 =================================================*/
+
+
+.other-question-selected{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  color: #FFF;
+}
+
+.other-question{
+  background-color: #D5E3FF;
+}
+
+.video-score-wrapper{
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
+}
+.video-score-wrapper .right-child{
+  color: #FFF;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 2.5;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  background-color: #E6B422;
+  border-radius: 5px;
+}
+/* === end: 動画コンテンツ部分 =================================================*/
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none:
+  }
+  .pc{
+    display: block;
+  }
+  .flex-pc{
+    display: flex;
+  }
+
+  /* === begin: 質問タグ部分 =================================================*/
+  /* === end: 質問タグ部分 =================================================*/
+
+  /* === begin: 動画コンテンツ部分 =================================================*/
+  .video-wrapper{
+    padding-top: 30px;
+  }
+  .video-wrapper .flex-pc .left-child-pc{
+    width: 45%;
+  }
+  .video-wrapper .flex-pc .right-child-pc{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .video-title{
+    font-size: 24px;
+  }
+
+  .video-user-wrapper{
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .video-hr-user{
+    flex-direction: initial !important;
+  }
+
+  .other-question-wrapper{
+    width: 90%;
+  }
+
+  .video-score-wrapper{
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-top: 20px;
+  }
+  .video-score-wrapper .right-child{
+    font-size: 24px;
+    width: 200px;
+    height: 60px;
+  }
+  /* === end: 動画コンテンツ部分 =================================================*/
