@@ -1,4 +1,4 @@
-let elements = document.getElementsByClassName("question-selected");
+let elements = document.getElementsByClassName("other-question-selected");
 elements = Array.from(elements);
 
 //クリックしたタグのコンテンツだけを表示する関数
@@ -12,9 +12,9 @@ const displayNoneElement = (question) => {
       }
     } else{
       if(element.innerHTML !== question){
-        element.closest(".content-box").style.display ="none";
+        element.closest(".video-wrapper").style.display ="none";
       } else {
-        element.closest(".content-box").style.display ="block";
+        element.closest(".video-wrapper").style.display ="block";
       }
     }
   });
@@ -24,14 +24,18 @@ const displayNoneElement = (question) => {
 const changeBackgroundColorElement = (id) =>{
   for( let index = 1; index <= questions.length; index++){
     if(id === 0){
-      document.getElementById("button-all").style.backgroundColor = '#0245CC';
+      document.getElementById("button-all").style.background = 'linear-gradient(to right, #7CC4FF, #9681FF)';
+      document.getElementById("button-all").style.color = '#FFFFFF';
     } else {
-      document.getElementById("button-all").style.backgroundColor = '#D5E3FF';
+      document.getElementById("button-all").style.background = '#D5E3FF';
+      document.getElementById("button-all").style.color = '#333333';
     }
     if(id === index){
-      document.getElementById("button-" + index).style.backgroundColor = '#0245CC';
+      document.getElementById("button-" + index).style.background = 'linear-gradient(to right, #7CC4FF, #9681FF)';
+      document.getElementById("button-" + index).style.color = '#FFFFFF';
     } else {
-      document.getElementById("button-" + index).style.backgroundColor = '#D5E3FF';
+      document.getElementById("button-" + index).style.background = '#D5E3FF';
+      document.getElementById("button-" + index).style.color = '#333333';
     }
   }
 }
