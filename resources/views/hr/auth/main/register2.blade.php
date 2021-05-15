@@ -1,114 +1,102 @@
-@extends('layouts.hr.common')
+@extends('layouts.hr.reverse')
+<link href="{{ asset('/css/st/auth/main/register3.css') }}" rel="stylesheet">
 @section('content')
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">STEP2</div>
 
-        @isset($message)
-          <div class="card-body">
-            {{$message}}
-          </div>
-        @endisset
-
-        @empty($message)
-        <div class="card-body">
-          <form method="POST" action="{{ route('hr.register3') }}">
-          @csrf
-
-          <div class="form-group row">
-            <label for="company" class="col-md-4 col-form-label text-md-right">企業名*</label>
-            <div class="col-md-6">
-              <input id="company" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="例：株式会社ぱむ" required>
-
-              @if ($errors->has('company'))
-                <span class="invalid-feedback">
-                  <strong>{{ $errors->first('company') }}</strong>
-                </span>
-              @endif
-            </div>
-          </div>
-
-          <div class="form-group row">
-          <label for="industry" class="col-md-4 col-form-label text-md-right">所属業界*</label>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-6">
-                  <select id="industry" class="form-control" name="industry" required>
-                    <option value="">所属企業の業界を選択してください。</option>
-                    @foreach($industryArray as $industry)
-                      <option value="{{ $industry }}" @if(old('industry') == "{{ $industry }}") selected @endif>{{ $industry }}</option>
-                    @endforeach
-                  </select>
-                  @if ($errors->has('industry'))
-                    <span class="help-block">
-                      <strong>{{ $errors->first('industry') }}</strong>
-                    </span>
-                  @endif
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group row">
-          <label for="location" class="col-md-4 col-form-label text-md-right">本社所在地*</label>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-6">
-                  <select id="location" class="form-control" name="location" required>
-                    <option value="">本社所在地を選択してください。</option>
-                    @foreach($prefecturesArray as $area => $prefectureArray)
-                      <optgroup label="{{ $area }}">
-                        @foreach($prefectureArray as $prefecture)
-                          <option value="{{ $prefecture }}" @if(old('location') == "{{ $prefecture }}") selected @endif>{{ $prefecture }}</option>
-                        @endforeach
-                      </optgroup>
-                    @endforeach
-                  </select>
-                  @if ($errors->has('location'))
-                    <span class="help-block">
-                      <strong>{{ $errors->first('location') }}</strong>
-                    </span>
-                  @endif
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group row">
-          <label for="company_type" class="col-md-4 col-form-label text-md-right">企業区分*</label>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-6">
-                  <select id="company_type" class="form-control" name="company_type" required>
-                    <option value="">属する企業区分を選択してください。</option>
-                    @foreach($companyTypeArray as $companyType)
-                      <option value="{{ $companyType }}" @if(old('company_type') == "{{ $companyType }}") selected @endif>{{ $companyType }}</option>
-                    @endforeach
-                  </select>
-                  @if ($errors->has('company_type'))
-                    <span class="help-block">
-                      <strong>{{ $errors->first('company_type') }}</strong>
-                    </span>
-                  @endif
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group row mb-0">
-            <div class="col-md-6 offset-md-4">
-              <button type="submit" class="btn btn-primary">
-              　→　
-              </button>
-            </div>
-          </div>
-          </form>
-        </div>
-      @endempty
-      </div>
+  <div class="top-content-wrapper">
+    <div class="top-content">
+      <h1>STEP2</h1>
     </div>
   </div>
-</div>
+
+  @isset($message)
+    <div class="card-body">
+      {{$message}}
+    </div>
+  @endisset
+
+  @empty($message)
+    <div class="card-body form-wrapper">
+      <form method="POST" action="{{ route('hr.register3') }}">
+      @csrf
+
+      <div class="form-input-wrapper">
+      <label for="company" class="form-title">企業名*</label>
+        <div class="form-input flex">
+          <input id="company" type="text" class="form-control {{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="株式会社ぱむ" required>
+
+          @if ($errors->has('company'))
+            <span class="invalid-feedback">
+              <strong>{{ $errors->first('company') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
+      <div class="form-input-wrapper">
+        <label for="industry" class="form-title">所属業界*</label>
+        <div class="form-input">
+          <select id="industry" class="form-control" name="industry" required>
+            <option value="">所属企業の業界を選択してください。</option>
+            @foreach($industryArray as $industry)
+              <option value="{{ $industry }}" @if(old('industry') == "{{ $industry }}") selected @endif>{{ $industry }}</option>
+            @endforeach
+          </select>
+          @if ($errors->has('industry'))
+            <span class="help-block">
+              <strong>{{ $errors->first('industry') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
+      <div class="form-input-wrapper">
+        <label for="location" class="form-title">本社所在地*</label>
+        <div class="form-input">
+          <select id="location" class="form-control" name="location" required>
+            <option value="">本社所在地を選択してください。</option>
+            @foreach($prefecturesArray as $area => $prefectureArray)
+              <optgroup label="{{ $area }}">
+                @foreach($prefectureArray as $prefecture)
+                  <option value="{{ $prefecture }}" @if(old('location') == "{{ $prefecture }}") selected @endif>{{ $prefecture }}</option>
+                @endforeach
+              </optgroup>
+            @endforeach
+          </select>
+          @if ($errors->has('location'))
+            <span class="help-block">
+              <strong>{{ $errors->first('location') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
+      <div class="form-input-wrapper">
+        <label for="company_type" class="form-title">企業区分*</label>
+        <div class="form-input">
+          <select id="company_type" class="form-control" name="company_type" required>
+            <option value="">企業区分を選択してください。</option>
+            <option value="大手" @if(old('company_type') == "大手") selected @endif>大手（安定・着実、会社の規模が大きい）</option>
+            <option value="中小" @if(old('company_type') == "中小") selected @endif>中小（安定・着実、会社の規模が小さい）</option>
+            <option value="メガベンチャー" @if(old('company_type') == "メガベンチャー") selected @endif>メガベンチャー（挑戦・成長、会社の規模が大きい）</option>
+            <option value="ベンチャー" @if(old('company_type') == "ベンチャー") selected @endif>ベンチャー（挑戦・成長、会社の規模が小さい）</option>
+          </select>
+
+          @if ($errors->has('company_type'))
+            <span class="help-block">
+              <strong>{{ $errors->first('company_type') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
+      <div class="button-wrapper">
+        <button type="submit">
+          →
+        </button>
+      </div>
+    </form>
+  </div>
+  @endempty
+
+<script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
 @endsection
