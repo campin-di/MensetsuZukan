@@ -19,7 +19,7 @@
 
     <!-- begin:CSS -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/hr/parts/header.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/st/parts/header_reverse.css') }}" rel="stylesheet">
     <!-- end:CSS -->
 
     <!-- begin:JS -->
@@ -44,8 +44,9 @@
     <meta name="theme-color" content="#fafafa">
   </head>
   <body>
-    @include('parts.hr.header.normal')
+    @include('parts.st.header.reverse')
     @yield('content')
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="https://js.stripe.com/v3/"></script>
   </body>
 </html>

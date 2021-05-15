@@ -1,23 +1,23 @@
-@extends('layouts.hr.common')
+@extends('layouts.st.reverse')
+<link href="{{ asset('/css/st/auth/registerd.css') }}" rel="stylesheet">
 @section('content')
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">仮会員登録完了</div>
+<div class="top-content-wrapper">
+  <div class="top-content">
+    <h1>仮会員登録完了</h1>
+  </div>
+</div>
 
-        <div class="card-body">
-          <p>この度は、ご登録いただき、誠にありがとうございます。</p>
-          <p>
-              ご本人様確認のため、ご登録いただいたメールアドレスに、<br>
-              本登録のご案内のメールが届きます。
-          </p>
-          <p>
-              そちらに記載されているURLにアクセスし、<br>
-              アカウントの本登録を完了させてください。
-          </p>
-        </div>
-      </div>
+<div class="container form-wrapper">
+  <div class="card">
+    <div class="title">メールを送信しました</div>
+    <p>
+      次のメールアドレスへ「仮登録完了通知」を
+      送信いたしましたので、 メールの内容を確認し、
+      登録手続きを完了させてください。
+    </p>
+
+    <div class="email">
+      {{ $email }}
     </div>
   </div>
 </div>
