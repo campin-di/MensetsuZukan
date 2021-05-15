@@ -141,4 +141,68 @@
   border-bottom: 1px solid blue;
   padding-bottom: 10px;
 }
+
+@media screen and (min-width: 1024px) {
+  .container_title {
+    font-size: 32px;
+  }
+  .container_profile_img {
+    width: 110px;
+    height: 110px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 60px;
+  }
+  .container_profile_name {
+    font-size: 35px;
+    margin-top: 15px;
+  }
+  .container_profile_category {
+    font-size: 18px;
+  }
+  .container_profile_detail {
+    font-size: 18px;
+    margin-top: 40px;
+  }
+  .container_profile_btn {
+    width: 650px;
+    margin: 60px auto 0 auto;
+    height: 70px;
+  }
+  .container_profile_btn_profile {
+    font-size: 18px !important;
+    line-height: 44px;
+  }
+  .container_profile_btn_info {
+    font-size: 18px !important;
+    line-height: 44px;
+  }
+  .container_schedule_title {
+    font-size: 32px;
+  }
+  .container_schedule_list li {
+    width: 650px;
+    height: 80px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .container_schedule_list li .item {
+    width: 650px;
+    font-size: 24px;
+    margin-right: 0;
+  }
+  .container_schedule_list li .item_img {
+    width: 80px;
+    height: 80px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 40px;
+  }
+  .container_schedule_reservation {
+    height: 100px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 70px;
+  }
+}
 /*# sourceMappingURL=mypage.css.map */
