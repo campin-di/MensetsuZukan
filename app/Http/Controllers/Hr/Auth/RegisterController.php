@@ -95,7 +95,9 @@ class RegisterController extends Controller
     {
       event(new Registered($user = $this->create( $request->all() )));
 
-      return view('hr.auth.registered');
+      $email = $user['email'];
+
+      return view('hr.auth.registered', compact('email'));
     }
 
     public function showForm($email_token)

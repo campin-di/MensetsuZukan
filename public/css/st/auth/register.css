@@ -1,0 +1,81 @@
+input::placeholder {
+  color: #CCCCCC !important;
+}
+/* IE */
+input:-ms-input-placeholder {
+  color: #CCCCCC !important;
+}
+/* Edge */
+input::-ms-input-placeholder {
+  color: #CCCCCC !important;
+}
+
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content-wrapper{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  margin-bottom: 50px;
+}
+
+.top-content{
+  padding: 50px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #FFF;
+}
+
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === begin: フォーム部分 =================================================*/
+
+.form-input-wrapper{
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.form-title{
+  color: #6B8BE9;
+  margin-left: 10px;
+}
+
+.form-input input{
+  border-radius: 30px;
+  padding: 1.4rem;
+  font-size: 1.1rem;
+}
+
+.button-wrapper{
+  margin-top: 100px;
+  text-align: center;
+}
+.button-wrapper button{
+  width: 100%;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+}
+/* === end: フォーム部分 =================================================*/
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .top-content-wrapper{
+    width: 105vw;
+    margin-left: -25%;
+    overflow-x: hidden;
+  }
+
+  .form-wrapper{
+    padding: 0 25% !important;
+  }
+
+  .button-wrapper{
+    padding: 0 5%;
+  }
+}
