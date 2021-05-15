@@ -1,108 +1,107 @@
-@extends('layouts.st.common')
+@extends('layouts.st.reverse')
+<link href="{{ asset('/css/st/auth/main/register.css') }}" rel="stylesheet">
 @section('content')
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">STEP１</div>
 
-        @isset($message)
-          <div class="card-body">
-            {{$message}}
-          </div>
-        @endisset
-
-        @empty($message)
-        <div class="card-body">
-          <form method="POST" action="{{ route('register2') }}">
-          @csrf
-
-          <div class="form-group row">
-            <label for="gender" class="col-md-4 col-form-label text-md-right">性別*</label>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-6">
-                  <select id="gender" class="form-control" name="gender">
-                    <option value="1">男</option>
-                    <option value="2">女</option>
-                  </select>
-                  @if ($errors->has('gender'))
-                    <span class="help-block">
-                      <strong>{{ $errors->first('gender') }}</strong>
-                    </span>
-                  @endif
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="lastname" class="col-md-4 col-form-label text-md-right">氏名*</label>
-            <div class="col-md-6">
-              <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required>
-              @if ($errors->has('lastname'))
-                <span class="invalid-feedback">
-                  <strong>{{ $errors->first('lastname') }}</strong>
-                </span>
-              @endif
-
-              <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" required>
-              @if ($errors->has('firstname'))
-                <span class="invalid-feedback">
-                  <strong>{{ $errors->first('firstname') }}</strong>
-                </span>
-              @endif
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="kana_lastname" class="col-md-4 col-form-label text-md-right">フリガナ*</label>
-            <div class="col-md-6">
-              <input id="kana_lastname" type="text" class="form-control{{ $errors->has('kana_lastname') ? ' is-invalid' : '' }}" name="kana_lastname" value="{{ old('kana_lastname') }}" required>
-
-              @if ($errors->has('kana_lastname'))
-                <span class="invalid-feedback">
-                  <strong>{{ $errors->first('kana_lastname') }}</strong>
-                </span>
-              @endif
-
-              <input id="kana_firstname" type="text" class="form-control{{ $errors->has('kana_firstname') ? ' is-invalid' : '' }}" name="kana_firstname" value="{{ old('kana_firstname') }}" required>
-
-              @if ($errors->has('kana_firstname'))
-                <span class="invalid-feedback">
-                  <strong>{{ $errors->first('kana_firstname') }}</strong>
-                </span>
-              @endif
-            </div>
-          </div>
-
-          <div class="form-group row">
-          <label for="nickname" class="col-md-4 col-form-label text-md-right">ニックネーム*</label>
-            <div class="col-md-6">
-              <input id="nickname" type="text" class="form-control{{ $errors->has('nickname') ? ' is-invalid' : '' }}" name="nickname" value="{{ old('nickname') }}" required>
-
-              @if ($errors->has('nickname'))
-                <span class="invalid-feedback">
-                  <strong>{{ $errors->first('nickname') }}</strong>
-                </span>
-              @endif
-            </div>
-          </div>
-
-          <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>
-
-          <div class="form-group row mb-0">
-            <div class="col-md-6 offset-md-4">
-              <button type="submit" class="btn btn-primary">
-              　→　
-              </button>
-            </div>
-          </div>
-          </form>
-        </div>
-      @endempty
-      </div>
+  <div class="top-content-wrapper">
+    <div class="top-content">
+      <h1>STEP1</h1>
     </div>
   </div>
-</div>
+
+  @isset($message)
+    <div class="card-body">
+      {{$message}}
+    </div>
+  @endisset
+
+  @empty($message)
+    <div class="card-body form-wrapper">
+      <form method="POST" action="{{ route('register2') }}">
+      @csrf
+
+      <div class="form-input-wrapper">
+        <label for="gender" class="form-title">性別*</label>
+        <div class="form-input">
+          <select id="gender" class="form-control" name="gender">
+            <option value="">性別を選択してください。</option>
+            <option value="1">男</option>
+            <option value="2">女</option>
+          </select>
+          @if ($errors->has('gender'))
+            <span class="help-block">
+              <strong>{{ $errors->first('gender') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
+      <div class="form-input-wrapper">
+        <label for="lastname" class="form-title">氏名*</label>
+        <div class="form-input flex">
+          <div class="form-left-child">
+            <input id="lastname" type="text" class="form-control {{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" placeholder="性" required>
+            @if ($errors->has('lastname'))
+            <span class="invalid-feedback">
+              <strong>{{ $errors->first('lastname') }}</strong>
+            </span>
+            @endif
+          </div>
+          <div class="form-right-child">
+            <input id="firstname" type="text" class="form-control {{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" placeholder="名" required>
+            @if ($errors->has('firstname'))
+            <span class="invalid-feedback">
+              <strong>{{ $errors->first('firstname') }}</strong>
+            </span>
+            @endif
+          </div>
+        </div>
+      </div>
+
+      <div class="form-input-wrapper">
+        <label for="kana_lastname" class="form-title">フリガナ*</label>
+        <div class="form-input flex">
+          <div class="form-left-child">
+            <input id="kana_lastname" type="text" class="form-control{{ $errors->has('kana_lastname') ? ' is-invalid' : '' }}" name="kana_lastname" value="{{ old('kana_lastname') }}" placeholder="セイ" required>
+            @if ($errors->has('kana_lastname'))
+              <span class="invalid-feedback">
+                <strong>{{ $errors->first('kana_lastname') }}</strong>
+              </span>
+            @endif
+          </div>
+          <div class="form-right-child">
+            <input id="kana_firstname" type="text" class="form-control{{ $errors->has('kana_firstname') ? ' is-invalid' : '' }}" name="kana_firstname" value="{{ old('kana_firstname') }}" placeholder="メイ" required>
+            @if ($errors->has('kana_firstname'))
+              <span class="invalid-feedback">
+                <strong>{{ $errors->first('kana_firstname') }}</strong>
+              </span>
+            @endif
+          </div>
+        </div>
+      </div>
+
+      <div class="form-input-wrapper">
+      <label for="nickname" class="form-title">ニックネーム*</label>
+        <div class="form-input flex">
+          <input id="nickname" type="text" class="form-control {{ $errors->has('nickname') ? ' is-invalid' : '' }}" name="nickname" value="{{ old('nickname') }}" placeholder="例：よっしー" required>
+
+          @if ($errors->has('nickname'))
+            <span class="invalid-feedback">
+              <strong>{{ $errors->first('nickname') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
+       <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>
+
+      <div class="button-wrapper">
+        <button type="submit">
+          →
+        </button>
+      </div>
+    </form>
+  </div>
+  @endempty
+
+<script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
 @endsection

@@ -1,0 +1,76 @@
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content-wrapper{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.top-content{
+  padding: 50px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #FFF;
+}
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === begin: メイン部分 =================================================*/
+.container{
+  text-align: center;
+}
+
+.title{
+  margin: 100px auto;
+  color: #6B8BE9;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upper-button{
+  border: solid 2px #D5E3FF;
+  border-radius: 5px;
+  padding: 13px 0;
+  margin: 10px auto;
+}
+.upper-button a{
+  font-weight: bold;
+}
+
+.under-button{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border-radius: 5px;
+  padding: 13px 0;
+  margin: 10px auto;
+}
+.under-button a{
+  color: #FFF;
+  font-weight: bold;
+}
+
+/* === end: メイン部分 =================================================*/
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .top-content-wrapper{
+    width: 105vw;
+    margin-left: -25%;
+    overflow-x: hidden;
+    margin-bottom: 100px;
+  }
+
+  .form-wrapper{
+    padding: 0 20% !important;
+  }
+
+  .title{
+    font-size: 22px;
+  }
+
+  .card{
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .card p{
+    font-size: 16px;
+  }
+}

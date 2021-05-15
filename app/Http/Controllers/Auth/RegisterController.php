@@ -87,7 +87,9 @@ class RegisterController extends Controller
     {
       event(new Registered($user = $this->create( $request->all() )));
 
-      return view('st/auth.registered');
+      $email = $user['email'];
+
+      return view('st/auth.registered', compact('email'));
     }
 
     public function showForm($email_token)
@@ -247,6 +249,8 @@ class RegisterController extends Controller
          '志望職種' => $register3_input['jobtype'],
          '志望勤務地' => $register3_input['workplace'],
          '就活開始時期' => $register3_input['start_time'],
+         '英語レベル' => $register3_input['english_level'],
+         'TOEICスコア' => $register3_input['toeic'],
          'プラン' => $register4_input['plan'],
        ];
 

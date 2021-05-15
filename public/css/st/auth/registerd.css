@@ -1,0 +1,73 @@
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content-wrapper{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.top-content{
+  padding: 50px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #FFF;
+}
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === begin: フォーム部分 =================================================*/
+.container{
+
+}
+
+.card{
+  margin-top: 50px;
+  padding: 40px 5%;
+  text-align: center;
+}
+.card span{
+  display: contents;
+}
+.card p{
+  margin: 20px auto 40px;
+  font-size: 14px;
+}
+
+.title{
+  margin: 20px auto;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.email{
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 3;
+  border: 1px solid #DDDDDD;
+}
+/* === end: フォーム部分 =================================================*/
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .top-content-wrapper{
+    width: 105vw;
+    margin-left: -25%;
+    overflow-x: hidden;
+    margin-bottom: 100px;
+  }
+
+  .form-wrapper{
+    padding: 0 20% !important;
+  }
+
+  .title{
+    font-size: 22px;
+  }
+
+  .card{
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .card p{
+    font-size: 16px;
+  }
+}

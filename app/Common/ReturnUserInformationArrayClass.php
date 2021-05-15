@@ -206,9 +206,8 @@ class ReturnUserInformationArrayClass
     public static function returnToeicArray()
     {
       $toeicArray = [
-        '300未満',
-        '300 ~ 349',
-        '350 ~ 399',
+        '未受験',
+        '400未満',
         '400 ~ 449',
         '450 ~ 499',
         '500 ~ 549',
