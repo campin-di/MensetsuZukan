@@ -1,18 +1,32 @@
 @extends('layouts.st.common')
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/st/their_page.css') }}">
 
 <div class="container">
-  <h1>マイページ</h1>
-  <div>
-    {{ $nickname }}
+  <h1 class="container_title">マイページ</h1>
+  <div class="container_profile">
+    <img class="container_profile_img" src="{{ asset('img/kokyo.png') }}" alt="">
+    <p class="container_profile_name">
+      {{ $nickname }}
+    </p>
+    <p class="container_profile_category">
+      地方国公立/IT業界志望/23卒
+    </p>
+    <p class="container_profile_detail">
+      地方国立理系です！<br>
+      長期インターンや留学の経験がなく、アルバイト経験のみで頑張っています！！
+    </p>
+    <div class="container_profile_btn">
+      <a href="{{ route('mypage.detail') }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
+    </div>
   </div>
 
-  <a href="{{ route('mypage.theirDetail', $stId) }}" class="mx-2 btn btn-primary">詳しいプロフィール</a>
-
-  <h2>過去の面接</h2>
+  <div class="container_pastVideo">
+    <h2 class="container_pastVideo_title">過去の面接動画</h2>
+  </div>
   @foreach($pastVideosCollection as $video)
     <a href="{{ route('watch', $video['id'])}}">
-      <iframe width="560" height="315" src="{{ $video['url'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      <iframe width="100%" height="315" src="{{ $video['url'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
       {{ $video['title'] }}<br>
 
       <div class="d-flex justify-content-start">

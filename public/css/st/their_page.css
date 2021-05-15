@@ -1,0 +1,107 @@
+.container_title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0 30px 0;
+}
+
+.container_profile {
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.container_profile_img {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.container_profile_name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.container_profile_category {
+  font-size: 10px;
+}
+
+.container_profile_detail {
+  font-size: 10px;
+  margin-top: 35px;
+}
+
+.container_profile_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container_profile_btn a {
+  font-size: 10px;
+  width: 360px;
+  padding: 13px;
+}
+
+.container_profile_btn_profile {
+  background: -webkit-gradient(linear, left top, right top, from(#7cc4ff), to(#9681ff));
+  background: linear-gradient(to right, #7cc4ff, #9681ff);
+  border: none;
+}
+
+.container_pastVideo {
+  margin-top: 30px;
+}
+
+.container_pastVideo_title {
+  width: 100vw;
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid blue;
+  padding-bottom: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  .container_title {
+    font-size: 32px;
+  }
+  .container_profile_img {
+    width: 110px;
+    height: 110px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 60px;
+  }
+  .container_profile_name {
+    font-size: 35px;
+    margin-top: 15px;
+  }
+  .container_profile_category {
+    font-size: 18px;
+  }
+  .container_profile_detail {
+    font-size: 18px;
+    margin-top: 40px;
+  }
+  .container_profile_btn {
+    width: 650px;
+    display: block;
+    margin: 60px auto 0 auto;
+    height: 70px;
+  }
+  .container_profile_btn_profile {
+    font-size: 18px !important;
+    line-height: 44px;
+  }
+  .container_profile_btn_info {
+    font-size: 18px !important;
+    line-height: 44px;
+  }
+}
+/*# sourceMappingURL=their_page.css.map */
