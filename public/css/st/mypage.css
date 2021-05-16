@@ -135,6 +135,9 @@
 }
 
 .container_pastVideo_title {
+  width: 100vw;
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
   font-size: 20px;
   text-align: center;
   font-weight: bold;
