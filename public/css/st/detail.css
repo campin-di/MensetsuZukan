@@ -1,0 +1,80 @@
+.container_title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0 30px 0;
+}
+
+.container_detail .item {
+  margin-bottom: 20px;
+}
+
+.container_detail .item .acd-check {
+  display: none;
+}
+
+.container_detail .item .acd-label {
+  display: block;
+  position: relative;
+  margin-bottom: 1px;
+  padding: 10px;
+  border-bottom: 1px solid #6b8be9;
+}
+
+.container_detail .item .acd-label a {
+  color: #6b8be9;
+}
+
+.container_detail .item .acd-label:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: 0px;
+  border-top: solid 2px #6b8be9;
+  border-right: solid 2px #6b8be9;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  margin-top: -4px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+  position: absolute;
+  right: 5%;
+}
+
+.container_detail .item .acd-content {
+  height: 0;
+  opacity: 0;
+  padding: 0 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  visibility: hidden;
+}
+
+.container_detail .item .acd-check:checked + .acd-label + .acd-content {
+  height: 40px;
+  opacity: 1;
+  padding: 10px;
+  visibility: visible;
+}
+/*# sourceMappingURL=detail.css.map */

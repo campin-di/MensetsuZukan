@@ -1,0 +1,73 @@
+@import "../_index";
+
+.container {
+    &_title {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        margin: 20px 0 30px 0;
+    }
+    &_detail {
+        .item {
+            margin-bottom: 20px;
+            .acd-check {
+                display: none;
+            }
+            .acd-label {
+                display: block;
+                position: relative;
+                margin-bottom: 1px;
+                padding: 10px;
+                border-bottom: 1px solid $blue;
+                a {
+                    color: $blue;
+                }
+            }
+            .acd-label:after {
+                content: "";
+                width: 8px;
+                height: 8px;
+                border: 0px;
+                border-top: solid 2px $blue;
+                border-right: solid 2px $blue;
+                -ms-transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+                position: absolute;
+                top: 50%;
+                right: 5%;
+                margin-top: -4px;
+                transition: 0.3s;
+            }
+            #acd-check1:checked + label:after,
+            #acd-check2:checked + label:after,
+            #acd-check3:checked + label:after,
+            #acd-check4:checked + label:after,
+            #acd-check5:checked + label:after {
+                transition: all 0.3s;
+            }
+            #acd-check1:checked + label:after,
+            #acd-check2:checked + label:after,
+            #acd-check3:checked + label:after,
+            #acd-check4:checked + label:after,
+            #acd-check5:checked + label:after {
+                transform: rotate(135deg);
+                position: absolute;
+                right: 5%;
+            }
+            .acd-content {
+                height: 0;
+                opacity: 0;
+                padding: 0 10px;
+                transition: 0.3s;
+                visibility: hidden;
+            }
+            .acd-check:checked + .acd-label + .acd-content {
+                height: 40px;
+                opacity: 1;
+                padding: 10px;
+                visibility: visible;
+            }
+        }
+    }
+}
