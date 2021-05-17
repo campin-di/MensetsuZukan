@@ -2,7 +2,7 @@
 <link href="{{ asset('/css/st/auth/login.css') }}" rel="stylesheet">
 @section('content')
 
-<div class="container">
+<div class="container form-wrapper">
   <div class="top-content">
     <h1>人事ログイン</h1>
   </div>

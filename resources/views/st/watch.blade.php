@@ -70,10 +70,7 @@
           <div class="right-child">
             <div class="other-video-title">
               <a href="{{ route('watch', $otherVideo['id'])}}">
-                コンテンツのタイトルがここに表示されます。
-                <!-- 文字数カットの処理をJSで書いたらコメントアウト
                 {{ $otherVideo['title'] }}
-                -->
               </a>
             </div>
             <div class="other-video-views-score-wrapper flex">
@@ -116,4 +113,5 @@
       </div>
     </div>
 </div>
+<script type="text/javascript" src="{{ asset('/js/watch.js') }}"></script>
 @endsection
