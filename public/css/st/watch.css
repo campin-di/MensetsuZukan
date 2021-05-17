@@ -1,6 +1,6 @@
 /* === begin: 共通部分 =================================================*/
 .pc{
-  display: none;
+  display: none !important;
 }
 
 .flex{
@@ -10,6 +10,35 @@
   background-color: #f8fafc;
 }
 /* === end: 共通部分 =================================================*/
+
+/* === begin: オファーボタン 部分(人事のみ) =================================================*/
+.fixed-button{
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  z-index: 999;
+  text-align: center;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.fixed-button a{
+  height: 50px;
+  list-style: none;
+  line-height: 3;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.bottom-button-left{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.bottom-button-right{
+  background: linear-gradient(to right, #FEAA92, #FF96AD);
+}
+/* === end: オファーボタン 部分(人事のみ) =================================================*/
+
+
 
 /* === begin: 再生動画 部分 =================================================*/
 /*=== begin: iframe要素のアスペクト比を保ったまま可変の大きさにする方法 ========*/
@@ -213,8 +242,22 @@
     display: none:
   }
   .pc{
-    display: block;
+    display: block !important;
   }
+
+  /* === begin: オファーボタン 部分(人事のみ) =================================================*/
+  .fixed-button{
+    width: 100vw;
+    left: 0px;
+  }
+
+  .fixed-button a{
+    font-size: 22px;
+    height: 60px;
+    line-height: 3;
+  }
+  /* === end: オファーボタン 部分(人事のみ) =================================================*/
+
 
   .video-iframe{
     width: 100vw;
