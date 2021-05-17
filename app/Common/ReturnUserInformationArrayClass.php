@@ -129,6 +129,7 @@ class ReturnUserInformationArrayClass
           '群馬県',
           '埼玉県',
           '千葉県',
+          '東京都',
           '神奈川県',
         ],
         "▼ 甲信越・北陸エリア" => [
@@ -223,9 +224,9 @@ class ReturnUserInformationArrayClass
       return $toeicArray;
     }
 
-    public static function returnCompanyTypeArray()
+    public static function returnStockTypeArray()
     {
-      $companyTypeArray = [
+      $stockTypeArray = [
         '東証一部',
         '東証二部',
         'マザーズ',
@@ -233,7 +234,7 @@ class ReturnUserInformationArrayClass
         'その他上場',
         '非上場',
       ];
-      return $companyTypeArray;
+      return $stockTypeArray;
     }
 
     public static function returnSelectionPhaseArray()
@@ -247,5 +248,16 @@ class ReturnUserInformationArrayClass
         '全般',
       ];
       return $SelectionPhaseArray;
+    }
+
+    public static function returnCompanyTypeArray()
+    {
+      $companyTypeArray = [
+        '大手',
+        '中小',
+        'メガベンチャー',
+        'ベンチャー',
+      ];
+      return $companyTypeArray;
     }
 }

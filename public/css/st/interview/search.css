@@ -1,0 +1,80 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #f8fafc;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content{
+  padding: 50px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* === end: 画面タイトル 部分 =================================================*/
+
+
+/* === begin: タグ部分 =================================================*/
+.filter-wrapper{
+  justify-content: space-between;
+}
+
+.form-input-wrapper{
+  width: 30%;
+}
+.form-input-wrapper select{
+  border-radius: 30px;
+}
+/* === end: タグ部分 =================================================*/
+
+/* === begin: 各人事部分 =================================================*/
+.hr-profile-wrapper{
+  margin: 30px auto;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #CCC;
+}
+
+.hr-profile-wrapper .flex{
+  align-items: center;
+  margin: 15px auto 10px;
+}
+
+.hr-profile-wrapper .left-child img{
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hr-profile-wrapper .right-child{
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.company-information-wrapper div{
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.icon{
+  width: 20px;
+}
+
+.pr-message{
+  color: #333;
+  margin-top: 10px;
+}
+
+/* === end: 各人事部分 =================================================*/

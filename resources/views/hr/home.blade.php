@@ -1,6 +1,6 @@
 @extends('layouts.hr.common')
-@section('content')
 <link rel="stylesheet" href="{{ asset('css/st/home.css') }}">
+@section('content')
 
   <div class="button-box">
     <button id="button-all">
