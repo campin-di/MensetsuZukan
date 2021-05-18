@@ -81,7 +81,7 @@ class Hr_HrMypageController extends Controller
 
     $interviewReservations = Interview::where('hr_id', $userData->id)->with('hr_user')->select('id', 'hr_id', 'date', 'url')->get();
 
-    return view('hr/hrMypage/theirPage', [
+    return view('hr/hrMypage/their_page', [
       'userDataArray' => $userDataArray,
       'pastVideosCollection' => $pastVideosCollection,
     ]);
@@ -99,7 +99,7 @@ class Hr_HrMypageController extends Controller
       ],
     ]);
 
-    return view('hr/hrMypage/theirDetail', [
+    return view('hr/hrMypage/their_detail', [
       'profileCollection' => $profileCollection,
     ]);
   }
