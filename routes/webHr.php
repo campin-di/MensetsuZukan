@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Route;
         if($loginFlag){
           return redirect()->action('Hr\HrHomeController@index');
         }
-        return view('top');
-    });
+        return view('to3p');
+    })->name('hr.home');
 
     /*=== 認証関係 =============================================================*/
     // 仮会員登録ページ to 仮会員登録確認ページ

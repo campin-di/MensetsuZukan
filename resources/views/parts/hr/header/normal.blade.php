@@ -1,6 +1,6 @@
 <nav class="header-wrapper navbar navbar-expand-md navbar-light">
   <div class="header container">
-      <a class="header-logo navbar-brand" href="{{ url('/') }}">
+      <a class="header-logo navbar-brand" href="{{ route('hr.home') }}">
         <img class="firstview-logo" src="{{ asset('/img/logo/logo_origin.png') }}" alt="ロゴ">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
