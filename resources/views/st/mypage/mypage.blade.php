@@ -1,6 +1,6 @@
 @extends('layouts.st.common')
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/st/mypage.css') }}">
+<link rel="stylesheet" href="{{ asset('css/st/mypage/mypage.css') }}">
 
 <div class="container">
   <h1 class="container_title">マイページ</h1>

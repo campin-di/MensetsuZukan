@@ -1,6 +1,6 @@
 @extends('layouts.st.common')
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/st/their_page.css') }}">
+<link rel="stylesheet" href="{{ asset('css/st/mypage/their_page.css') }}">
 
 <div class="container">
   <h1 class="container_title">マイページ</h1>
@@ -17,7 +17,7 @@
       長期インターンや留学の経験がなく、アルバイト経験のみで頑張っています！！
     </p>
     <div class="container_profile_btn">
-      <a href="{{ route('mypage.detail') }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
+      <a href="{{ route('mypage.theirDetail', $stId) }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
     </div>
   </div>
 

@@ -1,32 +1,47 @@
 @extends('layouts.hr.common')
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/hr/hrMypage/mypage.css') }}">
 
 <div class="container">
-  <h1>マイページ</h1>
-  <div>
-    {{ $userDataArray['name'] }}
-    {{ $userDataArray['company'] }}
-  </div>
+  <h1 class="container_title">マイページ</h1>
 
-  <a href="{{ route('hr.mypage.detail') }}" class="mx-2 btn btn-primary">詳しいプロフィール</a>
-  <a href="{{ route('hr.mypage.basic.show') }}" class="mx-2 btn btn-primary">基本情報を編集する</a>
-
-  <h2>面接予定</h2>
-  @foreach($interviewReservationsCollection as $interviewReservation)
-    <div>
-      <a href="{{ route('hr.interview.detail', $interviewReservation['id']) }}">
-        {{ $interviewReservation['name'] }} {{ $interviewReservation['date'] }}
-      </a>
+  <div class="container_profile">
+    <img class="container_profile_img" src="{{ asset('img/kokyo.png') }}" alt="">
+    <p class="container_profile_name">
+      {{ $userDataArray['name'] }}
+    </p>
+    <p class="container_profile_category">
+      {{ $userDataArray['company'] }}
+    </p>
+    <p class="container_profile_detail">
+     Somy 株式会社 の人事部 吉田裕哉です。<br> 大手からベンチャーまで幅広い人事経験があります。<br> 素敵な出会いを楽しみにしております！
+    </p>
+    <div class="container_profile_btn">
+      <a href="{{ route('hr.mypage.detail') }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
+      <a href="{{ route('hr.mypage.basic.show') }}" class="mx-2 btn btn-primary container_profile_btn_info">基本情報の変更</a>
     </div>
-    <hr>
-  @endforeach
-  <div>
-    <a href="{{ route('hr.interview.schedule.add') }}" class="mx-2 btn btn-primary">
-      面接可能日程を追加する。
-    </a>
   </div>
 
-  <h2>過去の面接</h2>
+  <div class="container_schedule">
+    <h2 class="container_schedule_title">面接予定</h2>
+    <ul class="container_schedule_list">
+      @foreach($interviewReservationsCollection as $interviewReservation)
+      <li>
+        <a class="item" href="{{ route('interview.detail', $interviewReservation['id']) }}">
+          <img class="item_img" src="{{ asset('img/kokyo.png') }}" alt="">
+          <p class="item_name">{{ $interviewReservation['name'] }}</p>
+          <p class="item_date">{{ $interviewReservation['date'] }}</p>
+      </a>
+      </li>
+      @endforeach
+    </ul>
+    <a class="container_schedule_reservation btn btn-primary" href="{{ route('hr.interview.schedule.add') }}">面接可能日程を追加する。</a>
+  </div>
+
+
+  <div class="container_pastVideo">
+    <h2 class="container_pastVideo_title">過去の面接動画</h2>
+  </div>
   @foreach($pastVideosCollection as $video)
     <a href="{{ route('hr.watch', $video['id'])}}">
       <div>
