@@ -1,0 +1,119 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #f8fafc;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content{
+  padding: 50px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === end: 確認内容　部分 =================================================*/
+.confirm-wrapper{
+  margin: 30px auto 0px;
+  padding-right: 20px !important;
+  padding-left: 20px !important;
+}
+
+.content{
+  margin-bottom: 30px;
+}
+
+.content-title{
+  margin-bottom: 10px;
+}
+.content-title h2{
+  font-size: 18px;
+  color: #6B8BE9;
+  font-weight: bold;
+}
+
+.date{
+  font-size: 18px;
+}
+
+.attention{
+  list-style: none;
+  margin-left: -20px;
+}
+.attention li::before{
+  content: "※";
+  margin-left: -1em;
+}
+.attention li{
+  margin-bottom: 3px;
+}
+
+.agree{
+  margin-left: 10%;
+}
+
+.button-wrapper{
+  margin-top: 0px;
+  text-align: center;
+}
+.button-wrapper button{
+  width: 80%;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+}
+/* === begin: 確認内容 部分 =================================================*/
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none:
+  }
+  .pc{
+    display: block !important;
+  }
+
+  .top-content h1{
+    font-size: 32px;
+  }
+
+  .confirm-wrapper form{
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .content-title h2{
+    font-size: 24px;
+  }
+
+  .date{
+    font-size: 20px;
+  }
+
+  .content{
+    font-size: 18px;
+  }
+
+  .agree{
+    margin-top: 100px;
+  }
+  .agree label{
+    font-size: 18px;
+  }
+}

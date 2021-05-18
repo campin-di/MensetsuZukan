@@ -36,6 +36,9 @@
 .form-input-wrapper select{
   border-radius: 30px;
 }
+.form-input-wrapper label{
+  margin-left: 15px;
+}
 /* === end: タグ部分 =================================================*/
 
 /* === begin: 各人事部分 =================================================*/
@@ -78,3 +81,44 @@
 }
 
 /* === end: 各人事部分 =================================================*/
+
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none:
+  }
+  .pc{
+    display: block !important;
+  }
+
+  .top-content h1{
+    font-size: 32px;
+  }
+
+  .form-input-wrapper label {
+      font-size: 20px;
+  }
+  .form-input-wrapper select {
+      font-size: 18px;
+  }
+
+  .hr-profile-wrapper .left-child img {
+    width: 60px;
+    height: 60px;
+  }
+  .hr-profile-wrapper .right-child {
+    margin-left: 20px;
+    font-size: 24px;
+  }
+  .company-information-wrapper div {
+    margin-right: 30px;
+    font-size: 18px;
+  }
+
+  .pr-message {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+}
