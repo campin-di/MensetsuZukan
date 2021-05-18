@@ -1,16 +1,19 @@
 @extends('layouts.st.common')
+<link rel="stylesheet" href="{{ asset('css/st/interview/cancel/confirm.css') }}">
 @section('content')
-<form method="post" action="{{ route('interview.cancel', $id) }}">
-	@csrf
 
-	<div>
-		本当に面接をキャンセルしますか？
-	</div>
-
-	<div>
-		<a href="{{ route('mypage') }}">マイページに戻る</a>
-	</div>
-	<input type="submit" value="面接予約を完了する" />
-
-</form>
+<div class="container form-wrapper">
+	<div class="title">本当にキャンセルしますか？</div>
+	<form method="post" action="{{ route('interview.cancel', $id) }}">
+		@csrf
+		<div class="upper-button">
+			<a href="{{ route('mypage') }}">マイページに戻る</a>
+		</div>
+		<div class="button-wrapper">
+			<button type="submit">
+				キャンセルを確定する。
+			</button>
+		</div>
+	</form>
+</div>
 @endsection

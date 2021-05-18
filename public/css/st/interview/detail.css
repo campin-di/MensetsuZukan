@@ -1,0 +1,168 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #f8fafc;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content{
+  padding: 25px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === begin: 人事プロフィール部分 =================================================*/
+.hr-information-wrapper{
+  text-align: center;
+}
+
+.hr-profile-img img{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hr-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px auto 0;
+}
+
+.hr-company{
+  font-size: 14px;
+}
+
+.hr-pr{
+  margin: 25px auto;
+}
+/* === end: 人事プロフィール部分 =================================================*/
+
+/* === begin: 内容 部分 =================================================*/
+.content-wrapper{
+  width: 90% !important;
+}
+
+.content{
+  margin-bottom: 20px;
+}
+
+.content-title{
+  margin-bottom: 10px;
+}
+.content-title h2{
+  font-size: 18px;
+  color: #6B8BE9;
+  font-weight: bold;
+}
+
+.date{
+  font-size: 18px;
+}
+
+.zoom{
+  margin-left: -20px;
+}
+.zoom li{
+  margin-bottom: 3px;
+}
+
+
+.button-wrapper{
+  margin-top: 0px;
+  text-align: center;
+}
+.button-wrapper button{
+  width: 80%;
+  border-radius: 5px;
+  font-weight: bold;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+}
+.button-wrapper a{
+  font-size: 18px;
+  color: #FFF;
+}
+/* === end: 内容 部分 =================================================*/
+
+
+.cancel{
+  text-align: center;
+}
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none:
+  }
+  .pc{
+    display: block !important;
+  }
+
+  .top-content h1{
+    font-size: 32px;
+  }
+
+  .content-wrapper{
+    width: 70% !important;
+    margin-bottom: 100px;
+  }
+
+  .content {
+    margin: 0 auto 40px 10%;
+  }
+
+  .content-title h2{
+    font-size: 24px;
+  }
+
+  .date{
+    font-size: 20px;
+  }
+
+  .zoom li {
+    font-size: 18px;
+  }
+
+  .content-description{
+    font-size: 18px;
+  }
+
+  /* === begin: 人事プロフィール部分 =================================================*/
+  .hr-information-wrapper{
+    margin: 25px auto 50px;
+  }
+
+  .hr-profile-img img {
+      width: 150px;
+      height: 150px;
+  }
+
+  .hr-name {
+    font-size: 28px;
+  }
+
+  .hr-company{
+    font-size: 20px;
+  }
+  /* === end: 人事プロフィール部分 =================================================*/
+
+  .button-wrapper{
+    margin-top: 100px;
+  }
+}

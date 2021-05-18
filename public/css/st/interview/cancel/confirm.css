@@ -11,6 +11,7 @@
 }
 
 .upper-button{
+  width: 80%;
   border: solid 2px #D5E3FF;
   border-radius: 5px;
   padding: 13px 0;
@@ -20,46 +21,44 @@
   font-weight: bold;
 }
 
-.under-button{
-  background: linear-gradient(to right, #7CC4FF, #9681FF);
-  border-radius: 5px;
-  padding: 13px 0;
-  margin: 10px auto;
+
+.button-wrapper{
+  margin-top: 0px;
+  text-align: center;
 }
-.under-button a{
+.button-wrapper button{
+  width: 80%;
+  border-radius: 5px;
   color: #FFF;
+  font-size: 16px;
   font-weight: bold;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 3;
 }
 
 /* === end: メイン部分 =================================================*/
 
+
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
-  .top-content-wrapper{
-    width: 105vw;
-    margin-left: -25%;
-    overflow-x: hidden;
-    margin-bottom: 100px;
+  .sp{
+    display: none:
   }
-
-  .form-wrapper{
-    padding: 0 20% !important;
+  .pc{
+    display: block !important;
   }
 
   .title{
-    font-size: 26px;
-    margin: 100px auto 200px;
+    font-size: 24px;
+    margin-bottom: 200px;
   }
 
-  .card{
-    padding-left: 10%;
-    padding-right: 10%;
-  }
-  .card p{
-    font-size: 16px;
+  .upper-button{
+    width: 60%;
   }
 
-  .upper-button, .under-button{
-    font-size: 20px;
+  .button-wrapper button{
+    width: 60%;
   }
 }
