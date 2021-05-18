@@ -48,7 +48,7 @@
               </div>
               <div class="video-hr-user right-child-pc">
                 人事：
-                <a href="{{ route('hr_mypage', $video['hrId']) }}">
+                <a href="{{ route('hr.hr_theirPage', $video['hrId']) }}">
                   {{ $video['hrName'] }}
                 </a>
               </div>
