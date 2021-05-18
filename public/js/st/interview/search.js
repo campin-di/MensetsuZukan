@@ -75,13 +75,18 @@ const cutString = ($text, $length) => {
   return slicetext;
 }
 
-if (window.matchMedia('(max-width: 767px)').matches) {
-  //ここに書いた処理はスマホの時だけ有効
-  let strings = document.getElementsByClassName('company-information');
-  strings = Array.from(strings);
-  console.log(strings);
-  strings.forEach(string => {
-    let text = string.innerText;
-    string.innerText = cutString(text, 7);
-  });
+const selectCutElement = ($class, $length) => {
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    //ここに書いた処理はスマホの時だけ有効
+    let strings = document.getElementsByClassName($class);
+    strings = Array.from(strings);
+    console.log(strings);
+    strings.forEach(string => {
+      let text = string.innerText;
+      string.innerText = cutString(text, $length);
+    });
+  }
 }
+
+selectCutElement('company-information', 7);
+selectCutElement('pr-message', 40);

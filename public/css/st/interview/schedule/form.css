@@ -1,0 +1,131 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #f8fafc;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content{
+  padding: 50px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === begin: 人事プロフィール部分 =================================================*/
+.hr-information-wrapper{
+  text-align: center;
+}
+
+.hr-profile-img img{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hr-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px auto 0;
+}
+
+.hr-company{
+  font-size: 14px;
+}
+/* === end: 人事プロフィール部分 =================================================*/
+
+/* === begin: スケジュール部分 =================================================*/
+.schedule-wrapper{
+  text-align: center;
+  margin: 25px auto;
+}
+
+.schedule-description{
+  margin-bottom: 20px;
+}
+
+.form-input-wrapper{
+  width: 80%;
+  margin: 0 auto 20px;
+}
+
+.form-input select{
+  border-radius: 30px;
+  height: 45px;
+  border: 1.5px solid #BCE0FD;
+}
+.form-input select option{
+  text-align: center !important;
+}
+
+.button-wrapper{
+  margin-top: 50px;
+  text-align: center;
+}
+.button-wrapper button{
+  width: 80%;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+}
+/* === end: スケジュール部分 =================================================*/
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none:
+  }
+  .pc{
+    display: block !important;
+  }
+
+  .top-content h1{
+    font-size: 32px;
+  }
+
+  /* === begin: 人事プロフィール部分 =================================================*/
+  .hr-name {
+    font-size: 28px;
+  }
+
+  .hr-company{
+    font-size: 20px;
+  }
+  /* === end: 人事プロフィール部分 =================================================*/
+
+  .schedule-description{
+    font-size: 18px;
+  }
+
+  .form-input-wrapper{
+    width: 50%;
+    margin: 0 auto 25px;
+  }
+
+  .form-input select {
+    height: 50px;
+    font-size: 18px;
+  }
+
+  .button-wrapper button{
+    width: 50%;
+  }
+
+}

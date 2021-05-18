@@ -12,7 +12,7 @@ use App\Models\Interview;
 use App\Models\Batting;
 
 use App\Common\MeetingClass;
-use App\Common\ReturnTimeArrayClass;
+use App\Common\ReturnUserInformationArrayClass;
 
 class St_ScheduleController extends Controller
 {
@@ -32,7 +32,7 @@ class St_ScheduleController extends Controller
       $is_schedule = 1;
     }
 
-    $timeArray = ReturnTimeArrayClass::returnTimeArray();
+    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
 
     return view('st/interview/schedule/form', [
       'hrUser' => $hrUser,
@@ -60,12 +60,18 @@ class St_ScheduleController extends Controller
     if(!$input){
       return redirect()->action("St_InterviewController@search");
     }
+    foreach ($input as $key => $schedule) {
+      $isDateFormat = preg_match('/\A[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}\z/', $key);
+      if($isDateFormat && !is_null($schedule)) {
+        $explode = explode(':', $schedule);
+        $date = $explode[0];
+        $timeKey = $explode[1];
+      }
+    }
 
-    $date = $input['date'];
-
-    $timeArray = ReturnTimeArrayClass::returnTimeArray();
+    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
     foreach ($timeArray as $key => $value) {
-      if($key == $input['time']){
+      if($key == $timeKey){
         $time = $value;
       }
     }
@@ -76,7 +82,14 @@ class St_ScheduleController extends Controller
   function send(Request $request){
     //セッションから値を取り出す
     $input = $request->session()->get("form_input");
-    $date = $input['date'];
+    foreach ($input as $key => $schedule) {
+      $isDateFormat = preg_match('/\A[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}\z/', $key);
+      if($isDateFormat && !is_null($schedule)) {
+        $explode = explode(':', $schedule);
+        $date = $explode[0];
+        $timeKey = $explode[1];
+      }
+    }
 
     $schedule = Schedule::where('hr_id', $input['hr_id'])->where('date', $date)->get();
     $schedule = $schedule[0];
@@ -92,13 +105,12 @@ class St_ScheduleController extends Controller
     }
 
     //=====処理内容====================================
-    $timeArray = ReturnTimeArrayClass::returnTimeArray();
+    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
 
     $hr_id = $schedule->hr_id;
 
     $meeting = new MeetingClass();
-    $time = $input['time'];
-    $battingData = Batting::where('date', $date)->where('time', $time);
+    $battingData = Batting::where('date', $date)->where('time', $timeKey);
 
     if($battingData->exists()){
       $batting = $battingData->get();
@@ -109,34 +121,34 @@ class St_ScheduleController extends Controller
         $targetSchedules = Schedule::where('date', $batting->date)->get();
         foreach ($targetSchedules as $eachSchedule) {
           \DB::table('schedules')->where('id', $eachSchedule->id)->update([
-            $time => 0,
+            $timeKey => 0,
           ]);
         }
       }
-      $created_meeting = $meeting->createMeeting($batting->api_user, $date, $time);
+      $created_meeting = $meeting->createMeeting($batting->api_user, $date, $timeKey);
 
     } else {
       $newBatting = new Batting;
       $newBatting->date = $date;
-      $newBatting->time = $time;
+      $newBatting->time = $timeKey;
       $newBatting->api_user = 0;
       $newBatting->save();
 
-      $created_meeting = $meeting->createMeeting($newBatting->api_user, $date, $time);
+      $created_meeting = $meeting->createMeeting($newBatting->api_user, $date, $timeKey);
     }
 
     $interview = new Interview;
     $interview->st_id = Auth::user()->id;
     $interview->hr_id = $hr_id;
     $interview->date = $date;
-    $interview->time = $timeArray[$time];
+    $interview->time = $timeArray[$timeKey];
     $interview->password = $created_meeting['password'];
     $interview->url = $created_meeting['join_url'];
     $interview->available = 0;
     $interview->save();
 
     \DB::table('schedules')->where('id', $schedule->id)->update([
-      $time => 0,
+      $timeKey => 0,
     ]);
     //================================================
 

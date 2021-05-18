@@ -42,7 +42,7 @@ class St_InterviewController extends Controller
           'company_type' => $hr->company_type,
           'stock_type' => $hr->stock_type,
           'location' => $hr->location,
-          'introduction' => CutStringClass::CutString($hr->introduction, 40),
+          'introduction' => CutStringClass::CutString($hr->introduction, 105),
         ],
       ]);
     }

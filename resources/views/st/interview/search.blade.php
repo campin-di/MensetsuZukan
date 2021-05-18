@@ -84,7 +84,6 @@
 
 <script type="text/javascript">
   let industries = @json($industries);
-  let hrCollection = @json($hrCollection);
 </script>
 <script type="text/javascript" src="{{ asset('/js/st/interview/search.js') }}"></script>
 
