@@ -9,6 +9,7 @@
     <a href="{{ url('/') }}">トップページに戻る</a>
   </div>
   <div class="under-button">
-    <a href="{{ route('mypage') }}">マイページに戻る</a>  </div>
+    <a href="{{ route('mypage') }}">マイページに戻る</a>
   </div>
+</div>
 @endsection
