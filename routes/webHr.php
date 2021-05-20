@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
         if($loginFlag){
           return redirect()->action('Hr\HrHomeController@index');
         }
-        return view('to3p');
+        return view('top');
     })->name('hr.home');
 
     /*=== 認証関係 =============================================================*/
