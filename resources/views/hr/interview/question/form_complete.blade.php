@@ -1,17 +1,15 @@
 @extends('layouts.hr.common')
+<link rel="stylesheet" href="{{ asset('css/st/interview/schedule/form_complete.css') }}">
 @section('content')
 
-<h3>質問リストの作成を完了しました。</h3>
-<p>
-  質問リストは、面接情報の詳細ページから閲覧できるようになっています。<br>
-  面接当日までに質問リストを控えておいてください。<br>
-  面接後に質問ごとの評価を記入していただきます。
-</p>
-<div>
-  <a href="{{ route('hr.mypage') }}">マイページに戻る</a>
-</div>
-<div>
-  <a href="{{ route('hr.interview.detail', $id) }}">面接情報の詳細ページに戻る</a>
-</div>
+<div class="container form-wrapper">
+  <div class="title">質問リストの作成を完了しました。</div>
 
+  <div class="upper-button">
+    <a href="{{ route('hr.mypage') }}">マイページに戻る</a>
+  </div>
+  <div class="under-button">
+    <a href="{{ route('hr.interview.detail', $id) }}">面接情報の詳細ページに戻る</a>
+  </div>
+</div>
 @endsection

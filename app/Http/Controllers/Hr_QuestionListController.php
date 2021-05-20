@@ -81,7 +81,7 @@ class Hr_QuestionListController extends Controller
     //=====処理内容====================================
     $interview = Interview::find($input['interview_id']);
 
-    for ($index = 1; $index <= 6; $index++) {
+    for ($index = 1; $index <= 3; $index++) {
       $questionData = Question::where('name', $input['question-'.$index]);
       $questionId = 'question_'. $index. '_id';
 

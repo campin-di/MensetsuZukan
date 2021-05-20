@@ -1,5 +1,5 @@
 @extends('layouts.st.common')
-<link rel="stylesheet" href="{{ asset('css/st/interview/schedule/confirm.css') }}">
+<link rel="stylesheet" href="{{ asset('css/st/interview/schedule/form_confirm.css') }}">
 @section('content')
 <div class="top-content-wrapper">
   <div class="top-content">
