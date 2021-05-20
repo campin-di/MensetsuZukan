@@ -25,12 +25,10 @@ class Hr_ScoringController extends Controller
 
     public function form($id)
     {
-      $interview = Interview::with('question1:id,name')->with('question2:id,name')
-                 ->with('question3:id,name')->with('question4:id,name')
-                 ->with('question5:id,name')->with('question6:id,name')
-                 ->select('id', 'url', 'question_1_id', 'question_2_id', 'question_3_id', 'question_4_id', 'question_5_id', 'question_6_id')->find($id);
+      $interview = Interview::with('question1:id,name')->with('question2:id,name')->with('question3:id,name')
+                 ->select('id', 'url', 'question_1_id', 'question_2_id', 'question_3_id')->find($id);
 
-      $questionArray = ['question1', 'question2', 'question3', 'question4', 'question5', 'question6'];
+      $questionArray = ['question1', 'question2', 'question3'];
 
       return view('hr/interview/scoring/form',[
         'interview' => $interview,
@@ -89,7 +87,7 @@ class Hr_ScoringController extends Controller
       //=====処理内容====================================
       $interview = Interview::find($input['interview_id']);
 
-      for ($index = 1; $index <= 6; $index++) {
+      for ($index = 1; $index <= 3; $index++) {
         $questionData = Question::where('name', $input['question-'.$index]);
         $questionData->increment('times');
 

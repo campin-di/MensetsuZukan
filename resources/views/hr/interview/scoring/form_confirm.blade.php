@@ -13,7 +13,7 @@
     @csrf
 
     <div class="form-wrapper">
-      @for($index = 1; $index <= 6; $index++)
+      @for($index = 1; $index <= 3; $index++)
       <div class="content">
         <div class="question-title">
 					質問{{$index}}：{{$input['question-'.$index. '-name']}}

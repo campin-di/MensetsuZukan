@@ -33,15 +33,6 @@ class CreateInterviewsTable extends Migration
           $table->integer('question_3_id')->nullable();
           $table->integer('question_3_score')->nullable();
           $table->string('question_3_review')->nullable();
-          $table->integer('question_4_id')->nullable();
-          $table->integer('question_4_score')->nullable();
-          $table->string('question_4_review')->nullable();
-          $table->integer('question_5_id')->nullable();
-          $table->integer('question_5_score')->nullable();
-          $table->string('question_5_review')->nullable();
-          $table->integer('question_6_id')->nullable();
-          $table->integer('question_6_score')->nullable();
-          $table->string('question_6_review')->nullable();
           $table->timestamps();
 
           $table->foreign('st_id')->references('id')->on('users')->onDelete('no action');
