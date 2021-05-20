@@ -27,7 +27,7 @@
     <ul class="container_schedule_list">
       @foreach($interviewReservationsCollection as $interviewReservation)
       <li>
-        <a class="item" href="{{ route('interview.detail', $interviewReservation['id']) }}">
+        <a class="item" href="{{ route('hr.interview.detail', $interviewReservation['id']) }}">
           <img class="item_img" src="{{ asset('img/kokyo.png') }}" alt="">
           <p class="item_name">{{ $interviewReservation['name'] }}</p>
           <p class="item_date">{{ $interviewReservation['date'] }}</p>

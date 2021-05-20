@@ -1,0 +1,87 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #f8fafc;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content{
+  padding: 25px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === begin: 採点 部分 =================================================*/
+.form-wrapper{
+  margin: 0px auto;
+  text-align: center;
+}
+
+.content{
+  margin: 30px auto;
+}
+
+.question-title {
+  font-size: 18px;
+  background: #6B8BE9;
+  width: 100vw;
+  font-weight: bold;
+  padding: 10px 5%;
+  margin-left: -5%;
+  color: #FFF;
+}
+.range{
+  margin: 20px auto;
+  color: #6B8BE9;
+  font-weight: bold;
+}
+.range span{
+    font-size: 24px;
+}
+
+/* === end: 採点 部分 =================================================*/
+
+/* === begin: ボタン 部分 =================================================*/
+.button-wrapper{
+  margin: 0px auto 20px;
+  text-align: center;
+}
+.button-wrapper button{
+  width: 90%;
+  border-radius: 5px;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 18px;
+}
+/* === end: ボタン 部分 =================================================*/
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none:
+  }
+  .pc{
+    display: block !important;
+  }
+
+  .top-content h1{
+    font-size: 32px;
+  }
+
+}

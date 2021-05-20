@@ -1,19 +1,40 @@
 @extends('layouts.hr.common')
+<link rel="stylesheet" href="{{ asset('css/hr/interview/scoring/form_confirm.css') }}">
 @section('content')
-<h3>確認</h3>
-<form method="post" action="{{ route('hr.interview.scoring.send') }}">
-	@csrf
-	@for($index = 1; $index <= 6; $index++)
-		<div>
-			質問{{$index}}：{{$input['question-'.$index]}}
-		</div>
-		<div>
-			レビュー{{$index}}：{{$input['review-'.$index]}}
-		</div>
-	@endfor
 
-	<input name="back" type="submit" value="戻る" />
-	<input type="submit" value="送信" />
+<div class="top-content-wrapper">
+  <div class="top-content">
+    <h1>確認</h1>
+  </div>
+</div>
 
-</form>
+<div class="container" onload>
+	<form method="post" action="{{ route('hr.interview.scoring.send') }}">
+    @csrf
+
+    <div class="form-wrapper">
+      @for($index = 1; $index <= 6; $index++)
+      <div class="content">
+        <div class="question-title">
+					質問{{$index}}：{{$input['question-'.$index. '-name']}}
+				</div>
+        <div class="range">
+          <span>{{$input['question-'.$index]}}</span>点
+        </div>
+				{{$input['review-'.$index]}}
+      </div>
+      @endfor
+    </div>
+
+    <div class="button-wrapper">
+      <button type="submit">
+        →
+      </button>
+    </div>
+
+  </form>
+</div>
+
+<script src="{{ asset('/js/hr/interview/scoring/form.js') }}"></script>
+
 @endsection
