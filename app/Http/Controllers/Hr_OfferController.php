@@ -34,10 +34,9 @@ class Hr_OfferController extends Controller
     }
     //==========================================================================
 
-    return view('hr/offer/form',[
-      'stName' => User::find($stId)->name,
-      'stId' => $stId,
-    ]);
+    $stData = User::find($stId);
+
+    return view('hr/offer/form', compact('stData'));
   }
 
   public function post(Request $request)
@@ -71,9 +70,9 @@ class Hr_OfferController extends Controller
       return redirect()->route('hr.hr_home');
     }
 
-    $stUser = User::find($input['stId']);
+    $stData = User::find($input['stId']);
     return view("hr/offer/form_confirm",[
-      'stName' => $stUser->name,
+      'stData' => $stData,
       'offerContent' => $input['offer_content'],
       'message' => $input['message'],
     ]);

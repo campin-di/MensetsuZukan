@@ -1,20 +1,46 @@
 @extends('layouts.hr.common')
+<link rel="stylesheet" href="{{ asset('css/hr/interview/offer/form_confirm.css') }}">
 @section('content')
-<h1>オファー内容の確認</h1>
-<form method="post" action="{{ route('hr.offer.send') }}">
-	@csrf
-	<div>
-		{{ $stName }}
-	</div>
-	<div>
-		{{ $offerContent }}
-	</div>
-	<div>
-		{{ $message }}
-	</div>
+<div class="top-content-wrapper">
+  <div class="top-content">
+    <h1>オファー内容の確認</h1>
+  </div>
+</div>
 
-	<input name="back" type="submit" value="戻る" />
-	<input type="submit" value="送信" />
+<div class="container offer-wrapper">
+  <div class="st-information-wrapper">
+    <div class="st-profile-img">
+      <img class="st-photo" src="{{ asset('/img/yoshi.jpg') }}" alt="プロフィール写真">
+    </div>
+    <div class="st-name">
+      {{ $stData->name }}
+    </div>
+    <div class="st-company">
+      {{ $stData->university }}・{{ $stData->faculty }}
+    </div>
+  </div>
 
-</form>
+
+	<form method="post" action="{{ route('hr.offer.send') }}">
+		@csrf
+		<div class="content-title">
+			<h2>オファー内容</h2>
+		</div>
+		<div class="content-offer">
+			{{ $offerContent }}
+		</div>
+		<div class="content-title">
+			<h2>学生へのメッセージ</h2>
+		</div>
+		<div class="content-msg">
+			{{ $message }}
+		</div>
+
+		<div class="button-wrapper">
+      <button type="submit">
+        送信する
+      </button>
+    </div>
+	</form>
+</div>
 @endsection
