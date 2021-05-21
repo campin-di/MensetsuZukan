@@ -42,7 +42,7 @@
             <div class="video-user-wrapper flex-pc pc">
               <div class="video-st-user left-child-pc">
                 学生：
-                <a href="{{ route('mypage.theirPage', $video['stId']) }}">
+                <a href="{{ route('hr.stMypage', $video['stId']) }}">
                   {{ $video['stNickname'] }}<br>
                 </a>
               </div>

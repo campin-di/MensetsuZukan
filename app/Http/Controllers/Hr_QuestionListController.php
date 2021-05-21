@@ -105,8 +105,6 @@ class Hr_QuestionListController extends Controller
   }
   //====end : 登録===================================================================
 
-
-
   //== 質問リスト変更 関係　=======================================================
   private $editFormItems = ["name", "title", "body"];
 
@@ -133,7 +131,6 @@ class Hr_QuestionListController extends Controller
 
   public function editPost(Request $request)
   {
-
     $input = $request->all();
 
     //=====部分処理====================================
