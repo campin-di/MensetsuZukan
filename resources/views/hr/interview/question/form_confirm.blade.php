@@ -4,7 +4,7 @@
 
 <div class="top-content-wrapper">
   <div class="top-content">
-    <h1>質問リストを作成する。</h1>
+    <h1>確認</h1>
   </div>
 </div>
 

@@ -111,5 +111,21 @@
   }
   /* === end: 画面タイトル 部分 =================================================*/
 
+  .question-wrapper{
+    width: 70%;
+  }
+
+  .question{
+    height: 60px;
+    font-size: 18px;
+  }
+
+  .attention-wrapper {
+    width: 70%;
+  }
+
+  .button-wrapper button{
+    width: 70%;
+  }
 
 }

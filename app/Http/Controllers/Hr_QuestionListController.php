@@ -121,8 +121,8 @@ class Hr_QuestionListController extends Controller
   public function edit($id)
   {
     $questions = Question::get();
-    $interview = Interview::with('question1:id,name')->with('question2:id,name')->with('question3:id,name')->with('question4:id,name')->with('question5:id,name')->with('question6:id,name')->find($id);
-    $alreadyQuestionArray = [$interview->question1->name, $interview->question2->name, $interview->question3->name, $interview->question4->name, $interview->question5->name, $interview->question6->name];
+    $interview = Interview::with('question1:id,name')->with('question2:id,name')->with('question3:id,name')->find($id);
+    $alreadyQuestionArray = [$interview->question1->name, $interview->question2->name, $interview->question3->name];
 
     return view('hr/interview/question/edit/edit',[
       'id' => $id,
@@ -182,7 +182,7 @@ class Hr_QuestionListController extends Controller
     //=====処理内容====================================
     $interview = Interview::find($input['interview_id']);
 
-    for ($index = 1; $index <= 6; $index++) {
+    for ($index = 1; $index <= 3; $index++) {
       $questionData = Question::where('name', $input['question-'.$index]);
       $questionId = 'question_'. $index. '_id';
 

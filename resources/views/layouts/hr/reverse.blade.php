@@ -44,7 +44,7 @@
     <meta name="theme-color" content="#fafafa">
   </head>
   <body>
-    @include('parts.st.header.reverse')
+    @include('parts.hr.header.reverse')
     @yield('content')
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="https://js.stripe.com/v3/"></script>
