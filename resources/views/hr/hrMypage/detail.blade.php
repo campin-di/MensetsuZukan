@@ -22,7 +22,7 @@
   <div class="container_detail">
     <div class="item">
     <input id="acd-check1" class="acd-check" type="checkbox" />
-      <label class="acd-label" for="acd-check1">会社紹介<a href="{{ route('mypage.detail.show') }}">（編集）</a></label>
+      <label class="acd-label" for="acd-check1">会社紹介<a href="{{ route('hr.mypage.detail.show') }}">（編集）</a></label>
       <div class="acd-content">
         <div>{{--会社ページに遷移させる予定--}}
         {{ $profileDetailArray['company'] }}</div>
@@ -30,21 +30,21 @@
     </div>
     <div class="item">
       <input id="acd-check2" class="acd-check" type="checkbox">
-      <label class="acd-label" for="acd-check2">業界<a href="{{ route('mypage.detail.show') }}">（編集）</a></label>
+      <label class="acd-label" for="acd-check2">業界<a href="{{ route('hr.mypage.detail.show') }}">（編集）</a></label>
       <div class="acd-content">
         <p>{{ $profileDetailArray['industry'] }}</p>
       </div>
     </div>
     <div class="item">
       <input id="acd-check3" class="acd-check" type="checkbox">
-      <label class="acd-label" for="acd-check3">企業タイプ<a href="{{ route('mypage.detail.show') }}">（編集）</a></label>
+      <label class="acd-label" for="acd-check3">企業タイプ<a href="{{ route('hr.mypage.detail.show') }}">（編集）</a></label>
       <div class="acd-content">
         <p>{{ $profileDetailArray['companyType'] }}</p>
       </div>
     </div>
     <div class="item">
       <input id="acd-check4" class="acd-check" type="checkbox">
-      <label class="acd-label" for="acd-check4">どんな面接ができる？<a href="{{ route('mypage.detail.show') }}">（編集）</a></label>
+      <label class="acd-label" for="acd-check4">どんな面接ができる？<a href="{{ route('hr.mypage.detail.show') }}">（編集）</a></label>
       <div class="acd-content">
         <p>{{ $profileDetailArray['pr'] }}</p>
       </div>

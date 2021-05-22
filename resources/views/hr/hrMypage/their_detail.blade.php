@@ -22,14 +22,14 @@
   <div class="container_detail">
     <div class="item">
     <input id="acd-check1" class="acd-check" type="checkbox" />
-      <label class="acd-label" for="acd-check1">自己紹介<a href="{{ route('mypage.detail.show') }}">（編集）</a></label>
+      <label class="acd-label" for="acd-check1">自己紹介</label>
       <div class="acd-content">
         <div>{{ $profileCollection[0]['introduction'] }}</div>
       </div>
     </div>
     <div class="item">
       <input id="acd-check4" class="acd-check" type="checkbox">
-      <label class="acd-label" for="acd-check4">どんな面接ができる？<a href="{{ route('mypage.detail.show') }}">（編集）</a></label>
+      <label class="acd-label" for="acd-check4">どんな面接ができる？</label>
       <div class="acd-content">
         <p>{{ $profileCollection[0]['pr'] }}</p>
       </div>
