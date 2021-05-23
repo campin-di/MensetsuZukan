@@ -1,0 +1,119 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+
+html, body{
+  overflow: hidden;
+}
+/* === end: 共通部分 =================================================*/
+.block-wrapper{
+  background-image: url(../../../img/unavailable-background-sp.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  padding-top: 100px;
+}
+.block-wrapper:before{
+  content: '';
+  background: inherit;
+  -webkit-filter: blur(7px);
+  -moz-filter: blur(7px);
+  -o-filter: blur(7px);
+  -ms-filter: blur(7px);
+  filter: blur(7px);
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+}
+
+.block-background{
+  position: absolute;
+  width: 102vw;
+  height: 100vh;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.4;
+}
+
+.block {
+  background: #FFF;
+  width: 90%;
+  padding: 50px 20px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  z-index: 99;
+}
+.block h1{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.description{
+  margin: 20px auto 40px;
+  font-weight: bold;
+}
+
+.button{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border-radius: 30px;
+}
+.button span{
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFF;
+  line-height: 2.5;
+}
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none:
+  }
+  .pc{
+    display: block !important;
+  }
+
+  .block-wrapper{
+    background-image: url(../../../img/unavailable-background-pc.png);
+    background-size: contain;
+  }
+
+  .block{
+    width: 60%;
+    padding: 60px 5%;
+  }
+  .block h1{
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+
+  .description {
+    margin: 40px auto 70px;
+    font-size: 20px;
+  }
+
+  .button{
+    width: 60%;
+    margin: 0 auto;
+  }
+  .button span{
+    font-size: 24px;
+  }
+
+}

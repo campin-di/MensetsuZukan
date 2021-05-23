@@ -44,7 +44,7 @@ class HrUsersTableSeeder extends Seeder
           'name' => '吉田 裕哉',
           'kana_name' => 'ヨシダ ユウヤ',
           'gender' => 1,
-          'plan' => 'hr',
+          'plan' => 'offer',
           'company' => 'ソフバン株式会社',
           'company_type' => '大手',
           'industry' => 'ディベロッパー',

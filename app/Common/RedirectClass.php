@@ -42,4 +42,20 @@ class RedirectClass
           return 0;
       }
     }
+
+    public static function hrOfferRedirect()
+    {
+      $userId = Auth::guard('hr')->id();
+      $user = HrUser::find($userId);
+
+      if($user->status == config('const.USER_STATUS.UNAVAILABLE')){
+        if($user->plan == 'offer'){
+          //return redirect()->action("St_HomeController@preAudience");
+          return "Hr\HrHomeController@preOffer";
+        }
+      }else{
+          return 0;
+      }
+    }
+
 }
