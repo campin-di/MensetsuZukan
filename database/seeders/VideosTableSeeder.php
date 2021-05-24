@@ -92,7 +92,7 @@ class VideosTableSeeder extends Seeder
       ];
 
         foreach($commonUrlArray as $commonUrl => $startSecondArray){
-          $random_date = [rand(2017, 2020), rand(1, 12), rand(1,31)];
+          $random_date = [rand(2021, 2021), rand(1, 5), rand(1,24)];
           $zero4 = mt_rand(0, 4);
           $zero19 = mt_rand(0, 19);
 
@@ -115,24 +115,19 @@ class VideosTableSeeder extends Seeder
             $zero19++;
           }
         }
-/*
-      for($i=0; $i < 4; $i++){
-        foreach($commonUrlArray as $commonUrl => $questionArray){
-          $random_date = [rand(2017, 2020), rand(1, 12), rand(1,31)];
-          $zero4 = mt_rand(0, 4);
-          foreach ($questionArray as $question_id) {
-            if($question_id > 4){
-              $st_id = floor($question_id/5);
-            } else {
-              $st_id = $question_id;
-            }
 
+        foreach($commonUrlArray as $commonUrl => $startSecondArray){
+          $random_date = [rand(2019, 2020), rand(1, 12), rand(1,29)];
+          $zero4 = mt_rand(0, 4);
+          $zero19 = mt_rand(0, 19);
+
+          foreach ($startSecondArray as $startSecond) {
             $data = [
-              'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$question_id] . '」に対する答え方。',
-              'url' => 'https://www.youtube.com/embed/' . $commonUrl . '?start=' . $urlArray[mt_rand(0, 34)],
+              'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
+              'url' => 'https://www.youtube.com/embed/' . $commonUrl . '?start=' . $startSecond,
               'common_url' => $commonUrl,
-              'question_id' => $question_id,
-              'st_id' => $st_id,
+              'question_id' => $zero19+1,
+              'st_id' => $usernameArray[1][$zero4],
               'hr_id' => mt_rand(1, 29),
               'score' => mt_rand(30, 100),
               'review' => $contentArray[mt_rand(0, 9)],
@@ -142,9 +137,8 @@ class VideosTableSeeder extends Seeder
               'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
             ];
             DB::table('videos')->insert([$data]);
+            $zero19++;
           }
         }
-      }
-      */
     }
 }

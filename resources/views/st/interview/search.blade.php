@@ -8,46 +8,46 @@
   </div>
 </div>
 
-  <div class="container">
-    <div class="filter-wrapper flex">
-      <div class="form-input-wrapper">
-        <label for="industry" class="form-title">業界</label>
-        <div class="form-input">
-          <select id="industry" class="form-control">
-            <option value="全業界">指定なし</option>
-            @foreach($industries as $industry)
-              <option id="industry-{{ $loop->iteration }}" value="{{ $industry }}" @if(old('industry') == "{{ $industry }}") selected @endif>{{ $industry }}</option>
-            @endforeach
-          </select>
-        </div>
-      </div>
-      <div class="form-input-wrapper">
-        <label for="prefecture" class="form-title">所在地</label>
-        <div class="form-input">
-          <select id="prefecture" class="form-control">
-            <option value="全国">指定なし</option>
-            @foreach($prefecturesArray as $area => $prefectureArray)
-            <optgroup label="{{ $area }}">
-              @foreach($prefectureArray as $prefecture)
-              <option value="{{ $prefecture }}" @if(old('prefecture') == "{{ $prefecture }}") selected @endif>{{ $prefecture }}</option>
-              @endforeach
-            </optgroup>
-            @endforeach
-          </select>
-        </div>
-      </div>
-      <div class="form-input-wrapper">
-        <label for="stockType" class="form-title">企業区分</label>
-        <div class="form-input">
-          <select id="stockType" class="form-control">
-            <option value="全区分">指定なし</option>
-            @foreach($stockTypes as $stockType)
-            <option value="{{ $stockType }}" @if(old('stockType') == "{{ $stockType }}") selected @endif>{{ $stockType }}</option>
-            @endforeach
-          </select>
-        </div>
+<div class="container">
+  <div class="filter-wrapper flex">
+    <div class="form-input-wrapper">
+      <label for="industry" class="form-title">業界</label>
+      <div class="form-input">
+        <select id="industry" class="form-control">
+          <option value="全業界">指定なし</option>
+          @foreach($industries as $industry)
+            <option id="industry-{{ $loop->iteration }}" value="{{ $industry }}" @if(old('industry') == "{{ $industry }}") selected @endif>{{ $industry }}</option>
+          @endforeach
+        </select>
       </div>
     </div>
+    <div class="form-input-wrapper">
+      <label for="prefecture" class="form-title">所在地</label>
+      <div class="form-input">
+        <select id="prefecture" class="form-control">
+          <option value="全国">指定なし</option>
+          @foreach($prefecturesArray as $area => $prefectureArray)
+          <optgroup label="{{ $area }}">
+            @foreach($prefectureArray as $prefecture)
+            <option value="{{ $prefecture }}" @if(old('prefecture') == "{{ $prefecture }}") selected @endif>{{ $prefecture }}</option>
+            @endforeach
+          </optgroup>
+          @endforeach
+        </select>
+      </div>
+    </div>
+    <div class="form-input-wrapper">
+      <label for="stockType" class="form-title">企業区分</label>
+      <div class="form-input">
+        <select id="stockType" class="form-control">
+          <option value="全区分">指定なし</option>
+          @foreach($stockTypes as $stockType)
+          <option value="{{ $stockType }}" @if(old('stockType') == "{{ $stockType }}") selected @endif>{{ $stockType }}</option>
+          @endforeach
+        </select>
+      </div>
+    </div>
+  </div>
 
   @foreach($hrCollection as $hr)
   <div class="hr-profile-wrapper">
