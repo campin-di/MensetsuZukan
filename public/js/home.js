@@ -1,18 +1,8 @@
 let elements = document.getElementsByClassName('video-wrapper');
 elements = Array.from(elements);
 
-
-tmp2 = elements[0].children[0].children[1].children[1].children[0];
-tmp = elements[0].children[0].children[1].children[3].children[0].children[1].innerText;
-
-console.log(tmp);
-
-/*
-elements.forEach(element => {
-  tmp3 = element.children[0].children[1].children[1].children[0].innerText.trim();
-  console.log(tmp3);
-});
-*/
+//====　begin:関数宣言部 =======================================================
+//==============================================================================
 
 //xがmin以上max以下かを判定する関数
 function between(x, min, max) {
@@ -34,11 +24,19 @@ const retDateClassification = ($targetDate) =>{
   }
 }
 
-//全コンテンツを非表示にする関数
-const displayNoneElement = () => {
-  elements.forEach(element => {
-    element.closest(".video-wrapper").style.display = "none";
-  });
+//指定なしかどうかを判断して、指定なしの場合'null'を返す関数
+const isSelect = ($target) => {
+  if($target === '指定なし'){
+    return 'null';
+  }
+  return $target;
+}
+
+//閾値と、コンテンツの投稿日の数値を与えて、コンテンツを非表示にする関数
+const hideElement = ($element, $dateNumber, $border) => {
+  if($dateNumber > $border){
+    $element.closest(".video-wrapper").style.display = "none";
+  }
 }
 
 //全コンテンツを表示にする関数
@@ -48,118 +46,105 @@ const displayAllElement = () => {
   });
 }
 
-//selectで選択した値に該当するコンテンツを表示
-const displayElement = ($question, $prefecture, $postedDate) => {
-  elements.forEach(element => {
-    targetQuestion = element.children[0].children[1].children[1].children[0].innerText.trim();
-    targetScore = parseInt(element.children[0].children[1].children[3].children[1].children[0].innerText.trim());
-    targetDate = element.children[0].children[1].children[3].children[0].children[1].innerText;
+//質問によって、コンテンツを非表示にする関数
+const hideAboutQuestion = ($element, $targetQuestion, $question) => {
+  if(($targetQuestion !== $question) && ($question !== 'null')){
+    $element.closest(".video-wrapper").style.display = "none";
+  }
+}
 
-    if((targetQuestion !== $question) && ($question !== 'null')){
-      element.closest(".video-wrapper").style.display = "none";
-    }
+//スコアの区分によって、コンテンツを非表示にする関数
+const hideAboutScore = ($element, $targetScore, $score) => {
+  if($score !== 'null'){
+    $score = parseInt($score);
 
-    if($prefecture !== 'null'){
-      $prefecture = parseInt($prefecture);
-
-      if($prefecture === 100){
-        if(targetScore !== 100){
-          element.closest(".video-wrapper").style.display = "none";
-        }
-      }
-      else if($prefecture === 70){
-        if(!between(targetScore, 60, 69)){
-          element.closest(".video-wrapper").style.display = "none";
-        }
-      }
-      else if(!between(targetScore, $prefecture, $prefecture+4)){
-          element.closest(".video-wrapper").style.display = "none";
+    if($score === 100){
+      if($targetScore !== 100){
+        $element.closest(".video-wrapper").style.display = "none";
       }
     }
+    else if($score === 70){
+      if(!between($targetScore, 60, 69)){
+        $element.closest(".video-wrapper").style.display = "none";
+      }
+    }
+    else if(!between($targetScore, $score, $score+4)){
+        $element.closest(".video-wrapper").style.display = "none";
+    }
+  }
+}
 
-    // $postedDateがselectの値
-    //dateClassficationがコンテンツの日・週・ヶ月などの区分
-    //dateNumberが区分の中で、数字がいくつか
-    //（3ヶ月前だと、dateClassfication == m, dateNumber == 3）
-    if($postedDate !== 'null'){
-      dateClassfication = retDateClassification(targetDate);
-      dateNumber = parseInt(targetDate.charAt(0));
-      switch (dateClassfication) {
-        case 'd':
-        break;
-        case 'w':
+//投稿日の区分によって、コンテンツを非表示にする関数
+const hideAboutPostedDate = ($element, $targetDate, $postedDate) => {
+  // $postedDateがselectの値
+  //dateClassficationがコンテンツの日・週・ヶ月などの区分
+  //dateNumberが区分の中で、数字がいくつか
+  //（3ヶ月前だと、dateClassfication == m, dateNumber == 3）
+  if($postedDate !== 'null'){
+    dateClassfication = retDateClassification($targetDate);
+    dateNumber = parseInt($targetDate.charAt(0));
+    switch (dateClassfication) {
+      case 'w':
         if($postedDate === '1-w'){
-          if(dateNumber > 1){
-            element.closest(".video-wrapper").style.display = "none";
-          }
+          hideElement($element, dateNumber, 1);
         }
         break;
-        case 'm':
+      case 'm':
         if($postedDate === '1-w'){
-          element.closest(".video-wrapper").style.display = "none";
-          break;
-        } else if($postedDate === '1-y'){
+          $element.closest(".video-wrapper").style.display = "none";
           break;
         } else{
           if($postedDate === '1-m'){
-            if(dateNumber > 1){
-              element.closest(".video-wrapper").style.display = "none";
-            }
+            hideElement($element, dateNumber, 1);
           } else if($postedDate === '3-m'){
-            if(dateNumber > 3){
-              element.closest(".video-wrapper").style.display = "none";
-            }
+            hideElement($element, dateNumber, 3);
           } else if($postedDate === '6-m'){
-            if(dateNumber > 6){
-              element.closest(".video-wrapper").style.display = "none";
-            }
+            hideElement($element, dateNumber, 6);
           }
           break;
         }
-        case 'y':
+      case 'y':
         if(($postedDate === '1-w') || ($postedDate === '1-m') || ($postedDate === '3-m') || ($postedDate === '6-m')){
-          element.closest(".video-wrapper").style.display = "none";
+          $element.closest(".video-wrapper").style.display = "none";
         } else if($postedDate === '1-y'){
-          if(dateNumber > 1){
-            element.closest(".video-wrapper").style.display = "none";
-          }
+          hideElement($element, dateNumber, 1);
         }
         break;
-        default:
-      }
+      default:
     }
+  }
+}
+
+//selectで選択した値に該当しないコンテンツを非表示
+const displayElement = ($question, $score, $postedDate) => {
+  elements.forEach(element => {
+    targetQuestion = element.getElementsByClassName('other-question-selected')[0].innerText;
+    targetScore = element.getElementsByClassName('video-score')[0].children[0].innerText;
+    targetDate = element.getElementsByClassName('date')[0].innerText;
+
+    hideAboutQuestion(element, targetQuestion, $question);
+    hideAboutScore(element, targetScore, $score);
+    hideAboutPostedDate(element, targetDate, $postedDate);
   });
 }
 
-
-let questionSelect = document.getElementById('question');
-let prefectureSelect = document.getElementById('prefecture');
-let postedDateSelect = document.getElementById('postedDate');
-
 //selectの値が変わったときに動作する関数
-const onchange = () => {
+const onchange = ($question, $score, $date) => {
   displayAllElement();
-
-  let question = questionSelect.value.trim();
-  let prefecture = prefectureSelect.value.trim();
-  let postedDate = postedDateSelect.value.trim();
-
-  if(question === '全質問'){
-    question = 'null';
-  }
-  if(prefecture === '全得点'){
-    prefecture = 'null';
-  }
-  if(postedDate === '全投稿日'){
-    postedDate = 'null';
-  }
-
-  displayElement(question, prefecture, postedDate);
+  displayElement(isSelect($question.value), isSelect($score.value), isSelect($date.value));
 }
 
-const ids = ['question', 'prefecture', 'postedDate'];
+//==============================================================================
+//====　end:関数宣言部 =======================================================
+
+let questionSelect = document.getElementById('question');
+let scoreSelect = document.getElementById('score');
+let postedDateSelect = document.getElementById('postedDate');
+
+
+const ids = ['question', 'score', 'postedDate'];
 ids.forEach(id => {
   document.getElementById(id).onchange = function(){
-    onchange();
+    onchange(questionSelect, scoreSelect, postedDateSelect);
   }
 });
