@@ -11,45 +11,32 @@
 }
 /* === end: 共通部分 =================================================*/
 
-/* === begin: 質問タグ部分 =================================================*/
-.button-box{
-  max-width: 1200px;
-  display:flex;
-  flex-wrap: nowrap;
-  overflow-x:scroll;
-  margin: 25px 0 50px 0;
-  padding-bottom: 10px;
+/* === begin: タグ部分 =================================================*/
+.filter-wrapper{
+  justify-content: space-between;
+  padding: 0px 10px 20px;
+  margin-top: 20px;
+  position: fixed;
+  z-index: 999;
+  background: #f8f9fa;
 }
 
-.button-box button{
-  margin: 0 5px;
+.form-input-wrapper{
+  width: 30%;
+}
+.form-input-wrapper select{
   border-radius: 30px;
-  padding: 5px 10px;
-  border: 1px solid #EEE;
 }
-
-.button-box button p{
-  margin: 0;
-  white-space: nowrap;
+.form-input-wrapper label{
+  margin-left: 15px;
 }
-
-/* === begin: スクロールバー デザイン 変更部 ===========================================*/
-.button-box::-webkit-scrollbar {
-  width: 7px;
-  height: 8px;
-}
-.button-box::-webkit-scrollbar-thumb {
-  background: linear-gradient(to right, #7CC4FF, #9681FF);
-  border-radius: 10px;
-}
-.button-box::-webkit-scrollbar-track {
-  background: rgba(100,100,100, .1);
-  margin-left: 10px;
-}
-/* === end: スクロールバー デザイン 変更部 ===========================================*/
-/* === end: 質問タグ部分 =================================================*/
+/* === end: タグ部分 =================================================*/
 
 /* === begin: 動画コンテンツ部分 =================================================*/
+.contents-wrapper{
+  margin-top: 75px;
+}
+
 .video-wrapper{
   margin-top: 30px;
 }
@@ -165,6 +152,17 @@
   }
 
   /* === begin: 質問タグ部分 =================================================*/
+  .filter-wrapper{
+    width: 70%;
+    justify-content: space-between;
+    margin: 20px auto;
+  }
+  .form-input-wrapper label {
+      font-size: 20px;
+  }
+  .form-input-wrapper select {
+      font-size: 18px;
+  }
   /* === end: 質問タグ部分 =================================================*/
 
   /* === begin: 動画コンテンツ部分 =================================================*/
