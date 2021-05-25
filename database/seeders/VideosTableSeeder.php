@@ -55,14 +55,14 @@ class VideosTableSeeder extends Seeder
 
 */
       $commonUrlArray = [
-        "zAkK9qlCAbM" => [628, 750, 932, 1158, 1520],
-        "p54Cg2N617A" => [115, 253, 640, 2924, 3529],
-        "VOllbtgmSQA" => [77, 445, 1388, 2183, 2454],
-        "zJReZO1ND6c" => [250, 360, 645, 815, 1200],
-        "eqBA9wEeglg" => [1052, 1405, 1518, 2180, 2436],
-        "mjAXr6xA3ns" => [0, 42, 143, 196, 308],
-        "mzlJjFuA4Dw" => [0, 68, 291, 604, 615],
-        "yeK5dn1OPUc" => [0, 134, 192, 224, 270],
+        "551979139" => [628, 750, 932, 1158, 1520],
+        "280567305" => [115, 253, 640, 2924, 3529],
+        "449959341" => [77, 445, 1388, 2183, 2454],
+        "517759809" => [250, 360, 645, 815, 1200],
+        "546795671" => [1052, 1405, 1518, 2180, 2436],
+        "179688764" => [0, 42, 143, 196, 308],
+        "435943793" => [0, 68, 291, 604, 615],
+        "372167667" => [0, 134, 192, 224, 270],
       ];
 
 
@@ -99,8 +99,9 @@ class VideosTableSeeder extends Seeder
           foreach ($startSecondArray as $startSecond) {
             $data = [
               'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
-              'url' => 'https://www.youtube.com/embed/' . $commonUrl . '?start=' . $startSecond,
-              'common_url' => $commonUrl,
+              'thumbnail_src' => '/img/tmp.png',
+              'vimeo_src' => 'https://player.vimeo.com/video/' . $commonUrl . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+              'vimeo_id' => $commonUrl,
               'question_id' => $zero19+1,
               'st_id' => $usernameArray[1][$zero4],
               'hr_id' => mt_rand(1, 29),
@@ -124,8 +125,9 @@ class VideosTableSeeder extends Seeder
           foreach ($startSecondArray as $startSecond) {
             $data = [
               'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
-              'url' => 'https://www.youtube.com/embed/' . $commonUrl . '?start=' . $startSecond,
-              'common_url' => $commonUrl,
+              'thumbnail_src' => '/img/tmp.png',
+              'vimeo_src' => 'https://player.vimeo.com/video/' . $commonUrl . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+              'vimeo_id' => $commonUrl,
               'question_id' => $zero19+1,
               'st_id' => $usernameArray[1][$zero4],
               'hr_id' => mt_rand(1, 29),

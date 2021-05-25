@@ -15,16 +15,17 @@ class CreateVideosTable extends Migration
     {
       Schema::create('videos', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('title')->nullable();
-          $table->string('url')->unipue();
-          $table->string('common_url')->nullable();
+          $table->string('title');
+          $table->string('thumbnail_src')->unipue();
+          $table->string('vimeo_src')->unipue();
+          $table->string('vimeo_id')->unipue();
           $table->integer('question_id');
           $table->integer('st_id')->unsigned();
           $table->integer('hr_id')->unsigned();
-          $table->integer('score')->nullable();
-          $table->string('review')->nullable();
-          $table->integer('views')->nullable();
-          $table->integer('good')->nullable();
+          $table->integer('score');
+          $table->string('review');
+          $table->integer('views');
+          $table->integer('good');
           $table->timestamps();
 
           $table->foreign('st_id')->references('id')->on('users')->onDelete('no action');
