@@ -1,0 +1,214 @@
+.container_title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0 30px 0;
+}
+
+.container_profile {
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.container_profile_img {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.container_profile_name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.container_profile_company {
+  font-size: 10px;
+}
+
+.container_profile_detail {
+  font-size: 10px;
+  margin-top: 35px;
+}
+
+.container_profile_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container_profile_btn a {
+  font-size: 10px;
+  width: 360px;
+  padding: 13px;
+}
+
+.container_profile_btn_profile {
+  background: -webkit-gradient(linear, left top, right top, from(#7cc4ff), to(#9681ff));
+  background: linear-gradient(to right, #7cc4ff, #9681ff);
+  border: none;
+}
+
+.container_profile_btn_offer {
+  background-color: #fff;
+  color: #6b8be9;
+  border: 2px solid #d5e3ff;
+}
+
+.container_schedule_title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.container_schedule_list {
+  list-style: none;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+
+.container_schedule_list li {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #555555;
+}
+
+.container_schedule_list li .item {
+  line-height: 40px;
+  color: #333333;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 14px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+}
+
+.container_schedule_list li .item_img {
+  width: 40px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 20px;
+}
+
+.container_schedule_list li .item_name {
+  display: block;
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  margin-bottom: 0;
+}
+
+.container_schedule_list li .item_date {
+  display: block;
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.container_schedule_reservation {
+  width: 100vw;
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
+  border-radius: 0;
+  padding: 15px;
+  text-align: left;
+  padding-left: 20px;
+  background: -webkit-gradient(linear, left top, right top, from(#7cc4ff), to(#9681ff));
+  background: linear-gradient(to right, #7cc4ff, #9681ff);
+  border: none;
+  margin-top: 65px;
+}
+
+.container_pastVideo {
+  margin-top: 30px;
+}
+
+.container_pastVideo_title {
+  width: 100vw;
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid blue;
+  padding-bottom: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  .container_title {
+    font-size: 32px;
+  }
+  .container_profile_img {
+    width: 110px;
+    height: 110px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 60px;
+  }
+  .container_profile_name {
+    font-size: 35px;
+    margin-top: 15px;
+  }
+  .container_profile_company {
+    font-size: 18px;
+  }
+  .container_profile_detail {
+    font-size: 18px;
+    margin-top: 40px;
+  }
+  .container_profile_btn {
+    width: 650px;
+    margin: 60px auto 0 auto;
+    height: 70px;
+  }
+  .container_profile_btn_profile {
+    font-size: 18px !important;
+    line-height: 44px;
+  }
+  .container_profile_btn_offer {
+    font-size: 18px !important;
+    line-height: 44px;
+  }
+  .container_schedule_title {
+    font-size: 32px;
+  }
+  .container_schedule_list li {
+    width: 650px;
+    height: 80px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .container_schedule_list li .item {
+    width: 650px;
+    font-size: 24px;
+    margin-right: 0;
+  }
+  .container_schedule_list li .item_img {
+    width: 80px;
+    height: 80px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 40px;
+  }
+  .container_schedule_reservation {
+    height: 100px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 70px;
+  }
+}
+/*# sourceMappingURL=mypage.css.map */

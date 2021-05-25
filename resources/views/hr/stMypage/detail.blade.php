@@ -19,6 +19,6 @@
 </div>
 
 <div>
-  <a href="{{ route('hr.offer.form', $stId }}" class="mx-2 btn btn-primary">オファーする</a>
+  <a href="{{ route('hr.offer.form', $stId) }}" class="mx-2 btn btn-primary">オファーする</a>
 </div>
 @endsection
