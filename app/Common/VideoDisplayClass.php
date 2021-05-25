@@ -43,13 +43,14 @@ class VideoDisplayClass
         $hrName = HrUser::find($video->hr_id)->name;
 
         $question = Question::find($video->question_id)->name;
-        $otherQuestionsArray = Video::with('question')->where('common_url', $video->common_url)->where('question_id', '!=', $video->question_id)->select('question_id')->get();
+        $otherQuestionsArray = Video::with('question')->where('vimeo_id', $video->vimeo_id)->where('question_id', '!=', $video->question_id)->select('question_id')->get();
 
         $videosCollection = $videosCollection->concat([
           [
             'id' => $video->id,
             //'thumbnailsUrl' => $thumbnailsUrl,
-            'url' => $video->url,
+            'vimeo_src' => $video->vimeo_src,
+            'thumbnail_src' => $video->thumbnail_src,
             'title' => $video->title,
             'score' => $video->score,
             'views' => $video->views,
