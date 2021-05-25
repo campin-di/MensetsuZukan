@@ -16,7 +16,6 @@
   justify-content: space-between;
   padding: 0px 10px 20px;
   margin-top: 20px;
-  position: fixed;
   z-index: 999;
   background: #f8f9fa;
 }
@@ -34,7 +33,7 @@
 
 /* === begin: 動画コンテンツ部分 =================================================*/
 .contents-wrapper{
-  margin-top: 75px;
+  margin-top: 25px;
 }
 
 .video-wrapper{
@@ -138,6 +137,29 @@
   background-color: #E6B422;
   border-radius: 5px;
 }
+
+.hundred span{
+  /* フォントサイズなど任意指定 */
+  text-transform: uppercase;
+  /* 背景グラデーションを指定・幅を 200% にしておく */
+  background: linear-gradient(to right, rgb(255, 0, 0),rgb(255, 20, 172),rgb(90, 40, 255),
+    rgb(60, 120, 255),rgb(80, 255, 237),rgb(100, 255, 169),
+    rgb(170, 255, 120),rgb(221, 255, 140),rgb(255, 236, 160),
+    rgb(255, 208, 180),rgb(255, 208, 200),#ff0000)0% center / 200% auto;
+  /* 背景画像を文字でマスクする*/
+          background-clip: text;
+  -webkit-background-clip: text;
+  /* 文字色を透明にできればよく color: transparent でも color: rgba(0, 0, 0, 0) でも可*/
+          text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  /* アニメーション指定 */
+  animation: example 8s linear infinite;
+}
+
+/* 背景の横位置をズラす */
+@keyframes example {
+  to { background-position-x: 200%; }
+}
 /* === end: 動画コンテンツ部分 =================================================*/
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
@@ -153,7 +175,6 @@
 
   /* === begin: 質問タグ部分 =================================================*/
   .filter-wrapper{
-    width: 70%;
     justify-content: space-between;
     margin: 20px auto;
   }
@@ -201,8 +222,11 @@
     margin-top: 20px;
   }
   .video-score-wrapper .right-child{
-    font-size: 24px;
+    line-height: 2;
     width: 200px;
     height: 60px;
+  }
+  .video-score-wrapper .right-child span{
+    font-size: 30px;
   }
   /* === end: 動画コンテンツ部分 =================================================*/

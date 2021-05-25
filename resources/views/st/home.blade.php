@@ -48,7 +48,7 @@
           <div class="left-child-pc">
             <a href="{{ route('watch', $video['id'])}}">
               <div class="video-thumbnail">
-                <img src="{{ $video['thumbnailsUrl'] }}">
+                <img src="{{ asset('/img/tmp.png') }}">
               </div>
             </a>
           </div>
