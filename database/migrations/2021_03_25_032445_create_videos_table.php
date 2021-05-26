@@ -15,8 +15,9 @@ class CreateVideosTable extends Migration
     {
       Schema::create('videos', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('title');
-          $table->string('thumbnail_src')->unipue();
+          $table->string('title', 512);
+          $table->string('thumbnail_name')->default('none');
+          $table->string('thumbnail_path')->default('none');
           $table->string('vimeo_src')->unipue();
           $table->string('vimeo_id')->unipue();
           $table->integer('question_id');
@@ -26,6 +27,7 @@ class CreateVideosTable extends Migration
           $table->string('review');
           $table->integer('views');
           $table->integer('good');
+          $table->boolean('type')->comment('0:学生, 1:人事');
           $table->timestamps();
 
           $table->foreign('st_id')->references('id')->on('users')->onDelete('no action');

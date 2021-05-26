@@ -50,7 +50,7 @@ class VideoDisplayClass
             'id' => $video->id,
             //'thumbnailsUrl' => $thumbnailsUrl,
             'vimeo_src' => $video->vimeo_src,
-            'thumbnail_src' => $video->thumbnail_src,
+            'thumbnail_path' => $video->thumbnail_path,
             'title' => $video->title,
             'score' => $video->score,
             'views' => $video->views,

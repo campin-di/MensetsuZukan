@@ -20,40 +20,7 @@ class VideosTableSeeder extends Seeder
         [ "nobita", "doraemon", "takeshi11", "shizukaChan", "dekisugikun" ],
         [ 1, 2, 3, 4, 5 ]
       ];
-/*
-      //0~34
-      $urlArray = [
-        //【就活】新聞も読まないクソザコ就活生向け「主要業界を理解する」アーカイブ【21卒】
-        "628", "750", "932","1158", "1520",
-        //【21卒】人気業界の現実を知る 深堀り編Vol.1【就活】
-        "115", "253", "640", "2924","3529",
-        //【21卒】学生の盲目的な大手志向を解消する業界研究LIVE 第2弾【就活】
-        "77", "445", "1388", "2183", "2454",
-        //【21卒】「コンサル・IT業界」を俺が全解説する やりたい事ない就活生は全員集合！ 【就活】
-        "250", "360", "645", "815", "1200",
-        //危ない会社予報士による主要30業種景気予測
-        "1052", "1405", "1518", "2180", "2436",
-        //【圧迫面接チャレンジ】コンサル志望 国公立大学生篇｜Vol.653
-        "0", "42", "143", "196", "308",
-        //【圧迫面接チャレンジ】(物流業界志望 関西学院篇）｜Vol.653
-        "0", "68", "291", "604", "615",
-        //裏事情】EC座談会（楽天/Amazon/アマゾンなど）｜Vol.644
-        "0", "134", "192", "224", "270",
-      ];
 
-      //0 ~ 7
-      $commonUrlArray = [
-        "zAkK9qlCAbM" => [1, 2, 3, 4, 5],
-        "p54Cg2N617A" => [6, 7, 8, 9, 10],
-        "VOllbtgmSQA" => [11, 12, 13, 14, 15],
-        "zJReZO1ND6c" => [16, 17, 18, 19, 20],
-        "eqBA9wEeglg" => [21, 22, 23, 24, 25],
-        "mjAXr6xA3ns" => [1, 3, 5, 7, 9],
-        "mzlJjFuA4Dw" => [2, 4, 6, 8, 10],
-        "yeK5dn1OPUc" => [2, 3, 5, 7, 11],
-      ];
-
-*/
       $commonUrlArray = [
         "551979139" => [628, 750, 932, 1158, 1520],
         "280567305" => [115, 253, 640, 2924, 3529],
@@ -64,7 +31,6 @@ class VideosTableSeeder extends Seeder
         "435943793" => [0, 68, 291, 604, 615],
         "372167667" => [0, 134, 192, 224, 270],
       ];
-
 
       //0 ~ 24
       $questionTextArray = [
@@ -99,7 +65,8 @@ class VideosTableSeeder extends Seeder
           foreach ($startSecondArray as $startSecond) {
             $data = [
               'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
-              'thumbnail_src' => '/img/tmp.png',
+              'thumbnail_name' => 'tmp.png',
+              'thumbnail_path' => '/img/tmp.png',
               'vimeo_src' => 'https://player.vimeo.com/video/' . $commonUrl . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
               'vimeo_id' => $commonUrl,
               'question_id' => $zero19+1,
@@ -109,6 +76,7 @@ class VideosTableSeeder extends Seeder
               'review' => $contentArray[mt_rand(0, 9)],
               'views' => mt_rand(0, 50),
               'good' => mt_rand(0, 50),
+              'type' => 1,
               'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
               'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
             ];
@@ -125,7 +93,8 @@ class VideosTableSeeder extends Seeder
           foreach ($startSecondArray as $startSecond) {
             $data = [
               'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
-              'thumbnail_src' => '/img/tmp.png',
+              'thumbnail_name' => 'tmp.png',
+              'thumbnail_path' => '/img/tmp.png',
               'vimeo_src' => 'https://player.vimeo.com/video/' . $commonUrl . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
               'vimeo_id' => $commonUrl,
               'question_id' => $zero19+1,
@@ -135,6 +104,7 @@ class VideosTableSeeder extends Seeder
               'review' => $contentArray[mt_rand(0, 9)],
               'views' => mt_rand(0, 50),
               'good' => mt_rand(0, 50),
+              'type' => 1,
               'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
               'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
             ];

@@ -9,14 +9,17 @@ class Video extends Model
 {
     use HasFactory;
 
+    protected $table = "videos";
+    protected $fillable = ["thumbnail_name","thumbnail_path"];
+
     public function user()
     {
-      return $this->belongsTo('App\Models\User');
+      return $this->belongsTo('App\Models\User', 'st_id');
     }
 
     public function hrUser()
     {
-      return $this->belongsTo('App\Models\HrUser');
+      return $this->belongsTo('App\Models\HrUser', 'hr_id');
     }
 
     public function question()
