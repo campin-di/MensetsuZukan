@@ -2,9 +2,9 @@
 <link href="{{ asset('/css/st/watch.css') }}" rel="stylesheet">
 @section('content')
 
-    <div class="video-iframe">
-      <div style="padding:73.17% 0 0 0;position:relative;"><iframe src="{{ $mainVideo['vimeo_src'] }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="みんラボ - Google Chrome 2020-12-25 15-24-05"></iframe></div>
-    </div>
+  <div class="video-iframe">
+    <iframe src="{{ $mainVideo['vimeo_src'] }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title=""></iframe></div>
+  </div>
   <div class="container">
 
     <div class="video-title">
@@ -63,7 +63,7 @@
           <div class="left-child">
             <a href="{{ route('watch', $otherVideo['id'])}}">
               <div class="other-video-thumbnail">
-                <img src="{{ asset($otherVideo['thumbnail_src']) }}">
+                <img src="{{ asset($otherVideo['thumbnail_path']) }}">
               </div>
             </a>
           </div>

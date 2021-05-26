@@ -67,7 +67,7 @@
           <div class="left-child">
             <a href="{{ route('watch', $otherVideo['id'])}}">
               <div class="other-video-thumbnail">
-                <img src="{{ asset($otherVideo['thumbnail_src']) }}">
+                <img src="{{ asset($otherVideo['thumbnail_path']) }}">
               </div>
             </a>
           </div>

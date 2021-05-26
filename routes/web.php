@@ -123,17 +123,29 @@ Route::get('/interview/search', 'St_InterviewController@search')->name('intervie
 // to 面接スケジュール page
 Route::get('/interview/schedule/{id}', 'St_ScheduleController@schedule')->name('interview.schedule');
 
+
+/*=== 管理画面 関係 =============================================================*/
+
+Route::get('/admin', 'AdminController@index')->name('admin');
+
 //サービス内に動画をアップロードするルーティング
-Route::get('/upload', 'UploadController@show')->name('upload');
+Route::get('/admin/upload', 'UploadController@show')->name('upload');
 
-Route::get('/upload/form', 'UploadController@show')->name("form.show");
-Route::post('/upload/form', 'UploadController@post')->name("form.post");
+//サムネイル画像をアップロードするフォームへ
+Route::get('/admin/upload/thumbnail/{id}', 'UploadController@thumbnail')->name("thumbnail");
+//サムネイル画像をアップロード処理 and to 完了ページ
+Route::post('/admin/upload/thumbnail/upload', 'UploadController@thumbnailPost')->name("thumbnail.post");
 
-Route::get('/upload/form/confirm', 'UploadController@confirm')->name("form.confirm");
-Route::post('/upload/form/confirm', 'UploadController@send')->name("form.send");
 
-Route::get('/upload/form/thanks', 'UploadController@complete')->name("form.complete");
+Route::get('/admin/upload/form', 'UploadController@show')->name("form.show");
+Route::post('/admin/upload/form', 'UploadController@post')->name("form.post");
+
+Route::get('/admin/upload/form/confirm', 'UploadController@confirm')->name("form.confirm");
+Route::post('/admin/upload/form/confirm', 'UploadController@send')->name("form.send");
+
+Route::get('/admin/upload/form/thanks', 'UploadController@complete')->name("form.complete");
 //===========================================
+/*=== end:管理画面 関係 =========================================================*/
 
 
 Route::get('/subscription', 'StripeController@subscription')->name('stripe.subscription');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Video;
+use App\Models\Interview;
+use App\Models\Question;
 
 use Validator;
 
@@ -26,7 +28,7 @@ class UploadController extends Controller
     ];
 
     function show(){
-      return view("upload/form");
+      return view("admin/upload/form");
     }
 
     function post(Request $request){
@@ -59,7 +61,7 @@ class UploadController extends Controller
       if(!$input){
         return redirect()->action("UploadController@show");
       }
-      return view("upload/form_confirm",["input" => $input]);
+      return view("admin/upload/form_confirm",["input" => $input]);
     }
 
     function send(Request $request){
@@ -79,25 +81,42 @@ class UploadController extends Controller
 
       //=====処理内容====================================
       //================================================
-      $stData = User::where('username', $input["st_username"])->first();
-      $hrData = HrUser::where('username', $input["hr_username"])->first();
+      $interview = Interview::find($input["interview_id"]);
 
-      $question = $input["question"];
-      $title = $stData->username . "さんの". $question . "に対する答え方";
-      $commonUrlArray = explode("&t=", $input["url"]);
+      $stData = User::find($interview->st_id);
+      $hrData = HrUser::find($interview->hr_id);
 
-      $video = new Video;
-      $video->title = $title;
-      $video->url = $input["url"];
-      $video->common_url = $commonUrlArray[0];
-      $video->question = $question;
-      $video->st_id = $stData->id;
-      $video->hr_id = $hrData->id;
-      $video->score = $input["score"];
-      $video->review = $input["review"];
-      $video->views = 0;
-      $video->good = 0;
-      $video->save();
+      for ($i=1; $i <=3 ; $i++) {
+        $questionId = 'question_'. $i . '_id';
+        $questionScore = 'question_'. $i . '_score';
+        $questionReview = 'question_'. $i . '_review';
+        $startSecond = 'start_time_'. $i;
+
+        $question = Question::find($interview->$questionId)->name;
+        if($input['type'] == 'hr'){
+          $title = $stData->name . "さんの「". $question . "」に対する答え方";
+          $type = 1;
+        } else {
+          $title = $stData->nickname . "さんの「". $question . "」に対する答え方";
+          $type = 0;
+        }
+
+        $video = new Video;
+        $video->title = $title;
+        //$video->thumbnail_src = $input["thumbnail_src"];
+        $video->vimeo_src = 'https://player.vimeo.com/video/' . $input["vimeo_id"] . '#t=' . $input[$startSecond].'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
+        $video->vimeo_id = $input["vimeo_id"];
+        $video->question_id = $interview->$questionId;
+        $video->st_id = $interview->st_id;
+        $video->hr_id = $interview->hr_id;
+        $video->score = $interview->$questionScore;
+        $video->review = $interview->$questionReview;
+        $video->views = 0;
+        $video->good = 0;
+        $video->type = $type;
+        $video->save();
+      }
+
       //================================================
       //================================================
 
@@ -108,7 +127,33 @@ class UploadController extends Controller
     }
 
     function complete(){
-      return view("upload/form_complete");
+      return view("admin/upload/form_complete");
     }
 
+    function thumbnail($videoId){
+      return view("admin/upload/thumbnail", compact('videoId'));
+    }
+
+    function thumbnailPost(Request $request){
+      $request->validate([
+        'image' => 'required|file|image|mimes:png,jpeg'
+      ]);
+      $upload_image = $request->file('image');
+
+      $videoId = $request->input('video_id');
+
+      if($upload_image) {
+  			//アップロードされた画像を保存する
+  			$path = 'storage/'. $upload_image->store('uploads',"public");
+  			//画像の保存に成功したらDBに記録する
+  			if($path){
+          $video = Video::find($videoId);
+          $video->thumbnail_name =  $upload_image->getClientOriginalName();
+          $video->thumbnail_path =  $path;
+          $video->save();
+  			}
+  		}
+
+      return view("admin/upload/form_complete");
+    }
 }

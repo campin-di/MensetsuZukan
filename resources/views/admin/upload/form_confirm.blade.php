@@ -9,7 +9,6 @@
 			@endforeach
 		</div>
 
-
 		<input name="back" type="submit" value="戻る" />
 		<input type="submit" value="送信" />
 

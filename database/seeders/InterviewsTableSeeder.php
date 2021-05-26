@@ -76,7 +76,7 @@ class InterviewsTableSeeder extends Seeder
           'url' => 'https://www.youtube.com/',
           'question_1_id' => mt_rand(1, $theNumberOfQuestions),
           'question_1_score' => $zero100,
-          'question_3_review' => $reviewArray[mt_rand(0, 9)],
+          'question_1_review' => $reviewArray[mt_rand(0, 9)],
           'question_2_id' => mt_rand(1, $theNumberOfQuestions),
           'question_2_score' => $zero100,
           'question_2_review' => $reviewArray[mt_rand(0, 9)],
