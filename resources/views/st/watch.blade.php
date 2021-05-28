@@ -14,9 +14,6 @@
       <div class="video-view">
         {{ $mainVideo['views'] }}回視聴・{{ $mainVideo['diffDate'] }}
       </div>
-      <div class="video-good">
-        ♥：{{ $mainVideo['good'] }}
-      </div>
     </div>
 
     <div class="other-question-wrapper">
@@ -30,21 +27,10 @@
 
     <div class="video-user-score-wrapper flex">
       <div class="left-child">
-        <div class="video-st-user">
-          学生：
-          <a href="{{ route('mypage.theirPage', $mainVideo['stId']) }}">
-            {{ $mainVideo['stNickname'] }}<br>
-          </a>
-        </div>
-        <div class="video-hr-user">
-          人事：
-          <a href="{{ route('hr_mypage', $mainVideo['hrId']) }}">
-            {{ $mainVideo['hrName'] }}
-          </a>
-        </div>
+        @include('components.profile_info', ['video' => $mainVideo])
       </div>
       <div class="right-child video-score">
-        {{ $mainVideo['score']}}点
+        <span>{{ $mainVideo['score'] }}</span>点
       </div>
     </div>
 
@@ -76,17 +62,14 @@
             <div class="other-video-views-score-wrapper flex">
               <div class="other-video-views">
                 <div class="pc flex">
-                  <div class="other-video-good">
-                    ♥　{{ $otherVideo['good'] }}
-                  </div>
                   <div class="other-video-date">
-                    〇　{{ $otherVideo['diffDate'] }}
+                    {{ $otherVideo['views'] }}回視聴・
+                    {{ $otherVideo['diffDate'] }}
                   </div>
                 </div>
-                {{ $mainVideo['views'] }}回視聴
               </div>
               <div class="other-video-score">
-                {{ $mainVideo['score']}}点
+                <span>{{ $otherVideo['score']}}</span>点
               </div>
             </div>
           </div>

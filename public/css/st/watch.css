@@ -293,11 +293,15 @@
     display: flex;
   }
   .video-user-score-wrapper .right-child{
-    font-size: 28px;
-    line-height: 3;
+    font-size: 22px;
+    line-height: 2.5;
     width: 300px;
     height: 75px;
     border-radius: 10px;
+  }
+  .video-user-score-wrapper .right-child span{
+    font-size: 34px;
+
   }
 
   .video-st-user{
@@ -323,7 +327,7 @@
   }
 
   .other-video {
-      margin-bottom: 20px;
+    margin-bottom: 20px;
   }
 
   .other-video-title a {
@@ -343,11 +347,14 @@
   }
 
   .other-video-score{
-    font-size: 28px;
+    font-size: 18px;
     line-height: 2.5;
     width: 250px;
-    height: 60px;
+    height: 65px;
     border-radius: 10px;
+  }
+  .other-video-score span{
+    font-size: 28px;
   }
 
   .review-title-wrapper {

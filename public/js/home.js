@@ -59,16 +59,16 @@ const hideAboutScore = ($element, $targetScore, $score) => {
     $score = parseInt($score);
 
     if($score === 100){
-      if($targetScore !== 100){
+      if($targetScore < 100){
         $element.closest(".video-wrapper").style.display = "none";
       }
     }
-    else if($score === 70){
+    else if($score === 60){
       if(!between($targetScore, 60, 69)){
         $element.closest(".video-wrapper").style.display = "none";
       }
     }
-    else if(!between($targetScore, $score, $score+4)){
+    else if(!between($targetScore, $score, $score+9)){
         $element.closest(".video-wrapper").style.display = "none";
     }
   }
@@ -134,6 +134,7 @@ const onchange = ($question, $score, $date) => {
   displayElement(isSelect($question.value), isSelect($score.value), isSelect($date.value));
 }
 
+//得点の背景色を変更する関数
 const changeBackgroundColor = ($scores) => {
   $scores.forEach(scoreElement => {
     let score = scoreElement.children[0].innerText;
@@ -148,7 +149,7 @@ const changeBackgroundColor = ($scores) => {
       scoreElement.style.background = "linear-gradient(45deg, #757575 0%, #9E9E9E 45%, #E8E8E8 70%, #9E9E9E 85%, #757575 90% 100%)";
     } else if(score >= 95 && score < 100){
       scoreElement.style.background = "linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%)";
-    } else if(score === 100){
+    } else if(score == 100){
       scoreElement.style.background = "linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%)";
       scoreElement.classList.add('hundred');
     } else {
@@ -163,11 +164,9 @@ let scores = document.getElementsByClassName('video-score');
 scores = Array.from(scores);
 changeBackgroundColor(scores);
 
-
 let questionSelect = document.getElementById('question');
 let scoreSelect = document.getElementById('score');
 let postedDateSelect = document.getElementById('postedDate');
-
 
 const ids = ['question', 'score', 'postedDate'];
 ids.forEach(id => {
