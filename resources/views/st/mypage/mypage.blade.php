@@ -41,32 +41,14 @@
       </li>
       @endforeach
     </ul>
-    <a class="container_schedule_reservation btn btn-primary" href="{{ route('interview.search') }}">面接を予約する</a>
   </div>
+
+  @include('components.button.fixed_button',['routeName' => 'interview.search', 'msg' => '', 'text' => '面接を予約する'])
 
   <div class="container_pastVideo">
     <h2 class="container_pastVideo_title">過去の面接動画</h2>
   </div>
-  @foreach($pastVideosCollection as $video)
-    <a href="{{ route('watch', $video['id'])}}">
-      <iframe width="100%" height="315" src="{{ $video['url'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
-      {{ $video['title'] }}<br>
 
-      <div class="d-flex justify-content-start">
-        <div class="mx-2 btn btn-primary">{{ $video['question']}}</div>
-        @foreach($video['otherQuestionsArray'] as $otherQuestion)
-          <div class="mx-2 btn btn-secondary">
-            {{ $otherQuestion['question']->name }}
-          </div>
-        @endforeach
-      </div>
-
-      {{ $video['score']}}点<br>
-      {{ $video['views'] }}回視聴<br>
-      いいね：{{ $video['good'] }}<br>
-      {{ $video['review'] }}<br>
-      {{ $video['diffDate'] }}<br>
-    </a>
-  @endforeach
+  @include('components.video_content',['videosCollection' => $pastVideosCollection])
 </div>
 @endsection

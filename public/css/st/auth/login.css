@@ -27,7 +27,6 @@
   font-size: 1.1rem;
 }
 
-
 .button-wrapper{
   margin-top: 50px;
   text-align: center;
@@ -59,28 +58,6 @@
 }
 /* === end: 採用担当者の方はこちら 部分 =================================================*/
 
-/* === begin: まだ会員登録されていない方は 部分 =================================================*/
-.fixed-register-wrapper{
-  width: 100%;
-  position: fixed;
-  text-align: center;
-  bottom: 0;
-  left: 0;
-}
-.fixed-register-wrapper span{
-  display: block;
-  margin-bottom: 5px;
-}
-.fixed-register-wrapper a{
-  display: block;
-  background: linear-gradient(to right, #7CC4FF, #9681FF);
-  line-height: 3;
-  color: #FFF;
-  font-weight: bold;
-}
-/* === end: まだ会員登録されていない方は 部分 =================================================*/
-
-
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
   .top-content h1{
@@ -99,11 +76,5 @@
     font-size: 18px;
   }
 
-  .fixed-register-wrapper a{
-    line-height: 3;
-    font-size: 22px;
-  }
-  .fixed-register-wrapper span{
-    font-size: 18px;
-  }
+
 }

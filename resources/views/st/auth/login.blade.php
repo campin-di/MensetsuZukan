@@ -35,15 +35,15 @@
       </div>
 
       <div class="button-wrapper">
-          <button type="submit">
-              ログイン
-          </button>
+        <button type="submit">
+            ログイン
+        </button>
 
-          @if (Route::has('password.request'))
-            <a class="btn btn-link" href="{{ route('password.request') }}">
-              パスワードを忘れた場合
-            </a>
-          @endif
+        @if (Route::has('password.request'))
+          <a class="btn btn-link" href="{{ route('password.request') }}">
+            パスワードを忘れた場合
+          </a>
+        @endif
       </div>
 
       <div class="to-hr-wrapper">
@@ -52,9 +52,6 @@
     </form>
   </div>
 
-  <div class="fixed-register-wrapper">
-    <span>まだ会員登録されていない方は</span>
-    <a href="{{ route('register.choice') }}">新規会員登録</a>
-  </div>
+  @include('components.button.fixed_button',['routeName' => 'register.choice', 'msg' => 'まだ会員登録されていない方は', 'text' => '新規会員登録'])
 <script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
 @endsection

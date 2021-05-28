@@ -24,20 +24,6 @@ class InterviewsTableSeeder extends Seeder
         "20:00 - 21:00", "21:00 - 22:00"
       ];
 
-      //0~24
-      $urlArray = [
-        //【就活】新聞も読まないクソザコ就活生向け「主要業界を理解する」アーカイブ【21卒】
-        "628", "750", "932","1158", "1520",
-        //【21卒】人気業界の現実を知る 深堀り編Vol.1【就活】
-        "115", "253", "640", "2924","3529",
-        //【21卒】学生の盲目的な大手志向を解消する業界研究LIVE 第2弾【就活】
-        "77", "445", "1388", "2183", "2454",
-        //【21卒】「コンサル・IT業界」を俺が全解説する やりたい事ない就活生は全員集合！ 【就活】
-        "250", "360", "645", "815", "1200",
-        //危ない会社予報士による主要30業種景気予測
-        "1052", "1405", "1518", "2180", "2436",
-      ];
-
       //0 ~ 4
       $commonUrlArray = [ "zAkK9qlCAbM", "p54Cg2N617A", "VOllbtgmSQA", "zJReZO1ND6c", "eqBA9wEeglg" ];
 
@@ -60,11 +46,9 @@ class InterviewsTableSeeder extends Seeder
          それも１ページに、５～６個程度の言葉しかなく、基本的に学生向きかと思います。",
       ];
 
-      for ($i = 0; $i < 24; $i++)
+      for ($i = 0; $i < 100; $i++)
       {
         $random_date = [2021, rand(1, 4), rand(1,31)];
-        $zero24 = mt_rand(0, 24);
-        $zero100 = mt_rand(50, 100);
 
         $data = [
           'st_id' => mt_rand(1, 50),
@@ -75,13 +59,13 @@ class InterviewsTableSeeder extends Seeder
           'available' => 1,
           'url' => 'https://www.youtube.com/',
           'question_1_id' => mt_rand(1, $theNumberOfQuestions),
-          'question_1_score' => $zero100,
+          'question_1_score' => mt_rand(60, 100),
           'question_1_review' => $reviewArray[mt_rand(0, 9)],
           'question_2_id' => mt_rand(1, $theNumberOfQuestions),
-          'question_2_score' => $zero100,
+          'question_2_score' => mt_rand(60, 100),
           'question_2_review' => $reviewArray[mt_rand(0, 9)],
           'question_3_id' => mt_rand(1, $theNumberOfQuestions),
-          'question_3_score' => $zero100,
+          'question_3_score' => mt_rand(60, 100),
           'question_3_review' => $reviewArray[mt_rand(0, 9)],
           'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
           'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
@@ -89,38 +73,5 @@ class InterviewsTableSeeder extends Seeder
 
         DB::table('interviews')->insert([$data]);
       }
-
-      for ($i = 0; $i < 24; $i++)
-      {
-        $random_date = [rand(2019, 2020), rand(1, 12), rand(1,31)];
-        $zero24 = mt_rand(0, 24);
-        $zero100 = mt_rand(50, 100);
-
-        $data2 = [
-          'st_id' => mt_rand(1, 50),
-          'hr_id' => mt_rand(1, 30),
-          'date' => $random_date[0].'-'.$random_date[1].'-'.$random_date[2],
-          'time' => $timeArray[mt_rand(0, 13)],
-          'password' => Hash::make('password'),
-          'available' => 1,
-          'url' => 'https://www.youtube.com/',
-          'question_1_id' => mt_rand(1, $theNumberOfQuestions/2),
-          'question_1_score' => $zero100,
-          'question_3_review' => $reviewArray[mt_rand(0, 9)],
-          'question_2_id' => mt_rand(1, $theNumberOfQuestions/2),
-          'question_2_score' => $zero100,
-          'question_2_review' => $reviewArray[mt_rand(0, 9)],
-          'question_3_id' => mt_rand(1, $theNumberOfQuestions/2),
-          'question_3_score' => $zero100,
-          'question_3_review' => $reviewArray[mt_rand(0, 9)],
-          'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
-          'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
-        ];
-
-        DB::table('interviews')->insert([$data2]);
-      }
-
-
     }
-
 }

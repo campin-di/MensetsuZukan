@@ -21,24 +21,35 @@ class VideosTableSeeder extends Seeder
         [ 1, 2, 3, 4, 5 ]
       ];
 
-      $commonUrlArray = [
-        "551979139" => [628, 750, 932, 1158, 1520],
-        "280567305" => [115, 253, 640, 2924, 3529],
-        "449959341" => [77, 445, 1388, 2183, 2454],
-        "517759809" => [250, 360, 645, 815, 1200],
-        "546795671" => [1052, 1405, 1518, 2180, 2436],
-        "179688764" => [0, 42, 143, 196, 308],
-        "435943793" => [0, 68, 291, 604, 615],
-        "372167667" => [0, 134, 192, 224, 270],
+      $vimeoIdArray = [
+        "551979139" => [628, 750, 932],
+        "280567305" => [115, 253, 640],
+        "449959341" => [77, 445, 1388],
+        "517759809" => [250, 360, 645],
+        "546795671" => [1052, 1405, 1518],
+        "179688764" => [0, 42, 143],
+        "435943793" => [0, 68, 291],
+        "372167667" => [0, 134, 192],
+      ];
+
+      $vimeoIdArray2 = [
+        "373226228" => [628, 750, 932],
+        "442434665" => [115, 253, 640],
+        "397845130" => [77, 445, 1388],
+        "188801229" => [250, 360, 645],
+        "424542885" => [1052, 1405, 1518],
+        "293551991" => [0, 42, 143],
+        "262806087" => [0, 68, 291],
+        "437004631" => [0, 134, 192],
       ];
 
       //0 ~ 24
       $questionTextArray = [
-        "自己紹介をお願いします。", "あなたの強み・長所を教えてください。", "あなたの弱み・短所を教えてください。", "学生時代で最も頑張ったことを教えてください。", "学生時代に出した成果を教えてください。",
-        "課外活動の内容を教えてください。", "サークルやクラブ活動の内容を教えてください。", "リーダーシップを取った経験はありますか？", "まわりの方のあなたへの評価を教えてください。", "学生時代に学んだ事は何ですか。",
-        "自分の大学生活を一言で表してください。", "成功体験を教えてください。", "失敗体験を教えてください。", "今まで一番感動したことを教えてください。", "今までで一番うれしかったことは何ですか。",
-        "今までで一番悔しかったことは何ですか。", "あなたが一番長く続けてきたことは何ですか。", "○○大学に入った理由を教えてください。", "履修した中で、最も有意義な授業を教えてください。", "休学/留年した理由を教えてください。",
-        "趣味を教えてください。", "尊敬する人を教えてください。", "今まで一番感動したことを教えてください。", "あなたの大切にしている言葉を教えてください。", "あなたの夢を教えてください。", "あなたの10年後の理想の姿を教えてください。",
+        "自己紹介", "強み・長所", "弱み・短所", "ガクチカ", "学生時代の成果",
+        "課外活動", "サークルやクラブ活動の内容", "リーダーシップ経験", "周囲からの評価", "学生時代に学んだ事",
+        "大学生活を一言で表すと", "成功体験", "失敗体験", "一番感動したこと", "一番うれしかったこと",
+        "一番悔しかったこと", "一番長く続けてきたこと", "大学を選んだ理由", "最もためになった授業", "休学/留年した理由",
+        "趣味", "尊敬する人", "一番感動したこと", "大切にしている言葉", "夢",
       ];
 
       // 0 ~ 9
@@ -57,7 +68,7 @@ class VideosTableSeeder extends Seeder
          それも１ページに、５～６個程度の言葉しかなく、基本的に学生向きかと思います。",
       ];
 
-        foreach($commonUrlArray as $commonUrl => $startSecondArray){
+        foreach($vimeoIdArray as $vimeoId => $startSecondArray){
           $random_date = [rand(2021, 2021), rand(1, 5), rand(1,24)];
           $zero4 = mt_rand(0, 4);
           $zero19 = mt_rand(0, 19);
@@ -67,8 +78,8 @@ class VideosTableSeeder extends Seeder
               'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
               'thumbnail_name' => 'tmp.png',
               'thumbnail_path' => '/img/tmp.png',
-              'vimeo_src' => 'https://player.vimeo.com/video/' . $commonUrl . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
-              'vimeo_id' => $commonUrl,
+              'vimeo_src' => 'https://player.vimeo.com/video/' . $vimeoId . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+              'vimeo_id' => $vimeoId,
               'question_id' => $zero19+1,
               'st_id' => $usernameArray[1][$zero4],
               'hr_id' => mt_rand(1, 29),
@@ -85,7 +96,7 @@ class VideosTableSeeder extends Seeder
           }
         }
 
-        foreach($commonUrlArray as $commonUrl => $startSecondArray){
+        foreach($vimeoIdArray2 as $vimeoId => $startSecondArray){
           $random_date = [rand(2019, 2020), rand(1, 12), rand(1,29)];
           $zero4 = mt_rand(0, 4);
           $zero19 = mt_rand(0, 19);
@@ -95,12 +106,12 @@ class VideosTableSeeder extends Seeder
               'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
               'thumbnail_name' => 'tmp.png',
               'thumbnail_path' => '/img/tmp.png',
-              'vimeo_src' => 'https://player.vimeo.com/video/' . $commonUrl . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
-              'vimeo_id' => $commonUrl,
+              'vimeo_src' => 'https://player.vimeo.com/video/' . $vimeoId . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+              'vimeo_id' => $vimeoId,
               'question_id' => $zero19+1,
               'st_id' => $usernameArray[1][$zero4],
               'hr_id' => mt_rand(1, 29),
-              'score' => mt_rand(30, 100),
+              'score' => mt_rand(60, 100),
               'review' => $contentArray[mt_rand(0, 9)],
               'views' => mt_rand(0, 50),
               'good' => mt_rand(0, 50),

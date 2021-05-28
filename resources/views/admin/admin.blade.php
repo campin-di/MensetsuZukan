@@ -4,7 +4,7 @@
 <div class="container table-responsive">
 		<div class="upload-wrapper">
 			<div class="upload">
-				<a href="route('upload')">新しく動画をアップロードする</a>
+				<a href="{{route('upload')}}">新しく動画をアップロードする</a>
 			</div>
 		</div>
 		<table class="table table-hover table-sm">

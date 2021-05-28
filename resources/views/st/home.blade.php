@@ -17,12 +17,10 @@
       <div class="form-input">
         <select id="score" class="form-control">
           <option value="指定なし">全得点</option>
-          <option value="70">70点未満</option>
-          <option value="75">75点～79点</option>
-          <option value="80">80点～84点</option>
-          <option value="85">85点～89点</option>
-          <option value="90">90点～94点</option>
-          <option value="95">95点～99点</option>
+          <option value="60">70点未満</option>
+          <option value="70">70点～79点</option>
+          <option value="80">80点～89点</option>
+          <option value="90">90点～99点</option>
           <option value="100">100点</option>
         </select>
       </div>
@@ -42,65 +40,7 @@
   </div>
 
   <div class="contents-wrapper">
-    @foreach($videosCollection as $video)
-      <div class="video-wrapper">
-        <div class="flex-pc">
-          <div class="left-child-pc">
-            <a href="{{ route('watch', $video['id'])}}">
-              <div class="video-thumbnail">
-                <img src="{{ asset($video['thumbnail_path']) }}">
-              </div>
-            </a>
-          </div>
-          <div class="right-child-pc">
-            <a href="{{ route('watch', $video['id'])}}">
-              <div class="video-title">
-                {{ $video['title'] }}
-              </div>
-            </a>
-            <div class="other-question-wrapper">
-              <div class="other-question-selected">{{ $video['question'] }}</div>
-              @foreach($video['otherQuestionsArray'] as $otherQuestion)
-                <div class="other-question">
-                  {{ $otherQuestion['question']->name }}
-                </div>
-              @endforeach
-            </div>
-            <div class="video-user-wrapper flex-pc pc">
-              <div class="video-st-user left-child-pc">
-                学生：
-                <a href="{{ route('mypage.theirPage', $video['stId']) }}">
-                  {{ $video['stNickname'] }}<br>
-                </a>
-              </div>
-              <div class="video-hr-user right-child-pc">
-                人事：
-                <a href="{{ route('hr_mypage', $video['hrId']) }}">
-                  {{ $video['hrName'] }}
-                </a>
-              </div>
-            </div>
-
-            <div class="video-score-wrapper flex">
-              <div class="left-child">
-                <div class="video-good">
-                  ♥　{{ $video['good'] }}
-                </div>
-                <div class="date">
-                  {{ $video['diffDate'] }}
-                </div>
-                <div class="video-view">
-                  ▲　{{ $video['views'] }}回視聴
-                </div>
-              </div>
-              <div class="right-child video-score">
-                <span>{{ $video['score']}}</span>点
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    @endforeach
+    @include('components.video_content')
   </div>
 
 <script type="text/javascript">

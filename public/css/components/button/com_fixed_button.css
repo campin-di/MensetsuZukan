@@ -1,0 +1,31 @@
+.fixed-button{
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+.fixed-button span{
+  display: block;
+  margin-bottom: 5px;
+}
+
+.fixed-button a{
+  display: block;
+  background: linear-gradient(to right, #7CC4FF, #9681FF) !important;
+  line-height: 3;
+  color: #FFF;
+  font-weight: bold;
+}
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .fixed-button a{
+    line-height: 3;
+    font-size: 22px;
+  }
+  .fixed-button span{
+    font-size: 18px;
+  }
+}
