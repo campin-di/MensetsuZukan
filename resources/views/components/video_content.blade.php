@@ -26,7 +26,7 @@
 
         <div class="video-score-wrapper flex">
           <div class="left-child">
-            @include('components.profile_info')
+            @include('components.profile_info', ['stImagePath' => $video['stImagePath'], 'hrImagePath' => $video['hrImagePath']])
           </div>
           <div class="right-child video-score">
             <span>{{ $video['score']}}</span>点

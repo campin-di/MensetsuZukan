@@ -1,15 +1,11 @@
-const stUrl = document.getElementById("url_st");
-stUrl.style.display ="block";
+const fixedButton = document.getElementById('login-wrapper').children[1].children[1];
+fixedButton.id = 'login';
 
-const hrUrl = document.getElementById("url_hr");
-hrUrl.style.display ="none";
+const urlElement = document.getElementById("url");
+urlElement.style.display ="block";
 
-const stLogin = document.getElementById("login_st");
-stLogin.style.display ="block";
-
-const hrLogin = document.getElementById("login_hr");
-hrLogin.style.display ="none";
-
+const loginElement = document.getElementById("login");
+loginElement.style.display ="block";
 
 const stButton = document.getElementById("st");
 stButton.style.backgroundColor = '#6B8BE9';
@@ -28,13 +24,16 @@ const changeString = ($string) => {
   });
 };
 
+//URLを変更する関数
+changeUrl = ($href, $before, $after) => {
+  $href = $href.replace($before, $after);
+
+  return $href;
+}
+
 hrButton.onclick = () => {
-  stUrl.style.display ="none";
-  hrUrl.style.display ="block";
-
-  stLogin.style.display ="none";
-  hrLogin.style.display ="block";
-
+  urlElement.href = changeUrl(urlElement.href, '/register', '/hr/register');
+  loginElement.href = changeUrl(loginElement.href, '/login', '/hr/login');
 
   stButton.style.background = '#EEEEEE';
   stButton.style.color = '#555555';
@@ -46,11 +45,8 @@ hrButton.onclick = () => {
 }
 
 stButton.onclick = () => {
-  stUrl.style.display ="block";
-  hrUrl.style.display ="none";
-
-  stLogin.style.display ="block";
-  hrLogin.style.display ="none";
+  urlElement.href = changeUrl(urlElement.href, '/hr/register', '/register');
+  loginElement.href = changeUrl(loginElement.href, '/hr/login', '/login');
 
   stButton.style.background = '#6B8BE9';
   stButton.style.color = '#FFFFFF';

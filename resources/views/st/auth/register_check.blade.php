@@ -10,37 +10,24 @@
 
 <div class="container form-wrapper">
   <form method="POST" action="{{ route('register') }}">
-      @csrf
-      <div class="form-input-wrapper">
-        <label for="email" class="form-title">メールアドレス</label>
-        <div class="form-input">
-          <span class="form-control">{{$email}}</span>
-          <input type="hidden" name="email" value="{{$email}}">
-        </div>
+    @csrf
+    <div class="form-input-wrapper">
+      <label for="email" class="form-title">メールアドレス</label>
+      <div class="form-input">
+        <span class="form-control">{{$email}}</span>
+        <input type="hidden" name="email" value="{{$email}}">
       </div>
-
-      <div class="form-input-wrapper">
-        <label for="password" class="form-title">パスワード</label>
-        <div class="form-input">
-          <span class="form-control">{{$password_mask}}</span>
-          <input type="hidden" name="password" value="{{$password}}">
-        </div>
-      </div>
-
-<!--
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-          <label class="form-check-label" for="remember">
-              {{ __('Remember Me') }}
-          </label>
-      </div>
--->
-
-    <div class="button-wrapper">
-      <button type="submit">
-        送信する
-      </button>
     </div>
+
+    <div class="form-input-wrapper">
+      <label for="password" class="form-title">パスワード</label>
+      <div class="form-input">
+        <span class="form-control">{{$password_mask}}</span>
+        <input type="hidden" name="password" value="{{$password}}">
+      </div>
+    </div>
+
+    @include('components.button.form.transition_button', ['text'=>'送信'])
   </form>
 </div>
 

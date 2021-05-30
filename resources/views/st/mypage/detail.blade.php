@@ -2,9 +2,9 @@
 <link rel="stylesheet" href="{{ asset('css/st/mypage/detail.css') }}">
 @section('content')
 
-<div class="container">
-  <h1 class="container_title">プロフィール詳細</h1>
+@include('components.page_title', ['title'=>'詳細プロフィール'])
 
+<div class="container">
   <div class="container_profile">
     <img class="container_profile_img" src="{{ asset('img/kokyo.png') }}" alt="">
     <p class="container_profile_name">

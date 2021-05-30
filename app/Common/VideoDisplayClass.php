@@ -26,7 +26,6 @@ class VideoDisplayClass
       $youtube = new Google_Service_YouTube($client);
 
       $count = $videos->count();
-
 */
       $videosCollection = collect([]);
       foreach ($videos as $video) {
@@ -40,7 +39,8 @@ class VideoDisplayClass
         $stUser = User::find($video->st_id);
         $stNickname = $stUser->nickname;
         $stName = $stUser->name;
-        $hrName = HrUser::find($video->hr_id)->name;
+        $hrUser = HrUser::find($video->hr_id);
+        $hrName = $hrUser->name;
 
         $question = Question::find($video->question_id)->name;
         $otherQuestionsArray = Video::with('question')->where('vimeo_id', $video->vimeo_id)->where('question_id', '!=', $video->question_id)->select('question_id')->get();
@@ -66,6 +66,9 @@ class VideoDisplayClass
             'hrId' => $video->hr_id,
             'stName' => $stName,
             'stId' => $video->st_id,
+
+            'stImagePath' => $stUser->image_path,
+            'hrImagePath' => $hrUser->image_path,
           ],
         ]);
       }

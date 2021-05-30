@@ -94,11 +94,7 @@
 
        <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>
 
-      <div class="button-wrapper">
-        <button type="submit">
-          →
-        </button>
-      </div>
+      @include('components.button.form.next_button')
     </form>
   </div>
   @endempty

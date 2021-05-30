@@ -21,6 +21,7 @@ class St_MypageController extends Controller
     $userDataArray = [
       'name' => $userData->name,
       'nickname' => $userData->nickname,
+      'imagePath' => $userData->image_path,
       'plan' => $userData->plan,
     ];
 
@@ -80,14 +81,22 @@ class St_MypageController extends Controller
       return redirect()->action("St_MypageController@index", $loginId);
     }
 
+    $userData = User::find($stId);
+
+    $userDataArray = [
+      'stId' => $userData->id,
+      'nickname' => $userData->nickname,
+      'imagePath' => $userData->image_path,
+      'plan' => $userData->plan,
+    ];
+
     $pastVideos = Video::where('st_id', $stId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
     $interviewReservations = Interview::where('st_id', $stId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
 
     return view('st/mypage/their_page', [
-      'stId' => $stId,
-      'nickname' => User::find($stId)->nickname,
+      'userDataArray' => $userDataArray,
       'pastVideosCollection' => $pastVideosCollection,
     ]);
   }
@@ -115,5 +124,4 @@ class St_MypageController extends Controller
       'profileDetailArray' => $profileDetailArray,
     ]);
   }
-
 }

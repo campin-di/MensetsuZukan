@@ -19,17 +19,12 @@
       <p>※登録後に変更できないためご注意ください。</p>
     </div>
 
-    <div class="button-wrapper">
-      <a id="url_st" class="button" href="{{ route('register') }}">→</a>
-      <a id="url_hr" class="button" href="{{ route('hr.register') }}">→</a>
-    </div>
+    @include('components.button.next_button', ['routeName' => 'register'])
   </div>
 
-  <div class="fixed-register-wrapper">
-    <span>既にアカウントをお持ちの方は</span>
-    <a id="login_st" href="{{ route('login') }}">ログイン</a>
-    <a id="login_hr" href="{{ route('hr.login') }}">ログイン</a>
+  <div id="login-wrapper">
+    @include('components.button.fixed_button',['routeName' => 'login', 'ver'=>'', 'msg' => '既にアカウントをお持ちの方は', 'text' => 'ログイン'])
   </div>
 
-<script type="text/javascript" src="{{ asset('/js/auth/choice.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('/js/auth/choice.js') }}"></script>
 @endsection

@@ -5,9 +5,40 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use App\Models\User;
 
 class St_MypageBasicController extends Controller
 {
+  public function upload($stId)
+  {
+    $id = $stId;
+    $profileImg = User::find($stId)->image_path;
+
+    return view('st/mypage/upload/form', compact(['id', 'profileImg']));
+  }
+
+  function uploadPost(Request $request){
+    $request->validate([
+      'image' => 'required|file|image|mimes:png,jpeg'
+    ]);
+    $upload_image = $request->file('image');
+
+    $stId = $request->input('id');
+
+    if($upload_image) {
+      //アップロードされた画像を保存する
+      $path = 'storage/'. $upload_image->store('uploads/profile/st',"public");
+      //画像の保存に成功したらDBに記録する
+      if($path){
+        $user = User::find($stId);
+        $user->image_path =  $path;
+        $user->save();
+      }
+    }
+
+    return view("st/mypage/upload/form_complete");
+  }
+
   /*=== 基本情報の変更処理 ====================================================*/
 
   private $formItems = ["name", "title", "body"];
@@ -21,7 +52,9 @@ class St_MypageBasicController extends Controller
   ];
 
   function show(){
-    return view('st/mypage/basic/form');
+    $userData = User::find(Auth::user()->id);
+
+    return view('st/mypage/basic/form', compact('userData'));
   }
 
   function post(Request $request){
