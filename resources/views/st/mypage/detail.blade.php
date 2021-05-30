@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{{ asset('css/st/mypage/detail.css') }}">
 @section('content')
 
-@include('components.page_title', ['title'=>'詳細プロフィール'])
+@include('components.parts.page_title', ['title'=>'詳細プロフィール'])
 
 <div class="container">
   <div class="container_profile">

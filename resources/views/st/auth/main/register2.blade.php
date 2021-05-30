@@ -75,7 +75,7 @@
         </div>
       </div>
 
-      @include('components.button.form.next_button')
+      @include('components.parts.button.form.next_button')
     </form>
   </div>
   @endempty

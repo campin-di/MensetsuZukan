@@ -2,7 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/mypage.css') }}">
 
-@include('components.page_title', ['title'=>'マイページ'])
+@include('components.parts.page_title', ['title'=>'マイページ'])
 
 <div class="container">
 
@@ -10,7 +10,7 @@
     <a class="nav-link" href="{{ route('upload') }}">アップロード</a>
   @endif
 
-  @include('components.profile',['imagePath' => $userDataArray['imagePath'], 'userName' => $userDataArray['name'], 'nickName' => $userDataArray['nickname'], 'description' => '地方〇〇/〇〇業界志望/〇〇卒', 'introduction' => '地方国立理系です！長期インターンや留学の経験がなく、アルバイト経験のみで頑張っています！' ])
+  @include('components.parts.profile',['imagePath' => $userDataArray['imagePath'], 'isHr' => '', 'userName' => $userDataArray['name'], 'nickName' => $userDataArray['nickname'], 'description' => '地方〇〇/〇〇業界志望/〇〇卒', 'introduction' => '地方国立理系です！長期インターンや留学の経験がなく、アルバイト経験のみで頑張っています！' ])
 
   <div class="container_profile_btn">
     <a href="{{ route('mypage.detail') }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
@@ -32,12 +32,12 @@
     </ul>
   </div>
 
-  @include('components.button.fixed_button',['routeName' => 'interview.search', 'ver'=>'', 'msg' => '', 'text' => '面接を予約する'])
+  @include('components.parts.button.fixed_button',['routeName' => 'interview.search', 'isHr' => '', 'ver'=>'', 'msg' => '', 'text' => '面接を予約する'])
 
   <div class="container_pastVideo">
     <h2 class="container_pastVideo_title">過去の面接動画</h2>
   </div>
 
-  @include('components.video_content',['videosCollection' => $pastVideosCollection])
+  @include('components.parts.video_content',['videosCollection' => $pastVideosCollection, 'isHr' => ''])
 </div>
 @endsection

@@ -1,16 +1,16 @@
-<link href="{{ asset('css/components/com_video_content.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/components/parts/com_video_content.css') }}" rel="stylesheet" type="text/css">
 @foreach($videosCollection as $video)
   <div class="video-wrapper">
     <div class="flex-pc">
       <div class="left-child-pc">
-        <a href="{{ route('watch', $video['id'])}}">
+        <a href="{{ route($isHr.'watch', $video['id'])}}">
           <div class="video-thumbnail">
             <img src="{{ asset($video['thumbnail_path']) }}">
           </div>
         </a>
       </div>
       <div class="right-child-pc">
-        <a href="{{ route('watch', $video['id'])}}">
+        <a href="{{ route($isHr.'watch', $video['id'])}}">
           <div class="video-title">
             {{ $video['title'] }}
           </div>
@@ -26,7 +26,7 @@
 
         <div class="video-score-wrapper flex">
           <div class="left-child">
-            @include('components.profile_info', ['stImagePath' => $video['stImagePath'], 'hrImagePath' => $video['hrImagePath']])
+            @include('components.parts.profile_info', ['stImagePath' => $video['stImagePath'], 'hrImagePath' => $video['hrImagePath']])
           </div>
           <div class="right-child video-score">
             <span>{{ $video['score']}}</span>点

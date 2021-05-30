@@ -94,7 +94,7 @@
 
        <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>
 
-      @include('components.button.form.next_button')
+      @include('components.parts.button.form.next_button')
     </form>
   </div>
   @endempty

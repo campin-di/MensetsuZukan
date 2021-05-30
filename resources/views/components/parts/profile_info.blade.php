@@ -1,4 +1,4 @@
-<link href="{{ asset('css/components/com_profile_info.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/components/parts/com_profile_info.css') }}" rel="stylesheet" type="text/css">
 <div class="profile profile-st-user">
   <a href="{{ route('mypage.theirPage', $video['stId']) }}">
     <img src="{{ asset($stImagePath) }}">

@@ -1,14 +1,14 @@
 @extends('layouts.hr.common')
 <link href="{{ asset('/css/st/watch.css') }}" rel="stylesheet">
 @section('content')
+  @include('components.parts.button.fixed_button', ['routeName' => 'hr.offer.form', 'ver'=>$mainVideo['stId'], 'msg' => '', 'text' => $mainVideo['stName'].'さんにオファーを送る'])
 
-  <div class="fixed-button">
-    <a href="{{ route('hr.offer.form', $mainVideo['stId']) }}">{{ $mainVideo['stName'] }}さんにオファーを送る</a>
-  </div>
+
 
   <div class="video-iframe">
     <div style="padding:73.17% 0 0 0;position:relative;"><iframe src="{{ $mainVideo['vimeo_src'] }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="みんラボ - Google Chrome 2020-12-25 15-24-05"></iframe></div>
   </div>
+
     <div class="container">
 
     <div class="video-title">
@@ -17,9 +17,6 @@
     <div class="video-view-good-wrapper flex">
       <div class="video-view">
         {{ $mainVideo['views'] }}回視聴・{{ $mainVideo['diffDate'] }}
-      </div>
-      <div class="video-good">
-        ♥：{{ $mainVideo['good'] }}
       </div>
     </div>
 
@@ -34,18 +31,7 @@
 
     <div class="video-user-score-wrapper flex">
       <div class="left-child">
-        <div class="video-st-user">
-          学生：
-          <a href="{{ route('mypage.theirPage', $mainVideo['stId']) }}">
-            {{ $mainVideo['stName'] }}<br>
-          </a>
-        </div>
-        <div class="video-hr-user">
-          人事：
-          <a href="{{ route('hr_mypage', $mainVideo['hrId']) }}">
-            {{ $mainVideo['hrName'] }}
-          </a>
-        </div>
+        @include('components.parts.profile_info', ['video' => $mainVideo, 'stImagePath' => $mainVideo['stImagePath'], 'hrImagePath' => $mainVideo['hrImagePath']])
       </div>
       <div class="right-child video-score">
         {{ $mainVideo['score']}}点

@@ -1,4 +1,4 @@
-<link href="{{ asset('css/components/com_profile.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/components/parts/com_profile.css') }}" rel="stylesheet" type="text/css">
 <div class="container_profile">
   <img class="container_profile_img" src="{{ asset($imagePath) }}" alt="プロフィール画像">
   <p class="container_profile_name">
