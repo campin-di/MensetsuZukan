@@ -105,20 +105,20 @@ Route::post('/mypage/edit/detail/confirm', 'St_MypageDetailController@send')->na
 Route::get('/mypage/edit/detail/thanks', 'St_MypageDetailController@complete')->name("mypage.detail.complete");
 /*--- end:詳細プロフィールの変更 ------------*/
 
-// from watch to theirPage
-Route::get('/mypage/{username}', 'St_MypageController@TheirPage')->name('mypage.theirPage');
+// from watch to stPage
+Route::get('/stpage/{id}', 'St_MypageController@stpage')->name('stpage');
 
-// from theirPage to detail
-Route::get('/mypage/{username}/detail', 'St_MypageController@TheirDetail')->name('mypage.theirDetail');
+// from stPage to detail
+Route::get('/stpage/{id}/detail', 'St_MypageController@stDetail')->name('stpage.detail');
 
 /*=== end:mypage関係 =========================================================*/
 
 /*=== 人事マイページ関係 =============================================================*/
 // to hrMypage
-Route::get('/hrMypage/mypage/{id}', 'St_HrMypageController@index')->name('hr_mypage');
+Route::get('/hrpage/{id}', 'St_HrMypageController@index')->name('hrpage');
 
 // from hrMypage to detail
-Route::get('/hrMypage/mypage/{id}/detail', 'St_HrMypageController@detail')->name('hr_mypage.detail');
+Route::get('/hrpage/detail/{id}', 'St_HrMypageController@detail')->name('hrpage.detail');
 
 /*=== end:人事マイページ関係 =========================================================*/
 

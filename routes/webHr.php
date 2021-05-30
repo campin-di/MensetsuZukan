@@ -123,11 +123,6 @@ use Illuminate\Support\Facades\Route;
     // mypage to detail Page
     Route::get('/mypage/detail', 'Hr_HrMypageController@myDetail')->name('hr.mypage.detail');
 
-    // to hr theirPage
-    Route::get('/hrMypage/theirPage/{id}', 'Hr_HrMypageController@theirPage')->name('hr.hr_mypage');
-    // from hr theirPage to detail
-    Route::get('/hrMypage/theirPage/{id}/detail', 'Hr_HrMypageController@theirDetail')->name('hr.hr_theirPage.detail');
-
     /*--- 基本情報の変更 -------------------------*/
     Route::get('/mypage/edit/basic', "Hr_HrMypageBasicController@show")->name('hr.mypage.basic.show');
     Route::post('/mypage/edit/basic', "Hr_HrMypageBasicController@post")->name('hr.mypage.basic.post');
@@ -148,17 +143,24 @@ use Illuminate\Support\Facades\Route;
     Route::get('/mypage/edit/detail/thanks', "Hr_HrMypageDetailController@complete")->name('hr.mypage.detail.complete');
     /*--- end:詳細プロフィールの変更 ------------*/
 
+    /*--- 自分以外の人事ページ 関係 -------------------------*/
+    // to hr hrpage
+    Route::get('/hrpage/{id}', 'Hr_HrMypageController@hrpage')->name('hr.hrpage');
+    // from hr hrpage to detail
+    Route::get('/hrpage/{id}/detail', 'Hr_HrMypageController@hrDetail')->name('hr.hrpage.detail');
+    /*--- end:自分以外の人事ページ 関係 -------------------------*/
+
     // from watch to stMypage
-    Route::get('/mypage/{id}', 'Hr_StMypageController@index')->name('hr.stMypage');
+    Route::get('/mypage/{id}', 'Hr_StMypageController@index')->name('hr.stpage');
 
     // from stMypage to detail
-    Route::get('/mypage/{id}/detail', 'Hr_StMypageController@detail')->name('hr.stMypage.detail');
+    Route::get('/mypage/{id}/detail', 'Hr_StMypageController@detail')->name('hr.stpage.detail');
 
     /*=== end:mypage関係 =========================================================*/
 
     /*=== 人事マイページ関係 =============================================================*/
     // to HrMypage
-    Route::get('/hrMypage/hrMypage', 'Hr_HrMypageController@index')->name('hr.hrMypage');
+    //Route::get('/hrMypage/hrMypage', 'Hr_HrMypageController@index')->name('hr.mypage');
 
 
     /*=== end:人事マイページ関係 =========================================================*/

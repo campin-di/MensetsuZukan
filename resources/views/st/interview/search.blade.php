@@ -47,10 +47,10 @@
 
   @foreach($hrCollection as $hr)
   <div class="hr-profile-wrapper">
-    <a href="{{ route('hr_mypage', $hr['id']) }}">
+    <a href="{{ route('hrpage', $hr['id']) }}">
     <div class="flex">
       <div class="left-child">
-        <img class="hr-photo" src="{{ asset('/img/yoshi.jpg') }}" alt="プロフィール写真">
+        <img class="hr-photo" src="{{ asset($hr['imagePath']) }}" alt="プロフィール写真">
       </div>
       <div class="right-child">
         {{ $hr['name'] }}({{ $hr['company'] }})
@@ -62,11 +62,11 @@
         <span class="company-information">{{ $hr['industry'] }}</span>
       </div>
       <div class="company-location">
-        <img class="icon" src="{{ asset('/img/icon/industry.png') }}" alt="アイコン">
+        <img class="icon" src="{{ asset('/img/icon/location.png') }}" alt="アイコン">
         <span>{{ $hr['location'] }}</span>
       </div>
       <div class="company-stock">
-        <img class="icon" src="{{ asset('/img/icon/industry.png') }}" alt="アイコン">
+        <img class="icon" src="{{ asset('/img/icon/company_type.png') }}" alt="アイコン">
         <span>{{ $hr['stock_type'] }}</span>
       </div>
     </div>

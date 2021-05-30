@@ -21,7 +21,7 @@ class Hr_HrMypageBasicController extends Controller
   ];
 
   function show(){
-    return view("hr/hrMypage/basic/form");
+    return view("hr/mypage/basic/form");
   }
 
   function post(Request $request){
@@ -54,7 +54,7 @@ class Hr_HrMypageBasicController extends Controller
     if(!$input){
       return redirect()->action("Hr_HrMypageBasicController@show");
     }
-    return view("hr/hrMypage/basic/form_confirm",["input" => $input]);
+    return view("hr/mypage/basic/form_confirm",["input" => $input]);
   }
 
   function send(Request $request){
@@ -89,7 +89,7 @@ class Hr_HrMypageBasicController extends Controller
   }
 
   function complete(){
-    return view("hr/hrMypage/basic/form_complete");
+    return view("hr/mypage/basic/form_complete");
   }
 
   /*===========================================================================*/

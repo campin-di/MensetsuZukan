@@ -5,17 +5,8 @@
 @include('components.parts.page_title', ['title'=>'面接スケジュールを決める'])
 
 <div class="container">
-  <div class="hr-information-wrapper">
-    <div class="hr-profile-img">
-      <img class="hr-photo" src="{{ asset('/img/yoshi.jpg') }}" alt="プロフィール写真">
-    </div>
-    <div class="hr-name">
-      {{ $hrUser->name }}
-    </div>
-    <div class="hr-company">
-      会社名
-    </div>
-  </div>
+  @include('components.parts.profile', ['imagePath' => $hrUser->image_path, 'userName' => $hrUser->name, 'nickName' => '', 'description' => $hrUser->company.'（'.$hrUser->industry.'）', 'introduction' => $hrUser->introduction ])
+
 
   <div class="schedule-wrapper">
     @if($is_schedule)

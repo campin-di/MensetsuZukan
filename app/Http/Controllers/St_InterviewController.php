@@ -37,6 +37,7 @@ class St_InterviewController extends Controller
           'id' => $hr->id,
           'name' => $hr->name,
           'company' => $hr->company,
+          'imagePath' => $hr->image_path,
           'industry' => $hr->industry,
           'company_type' => $hr->company_type,
           'stock_type' => $hr->stock_type,

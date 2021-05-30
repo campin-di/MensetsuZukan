@@ -17,7 +17,7 @@
       長期インターンや留学の経験がなく、アルバイト経験のみで頑張っています！！
     </p>
     <div class="container_profile_btn">
-      <a href="{{ route('hr.hr_theirPage.detail', $userDataArray['id']) }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
+      <a href="{{ route('hr.hrpage.detail', $userDataArray['id']) }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
     </div>
   </div>
 
@@ -26,7 +26,7 @@
   </div>
   @foreach($pastVideosCollection as $video)
     <a href="{{ route('watch', $video['id'])}}">
-      <iframe width="100%" height="315" src="{{ $video['url'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      <iframe width="100%" height="315" src="{{ $video['vimeo_src'] }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
       {{ $video['title'] }}<br>
 
       <div class="d-flex justify-content-start">

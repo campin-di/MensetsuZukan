@@ -18,7 +18,9 @@ class St_HrMypageController extends Controller
     $userDataArray = [
       'id' => $id,
       'name' => $userData->name,
+      'imagePath' => $userData->image_path,
       'company' => $userData->company,
+      'introduction' => $userData->introduction,
     ];
 
     $pastVideos = Video::where('hr_id', $userData->id)->get();
@@ -26,7 +28,7 @@ class St_HrMypageController extends Controller
 
     $interviewReservations = Interview::where('hr_id', $userData->id)->with('hr_user')->select('id', 'hr_id', 'date', 'url')->get();
 
-    return view('st/hrMypage/mypage', [
+    return view('st/hrpage/hrpage', [
       'userDataArray' => $userDataArray,
       'pastVideosCollection' => $pastVideosCollection,
     ]);
@@ -43,7 +45,7 @@ class St_HrMypageController extends Controller
       ],
     ]);
 
-    return view('st/hrMypage/detail', [
+    return view('st/hrpage/detail', [
       'profileCollection' => $profileCollection,
     ]);
   }

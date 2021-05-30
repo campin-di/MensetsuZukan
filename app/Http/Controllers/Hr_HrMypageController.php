@@ -40,7 +40,7 @@ class Hr_HrMypageController extends Controller
       ]);
     }
 
-    return view('hr/hrMypage/mypage', [
+    return view('hr/mypage/mypage', [
       'userDataArray' => $userDataArray,
       'pastVideosCollection' => $pastVideosCollection,
       'interviewReservationsCollection' => $interviewReservationsCollection,
@@ -60,13 +60,13 @@ class Hr_HrMypageController extends Controller
       'pr' => $userData->pr,
     ];
 
-    return view('hr/hrMypage/detail', [
+    return view('hr/mypage/detail', [
       'hrId' => $hrId,
       'profileDetailArray' => $profileDetailArray,
     ]);
   }
 
-  public function theirPage($id)
+  public function hrpage($id)
   {
     $userData = HrUser::find($id);
 
@@ -81,13 +81,13 @@ class Hr_HrMypageController extends Controller
 
     $interviewReservations = Interview::where('hr_id', $userData->id)->with('hr_user')->select('id', 'hr_id', 'date', 'url')->get();
 
-    return view('hr/hrMypage/their_page', [
+    return view('hr/hrpage/hrpage', [
       'userDataArray' => $userDataArray,
       'pastVideosCollection' => $pastVideosCollection,
     ]);
   }
 
-  public function theirDetail($id)
+  public function hrDetail($id)
   {
     $profile = HrUser::find($id);
 
@@ -99,7 +99,7 @@ class Hr_HrMypageController extends Controller
       ],
     ]);
 
-    return view('hr/hrMypage/their_detail', [
+    return view('hr/hrpage/detail', [
       'profileCollection' => $profileCollection,
     ]);
   }
