@@ -31,7 +31,7 @@
 
     <div class="video-user-score-wrapper flex">
       <div class="left-child">
-        @include('components.parts.profile_info', ['video' => $mainVideo, 'stImagePath' => $mainVideo['stImagePath'], 'hrImagePath' => $mainVideo['hrImagePath']])
+        @include('components.parts.profile_info', ['video' => $mainVideo, 'isHr' => 'hr.', 'stImagePath' => $mainVideo['stImagePath'], 'hrImagePath' => $mainVideo['hrImagePath']])
       </div>
       <div class="right-child video-score">
         {{ $mainVideo['score']}}点
@@ -98,7 +98,7 @@
         </div>
       </div>
       <div class="review">
-        <a href="{{ route('hr_mypage', $mainVideo['hrId']) }}">
+        <a href="{{ route('hrpage', $mainVideo['hrId']) }}">
           {{ $mainVideo['hrName'] }}
         </a>
         <p>

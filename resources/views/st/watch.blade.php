@@ -86,7 +86,7 @@
       </div>
     </div>
     <div class="review">
-      <a href="{{ route('hr_mypage', $mainVideo['hrId']) }}">
+      <a href="{{ route('hrpage', $mainVideo['hrId']) }}">
         {{ $mainVideo['hrName'] }}
       </a>
       <p>

@@ -8,7 +8,7 @@
   @include('components.parts.profile', ['imagePath' => $userDataArray['imagePath'], 'isHr' => '', 'userName' => '', 'nickName' => $userDataArray['nickname'], 'description' => '地方〇〇/〇〇業界志望/〇〇卒', 'introduction' => '地方国立理系です！長期インターンや留学の経験がなく、アルバイト経験のみで頑張っています！' ])
 
   <div class="container_profile_btn">
-    <a href="{{ route('mypage.theirDetail', $userDataArray['stId']) }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
+    <a href="{{ route('stpage.detail', $userDataArray['stId']) }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
   </div>
 
   <div class="container_pastVideo">

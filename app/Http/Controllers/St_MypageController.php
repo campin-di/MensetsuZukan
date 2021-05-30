@@ -72,7 +72,7 @@ class St_MypageController extends Controller
     ]);
   }
 
-  public function TheirPage($stId)
+  public function stpage($stId)
   {
     $loginId = Auth::user()->id;
 
@@ -95,13 +95,13 @@ class St_MypageController extends Controller
 
     $interviewReservations = Interview::where('st_id', $stId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
 
-    return view('st/mypage/their_page', [
+    return view('st/stpage/stpage', [
       'userDataArray' => $userDataArray,
       'pastVideosCollection' => $pastVideosCollection,
     ]);
   }
 
-  public function theirDetail($stId)
+  public function stDetail($stId)
   {
     $userData = User::find($stId);
 
@@ -120,7 +120,7 @@ class St_MypageController extends Controller
       'qualification' => $userData->qualification,
     ];
 
-    return view('st/mypage/their_detail', [
+    return view('st/mypage/detail', [
       'profileDetailArray' => $profileDetailArray,
     ]);
   }

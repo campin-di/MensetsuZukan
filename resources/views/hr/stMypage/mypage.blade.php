@@ -18,7 +18,7 @@
       ここに自己紹介を記入します
     </p>
     <div class="container_profile_btn">
-      <a href="{{ route('hr.stMypage.detail', $stId) }}" class="mx-2 btn btn-primary container_profile_btn_profile">詳しいプロフィール</a>
+      <a href="{{ route('hr.stpage.detail', $stId) }}" class="mx-2 btn btn-primary container_profile_btn_profile">詳しいプロフィール</a>
       <a href="{{ route('hr.offer.form', $stId) }}" class="mx-2 btn btn-primary container_profile_btn_offer">オファーする</a>
     </div>
   </div>
@@ -27,7 +27,7 @@
   @foreach($pastVideosCollection as $video)
     <a href="{{ route('hr.watch', $video['id'])}}">
       <div>
-        <img src="{{ $video['thumbnailsUrl'] }}" width="360" height="240">
+        <img src="{{ $video['thumbnail_path'] }}" width="360" height="240">
       </div>
       {{ $video['title'] }}<br>
 

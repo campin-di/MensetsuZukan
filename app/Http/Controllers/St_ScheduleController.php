@@ -18,7 +18,7 @@ class St_ScheduleController extends Controller
 {
   public function schedule($hr_id)
   {
-    $hrUser = HrUser::where('id', $hr_id)->select('id', 'name')->first();
+    $hrUser = HrUser::where('id', $hr_id)->select('id', 'name', 'company', 'image_path', 'industry')->first();
     $scheduleData = Schedule::where('hr_id', $hr_id);
 
     if(!$scheduleData->exists()){

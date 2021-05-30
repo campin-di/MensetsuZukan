@@ -32,7 +32,7 @@ class Hr_HrMypageDetailController extends Controller
       'pr' => $userData->pr,
     ];
 
-    return view("hr/hrMypage/detail/form",[
+    return view("hr/mypage/detail/form",[
       'profileDetailArray' => $profileDetailArray,
     ]);
   }
@@ -67,7 +67,7 @@ class Hr_HrMypageDetailController extends Controller
     if(!$input){
       return redirect()->action("Hr_HrMypageDetailController@show");
     }
-    return view("hr/hrMypage/detail/form_confirm",["input" => $input]);
+    return view("hr/mypage/detail/form_confirm",["input" => $input]);
   }
 
   function send(Request $request){
@@ -124,6 +124,6 @@ class Hr_HrMypageDetailController extends Controller
   }
 
   function complete(){
-    return view("hr/hrMypage/detail/form_complete");
+    return view("hr/mypage/detail/form_complete");
   }
 }

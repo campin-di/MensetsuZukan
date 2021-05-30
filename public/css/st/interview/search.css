@@ -39,17 +39,17 @@
   margin: 15px auto 10px;
 }
 
-.hr-profile-wrapper .left-child img{
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
 .hr-profile-wrapper .right-child{
   margin-left: 10px;
   font-weight: bold;
   font-size: 16px;
+}
+
+.hr-photo{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #9681FF;
 }
 
 .company-information-wrapper div{
@@ -84,14 +84,16 @@
       font-size: 18px;
   }
 
-  .hr-profile-wrapper .left-child img {
-    width: 60px;
-    height: 60px;
-  }
   .hr-profile-wrapper .right-child {
     margin-left: 20px;
     font-size: 24px;
   }
+
+  .hr-photo {
+    width: 50px;
+    height: 50px;
+  }
+
   .company-information-wrapper div {
     margin-right: 30px;
     font-size: 18px;

@@ -38,14 +38,13 @@
     <a class="container_schedule_reservation btn btn-primary" href="{{ route('hr.interview.schedule.add') }}">面接可能日程を追加する。</a>
   </div>
 
-
   <div class="container_pastVideo">
     <h2 class="container_pastVideo_title">過去の面接動画</h2>
   </div>
   @foreach($pastVideosCollection as $video)
     <a href="{{ route('hr.watch', $video['id'])}}">
       <div>
-        <img src="{{ $video['thumbnailsUrl'] }}" width="360" height="240">
+        <img src="{{ $video['thumbnail_path'] }}" width="360" height="240">
       </div>
       {{ $video['title'] }}<br>
 
