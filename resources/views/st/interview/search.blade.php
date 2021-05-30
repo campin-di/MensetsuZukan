@@ -2,11 +2,7 @@
 <link rel="stylesheet" href="{{ asset('css/st/interview/search.css') }}">
 @section('content')
 
-<div class="top-content-wrapper">
-  <div class="top-content">
-    <h1>人事を探す</h1>
-  </div>
-</div>
+@include('components.page_title', ['title'=>'人事を探す'])
 
 <div class="container">
   <div class="filter-wrapper flex">

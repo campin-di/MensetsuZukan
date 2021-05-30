@@ -80,6 +80,11 @@ Route::get('/mypage', 'St_MypageController@index')->name('mypage');
 // mypage to detail Page
 Route::get('/mypage/detail', 'St_MypageController@myDetail')->name('mypage.detail');
 
+/*--- プロフィール画像のアップロード  -------------------------*/
+Route::get('/mypage/upload/{id}', 'St_MypageBasicController@upload')->name('mypage.basic.upload');
+Route::post('/mypage/upload/complete', 'St_MypageBasicController@uploadPost')->name('mypage.basic.upload.post');
+
+
 /*--- 基本情報の変更 -------------------------*/
 Route::get('/mypage/edit/basic', 'St_MypageBasicController@show')->name("mypage.basic.show");
 Route::post('/mypage/edit/basic', 'St_MypageBasicController@post')->name("mypage.basic.post");

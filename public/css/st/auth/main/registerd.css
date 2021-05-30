@@ -26,26 +26,6 @@
   font-weight: bold;
 }
 
-.upper-button{
-  border: solid 2px #D5E3FF;
-  border-radius: 5px;
-  padding: 13px 0;
-  margin: 10px auto;
-}
-.upper-button a{
-  font-weight: bold;
-}
-
-.under-button{
-  background: linear-gradient(to right, #7CC4FF, #9681FF);
-  border-radius: 5px;
-  padding: 13px 0;
-  margin: 10px auto;
-}
-.under-button a{
-  color: #FFF;
-  font-weight: bold;
-}
 
 /* === end: メイン部分 =================================================*/
 

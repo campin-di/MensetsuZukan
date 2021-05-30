@@ -1,7 +1,10 @@
 @extends('layouts.st.common')
+<link rel="stylesheet" href="{{ asset('css/st/mypage/basic/form.css') }}">
 @section('content')
+
+@include('components.page_title', ['title'=>'基本情報の変更'])
+
 <div class="container">
-	<h3>フォーム</h3>
 	@if ($errors->any())
 	<div style="color:red;">
 	<ul>
@@ -11,6 +14,19 @@
 	</ul>
 	</div>
 	@endif
+
+	<div class="container_profile">
+		<div class="container_profile_img_wrapper">
+			<img id="profile_img" class="container_profile_img" src="{{ asset('img/kokyo.png') }}" alt="プロフィール画像">
+			<a href="{{ route('mypage.basic.upload', $userData->id) }}" class="mask">
+				<div class="caption">編集</div>
+			</a>
+		</div>
+		<p class="container_profile_name">
+	    {{ $userData->name }}
+	    {{ $userData->nickname }}
+	  </p>
+	</div>
 
 	<!--研究室登録フォーム-->
 	<form method="post" action="{{ route('mypage.basic.post') }}">

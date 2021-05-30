@@ -1,0 +1,76 @@
+.container_profile {
+  width: 70%;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+
+.container_profile_img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.container_profile_name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.container_profile_category {
+  font-size: 10px;
+}
+
+.container_profile_detail {
+  font-size: 10px;
+  margin-top: 35px;
+}
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+.container_profile_img_wrapper {
+  width:			280px;
+	height:			188px;
+	overflow:		hidden;
+  margin: 8px auto 16px;
+	position:		relative;
+}
+.container_profile_img_wrapper .caption {
+	font-size: 16px;
+	text-align: center;
+	padding-top: 80px;
+	color: #fff;
+}
+.container_profile_img_wrapper .mask {
+	width: 110px;
+	height: 110px;
+	position: absolute;	/* 絶対位置指定 */
+	top: 0;
+	left: 30%;
+	opacity: 0;	/* マスクを表示しない */
+  border-radius: 50%;
+	background-color:	rgba(0,0,0,0.6);	/* マスクは半透明 */
+	-webkit-transition:	all 0.2s ease;
+	transition:		all 0.2s ease;
+}
+.container_profile_img_wrapper:hover .mask {
+  opacity:		1;	/* マスクを表示する */
+}
+
+.container_profile_img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+}
+.container_profile_name {
+  font-size: 35px;
+  margin-top: 15px;
+}
+.container_profile_category {
+  font-size: 18px;
+}
+.container_profile_detail {
+  font-size: 18px;
+  margin-top: 40px;
+}
+}

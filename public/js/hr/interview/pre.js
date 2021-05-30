@@ -10,5 +10,3 @@ let hogehoge = () => {
 
   console.log(interviewInfo);
 };
-
-console.log("あいうえろ");

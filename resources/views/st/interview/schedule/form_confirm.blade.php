@@ -1,11 +1,9 @@
 @extends('layouts.st.common')
 <link rel="stylesheet" href="{{ asset('css/st/interview/schedule/form_confirm.css') }}">
 @section('content')
-<div class="top-content-wrapper">
-  <div class="top-content">
-    <h1>面接スケジュールの確認</h1>
-  </div>
-</div>
+
+@include('components.page_title', ['title'=>'確認'])
+
 
 <div class="container confirm-wrapper">
 	<form method="post" action="{{ route('interview.schedule.send') }}">
@@ -45,11 +43,7 @@
 				<input id="c_agree" type="checkbox" name="agree" value="1" required> 注意事項を確認した。
 			</label>
 		</div>
-		<div class="button-wrapper">
-			<button type="submit">
-				予約を完了する
-			</button>
-		</div>
+    @include('components.button.form.transition_button', ['text' => '予約を完了する'])
 	</form>
 </div>
 @endsection

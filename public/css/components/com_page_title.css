@@ -1,0 +1,19 @@
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content{
+  padding: 50px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* === end: 画面タイトル 部分 =================================================*/
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+
+  .top-content h1{
+    font-size: 32px;
+  }
+}

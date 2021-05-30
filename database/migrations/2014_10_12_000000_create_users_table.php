@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->integer('status')->comment('0:仮登録, 1:本登録, 2:メール認証済, 10:視聴不可, 11:視聴可, 99:退会済, 100:管理者');
 
             //stProfile分
+            $table->string('image_path')->default('storage/uploads/profile/st/st-unset.png');
             $table->string('company_type')->nullable();
             $table->string('industry')->nullable();
             $table->string('jobtype')->nullable();

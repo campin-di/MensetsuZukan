@@ -1,0 +1,50 @@
+.upper-button{
+  font-weight: bold;
+}
+
+.upper-button div{
+  border: solid 2px #D5E3FF;
+  border-radius: 5px;
+  line-height: 3;
+  margin: 15px auto;
+  transition: 0.5s;
+}
+
+.under-button{
+  color: #FFF;
+  font-weight: bold;
+}
+.under-button div{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border-radius: 5px;
+  line-height: 3;
+  margin: 10px auto;
+}
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .upper-button, .under-button{
+    font-size: 20px;
+  }
+
+  .upper-button div{
+    transition: .3s;
+  }
+  .upper-button div:hover{
+    color: #FFF;
+    border: solid 2px #7CC4FF;
+    background-color: #7CC4FF;
+    transform: translateY(-0.1875em);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  .under-button div{
+    transition: .3s;
+  }
+  .under-button div:hover {
+    transform: translateY(-0.1875em);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+    background: linear-gradient(to right, #7CC4FF, #7F66FF);
+    color: #FFF;
+  }
+}

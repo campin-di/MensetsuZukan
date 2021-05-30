@@ -150,11 +150,7 @@
         </div>
       </div>
 
-      <div class="button-wrapper">
-        <button type="submit">
-          →
-        </button>
-      </div>
+      @include('components.button.form.next_button')
     </form>
   </div>
   @endempty
