@@ -35,7 +35,7 @@
       </div>
 
       <div class="button-wrapper">
-        @include('components.button.form.transition_button', ['text' => 'ログイン'])
+        @include('components.parts.button.form.transition_button', ['text' => 'ログイン'])
 
         @if (Route::has('password.request'))
           <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -50,6 +50,6 @@
     </form>
   </div>
 
-  @include('components.button.fixed_button', ['routeName' => 'register.choice', 'ver'=>'', 'msg' => 'まだ会員登録されていない方は', 'text' => '新規会員登録'])
+  @include('components.parts.button.fixed_button', ['routeName' => 'register.choice', 'ver'=>'', 'msg' => 'まだ会員登録されていない方は', 'text' => '新規会員登録'])
 <script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
 @endsection

@@ -19,11 +19,11 @@
       <p>※登録後に変更できないためご注意ください。</p>
     </div>
 
-    @include('components.button.next_button', ['routeName' => 'register'])
+    @include('components.parts.button.next_button', ['routeName' => 'register'])
   </div>
 
   <div id="login-wrapper">
-    @include('components.button.fixed_button',['routeName' => 'login', 'ver'=>'', 'msg' => '既にアカウントをお持ちの方は', 'text' => 'ログイン'])
+    @include('components.parts.button.fixed_button',['routeName' => 'login', 'ver'=>'', 'msg' => '既にアカウントをお持ちの方は', 'text' => 'ログイン'])
   </div>
 
   <script type="text/javascript" src="{{ asset('/js/auth/choice.js') }}"></script>

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{{ asset('css/st/mypage/basic/form.css') }}">
 @section('content')
 
-@include('components.page_title', ['title'=>'基本情報の変更'])
+@include('components.parts.page_title', ['title'=>'基本情報の変更'])
 
 <div class="container">
 	@if ($errors->any())

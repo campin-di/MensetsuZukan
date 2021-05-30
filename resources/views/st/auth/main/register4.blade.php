@@ -36,7 +36,7 @@
         </div>
 
         <input type="hidden" id="plan" class="button" name="plan" value="投稿者プラン" required>
-        @include('components.button.form.next_button')
+        @include('components.parts.button.form.next_button')
       </form>
   @endempty
 </div>

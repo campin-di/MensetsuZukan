@@ -40,7 +40,7 @@
   </div>
 
   <div class="contents-wrapper">
-    @include('components.video_content')
+    @include('components.parts.video_content', ['isHr' => ''])
   </div>
 
 <script type="text/javascript">

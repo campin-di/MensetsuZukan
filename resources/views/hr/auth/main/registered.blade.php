@@ -10,11 +10,6 @@
 <div class="container form-wrapper">
   <div class="title">面接図鑑をご利用ください。</div>
 
-  <div class="upper-button">
-    <a href="{{ url('/') }}" class="sg-btn">トップページに戻る</a>
-  </div>
-  <div class="under-button">
-    <a href="{{ route('hr.login') }}" class="sg-btn">ログイン</a>
-  </div>
+  @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'hr.login', 'underText' => 'ログイン'])
 </div>
 @endsection

@@ -27,23 +27,8 @@
         </div>
       </div>
 
-<!--
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-          <label class="form-check-label" for="remember">
-              {{ __('Remember Me') }}
-          </label>
-      </div>
--->
-
-    <div class="button-wrapper">
-      <button type="submit">
-        送信する
-      </button>
-    </div>
+      @include('components.parts.button.form.transition_button', ['text'=>'送信'])
   </form>
 </div>
-
-<script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
 
 @endsection

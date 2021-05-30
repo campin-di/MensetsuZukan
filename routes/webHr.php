@@ -124,7 +124,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/mypage/detail', 'Hr_HrMypageController@myDetail')->name('hr.mypage.detail');
 
     // to hr theirPage
-    Route::get('/hrMypage/theirPage/{id}', 'Hr_HrMypageController@theirPage')->name('hr.hr_theirPage');
+    Route::get('/hrMypage/theirPage/{id}', 'Hr_HrMypageController@theirPage')->name('hr.hr_mypage');
     // from hr theirPage to detail
     Route::get('/hrMypage/theirPage/{id}/detail', 'Hr_HrMypageController@theirDetail')->name('hr.hr_theirPage.detail');
 

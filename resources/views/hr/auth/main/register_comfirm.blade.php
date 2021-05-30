@@ -22,11 +22,7 @@
     <input name="back" type="submit" value="戻る" />
     -->
 
-    <div class="button-wrapper">
-      <button type="submit">
-      送信
-      </button>
-    </div>
+    @include('components.parts.button.form.transition_button', ['text'=>'送信'])
 
   </form>
 </div>

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{{ asset('css/st/interview/schedule/form.css') }}">
 @section('content')
 
-@include('components.page_title', ['title'=>'面接スケジュールを決める'])
+@include('components.parts.page_title', ['title'=>'面接スケジュールを決める'])
 
 <div class="container">
   <div class="hr-information-wrapper">
@@ -42,7 +42,7 @@
         </div>
       @endforeach
 
-      @include('components.button.form.next_button')
+      @include('components.parts.button.form.next_button')
     </form>
     @else
     面接が可能な日程はありません。

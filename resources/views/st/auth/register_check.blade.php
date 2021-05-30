@@ -27,10 +27,8 @@
       </div>
     </div>
 
-    @include('components.button.form.transition_button', ['text'=>'送信'])
+    @include('components.parts.button.form.transition_button', ['text'=>'送信'])
   </form>
 </div>
-
-<script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
 
 @endsection
