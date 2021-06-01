@@ -87,7 +87,16 @@ class St_MypageBasicController extends Controller
     if(!$input){
       return redirect()->action("St_MypageBasicController@show");
     }
-    return view('st/mypage/basic/form_confirm', ["input" => $input]);
+
+    $inputArray = [];
+    if(isset($input['nickname'])){
+      $inputArray['ニックネーム'] = $input['nickname'];
+    }
+    if(isset($input['password'])){
+      $inputArray['パスワード'] = '********';
+    }
+
+    return view('st/mypage/basic/form_confirm', compact('inputArray'));
   }
 
   function send(Request $request){
@@ -107,11 +116,15 @@ class St_MypageBasicController extends Controller
 
     //=====処理内容====================================
     //================================================
-    $userId = Auth::user()->id;
-    \DB::table('users')->where('id', $userId)->update([
-            'username' => $input["username"],
-            'password' => Hash::make($input["password"]),
-        ]);
+    $user = User::find(Auth::user()->id);
+    if(isset($input['nickname'])){
+      $user->nickname =  $input['nickname'];
+    }
+    if(isset($input['password'])){
+      $user->password = Hash::make($input['password']);
+    }
+    $user->save();
+
     //================================================
     //================================================
 

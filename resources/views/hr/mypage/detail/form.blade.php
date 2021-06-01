@@ -15,7 +15,6 @@
 	<!--研究室登録フォーム-->
 	<form method="post" action="{{ route('hr.mypage.detail.post') }}">
 		@csrf
-
 		<table>
 			<tr>
 				<th height="75px">どんな面接ができる？</th>

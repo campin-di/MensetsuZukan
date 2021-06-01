@@ -21,14 +21,17 @@ class St_MypageController extends Controller
     $userDataArray = [
       'name' => $userData->name,
       'nickname' => $userData->nickname,
+      'introduction' => $userData->introduction,
       'imagePath' => $userData->image_path,
+      'industry' => $userData->industry,
+      'graduate_year' => $userData->graduate_year,
       'plan' => $userData->plan,
     ];
 
     $pastVideos = Video::where('st_id', $userId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::where('st_id', $userId)->with('hr_user')->select('id', 'hr_id', 'date', 'url')->get();
+    $interviewReservations = Interview::where('st_id', $userId)->with('hr_user:id,name,image_path,industry')->select('id', 'hr_id', 'date', 'url')->get();
 
     $interviewReservationsCollection = collect();
     foreach ($interviewReservations as $interviewReservation) {
@@ -36,6 +39,7 @@ class St_MypageController extends Controller
         [
           'id' => $interviewReservation->id,
           'name' => $interviewReservation->hr_user->name,
+          'imagePath' => $interviewReservation->hr_user->image_path,
           'date' => $interviewReservation->date,
         ],
       ]);
@@ -43,8 +47,9 @@ class St_MypageController extends Controller
 
     return view('st/mypage/mypage', [
       'userDataArray' => $userDataArray,
-      'pastVideosCollection' => $pastVideosCollection,
+      'interviewReservations' => $interviewReservations,
       'interviewReservationsCollection' => $interviewReservationsCollection,
+      'pastVideosCollection' => $pastVideosCollection,
     ]);
   }
 
@@ -53,8 +58,15 @@ class St_MypageController extends Controller
     $userData = Auth::user();
 
     $profileDetailArray = [
+      'name' => $userData->name,
+      'nickname' => $userData->nickname,
+      'introduction' => $userData->introduction,
+      'imagePath' => $userData->image_path,
+      'industry' => $userData->industry,
+      'graduate_year' => $userData->graduate_year,
+      'plan' => $userData->plan,
+
       'companyType' => $userData->company_type,
-      'industry' => $userData->industry_id,
       'jobtype' => $userData->jobtype,
       'workplace' => $userData->workplace,
       'startTime' => $userData->start_time,
@@ -62,7 +74,7 @@ class St_MypageController extends Controller
       'gakuchika' => $userData->gakuchika,
       'personality' => $userData->personality,
       'toeic' => $userData->toeic,
-      'english' => $userData->english,
+      'englishLevel' => $userData->english_level,
       'otherLanguage' => $userData->other_language,
       'qualification' => $userData->qualification,
     ];
@@ -86,7 +98,10 @@ class St_MypageController extends Controller
     $userDataArray = [
       'stId' => $userData->id,
       'nickname' => $userData->nickname,
+      'introduction' => $userData->introduction,
       'imagePath' => $userData->image_path,
+      'industry' => $userData->industry,
+      'graduate_year' => $userData->graduate_year,
       'plan' => $userData->plan,
     ];
 
@@ -120,7 +135,7 @@ class St_MypageController extends Controller
       'qualification' => $userData->qualification,
     ];
 
-    return view('st/mypage/detail', [
+    return view('st/stpage/detail', [
       'profileDetailArray' => $profileDetailArray,
     ]);
   }

@@ -1,0 +1,90 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none;
+}
+
+.flex{
+  display: flex;
+}
+
+input::placeholder {
+  color: #CCCCCC !important;
+}
+/* IE */
+input:-ms-input-placeholder {
+  color: #CCCCCC !important;
+}
+/* Edge */
+input::-ms-input-placeholder {
+  color: #CCCCCC !important;
+}
+
+/* === end: 共通部分 =================================================*/
+
+
+/* === begin: フォーム部分 =================================================*/
+.form-input-wrapper{
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.form-title{
+  color: #6B8BE9;
+  margin-left: 10px;
+}
+
+.form-input{
+  justify-content: space-between;
+}
+.form-input div{
+  width: 48%;
+}
+.form-input option{
+  color: #333;
+}
+.form-input input{
+  color: #333;
+  border-radius: 30px;
+  padding: 1.4rem;
+  font-size: 1.1rem;
+}
+.form-input select{
+  border-radius: 30px;
+  padding: 0rem 1rem;
+  font-size: 1.1rem;
+}
+
+.button-wrapper{
+  margin-top: 50px;
+  text-align: center;
+}
+.button-wrapper button{
+  width: 100%;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+}
+/* === end: フォーム部分 =================================================*/
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .top-content-wrapper{
+    width: 105vw;
+    margin-left: -25%;
+    overflow-x: hidden;
+  }
+
+  .form-wrapper{
+    padding: 0 25% !important;
+  }
+
+  .button-wrapper{
+    margin-top: 75px;
+    padding: 0 5%;
+  }
+}

@@ -8,6 +8,22 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+ /*==== スクロールバー部分 ====================================================*/
+ ::-webkit-scrollbar{
+   width: 10px;
+ }
+ ::-webkit-scrollbar-track{
+   background: #fff;
+   border: none;
+   border-radius: 10px;
+   box-shadow: inset 0 0 2px #777;
+ }
+ ::-webkit-scrollbar-thumb{
+   background: linear-gradient(180deg, #7CC4FF, #9681FF);
+   border-radius: 10px;
+   box-shadow: none;
+ }
+  /*==== end: スクロールバー部分 ===============================================*/
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
