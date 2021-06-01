@@ -82,5 +82,4 @@
   let industries = @json($industries);
 </script>
 <script type="text/javascript" src="{{ asset('/js/st/interview/search.js') }}"></script>
-
 @endsection

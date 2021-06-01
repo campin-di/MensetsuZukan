@@ -17,23 +17,9 @@ class VideoDisplayClass
 {
     public static function VideoDisplay($videos)
     {
-/*
-      // Googleへの接続情報のインスタンスを作成と設定
-      $client = new Google_Client();
-      $client->setDeveloperKey(env('GOOGLE_API_KEY'));
-
-      // 接続情報のインスタンスを用いてYoutubeのデータへアクセス可能なインスタンスを生成
-      $youtube = new Google_Service_YouTube($client);
-
-      $count = $videos->count();
-*/
       $videosCollection = collect([]);
       foreach ($videos as $video) {
-/*
-        $thumbnailsUrl = $youtube->videos->listVideos('statistics,snippet', array(
-          'id' => $video->common_url,
-        ))[0]['snippet']['thumbnails']['high']['url'];
-*/
+
         $diffDate = DiffDateClass::diffDate($video->created_at);
 
         $stUser = User::find($video->st_id);
@@ -48,7 +34,6 @@ class VideoDisplayClass
         $videosCollection = $videosCollection->concat([
           [
             'id' => $video->id,
-            //'thumbnailsUrl' => $thumbnailsUrl,
             'vimeo_src' => $video->vimeo_src,
             'thumbnail_path' => $video->thumbnail_path,
             'title' => $video->title,

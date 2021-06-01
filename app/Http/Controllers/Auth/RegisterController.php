@@ -45,11 +45,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'nickname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+      return Validator::make($data, [
+          'nickname' => ['required', 'string', 'max:255'],
+          'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+          'password' => ['required', 'string', 'min:8', 'confirmed'],
+      ]);
     }
 
     /**
@@ -60,21 +60,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user =  User::create([
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'email_verify_token' => base64_encode($data['email']),
-            'status' => config('const.USER_STATUS.PRE_REGISTER')
-        ]);
+      $user =  User::create([
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+        'email_verify_token' => base64_encode($data['email']),
+        'status' => config('const.USER_STATUS.PRE_REGISTER')
+      ]);
 
-        //Mail::to($st->email)->send(new OfferMail($offer));
-        Mail::send('st.auth.email.pre_register', ['token' => $user['email_verify_token']], function ($message) use ($data){
-          $message->subject('仮登録が完了しました');
-          $message->from('mensetsu_zukan@example.com');
-          $message->to($data['email']);
-        });
+      //Mail::to($st->email)->send(new OfferMail($offer));
+      Mail::send('st.auth.email.pre_register', ['token' => $user['email_verify_token']], function ($message) use ($data){
+        $message->subject('仮登録が完了しました');
+        $message->from('mensetsu_zukan@example.com');
+        $message->to($data['email']);
+      });
 
-        return $user;
+      return $user;
     }
 
     public function choice(Request $request)
@@ -94,27 +94,27 @@ class RegisterController extends Controller
 
     public function showForm($email_token)
     {
-        // 使用可能なトークンか
-        if ( !User::where('email_verify_token',$email_token)->exists() )
-        {
-            return view('st/auth.main.register')->with('message', '無効なトークンです。');
-        } else {
-            $user = User::where('email_verify_token', $email_token)->first();
-            // 本登録済みユーザーか
-            if ($user->status == config('const.USER_STATUS.REGISTER')) //REGISTER=1
-            {
-                logger("status". $user->status );
-                return view('st/auth.main.register')->with('message', 'すでに本登録されています。ログインして利用してください。');
-            }
-            // ユーザーステータス更新
-            $user->status = config('const.USER_STATUS.MAIL_AUTHED');
-            $user->email_verified_at = Carbon::now('asia/Tokyo');
-            if($user->save()) {
-                return view('st/auth.main.register', compact('email_token'));
-            } else{
-                return view('st/auth.main.register')->with('message', 'メール認証に失敗しました。再度、メールからリンクをクリックしてください。');
-            }
-        }
+      // 使用可能なトークンか
+      if ( !User::where('email_verify_token',$email_token)->exists() )
+      {
+          return view('st/auth.main.register')->with('message', '無効なトークンです。');
+      } else {
+          $user = User::where('email_verify_token', $email_token)->first();
+          // 本登録済みユーザーか
+          if ($user->status == config('const.USER_STATUS.REGISTER')) //REGISTER=1
+          {
+              logger("status". $user->status );
+              return view('st/auth.main.register')->with('message', 'すでに本登録されています。ログインして利用してください。');
+          }
+          // ユーザーステータス更新
+          $user->status = config('const.USER_STATUS.MAIL_AUTHED');
+          $user->email_verified_at = Carbon::now('asia/Tokyo');
+          if($user->save()) {
+              return view('st/auth.main.register', compact('email_token'));
+          } else{
+              return view('st/auth.main.register')->with('message', 'メール認証に失敗しました。再度、メールからリンクをクリックしてください。');
+          }
+      }
     }
 
      public function showForm2(Request $request)

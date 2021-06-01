@@ -9,20 +9,8 @@
 </div>
 
 <div class="container content-wrapper">
-  <div class="hr-information-wrapper">
-    <div class="hr-profile-img">
-      <img class="hr-photo" src="{{ asset('/img/yoshi.jpg') }}" alt="プロフィール写真">
-    </div>
-    <div class="hr-name">
-      {{ $interviewInfo->hr_user->name }}
-    </div>
-    <div class="hr-company">
-      {{ $interviewInfo->hr_user->company }}
-    </div>
-    <div class="hr-pr">
-      {{ $interviewInfo->hr_user->pr }}
-    </div>
-  </div>
+  @include('components.parts.profile',['imagePath' => $interviewInfo->hr_user->image_path, 'isHr' => '', 'userName' => $interviewInfo->hr_user->name, 'nickName' => '', 'description' => $interviewInfo->hr_user->company. '（' . $interviewInfo->hr_user->industry . '）', 'introduction' => $interviewInfo->hr_user->pr ])
+
 
   <div class="content">
     <div class="content-title">
@@ -38,8 +26,8 @@
       <h2>Zoom情報</h2>
     </div>
     <ul class="zoom">
-      <li>ミーティングID: 835 7102 3541</li>
-      <li>パスコード: upC47Z</li>
+      <li>ミーティングID: 〇〇〇〇〇〇〇〇〇〇</li>
+      <li>パスコード: 〇〇〇〇〇</li>
     </ul>
   </div>
 
@@ -52,7 +40,6 @@
       所定の時間になると下記「面接を始める」ボタンが、クリック可能になります。
     </div>
   </div>
-
 
   <div class="button-wrapper">
     <button type="submit">

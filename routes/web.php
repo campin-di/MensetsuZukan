@@ -96,7 +96,8 @@ Route::get('/mypage/edit/basic/thanks', 'St_MypageBasicController@complete')->na
 /*--- end:基本情報の変更 ---------------------*/
 
 /*--- 詳細プロフィールの変更 -----------------*/
-Route::get('/mypage/edit/detail', 'St_MypageDetailController@show')->name("mypage.detail.show");
+Route::get('/mypage/edit/detail/step1', 'St_MypageDetailController@step1')->name("mypage.detail.step1");
+Route::post('/mypage/edit/detail/step2', 'St_MypageDetailController@step2')->name("mypage.detail.step2");
 Route::post('/mypage/edit/detail', 'St_MypageDetailController@post')->name("mypage.detail.post");
 
 Route::get('/mypage/edit/detail/confirm', 'St_MypageDetailController@confirm')->name("mypage.detail.confirm");

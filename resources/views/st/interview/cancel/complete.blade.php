@@ -5,11 +5,7 @@
 <div class="container form-wrapper">
   <div class="title">面接のキャンセルが完了しました。</div>
 
-  <div class="upper-button">
-    <a href="{{ url('/') }}">トップページに戻る</a>
-  </div>
-  <div class="under-button">
-    <a href="{{ route('mypage') }}">マイページに戻る</a>
-  </div>
+  @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'mypage', 'underText' => 'マイページに戻る'])
+
 </div>
 @endsection
