@@ -2,10 +2,9 @@
 <link href="{{ asset('/css/st/auth/login.css') }}" rel="stylesheet">
 @section('content')
 
+@include('components.parts.page_title', ['title'=>'学生ログイン'])
+
 <div class="container form-wrapper">
-  <div class="top-content">
-    <h1>学生ログイン</h1>
-  </div>
   <form method="POST" action="{{ route('login') }}">
       @csrf
 
@@ -49,6 +48,6 @@
     </form>
   </div>
 
-  @include('components.parts.button.fixed_button', ['routeName' => 'register.choice', 'ver'=>'', 'msg' => 'まだ会員登録されていない方は', 'text' => '新規会員登録'])
+  @include('components.parts.button.fixed_button', ['routeName' => 'register.choice', 'var'=>'', 'msg' => 'まだ会員登録されていない方は', 'text' => '新規会員登録'])
 <script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
 @endsection

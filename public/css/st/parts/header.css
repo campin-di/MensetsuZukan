@@ -1,14 +1,30 @@
+body{
+  background: url("/img/background-pc.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #FFF;
+  height: 100%;
+}
+.white{
+  background: #FFFFFF !important;
+  min-height: 100%;
+}
+
+.header{
+  background-color: #FFF !important;
+}
+
 .header-wrapper{
   width: 100vw;
   max-width: 1000px;
-  background-color: #f8f9fa !important;
+  background-color: #FFFFFF !important;
 }
 
 .header-logo img{
-  width: 100px;
+  width: 120px;
 }
-
-
 
 .header-dropdown-menu{
   text-align: center;

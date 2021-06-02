@@ -5,15 +5,29 @@ use Carbon\Carbon;
 
 class ReturnUserInformationArrayClass
 {
-  public static function returnJobtype()
-  {
+    public static function returnCompanyTypeArray()
+    {
+      $companyTypeArray = [
+        '大手' => '大手（安定・着実、会社の規模が大きい）',
+        '中小' => '中小（安定・着実、会社の規模が小さい）',
+        'メガベンチャー' => 'メガベンチャー（挑戦・成長、会社の規模が大きい）',
+        'ベンチャー' => 'ベンチャー（挑戦・成長、会社の規模が小さい）',
+      ];
+      return $companyTypeArray;
+    }
+
+    public static function returnJobTypeArray()
+    {
     $jobtypeArray = [
+      '営業',
       '事務・秘書・受付',
       '経理',
       '総務人事',
       'バイヤー',
       '法務',
       '企画',
+      'マーケティング',
+      '宣伝・広報',
       '経営コンサルタント',
       '為替ディーラー・トレーダー',
       '証券アナリスト',
@@ -105,6 +119,7 @@ class ReturnUserInformationArrayClass
       '医療・保育・介護、福祉',
       '環境・リサイクル・廃棄物処理',
       '整備・修理',
+      '人材サービス',
       'その他事業サービス（警備、コールセンター等）',
     ];
 
@@ -151,6 +166,7 @@ class ReturnUserInformationArrayClass
           '滋賀県',
           '京都府',
           '兵庫県',
+          '大阪府',
           '奈良県',
           '和歌山県',
         ],
@@ -158,6 +174,7 @@ class ReturnUserInformationArrayClass
           '鳥取県',
           '島根県',
           '広島県',
+          '岡山県',
           '山口県',
           '徳島県',
           '香川県',
@@ -205,6 +222,32 @@ class ReturnUserInformationArrayClass
       return $timeArray;
     }
 
+    public static function returnStartTimeArray()
+    {
+      $startTimeArray = [
+        '直近1ヶ月以内',
+        '直近3ヶ月以内',
+        '半年以内',
+        '1年以内',
+        '1年半以内',
+        '2年以内',
+        '2年以前',
+      ];
+      return $startTimeArray;
+    }
+
+    public static function returnEnglishLevelArray()
+    {
+      $englishLevelArray = [
+        '挨拶レベル',
+        '日常会話レベル',
+        'ディベートレベル',
+        'ビジネスレベル',
+        'ネイティブレベル',
+      ];
+      return $englishLevelArray;
+    }
+
     public static function returnToeicArray()
     {
       $toeicArray = [
@@ -240,7 +283,7 @@ class ReturnUserInformationArrayClass
 
     public static function returnSelectionPhaseArray()
     {
-      $SelectionPhaseArray = [
+      $selectionPhaseArray = [
         '1次面接',
         '1次&2次面接',
         '2次面接',
@@ -248,17 +291,6 @@ class ReturnUserInformationArrayClass
         '最終面接',
         '全般',
       ];
-      return $SelectionPhaseArray;
-    }
-
-    public static function returnCompanyTypeArray()
-    {
-      $companyTypeArray = [
-        '大手',
-        '中小',
-        'メガベンチャー',
-        'ベンチャー',
-      ];
-      return $companyTypeArray;
+      return $selectionPhaseArray;
     }
 }

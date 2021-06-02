@@ -1,6 +1,6 @@
 @extends('layouts.st.common')
-@section('content')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/mypage.css') }}">
+@section('content')
 
 @include('components.parts.page_title', ['title'=>'マイページ'])
 
@@ -10,7 +10,7 @@
     <a class="nav-link" href="{{ route('upload') }}">アップロード</a>
   @endif
 
-  @include('components.parts.profile',['imagePath' => $userDataArray['imagePath'], 'isHr' => '', 'userName' => $userDataArray['name'], 'nickName' => $userDataArray['nickname'], 'description' => $userDataArray['graduate_year'] .'年卒/'. $userDataArray['industry'], 'introduction' => $userDataArray['introduction'] ])
+  @include('components.parts.profile',['imagePath' => $userDataArray['imagePath'], 'isHr' => '', 'userName' => $userDataArray['name'], 'nickName' => $userDataArray['nickname'], 'description' => $userDataArray['graduate_year'] .'年卒 / '. $userDataArray['industry'], 'introduction' => $userDataArray['introduction'] ])
 
   <div class="container_profile_btn">
     <a href="{{ route('mypage.detail') }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
@@ -23,9 +23,13 @@
       @foreach($interviewReservationsCollection as $interviewReservation)
         <li>
           <a class="item" href="{{ route('interview.detail', $interviewReservation['id']) }}">
-            <img class="item_img" src="{{ asset($interviewReservation['imagePath']) }}" alt="">
-            <p class="item_name">{{ $interviewReservation['name'] }}</p>
-            <p class="item_date">{{ $interviewReservation['date'] }}</p>
+            <div class="left_child">
+              <img class="item_img" src="{{ asset($interviewReservation['imagePath']) }}" alt="">
+              <span class="item_name">{{ $interviewReservation['name'] }}</span>
+            </div>
+            <div class="right_child item_date">
+              {{ $interviewReservation['date'] }}
+            </div>
           </a>
         </li>
       @endforeach
@@ -35,7 +39,7 @@
   @include('components.parts.button.fixed_button',['routeName' => 'interview.search', 'isHr' => '', 'ver'=>'', 'msg' => '', 'text' => '面接を予約する'])
 
   <div class="container_pastVideo">
-    <h2 class="container_pastVideo_title">過去の面接動画</h2>
+    <h2 class="container_schedule_title">過去の面接動画</h2>
   </div>
 
   @include('components.parts.video_content',['videosCollection' => $pastVideosCollection, 'isHr' => ''])

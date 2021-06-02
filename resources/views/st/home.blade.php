@@ -1,7 +1,6 @@
 @extends('layouts.st.common')
 <link rel="stylesheet" href="{{ asset('css/st/home.css') }}">
 @section('content')
-
   <div class="filter-wrapper flex">
     <div class="form-input-wrapper">
       <div class="form-input">

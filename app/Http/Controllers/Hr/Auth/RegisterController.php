@@ -163,7 +163,9 @@ class RegisterController extends Controller
         $industryArray = ReturnUserInformationArrayClass::returnIndustry();
         $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
         $companyTypeArray = ReturnUserInformationArrayClass::returnCompanyTypeArray();
-        return view('hr.auth.main.register2', compact('industryArray', 'prefecturesArray', 'companyTypeArray'));
+        $stockTypeArray = ReturnUserInformationArrayClass::returnStockTypeArray();
+
+        return view('hr.auth.main.register2', compact('industryArray', 'prefecturesArray', 'companyTypeArray', 'stockTypeArray'));
     }
 
     public function showForm3(Request $request)
@@ -271,6 +273,7 @@ class RegisterController extends Controller
         '所属業界' => $register2_input['industry'],
         '本社所在地' => $register2_input['location'],
         '企業区分' => $register2_input['company_type'],
+        '上場区分' => $register2_input['stock_type'],
         '担当選考フェーズ' => $selection_phase,
         '主な勤務地' => $workplace,
         '事業概要' => $summary,
@@ -313,6 +316,7 @@ class RegisterController extends Controller
       $user->industry = $register2_input['industry'];
       $user->location = $register2_input['location'];
       $user->company_type = $register2_input['company_type'];
+      $user->stock_type = $register2_input['stock_type'];
 
       $user->status = config('const.USER_STATUS.UNAVAILABLE');
 

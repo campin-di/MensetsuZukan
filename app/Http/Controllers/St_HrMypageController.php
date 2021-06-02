@@ -35,18 +35,8 @@ class St_HrMypageController extends Controller
   }
   public function detail($id)
   {
-    $profile = HrUser::find($id);
+    $userData = HrUser::find($id);
 
-    $profileCollection = collect();
-    $profileCollection = $profileCollection->concat([
-      [
-        'introduction' => $profile->introduction,
-        'pr' => $profile->pr,
-      ],
-    ]);
-
-    return view('st/hrpage/detail', [
-      'profileCollection' => $profileCollection,
-    ]);
+    return view('st/hrpage/detail', compact('userData'));
   }
 }

@@ -23,7 +23,6 @@
       <label for="company" class="form-title">企業名*</label>
         <div class="form-input flex">
           <input id="company" type="text" class="form-control {{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="株式会社ぱむ" required>
-
           @if ($errors->has('company'))
             <span class="invalid-feedback">
               <strong>{{ $errors->first('company') }}</strong>
@@ -75,15 +74,30 @@
         <div class="form-input">
           <select id="company_type" class="form-control" name="company_type" required>
             <option value="">企業区分を選択してください。</option>
-            <option value="大手" @if(old('company_type') == "大手") selected @endif>大手（安定・着実、会社の規模が大きい）</option>
-            <option value="中小" @if(old('company_type') == "中小") selected @endif>中小（安定・着実、会社の規模が小さい）</option>
-            <option value="メガベンチャー" @if(old('company_type') == "メガベンチャー") selected @endif>メガベンチャー（挑戦・成長、会社の規模が大きい）</option>
-            <option value="ベンチャー" @if(old('company_type') == "ベンチャー") selected @endif>ベンチャー（挑戦・成長、会社の規模が小さい）</option>
+            @foreach($companyTypeArray as $company_type)
+              <option value="{{ $company_type }}" @if(old('company_type') == "{{ $company_type }}") selected @endif>{{ $company_type }}</option>
+            @endforeach
           </select>
-
           @if ($errors->has('company_type'))
             <span class="help-block">
               <strong>{{ $errors->first('company_type') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
+      <div class="form-input-wrapper">
+        <label for="stock_type" class="form-title">上場区分*</label>
+        <div class="form-input">
+          <select id="stock_type" class="form-control" name="stock_type" required>
+            <option value="">上場区分を選択してください。</option>
+            @foreach($stockTypeArray as $stock_type)
+              <option value="{{ $stock_type }}" @if(old('stock_type') == "{{ $stock_type }}") selected @endif>{{ $stock_type }}</option>
+            @endforeach
+          </select>
+          @if ($errors->has('stock_type'))
+            <span class="help-block">
+              <strong>{{ $errors->first('stock_type') }}</strong>
             </span>
           @endif
         </div>

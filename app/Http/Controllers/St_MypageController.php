@@ -65,7 +65,6 @@ class St_MypageController extends Controller
       'industry' => $userData->industry,
       'graduate_year' => $userData->graduate_year,
       'plan' => $userData->plan,
-
       'companyType' => $userData->company_type,
       'jobtype' => $userData->jobtype,
       'workplace' => $userData->workplace,
@@ -130,13 +129,11 @@ class St_MypageController extends Controller
       'gakuchika' => $userData->gakuchika,
       'personality' => $userData->personality,
       'toeic' => $userData->toeic,
-      'english' => $userData->english,
+      'englishLevel' => $userData->english_level,
       'otherLanguage' => $userData->other_language,
       'qualification' => $userData->qualification,
     ];
 
-    return view('st/stpage/detail', [
-      'profileDetailArray' => $profileDetailArray,
-    ]);
+    return view('st/stpage/detail', compact('profileDetailArray'));
   }
 }

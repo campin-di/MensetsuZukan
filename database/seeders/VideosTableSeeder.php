@@ -17,27 +17,27 @@ class VideosTableSeeder extends Seeder
     {
       //0 ~ 4
       $usernameArray = [
-        [ "nobita", "doraemon", "takeshi11", "shizukaChan", "dekisugikun" ],
-        [ 1, 2, 3, 4, 5 ]
+        [ "コービー", "ジョーダン", "ハチムラ", "ザイオン", "ハーデン", "ユータ", "ドンチッチ", "ルカ", "ドラモンド", "オータニサン"],
+        [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       ];
 
       $vimeoIdArray = [
-        "551979139" => [628, 750, 932],
+        "557464608" => [628, 750, 932],
         "280567305" => [115, 253, 640],
         "449959341" => [77, 445, 1388],
-        "517759809" => [250, 360, 645],
+        "557464608" => [250, 360, 645],
         "546795671" => [1052, 1405, 1518],
-        "179688764" => [0, 42, 143],
+        "557464608" => [0, 42, 143],
         "435943793" => [0, 68, 291],
         "372167667" => [0, 134, 192],
       ];
 
       $vimeoIdArray2 = [
-        "373226228" => [628, 750, 932],
+        "557464608" => [628, 750, 932],
         "442434665" => [115, 253, 640],
-        "397845130" => [77, 445, 1388],
+        "557464608" => [77, 445, 1388],
         "188801229" => [250, 360, 645],
-        "424542885" => [1052, 1405, 1518],
+        "557464608" => [1052, 1405, 1518],
         "293551991" => [0, 42, 143],
         "262806087" => [0, 68, 291],
         "437004631" => [0, 134, 192],
@@ -70,18 +70,18 @@ class VideosTableSeeder extends Seeder
 
         foreach($vimeoIdArray as $vimeoId => $startSecondArray){
           $random_date = [rand(2021, 2021), rand(1, 5), rand(1,24)];
-          $zero4 = mt_rand(0, 4);
+          $zero9 = mt_rand(0, 9);
           $zero19 = mt_rand(0, 19);
 
           foreach ($startSecondArray as $startSecond) {
             $data = [
-              'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
+              'title' => $usernameArray[0][$zero9]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
               'thumbnail_name' => 'tmp.png',
               'thumbnail_path' => '/img/tmp.png',
               'vimeo_src' => 'https://player.vimeo.com/video/' . $vimeoId . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
               'vimeo_id' => $vimeoId,
               'question_id' => $zero19+1,
-              'st_id' => $usernameArray[1][$zero4],
+              'st_id' => $usernameArray[1][$zero9],
               'hr_id' => mt_rand(1, 29),
               'score' => mt_rand(30, 100),
               'review' => $contentArray[mt_rand(0, 9)],
@@ -98,18 +98,18 @@ class VideosTableSeeder extends Seeder
 
         foreach($vimeoIdArray2 as $vimeoId => $startSecondArray){
           $random_date = [rand(2019, 2020), rand(1, 12), rand(1,29)];
-          $zero4 = mt_rand(0, 4);
+          $zero9 = mt_rand(0, 9);
           $zero19 = mt_rand(0, 19);
 
           foreach ($startSecondArray as $startSecond) {
             $data = [
-              'title' => $usernameArray[0][$zero4]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
+              'title' => $usernameArray[0][$zero9]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
               'thumbnail_name' => 'tmp.png',
               'thumbnail_path' => '/img/tmp.png',
               'vimeo_src' => 'https://player.vimeo.com/video/' . $vimeoId . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
               'vimeo_id' => $vimeoId,
               'question_id' => $zero19+1,
-              'st_id' => $usernameArray[1][$zero4],
+              'st_id' => $usernameArray[1][$zero9],
               'hr_id' => mt_rand(1, 29),
               'score' => mt_rand(60, 100),
               'review' => $contentArray[mt_rand(0, 9)],

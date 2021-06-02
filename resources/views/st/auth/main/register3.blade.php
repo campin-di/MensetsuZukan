@@ -2,11 +2,7 @@
 <link href="{{ asset('/css/st/auth/main/register3.css') }}" rel="stylesheet">
 @section('content')
 
-  <div class="top-content-wrapper">
-    <div class="top-content">
-      <h1>STEP3</h1>
-    </div>
-  </div>
+@include('components.parts.page_title_reverse', ['title'=>'STEP3'])
 
   @isset($message)
     <div class="card-body">
@@ -24,10 +20,9 @@
         <div class="form-input">
           <select id="company_type" class="form-control" name="company_type" required>
             <option value="">志望する企業タイプを選択してください。</option>
-            <option value="大手" @if(old('company_type') == "大手") selected @endif>大手（安定・着実、会社の規模が大きい）</option>
-            <option value="中小" @if(old('company_type') == "中小") selected @endif>中小（安定・着実、会社の規模が小さい）</option>
-            <option value="メガベンチャー" @if(old('company_type') == "メガベンチャー") selected @endif>メガベンチャー（挑戦・成長、会社の規模が大きい）</option>
-            <option value="ベンチャー" @if(old('company_type') == "ベンチャー") selected @endif>ベンチャー（挑戦・成長、会社の規模が小さい）</option>
+            @foreach($companyTypeArray as $company_type)
+              <option value="{{ $company_type }}" @if(old('company_type') == "{{ $company_type }}") selected @endif>{{ $company_type }}</option>
+            @endforeach
           </select>
 
           @if ($errors->has('company_type'))
@@ -60,7 +55,6 @@
         <div class="form-input">
           <select id="jobtype" class="form-control" name="jobtype" required>
             <option value="">希望職種を選択してください。</option>
-            <option value="営業職" @if(old('jobtype') == "営業職") selected @endif>営業職</option>
             @foreach($jobtypeArray as $jobtype)
               <option value="{{ $jobtype }}" @if(old('jobtype') == "{{ $jobtype }}") selected @endif>{{ $jobtype }}</option>
             @endforeach
@@ -99,13 +93,9 @@
         <div class="form-input">
           <select id="start_time" class="form-control" name="start_time" required>
             <option value="">就活開始時期を選択してください。</option>
-            <option value="直近1ヶ月以内" @if(old('start_time') == "直近1ヶ月以内") selected @endif>直近1ヶ月以内</option>
-            <option value="直近3ヶ月以内" @if(old('start_time') == "直近3ヶ月以内") selected @endif>直近3ヶ月以内</option>
-            <option value="半年以内" @if(old('start_time') == "半年以内") selected @endif>半年以内</option>
-            <option value="1年以内" @if(old('start_time') == "1年以内") selected @endif>1年以内</option>
-            <option value="1年半以内" @if(old('start_time') == "1年半以内") selected @endif>1年半以内</option>
-            <option value="2年以内" @if(old('start_time') == "2年以内") selected @endif>2年以内</option>
-            <option value="2年以前" @if(old('start_time') == "2年以前") selected @endif>2年以前</option>
+            @foreach($startTimeArray as $startTime)
+              <option value="{{ $startTime }}" @if(old('start_time') == "{{ $startTime }}") selected @endif>{{ $startTime }}</option>
+            @endforeach
           </select>
           @if ($errors->has('start_time'))
             <span class="help-block">
@@ -120,10 +110,9 @@
         <div class="form-input">
           <select id="english_level" class="form-control" name="english_level" required>
             <option value="">英語レベルを選択してください。</option>
-            <option value="日常会話レベル" @if(old('english_level') == "日常会話レベル") selected @endif>日常会話レベル</option>
-            <option value="ディベートレベル" @if(old('english_level') == "ディベートレベル") selected @endif>ディベートレベル</option>
-            <option value="ビジネスレベル" @if(old('english_level') == "ビジネスレベル") selected @endif>ビジネスレベル</option>
-            <option value="ネイティブレベル" @if(old('english_level') == "ネイティブレベル") selected @endif>ネイティブレベル</option>
+            @foreach($englishLevelArray as $englishLevel)
+              <option value="{{ $englishLevel }}" @if(old('english_level') == "{{ $englishLevel }}") selected @endif>{{ $englishLevel }}</option>
+            @endforeach
           </select>
           @if ($errors->has('english_level'))
             <span class="help-block">
