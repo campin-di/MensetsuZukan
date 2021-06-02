@@ -51,6 +51,7 @@ input::-ms-input-placeholder {
 }
 .form-input select{
   border-radius: 30px;
+  font-weight: 500;
   padding: 0rem 1rem;
   font-size: 1.1rem;
 }

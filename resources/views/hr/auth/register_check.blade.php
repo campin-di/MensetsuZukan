@@ -14,8 +14,8 @@
       <div class="form-input-wrapper">
         <label for="email" class="form-title">メールアドレス</label>
         <div class="form-input">
-          <span class="form-control">{{$email}}</span>
-          <input type="hidden" name="email" value="{{$email}}">
+          <span class="form-control">{{ $email }}</span>
+          <input type="hidden" name="email" value="{{ $email }}">
         </div>
       </div>
 

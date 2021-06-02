@@ -5,9 +5,12 @@
 }
 
 .container_profile_btn a {
-  font-size: 10px;
+  font-size: 14px;
   width: 360px;
-  padding: 13px;
+  padding: 12px 0px;
+  font-weight: 500;
+  background-color: #7cc4ff;
+  border-color: #7cc4ff;
 }
 
 .container_profile_btn_profile {
@@ -23,10 +26,10 @@
 }
 
 .container_schedule_title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 30px;
+  margin: 50px auto 30px;
 }
 
 .container_schedule_list {
@@ -36,7 +39,7 @@
 }
 
 .container_schedule_list li {
-  padding-bottom: 15px;
+  padding: 15px 0;
   border-bottom: 1px solid #555555;
 }
 
@@ -44,13 +47,13 @@
   line-height: 40px;
   color: #333333;
   height: 40px;
+  font-size: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  font-size: 14px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -58,18 +61,24 @@
 }
 
 .container_schedule_list li .item_img {
-  width: 40px;
-  height: 40px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #9681ff;
+  margin-right: 10px;
 }
 
 .container_schedule_list li .item_name {
+  font-weight: 500;
   display: block;
   -ms-flex-preferred-size: 30%;
       flex-basis: 30%;
   margin-bottom: 0;
+}
+.container_schedule_list li .item .left_child{
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
 }
 
 .container_schedule_list li .item_date {
@@ -99,14 +108,15 @@
 }
 
 .container_pastVideo_title {
-  width: 100vw;
-  margin-left: calc(((100vw - 100%) / 2) * -1);
-  margin-right: calc(((100vw - 100%) / 2) * -1);
-  font-size: 20px;
+  width: 100%;
+  font-size: 22px;
   text-align: center;
   font-weight: bold;
-  border-bottom: 1px solid blue;
   padding-bottom: 10px;
+  margin: 50px auto 30px;
+  border-bottom: 3px solid;
+  border-image: linear-gradient(to right, #7cc4ff, #9681ff);
+  border-image-slice: 1;
 }
 
 @media screen and (min-width: 1024px) {
@@ -119,6 +129,10 @@
     margin: 60px auto 50px auto;
     height: 70px;
   }
+  .container_profile_btn a {
+    padding: 0px;
+    line-height: 3.5;
+  }
   .container_profile_btn_profile {
     font-size: 18px !important;
     line-height: 44px;
@@ -129,12 +143,13 @@
   }
   .container_schedule_title {
     font-size: 32px;
+    margin: 100px auto 50px;
   }
   .container_schedule_list li {
     width: 650px;
     height: 80px;
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 30px auto 0;
+    padding-bottom: 75px;
   }
   .container_schedule_list li .item {
     width: 650px;
@@ -147,12 +162,24 @@
     -o-object-fit: cover;
        object-fit: cover;
     border-radius: 40px;
+    margin-right: 20px;
   }
+  .container_schedule_list li .item .item_date{
+    font-size: 20px;
+  }
+
   .container_schedule_reservation {
     height: 100px;
     text-align: center;
     font-size: 24px;
     line-height: 70px;
+  }
+
+  .container_pastVideo_title {
+    font-size: 32px;
+    padding-bottom: 15px;
+    margin: 100px auto 50px;
+    border-bottom: 5px solid;
   }
 }
 /*# sourceMappingURL=mypage.css.map */

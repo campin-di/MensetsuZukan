@@ -44,8 +44,12 @@
     <meta name="theme-color" content="#fafafa">
   </head>
   <body>
-    @include('parts.hr.header.normal')
-    @yield('content')
+    <div class="background-image">
+      <div class="white">
+        @include('parts.hr.header.normal')
+        @yield('content')
+      </div>
+    </div>
     <script src="{{ mix('js/app.js') }}"></script>
   </body>
 </html>

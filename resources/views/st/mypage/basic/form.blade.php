@@ -28,7 +28,6 @@
 	  </p>
 	</div>
 
-	<!--研究室登録フォーム-->
 	<form method="post" action="{{ route('mypage.basic.post') }}">
 		@csrf
 

@@ -23,7 +23,7 @@
   </div>
 
   <div id="login-wrapper">
-    @include('components.parts.button.fixed_button',['routeName' => 'login', 'ver'=>'', 'msg' => '既にアカウントをお持ちの方は', 'text' => 'ログイン'])
+    @include('components.parts.button.fixed_button',['routeName' => 'login', 'var'=>'', 'msg' => '既にアカウントをお持ちの方は', 'text' => 'ログイン'])
   </div>
 
   <script type="text/javascript" src="{{ asset('/js/auth/choice.js') }}"></script>

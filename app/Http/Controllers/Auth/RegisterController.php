@@ -194,12 +194,15 @@ class RegisterController extends Controller
        //セッションに書き込む
        $request->session()->put("register2_input", $input);
 
+       $companyTypeArray = ReturnUserInformationArrayClass::returnCompanyTypeArray();
        $industryArray = ReturnUserInformationArrayClass::returnIndustry();
-       $jobtypeArray = ReturnUserInformationArrayClass::returnJobtype();
+       $jobtypeArray = ReturnUserInformationArrayClass::returnJobtypeArray();
        $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+       $startTimeArray = ReturnUserInformationArrayClass::returnStartTimeArray();
        $toeicArray = ReturnUserInformationArrayClass::returnToeicArray();
+       $englishLevelArray = ReturnUserInformationArrayClass::returnEnglishLevelArray();
 
-       return view('st/auth.main.register3',compact('industryArray', 'jobtypeArray', 'prefecturesArray', 'toeicArray'));
+       return view('st/auth.main.register3',compact('companyTypeArray', 'industryArray', 'jobtypeArray', 'prefecturesArray', 'startTimeArray', 'toeicArray', 'englishLevelArray'));
      }
 
 
@@ -287,11 +290,13 @@ class RegisterController extends Controller
        $user->university = $register2_input['university'];
        $user->faculty = $register2_input['faculty'];
        $user->department = $register2_input['department'];
+       $user->major = $register2_input['major'];
        $user->graduate_year = $register2_input['graduate_year'];
        $user->gender = $register_input['gender'];
        $user->status = config('const.USER_STATUS.UNAVAILABLE');
        $user->company_type = $register3_input['company_type'];
        $user->industry = $register3_input['industry'];
+       $user->jobtype = $register3_input['jobtype'];
        $user->english_level = $register3_input['english_level'];
        $user->toeic = $register3_input['toeic'];
 

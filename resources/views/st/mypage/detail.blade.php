@@ -101,7 +101,7 @@
 
   </div>
 
-    @include('components.parts.button.transition_button',['routeName' => 'mypage.detail.step1', 'text' => '編集'])
+    @include('components.parts.button.transition_button',['routeName'=>'mypage.detail.step1', 'var'=>'', 'text'=>'編集'])
 
 </div>
 @endsection
