@@ -2,11 +2,7 @@
 <link rel="stylesheet" href="{{ asset('css/hr/interview/detail.css') }}">
 @section('content')
 
-<div class="top-content-wrapper">
-  <div class="top-content">
-    <h1>面接の情報</h1>
-  </div>
-</div>
+@include('components.parts.page_title', ['title'=>'面接の情報'])
 
 <div class="container content-wrapper">
   <div class="st-information-wrapper">
@@ -38,8 +34,8 @@
       <h2>Zoom情報</h2>
     </div>
     <ul class="zoom">
-      <li>ミーティングID: 835 7102 3541</li>
-      <li>パスコード: upC47Z</li>
+      <li>ミーティングID: 〇〇〇〇〇〇</li>
+      <li>パスコード: 〇〇〇〇〇〇</li>
     </ul>
   </div>
 

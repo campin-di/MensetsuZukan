@@ -33,12 +33,7 @@
       @endforeach
     </div>
     <input type="hidden" name="interview_id" value="{{ $interview->id }}">
-    <div class="button-wrapper">
-      <button type="submit">
-        →
-      </button>
-    </div>
-
+    @include('components.parts.button.form.next_button')
   </form>
 </div>
 <script type="text/javascript">

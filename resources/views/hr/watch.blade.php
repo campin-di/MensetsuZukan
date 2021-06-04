@@ -1,16 +1,13 @@
 @extends('layouts.hr.common')
 <link href="{{ asset('/css/st/watch.css') }}" rel="stylesheet">
 @section('content')
-  @include('components.parts.button.fixed_button', ['routeName' => 'hr.offer.form', 'ver'=>$mainVideo['stId'], 'msg' => '', 'text' => $mainVideo['stName'].'さんにオファーを送る'])
-
-
+  @include('components.parts.button.fixed_button', ['routeName' => 'hr.offer.form', 'var'=>$mainVideo['stId'], 'msg' => '', 'text' => $mainVideo['stName'].'さんにオファーを送る'])
 
   <div class="video-iframe">
-    <div style="padding:73.17% 0 0 0;position:relative;"><iframe src="{{ $mainVideo['vimeo_src'] }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="みんラボ - Google Chrome 2020-12-25 15-24-05"></iframe></div>
+    <iframe src="{{ $mainVideo['vimeo_src'] }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title=""></iframe>
   </div>
 
-    <div class="container">
-
+  <div class="container">
     <div class="video-title">
       {{ $mainVideo['title'] }}
     </div>
@@ -31,10 +28,10 @@
 
     <div class="video-user-score-wrapper flex">
       <div class="left-child">
-        @include('components.parts.profile_info', ['video' => $mainVideo, 'isHr' => 'hr.', 'stImagePath' => $mainVideo['stImagePath'], 'hrImagePath' => $mainVideo['hrImagePath']])
+        @include('components.parts.profile_info', ['video' => $mainVideo, 'routeName'=>'hr.stpage', 'stImagePath' => $mainVideo['stImagePath'], 'hrImagePath' => $mainVideo['hrImagePath']])
       </div>
       <div class="right-child video-score">
-        {{ $mainVideo['score']}}点
+        <span>{{ $mainVideo['score'] }}</span>点
       </div>
     </div>
 
@@ -51,7 +48,7 @@
       @foreach($otherVideosCollection as $otherVideo)
         <div class="other-video flex">
           <div class="left-child">
-            <a href="{{ route('watch', $otherVideo['id'])}}">
+            <a href="{{ route('hr.watch', $otherVideo['id'])}}">
               <div class="other-video-thumbnail">
                 <img src="{{ asset($otherVideo['thumbnail_path']) }}">
               </div>
@@ -59,28 +56,21 @@
           </div>
           <div class="right-child">
             <div class="other-video-title">
-              <a href="{{ route('watch', $otherVideo['id'])}}">
-                <div class="other-video-title">
-                  <a href="{{ route('watch', $otherVideo['id'])}}" class="other-video-title-a">
-                    {{ $otherVideo['title'] }}
-                  </a>
-                </div>
+              <a href="{{ route('hr.watch', $otherVideo['id'])}}">
+                {{ $otherVideo['title'] }}
               </a>
             </div>
             <div class="other-video-views-score-wrapper flex">
               <div class="other-video-views">
                 <div class="pc flex">
-                  <div class="other-video-good">
-                    ♥　{{ $otherVideo['good'] }}
-                  </div>
                   <div class="other-video-date">
-                    〇　{{ $otherVideo['diffDate'] }}
+                    {{ $otherVideo['views'] }}回視聴・
+                    {{ $otherVideo['diffDate'] }}
                   </div>
                 </div>
-                {{ $mainVideo['views'] }}回視聴
               </div>
               <div class="other-video-score">
-                {{ $mainVideo['score']}}点
+                <span>{{ $otherVideo['score']}}</span>点
               </div>
             </div>
           </div>
@@ -98,7 +88,7 @@
         </div>
       </div>
       <div class="review">
-        <a href="{{ route('hrpage', $mainVideo['hrId']) }}">
+        <a href="{{ route('hr.hrpage', $mainVideo['hrId']) }}">
           {{ $mainVideo['hrName'] }}
         </a>
         <p>
@@ -106,6 +96,6 @@
         </p>
       </div>
     </div>
-</div>
+  </div>
 <script type="text/javascript" src="{{ asset('/js/watch.js') }}"></script>
 @endsection

@@ -1,11 +1,7 @@
 @extends('layouts.st.reverse')
 <link href="{{ asset('/css/st/auth/registerd.css') }}" rel="stylesheet">
 @section('content')
-<div class="top-content-wrapper">
-  <div class="top-content">
-    <h1>仮会員登録完了</h1>
-  </div>
-</div>
+@include('components.parts.page_title_reverse', ['title'=>'仮登録が完了しました'])
 
 <div class="container form-wrapper">
   <div class="card">

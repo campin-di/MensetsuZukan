@@ -19,11 +19,6 @@ class Hr_HrMypageController extends Controller
     $userId = Auth::guard('hr')->id();
     $userData = HrUser::find($userId);
 
-    $userDataArray = [
-      'name' => $userData->name,
-      'company' => $userData->company,
-    ];
-
     $pastVideos = Video::where('hr_id', $userId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
@@ -41,7 +36,7 @@ class Hr_HrMypageController extends Controller
     }
 
     return view('hr/mypage/mypage', [
-      'userDataArray' => $userDataArray,
+      'userData' => $userData,
       'pastVideosCollection' => $pastVideosCollection,
       'interviewReservationsCollection' => $interviewReservationsCollection,
     ]);
@@ -52,17 +47,9 @@ class Hr_HrMypageController extends Controller
     $hrId = Auth::guard('hr')->id();
     $userData = HrUser::find($hrId);
 
-    $profileDetailArray = [
-      'company' => $userData->company,
-      'companyType' => $userData->company_type,
-      'industry' => $userData->industry,
-      'position' => $userData->position,
-      'pr' => $userData->pr,
-    ];
-
     return view('hr/mypage/detail', [
       'hrId' => $hrId,
-      'profileDetailArray' => $profileDetailArray,
+      'userData' => $userData,
     ]);
   }
 
@@ -70,19 +57,13 @@ class Hr_HrMypageController extends Controller
   {
     $userData = HrUser::find($id);
 
-    $userDataArray = [
-      'id' => $id,
-      'name' => $userData->name,
-      'company' => $userData->company,
-    ];
-
     $pastVideos = Video::where('hr_id', $userData->id)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
     $interviewReservations = Interview::where('hr_id', $userData->id)->with('hr_user')->select('id', 'hr_id', 'date', 'url')->get();
 
     return view('hr/hrpage/hrpage', [
-      'userDataArray' => $userDataArray,
+      'userData' => $userData,
       'pastVideosCollection' => $pastVideosCollection,
     ]);
   }

@@ -4,12 +4,11 @@
 
 @include('components.parts.page_title', ['title'=>'マイページ'])
 
+@if($userDataArray['plan'] == "admin")
+<a class="nav-link" href="{{ route('upload') }}">アップロード</a>
+@endif
+
 <div class="container">
-
-  @if($userDataArray['plan'] == "admin")
-    <a class="nav-link" href="{{ route('upload') }}">アップロード</a>
-  @endif
-
   @include('components.parts.profile',['imagePath' => $userDataArray['imagePath'], 'isHr' => '', 'userName' => $userDataArray['name'], 'nickName' => $userDataArray['nickname'], 'description' => $userDataArray['graduate_year'] .'年卒 / '. $userDataArray['industry'], 'introduction' => $userDataArray['introduction'] ])
 
   <div class="container_profile_btn">
@@ -36,12 +35,12 @@
     </ul>
   </div>
 
-  @include('components.parts.button.fixed_button',['routeName' => 'interview.search', 'isHr' => '', 'ver'=>'', 'msg' => '', 'text' => '面接を予約する'])
+  @include('components.parts.button.fixed_button',['routeName' => 'interview.search', 'var'=>'', 'msg' => '', 'text' => '面接を予約する'])
 
   <div class="container_pastVideo">
     <h2 class="container_schedule_title">過去の面接動画</h2>
   </div>
 
-  @include('components.parts.video_content',['videosCollection' => $pastVideosCollection, 'isHr' => ''])
+  @include('components.parts.video_content',['videosCollection' => $pastVideosCollection, 'routeName' => 'watch'])
 </div>
 @endsection

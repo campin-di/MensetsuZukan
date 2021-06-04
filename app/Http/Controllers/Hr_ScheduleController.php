@@ -9,7 +9,7 @@ use App\Models\Schedule;
 use App\Models\HrUser;
 
 use App\Common\IsBoolClass;
-use App\Common\Add2DatabaseClass;
+use App\Common\ReturnUserInformationArrayClass;
 
 class Hr_ScheduleController extends Controller
 {
@@ -25,26 +25,15 @@ class Hr_ScheduleController extends Controller
 
   public function add()
   {
-    return view('hr/interview/schedule/add');
+    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
+
+    return view('hr/interview/schedule/add', compact('timeArray'));
   }
 
   public function post(Request $request)
   {
 
     $input = $request->all();
-
-    //=====部分処理====================================
-/*
-    $validator = Validator::make($input, $this->validator);
-    if($validator->fails()){
-      return redirect()->action("Hr_ScheduleController@show")
-        ->withInput()
-        ->withErrors($validator);
-    }
-*/
-    //================================================
-
-    //セッションに書き込む
     $request->session()->put("form_input", $input);
 
     return redirect()->action("Hr_ScheduleController@confirm");
@@ -58,7 +47,10 @@ class Hr_ScheduleController extends Controller
     if(!$input){
       return redirect()->action("Hr_ScheduleController@add");
     }
-    return view("hr/interview/schedule/form_confirm",['input' => $input]);
+
+    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
+
+    return view("hr/interview/schedule/form_confirm", compact('input', 'timeArray'));
   }
 
   function send(Request $request){
@@ -78,13 +70,13 @@ class Hr_ScheduleController extends Controller
 
     //=====処理内容====================================
     $userId = Auth::guard('hr')->id();
-    $timeArray = ['nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twentyone'];
+    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
 
     $schedule = new Schedule;
     $schedule->hr_id = $userId;
     $schedule->date = $input['date'];
-    foreach ($timeArray as $time) {
-      $schedule->$time = IsBoolClass::IsBool($time, $input['time']);
+    foreach ($timeArray as $key => $time) {
+      $schedule->$key = IsBoolClass::IsBool($key, $input['time']);
     }
     $schedule->save();
 

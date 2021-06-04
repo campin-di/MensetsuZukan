@@ -4,7 +4,7 @@
     {{ $upperText }}
   </div>
 </a>
-<a class="under-button" href="{{ route($underRoute) }}">
+<a class="under-button" href="{{ route($underRoute, $var) }}">
   <div>
     {{ $underText }}
   </div>

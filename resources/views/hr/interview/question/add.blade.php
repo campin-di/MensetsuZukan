@@ -26,11 +26,7 @@
     </div>
 
     <input type="hidden" name="interview_id" value="{{ $id }}">
-    <div class="button-wrapper">
-      <button type="submit">
-        →
-      </button>
-    </div>
+    @include('components.parts.button.form.next_button')
   </form>
 </div>
 

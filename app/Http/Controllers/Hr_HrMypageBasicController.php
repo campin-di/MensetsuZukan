@@ -5,23 +5,46 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use App\Models\HrUser;
+
 
 class Hr_HrMypageBasicController extends Controller
 {
+  public function upload($stId)
+  {
+    $id = $stId;
+    $profileImg = User::find($stId)->image_path;
+
+    return view('st/mypage/upload/form', compact(['id', 'profileImg']));
+  }
+
+  function uploadPost(Request $request){
+    $request->validate([
+      'image' => 'required|file|image|mimes:png,jpeg'
+    ]);
+    $upload_image = $request->file('image');
+
+    $stId = $request->input('id');
+
+    if($upload_image) {
+      //アップロードされた画像を保存する
+      $path = 'storage/'. $upload_image->store('uploads/profile/st',"public");
+      //画像の保存に成功したらDBに記録する
+      if($path){
+        $user = User::find($stId);
+        $user->image_path =  $path;
+        $user->save();
+      }
+    }
+
+    return view("st/mypage/upload/form_complete");
+  }
+
   /*=== 基本情報の変更処理 ====================================================*/
-
-  private $formItems = ["name", "title", "body"];
-
-  private $validator = [
-    /*
-    "name" => "required|string|max:100",
-    "title" => "required|string|max:100",
-    "body" => "required|string|max:100"
-    */
-  ];
-
   function show(){
-    return view("hr/mypage/basic/form");
+    $userData = HrUser::find(Auth::guard('hr')->id());
+
+    return view("hr/mypage/basic/form", compact('userData'));
   }
 
   function post(Request $request){
@@ -54,7 +77,13 @@ class Hr_HrMypageBasicController extends Controller
     if(!$input){
       return redirect()->action("Hr_HrMypageBasicController@show");
     }
-    return view("hr/mypage/basic/form_confirm",["input" => $input]);
+
+    $inputArray = [];
+    if(isset($input['password'])){
+      $inputArray['パスワード'] = '********';
+    }
+
+    return view("hr/mypage/basic/form_confirm", compact('inputArray'));
   }
 
   function send(Request $request){
@@ -74,11 +103,11 @@ class Hr_HrMypageBasicController extends Controller
 
     //=====処理内容====================================
     //================================================
-    $userId = Auth::guard('hr')->id();
-    \DB::table('hr_users')->where('id', $userId)->update([
-            'username' => $input["username"],
-            'password' => Hash::make($input["password"]),
-        ]);
+    $user = HrUser::find(Auth::guard('hr')->id());
+    if(isset($input['password'])){
+      $user->password = Hash::make($input['password']);
+    }
+    $user->save();
     //================================================
     //================================================
 

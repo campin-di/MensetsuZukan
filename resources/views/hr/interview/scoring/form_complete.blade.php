@@ -5,11 +5,6 @@
   <div class="container form-wrapper">
     <div class="title">採点を完了しました。</div>
 
-    <div class="upper-button">
-      <a href="{{ route('hr.hr_home') }}">トップページに戻る</a>
-    </div>
-    <div class="under-button">
-      <a href="{{ route('hr.mypage') }}">マイページに戻る</a>
-    </div>
+    @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'hr.mypage', 'var'=>'', 'underText' => 'マイページに戻る'])
   </div>
 @endsection

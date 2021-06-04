@@ -5,6 +5,7 @@
 <div class="video-iframe">
   <iframe src="{{ $mainVideo['vimeo_src'] }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title=""></iframe>
 </div>
+
 <div class="container">
   <div class="video-title">
     {{ $mainVideo['title'] }}
@@ -97,5 +98,4 @@
 </div>
 
   <script type="text/javascript" src="{{ asset('/js/watch.js') }}"></script>
-  <script src="https://player.vimeo.com/api/player.js"></script>
 @endsection

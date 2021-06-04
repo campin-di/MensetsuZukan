@@ -45,7 +45,7 @@
   </div>
 
   <div class="contents-wrapper">
-    @include('components.parts.video_content', ['isHr' => 'hr.'])
+    @include('components.parts.video_content', ['routeName' => 'hr.watch'])
   </div>
 
   <script type="text/javascript">
