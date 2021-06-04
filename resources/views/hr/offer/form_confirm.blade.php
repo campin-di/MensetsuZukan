@@ -36,11 +36,7 @@
 			{{ $message }}
 		</div>
 
-		<div class="button-wrapper">
-      <button type="submit">
-        送信する
-      </button>
-    </div>
+    @include('components.parts.button.form.transition_button', ['text' => '送信'])
 	</form>
 </div>
 @endsection

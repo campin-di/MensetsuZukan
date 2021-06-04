@@ -43,11 +43,7 @@
     </div>
     <input type="hidden" name="stId" value="{{ $stData->id }}">
 
-    <div class="button-wrapper">
-      <button type="submit">
-        →
-      </button>
-    </div>
+    @include('components.parts.button.form.next_button')
   </form>
 </div>
 <script src="{{ asset('/js/offer.js') }}"></script>

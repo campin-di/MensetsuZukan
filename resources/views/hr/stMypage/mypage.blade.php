@@ -16,5 +16,5 @@
     <h2 class="container_schedule_title">過去の面接動画</h2>
   </div>
 
-  @include('components.parts.video_content',['videosCollection' => $pastVideosCollection, 'routeName'=>'hr.watch'])
+  @include('components.parts.video_content',['videosCollection' => $pastVideosCollection, 'routeName'=>'hr.watch', 'upperRouteName' => 'hr.stpage', 'underRouteName' => 'hr.hrpage'])
 @endsection

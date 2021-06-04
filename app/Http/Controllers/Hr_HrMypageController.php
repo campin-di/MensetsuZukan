@@ -22,7 +22,7 @@ class Hr_HrMypageController extends Controller
     $pastVideos = Video::where('hr_id', $userId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::where('available', '!=', 9)->where('hr_id', $userId)->with('st_user')->select('id', 'st_id', 'date', 'url')->get();
+    $interviewReservations = Interview::where('available', '!=', 9)->where('hr_id', $userId)->with('st_user')->select('id', 'st_id', 'date', 'zoomUrl')->get();
 
     $interviewReservationsCollection = collect();
     foreach ($interviewReservations as $interviewReservation) {
@@ -60,8 +60,6 @@ class Hr_HrMypageController extends Controller
     $pastVideos = Video::where('hr_id', $userData->id)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::where('hr_id', $userData->id)->with('hr_user')->select('id', 'hr_id', 'date', 'url')->get();
-
     return view('hr/hrpage/hrpage', [
       'userData' => $userData,
       'pastVideosCollection' => $pastVideosCollection,
@@ -70,18 +68,10 @@ class Hr_HrMypageController extends Controller
 
   public function hrDetail($id)
   {
-    $profile = HrUser::find($id);
-
-    $profileCollection = collect();
-    $profileCollection = $profileCollection->concat([
-      [
-        'introduction' => $profile->introduction,
-        'pr' => $profile->pr,
-      ],
-    ]);
+    $userData = HrUser::find($id);
 
     return view('hr/hrpage/detail', [
-      'profileCollection' => $profileCollection,
+      'userData' => $userData,
     ]);
   }
 }

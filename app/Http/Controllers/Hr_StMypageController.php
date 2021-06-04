@@ -20,8 +20,6 @@ class Hr_StMypageController extends Controller
     $pastVideos = Video::where('st_id', $stId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::where('st_id', $stId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
-
     return view('hr/stMypage/mypage', [
       'userData' => $userData,
       'pastVideosCollection' => $pastVideosCollection,
@@ -42,7 +40,7 @@ class Hr_StMypageController extends Controller
       'gakuchika' => $userData->gakuchika,
       'personality' => $userData->personality,
       'toeic' => $userData->toeic,
-      'english' => $userData->english,
+      'englishLevel' => $userData->english_level,
       'otherLanguage' => $userData->other_language,
       'qualification' => $userData->qualification,
     ];

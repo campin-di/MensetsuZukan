@@ -26,7 +26,12 @@
 
         <div class="video-score-wrapper flex">
           <div class="left-child">
-            @include('components.parts.profile_info', ['routeName'=>$routeName, 'stImagePath' => $video['stImagePath'], 'hrImagePath' => $video['hrImagePath']])
+            @include('components.parts.profile_info', [
+              'upperRouteName'=> $upperRouteName,
+              'stImagePath' => $video['stImagePath'],
+              'underRouteName'=> $underRouteName,
+              'hrImagePath' => $video['hrImagePath']
+            ])
           </div>
           <div class="right-child video-score">
             <span>{{ $video['score']}}</span>点

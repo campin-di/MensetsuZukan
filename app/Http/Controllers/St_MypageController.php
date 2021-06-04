@@ -31,7 +31,7 @@ class St_MypageController extends Controller
     $pastVideos = Video::where('st_id', $userId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::where('st_id', $userId)->with('hr_user:id,name,image_path,industry')->select('id', 'hr_id', 'date', 'url')->get();
+    $interviewReservations = Interview::where('st_id', $userId)->with('hr_user:id,name,image_path,industry')->select('id', 'hr_id', 'date', 'zoomUrl')->get();
 
     $interviewReservationsCollection = collect();
     foreach ($interviewReservations as $interviewReservation) {
@@ -107,8 +107,6 @@ class St_MypageController extends Controller
     $pastVideos = Video::where('st_id', $stId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::where('st_id', $stId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
-
     return view('st/stpage/stpage', [
       'userDataArray' => $userDataArray,
       'pastVideosCollection' => $pastVideosCollection,
@@ -121,7 +119,7 @@ class St_MypageController extends Controller
 
     $profileDetailArray = [
       'companyType' => $userData->company_type,
-      'industry' => $userData->industry_id,
+      'industry' => $userData->industry,
       'jobtype' => $userData->jobtype,
       'workplace' => $userData->workplace,
       'startTime' => $userData->start_time,

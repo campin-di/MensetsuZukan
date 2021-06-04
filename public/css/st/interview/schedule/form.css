@@ -128,4 +128,13 @@
     width: 50%;
   }
 
+  .form-wrapper{
+    padding: 0 20% !important;
+  }
+
+  .title{
+    font-size: 26px;
+    margin: 100px auto 200px;
+  }
+
 }

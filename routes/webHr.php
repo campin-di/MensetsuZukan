@@ -157,10 +157,10 @@ use Illuminate\Support\Facades\Route;
     /*--- end:自分以外の人事ページ 関係 -------------------------*/
 
     // from watch to stMypage
-    Route::get('/mypage/{id}', 'Hr_StMypageController@index')->name('hr.stpage');
+    Route::get('/stpage/{id}', 'Hr_StMypageController@index')->name('hr.stpage');
 
     // from stMypage to detail
-    Route::get('/mypage/{id}/detail', 'Hr_StMypageController@detail')->name('hr.stpage.detail');
+    Route::get('/stpage/{id}/detail', 'Hr_StMypageController@detail')->name('hr.stpage.detail');
 
     /*=== end:mypage関係 =========================================================*/
 

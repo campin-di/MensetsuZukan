@@ -18,8 +18,10 @@ class St_ScheduleController extends Controller
 {
   public function schedule($hr_id)
   {
+    Schedule::where('date', '<', date('Y-m-d'))->delete();
+
     $hrUser = HrUser::where('id', $hr_id)->select('id', 'name', 'company', 'image_path', 'industry')->first();
-    $scheduleData = Schedule::where('hr_id', $hr_id);
+    $scheduleData = Schedule::where('hr_id', $hr_id)->latest();
 
     if(!$scheduleData->exists()){
       $is_schedule = 0;
@@ -142,8 +144,9 @@ class St_ScheduleController extends Controller
     $interview->hr_id = $hr_id;
     $interview->date = $date;
     $interview->time = $timeArray[$timeKey];
-    $interview->password = $created_meeting['password'];
-    $interview->url = $created_meeting['join_url'];
+    $interview->zoomUrl = $created_meeting['join_url'];
+    $interview->zoomId = $created_meeting['id'];
+    $interview->zoomPass = $created_meeting['password'];
     $interview->available = 0;
     $interview->save();
 

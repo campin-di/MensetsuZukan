@@ -39,7 +39,7 @@
   </div>
 
   <div class="contents-wrapper">
-    @include('components.parts.video_content', ['routeName' => 'watch'])
+    @include('components.parts.video_content', ['routeName' => 'watch', 'upperRouteName' => 'stpage', 'underRouteName' => 'hrpage'])
   </div>
 
 <script type="text/javascript">
