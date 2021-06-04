@@ -1,14 +1,3 @@
-/* === begin: 画面タイトル 部分 =================================================*/
-.top-content{
-  margin: 50px auto;
-  text-align: center;
-}
-.top-content h1{
-  font-size: 22px;
-  font-weight: bold;
-}
-/* === end: 画面タイトル 部分 =================================================*/
-
 /* === begin: フォーム部分 =================================================*/
 .form-input-wrapper{
   width: 95%;
@@ -41,6 +30,9 @@
   border: none;
   line-height: 2.8;
 }
+.button-wrapper .btn-link{
+  font-size: 18px;
+}
 /* === end: フォーム部分 =================================================*/
 
 /* === begin: 採用担当者の方はこちら 部分 =================================================*/
@@ -60,17 +52,17 @@
 
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
-  .top-content h1{
-    font-size: 24px;
-  }
 
   .form-wrapper{
-    padding: 0 25% !important;
+    padding: 50px 25% !important;
   }
 
   .button-wrapper{
     margin-top: 100px;
     padding: 0 5%;
+  }
+  .transition-button {
+    margin-bottom: 0px !important;
   }
   .button-wrapper .btn-link{
     font-size: 18px;

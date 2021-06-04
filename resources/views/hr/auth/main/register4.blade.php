@@ -1,11 +1,7 @@
 @extends('layouts.hr.reverse')
 <link href="{{ asset('/css/st/auth/main/register4.css') }}" rel="stylesheet">
 @section('content')
-<div class="top-content-wrapper">
-  <div class="top-content">
-    <h1>プラン選択</h1>
-  </div>
-</div>
+@include('components.parts.page_title_reverse', ['title'=>'STEP4'])
 
 <div class="container form-wrapper">
     @isset($message)

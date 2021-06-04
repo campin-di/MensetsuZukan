@@ -2,11 +2,7 @@
 <link href="{{ asset('/css/st/auth/register.css') }}" rel="stylesheet">
 @section('content')
 
-  <div class="top-content-wrapper">
-    <div class="top-content">
-      <h1>新規会員登録</h1>
-    </div>
-  </div>
+@include('components.parts.page_title_reverse', ['title'=>'新規会員登録'])
 
   <div class="container form-wrapper">
     <form method="POST" action="{{ route('hr.register.pre_check') }}">

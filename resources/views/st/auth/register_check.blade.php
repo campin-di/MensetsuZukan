@@ -4,7 +4,6 @@
 
 @include('components.parts.page_title_reverse', ['title'=>'入力内容の確認'])
 
-
 <div class="container form-wrapper">
   <form method="POST" action="{{ route('register') }}">
     @csrf

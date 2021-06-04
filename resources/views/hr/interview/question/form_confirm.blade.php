@@ -28,11 +28,7 @@
       </ul>
     </div>
 
-    <div class="button-wrapper">
-      <button type="submit">
-        送信
-      </button>
-    </div>
+	   @include('components.parts.button.form.transition_button', ['text' => '送信'])
   </form>
 </div>
 <script type="text/javascript" src="{{ asset('/js/st/interview/question/form_confirm.js') }}"></script>

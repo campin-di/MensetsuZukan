@@ -181,5 +181,13 @@
     margin: 100px auto 50px;
     border-bottom: 5px solid;
   }
+
+  /* === begin : 人事利用時のstpage 部分 ========================================*/
+  .container_profile_btn_offer{
+    font-size: 18px !important;
+  }
+  /* === end : 人事利用時のstpage 部分 ========================================*/
+
+
 }
 /*# sourceMappingURL=mypage.css.map */

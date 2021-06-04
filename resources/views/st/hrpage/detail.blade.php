@@ -2,9 +2,9 @@
 <link rel="stylesheet" href="{{ asset('css/st/mypage/detail.css') }}">
 @section('content')
 
-<div class="container">
-  @include('components.parts.page_title', ['title'=>'詳細プロフィール'])
+@include('components.parts.page_title', ['title'=>'詳細プロフィール'])
 
+<div class="container">
   <div class="container_detail">
     <div class="item">
       <input id="acd-check1" class="acd-check" type="checkbox">

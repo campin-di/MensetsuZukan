@@ -2,11 +2,8 @@
 <link href="{{ asset('/css/st/auth/main/register3.css') }}" rel="stylesheet">
 @section('content')
 
-  <div class="top-content-wrapper">
-    <div class="top-content">
-      <h1>STEP2</h1>
-    </div>
-  </div>
+@include('components.parts.page_title_reverse', ['title'=>'STEP3'])
+
 
   @isset($message)
     <div class="card-body">
@@ -84,7 +81,7 @@
       </div>
 
       <div class="form-input-wrapper">
-      <label for="recruitment" class="form-title">募集要項URL</label>
+      <label for="recruitment" class="form-title">採用ページURL</label>
         <div class="form-input flex">
           <input id="recruitment" type="text" class="form-control {{ $errors->has('recruitment') ? ' is-invalid' : '' }}" name="recruitment" value="{{ old('recruitment') }}" placeholder="URLを入力してください。">
 

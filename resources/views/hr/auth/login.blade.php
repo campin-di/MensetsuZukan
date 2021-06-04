@@ -26,21 +26,20 @@
           <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
           @error('password')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
           @enderror
         </div>
       </div>
 
       <div class="button-wrapper">
         @include('components.parts.button.form.transition_button', ['text' => 'ログイン'])
-
-          @if (Route::has('password.request'))
-            <a class="btn btn-link" href="{{ route('password.request') }}">
-              パスワードを忘れた場合
-            </a>
-          @endif
+        @if (Route::has('password.request'))
+          <a class="btn btn-link" href="{{ route('password.request') }}">
+            パスワードを忘れた場合
+          </a>
+        @endif
       </div>
 
       <div class="to-hr-wrapper">

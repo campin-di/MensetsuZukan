@@ -2,11 +2,7 @@
 <link rel="stylesheet" href="{{ asset('css/hr/interview/pre.css') }}">
 @section('content')
 
-<div class="top-content-wrapper">
-  <div class="top-content">
-    <h1>面接の準備はできましたか？</h1>
-  </div>
-</div>
+@include('components.parts.page_title', ['title'=>'面接の準備はできましたか？'])
 
 <div class="container pre-wrapper">
 

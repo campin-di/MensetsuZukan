@@ -1,8 +1,10 @@
 @extends('layouts.hr.common')
+<link rel="stylesheet" href="{{ asset('css/st/mypage/basic/form_complete.css') }}">
 @section('content')
 
-<h3>完了</h3>
-<p>送信しました!</p>
+<div class="container form-wrapper">
+  <div class="title">変更が完了しました。</div>
 
-<a href="{{ route('hr.mypage') }}">マイページに戻る</a>
+  @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'hr.mypage', 'underText' => 'マイページに戻る'])
+</div>
 @endsection

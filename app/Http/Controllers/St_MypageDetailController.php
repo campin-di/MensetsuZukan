@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
-
 use App\Common\ReturnUserInformationArrayClass;
 
 class St_MypageDetailController extends Controller
@@ -33,13 +32,11 @@ class St_MypageDetailController extends Controller
     return view('st/mypage/detail/step1',compact(['userData', 'industryArray', 'jobtypeArray', 'prefecturesArray', 'toeicArray']));
   }
 
-  public function step2(Request $request)
-  {
-    $userData = User::find(Auth::user()->id);
+  public function step2(Request $request){
     $input = $request->all();
-
-    //セッションに書き込む
     $request->session()->put("step1", $input);
+
+    $userData = User::find(Auth::user()->id);
 
     return view('st/mypage/detail/step2', compact('userData'));
   }
@@ -120,7 +117,7 @@ class St_MypageDetailController extends Controller
 
     //戻るボタンが押された時
     if($request->has("back")){
-      return redirect()->action("St_MypageDetailController@")
+      return redirect()->action("St_MypageDetailController@step1")
         ->withInput($input);
     }
 

@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/', function () {
         $loginFlag = Auth::guard('hr')->check();
-        echo $loginFlag;
         if($loginFlag){
           return redirect()->action('Hr\HrHomeController@index');
         }
@@ -123,6 +122,10 @@ use Illuminate\Support\Facades\Route;
     // mypage to detail Page
     Route::get('/mypage/detail', 'Hr_HrMypageController@myDetail')->name('hr.mypage.detail');
 
+    /*--- プロフィール画像のアップロード  -------------------------*/
+    Route::get('/mypage/upload/{id}', 'Hr_MypageBasicController@upload')->name('hr.mypage.basic.upload');
+    Route::post('/mypage/upload/complete', 'Hr_MypageBasicController@uploadPost')->name('hr.mypage.basic.upload.post');
+
     /*--- 基本情報の変更 -------------------------*/
     Route::get('/mypage/edit/basic', "Hr_HrMypageBasicController@show")->name('hr.mypage.basic.show');
     Route::post('/mypage/edit/basic', "Hr_HrMypageBasicController@post")->name('hr.mypage.basic.post');
@@ -134,7 +137,10 @@ use Illuminate\Support\Facades\Route;
     /*--- end:基本情報の変更 ---------------------*/
 
     /*--- 詳細プロフィールの変更 -----------------*/
-    Route::get('/mypage/edit/detail', "Hr_HrMypageDetailController@show")->name('hr.mypage.detail.show');
+    Route::get('/mypage/edit/detail/step1', "Hr_HrMypageDetailController@step1")->name('hr.mypage.detail.step1');
+    Route::post('/mypage/edit/detail/step2', "Hr_HrMypageDetailController@step2")->name('hr.mypage.detail.step2');
+
+
     Route::post('/mypage/edit/detail', "Hr_HrMypageDetailController@post")->name('hr.mypage.detail.post');
 
     Route::get('/mypage/edit/detail/confirm', "Hr_HrMypageDetailController@confirm")->name('hr.mypage.detail.confirm');

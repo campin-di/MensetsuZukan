@@ -5,36 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\HrUser;
+use App\Common\ReturnUserInformationArrayClass;
 
 class Hr_HrMypageDetailController extends Controller
 {
   /*=== 基本情報の変更処理 ====================================================*/
 
-  private $formItems = ["name", "title", "body"];
+  function step1(){
+    $userData = HrUser::find(Auth::guard('hr')->id());
 
-  private $validator = [
-    /*
-    "name" => "required|string|max:100",
-    "title" => "required|string|max:100",
-    "body" => "required|string|max:100"
-    */
-  ];
+    $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+    $companyTypeArray = ReturnUserInformationArrayClass::returnCompanyTypeArray();
+    $selectionPhaseArray = ReturnUserInformationArrayClass::returnSelectionPhaseArray();
+    $stockTypeArray = ReturnUserInformationArrayClass::returnStockTypeArray();
 
-  function show(){
-    $userId = Auth::guard('hr')->id();
-    $userData = HrUser::find($userId);
+    return view("hr/mypage/detail/step1", compact(['userData', 'prefecturesArray', 'selectionPhaseArray', 'companyTypeArray', 'stockTypeArray']));
+  }
 
-    $profileDetailArray = [
-      'company' => $userData->company,
-      'companyType' => $userData->company_type,
-      'industry' => $userData->industry,
-      'position' => $userData->position,
-      'pr' => $userData->pr,
-    ];
+  function step2(Request $request){
+    $input = $request->all();
+    $request->session()->put("step1", $input);
 
-    return view("hr/mypage/detail/form",[
-      'profileDetailArray' => $profileDetailArray,
-    ]);
+    $userData = HrUser::find(Auth::guard('hr')->id());
+    return view('hr/mypage/detail/step2', compact('userData'));
   }
 
   function post(Request $request){
@@ -53,30 +46,62 @@ class Hr_HrMypageDetailController extends Controller
   */
     //================================================
     //================================================
-    //セッションに書き込む
-    $request->session()->put("detail_input", $input);
+    $request->session()->put("step2", $input);
 
     return redirect()->action("Hr_HrMypageDetailController@confirm");
   }
 
   function confirm(Request $request){
-    //セッションから値を取り出す
-    $input = $request->session()->get("detail_input");
+    $step1 = $request->session()->get("step1");
+    $step2 = $request->session()->get("step2");
 
     //セッションに値が無い時はフォームに戻る
-    if(!$input){
-      return redirect()->action("Hr_HrMypageDetailController@show");
+    if(!$step1 || !$step2){
+      return redirect()->action("Hr_HrMypageDetailController@step1");
     }
-    return view("hr/mypage/detail/form_confirm",["input" => $input]);
+
+    $indexArray = [
+      'location' => '本社所在地',
+      'workplace' => '主な勤務地',
+      'company_type' => '企業区分',
+      'stock_type' => '上場区分',
+      'summary' => '事業概要',
+      'site' => '企業ページURL',
+      'recruitment' => '採用ページURL',
+      'selection_phase' => '普段担当する選考フェーズ',
+
+      'introduction' => '簡単な自己紹介',
+      'pr' => '面接官PR',
+    ];
+
+    $input = [];
+    $confirmArray = [];
+    foreach ($step1 as $name => $value) {
+      if($name != '_token') {
+        $input[$name] = $value;
+        $confirmArray[$indexArray[$name]] = $value;
+      }
+    }
+    foreach ($step2 as $name => $value) {
+      if($name != '_token') {
+        $input[$name] = $value;
+        $confirmArray[$indexArray[$name]] = $value;
+      }
+    }
+    //sessionにinputのデータを統合
+    session(['input' => $input]);
+
+    $request->session()->forget('step1', 'step2');
+
+    return view('hr/mypage/detail/form_confirm',compact(['confirmArray']));
   }
 
   function send(Request $request){
-    //セッションから値を取り出す
-    $input = $request->session()->get("detail_input");
+    $input = $request->session()->get("input");
 
     //戻るボタンが押された時
     if($request->has("back")){
-      return redirect()->action("Hr_HrMypageDetailController@show")
+      return redirect()->action("Hr_HrMypageDetailController@step1")
         ->withInput($input);
     }
 
@@ -86,39 +111,14 @@ class Hr_HrMypageDetailController extends Controller
     }
 
     //=====処理内容====================================
-
-    $userId = Auth::guard('hr')->id();
-    $user = HrUser::find($userId);
-    $user->company = $input['company'];
-    $user->industry = $input['industry'];
-    $user->location = $input['location'];
-    $user->company_type = $input['company_type'];
-
-    if(!is_null($input['position'])){
-      $user->position = $input['position'];
-    }
-    if(!is_null($input['workplace'])){
-      $user->workplace = $input['workplace'];
-    }
-    if(!is_null($input['summary'])){
-      $user->summary = $input['summary'];
-    }
-    if(!is_null($input['recruitment'])){
-      $user->recruitment = $input['recruitment'];
-    }
-    if(!is_null($input['site'])){
-      $user->site = $input['site'];
-    }
-
-    if(!is_null($input['pr'])){
-      $user->pr = $input['pr'];
+    $user = HrUser::find(Auth::guard('hr')->id());
+    foreach ($input as $key => $value) {
+      $user->$key = $value;
     }
     $user->save();
-
     //================================================
 
-    //セッションを空にする
-    $request->session()->forget("detail_input");
+    $request->session()->forget("input");
 
     return redirect()->action("Hr_HrMypageDetailController@complete");
   }

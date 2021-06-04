@@ -1,11 +1,7 @@
 @extends('layouts.hr.reverse')
 <link href="{{ asset('/css/st/auth/main/register_comfirm.css') }}" rel="stylesheet">
 @section('content')
-<div class="top-content-wrapper">
-  <div class="top-content">
-    <h1>確認画面</h1>
-  </div>
-</div>
+@include('components.parts.page_title_reverse', ['title'=>'入力内容の確認'])
 
 <div class="container form-wrapper">
   <form method="post" action="{{ route('hr.register.main.registered') }}">

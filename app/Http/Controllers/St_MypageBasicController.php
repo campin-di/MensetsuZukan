@@ -40,17 +40,6 @@ class St_MypageBasicController extends Controller
   }
 
   /*=== 基本情報の変更処理 ====================================================*/
-
-  private $formItems = ["name", "title", "body"];
-
-  private $validator = [
-    /*
-    "name" => "required|string|max:100",
-    "title" => "required|string|max:100",
-    "body" => "required|string|max:100"
-    */
-  ];
-
   function show(){
     $userData = User::find(Auth::user()->id);
 

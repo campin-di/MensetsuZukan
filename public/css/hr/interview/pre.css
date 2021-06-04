@@ -116,4 +116,8 @@
   .message {
     font-size: 22px;
   }
+
+  .button-wrapper button{
+    width: 60%;
+  }
 }

@@ -15,7 +15,7 @@ class Hr_StMypageController extends Controller
 {
   public function index($stId)
   {
-    $user = User::find($stId);
+    $userData = User::find($stId);
 
     $pastVideos = Video::where('st_id', $stId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
@@ -23,9 +23,7 @@ class Hr_StMypageController extends Controller
     $interviewReservations = Interview::where('st_id', $stId)->with('hr_user')->select('hr_id', 'date', 'url')->get();
 
     return view('hr/stMypage/mypage', [
-      'stId' => $stId,
-      'stName' => $user->name,
-      'nickname' => $user->nickname,
+      'userData' => $userData,
       'pastVideosCollection' => $pastVideosCollection,
     ]);
   }

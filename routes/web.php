@@ -3,9 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $loginFlag = Auth::check();
-    if($loginFlag){
+    $stLoginFlag = Auth::check();
+    if($stLoginFlag){
       return redirect()->action('St_HomeController@index');
+    }
+    $hrLoginFlag = Auth::guard('hr')->check();
+    if($hrLoginFlag){
+      return redirect()->action('Hr\HrHomeController@index');
     }
     return view('top');
 });
@@ -84,7 +88,6 @@ Route::get('/mypage/detail', 'St_MypageController@myDetail')->name('mypage.detai
 Route::get('/mypage/upload/{id}', 'St_MypageBasicController@upload')->name('mypage.basic.upload');
 Route::post('/mypage/upload/complete', 'St_MypageBasicController@uploadPost')->name('mypage.basic.upload.post');
 
-
 /*--- 基本情報の変更 -------------------------*/
 Route::get('/mypage/edit/basic', 'St_MypageBasicController@show')->name("mypage.basic.show");
 Route::post('/mypage/edit/basic', 'St_MypageBasicController@post')->name("mypage.basic.post");
@@ -136,7 +139,6 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 //サービス内に動画をアップロードするルーティング
 Route::get('/admin/upload', 'UploadController@show')->name('upload');
-
 //サムネイル画像をアップロードするフォームへ
 Route::get('/admin/upload/thumbnail/{id}', 'UploadController@thumbnail')->name("thumbnail");
 //サムネイル画像をアップロード処理 and to 完了ページ

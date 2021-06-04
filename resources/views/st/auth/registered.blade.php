@@ -3,7 +3,6 @@
 @section('content')
 @include('components.parts.page_title_reverse', ['title'=>'仮登録が完了しました'])
 
-
 <div class="container form-wrapper">
   <div class="card">
     <div class="title">メールを送信しました</div>
