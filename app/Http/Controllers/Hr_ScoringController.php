@@ -13,20 +13,10 @@ class Hr_ScoringController extends Controller
 {
 
     //== 質問リスト作成 関係　=======================================================
-    private $formItems = ["name", "title", "body"];
-
-    private $validator = [
-      /*
-      "name" => "required|string|max:100",
-      "title" => "required|string|max:100",
-      "body" => "required|string|max:100"
-      */
-    ];
-
     public function form($id)
     {
       $interview = Interview::with('question1:id,name')->with('question2:id,name')->with('question3:id,name')
-                 ->select('id', 'url', 'question_1_id', 'question_2_id', 'question_3_id')->find($id);
+                 ->select('id', 'zoomUrl', 'question_1_id', 'question_2_id', 'question_3_id')->find($id);
 
       $questionArray = ['question1', 'question2', 'question3'];
 

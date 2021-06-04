@@ -26,8 +26,8 @@
       <h2>Zoom情報</h2>
     </div>
     <ul class="zoom">
-      <li>ミーティングID: 〇〇〇〇〇〇〇〇〇〇</li>
-      <li>パスコード: 〇〇〇〇〇</li>
+      <li>ミーティングID: {{ $interviewInfo->zoomId }}</li>
+      <li>パスコード: {{ $interviewInfo->zoomPass }}</li>
     </ul>
   </div>
 
@@ -43,7 +43,7 @@
 
   <div class="button-wrapper">
     <button type="submit">
-      <a href="{{ $interviewInfo->url }}" target="_blank" rel="noopener noreferrer">
+      <a href="{{ $interviewInfo->zoomUrl }}" target="_blank" rel="noopener noreferrer">
         面接を開始する
       </a>
     </button>

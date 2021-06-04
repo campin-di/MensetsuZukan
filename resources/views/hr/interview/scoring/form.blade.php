@@ -28,7 +28,7 @@
           <input type="range" name="question-{{ $loop->iteration }}" min="0" max="100" step="5" value="50">
           <span>50</span>点
         </div>
-        <textarea name="review-{{ $loop->iteration }}" placeholder="ここにレビューを書いてください。"></textarea>
+        <textarea name="review-{{ $loop->iteration }}" placeholder="ここにレビューを書いてください。" required></textarea>
       </div>
       @endforeach
     </div>

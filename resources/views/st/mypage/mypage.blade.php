@@ -9,7 +9,13 @@
 @endif
 
 <div class="container">
-  @include('components.parts.profile',['imagePath' => $userDataArray['imagePath'], 'isHr' => '', 'userName' => $userDataArray['name'], 'nickName' => $userDataArray['nickname'], 'description' => $userDataArray['graduate_year'] .'年卒 / '. $userDataArray['industry'], 'introduction' => $userDataArray['introduction'] ])
+  @include('components.parts.profile',[
+    'imagePath' => $userDataArray['imagePath'],
+    'userName' => $userDataArray['name'],
+    'nickName' => $userDataArray['nickname'],
+    'description' => $userDataArray['graduate_year'] .'年卒 / '. $userDataArray['industry'],
+    'introduction' => $userDataArray['introduction']
+  ])
 
   <div class="container_profile_btn">
     <a href="{{ route('mypage.detail') }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
@@ -41,6 +47,11 @@
     <h2 class="container_schedule_title">過去の面接動画</h2>
   </div>
 
-  @include('components.parts.video_content',['videosCollection' => $pastVideosCollection, 'routeName' => 'watch'])
+  @include('components.parts.video_content',[
+    'videosCollection' => $pastVideosCollection,
+    'routeName' => 'watch',
+    'upperRouteName' => 'stpage',
+    'underRouteName' => 'hrpage'
+  ])
 </div>
 @endsection

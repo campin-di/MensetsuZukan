@@ -23,7 +23,9 @@ class CreateInterviewsTable extends Migration
           $table->string('time')->nullable();
           $table->string('password')->default('p@ssw0rd');
           $table->string('available')->nullable(); //0:質問リスト作成前、1:質問リスト作成後、2:面接終了後
-          $table->string('url')->nullable();
+          $table->string('zoomUrl')->nullable();
+          $table->string('zoomId')->nullable();
+          $table->string('zoomPass')->nullable();
           $table->integer('question_1_id')->nullable();
           $table->integer('question_1_score')->nullable();
           $table->string('question_1_review')->nullable();

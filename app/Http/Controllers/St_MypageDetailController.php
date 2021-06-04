@@ -25,7 +25,7 @@ class St_MypageDetailController extends Controller
     $userData = User::find(Auth::user()->id);
 
     $industryArray = ReturnUserInformationArrayClass::returnIndustry();
-    $jobtypeArray = ReturnUserInformationArrayClass::returnJobtype();
+    $jobtypeArray = ReturnUserInformationArrayClass::returnJobtypeArray();
     $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
     $toeicArray = ReturnUserInformationArrayClass::returnToeicArray();
 

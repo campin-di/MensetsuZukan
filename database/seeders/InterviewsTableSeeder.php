@@ -48,7 +48,7 @@ class InterviewsTableSeeder extends Seeder
 
       for ($i = 0; $i < 100; $i++)
       {
-        $random_date = [2021, rand(1, 4), rand(1,31)];
+        $random_date = [2021, rand(6, 7), rand(1,31)];
 
         $data = [
           'st_id' => mt_rand(1, 50),
@@ -57,7 +57,9 @@ class InterviewsTableSeeder extends Seeder
           'time' => $timeArray[mt_rand(0, 13)],
           'password' => Hash::make('password'),
           'available' => 1,
-          'url' => 'https://www.youtube.com/',
+          'zoomUrl' => 'https://www.youtube.com/',
+          'zoomId' => '123.3220.2981',
+          'zoomPass' => '4$ka9kJai1#kaio$84',
           'question_1_id' => mt_rand(1, $theNumberOfQuestions),
           'question_1_score' => mt_rand(60, 100),
           'question_1_review' => $reviewArray[mt_rand(0, 9)],

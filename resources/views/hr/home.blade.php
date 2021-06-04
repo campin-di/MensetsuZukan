@@ -18,13 +18,11 @@
       <label for="score" class="form-title">得点</label>
       <div class="form-input">
         <select id="score" class="form-control">
-          <option value="指定なし">指定なし</option>
-          <option value="70">70点未満</option>
-          <option value="75">75点～79点</option>
-          <option value="80">80点～84点</option>
-          <option value="85">85点～89点</option>
-          <option value="90">90点～94点</option>
-          <option value="95">95点～99点</option>
+          <option value="指定なし">全得点</option>
+          <option value="60">70点未満</option>
+          <option value="70">70点～79点</option>
+          <option value="80">80点～89点</option>
+          <option value="90">90点～99点</option>
           <option value="100">100点</option>
         </select>
       </div>
@@ -45,7 +43,7 @@
   </div>
 
   <div class="contents-wrapper">
-    @include('components.parts.video_content', ['routeName' => 'hr.watch'])
+    @include('components.parts.video_content', ['routeName' => 'hr.watch', 'upperRouteName' => 'hr.stpage', 'underRouteName' => 'hr.hrpage'])
   </div>
 
   <script type="text/javascript">

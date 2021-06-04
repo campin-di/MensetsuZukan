@@ -5,7 +5,6 @@
 <div class="container form-wrapper">
   <div class="title">変更が完了しました。</div>
 
-  @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'mypage', 'underText' => 'マイページに戻る'])
+  @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'mypage', 'underText' => 'マイページに戻る', 'var' => ''])
 </div>
-
 @endsection
