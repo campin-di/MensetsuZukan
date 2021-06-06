@@ -1,15 +1,13 @@
 <footer>
-	<div id="button">footer</div>
-	<div id="container">
-	<div id="cont">
-		<div class="copyright">
-			<p>© 2021 - Organisation</p>
-		</div>
-		<div class="footer-content">
-			<a href="#" class="">お問い合わせ</a>
-			<a href="#" class="">運営会社</a>
-			<a href="#" class="fb">プライバシーポリシー</a>
-		</div>
-	</div>
+	<a class="footer-logo" href="{{ url('/') }}">
+		<img src="{{ asset('/img/logo/logo_origin.png') }}" alt="ロゴ">
+	</a>
+	<ul class="footer-nav">
+    <li><a href="">お問い合わせ</a></li>
+    <li><a href="" >プライバシーポリシー</a></li>
+    <li><a href="" >運営会社</a></li>
+  </ul>
+	<div class="copyright">
+		<p>© 2021 - Organisation</p>
 	</div>
 </footer>

@@ -6,6 +6,6 @@
 <div class="container form-wrapper">
   <div class="title">面接図鑑をご利用ください。</div>
 
-  @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'hr.login', 'underText' => 'ログイン'])
+  @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'hr.login', 'underText' => 'ログイン', 'var' => ''])
 </div>
 @endsection

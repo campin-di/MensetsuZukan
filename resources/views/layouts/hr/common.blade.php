@@ -20,6 +20,7 @@
     <!-- begin:CSS -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/st/parts/header.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/st/parts/footer.css') }}" rel="stylesheet">
     <!-- end:CSS -->
 
     <!-- begin:JS -->
@@ -47,7 +48,7 @@
     <div class="background-image">
       <div class="white">
         @include('parts.hr.header.normal')
-        <div class="content">
+        <div id="template-content">
           @yield('content')
         </div>
         @include('parts.hr.footer.normal')

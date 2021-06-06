@@ -6,7 +6,7 @@
   <div class="container">
     @include('components.parts.profile', ['imagePath' => $userDataArray['imagePath'], 'userName' => $userDataArray['name'], 'nickName' => '', 'description' => $userDataArray['company'], 'introduction' => $userDataArray['introduction'] ])
     @include('components.parts.button.transition_button', ['routeName' => 'hrpage.detail', 'var' => $userDataArray['id'], 'text' => '詳しいプロフィール'])
-    @include('components.parts.button.fixed_button',['routeName' => 'interview.schedule', 'var' => $userDataArray['id'], 'msg' => '', 'text' =>  $userDataArray['name'] .'さんとの面接を予約する。'])
+    @include('components.parts.button.fixed_button',['routeName' => 'interview.schedule', 'var' => $userDataArray['id'], 'msg' => '', 'text' =>  '面接の予約'])
   </div>
 
   <div class="container_pastVideo">

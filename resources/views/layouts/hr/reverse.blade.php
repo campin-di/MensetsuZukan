@@ -20,6 +20,7 @@
     <!-- begin:CSS -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/st/parts/header_reverse.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/st/parts/footer.css') }}" rel="stylesheet">
     <!-- end:CSS -->
 
     <!-- begin:JS -->
@@ -45,7 +46,7 @@
   </head>
   <body>
     @include('parts.hr.header.reverse')
-    <div class="content">
+    <div id="template-content">
       @yield('content')
     </div>
     @include('parts.hr.footer.normal')
