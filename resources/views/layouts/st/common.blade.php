@@ -20,6 +20,7 @@
     <!-- begin:CSS -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/st/parts/header.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/st/parts/footer.css') }}" rel="stylesheet">
     <!-- end:CSS -->
 
     <!-- begin:JS -->
@@ -47,7 +48,10 @@
     <div class="background-image">
       <div class="white">
         @include('parts.st.header.normal')
-        @yield('content')
+        <div class="content">
+          @yield('content')
+        </div>
+        @include('parts.st.footer.normal')
       </div>
     </div>
     <script src="{{ mix('js/app.js') }}" defer></script>
