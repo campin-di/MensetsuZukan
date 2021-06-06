@@ -47,7 +47,10 @@
     <div class="background-image">
       <div class="white">
         @include('parts.hr.header.normal')
-        @yield('content')
+        <div class="content">
+          @yield('content')
+        </div>
+        @include('parts.hr.footer.normal')
       </div>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>

@@ -92,7 +92,10 @@ body {
   color: #333333;
   text-align: left;
   background-color: #FFFFFF;
+}
 
+.content{
+  padding-bottom: 100px;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {

@@ -45,7 +45,10 @@
   </head>
   <body>
     @include('parts.hr.header.reverse')
-    @yield('content')
+    <div class="content">
+      @yield('content')
+    </div>
+    @include('parts.hr.footer.normal')
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="https://js.stripe.com/v3/"></script>
   </body>
