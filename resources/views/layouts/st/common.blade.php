@@ -48,7 +48,7 @@
     <div class="background-image">
       <div class="white">
         @include('parts.st.header.normal')
-        <div class="content">
+        <div id="template-content">
           @yield('content')
         </div>
         @include('parts.st.footer.normal')
