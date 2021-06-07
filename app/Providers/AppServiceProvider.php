@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
+        Schema::defaultStringLength(11);
         URL::forceScheme('https');    //公開時は”https”に変更する。
 
         //全ページに対して現在年を渡す
