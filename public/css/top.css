@@ -35,6 +35,7 @@ h2{
 .firstview-wrapper{
   background-image: url(../img/top/firstview-background.png);
   background-repeat: no-repeat;
+  background-size: contain;
   width: 100%;
 }
 

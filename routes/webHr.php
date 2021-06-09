@@ -123,8 +123,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/mypage/detail', 'Hr_HrMypageController@myDetail')->name('hr.mypage.detail');
 
     /*--- プロフィール画像のアップロード  -------------------------*/
-    Route::get('/mypage/upload/{id}', 'Hr_MypageBasicController@upload')->name('hr.mypage.basic.upload');
-    Route::post('/mypage/upload/complete', 'Hr_MypageBasicController@uploadPost')->name('hr.mypage.basic.upload.post');
+    //Route::get('/mypage/upload/{id}', 'Hr_MypageBasicController@upload')->name('hr.mypage.basic.upload');
+    //Route::post('/mypage/upload/complete', 'Hr_MypageBasicController@uploadPost')->name('hr.mypage.basic.upload.post');
 
     /*--- 基本情報の変更 -------------------------*/
     Route::get('/mypage/edit/basic', "Hr_HrMypageBasicController@show")->name('hr.mypage.basic.show');

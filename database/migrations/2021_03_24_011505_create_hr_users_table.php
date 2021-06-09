@@ -26,7 +26,7 @@ class CreateHrUsersTable extends Migration
         $table->string('industry')->nullable();
         $table->string('location')->nullable();
         $table->string('stock_type')->nullable();
-        $table->string('image_path')->default('storage/uploads/profile/hr/hr-unset.png');
+        $table->string('image_path')->default('public/storage/uploads/profile/hr/hr-unset.png');
         $table->string('selection_phase')->default('設定されていません。');
         $table->string('workplace')->default('設定されていません。');
         $table->string('summary')->default('設定されていません。');
