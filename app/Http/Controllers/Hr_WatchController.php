@@ -38,7 +38,7 @@ class Hr_WatchController extends Controller
     $otherVideos =  Video::where('vimeo_id', $video[0]->vimeo_id)->where('question_id', '!=', $video[0]->question_id)->take(10)->get();
     $otherVideosCollection = VideoDisplayClass::VideoDisplay($otherVideos);
 
-    return view('hr\watch',[
+    return view('hr.watch',[
       'mainVideo' => $mainVideo,
       'otherVideosCollection' => $otherVideosCollection,
     ]);
