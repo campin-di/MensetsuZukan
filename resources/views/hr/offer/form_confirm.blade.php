@@ -30,7 +30,7 @@
 			{{ $offerContent }}
 		</div>
 		<div class="content-title">
-			<h2>学生へのメッセージ</h2>
+			<h2>オファー理由</h2>
 		</div>
 		<div class="content-msg">
 			{{ $message }}
