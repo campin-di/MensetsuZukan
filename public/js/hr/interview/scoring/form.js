@@ -1,9 +1,8 @@
 window.onload = function(){
-  if(interview['url'] !== 'done'){
-    window.open(interview['url'], '_blank');
+  if(interview['zoomUrl'] !== 'done'){
+    window.open(interview['zoomUrl'], '_blank');
   }
 }
-
 
 // == begin；採点バー 部分 ======================================================
 var elem = document.getElementsByClassName('range');

@@ -36,7 +36,7 @@
       </select>
     </div>
     <div class="content-title">
-      <h2>学生へのメッセージ</h2>
+      <h2>オファー理由</h2>
     </div>
     <div class="content-msg">
       <textarea name="message" placeholder="オファー理由・オファー条件詳細など、1000文字以内で入力してください。" required></textarea>

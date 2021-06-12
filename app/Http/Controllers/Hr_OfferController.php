@@ -104,7 +104,7 @@ class Hr_OfferController extends Controller
     $offer->content = $input['offer_content'];
     $offer->message = $input['message'];
     $offer->save();
-    //Mail::to($st->email)->send(new OfferMail($offer));
+    
     Mail::send('hr/offer/mail/example1', ['offer' => $offer, 'hr' => $hr, 'st' => $st], function ($message) use ($offer, $hr, $st){
       $message->subject($hr->company. 'からオファーがありました！');
       $message->from($hr->email, $hr->name);

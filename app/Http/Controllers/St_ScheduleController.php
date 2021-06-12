@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 
 use Auth;
 
+use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Schedule;
 use App\Models\Interview;
 use App\Models\Batting;
+use Illuminate\Support\Facades\Mail;
 
 use App\Common\MeetingClass;
 use App\Common\ReturnUserInformationArrayClass;
@@ -110,6 +112,8 @@ class St_ScheduleController extends Controller
     $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
 
     $hr_id = $schedule->hr_id;
+    $st = User::find(Auth::user()->id);
+    $hr = HrUser::find($hr_id);
 
     $meeting = new MeetingClass();
     $battingData = Batting::where('date', $date)->where('time', $timeKey);
@@ -140,7 +144,7 @@ class St_ScheduleController extends Controller
     }
 
     $interview = new Interview;
-    $interview->st_id = Auth::user()->id;
+    $interview->st_id = $st->id;
     $interview->hr_id = $hr_id;
     $interview->date = $date;
     $interview->time = $timeArray[$timeKey];
@@ -153,6 +157,14 @@ class St_ScheduleController extends Controller
     \DB::table('schedules')->where('id', $schedule->id)->update([
       $timeKey => 0,
     ]);
+
+    Mail::send('st/interview/schedule/mail/reservation', ['interview' => $interview, 'hr' => $hr, 'st' => $st],
+      function ($message) use ($hr, $st){
+        $message->subject($st->name. 'さんから面接予約がありました！');
+        $message->from('mensetsuzukan@pampam.co.jp', '面接図鑑');
+        $message->to($hr->email);
+      }
+    );
     //================================================
 
     //セッションを空にする
