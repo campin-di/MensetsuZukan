@@ -39,8 +39,7 @@ return [
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
         'plans' => [
-            env('STRIPE_BASIC_ID') => 'ベーシック',
-            env('STRIPE_PREMIUM_ID') => 'プレミアム'
+            env('STRIPE_BASIC_ID') => '視聴者プラン'
         ]
     ],
 ];

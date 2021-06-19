@@ -43,6 +43,10 @@
 
     <!-- ヘッダー上部の色を指定 -->
     <meta name="theme-color" content="#fafafa">
+    
+    @if(request()->path()==='user/subscription')
+        @include('parts.stripe.head')
+    @endif
   </head>
   <body>
     <div class="background-image">
@@ -54,7 +58,10 @@
         @include('parts.st.footer.normal')
       </div>
     </div>
-    <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="https://js.stripe.com/v3/"></script>
+    @if(request()->path()==='user/subscription')
+        @include('parts.stripe.script')
+    @else
+      <script src="{{ mix('js/app.js') }}" defer></script>
+    @endif
   </body>
 </html>

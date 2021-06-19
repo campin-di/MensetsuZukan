@@ -10,6 +10,11 @@
 html, body{
   overflow: hidden;
 }
+
+footer{
+  z-index: 1 !important;
+  position: unset !important;
+}
 /* === end: 共通部分 =================================================*/
 .block-wrapper{
   background-image: url(../../../img/unavailable-background-sp.png);
@@ -46,7 +51,7 @@ html, body{
   top: 0;
   left: 0;
   background-color: #000;
-  opacity: 0.4;
+  opacity: 0.7;
 }
 
 .block {
@@ -83,7 +88,7 @@ html, body{
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
   .sp{
-    display: none:
+    display: none;
   }
   .pc{
     display: block !important;

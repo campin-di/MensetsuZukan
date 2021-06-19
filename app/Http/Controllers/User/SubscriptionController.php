@@ -16,4 +16,13 @@ class SubscriptionController extends Controller
         ]);
 
     }
+    
+    public function audience(Request $request) {
+
+        $user = $request->user();
+        return view('st.subscription.audience')->with([
+            'intent' => $user->createSetupIntent()
+        ]);
+
+    }
 }
