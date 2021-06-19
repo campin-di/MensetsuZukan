@@ -1,23 +1,12 @@
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            padding: 15px;
-        }
-        #new-card, #update-card {
-            border: 1px solid #ccc;
-            padding: 8px;
-        }
-    </style>
-</head>
-<body>
+@extends('layouts.st.common')
+<link rel="stylesheet" href="{{ asset('css/st/interview/schedule/form_complete.css') }}">
+
+@section('content')
 
 <div id="app" class="container">
-    <h1 class="mb-4">マイページ</h1>
+    @include('components.parts.page_title', ['title'=>'決済情報の登録・変更'])
     <div class="row">
-        <div class="offset-3 col-6">
+        <div class="offset-sm-3 col-sm-6">
             <div class="card mb-4">
                 <div class="card-body bg-light">
                     <div v-if="!isSubscribed">
@@ -49,11 +38,10 @@
                         </div>
                         <!-- 課金中 -->
                         <div v-else>
-                            <div class="mb-3">サブスクリプション登録が完了しました。</div>
+                            <div class="mb-3">サブスクリプション登録中です。</div>
                             <div class="form-group">
                                 課金中のプラン： <span v-text="details.plan"></span>
                             </div>
-                            <button class="btn btn-warning" type="button" @click="cancel">キャンセル</button>
                             <hr>
                             <div class="form-group">
                                 <input type="text" class="form-control" v-model="cardHolderName" placeholder="名義人（半角ローマ字）">
@@ -71,121 +59,19 @@
                                     クレジットカードを変更する
                                 </button>
                             </div>
+                            <hr>
+                            <button class="btn btn-warning" type="button" @click="cancel">サブスクリプション登録をやめる</button>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
-<script src="https://js.stripe.com/v3/"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-<script>
 
-    new Vue({
-        el: '#app',
-        data: {
-            stripe: null,
-            stripeCard: null,
-            publicKey: '{{ config('services.stripe.key') }}',
-            status: '',
-            cardHolderName: '',
-            details: {},
-            plan: '',
-            planOptions: {!! json_encode(config('services.stripe.plans')) !!}
-        },
-        methods: {
-            async subscribe(e) {
-                const paymentMethod = await this.getPaymentMethod(e.target);
-                const url = '/user/ajax/subscription/subscribe';
-                const params = {
-                    payment_method: paymentMethod,
-                    plan: this.plan
-                };
-                axios.post(url, params)
-                    .then(response => {
-                        location.reload();
-                    });
-            },
-            cancel() {
-                const url = '/user/ajax/subscription/cancel';
-                axios.post(url)
-                    .then(this.setStatus);
-            },
-            resume() {
-                const url = '/user/ajax/subscription/resume';
-                axios.post(url)
-                    .then(this.setStatus);
-            },
-            changePlan() {
-                const url = '/user/ajax/subscription/change_plan';
-                const params = { plan: this.plan };
-                axios.post(url, params)
-                    .then(this.setStatus);
-            },
-            async updateCard(e) {
-                const paymentMethod = await this.getPaymentMethod(e.target);
-                const url = '/user/ajax/subscription/update_card';
-                const params = { payment_method: paymentMethod };
-                axios.post(url, params)
-                    .then(response => {
-                        location.reload();
-                    });
-            },
-            setStatus(response) {
-                this.status = response.data.status;
-                this.details = response.data.details;
-            },
-            async getPaymentMethod(target) {
-                const clientSecret = target.dataset.secret;
-                const { setupIntent, error } = await this.stripe.confirmCardSetup(
-                    clientSecret, {
-                        payment_method: {
-                            card: this.stripeCard,
-                            billing_details: { name: this.cardHolderName }
-                        }
-                    }
-                );
+<div class="container form-wrapper" style="margin-top: 100px;">
+      @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'mypage', 'underText' => 'マイページに戻る', 'var' => ''])
+</div>
 
-                if (error) {
-                    console.log(error);
-                } else {
-                    return setupIntent.payment_method;
-                }
-
-            }
-        },
-        computed: {
-            isSubscribed() {
-                return (this.status === 'subscribed' || this.status === 'cancelled');
-            },
-            isCancelled() {
-                return (this.status === 'cancelled');
-            }
-        },
-        watch: {
-            status(value) {
-                Vue.nextTick(() => {
-                    if(!this.isCancelled) {
-                        const selector = (value === 'unsubscribed') ? '#new-card' : '#update-card';
-                        this.stripeCard = this.stripe.elements().create('card', {
-                            hidePostalCode: true
-                        });
-                        this.stripeCard.mount(selector);
-                    }
-                });
-            }
-        },
-        mounted() {
-            this.stripe = Stripe(this.publicKey);
-            const url = '/user/ajax/subscription/status';
-            axios.get(url)
-                .then(this.setStatus);
-
-        }
-    });
-
-</script>
-</body>
-</html>
+@endsection

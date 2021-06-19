@@ -14,7 +14,7 @@
         すぐに気になる企業・就活生の面接を<br>
         チェックしましょう！<br>
       </div>
-        <a href="">
+        <a href="{{ route('subscription.audience') }}">
           <div class="button">
             <span>お支払い情報の設定</span>
           </div>
