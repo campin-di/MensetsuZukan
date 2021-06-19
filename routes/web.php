@@ -156,5 +156,15 @@ Route::get('/admin/upload/form/thanks', 'UploadController@complete')->name("form
 /*=== end:管理画面 関係 =========================================================*/
 
 
-Route::get('/subscription', 'StripeController@subscription')->name('stripe.subscription');
-Route::post('/subscription/afterpay', 'StripeController@afterpay')->name('stripe.afterpay');
+/*=== 課金関係 =============================================================*/
+Route::prefix('user')->middleware(['auth'])->group(function() {
+  // 課金
+  Route::get('subscription', 'User\SubscriptionController@index');
+  Route::get('ajax/subscription/status', 'User\Ajax\SubscriptionController@status');
+  Route::post('ajax/subscription/subscribe', 'User\Ajax\SubscriptionController@subscribe');
+  Route::post('ajax/subscription/cancel', 'User\Ajax\SubscriptionController@cancel');
+  Route::post('ajax/subscription/resume', 'User\Ajax\SubscriptionController@resume');
+  Route::post('ajax/subscription/change_plan', 'User\Ajax\SubscriptionController@change_plan');
+  Route::post('ajax/subscription/update_card', 'User\Ajax\SubscriptionController@update_card');
+});
+/*=== end:課金関係 =========================================================*/

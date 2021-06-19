@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4749d2a4fb11500fdcd3d58cf55b797f",
+    "content-hash": "0f66926de1954af12a790599a8f41e08",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1208,40 +1208,40 @@
         },
         {
             "name": "laravel/cashier",
-            "version": "v12.14.1",
+            "version": "v13.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-stripe.git",
-                "reference": "5936a1746a9a805315c457b894c2aa0cab8530a2"
+                "reference": "a5b00e6408d294e88318a6b519601d541e91be0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/5936a1746a9a805315c457b894c2aa0cab8530a2",
-                "reference": "5936a1746a9a805315c457b894c2aa0cab8530a2",
+                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/a5b00e6408d294e88318a6b519601d541e91be0a",
+                "reference": "a5b00e6408d294e88318a6b519601d541e91be0a",
                 "shasum": ""
             },
             "require": {
                 "dompdf/dompdf": "^0.8.6|^1.0.1",
                 "ext-json": "*",
-                "illuminate/contracts": "^6.0|^7.0|^8.0",
-                "illuminate/database": "^6.0|^7.0|^8.0",
-                "illuminate/http": "^6.0|^7.0|^8.0",
-                "illuminate/log": "^6.0|^7.0|^8.0",
-                "illuminate/notifications": "^6.0|^7.0|^8.0",
-                "illuminate/routing": "^6.0|^7.0|^8.0",
-                "illuminate/support": "^6.0|^7.0|^8.0",
-                "illuminate/view": "^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^8.0",
+                "illuminate/database": "^8.0",
+                "illuminate/http": "^8.0",
+                "illuminate/log": "^8.0",
+                "illuminate/notifications": "^8.0",
+                "illuminate/routing": "^8.0",
+                "illuminate/support": "^8.0",
+                "illuminate/view": "^8.0",
                 "moneyphp/money": "^3.2",
                 "nesbot/carbon": "^2.0",
-                "php": "^7.2.5|^8.0",
+                "php": "^7.3|^8.0",
                 "stripe/stripe-php": "^7.39",
-                "symfony/http-kernel": "^4.3|^5.0",
+                "symfony/http-kernel": "^5.0",
                 "symfony/polyfill-intl-icu": "^1.22.1"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^4.0|^5.0|^6.0",
-                "phpunit/phpunit": "^8.0|^9.0"
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
             },
             "suggest": {
                 "ext-intl": "Allows for more locales besides the default \"en\" when formatting money values."
@@ -1249,7 +1249,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "12.x-dev"
+                    "dev-master": "13.x-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1259,7 +1259,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Laravel\\Cashier\\": "src/"
+                    "Laravel\\Cashier\\": "src/",
+                    "Laravel\\Cashier\\Database\\Factories\\": "database/factories/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1282,7 +1283,7 @@
                 "issues": "https://github.com/laravel/cashier/issues",
                 "source": "https://github.com/laravel/cashier"
             },
-            "time": "2021-06-04T09:07:07+00:00"
+            "time": "2021-06-15T15:41:54+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3316,16 +3317,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.83.0",
+            "version": "v7.85.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "bb7244c7334ad8bf30d31bb4972d5aff57df1563"
+                "reference": "c3bdde76ddb626b4f17fd746962104b0d917506a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/bb7244c7334ad8bf30d31bb4972d5aff57df1563",
-                "reference": "bb7244c7334ad8bf30d31bb4972d5aff57df1563",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/c3bdde76ddb626b4f17fd746962104b0d917506a",
+                "reference": "c3bdde76ddb626b4f17fd746962104b0d917506a",
                 "shasum": ""
             },
             "require": {
@@ -3371,9 +3372,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.83.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v7.85.0"
             },
-            "time": "2021-06-07T23:15:45+00:00"
+            "time": "2021-06-18T04:53:41+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
