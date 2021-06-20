@@ -16,7 +16,7 @@
         </p>
       </div>
       <div class="right-child-pc">
-        <img class="firstview-pc-img" src="./img/top/firstview-pc.png" alt="PCイラスト">
+        <img class="firstview-pc-img" src="./img/top/firstview-pc.svg" alt="PCイラスト">
       </div>
     </div>
     <div class="firstview-register-wrapper">
@@ -26,7 +26,6 @@
           まずは会員登録する
         </div>
       </a>
-      <span class="firstview-register-under">採用担当者はこちら ></span>
     </div>
   </div>
 </div>
@@ -52,9 +51,11 @@
           ○○業界の面接傾向は？<br>
           検索機能を活用して、<br>
           気になる疑問を解消しよう。<br>
+          <a href="https://storyset.com/work">Work illustrations by Storyset</a>
         </div>
         <div class="right-child">
-          <img src="./img/top/features-content-illustration-1.png" alt="全ての面接が見放題！">
+          <img src="{{ asset('/img/top/illustration/Bookmarks-rafiki.svg') }}" alt="採点＆フィードバック">
+         
         </div>
       </div>
     </div>
@@ -68,9 +69,10 @@
           フィードバック付きの<br>
           採点結果を見られるので、<br>
           面接力UP間違いなし！<br>
+          <a href="https://storyset.com/work">Work illustrations by Storyset</a>
         </div>
         <div class="right-child">
-          <img src="./img/top/features-content-illustration-1.png" alt="全ての面接が見放題！">
+          <img src="{{ asset('/img/top/illustration/Development focus-amico.svg') }}" alt="採点＆フィードバック">
         </div>
       </div>
     </div>
@@ -84,9 +86,10 @@
           日本全国の企業から<br>
           『1次面接免除以上』の<br>
           特別オファーが届く！<br>
+          <a href="https://storyset.com/work">Work illustrations by Storyset</a>
         </div>
         <div class="right-child">
-          <img src="./img/top/features-content-illustration-1.png" alt="全ての面接が見放題！">
+          <img src="{{ asset('/img/top/illustration/Agreement-amico.svg') }}" alt="オファー">
         </div>
       </div>
     </div>
@@ -131,7 +134,7 @@
     <h2>投稿者プラン</h2>
     <div class="flex-pc">
       <div class="center left-child-pc">
-        <img src="./img/top/features-content-illustration-1.png" alt="仮置き">
+        <img src="{{ asset('/img/top/illustration/Interview-amico.svg') }}" alt="面接">
       </div>
       <div class="plan-description right-child-pc">
         <ol>
@@ -145,6 +148,7 @@
             特別オファーを貰うことができる。
           </li>
           <li>月額0円で、他の人の面接が見放題。</li>
+          <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
         </ol>
       </div>
     </div>
@@ -153,11 +157,12 @@
     <h2>視聴者プラン</h2>
     <div class="flex-pc">
       <div class="center left-child-pc">
-        <img src="./img/top/features-content-illustration-1.png" alt="仮置き">
+        <img src="{{ asset('/img/top/illustration/Bookmarks-rafiki.svg') }}" alt="見放題">
       </div>
       <div class="plan-description right-child-pc">
         <ol>
           <li>月額料金を支払うと、学生の面接が見放題。</li>
+          <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
         </ol>
       </div>
     </div>
@@ -178,9 +183,10 @@
         人事マイページを参照して、<br>
         面接をしたい人事を選択し、<br>
         日程を調整する。<br>
+        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child">
-        <img src="./img/top/features-content-illustration-2.png" alt="仮置き">
+        <img src="{{ asset('/img/top/illustration/calendar-rafiki.svg') }}" alt="日程調整">
       </div>
     </div>
   </div>
@@ -198,9 +204,10 @@
         質問への深掘りが行われ、<br>
         終了後は質問ごとに<br>
         採点･フィｰドバックがある。<br>
+        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child flex-reverse-2">
-        <img src="./img/top/features-content-illustration-2.png" alt="仮置き">
+      <img src="{{ asset('/img/top/illustration/Interview-pana.svg') }}" alt="面接＆フィードバック">
       </div>
     </div>
   </div>
@@ -218,9 +225,10 @@
         モザイク処理で個人が<br>
         特定できない状態に<br>
         加工した動画が公開される。<br>
+        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child">
-        <img src="./img/top/features-content-illustration-2.png" alt="仮置き">
+        <img src="{{ asset('/img/top/illustration/upload-pana.svg') }}" alt="動画のアップロード">
       </div>
     </div>
   </div>
@@ -238,9 +246,10 @@
         最低でも一次面接免除が<br>
         確約された特別フローで<br>
         選考に招待される。<br>
+        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child flex-reverse-2">
-        <img src="./img/top/features-content-illustration-2.png" alt="仮置き">
+        <img src="{{ asset('/img/top/illustration/messages-rafiki.svg') }}" alt="特別オファー">
       </div>
     </div>
   </div>
@@ -260,9 +269,10 @@
         面接での頻出質問を網羅。<br>
         その中から自分が<br>
         気になった質問を検索できる。<br>
+        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child">
-        <img src="./img/top/features-content-illustration-2.png" alt="仮置き">
+        <img src="{{ asset('/img/top/illustration/select-amico.svg') }}" alt="質問の検索">
       </div>
     </div>
   </div>
@@ -280,9 +290,10 @@
         オンライン面接における<br>
         間のとり方や適切な言葉遣い<br>
         などを学ぶことができる。<br>
+        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child flex-reverse-2">
-        <img src="./img/top/features-content-illustration-2.png" alt="仮置き">
+        <img src="{{ asset('/img/top/illustration/files-amico.svg') }}" alt="動画の選択・視聴">
       </div>
     </div>
   </div>
@@ -299,9 +310,10 @@
         どのように答えたら、<br>
         人事に良い評価をもらえるか<br>
         知ることができる。<br>
+        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child">
-        <img src="./img/top/features-content-illustration-2.png" alt="仮置き">
+      <img src="{{ asset('/img/top/illustration/survey-amico.svg') }}" alt="採点・フィードバック">
       </div>
     </div>
   </div>

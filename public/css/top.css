@@ -1,5 +1,4 @@
 
-
 /* === begin: 共通部分 =================================================*/
 h1{
   font-size: 24px;
@@ -43,6 +42,9 @@ h2{
   width: 90%;
   margin: 0 auto;
 }
+.firstview-content .right-child-content img{
+  margin-top: -25px;
+}
 
 .firstview-logo{
   width: 200px;
@@ -81,6 +83,7 @@ h2{
   font-size: 14px;
 }
 
+
 .firstview-register-button{
   margin: 5px auto;
   width: 80%;
@@ -90,6 +93,14 @@ h2{
   line-height: 3;
   border-radius: 30px;
   background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+.firstview-register-button{
+  transition: all 0.3s ease 0s;
+}
+
+.firstview-register-button:hover{
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.1875em);
 }
 /* === end: ファーストビュー 部分 =================================================*/
 
@@ -143,8 +154,9 @@ h2{
 .features-content .right-child{
   width: 35%;
 }
-.features-content .right-child img{
-  width: 100%;
+.features-content .right-child a{
+  color : #EEE;
+  font-size: 10px;
 }
 
 .features-content-wrapper::after{
@@ -168,6 +180,10 @@ h2{
 
 .features-content-description{
   font-size: 14px;
+}
+.features-content-description a{
+  font-size: 10px;
+  color: #EEE;
 }
 
 .features-content{
@@ -282,6 +298,9 @@ h2{
 }
 .plan h2{
   color: #6B8BE9;
+}
+.plan img{
+  width: 50%;
 }
 
 .plan-description {
@@ -458,6 +477,12 @@ h2{
   line-height: 3;
   border-radius: 30px;
   background: linear-gradient(to right, #7CC4FF, #9681FF);
+  transition: all 0.3s ease 0s;
+}
+
+.promotion-button:hover{
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.1875em);
 }
 /* === end: "新規会員登録はここから" 部分 =================================================*/
 
@@ -512,17 +537,18 @@ h2{
   }
 
   .firstview-wrapper .flex-pc{
-    background-image: url(../img/top/pc/firstview-background.png);
+    background-image: url(../img/top/firstview-background-pc.png);
     background-repeat: no-repeat;
-    margin: 0 calc(50% - 50vw);
+    margin: -5px calc(50% - 50vw);
     width: 100vw;
-    height: 70vh;
-    padding: 100px 15vw 0;
+    height: 55vh;
+    padding: 100px 10vw 0;
   }
 
   .firstview-pc-img{
     width: 100%;
     max-width: 600px;
+    margin-top: -50px !important;
   }
 
   .firstview-content .left-child-pc{
@@ -603,7 +629,7 @@ h2{
   }
 
   .features-content .right-child{
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
     -webkit-box-ordinal-group:1;
 　　-ms-flex-order:1;
@@ -611,9 +637,6 @@ h2{
     order: 1;
   }
 
-  .features-content .right-child img{
-    width: 70%;
-  }
   /* === end: "面接図鑑の特徴" 部分 =================================================*/
 
   /* === begin: "サービス概要" 部分 =================================================*/
@@ -679,9 +702,6 @@ h2{
   /* === end: "サービス概要" 部分 =================================================*/
 
   /* === begin: "プランの説明" 部分 =================================================*/
-  .plan-wrapper{
-
-  }
 
   .plan h2{
     font-size: 30px;
@@ -699,6 +719,9 @@ h2{
   }
   .plan .flex-pc .left-child-pc img{
     width: 50%;
+  }
+  .plan img{
+    width: 70%;
   }
 
   .plan-description ol div{
@@ -781,10 +804,10 @@ h2{
     text-align: center;
   }
   .audience-content-wrapper .left-child img{
-    margin-top: -30%;
+    margin-top: -35%;
   }
   .audience-content-wrapper .right-child img{
-    margin-top: -30%;
+    margin-top: -35%;
   }
 
   .audience-title-left{
@@ -817,6 +840,14 @@ h2{
 
   .cost-img-description{
     font-size: 18px;
+  }
+
+  .cost-promotion div{
+    font-size: 24px;
+  }
+  .cost-promotion-price span{
+    font-size: 65px;
+    margin: 0 10px;
   }
   /* === end: "利用料金" 部分 =================================================*/
 
