@@ -28,7 +28,7 @@ class MeetingClass {
         $key = new Key($api_secret);
         $time = time();
         $jwt_token = (new Builder())->setIssuer($api_key)
-                                ->expiresAt($time + 3600)
+                                ->setExpiration($time + 3600)
                                 ->sign($signer, $key)
                                 ->getToken();
         return $jwt_token;
@@ -118,3 +118,4 @@ class MeetingClass {
         return $result;
     }
 }
+
