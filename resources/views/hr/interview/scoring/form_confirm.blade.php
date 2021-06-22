@@ -16,11 +16,12 @@
       @for($index = 1; $index <= 3; $index++)
       <div class="content">
         <div class="question-title">
-					質問{{$index}}：{{$input['question-'.$index. '-name']}}
+					質問{{$index}}：{{$input['question-'.$index]}}
 				</div>
-        <div class="range">
-          <span>{{$input['question-'.$index]}}</span>点
-        </div>
+
+        地頭評価：{{$input['logic'.$index]}}
+        人柄評価：{{$input['personality'.$index]}}
+
 				{{$input['review-'.$index]}}
       </div>
       @endfor
@@ -30,7 +31,5 @@
 
   </form>
 </div>
-
-<script src="{{ asset('/js/hr/interview/scoring/form.js') }}"></script>
 
 @endsection

@@ -27,13 +27,16 @@ class CreateInterviewsTable extends Migration
           $table->string('zoomId')->nullable();
           $table->string('zoomPass')->nullable();
           $table->integer('question_1_id')->nullable();
-          $table->integer('question_1_score')->nullable();
+          $table->integer('question_1_logic')->nullable();
+          $table->integer('question_1_personality')->nullable();
           $table->string('question_1_review')->nullable();
           $table->integer('question_2_id')->nullable();
-          $table->integer('question_2_score')->nullable();
+          $table->integer('question_2_logic')->nullable();
+          $table->integer('question_2_personality')->nullable();
           $table->string('question_2_review')->nullable();
           $table->integer('question_3_id')->nullable();
-          $table->integer('question_3_score')->nullable();
+          $table->integer('question_3_logic')->nullable();
+          $table->integer('question_3_personality')->nullable();
           $table->string('question_3_review')->nullable();
           $table->timestamps();
 

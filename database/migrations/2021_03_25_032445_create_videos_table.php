@@ -23,6 +23,8 @@ class CreateVideosTable extends Migration
           $table->integer('question_id');
           $table->integer('st_id')->unsigned();
           $table->integer('hr_id')->unsigned();
+          $table->integer('logic');
+          $table->integer('personality');
           $table->integer('score');
           $table->string('review');
           $table->integer('views');

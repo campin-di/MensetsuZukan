@@ -49,41 +49,19 @@
     </div>
   </div>
 
-  @if($flag == 0)
-    <div class="button-wrapper uppest">
-      <button type="submit">
-        <a href="{{ route('hr.interview.question.add', $interviewInfo->id) }}">質問リストの作成</a>
-      </button>
-    </div>
-    <div class="button-wrapper-unavailable">
-      <span>面接を開始</span>
-    </div>
-    @elseif($flag == 1)
-    <div class="button-wrapper edit uppest">
-      <button type="submit">
-        <a href="{{ route('hr.interview.question.edit', $interviewInfo->id) }}">質問リストの変更</a>
-      </button>
-    </div>
-    <div class="button-wrapper dl">
-      <button type="submit">
-        <a href="">質問シートをダウンロード</a>
-      </button>
-    </div>
+  @if($flag == 1)
     <div class="button-wrapper">
       <button type="submit">
         <a href="{{ route('hr.interview.pre', $interviewInfo->id) }}">面接を開始</a>
       </button>
     </div>
-    @elseif($flag == 2)
+    @else
     <div class="button-wrapper uppest">
       <button type="submit">
         <a href="{{ route('hr.interview.scoring.form', $interviewInfo->id) }}">面接が終了した</a>
       </button>
     </div>
-    @else
   @endif
-
-
 </div>
 <script type="text/javascript" src="{{ asset('/js/st/interview/detail.js') }}"></script>
 @endsection

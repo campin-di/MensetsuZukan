@@ -42,14 +42,7 @@
   margin-left: -5%;
   color: #FFF;
 }
-.range{
-  margin: 20px auto;
-  color: #6B8BE9;
-  font-weight: bold;
-}
-.range span{
-    font-size: 24px;
-}
+
 
 /* === end: 採点 部分 =================================================*/
 
@@ -74,10 +67,13 @@
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
   .sp{
-    display: none:
+    display: none;
   }
   .pc{
     display: block !important;
+  }
+  .pc-flex {
+    display: flex;
   }
 
   .top-content h1{
@@ -96,13 +92,8 @@
     border-radius: 30px;
   }
 
-  .range{
-    font-size: 22px;
-  }
-
-  .range span {
-    font-size: 30px;
-    margin-left: 15px;
+  .score div{
+    width: 50%;
   }
 
   .button-wrapper {

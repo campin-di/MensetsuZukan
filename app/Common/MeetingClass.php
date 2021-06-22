@@ -89,8 +89,6 @@ class MeetingClass {
           ]
         ];
 
-        echo  $params['start_time'];
-
         $method = 'POST';
         $path = 'users/'. $user_id .'/meetings';
         $client_params = [

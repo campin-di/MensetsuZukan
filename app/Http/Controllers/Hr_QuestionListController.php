@@ -10,15 +10,6 @@ use App\Models\Question;
 class Hr_QuestionListController extends Controller
 {
   //== 質問リスト作成 関係　=======================================================
-  private $formItems = ["name", "title", "body"];
-
-  private $validator = [
-    /*
-    "name" => "required|string|max:100",
-    "title" => "required|string|max:100",
-    "body" => "required|string|max:100"
-    */
-  ];
 
   public function add($id)
   {
