@@ -68,60 +68,96 @@ class VideosTableSeeder extends Seeder
          それも１ページに、５～６個程度の言葉しかなく、基本的に学生向きかと思います。",
       ];
 
-        foreach($vimeoIdArray as $vimeoId => $startSecondArray){
-          $random_date = [rand(2021, 2021), rand(1, 5), rand(1,24)];
-          $zero9 = mt_rand(0, 9);
-          $zero19 = mt_rand(0, 19);
+      foreach($vimeoIdArray as $vimeoId => $startSecondArray){
+        $random_date = [rand(2021, 2021), rand(1, 5), rand(1,24)];
+        $zero9 = mt_rand(0, 9);
+        $zero19 = mt_rand(0, 19);
 
-          foreach ($startSecondArray as $startSecond) {
-            $data = [
-              'title' => $usernameArray[0][$zero9]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
-              'thumbnail_name' => 'tmp.png',
-              'thumbnail_path' => '/img/tmp.png',
-              'vimeo_src' => 'https://player.vimeo.com/video/' . $vimeoId . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
-              'vimeo_id' => $vimeoId,
-              'question_id' => $zero19+1,
-              'st_id' => $usernameArray[1][$zero9],
-              'hr_id' => mt_rand(1, 29),
-              'score' => mt_rand(30, 100),
-              'review' => $contentArray[mt_rand(0, 9)],
-              'views' => mt_rand(0, 50),
-              'good' => mt_rand(0, 50),
-              'type' => 1,
-              'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
-              'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
-            ];
-            DB::table('videos')->insert([$data]);
-            $zero19++;
+        $logic = [mt_rand(3, 5), mt_rand(3, 5), mt_rand(3, 5)];
+        $personality = [mt_rand(3, 5), mt_rand(3, 5), mt_rand(3, 5)];
+
+        $score = $j = 0;
+        foreach ($startSecondArray as $startSecond) {
+          if($j==0){
+            $weight = 2;
+          } else {
+            $weight = 4;
           }
+          $score += $logic[$j]*$weight + $personality[$j]*$weight;
+          $j++;
         }
+      
+        $index = 0;
+        foreach ($startSecondArray as $startSecond) {
+          $data = [
+            'title' => $usernameArray[0][$zero9]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
+            'thumbnail_name' => 'tmp.png',
+            'thumbnail_path' => '/img/tmp.png',
+            'vimeo_src' => 'https://player.vimeo.com/video/' . $vimeoId . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+            'vimeo_id' => $vimeoId,
+            'question_id' => $zero19+1,
+            'st_id' => $usernameArray[1][$zero9],
+            'hr_id' => mt_rand(1, 29),
+            'logic' => $logic[$index],
+            'personality' => $personality[$index],
+            'score' => $score,
+            'review' => $contentArray[mt_rand(0, 9)],
+            'views' => mt_rand(0, 50),
+            'good' => mt_rand(0, 50),
+            'type' => 1,
+            'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
+            'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
+          ];
+          DB::table('videos')->insert([$data]);
+          $zero19++;
+          $index++;
+        }
+      }
 
-        foreach($vimeoIdArray2 as $vimeoId => $startSecondArray){
-          $random_date = [rand(2019, 2020), rand(1, 12), rand(1,29)];
-          $zero9 = mt_rand(0, 9);
-          $zero19 = mt_rand(0, 19);
+      foreach($vimeoIdArray2 as $vimeoId => $startSecondArray){
+        $random_date = [rand(2021, 2021), rand(1, 5), rand(1,24)];
+        $zero9 = mt_rand(0, 9);
+        $zero19 = mt_rand(0, 19);
 
-          foreach ($startSecondArray as $startSecond) {
-            $data = [
-              'title' => $usernameArray[0][$zero9]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
-              'thumbnail_name' => 'tmp.png',
-              'thumbnail_path' => '/img/tmp.png',
-              'vimeo_src' => 'https://player.vimeo.com/video/' . $vimeoId . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
-              'vimeo_id' => $vimeoId,
-              'question_id' => $zero19+1,
-              'st_id' => $usernameArray[1][$zero9],
-              'hr_id' => mt_rand(1, 29),
-              'score' => mt_rand(60, 100),
-              'review' => $contentArray[mt_rand(0, 9)],
-              'views' => mt_rand(0, 50),
-              'good' => mt_rand(0, 50),
-              'type' => 1,
-              'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
-              'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
-            ];
-            DB::table('videos')->insert([$data]);
-            $zero19++;
+        $logic = [mt_rand(3, 5), mt_rand(3, 5), mt_rand(3, 5)];
+        $personality = [mt_rand(3, 5), mt_rand(3, 5), mt_rand(3, 5)];
+
+        $score = $j = 0;
+        foreach ($startSecondArray as $startSecond) {
+          if($j==0){
+            $weight = 2;
+          } else {
+            $weight = 4;
           }
+          $score += $logic[$j]*$weight + $personality[$j]*$weight;
+          $j++;
         }
+      
+        $index = 0;
+        foreach ($startSecondArray as $startSecond) {
+          $data = [
+            'title' => $usernameArray[0][$zero9]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
+            'thumbnail_name' => 'tmp.png',
+            'thumbnail_path' => '/img/tmp.png',
+            'vimeo_src' => 'https://player.vimeo.com/video/' . $vimeoId . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+            'vimeo_id' => $vimeoId,
+            'question_id' => $zero19+1,
+            'st_id' => $usernameArray[1][$zero9],
+            'hr_id' => mt_rand(1, 29),
+            'logic' => $logic[$index],
+            'personality' => $personality[$index],
+            'score' => $score,
+            'review' => $contentArray[mt_rand(0, 9)],
+            'views' => mt_rand(0, 50),
+            'good' => mt_rand(0, 50),
+            'type' => 1,
+            'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
+            'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
+          ];
+          DB::table('videos')->insert([$data]);
+          $zero19++;
+          $index++;
+        }
+      }
     }
 }

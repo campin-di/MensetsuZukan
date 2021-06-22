@@ -1,6 +1,6 @@
 window.onload = function(){
-  if(interview['zoomUrl'] !== 'done'){
-    window.open(interview['zoomUrl'], '_blank');
+  if(zoomUrl !== 'done'){
+    window.open(zoomUrl, '_blank');
   }
 }
 

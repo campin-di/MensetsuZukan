@@ -157,7 +157,7 @@ class St_ScheduleController extends Controller
     \DB::table('schedules')->where('id', $schedule->id)->update([
       $timeKey => 0,
     ]);
-/*
+
     Mail::send('st/interview/schedule/mail/reservation', ['interview' => $interview, 'hr' => $hr, 'st' => $st],
       function ($message) use ($hr, $st){
         $message->subject($st->name. 'さんから面接予約がありました！');
@@ -165,7 +165,6 @@ class St_ScheduleController extends Controller
         $message->to($hr->email);
       }
     );
-    */
     //================================================
 
     //セッションを空にする
