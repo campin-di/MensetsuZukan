@@ -4,7 +4,7 @@
   @include('components.parts.page_title', ['title'=>'マイページ'])
 
   <div class="container">
-    @include('components.parts.profile', ['imagePath' => $userData->image_path, 'userName' => $userData->name, 'nickName' => '', 'description' => $userData->company, 'introduction' => $userData->introduction])
+    @include('components.parts.profile', ['imagePath' => $userData->image_path, 'userName' => '', 'nickName' => $userData->nickname, 'description' => $userData->industry, 'introduction' => $userData->introduction])
     @include('components.parts.button.transition_button', ['routeName' => 'hr.hrpage.detail', 'var' => $userData->id, 'text' => '詳しいプロフィール'])
   </div>
 

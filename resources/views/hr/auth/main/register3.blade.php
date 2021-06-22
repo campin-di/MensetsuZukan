@@ -17,9 +17,9 @@
       @csrf
 
       <div class="form-input-wrapper">
-        <label for="selection_phase" class="form-title">普段担当する選考フェーズ</label>
+        <label for="selection_phase" class="form-title">普段担当している選考フェーズ *</label>
         <div class="form-input">
-          <select id="selection_phase" class="form-control" name="selection_phase">
+          <select id="selection_phase" class="form-control" name="selection_phase" required>
             @foreach($selectionPhaseArray as $phase)
               <option value="{{ $phase }}" @if(old('selection_phase') == "{{ $phase }}") selected @endif>{{ $phase }}</option>
             @endforeach

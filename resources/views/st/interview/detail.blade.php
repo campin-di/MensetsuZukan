@@ -9,8 +9,7 @@
 </div>
 
 <div class="container content-wrapper">
-  @include('components.parts.profile',['imagePath' => $interviewInfo->hr_user->image_path, 'isHr' => '', 'userName' => $interviewInfo->hr_user->name, 'nickName' => '', 'description' => $interviewInfo->hr_user->company. '（' . $interviewInfo->hr_user->industry . '）', 'introduction' => $interviewInfo->hr_user->pr ])
-
+  @include('components.parts.profile',['imagePath' => $interviewInfo->hr_user->image_path, 'isHr' => '', 'userName' => '', 'nickName' => $interviewInfo->hr_user->nickname, 'description' => $interviewInfo->hr_user->industry, 'introduction' => $interviewInfo->hr_user->pr ])
 
   <div class="content">
     <div class="content-title">

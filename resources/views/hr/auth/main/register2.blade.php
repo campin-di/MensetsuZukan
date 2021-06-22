@@ -44,10 +44,46 @@
         </div>
       </div>
 
+      
       <div class="form-input-wrapper">
-        <label for="location" class="form-title">本社所在地*</label>
+        <label for="company_type" class="form-title">企業区分*</label>
         <div class="form-input">
-          <select id="location" class="form-control" name="location" required>
+          <select id="company_type" class="form-control" name="company_type" required>
+            <option value="">企業区分を選択してください。</option>
+            @foreach($companyTypeArray as $company_type)
+            <option value="{{ $company_type }}" @if(old('company_type') == "{{ $company_type }}") selected @endif>{{ $company_type }}</option>
+            @endforeach
+          </select>
+          @if ($errors->has('company_type'))
+          <span class="help-block">
+            <strong>{{ $errors->first('company_type') }}</strong>
+          </span>
+          @endif
+        </div>
+      </div>
+      
+      
+      <div class="form-input-wrapper">
+        <label for="stock_type" class="form-title">上場区分*</label>
+        <div class="form-input">
+          <select id="stock_type" class="form-control" name="stock_type" required>
+            <option value="">上場区分を選択してください。</option>
+            @foreach($stockTypeArray as $stock_type)
+            <option value="{{ $stock_type }}" @if(old('stock_type') == "{{ $stock_type }}") selected @endif>{{ $stock_type }}</option>
+            @endforeach
+          </select>
+          @if ($errors->has('stock_type'))
+          <span class="help-block">
+            <strong>{{ $errors->first('stock_type') }}</strong>
+          </span>
+          @endif
+        </div>
+      </div>
+      
+      <div class="form-input-wrapper">
+        <label for="location" class="form-title">本社所在地</label>
+        <div class="form-input">
+          <select id="location" class="form-control" name="location">
             <option value="">本社所在地を選択してください。</option>
             @foreach($prefecturesArray as $area => $prefectureArray)
               <optgroup label="{{ $area }}">
@@ -64,41 +100,7 @@
           @endif
         </div>
       </div>
-
-      <div class="form-input-wrapper">
-        <label for="company_type" class="form-title">企業区分*</label>
-        <div class="form-input">
-          <select id="company_type" class="form-control" name="company_type" required>
-            <option value="">企業区分を選択してください。</option>
-            @foreach($companyTypeArray as $company_type)
-              <option value="{{ $company_type }}" @if(old('company_type') == "{{ $company_type }}") selected @endif>{{ $company_type }}</option>
-            @endforeach
-          </select>
-          @if ($errors->has('company_type'))
-            <span class="help-block">
-              <strong>{{ $errors->first('company_type') }}</strong>
-            </span>
-          @endif
-        </div>
-      </div>
-
-      <div class="form-input-wrapper">
-        <label for="stock_type" class="form-title">上場区分*</label>
-        <div class="form-input">
-          <select id="stock_type" class="form-control" name="stock_type" required>
-            <option value="">上場区分を選択してください。</option>
-            @foreach($stockTypeArray as $stock_type)
-              <option value="{{ $stock_type }}" @if(old('stock_type') == "{{ $stock_type }}") selected @endif>{{ $stock_type }}</option>
-            @endforeach
-          </select>
-          @if ($errors->has('stock_type'))
-            <span class="help-block">
-              <strong>{{ $errors->first('stock_type') }}</strong>
-            </span>
-          @endif
-        </div>
-      </div>
-
+      
       @include('components.parts.button.form.next_button')
     </form>
   </div>

@@ -4,7 +4,7 @@
   @include('components.parts.page_title', ['title'=>'マイページ'])
 
   <div class="container">
-    @include('components.parts.profile', ['imagePath' => $userData->image_path, 'userName' => $userData->name, 'nickName' => '', 'description' => $userData->graduate_year .'年卒/'. $userData->industry, 'introduction' => $userData->introduction ])
+    @include('components.parts.profile', ['imagePath' => $userData->image_path, 'userName' => $userData->name, 'nickName' => '', 'description' => $userData->graduate_year .'年卒 / '. $userData->industry. '業界 志望', 'introduction' => $userData->introduction ])
 
     <div class="container_profile_btn">
       <a href="{{ route('hr.stpage.detail', $userData->id) }}" class="mx-2 btn btn-primary container_profile_btn_profile">詳しいプロフィール</a>

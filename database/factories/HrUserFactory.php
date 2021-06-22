@@ -37,6 +37,7 @@ class HrUserFactory extends Factory
         'password' => Hash::make('password'),
         'name' => $this->faker->name,
         'kana_name' => $this->faker->kanaName,
+        'nickname' => $this->faker->firstkanaName,
         'gender' => mt_rand(1, 2),
         'plan' => 'offer',
         'company' => $this->faker->company,

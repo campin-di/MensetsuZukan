@@ -36,5 +36,6 @@
       </form>
   @endempty
 </div>
+
 <script type="text/javascript" src="{{ asset('/js/auth/hr/main/register4.js') }}"></script>
 @endsection

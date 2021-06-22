@@ -1,7 +1,7 @@
 @extends('layouts.hr.common')
 <link href="{{ asset('/css/st/watch.css') }}" rel="stylesheet">
 @section('content')
-  @include('components.parts.button.fixed_button', ['routeName' => 'hr.offer.form', 'var'=>$mainVideo['stId'], 'msg' => '', 'text' => $mainVideo['stName'].'さんにオファーを送る'])
+  @include('components.parts.button.fixed_button', ['routeName' => 'hr.offer.form', 'var'=>$mainVideo['stId'], 'msg' => '', 'text' => $mainVideo['stNickname'].'さんにオファーを送る'])
 
   <div class="video-iframe">
     <iframe src="{{ $mainVideo['vimeo_src'] }}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title=""></iframe>
@@ -95,7 +95,7 @@
       </div>
       <div class="review">
         <a href="{{ route('hr.hrpage', $mainVideo['hrId']) }}">
-          {{ $mainVideo['hrName'] }}
+          {{ $mainVideo['hrNickname'] }}
         </a>
         <p>
           {{ $mainVideo['review'] }}

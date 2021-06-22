@@ -4,7 +4,7 @@
   @include('components.parts.page_title', ['title'=>'マイページ'])
 
   <div class="container">
-    @include('components.parts.profile', ['imagePath' => $userDataArray['imagePath'], 'userName' => $userDataArray['name'], 'nickName' => '', 'description' => $userDataArray['company'], 'introduction' => $userDataArray['introduction'] ])
+    @include('components.parts.profile', ['imagePath' => $userDataArray['imagePath'], 'userName' => '', 'nickName' => $userDataArray['nickname'], 'description' => $userDataArray['industry'], 'introduction' => $userDataArray['introduction'] ])
     @include('components.parts.button.transition_button', ['routeName' => 'hrpage.detail', 'var' => $userDataArray['id'], 'text' => '詳しいプロフィール'])
     @include('components.parts.button.fixed_button',['routeName' => 'interview.schedule', 'var' => $userDataArray['id'], 'msg' => '', 'text' =>  '面接の予約'])
   </div>

@@ -75,6 +75,19 @@
         </div>
       </div>
 
+      <div class="form-input-wrapper">
+      <label for="nickname" class="form-title">ニックネーム*</label>
+        <div class="form-input flex">
+          <input id="nickname" type="text" class="form-control {{ $errors->has('nickname') ? ' is-invalid' : '' }}" name="nickname" value="{{ old('nickname') }}" placeholder="例：よっしー" required>
+
+          @if ($errors->has('nickname'))
+            <span class="invalid-feedback">
+              <strong>{{ $errors->first('nickname') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
        <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>
 
        @include('components.parts.button.form.next_button')
