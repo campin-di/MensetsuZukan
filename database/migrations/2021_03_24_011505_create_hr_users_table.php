@@ -19,14 +19,15 @@ class CreateHrUsersTable extends Migration
         $table->string('password');
         $table->string('name')->nullable();
         $table->string('kana_name')->nullable();
+        $table->string('nickname')->nullable();
         $table->tinyInteger('gender')->unsigned()->nullable()->comment('1 : 男性, 2 : 女性');
         $table->string('plan')->nullable();
         $table->string('company')->nullable();
         $table->string('company_type')->nullable();
         $table->string('industry')->nullable();
-        $table->string('location')->nullable();
         $table->string('stock_type')->nullable();
         $table->string('image_path')->default('public/img/icon/hr-unset.png');
+        $table->string('location')->default('設定されていません。');
         $table->string('selection_phase')->default('設定されていません。');
         $table->string('workplace')->default('設定されていません。');
         $table->string('summary')->default('設定されていません。');

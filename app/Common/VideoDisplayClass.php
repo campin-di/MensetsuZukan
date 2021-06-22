@@ -24,9 +24,8 @@ class VideoDisplayClass
 
         $stUser = User::find($video->st_id);
         $stNickname = $stUser->nickname;
-        $stName = $stUser->name;
         $hrUser = HrUser::find($video->hr_id);
-        $hrName = $hrUser->name;
+        $hrNickname = $hrUser->nickname;
 
         $question = Question::find($video->question_id)->name;
         $otherQuestionsArray = Video::with('question')->where('vimeo_id', $video->vimeo_id)->where('question_id', '!=', $video->question_id)->select('question_id')->get();
@@ -47,9 +46,9 @@ class VideoDisplayClass
             'otherQuestionsArray' => $otherQuestionsArray,
 
             'stNickname' => $stNickname,
-            'hrName' => $hrName,
+            'hrNickname' => $hrNickname,
+
             'hrId' => $video->hr_id,
-            'stName' => $stName,
             'stId' => $video->st_id,
 
             'stImagePath' => $stUser->image_path,

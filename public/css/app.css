@@ -95,7 +95,7 @@ body {
 
 #template-content{
   padding-bottom: 100px;
-  min-height: 75%;
+  min-height: 100%;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {

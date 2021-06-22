@@ -137,6 +137,7 @@ class RegisterController extends Controller
         'firstname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
         'kana_lastname' => 'required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
         'kana_firstname' => 'required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
+        'nickname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
       ];
       $messages = [
         'gender.required' => '性別を選択してください。',
@@ -152,6 +153,9 @@ class RegisterController extends Controller
         'kana_firstname.required' => 'フリガナを入力してください。',
         'kana_firstname.string' => '文字列を入力してください。',
         'kana_firstname.regex' => '全角カタカナで入力してください。',
+        'nickname.required' => 'ニックネームを入力してください。',
+        'nickname.string' => '文字列を入力してください。',
+        'nickname.regex' => '日本語で入力してください。',
       ];
       $validator = Validator::make($input, $rules, $messages);
       $validated = $validator->validate(); //元のページにリダイレクトしてくれる。
@@ -240,9 +244,9 @@ class RegisterController extends Controller
         $gender = '女';
       }
 
-      $selection_phase = "未入力";
-      if(!is_null($register3_input['selection_phase'])){
-        $selection_phase = $register3_input['selection_phase'];
+      $location = "未入力";
+      if(!is_null($register2_input['location'])){
+        $location = $register2_input['location'];
       }
 
       $workplace = "未入力";
@@ -269,12 +273,13 @@ class RegisterController extends Controller
         '性別' => $gender,
         '名前' => $register_input['lastname']. ' '. $register_input['firstname'],
         'フリガナ' => $register_input['kana_lastname']. ' '. $register_input['kana_firstname'],
+        'ニックネーム' => $register_input['nickname'],
         '企業名' => $register2_input['company'],
         '所属業界' => $register2_input['industry'],
-        '本社所在地' => $register2_input['location'],
+        '本社所在地' => $location,
         '企業区分' => $register2_input['company_type'],
         '上場区分' => $register2_input['stock_type'],
-        '担当選考フェーズ' => $selection_phase,
+        '担当選考フェーズ' => $register3_input['selection_phase'],
         '主な勤務地' => $workplace,
         '事業概要' => $summary,
         '企業ページURL' => $site,
@@ -311,12 +316,13 @@ class RegisterController extends Controller
       $user = HrUser::where('email_verify_token', $register_input['email_verify_token'])->first();
       $user->name = $register_input['lastname']. ' '. $register_input['firstname'];
       $user->kana_name = $register_input['kana_lastname']. ' '. $register_input['kana_firstname'];
+      $user->nickname = $register_input['nickname'];
       $user->gender = $register_input['gender'];
       $user->company = $register2_input['company'];
       $user->industry = $register2_input['industry'];
-      $user->location = $register2_input['location'];
       $user->company_type = $register2_input['company_type'];
       $user->stock_type = $register2_input['stock_type'];
+      $user->selection_phase = $register3_input['selection_phase'];
 
       $user->status = config('const.USER_STATUS.UNAVAILABLE');
 
@@ -326,8 +332,8 @@ class RegisterController extends Controller
         $user->plan = "hr";
       }
 
-      if(!is_null($register3_input['selection_phase'])){
-        $user->selection_phase = $register3_input['selection_phase'];
+      if(!is_null($register2_input['location'])){
+        $user->location = $register2_input['location'];
       }
       if(!is_null($register3_input['workplace'])){
         $user->workplace = $register3_input['workplace'];
