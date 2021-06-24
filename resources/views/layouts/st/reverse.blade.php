@@ -2,7 +2,12 @@
 <html lang="ja">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title></title>
+    <title>@yield('title') | {{ config('app.name') }}</title>
+    @hasSection('description')
+      <meta name="description" itemprop="description" content="@yield('description')">
+    @else
+      <meta name="description" itemprop="description" content="ゼミ・研究室口コミサイト|みんラボ">
+    @endif
     <meta name="viewport" content="width=device-width">
 
     <!-- begin:ODP -->
@@ -28,9 +33,9 @@
     <!-- end:JS -->
 
     <!-- ファビコン -->
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="{{ asset('/img/logo/favicon.ico') }}">
     <!-- ホーム画面に追加したときのアイコン -->
-    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="apple-touch-icon" href="{{ asset('/img/logo/favicon.png') }}">
     <!-- Windows用アイコン -->
     <!--
     <meta name="application-name" content="{サイト名}"/>

@@ -1,5 +1,6 @@
-@extends('layouts.st.reverse')
+@section('title', '仮会員登録')
 <link href="{{ asset('/css/st/auth/choice.css') }}" rel="stylesheet">
+@extends('layouts.st.reverse')
 @section('content')
   <div class="top-content-wrapper">
     <div class="top-content">

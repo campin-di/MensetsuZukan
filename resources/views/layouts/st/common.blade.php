@@ -2,7 +2,12 @@
 <html lang="ja">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title></title>
+    <title>@yield('title') | {{ config('app.name') }}</title>
+    @hasSection('description')
+      <meta name="description" itemprop="description" content="@yield('description')">
+    @else
+      <meta name="description" itemprop="description" content="ゼミ・研究室口コミサイト|みんラボ">
+    @endif
     <meta name="viewport" content="width=device-width">
 
     <!-- begin:ODP -->
@@ -21,16 +26,18 @@
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/st/parts/header.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/st/parts/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/parts/selmodal.css') }}" rel="stylesheet">
     <!-- end:CSS -->
 
     <!-- begin:JS -->
-
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js?ver=1.12.4'></script>
+    <script src="{{ asset('js/parts/selmodal.js') }}"></script>
     <!-- end:JS -->
 
     <!-- ファビコン -->
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="{{ asset('/img/logo/favicon.ico') }}">
     <!-- ホーム画面に追加したときのアイコン -->
-    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="apple-touch-icon" href="{{ asset('/img/logo/favicon.png') }}">
     <!-- Windows用アイコン -->
     <!--
     <meta name="application-name" content="{サイト名}"/>
@@ -63,5 +70,13 @@
     @else
       <script src="{{ mix('js/app.js') }}" defer></script>
     @endif
+    <script>
+      $(function(){
+          //後者のセレクトをプラグインに適用
+          $('.selmodaltest').selModal();
+          //すべてのセレクトボックスに同じ処理する場合は下記のように書く
+          //$('select').selModal();
+      });
+    </script>
   </body>
 </html>

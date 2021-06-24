@@ -1,5 +1,6 @@
-@extends('layouts.st.common')
+@section('title', $mainVideo['title'])
 <link href="{{ asset('/css/st/watch.css') }}" rel="stylesheet">
+@extends('layouts.st.common')
 @section('content')
 
 <div class="video-iframe">

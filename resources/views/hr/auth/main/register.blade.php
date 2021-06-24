@@ -1,5 +1,6 @@
-@extends('layouts.st.reverse')
+@section('title', '基本情報の入力')
 <link href="{{ asset('/css/st/auth/main/register.css') }}" rel="stylesheet">
+@extends('layouts.st.reverse')
 @section('content')
 
   @include('components.parts.page_title_reverse', ['title'=>'STEP1'])

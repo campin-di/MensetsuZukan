@@ -22,7 +22,7 @@
     <div class="firstview-register-wrapper">
       <span class="firstview-register-upper">たった3分で完了！</span>
       <a href="{{ route('register.choice') }}">
-        <div class="firstview-register-button">
+        <div class="firstview-register-button updown-btn">
           まずは会員登録する
         </div>
       </a>
@@ -31,17 +31,22 @@
 </div>
 
 <div class="bottom-fixed-button">
-  <li class="bottom-button-left">
-    <a href="{{ route('register.choice') }}">新規会員登録</a>
-  </li>
-  <li class="bottom-button-right">
-    <a href="{{ route('login') }}">ログイン</a>
+  <a href="{{ route('register.choice') }}">
+    <li class="bottom-button-left">
+      新規会員登録
+    </li>
+  </a>
+  <a href="{{ route('login') }}">
+    <li class="bottom-button-right">
+      ログイン
+    </li>
+  </a>
 </div>
 
 <div class="features-wrapper">
   <h1>面接図鑑の特徴</h1>
   <div class="flex-pc">
-    <div class="features-content-wrapper">
+    <div class="features-content-wrapper hover-action">
       <span>01</span>
       <h2>全ての面接が見放題！</h2>
       <div class="features-content flex">
@@ -59,7 +64,7 @@
         </div>
       </div>
     </div>
-    <div class="features-content-wrapper">
+    <div class="features-content-wrapper hover-action">
       <span>02</span>
       <h2>現役人事による採点！</h2>
       <div class="features-content flex">
@@ -76,7 +81,7 @@
         </div>
       </div>
     </div>
-    <div class="features-content-wrapper">
+    <div class="features-content-wrapper hover-action">
       <span>03</span>
       <h2>企業からのオファー！</h2>
       <div class="features-content flex">
@@ -97,7 +102,7 @@
 </div>
 
 <div class="outline-wrapper">
-  <img class="outline-upper-background" src="{{ asset('/img/top/outline-upper.png') }}" alt="仮置き">
+  <img class="outline-upper-background" src="{{ asset('/img/top/outline-upper.jpeg') }}" alt="サービス概要上部の背景画像">
   <div class="outline-logo">
     <img class="outline-logo" src="{{ asset('/img/logo/logo_white.png') }}" alt="ロゴ">
   </div>
@@ -125,7 +130,7 @@
   <div class="center outline-iframe-wrapper">
     <iframe class="outline-iframe" src="https://www.youtube.com/embed/qXdmMn600N8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
-  <img class="outline-under-background" src="{{ asset('/img/top/outline-bottom.png') }}" alt="仮置き">
+  <img class="outline-under-background" src="{{ asset('/img/top/outline-bottom.png') }}" alt="サービス概要下部の背景画像">
 </div>
 
 <div class="plan-wrapper">
@@ -320,16 +325,18 @@
 </div>
 
 <div class="cost-wrapper">
-  <img class="cost-wrapper-img" src="./img/top/cost-upper.png" alt="仮置き">
+  <img class="cost-wrapper-img" src="./img/top/cost-upper.jpg" alt="料金体系の上部背景画像">
   <span class="cost-title-upper">COST</span>
   <h1>利用料金</h1>
   <img class="cost-table-img" src="./img/top/price.jpg" alt="仮置き">
-  <div class="cost-img-description">※注意事項があればここに注意事項を書きます。</div>
+  <!--
+    <div class="cost-img-description">※注意事項があればここに注意事項を書きます。</div>
+  -->
   <div class="cost-promotion flex">
     <div>投稿者プランなら</div>
     <div class="cost-promotion-price">月額<span>0</span>円</div>
   </div>
-  <img class="cost-wrapper-img" src="./img/top/cost-bottom.png" alt="仮置き">
+  <img class="cost-wrapper-img" src="./img/top/cost-bottom.jpg" alt="料金体系の下部背景画像">
 </div>
 
 <div class="promotion-wrapper">
@@ -337,7 +344,7 @@
   <div class="promotion">
     <span>たった3分で完了！</span>
     <a href="{{ route('register.choice') }}">
-      <div class="promotion-button">
+      <div class="promotion-button updown-btn">
         まずは会員登録する
       </div>
     </a>

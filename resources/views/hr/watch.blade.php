@@ -1,5 +1,6 @@
-@extends('layouts.hr.common')
+@section('title', $mainVideo['title'])
 <link href="{{ asset('/css/st/watch.css') }}" rel="stylesheet">
+@extends('layouts.hr.common')
 @section('content')
   @include('components.parts.button.fixed_button', ['routeName' => 'hr.offer.form', 'var'=>$mainVideo['stId'], 'msg' => '', 'text' => $mainVideo['stNickname'].'さんにオファーを送る'])
 

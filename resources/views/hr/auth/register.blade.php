@@ -1,5 +1,6 @@
-@extends('layouts.hr.reverse')
+@section('title', '新規会員登録')
 <link href="{{ asset('/css/st/auth/register.css') }}" rel="stylesheet">
+@extends('layouts.hr.reverse')
 @section('content')
 
 @include('components.parts.page_title_reverse', ['title'=>'新規会員登録'])

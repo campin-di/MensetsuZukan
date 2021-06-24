@@ -1,5 +1,6 @@
-@extends('layouts.hr.common')
+@section('title', 'トップページ')
 <link rel="stylesheet" href="{{ asset('css/st/home.css') }}">
+@extends('layouts.hr.common')
 @section('content')
 
   <div class="filter-wrapper flex">
