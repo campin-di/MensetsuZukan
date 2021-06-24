@@ -30,10 +30,14 @@
           </select>  
         </div>
 
-        <div class="score pc-flex">
+        <div class="score flex">
           <div>
-            <span>地頭</span>
-            <div class="radios">
+            <div class="logic-title">
+              <span class="logic-value">1</span>
+              <span>地頭</span>
+              <span class="logic-value">5</span>
+            </div>
+            <div class="radios logic">
               @for($i = 1; $i <= 5; $i++)
                 <label for="logic{{$index}}-{{$i}}"></label>
                 @if($i == 3)
@@ -46,8 +50,12 @@
             </div>
           </div>
           <div>
-            <span>人柄</spna>
-            <div class="radios">
+            <div class="personality-title">
+              <span class="personality-value">1</span>
+              <span>人柄</span>
+              <span class="personality-value">5</span>
+            </div>
+            <div class="radios personality">
               @for($i = 1; $i <= 5; $i++)
                 <label for="personality{{$index}}-{{$i}}"></label>
                 @if($i == 3)

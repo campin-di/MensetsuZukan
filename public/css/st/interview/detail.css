@@ -92,11 +92,14 @@
   background: linear-gradient(to right, #7CC4FF, #9681FF);
   border: none;
   line-height: 2.8;
-}
-.button-wrapper a{
   font-size: 18px;
   color: #FFF;
 }
+.button-wrapper a:hover {
+  transform: translateY(-0.1875em);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+}
+
 /* === end: 内容 部分 =================================================*/
 
 
@@ -108,7 +111,7 @@
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
   .sp{
-    display: none:
+    display: none;
   }
   .pc{
     display: block !important;

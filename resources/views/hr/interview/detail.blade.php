@@ -51,9 +51,11 @@
 
   @if($flag == 1)
     <div class="button-wrapper">
-      <button type="submit">
-        <a href="{{ route('hr.interview.pre', $interviewInfo->id) }}">面接を開始</a>
-      </button>
+      <a href="{{ route('hr.interview.pre', $interviewInfo->id) }}">
+        <button type="submit">
+          面接を開始
+        </button>
+      </a>
     </div>
     @else
     <div class="button-wrapper uppest">
