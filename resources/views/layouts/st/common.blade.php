@@ -26,12 +26,10 @@
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/st/parts/header.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/st/parts/footer.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/parts/selmodal.css') }}" rel="stylesheet">
     <!-- end:CSS -->
 
     <!-- begin:JS -->
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js?ver=1.12.4'></script>
-    <script src="{{ asset('js/parts/selmodal.js') }}"></script>
+  
     <!-- end:JS -->
 
     <!-- ファビコン -->
@@ -70,13 +68,5 @@
     @else
       <script src="{{ mix('js/app.js') }}" defer></script>
     @endif
-    <script>
-      $(function(){
-          //後者のセレクトをプラグインに適用
-          $('.selmodaltest').selModal();
-          //すべてのセレクトボックスに同じ処理する場合は下記のように書く
-          //$('select').selModal();
-      });
-    </script>
   </body>
 </html>

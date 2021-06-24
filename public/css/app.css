@@ -300,6 +300,14 @@ select {
 
 select {
   word-wrap: normal;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  background-image: url('../img/icon/select.svg');
+  background-position: right 15px center;
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
 }
 
 button,
