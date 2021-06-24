@@ -323,7 +323,7 @@
   <img class="cost-wrapper-img" src="./img/top/cost-upper.png" alt="仮置き">
   <span class="cost-title-upper">COST</span>
   <h1>利用料金</h1>
-  <img class="cost-table-img" src="./img/top/temporary-plan.png" alt="仮置き">
+  <img class="cost-table-img" src="./img/top/price.jpg" alt="仮置き">
   <div class="cost-img-description">※注意事項があればここに注意事項を書きます。</div>
   <div class="cost-promotion flex">
     <div>投稿者プランなら</div>
