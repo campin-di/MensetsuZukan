@@ -1,5 +1,6 @@
-@extends('layouts.hr.reverse')
+@section('title', '勤務情報の入力')
 <link href="{{ asset('/css/st/auth/main/register3.css') }}" rel="stylesheet">
+@extends('layouts.hr.reverse')
 @section('content')
 
 @include('components.parts.page_title_reverse', ['title'=>'STEP3'])

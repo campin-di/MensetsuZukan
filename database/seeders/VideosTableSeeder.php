@@ -71,7 +71,7 @@ class VideosTableSeeder extends Seeder
       foreach($vimeoIdArray as $vimeoId => $startSecondArray){
         $random_date = [rand(2021, 2021), rand(1, 5), rand(1,24)];
         $zero9 = mt_rand(0, 9);
-        $zero19 = mt_rand(0, 19);
+        $zero7 = mt_rand(0, 7);
 
         $logic = [mt_rand(3, 5), mt_rand(3, 5), mt_rand(3, 5)];
         $personality = [mt_rand(3, 5), mt_rand(3, 5), mt_rand(3, 5)];
@@ -90,12 +90,12 @@ class VideosTableSeeder extends Seeder
         $index = 0;
         foreach ($startSecondArray as $startSecond) {
           $data = [
-            'title' => $usernameArray[0][$zero9]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
+            'title' => $usernameArray[0][$zero9]. 'さんの「'. $questionTextArray[$zero7] . '」に対する答え方。',
             'thumbnail_name' => 'tmp.png',
             'thumbnail_path' => '/img/tmp.png',
             'vimeo_src' => 'https://player.vimeo.com/video/' . $vimeoId . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
             'vimeo_id' => $vimeoId,
-            'question_id' => $zero19+1,
+            'question_id' => $zero7+1,
             'st_id' => $usernameArray[1][$zero9],
             'hr_id' => mt_rand(1, 29),
             'logic' => $logic[$index],
@@ -109,7 +109,7 @@ class VideosTableSeeder extends Seeder
             'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
           ];
           DB::table('videos')->insert([$data]);
-          $zero19++;
+          $zero7++;
           $index++;
         }
       }
@@ -117,7 +117,7 @@ class VideosTableSeeder extends Seeder
       foreach($vimeoIdArray2 as $vimeoId => $startSecondArray){
         $random_date = [rand(2021, 2021), rand(1, 5), rand(1,24)];
         $zero9 = mt_rand(0, 9);
-        $zero19 = mt_rand(0, 19);
+        $zero7 = mt_rand(0, 7);
 
         $logic = [mt_rand(3, 5), mt_rand(3, 5), mt_rand(3, 5)];
         $personality = [mt_rand(3, 5), mt_rand(3, 5), mt_rand(3, 5)];
@@ -136,12 +136,12 @@ class VideosTableSeeder extends Seeder
         $index = 0;
         foreach ($startSecondArray as $startSecond) {
           $data = [
-            'title' => $usernameArray[0][$zero9]. 'さんの「'. $questionTextArray[$zero19] . '」に対する答え方。',
+            'title' => $usernameArray[0][$zero9]. 'さんの「'. $questionTextArray[$zero7] . '」に対する答え方。',
             'thumbnail_name' => 'tmp.png',
             'thumbnail_path' => '/img/tmp.png',
             'vimeo_src' => 'https://player.vimeo.com/video/' . $vimeoId . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
             'vimeo_id' => $vimeoId,
-            'question_id' => $zero19+1,
+            'question_id' => $zero7+1,
             'st_id' => $usernameArray[1][$zero9],
             'hr_id' => mt_rand(1, 29),
             'logic' => $logic[$index],
@@ -155,7 +155,7 @@ class VideosTableSeeder extends Seeder
             'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
           ];
           DB::table('videos')->insert([$data]);
-          $zero19++;
+          $zero7++;
           $index++;
         }
       }

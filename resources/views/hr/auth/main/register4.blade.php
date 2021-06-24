@@ -1,5 +1,6 @@
-@extends('layouts.hr.reverse')
+@section('title', 'プラン選択')
 <link href="{{ asset('/css/st/auth/main/register4.css') }}" rel="stylesheet">
+@extends('layouts.hr.reverse')
 @section('content')
 @include('components.parts.page_title_reverse', ['title'=>'STEP4'])
 

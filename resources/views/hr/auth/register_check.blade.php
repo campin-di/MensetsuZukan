@@ -1,5 +1,7 @@
-@extends('layouts.hr.reverse')
+@section('title', '仮会員登録完了')
 <link href="{{ asset('/css/st/auth/register_check.css') }}" rel="stylesheet">
+@section('title', '入力内容の確認')
+@extends('layouts.hr.reverse')
 @section('content')
 
 @include('components.parts.page_title_reverse', ['title'=>'入力内容の確認'])

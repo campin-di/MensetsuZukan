@@ -1,5 +1,6 @@
-@extends('layouts.st.common')
+@section('title', 'トップページ')
 <link rel="stylesheet" href="{{ asset('css/st/home.css') }}">
+@extends('layouts.st.common')
 @section('content')
   <div class="filter-wrapper flex">
     <div class="form-input-wrapper">
