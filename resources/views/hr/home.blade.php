@@ -19,7 +19,7 @@
       <label for="score" class="form-title">得点</label>
       <div class="form-input">
         <select id="score" class="form-control">
-          <option value="指定なし">全得点</option>
+          <option value="指定なし">指定なし</option>
           <option value="60">70点未満</option>
           <option value="70">70点～79点</option>
           <option value="80">80点～89点</option>

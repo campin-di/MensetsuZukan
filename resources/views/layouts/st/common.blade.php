@@ -8,7 +8,7 @@
     @else
       <meta name="description" itemprop="description" content="ゼミ・研究室口コミサイト|みんラボ">
     @endif
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
 
     <!-- begin:ODP -->
     <meta property="og:type" content="website">
