@@ -48,10 +48,14 @@ footer{
   width: 102vw;
   height: 100vh;
   overflow: hidden;
-  top: 0;
+  top: -56px;
   left: 0;
   background-color: #000;
   opacity: 0.7;
+}
+.block-wrapper .img{
+  width: 65%;
+  margin: 0 auto;
 }
 
 .block {
@@ -97,6 +101,13 @@ footer{
   .block-wrapper{
     background-image: url(../../../img/unavailable-background-pc.png);
     background-size: contain;
+  }
+  .block-wrapper .img{
+    width: 50%;
+    max-width: 400px;
+  }
+  .block-background{
+    top: -77px;
   }
 
   .block{
