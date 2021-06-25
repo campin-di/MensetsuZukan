@@ -1,5 +1,6 @@
-@extends('layouts.hr.common')
+@section('title', '変更内容の確認')
 <link href="{{ asset('/css/st/mypage/detail/form_confirm.css') }}" rel="stylesheet">
+@extends('layouts.hr.common')
 @section('content')
 @include('components.parts.page_title', ['title'=>'確認画面'])
 

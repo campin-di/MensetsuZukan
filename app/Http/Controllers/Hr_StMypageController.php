@@ -20,7 +20,7 @@ class Hr_StMypageController extends Controller
     $pastVideos = Video::where('st_id', $stId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    return view('hr/stMypage/mypage', [
+    return view('hr/stpage/stpage', [
       'userData' => $userData,
       'pastVideosCollection' => $pastVideosCollection,
     ]);
@@ -45,7 +45,7 @@ class Hr_StMypageController extends Controller
       'qualification' => $userData->qualification,
     ];
 
-    return view('hr/stMypage/detail', [
+    return view('hr/stpage/detail', [
       'stId' => $stId,
       'profileDetailArray' => $profileDetailArray,
     ]);

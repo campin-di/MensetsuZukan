@@ -1,5 +1,6 @@
-@extends('layouts.st.common')
+@section('title', 'スケジュールの調整')
 <link rel="stylesheet" href="{{ asset('css/st/interview/schedule/form.css') }}">
+@extends('layouts.st.common')
 @section('content')
 
 @include('components.parts.page_title', ['title'=>'面接スケジュールを決める'])

@@ -1,5 +1,6 @@
-@extends('layouts.hr.common')
+@section('title', $userDataArray['nickname'].'さんのマイページ')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/mypage.css') }}">
+@extends('layouts.hr.common')
 @section('content')
   @include('components.parts.page_title', ['title'=>'マイページ'])
 

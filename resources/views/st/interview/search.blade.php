@@ -1,8 +1,9 @@
-@extends('layouts.st.common')
+@section('title', '面接官を探す')
 <link rel="stylesheet" href="{{ asset('css/st/interview/search.css') }}">
+@extends('layouts.st.common')
 @section('content')
 
-@include('components.parts.page_title', ['title'=>'人事を探す'])
+@include('components.parts.page_title', ['title'=>'面接官を探す'])
 
 <div class="container">
   <div class="filter-wrapper flex">

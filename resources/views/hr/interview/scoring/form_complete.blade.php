@@ -1,5 +1,6 @@
-@extends('layouts.hr.common')
+@section('title', '採点完了')
 <link rel="stylesheet" href="{{ asset('css/st/interview/schedule/form_complete.css') }}">
+@extends('layouts.hr.common')
 @section('content')
 
   <div class="container form-wrapper">

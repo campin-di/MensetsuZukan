@@ -1,5 +1,6 @@
-@extends('layouts.st.common')
+@section('title', '登録内容が変更されました。')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/basic/form_complete.css') }}">
+@extends('layouts.st.common')
 @section('content')
 
 <div class="container form-wrapper">

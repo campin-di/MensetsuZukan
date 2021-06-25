@@ -1,5 +1,6 @@
-@extends('layouts.st.common')
+@section('title', 'まずは面接予約をしよう！')
 <link rel="stylesheet" href="{{ asset('css/st/unavailable/unavailable.css') }}">
+@extends('layouts.st.common')
 @section('content')
   <div class="block-wrapper">
     <div class="block-background"></div>

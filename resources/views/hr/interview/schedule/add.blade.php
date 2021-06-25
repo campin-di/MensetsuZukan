@@ -1,5 +1,6 @@
-@extends('layouts.hr.common')
+@section('title', '面接可能日の追加')
 <link rel="stylesheet" href="{{ asset('css/hr/interview/schedule/add.css') }}">
+@extends('layouts.hr.common')
 @section('content')
 
 @include('components.parts.page_title', ['title'=>'面接可能な日程の追加'])

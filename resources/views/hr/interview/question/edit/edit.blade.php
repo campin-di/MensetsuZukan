@@ -1,5 +1,6 @@
-@extends('layouts.hr.reverse')
+@section('title', '質問リストの変更')
 <link rel="stylesheet" href="{{ asset('css/hr/interview/question/edit/edit.css') }}">
+@extends('layouts.hr.reverse')
 @section('content')
 
 <div class="top-content-wrapper">

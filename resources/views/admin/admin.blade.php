@@ -1,5 +1,6 @@
-@extends('layouts.st.common')
+@section('title', '管理画面')
 <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
+@extends('layouts.st.common')
 @section('content')
 <div class="container table-responsive">
 		<div class="upload-wrapper">

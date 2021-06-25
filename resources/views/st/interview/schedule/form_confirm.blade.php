@@ -1,5 +1,6 @@
-@extends('layouts.st.common')
+@section('title', '予約情報の確認')
 <link rel="stylesheet" href="{{ asset('css/st/interview/schedule/form_confirm.css') }}">
+@extends('layouts.st.common')
 @section('content')
 
 @include('components.parts.page_title', ['title'=>'確認'])

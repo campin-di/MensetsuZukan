@@ -34,6 +34,15 @@ class St_WatchController extends Controller
     // 接続情報のインスタンスを用いてYoutubeのデータへアクセス可能なインスタンスを生成
     $youtube = new Google_Service_YouTube($client);
 */
+  if(!session()->has('access')){
+    $targetVideo = Video::where('id', $id)->first();
+    $targetVideo->views++;
+    $targetVideo->save();
+
+    session(['access' => true]);
+  } 
+
+
     $video = Video::where('id', $id)->get();
 
     $videosCollection = VideoDisplayClass::VideoDisplay($video);

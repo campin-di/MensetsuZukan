@@ -1,5 +1,6 @@
-@extends('layouts.hr.common')
+@section('title', '採点画面')
 <link rel="stylesheet" href="{{ asset('css/hr/interview/scoring/form.css') }}">
+@extends('layouts.hr.common')
 @section('content')
 
 <div class="top-content-wrapper">

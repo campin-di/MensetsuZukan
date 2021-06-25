@@ -1,5 +1,6 @@
-@extends('layouts.st.common')
+@section('title', 'プロフィールの詳細')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/detail.css') }}">
+@extends('layouts.st.common')
 @section('content')
 
 <div class="container">

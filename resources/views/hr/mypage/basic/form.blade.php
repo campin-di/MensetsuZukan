@@ -1,5 +1,6 @@
-@extends('layouts.hr.common')
+@section('title', '登録情報の変更')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/basic/form.css') }}">
+@extends('layouts.hr.common')
 @section('content')
 
 	@include('components.parts.page_title', ['title'=>'基本情報の変更'])
