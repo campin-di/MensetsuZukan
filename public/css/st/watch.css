@@ -259,9 +259,13 @@
     background-color: #000;
   }
 
-  .video-ifrsame iframe{
+  .video-iframe iframe{
     max-width: 1008px;
+    width: 100%;
   }
+  .video-iframe:before {
+    padding-top: 48.25%;
+}
 
   .video-title{
     font-size: 24px;
