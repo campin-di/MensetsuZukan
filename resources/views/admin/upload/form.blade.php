@@ -1,3 +1,4 @@
+@section('title', '動画のアップロード')
 @extends('layouts.st.common')
 @section('content')
 <div class="container">

@@ -1,5 +1,6 @@
-@extends('layouts.st.common')
+@section('title', 'マイページ')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/mypage.css') }}">
+@extends('layouts.st.common')
 @section('content')
 
 @include('components.parts.page_title', ['title'=>'マイページ'])

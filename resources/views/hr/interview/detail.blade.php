@@ -1,5 +1,6 @@
-@extends('layouts.hr.common')
+@section('title', '面接情報の確認')
 <link rel="stylesheet" href="{{ asset('css/hr/interview/detail.css') }}">
+@extends('layouts.hr.common')
 @section('content')
 
 @include('components.parts.page_title', ['title'=>'面接の情報'])

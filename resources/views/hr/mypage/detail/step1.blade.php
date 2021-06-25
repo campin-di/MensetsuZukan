@@ -1,5 +1,6 @@
-@extends('layouts.hr.common')
+@section('title', '登録情報の変更')
 <link href="{{ asset('/css/st/mypage/detail/step1.css') }}" rel="stylesheet">
+@extends('layouts.hr.common')
 @section('content')
 
 @include('components.parts.page_title', ['title'=>'STEP1'])

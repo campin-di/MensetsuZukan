@@ -160,7 +160,7 @@
 /*　画面サイズが1025px以上はここを読み込む　*/
 
   .sp{
-    display: none:
+    display: none;
   }
   .pc{
     display: block;

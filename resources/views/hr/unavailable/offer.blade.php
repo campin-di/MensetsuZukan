@@ -1,5 +1,6 @@
-@extends('layouts.hr.common')
+@section('title', 'オファーを送るには？')
 <link rel="stylesheet" href="{{ asset('css/hr/unavailable/unavailable.css') }}">
+@extends('layouts.hr.common')
 @section('content')
   <div class="block-wrapper">
     <div class="block-background"></div>

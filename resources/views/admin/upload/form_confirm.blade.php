@@ -1,3 +1,4 @@
+@section('title', 'アップロード動画の確認')
 @extends('layouts.st.common')
 @section('content')
 	<h3>確認</h3>

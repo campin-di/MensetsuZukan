@@ -74,7 +74,7 @@
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
   .sp{
-    display: none:
+    display: none;
   }
   .pc{
     display: block !important;

@@ -1,6 +1,7 @@
+@section('title', 'プロフィールの詳細')
+<link rel="stylesheet" href="{{ asset('css/st/mypage/detail.css') }}">
 @extends('layouts.hr.common')
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/st/mypage/detail.css') }}">
 @include('components.parts.page_title', ['title'=>'詳細プロフィール'])
 
 <div class="container">

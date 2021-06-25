@@ -1,5 +1,6 @@
-@extends('layouts.st.common')
+@section('title', '変更内容の確認')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/basic/form_confirm.css') }}">
+@extends('layouts.st.common')
 @section('content')
 	@include('components.parts.page_title', ['title'=>'確認'])
 	<div class="container form-wrapper">
