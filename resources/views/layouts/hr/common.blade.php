@@ -6,7 +6,7 @@
     @hasSection('description')
       <meta name="description" itemprop="description" content="@yield('description')">
     @else
-      <meta name="description" itemprop="description" content="ゼミ・研究室口コミサイト|みんラボ">
+      <meta name="description" itemprop="description" ontent="面接図鑑|就活生の面接が見放題！">
     @endif
     <meta name="viewport" content="width=device-width">
 

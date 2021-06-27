@@ -96,7 +96,7 @@ class Hr_OfferController extends Controller
     $userId = Auth::guard('hr')->id();
     $hr = HrUser::with('company')->find($userId);
 
-    $st = User::find($input['stId'])->first();
+    $st = User::find($input['stId']);
 
     $offer = new Offer;
     $offer->hr_id = $userId;
@@ -108,7 +108,7 @@ class Hr_OfferController extends Controller
     Mail::send('hr/offer/mail/example1', ['offer' => $offer, 'hr' => $hr, 'st' => $st], function ($message) use ($offer, $hr, $st){
       $message->subject($hr->company. 'からオファーがありました！');
       $message->from($hr->email, $hr->name);
-      $message->to($st->email)->cc('mensetsu_zukan@example.com');
+      $message->to($st->email);
     });
     //================================================
 

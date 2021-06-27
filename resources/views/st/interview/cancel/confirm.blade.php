@@ -12,7 +12,7 @@
 		</div>
 		<div class="button-wrapper">
 			<button type="submit">
-				キャンセルを確定する。
+				キャンセルを確定する
 			</button>
 		</div>
 	</form>

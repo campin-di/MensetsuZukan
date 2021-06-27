@@ -36,7 +36,7 @@
         <label for="lastname" class="form-title">氏名*</label>
         <div class="form-input flex">
           <div class="form-left-child">
-            <input id="lastname" type="text" class="form-control {{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" placeholder="性" required>
+            <input id="lastname" type="text" class="form-control {{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" placeholder="姓" required>
             @if ($errors->has('lastname'))
             <span class="invalid-feedback">
               <strong>{{ $errors->first('lastname') }}</strong>

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Video;
+
 Route::get('/', function () {
     $stLoginFlag = Auth::check();
     if($stLoginFlag){
@@ -11,7 +13,10 @@ Route::get('/', function () {
     if($hrLoginFlag){
       return redirect()->action('Hr\HrHomeController@index');
     }
-    return view('top');
+
+    $contentsNumber = Video::count();
+
+    return view('top', compact('contentsNumber'));
 });
 
 /*=== 認証関係 =============================================================*/
@@ -134,7 +139,6 @@ Route::get('/interview/schedule/{id}', 'St_ScheduleController@schedule')->name('
 
 
 /*=== 管理画面 関係 =============================================================*/
-
 Route::get('/admin', 'AdminController@index')->name('admin');
 
 //サービス内に動画をアップロードするルーティング
@@ -143,7 +147,6 @@ Route::get('/admin/upload', 'UploadController@show')->name('upload');
 Route::get('/admin/upload/thumbnail/{id}', 'UploadController@thumbnail')->name("thumbnail");
 //サムネイル画像をアップロード処理 and to 完了ページ
 Route::post('/admin/upload/thumbnail/upload', 'UploadController@thumbnailPost')->name("thumbnail.post");
-
 
 Route::get('/admin/upload/form', 'UploadController@show')->name("form.show");
 Route::post('/admin/upload/form', 'UploadController@post')->name("form.post");

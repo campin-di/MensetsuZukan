@@ -106,6 +106,9 @@
   <div class="outline-logo">
     <img class="outline-logo" src="{{ asset('/img/logo/logo_white.png') }}" alt="ロゴ">
   </div>
+  <div class="center">
+    <h1>サービス概要</h1>
+  </div>
   <div class="outline-description">
     面接図鑑 は「面接って楽しい」を、<br>
     スタンダードにしていくサービスです。
@@ -118,7 +121,7 @@
       </div>
       <div class="outline-achievement">
         <div class="outline-achievement-title">コンテンツ数</div>
-        <div class="outline-achievement-value">{{ $contentsNumber }}本</div>
+        <div class="outline-achievement-value">5000本</div>
         <span>以上</span>
       </div>
     </div>
@@ -130,8 +133,49 @@
   <img class="outline-under-background" src="{{ asset('/img/top/outline-bottom.png') }}" alt="サービス概要下部の背景画像">
 </div>
 
+<div class="plan-wrapper">
+  <h1>プランの説明</h1>
+  <div class="plan">
+    <h2>投稿者プラン</h2>
+    <div class="flex-pc">
+      <div class="center left-child-pc">
+        <img src="{{ asset('/img/top/illustration/Interview-amico.svg') }}" alt="面接">
+      </div>
+      <div class="plan-description right-child-pc">
+        <ol>
+          <li>
+            サービス内で人事と面接すると、<br>
+            その面接動画が得点付きでアップされる。
+            <div>※顔を隠すなど、プライバシー保護は徹底いたします。</div>
+          </li>
+          <li>
+            動画を見た企業から、1次面接免除以上の<br>
+            特別オファーを貰うことができる。
+          </li>
+          <li>月額0円で、他の人の面接が見放題。</li>
+          <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="plan">
+    <h2>視聴者プラン</h2>
+    <div class="flex-pc">
+      <div class="center left-child-pc">
+        <img src="{{ asset('/img/top/illustration/Bookmarks-rafiki.svg') }}" alt="見放題">
+      </div>
+      <div class="plan-description right-child-pc">
+        <ol>
+          <li>月額料金を支払うと、学生の面接が見放題。</li>
+          <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="contributor-wrapper">
-  <h1>面接の実施方法</h1>
+  <h1>投稿者プランの詳細</h1>
   <div class="contributor-step">
     <div class="center contributor-title-left">
       <h2>STEP1</h2>
@@ -217,7 +261,7 @@
 </div>
 
 <div class="audience-wrapper">
-  <h1>面接の視聴方法</h1>
+  <h1>視聴者プランの詳細</h1>
   <div class="audience-step">
     <div class="center contributor-title-left">
       <h2>STEP1</h2>
@@ -285,6 +329,13 @@
   <span class="cost-title-upper">COST</span>
   <h1>利用料金</h1>
   <img class="cost-table-img" src="./img/top/price.jpg" alt="仮置き">
+  <!--
+    <div class="cost-img-description">※注意事項があればここに注意事項を書きます。</div>
+  -->
+  <div class="cost-promotion flex">
+    <div>投稿者プランなら</div>
+    <div class="cost-promotion-price">月額<span>0</span>円</div>
+  </div>
   <img class="cost-wrapper-img" src="./img/top/cost-bottom.jpg" alt="料金体系の下部背景画像">
 </div>
 

@@ -13,7 +13,7 @@
   @include('components.parts.profile',[
     'imagePath' => $userDataArray['imagePath'],
     'userName' => $userDataArray['name'],
-    'nickName' => $userDataArray['nickname'],
+    'nickName' => '('. $userDataArray['nickname'] . ')',
     'description' => $userDataArray['graduate_year'] .'年卒 / '. $userDataArray['industry'],
     'introduction' => $userDataArray['introduction']
   ])
