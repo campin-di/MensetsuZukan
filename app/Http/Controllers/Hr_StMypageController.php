@@ -31,6 +31,7 @@ class Hr_StMypageController extends Controller
     $userData = User::find($stId);
 
     $profileDetailArray = [
+      'graduate_year' => $userData->graduate_year,
       'companyType' => $userData->company_type,
       'industry' => $userData->industry,
       'jobtype' => $userData->jobtype,

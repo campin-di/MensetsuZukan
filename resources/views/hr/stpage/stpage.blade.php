@@ -1,6 +1,6 @@
 @section('title', $userData->name.'さんのマイページ')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/mypage.css') }}">
-@extends('layouts.hr.common')
+@extends('layouts.hr.nofooter')
 @section('content')
   @include('components.parts.page_title', ['title'=>'マイページ'])
 

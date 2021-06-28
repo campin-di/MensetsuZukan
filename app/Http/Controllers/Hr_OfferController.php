@@ -14,16 +14,6 @@ use App\Models\Offer;
 
 class Hr_OfferController extends Controller
 {
-  private $formItems = ["name", "title", "body"];
-
-  private $validator = [
-    /*
-    "name" => "required|string|max:100",
-    "title" => "required|string|max:100",
-    "body" => "required|string|max:100"
-    */
-  ];
-
   public function form($stId)
   {
     //=====もし視聴不可状態のときはリダイレクト===================================

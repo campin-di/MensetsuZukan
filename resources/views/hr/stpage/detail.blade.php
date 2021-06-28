@@ -1,6 +1,6 @@
 @section('title', 'プロフィールの詳細')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/detail.css') }}">
-@extends('layouts.hr.common')
+@extends('layouts.hr.nofooter')
 @section('content')
 
 <div class="container">
@@ -101,8 +101,7 @@
     </div>
   </div>
 </div>
-
-@include('components.parts.button.fixed_button',['routeName' => 'hr.offer.form', 'var'=>'$stId', 'msg' => '', 'text' => 'オファーを送る'])
-
-
+@if($profileDetailArray['graduate_year'] != 2022)
+  @include('components.parts.button.fixed_button',['routeName' => 'hr.offer.form', 'var'=>'$stId', 'msg' => '', 'text' => 'オファーを送る'])
+@endif
 @endsection

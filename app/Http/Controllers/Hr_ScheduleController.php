@@ -13,15 +13,6 @@ use App\Common\ReturnUserInformationArrayClass;
 
 class Hr_ScheduleController extends Controller
 {
-  private $formItems = ["name", "title", "body"];
-
-  private $validator = [
-    /*
-    "name" => "required|string|max:100",
-    "title" => "required|string|max:100",
-    "body" => "required|string|max:100"
-    */
-  ];
 
   public function add()
   {

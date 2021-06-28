@@ -10,12 +10,11 @@ use App\Models\HrUser;
 
 class Hr_HrMypageBasicController extends Controller
 {
-  public function upload($stId)
+  public function upload($id)
   {
-    $id = $stId;
-    $profileImg = User::find($stId)->image_path;
+    $profileImg = HrUser::find(Auth::guard('hr')->id())->image_path;
 
-    return view('st/mypage/upload/form', compact(['id', 'profileImg']));
+    return view('hr/mypage/upload/form', compact(['id', 'profileImg']));
   }
 
   function uploadPost(Request $request){
@@ -24,20 +23,20 @@ class Hr_HrMypageBasicController extends Controller
     ]);
     $upload_image = $request->file('image');
 
-    $stId = $request->input('id');
+    $id = $request->input('id');
 
     if($upload_image) {
       //アップロードされた画像を保存する
-      $path = 'storage/'. $upload_image->store('uploads/profile/st',"public");
+      $path = 'storage/'. $upload_image->store('uploads/profile/hr',"public");
       //画像の保存に成功したらDBに記録する
       if($path){
-        $user = User::find($stId);
+        $user = HrUser::find($id);
         $user->image_path =  $path;
         $user->save();
       }
     }
 
-    return view("st/mypage/upload/form_complete");
+    return view("hr/mypage/upload/form_complete");
   }
 
   /*=== 基本情報の変更処理 ====================================================*/
