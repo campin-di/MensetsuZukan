@@ -51,8 +51,8 @@ class InterviewsTableSeeder extends Seeder
         $random_date = [2021, rand(6, 7), rand(1,31)];
 
         $data = [
-          'st_id' => mt_rand(1, 50),
-          'hr_id' => mt_rand(1, 30),
+          'st_id' => mt_rand(1, 2),
+          'hr_id' => mt_rand(1, 2),
           'date' => $random_date[0].'-'.$random_date[1].'-'.$random_date[2],
           'time' => $timeArray[mt_rand(0, 13)],
           'password' => Hash::make('password'),
