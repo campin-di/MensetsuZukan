@@ -126,6 +126,23 @@ class ReturnUserInformationArrayClass
     return $industryArray;
   }
 
+  public static function returnUniversityTypeArray()
+  {
+    $companyTypeArray = [
+      '東京一工',
+      'その他旧帝大',
+      '金岡千広',
+      'その他国公立',
+      '早慶上智',
+      'GMARCH',
+      '関関同立',
+      '日東駒専',
+      '産近甲龍',
+      'その他私立',
+    ];
+    return $companyTypeArray;
+  }
+
   public static function returnPrefectures(){
       $prefecturesArray = [
         "▼北海道エリア" => [
@@ -217,7 +234,9 @@ class ReturnUserInformationArrayClass
         'eighteen' => "18:00 - 19:00",
         'nineteen' => "19:00 - 20:00",
         'twenty' => "20:00 - 21:00",
-        'twentyone' => "21:00 - 22:00"
+        'twentyone' => "21:00 - 22:00",
+        'twentytwo' => "22:00 - 23:00",
+        'twentythree' => "23:00 - 24:00",
       ];
       return $timeArray;
     }

@@ -51,8 +51,6 @@ class Hr_ScoringController extends Controller
       //セッションから値を取り出す
       $input = $request->session()->get("form_input");
 
-      print_r($input);
-
       //セッションに値が無い時はフォームに戻る
       if(!$input){
         return redirect()->action("Hr_ScoringController@form");
@@ -85,7 +83,6 @@ class Hr_ScoringController extends Controller
         $questionData->increment('times');
 
         $questionId = $questions->where('name', $input['question-'. $index])->first()->id;
-        echo $questionId;
 
         $questionCollumn = 'question_'. $index. '_id';
         $logicCollumn = 'question_'. $index. '_logic';
@@ -96,7 +93,7 @@ class Hr_ScoringController extends Controller
         $interview->$logicCollumn = $input['logic'. $index];
         $interview->$personalityCollumn = $input['personality'. $index];
         $interview->$reviewCollumn = $input['review-'. $index];
-        $interview->available = -1;
+        $interview->available = config('const.USER_STATUS.DONE');
       }
       $interview->save();
 

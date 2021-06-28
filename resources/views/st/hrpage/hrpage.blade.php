@@ -6,7 +6,10 @@
 
   <div class="container">
     @include('components.parts.profile', ['imagePath' => $userDataArray['imagePath'], 'userName' => '', 'nickName' => $userDataArray['nickname'], 'description' => $userDataArray['industry'], 'introduction' => $userDataArray['introduction'] ])
-    @include('components.parts.button.transition_button', ['routeName' => 'hrpage.detail', 'var' => $userDataArray['id'], 'text' => '詳しいプロフィール'])
+    <div class="container_profile_btn">
+      <a href="{{ route('hrpage.detail', $userDataArray['id']) }}" class="mx-2 btn btn-primary container_profile_btn_profile">詳しいプロフィール</a>
+      <a href="{{ route('interview.schedule', $userDataArray['id']) }}" class="mx-2 btn btn-primary container_profile_btn_offer">面接の予約</a>
+    </div>
     @include('components.parts.button.fixed_button',['routeName' => 'interview.schedule', 'var' => $userDataArray['id'], 'msg' => '', 'text' =>  '面接の予約'])
   </div>
 

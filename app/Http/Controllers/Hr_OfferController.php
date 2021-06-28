@@ -25,7 +25,6 @@ class Hr_OfferController extends Controller
     //==========================================================================
 
     $stData = User::find($stId);
-
     return view('hr/offer/form', compact('stData'));
   }
 

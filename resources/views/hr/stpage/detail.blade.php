@@ -102,6 +102,6 @@
   </div>
 </div>
 @if($profileDetailArray['graduate_year'] != 2022)
-  @include('components.parts.button.fixed_button',['routeName' => 'hr.offer.form', 'var'=>'$stId', 'msg' => '', 'text' => 'オファーを送る'])
+  @include('components.parts.button.fixed_button',['routeName' => 'hr.offer.form', 'var'=>$stId, 'msg' => '', 'text' => 'オファーを送る'])
 @endif
 @endsection

@@ -33,12 +33,14 @@
 					<input type="text" name="vimeo_id" class="form-control" placeholder="IDを入力してください。">
 				</th>
 			</tr>
+			<!--
 			<tr>
 				<th height="75px">サムネイルの画像パス</th>
 				<th class="right-block">
 					<input type="text" name="thumbnail_src" class="form-control" placeholder="画像をアップロードしてください。">
 				</th>
 			</tr>
+			-->
 			<tr>
 				<th height="75px">面接のID（interviews table）</th>
 				<th class="right-block">
