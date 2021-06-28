@@ -16,13 +16,11 @@ class DatabaseSeeder extends Seeder
       $this->call([
         UsersTableSeeder::class,
         HrUsersTableSeeder::class,
-        VideosTableSeeder::class,
-        InterviewsTableSeeder::class,
+        //VideosTableSeeder::class,
+        //InterviewsTableSeeder::class,
         QuestionsTableSeeder::class,
-        //StProfilesTableSeeder::class,
-        //HrProfilesTableSeeder::class,
         CompaniesTableSeeder::class,
-        SchedulesTableSeeder::class,
+        //SchedulesTableSeeder::class,
       ]);
     }
 }

@@ -28,7 +28,7 @@ class InterviewsTableSeeder extends Seeder
       $commonUrlArray = [ "zAkK9qlCAbM", "p54Cg2N617A", "VOllbtgmSQA", "zJReZO1ND6c", "eqBA9wEeglg" ];
 
       //0 ~ 24
-      $theNumberOfQuestions = 24;
+      $theNumberOfQuestions = 11;
 
       // 0 ~ 9
       $reviewArray = [

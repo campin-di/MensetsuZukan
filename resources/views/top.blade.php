@@ -113,20 +113,18 @@
   <div class="outline-achievement-wrapper">
     <div class="flex-pc">
       <div class="outline-achievement">
-        <div class="outline-achievement-title">満足度</div>
-        <div class="outline-achievement-value">96.2％</div>
-      </div>
-      <div class="outline-achievement">
         <div class="outline-achievement-title">コンテンツ数</div>
         <div class="outline-achievement-value">{{ $contentsNumber }}本</div>
-        <span>以上</span>
+      </div>
+      <div class="outline-achievement">
+        <div class="outline-achievement-title">満足度</div>
+        <div class="outline-achievement-value">96.2％</div>
       </div>
     </div>
     <span class="outline-achievement-comment">※β版実績</span>
   </div>
-  <div class="center outline-iframe-wrapper">
-    <iframe class="outline-iframe" src="https://www.youtube.com/embed/qXdmMn600N8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+
+    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/568076489?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="面接図鑑 サービス紹介動画"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
   <img class="outline-under-background" src="{{ asset('/img/top/outline-bottom.png') }}" alt="サービス概要下部の背景画像">
 </div>
 
@@ -307,4 +305,5 @@
   </div>
     Copyright © 2021 株式会社ぱむ Inc.All rights reserved
 </div>
+<script type="text/javascript" src="{{ asset('/js/top.js') }}"></script>
 @endsection

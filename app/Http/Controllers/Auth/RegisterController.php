@@ -206,16 +206,18 @@ class RegisterController extends Controller
      }
 
 
-     public function showForm4(Request $request)
-     {
-         $input = $request->all();
+    public function showForm4(Request $request)
+    {
+      $input = $request->all();
 
-         //セッションに書き込む
-         $request->session()->put("register3_input", $input);
+      //セッションに書き込む
+      $request->session()->put("register3_input", $input);
 
-         return view('st/auth.main.register4');
-     }
+      //return view('st/auth.main.register4');
+      return redirect()->action("Auth\RegisterController@confirm");
+    }
 
+    /*
      public function post(Request $request)
      {
        $input = $request->all();
@@ -225,13 +227,14 @@ class RegisterController extends Controller
 
        return redirect()->action("Auth\RegisterController@confirm");
      }
+     */
 
      function confirm(Request $request){
        //セッションから値を取り出す
        $register_input = $request->session()->get("register_input");
        $register2_input = $request->session()->get("register2_input");
        $register3_input = $request->session()->get("register3_input");
-       $register4_input = $request->session()->get("register4_input");
+       //$register4_input = $request->session()->get("register4_input");
 
        $gender = "男";
        if($register_input['gender'] == 2){
@@ -254,11 +257,10 @@ class RegisterController extends Controller
          '就活開始時期' => $register3_input['start_time'],
          '英語レベル' => $register3_input['english_level'],
          'TOEICスコア' => $register3_input['toeic'],
-         'プラン' => $register4_input['plan'],
        ];
 
        //セッションに値が無い時はホームに戻る
-       if(!($register_input && $register2_input && $register3_input && $register4_input)){
+       if(!($register_input && $register2_input && $register3_input)){
          return redirect()->route('home');
        }
        return view('st/auth.main.register_comfirm', compact('confirmArray'));
@@ -270,7 +272,7 @@ class RegisterController extends Controller
        $register_input = $request->session()->get("register_input");
        $register2_input = $request->session()->get("register2_input");
        $register3_input = $request->session()->get("register3_input");
-       $register4_input = $request->session()->get("register4_input");
+       //$register4_input = $request->session()->get("register4_input");
 
        //戻るボタンが押された時
        if($request->has("back")){
@@ -300,11 +302,16 @@ class RegisterController extends Controller
        $user->english_level = $register3_input['english_level'];
        $user->toeic = $register3_input['toeic'];
 
+       /*
        if($register4_input['plan'] == '投稿者プラン'){
          $user->plan = "contributor";
        } else{
          $user->plan = "audience";
        }
+       */
+
+       $user->plan = "contributor";
+
        if(!is_null($register3_input['workplace'])){
          $user->workplace = $register3_input['workplace'];
        }
@@ -320,7 +327,7 @@ class RegisterController extends Controller
        $request->session()->forget("register_input");
        $request->session()->forget("register2_input");
        $request->session()->forget("register3_input");
-       $request->session()->forget("register4_input");
+       //$request->session()->forget("register4_input");
 
        return view('st/auth.main.registered');
      }
