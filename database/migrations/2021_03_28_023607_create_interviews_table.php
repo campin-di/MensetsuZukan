@@ -29,15 +29,15 @@ class CreateInterviewsTable extends Migration
           $table->integer('question_1_id')->nullable();
           $table->integer('question_1_logic')->nullable();
           $table->integer('question_1_personality')->nullable();
-          $table->string('question_1_review')->nullable();
+          $table->string('question_1_review', 1000)->nullable();
           $table->integer('question_2_id')->nullable();
           $table->integer('question_2_logic')->nullable();
           $table->integer('question_2_personality')->nullable();
-          $table->string('question_2_review')->nullable();
+          $table->string('question_2_review', 1000)->nullable();
           $table->integer('question_3_id')->nullable();
           $table->integer('question_3_logic')->nullable();
           $table->integer('question_3_personality')->nullable();
-          $table->string('question_3_review')->nullable();
+          $table->string('question_3_review', 1000)->nullable();
           $table->timestamps();
 
           $table->foreign('st_id')->references('id')->on('users')->onDelete('no action');

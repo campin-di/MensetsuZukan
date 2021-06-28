@@ -151,7 +151,7 @@ class St_ScheduleController extends Controller
     $interview->zoomUrl = $created_meeting['join_url'];
     $interview->zoomId = $created_meeting['id'];
     $interview->zoomPass = $created_meeting['password'];
-    $interview->available = 1;
+    $interview->available = config('const.USER_STATUS.READY');
     $interview->save();
 
     \DB::table('schedules')->where('id', $schedule->id)->update([

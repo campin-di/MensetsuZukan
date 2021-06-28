@@ -53,7 +53,7 @@
       </div>
 
       <div class="form-input-wrapper">
-      <label for="major" class="form-title">文理区分*</label>
+        <label for="major" class="form-title">文理区分*</label>
         <div class="form-input flex">
           <select id="major" class="form-control" name="major" required>
             <option value="">選択してください。</option>

@@ -52,29 +52,28 @@ class MeetingClass {
       //time : nine (形式)
       $timeArray = [
         //標準時のせいか+9時間足される。
-        'nine'      => "0:00:00",
-        'ten'       => "1:00:00",
-        'eleven'    => "2:00:00",
-        'twelve'    => "3:00:00",
-        'thirteen'  => "4:00:00",
-        'fourteen'  => "5:00:00",
-        'fifteen'   => "6:00:00",
-        'sixteen'   => "7:00:00",
-        'seventeen' => "8:00:00",
-        'eighteen'  => "9:00:00",
-        'nineteen'  => "10:00:00",
-        'twenty'    => "11:00:00",
-        'twentyone' => "12:00:00"
+        'nine'        => "0:00:00",
+        'ten'         => "1:00:00",
+        'eleven'      => "2:00:00",
+        'twelve'      => "3:00:00",
+        'thirteen'    => "4:00:00",
+        'fourteen'    => "5:00:00",
+        'fifteen'     => "6:00:00",
+        'sixteen'     => "7:00:00",
+        'seventeen'   => "8:00:00",
+        'eighteen'    => "9:00:00",
+        'nineteen'    => "10:00:00",
+        'twenty'      => "11:00:00",
+        'twentyone'   => "12:00:00",
+        'twentytwo'   => "13:00:00",
+        'twentythree' => "14:00:00",
       ];
 
         $user_id = $this->fetchUserId($api_num);
-
-
         $params = [
           'topic' => '面接',
           'type' => 2, // 1-普通、2-意図した時間に会議を開始する。
           'start_time' => $date.'T'.$timeArray[$time].'Z',
-//          'start_time' => '2021-04-15T20:30:00Z',
           'time_zone' => 'Asia/Tokyo',
           'agenda' => '面接の実施',
           'settings' => [

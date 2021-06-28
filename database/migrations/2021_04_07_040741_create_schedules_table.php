@@ -30,6 +30,8 @@ class CreateSchedulesTable extends Migration
             $table->boolean('nineteen');
             $table->boolean('twenty');
             $table->boolean('twentyone');
+            $table->boolean('twentytwo');
+            $table->boolean('twentythree');
             $table->timestamps();
         });
     }
