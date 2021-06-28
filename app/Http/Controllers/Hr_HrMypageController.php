@@ -55,6 +55,12 @@ class Hr_HrMypageController extends Controller
 
   public function hrpage($id)
   {
+    $loginId = Auth::guard('hr')->id();
+
+    if($loginId == $id){
+      return redirect()->action("Hr_HrMypageController@index");
+    }
+
     $userData = HrUser::find($id);
 
     $pastVideos = Video::where('hr_id', $userData->id)->get();

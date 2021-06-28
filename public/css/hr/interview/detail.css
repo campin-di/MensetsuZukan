@@ -130,14 +130,39 @@
 .uppest{
   margin-top: 50px !important;
 }
-
-
 /* === end: 内容 部分 =================================================*/
-
 
 .cancel{
   text-align: center;
 }
+
+/* === begin: 注意事項 部分 =================================================*/
+.attention-wrapper{
+  margin: 50px auto;
+  padding: 20px 10px;
+  border: 8px solid #EEEEEE;
+}
+.attention-wrapper h2{
+  text-align: center;
+  font-size: 20px;
+  font-weight:bold;
+  margin-bottom: 20px;
+}
+
+.attention{
+  list-style: none;
+  margin-left: -20px;
+}
+.attention li::before{
+  content: "※";
+  margin-left: -1em;
+}
+.attention li{
+  margin-bottom: 3px;
+  font-size: 14px;
+}
+
+/* === end: 注意事項 部分 =================================================*/
 
 
 @media screen and (min-width:1025px) {
@@ -205,5 +230,21 @@
     margin-top: 20px;
   }
 
+    /* === begin: 注意事項 部分 =================================================*/
+    .attention-wrapper {
+      width: 100%;
+      margin: 50px auto;
+      padding: 20px 5%;
+    }
+    .attention-wrapper h2 {
+      font-size: 28px;
+      text-align: center;
+    }
+  
+    .attention li {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    /* === end: 注意事項 部分 =================================================*/
 
 }

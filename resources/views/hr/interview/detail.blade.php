@@ -32,7 +32,7 @@
 
   <div class="content">
     <div class="content-title">
-      <h2>Zoom情報</h2>
+      <h2>zoom情報</h2>
     </div>
     <ul class="zoom">
       <li>ミーティングID: {{ $interviewInfo->zoomId }}</li>
@@ -46,8 +46,18 @@
     </div>
     <div class="content-description">
       ＜オンライン＞<br>
-      所定の時間になると下記「面接を始める」ボタンが、クリック可能になります。
+      所定の時間に「面接を開始」ボタンから、面接を開始してください。
     </div>
+  </div>
+
+  <div class="attention-wrapper">
+    <h2>注意事項</h2>
+    <ul class="attention">
+      <li>zoomは、PCから開くようにしてください。</li>
+      <li>面接中は本名などの個人が特定される情報は口外しないでください。</li>
+      <li>リンクが開かない場合は上記zoom情報を、zoomアプリに入力して入室してください。</li>
+      <li>「ポップアップをブロックしました。」等の表示が画面右上に出てきたときは、「ポップアップを許可する」を押してください。</li>
+    </ul>
   </div>
 
   @if($flag == 1)

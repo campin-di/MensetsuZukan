@@ -1,4 +1,4 @@
-@section('title', $userDataArray['nickname'].'さんのマイページ')
+@section('title', $userData->nickname.'さんのマイページ')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/mypage.css') }}">
 @extends('layouts.hr.common')
 @section('content')

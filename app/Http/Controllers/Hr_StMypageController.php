@@ -30,7 +30,16 @@ class Hr_StMypageController extends Controller
   {
     $userData = User::find($stId);
 
+    $major = '文系';
+    if($userData->major == 2){
+      $major = '理系';
+    }
+
     $profileDetailArray = [
+      'university' => $userData->university,
+      'faculty' => $userData->faculty,
+      'department' => $userData->department,
+      'major' => $major,
       'graduate_year' => $userData->graduate_year,
       'companyType' => $userData->company_type,
       'industry' => $userData->industry,
