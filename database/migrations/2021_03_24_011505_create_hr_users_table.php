@@ -30,9 +30,9 @@ class CreateHrUsersTable extends Migration
         $table->string('location')->default('設定されていません。');
         $table->string('selection_phase')->default('設定されていません。');
         $table->string('workplace')->default('設定されていません。');
-        $table->string('summary')->default('設定されていません。');
-        $table->string('recruitment')->default('設定されていません。');
-        $table->string('site')->default('設定されていません。');
+        $table->string('summary', 1000)->default('設定されていません。');
+        $table->string('recruitment', 1000)->default('設定されていません。');
+        $table->string('site', 1000)->default('設定されていません。');
         $table->string('introduction', 1000)->default('設定されていません。');
         $table->string('pr', 1000)->default('設定されていません。');
 

@@ -1,6 +1,6 @@
 @section('title', 'プロフィールの詳細')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/detail.css') }}">
-@extends('layouts.st.common')
+@extends('layouts.st.nofooter')
 @section('content')
 
 @include('components.parts.page_title', ['title'=>'詳細プロフィール'])
@@ -13,10 +13,6 @@
       <div class="acd-content">
         <div class="company_info">
           <table>
-            <tr>
-              <th>社名</th>
-              <td>{{ $userData->company }}</td>
-            </tr>
             <tr>
               <th>企業区分</th>
               <td>{{ $userData->company_type }}</td>
@@ -40,14 +36,6 @@
             <tr>
               <th>事業内容</th>
               <td>{{ $userData->summary }}</td>
-            </tr>
-            <tr>
-              <th>企業ページ</th>
-              <td><a href="{{ $userData->site }}">{{ $userData->site }}</a></td>
-            </tr>
-            <tr>
-              <th>採用ページ</th>
-              <td><a href="{{ $userData->recruitment }}">{{ $userData->recruitment }}</a></td>
             </tr>
           </table>
         </div>
@@ -75,5 +63,7 @@
       </div>
     </div>
   </div>
+  @include('components.parts.button.fixed_button',['routeName' => 'interview.schedule', 'var' => $userData->id, 'msg' => '', 'text' =>  '面接の予約'])
+
 </div>
 @endsection

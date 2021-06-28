@@ -6,7 +6,7 @@
     @hasSection('description')
       <meta name="description" itemprop="description" content="@yield('description')">
     @else
-      <meta name="description" itemprop="description" content="ゼミ・研究室口コミサイト|みんラボ">
+      <meta name="description" itemprop="description" ontent="面接図鑑|就活生の面接が見放題！">
     @endif
     <meta name="viewport" content="width=device-width">
 
@@ -24,7 +24,7 @@
 
     <!-- begin:CSS -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/st/parts/header_reverse.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/st/parts/header.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/st/parts/footer.css') }}" rel="stylesheet">
     <!-- end:CSS -->
 
@@ -51,12 +51,14 @@
     <meta name="theme-color" content="#fafafa">
   </head>
   <body>
-    @include('parts.hr.header.reverse')
-    <div id="template-content">
-      @yield('content')
+    <div class="background-image">
+      <div class="white">
+        @include('parts.hr.header.normal')
+        <div id="template-content">
+          @yield('content')
+        </div>
+      </div>
     </div>
-    @include('parts.hr.footer.normal')
-    <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
   </body>
 </html>

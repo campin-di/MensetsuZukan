@@ -1,6 +1,6 @@
 @section('title', 'プロフィールの詳細')
 <link rel="stylesheet" href="{{ asset('css/st/mypage/detail.css') }}">
-@extends('layouts.st.common')
+@extends('layouts.st.nofooter')
 @section('content')
 
 <div class="container">

@@ -5,10 +5,9 @@
 
   <div class="filter-wrapper flex">
     <div class="form-input-wrapper">
-      <label for="question" class="form-title">質問</label>
       <div class="form-input">
         <select id="question" class="form-control">
-          <option value="指定なし">指定なし</option>
+          <option value="指定なし">全質問</option>
           @foreach($questions as $question)
             <option id="question-{{ $loop->iteration }}" value="{{ $question }}" @if(old('question') == "{{ $question }}") selected @endif>{{ $question }}</option>
           @endforeach
@@ -16,10 +15,9 @@
       </div>
     </div>
     <div class="form-input-wrapper">
-      <label for="score" class="form-title">得点</label>
       <div class="form-input">
         <select id="score" class="form-control">
-          <option value="指定なし">指定なし</option>
+          <option value="指定なし">全得点</option>
           <option value="60">70点未満</option>
           <option value="70">70点～79点</option>
           <option value="80">80点～89点</option>
@@ -29,10 +27,9 @@
       </div>
     </div>
     <div class="form-input-wrapper">
-      <label for="postedDate" class="form-title">投稿日</label>
       <div class="form-input">
         <select id="postedDate" class="form-control">
-          <option value="指定なし">指定なし</option>
+          <option value="指定なし">全投稿</option>
           <option value="1-w">1週間以内</option>
           <option value="1-m">1ヶ月以内</option>
           <option value="3-m">3ヶ月以内</option>

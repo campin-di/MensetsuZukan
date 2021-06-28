@@ -25,7 +25,6 @@
     <!-- begin:CSS -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/st/parts/header.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/st/parts/footer.css') }}" rel="stylesheet">
     <!-- end:CSS -->
 
     <!-- begin:JS -->
@@ -63,5 +62,6 @@
         </div>
       </div>
     </div>
+    <script src="{{ mix('js/app.js') }}" defer></script>
   </body>
 </html>
