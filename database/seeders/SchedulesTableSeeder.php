@@ -19,7 +19,7 @@ class SchedulesTableSeeder extends Seeder
         for($i = 1; $i <= 80; $i++) {
           $random_date = [2021, mt_rand(3, 6), mt_rand(1,29)];
           $data = [
-            'hr_id' => mt_rand(1, 29),
+            'hr_id' => mt_rand(1, 2),
             'date' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
             'nine' => mt_rand(0, 1),
             'ten' => mt_rand(0, 1),
@@ -34,6 +34,8 @@ class SchedulesTableSeeder extends Seeder
             'nineteen' => mt_rand(0, 1),
             'twenty' => mt_rand(0, 1),
             'twentyone' => mt_rand(0, 1),
+            'twentytwo' => mt_rand(0, 1),
+            'twentythree' => mt_rand(0, 1),
             'updated_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
             'created_at' => new DateTime($random_date[0].'-'.$random_date[1].'-'.$random_date[2]),
           ];
