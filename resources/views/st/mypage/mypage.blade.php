@@ -5,10 +5,6 @@
 
 @include('components.parts.page_title', ['title'=>'マイページ'])
 
-@if($userDataArray['plan'] == "admin")
-<a class="nav-link" href="{{ route('upload') }}">アップロード</a>
-@endif
-
 <div class="container">
   @include('components.parts.profile',[
     'imagePath' => $userDataArray['imagePath'],
@@ -21,6 +17,9 @@
   <div class="container_profile_btn">
     <a href="{{ route('mypage.detail') }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
     <a href="{{ route('mypage.basic.show') }}" class="mx-2 btn btn-primary container_profile_btn_info">基本情報の変更</a>
+    @if($userDataArray['plan'] == "admin")
+      <a href="{{ route('admin') }}" class="mx-2 btn btn-primary container_profile_btn_info">管理画面</a>
+    @endif
   </div>
 
   <div class="container_schedule">
