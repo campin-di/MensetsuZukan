@@ -89,7 +89,7 @@ class St_MypageController extends Controller
 
     //自分のユーザネームをクリックした場合
     if($loginId == $stId){
-      return redirect()->action("St_MypageController@index", $loginId);
+      return redirect()->action("St_MypageController@index");
     }
 
     $userData = User::find($stId);

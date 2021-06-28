@@ -10,15 +10,14 @@
   <div class="attention-wrapper">
     <h2>注意事項</h2>
     <ul class="attention">
-      <li>質問シートを手元に準備できましたか？</li>
-      <li>質問シートの順で質問してください。</li>
-      <li>面接マニュアルに従って面接をしてください。</li>
-      <li>面接後「採点」してください。</li>
+      <li>面接マニュアルに従って面接・採点をしてください。</li>
+      <li>質問シートに入力した質問と同じ順で質問してください。</li>
+      <li>採点の基準は採点マニュアルの中に記載してあります。</li>
     </ul>
   </div>
 
   <div class="message">
-    下記の「面接会場へ」を押して、<br>
+    下記の「面接を開始」を押して、<br>
     面接を開始してください。
   </div>
 
@@ -30,7 +29,7 @@
 
   <div class="button-wrapper">
     <button type="submit">
-      <a id="interview_url" href="{{ route('hr.interview.scoring.form', $interviewInfo->id) }}">面接を開始する</a>
+      <a id="interview_url" href="{{ route('hr.interview.scoring.form', $interviewInfo->id) }}">面接を開始</a>
     </button>
   </div>
 </div>

@@ -7,6 +7,32 @@
   @include('components.parts.page_title', ['title'=>'詳細プロフィール'])
 
   <div class="container_detail">
+  <div class="item">
+      <input id="acd-check14" class="acd-check" type="checkbox">
+      <label class="acd-label" for="acd-check14">企業の基本情報</label>
+      <div class="acd-content">
+        <div class="company_info">
+          <table>
+            <tr>
+              <th>大学</th>
+              <td>{{ $profileDetailArray['university'] }}</td>
+            </tr>
+            <tr>
+              <th>学部</th>
+              <td>{{ $profileDetailArray['faculty'] }}</td>
+            </tr>
+            <tr>  
+              <th>学科</th>
+              <td>{{ $profileDetailArray['department'] }}</td>
+            </tr>
+            <tr>
+              <th>文理区分</th>
+              <td>{{ $profileDetailArray['major'] }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
     <div class="item">
       <input id="acd-check1" class="acd-check" type="checkbox">
       <label class="acd-label" for="acd-check1">志望する企業タイプ</label>

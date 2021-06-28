@@ -53,7 +53,7 @@ class UsersTableSeeder extends Seeder
             'graduate_year' => '2023',
             'major' => '2',
             'university' => '岡山大学',
-            'faculty' => '経済学部部',
+            'faculty' => '経済学部',
             'department' => '経済学科',
 
             'company_type' => '大手',

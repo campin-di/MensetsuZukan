@@ -46,7 +46,7 @@ class InterviewsTableSeeder extends Seeder
          それも１ページに、５～６個程度の言葉しかなく、基本的に学生向きかと思います。",
       ];
 
-      for ($i = 0; $i < 100; $i++)
+      for ($i = 0; $i < 6; $i++)
       {
         $random_date = [2021, rand(6, 7), rand(1,31)];
 

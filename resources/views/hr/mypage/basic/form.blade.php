@@ -25,7 +25,7 @@
 			</div>
 			<p class="container_profile_name">
 				{{ $userData->name }}
-				{{ $userData->nickname }}
+				({{ $userData->nickname }})
 			</p>
 		</div>
 
