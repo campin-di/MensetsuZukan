@@ -16,5 +16,6 @@ link:
 migrate:
 	php artisan migrate
 seed:
-	php artisan migrate:refresh --seed
-                                           
+	php artisan migrate:refresh --seed                                       
+uploads:
+	cp -r ../common/uploads/ storage/app/public/
