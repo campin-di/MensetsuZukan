@@ -1,7 +1,6 @@
-composer:
+set:
 	cp ../common/.env .env
 	composer install
-st:
 	mkdir -p vendor/laravel/ui/auth-backend/backup
 	mv vendor/laravel/ui/auth-backend/AuthenticatesUsers.php vendor/laravel/ui/auth-backend/backup/
 	mv vendor/laravel/ui/auth-backend/RegistersUsers.php vendor/laravel/ui/auth-backend/backup/
@@ -11,7 +10,6 @@ st:
 	cp ../common/vendor/RegistersUsers.php vendor/laravel/ui/auth-backend/
 	cp ../common/vendor/ResetsPasswords.php vendor/laravel/ui/auth-backend/
 	cp ../common/vendor/SendsPasswordResetEmails.php vendor/laravel/ui/auth-backend/
-link:
 	php artisan storage:link
 migrate:
 	php artisan migrate
