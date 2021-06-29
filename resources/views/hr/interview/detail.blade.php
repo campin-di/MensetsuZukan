@@ -32,7 +32,7 @@
 
   <div class="content">
     <div class="content-title">
-      <h2>zoom情報</h2>
+      <h2>Zoom情報</h2>
     </div>
     <ul class="zoom">
       <li>ミーティングID: {{ $interviewInfo->zoomId }}</li>
@@ -60,20 +60,22 @@
     </ul>
   </div>
 
-  @if($flag == 1)
-    <div class="button-wrapper">
-      <a href="{{ route('hr.interview.pre', $interviewInfo->id) }}">
-        <button type="submit">
-          面接を開始
-        </button>
-      </a>
-    </div>
-    @else
+  
+
+  @if($flag == 2)
     <div class="button-wrapper uppest">
       <button type="submit">
         <a href="{{ route('hr.interview.scoring.form', $interviewInfo->id) }}">面接が終了した</a>
       </button>
     </div>
+  @else
+  <div class="button-wrapper">
+    <a href="{{ route('hr.interview.pre', $interviewInfo->id) }}">
+      <button type="submit">
+        面接を開始
+      </button>
+    </a>
+  </div>
   @endif
 </div>
 <script type="text/javascript" src="{{ asset('/js/st/interview/detail.js') }}"></script>

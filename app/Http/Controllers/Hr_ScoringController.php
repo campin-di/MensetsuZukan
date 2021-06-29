@@ -93,7 +93,7 @@ class Hr_ScoringController extends Controller
         $interview->$logicCollumn = $input['logic'. $index];
         $interview->$personalityCollumn = $input['personality'. $index];
         $interview->$reviewCollumn = $input['review-'. $index];
-        $interview->available = config('const.USER_STATUS.DONE');
+        $interview->available = config('const.INTERVIEW.DONE');
       }
       $interview->save();
 

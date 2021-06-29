@@ -11,7 +11,7 @@ return [
         'DEACTIVE' => '99',
         'ADMIN' => '100'
     ],
-    'INTERVIEW_AVAILABLE' => [
+    'INTERVIEW' => [
         'UNAVAILABLE' => '0',
         'AVAILABLE' => '1',
         'UNSCORE' => '2',
