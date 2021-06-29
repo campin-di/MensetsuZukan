@@ -33,6 +33,7 @@
   width: 80px;
   height: 80px;
   object-fit: cover;
+  border: 3px solid #7CC4FF;
   border-radius: 50%;
 }
 
@@ -93,8 +94,11 @@
   border: none;
   line-height: 2.8;
   font-size: 18px;
-  color: #FFF;
   transition: .3s;
+  color: #FFF;
+}
+.button-wrapper a{
+  color: #FFF;
 }
 .button-wrapper button:hover {
   transform: translateY(-0.1875em);

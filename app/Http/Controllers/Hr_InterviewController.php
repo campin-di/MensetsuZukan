@@ -26,7 +26,7 @@ class Hr_InterviewController extends Controller
     //もし面接時間を30分すぎていたら、interview->availableを2に設定する。
     if($now->min($startedInterview) == $startedInterview) {
       \DB::table('interviews')->where('id', $id)->update([
-        'available' => config('const.USER_STATUS.UNSCORE'),
+        'available' => config('const.INTERVIEW.UNSCORE'),
         'url' => 'done',
       ]);
     }
