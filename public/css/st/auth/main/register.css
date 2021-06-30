@@ -18,9 +18,7 @@ input:-ms-input-placeholder {
 input::-ms-input-placeholder {
   color: #CCCCCC !important;
 }
-
 /* === end: 共通部分 =================================================*/
-
 
 /* === begin: 画面タイトル 部分 =================================================*/
 .top-content-wrapper{
@@ -40,6 +38,7 @@ input::-ms-input-placeholder {
 /* === end: 画面タイトル 部分 =================================================*/
 
 /* === begin: フォーム部分 =================================================*/
+
 .form-input-wrapper{
   width: 95%;
   margin: 0 auto;

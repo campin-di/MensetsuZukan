@@ -17,6 +17,10 @@
       <form method="POST" action="{{ route('hr.register4') }}">
       @csrf
 
+      <div class="attention" style="margin: 10px 0 20px 10px;">
+        <span class="asterisk" style="color: #6B8BE9;">*</span> は入力必須の項目です。
+      </div>
+
       <div class="form-input-wrapper">
         <label for="selection_phase" class="form-title">普段担当している選考フェーズ *</label>
         <div class="form-input">
