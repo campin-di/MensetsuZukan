@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="ja">
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-27V11WJ3DJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-27V11WJ3DJ');
+    </script>
+    
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>面接図鑑｜就活生の面接が見放題！</title>
     <meta name="viewport" content="width=device-width">

@@ -23,7 +23,11 @@ class St_InterviewController extends Controller
 
   public function search()
   {
-    $hrs = HrUser::get();
+    $status = [
+      config('const.USER_STATUS.UNAVAILABLE'),
+      config('const.USER_STATUS.AVAILABLE'),
+    ];
+    $hrs = HrUser::whereIn('status', $status)->get();
 
     $industries = ReturnUserInformationArrayClass::returnIndustry();
     $companyTypes = ReturnUserInformationArrayClass::returnCompanyTypeArray();
@@ -35,13 +39,13 @@ class St_InterviewController extends Controller
       $hrCollection = $hrCollection->concat([
         [
           'id' => $hr->id,
-          'name' => $hr->name,
-          'company' => $hr->company,
+          'nickname' => $hr->nickname,
           'imagePath' => $hr->image_path,
           'industry' => $hr->industry,
           'company_type' => $hr->company_type,
           'stock_type' => $hr->stock_type,
           'location' => $hr->location,
+          'selectionPhase' => $hr->selection_phase,
           'introduction' => CutStringClass::CutString($hr->introduction, 105),
         ],
       ]);

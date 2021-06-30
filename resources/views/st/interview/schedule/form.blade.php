@@ -6,7 +6,7 @@
 @include('components.parts.page_title', ['title'=>'面接スケジュールを決める'])
 
 <div class="container">
-  @include('components.parts.profile', ['imagePath' => $hrUser->image_path, 'userName' => $hrUser->name, 'nickName' => '', 'description' => $hrUser->company.'（'.$hrUser->industry.'）', 'introduction' => $hrUser->introduction ])
+  @include('components.parts.profile', ['imagePath' => $hrUser->image_path, 'userName' => '', 'nickName' => $hrUser->nickname, 'description' => $hrUser->industry, 'introduction' => $hrUser->introduction ])
 
   <div class="schedule-wrapper">
     @if($is_schedule)
