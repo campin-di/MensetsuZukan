@@ -44,8 +44,7 @@
     <link rel="icon" href="{{ asset('/img/logo/favicon.ico') }}">
     <!-- ホーム画面に追加したときのアイコン -->
     <link rel="apple-touch-icon" href="{{ asset('/img/logo/apple-touch-icon.png') }}" sizes="180x180">
-    <link rel="shortcut icon" href="{{ asset('/img/logo/favicon.png') }}">
-    <!-- Windows用アイコン -->
+    <link rel="shortcut icon" href="{{ asset('/img/logo/favicon.ico') }}">    <!-- Windows用アイコン -->
     <!--
     <meta name="application-name" content="{サイト名}"/>
     <meta name="msapplication-square70x70logo" content="small.jpg"/>
