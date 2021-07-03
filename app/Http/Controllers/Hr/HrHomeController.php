@@ -37,7 +37,10 @@ class HrHomeController extends Controller
         array_push($questions, $question->name);
       }
 
-      $videos = Video::latest()->get();
+      $videos = Video::latest()->whereHas('User', function($q){
+        $q->whereNotIn('graduate_year', ['2022']);
+      })->get();
+
       $videosCollection = VideoDisplayClass::VideoDisplay($videos);
 
       return view('hr.home',[

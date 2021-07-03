@@ -27,7 +27,7 @@ class QuestionsTableSeeder extends Seeder
         '未来のビジョン',
         '就活の軸',
         '自己PR',
-        'モチベーション',
+        '仕事のモチベーション',
       ];
 
       foreach ($questionArray as $index => $question) {
