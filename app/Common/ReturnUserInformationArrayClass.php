@@ -126,21 +126,21 @@ class ReturnUserInformationArrayClass
     return $industryArray;
   }
 
-  public static function returnUniversityTypeArray()
+  public static function returnUniversityClassArray()
   {
-    $companyTypeArray = [
+    $companyClassArray = [
       '東京一工',
       'その他旧帝大',
-      '金岡千広',
+      '金岡千広・筑横千',
       'その他国公立',
-      '早慶上智',
+      '早慶上智・ICU',
       'GMARCH',
       '関関同立',
       '日東駒専',
       '産近甲龍',
       'その他私立',
     ];
-    return $companyTypeArray;
+    return $companyClassArray;
   }
 
   public static function returnPrefectures(){

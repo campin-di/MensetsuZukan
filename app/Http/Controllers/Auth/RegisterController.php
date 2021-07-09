@@ -14,6 +14,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailVerification;
 use Carbon\Carbon;
+use App\Common\RetUniversityClass;
 use App\Common\ReturnUserInformationArrayClass;
 
 class RegisterController extends Controller
@@ -290,6 +291,7 @@ class RegisterController extends Controller
        $user->kana_name = $register_input['kana_lastname']. ' '. $register_input['kana_firstname'];
        $user->nickname = $register_input['nickname'];
        $user->university = $register2_input['university'];
+       $user->university_class = RetUniversityClass::retUniversityClass($register2_input['university']);
        $user->faculty = $register2_input['faculty'];
        $user->department = $register2_input['department'];
        $user->major = $register2_input['major'];
