@@ -28,6 +28,7 @@ class UsersTableSeeder extends Seeder
             'graduate_year' => '2022',
             'major' => '2',
             'university' => '岡山大学',
+            'university_class' => '金岡千広・筑横千',
             'faculty' => '工学部',
             'department' => '情報系学科',
 
@@ -53,6 +54,7 @@ class UsersTableSeeder extends Seeder
             'graduate_year' => '2023',
             'major' => '2',
             'university' => '岡山大学',
+            'university_class' => '金岡千広・筑横千',
             'faculty' => '経済学部',
             'department' => '経済学科',
 

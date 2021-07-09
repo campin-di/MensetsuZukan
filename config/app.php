@@ -234,6 +234,7 @@ return [
         'Meeting' => app\Common\MeetingClass::class,
         'RedirectClass' => app\Common\RedirectClass::class,
         'ReturnUserInformationArrayClass' => app\Common\ReturnUserInformationArrayClass::class,
+        'RetUniversityClass' => app\Common\RetUniversityClass::class,
     ],
 
 ];
