@@ -58,6 +58,9 @@ Route::get('/pre/contributor', 'St_HomeController@preContributor')->name('pre.co
 //redirect to pre audience page
 Route::get('/pre/audience', 'St_HomeController@preAudience')->name('pre.audience');
 
+//redirect to pre register page
+Route::get('/pre/register', 'St_HomeController@preRegister')->name('pre.register');
+
 //top to home
 Route::get('/home', 'St_HomeController@index')->name('home');
 

@@ -69,4 +69,11 @@ class St_HomeController extends Controller
     ]);
   }
 
+  public function preRegister()
+  {
+    Auth::logout();
+    return view('st.unavailable.register',[
+    ]);
+  }
+
 }

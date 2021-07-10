@@ -36,6 +36,9 @@ use Illuminate\Support\Facades\Route;
     /*=== end:認証関係 =========================================================*/
 
     //redirect to pre contributor page
+    Route::get('/pre/register', 'Hr\HrHomeController@preRegister')->name('pre.register');
+
+    //redirect to pre contributor page
     Route::get('/pre/hr', 'Hr\HrHomeController@preHr')->name('pre.hr');
 
     //redirect to pre audience page
