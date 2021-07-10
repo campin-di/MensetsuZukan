@@ -244,13 +244,14 @@ class ReturnUserInformationArrayClass
     public static function returnStartTimeArray()
     {
       $startTimeArray = [
-        '直近1ヶ月以内',
-        '直近3ヶ月以内',
-        '半年以内',
-        '1年以内',
-        '1年半以内',
-        '2年以内',
-        '2年以前',
+        '大学1年・前期',
+        '大学1年・後期',
+        '大学2年・前期',
+        '大学2年・後期',
+        '大学3年・前期',
+        '大学3年・後期',
+        '大学4年・前期',
+        '大学4年・後期',
       ];
       return $startTimeArray;
     }

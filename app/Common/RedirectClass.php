@@ -14,12 +14,27 @@ class RedirectClass
       $user = Auth::user();
       if($user->status == config('const.USER_STATUS.UNAVAILABLE')){
         if($user->plan == 'contributor'){
-          //return redirect()->action("St_HomeController@preContributor");
           return "St_HomeController@preContributor";
         } else {
-          //return redirect()->action("St_HomeController@preAudience");
           return "St_HomeController@preAudience";
         }
+      }elseif($user->status == config('const.USER_STATUS.MAIL_AUTHED') ||
+              $user->status == config('const.USER_STATUS.PRE_REGISTER') ||
+              $user->status == config('const.USER_STATUS.REGISTER')){
+          return "St_HomeController@preRegister";
+      }
+      else return 0;
+    }
+
+    public static function hrPreRegisterRedirect()
+    {
+      $userId = Auth::guard('hr')->id();
+      $user = HrUser::find($userId);
+
+      if($user->status == config('const.USER_STATUS.MAIL_AUTHED') ||
+      $user->status == config('const.USER_STATUS.PRE_REGISTER') ||
+      $user->status == config('const.USER_STATUS.REGISTER')){
+        return "Hr\HrHomeController@preRegister";
       }else{
           return 0;
       }
@@ -32,10 +47,8 @@ class RedirectClass
 
       if($user->status == config('const.USER_STATUS.UNAVAILABLE')){
         if($user->plan == 'hr'){
-          //return redirect()->action("St_HomeController@preContributor");
           return "Hr\HrHomeController@preHr";
         } else {
-          //return redirect()->action("St_HomeController@preAudience");
           return "Hr\HrHomeController@preOffer";
         }
       }else{
@@ -50,7 +63,6 @@ class RedirectClass
 
       if($user->status == config('const.USER_STATUS.UNAVAILABLE')){
         if($user->plan == 'offer'){
-          //return redirect()->action("St_HomeController@preAudience");
           return "Hr\HrHomeController@preOffer";
         }
       }else{

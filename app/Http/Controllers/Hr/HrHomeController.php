@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use DateTime;
 
+use Auth;
 use App\Models\Video;
 use App\Models\Question;
 
+use App\Common\RedirectClass;
 use App\Common\VideoDisplayClass;
 
 class HrHomeController extends Controller
@@ -31,6 +33,14 @@ class HrHomeController extends Controller
      */
     public function index()
     {
+      //=====もし視聴不可状態のときはリダイレクト===================================
+      if($redirect = RedirectClass::hrPreRegisterRedirect()){
+        if($redirect){
+          return redirect()->action($redirect);
+        }
+      }
+      //==========================================================================
+
       $questionsData = Question::get('name');
       $questions = [];
       foreach ($questionsData as $question) {
@@ -60,6 +70,13 @@ class HrHomeController extends Controller
     {
 
       return view('hr.unavailable.offer',[
+      ]);
+    }
+
+    public function preRegister()
+    {
+      Auth::guard('hr')->logout();
+      return view('hr.unavailable.register',[
       ]);
     }
 }

@@ -14,6 +14,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailVerification;
 use Carbon\Carbon;
+use DateTime;
 use App\Common\RetUniversityClass;
 use App\Common\ReturnUserInformationArrayClass;
 
@@ -80,6 +81,16 @@ class RegisterController extends Controller
 
     public function choice(Request $request)
     {
+      //本登録完了まで達成せず1日放置したユーザーを削除する
+      $targets = User::whereColumn('created_at', '=', 'updated_at')->get();
+      $yesterday = new DateTime('-1 day');
+
+      foreach($targets as $target){
+        $targetDate = new DateTime($target->created_at);
+        if($targetDate->diff($yesterday)->invert == 0){
+          $target->delete();
+        }
+      }
 
       return view('st/auth.choice');
     }
