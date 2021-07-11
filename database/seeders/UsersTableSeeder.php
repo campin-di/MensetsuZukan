@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
             'industry' => 'IT・通信',
             'jobtype' => 'セキュリティエンジニア',
             'workplace' => '東京都',
-            'start_time' => '直近1ヶ月以内',
+            'start_time' => '大学2年・後期',
             'english_level' => 'ディベートレベル',
             'toeic' => '700 ~ 749',
 
@@ -62,7 +62,7 @@ class UsersTableSeeder extends Seeder
             'industry' => 'IT・通信',
             'jobtype' => 'マーケティング',
             'workplace' => '東京都',
-            'start_time' => '直近1ヶ月以内',
+            'start_time' => '大学2年・後期',
             'english_level' => 'ディベートレベル',
             'toeic' => '700 ~ 749',
 

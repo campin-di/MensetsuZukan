@@ -1,6 +1,6 @@
 <link href="{{ asset('css/components/parts/button/form/com_next_button.css') }}" rel="stylesheet" type="text/css">
 <div class="next-button">
-  <button type="submit">
+  <button type="submit" id="button">
     <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 24px; height: 24px; opacity: 1;" xml:space="preserve">
     <style type="text/css">
       .st0{fill:#4B4B4B;}
@@ -15,3 +15,5 @@
     </svg>
   </button>
 </div>
+
+<script type="text/javascript" src="{{ asset('/js/components/parts/button/form/anti_double_click.js') }}"></script>

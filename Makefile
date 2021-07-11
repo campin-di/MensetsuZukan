@@ -1,5 +1,6 @@
 set:
 	cp ../common/.env .env
+	composer update
 	composer install
 	mkdir -p vendor/laravel/ui/auth-backend/backup
 	mv vendor/laravel/ui/auth-backend/AuthenticatesUsers.php vendor/laravel/ui/auth-backend/backup/
