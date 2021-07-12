@@ -10,9 +10,35 @@
 </div>
 
 <div class="container" onload>
-  <div class="description">
-    採点は必ず、面接終了後に行ってください。<br>
-    面接中は以下のボタンから、質問シートを印刷して得点＆レビューをメモしてください。
+  <div class="container_detail description">
+    <div class="item">
+      <input id="acd-check1" class="acd-check" type="checkbox">
+      <label class="acd-label" for="acd-check1">地頭の評価基準</label>
+      <div class="acd-content">
+        <div class="company_info">
+          <ol class="evaluation evaluation-logic">
+            <li>会話内容の理解が難しい。回答が遠回り/時間が長い。質問の意図から回答がずれる。</li>
+            <li>会話内容が曖昧だがイメージできる。ある程度まとまった回答ができる。</li>
+            <li>会話内容が環境や難易度等までイメージできる。一問一答で意図がずれずに回答できる。</li>
+            <li>会話がスムーズで、ストレスを感じない。回答が簡潔で分かりやすい。</li>
+            <li>会話のテンポが良く心地よい。回答も質問の意図を的確にとらえ、ビジネスレベル。</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <input id="acd-check2" class="acd-check" type="checkbox">
+      <label class="acd-label" for="acd-check2">人柄の評価基準</label>
+      <div class="acd-content">
+        <ol class="evaluation evaluation-personality">
+          <li>人柄や個性を表す言葉が出てこない。エピソードや経験の事実のみ。ネガティブな印象が強い。</li>
+          <li>言葉としては出てくるが本音かどうか伝わらない。非言語が乏しい。印象は良くも悪くもない。</li>
+          <li>言葉として表現でき、ある程度伝わるが浅い。人柄や個性に一貫性が無い。印象は普通に良い。</li>
+          <li>言葉として表現でき、ある程度一貫性が伝わる。印象が良い。</li>
+          <li>言葉と非言語でとてもうまく表現でき、一貫性もある。印象がとても良い。</li>
+        </ol>
+      </div>
+    </div>
   </div>
 
   <form method="post" action="{{ route('hr.interview.scoring.post') }}">
@@ -80,8 +106,9 @@
   </form>
 </div>
 <script type="text/javascript">
-    let zoomUrl = @json($zoomUrl);
-  </script>
+  let zoomUrl = @json($zoomUrl);
+</script>
+<!--
 <script type="text/javascript" src="{{ asset('/js/hr/interview/scoring/form.js') }}"></script>
-
+-->
 @endsection
