@@ -51,6 +51,8 @@
   vertical-align: top;
   text-align: left;
 }
+
+
 @media all and (max-width: 767px) {
   .company_info table th{
     padding: 5px;

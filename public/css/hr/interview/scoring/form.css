@@ -29,10 +29,155 @@
   text-align: center;
 }
 
+
+/*=== start: 採点基準 部分 =================================*/
 .description{
+  width: 95%;
   margin: 50px auto 0px;
-  text-align: center;
 }
+
+.evaluation-wrapper h2{ 
+  font-weight: bold;
+  font-size: 20px;
+}
+
+ol.evaluation{
+  counter-reset:list;
+  list-style-type:none;
+  padding: 10px 0px;
+}
+ol.evaluation li{
+  position:relative;
+  margin: 7px 0 7px 0px;
+  padding-left:40px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  border-radius:20px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+
+ol.evaluation li:before{
+  counter-increment: list;
+  content: counter(list);
+  position: absolute;
+  left: 0px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  color: #fff;
+  line-height:30px;
+  border-radius: 50%;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+ol.evaluation li:hover{
+  color: #fff;
+}
+ol.evaluation li:hover:before{
+  background: #fff;
+}
+
+ol.evaluation-logic li:before{
+  background: #9681ff;
+  border: solid 1px #9681ff;
+}
+ol.evaluation-personality li:before{
+  background: #7CC4FF;
+  border: solid 1px #7CC4FF;
+}
+
+/*=== start: アコーディオン基準 部分 =================================*/
+
+.container_detail .item {
+  margin-bottom: 20px;
+}
+
+.container_detail .item .acd-check {
+  display: none;
+}
+
+.container_detail .item .acd-label {
+  font-weight: bold;
+  display: block;
+  position: relative;
+  margin-bottom: 1px;
+  padding: 10px;
+  border-bottom: 1px solid #6b8be9;
+  font-size: 18px;
+}
+
+.container_detail .item .acd-label a {
+  color: #6b8be9;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.container_detail .item .acd-label:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: 0px;
+  border-top: solid 2px #6b8be9;
+  border-right: solid 2px #6b8be9;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  margin-top: -4px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+  position: absolute;
+  right: 5%;
+}
+
+.container_detail .item .acd-content {
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  padding: 0px 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  visibility: hidden;
+}
+
+.container_detail .item .acd-check:checked + .acd-label + .acd-content {
+  height: auto;
+  opacity: 1;
+  padding: 10px;
+  visibility: visible;
+}
+
+/*=== end: アコーディオン基準 部分 =================================*/
+
+/*=== end: 採点基準 部分 =================================*/
 
 .content{
   margin: 30px auto;
@@ -90,7 +235,7 @@ input[type="radio"]{
   position:absolute;
   right:1000%;
 }
-label{
+form label{
   float:left;
   width:15%; 
   padding-bottom:15%;
@@ -231,6 +376,34 @@ label{
     font-size: 32px;
   }
 
+  /*=== start: 採点基準 部分 =================================*/
+  .description{
+    width: 80%;
+  }
+
+  ol.evaluation li{
+    font-size:16px;
+    line-height: 30px;
+  }
+  ol.evaluation-logic li:hover{
+    background: #9681ff;
+  }
+  ol.evaluation-logic li:hover:before{
+    color: #9681ff;
+  }
+
+  ol.evaluation-personality li:hover{
+    background: #7CC4FF;
+  }
+  ol.evaluation-personality li:hover:before{
+    color: #7CC4FF;
+  }
+
+  /* ===  start:折りたたみ部分 === */
+  
+
+  /*=== end: 採点基準 部分 =================================*/
+
   .content {
     margin: 100px auto;
   }
@@ -238,6 +411,7 @@ label{
   .question select{
     font-size: 18px;
     height: 60px;
+    width: 80%;
   }
 
   .radios{
@@ -266,6 +440,9 @@ label{
   }
   .description{
     font-size: 18px;
+  }
+  .container_detail .item .acd-label {
+    font-size: 20px;
   }
 
 }
