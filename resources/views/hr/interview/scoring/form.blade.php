@@ -108,7 +108,5 @@
 <script type="text/javascript">
   let zoomUrl = @json($zoomUrl);
 </script>
-<!--
 <script type="text/javascript" src="{{ asset('/js/hr/interview/scoring/form.js') }}"></script>
--->
 @endsection
