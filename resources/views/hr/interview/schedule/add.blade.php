@@ -1,6 +1,6 @@
 @section('title', '面接可能日の追加')
 <link rel="stylesheet" href="{{ asset('css/hr/interview/schedule/add.css') }}">
-@extends('layouts.hr.common')
+@extends('layouts.hr.nofooter')
 @section('content')
 
 @include('components.parts.page_title', ['title'=>'面接可能な日程の追加'])
@@ -24,6 +24,9 @@
 
     @include('components.parts.button.form.next_button')
   </form>
+
+  @include('components.parts.button.fixed_button',['routeName' => 'hr.interview.schedule.check', 'var'=>'', 'msg' => '', 'text' => '面接可能日を確認・変更する'])
+
 </div>
 
 <script type="text/javascript" src="{{ asset('/js/hr/interview/schedule/add.js') }}"></script>
