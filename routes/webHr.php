@@ -67,6 +67,9 @@ use Illuminate\Support\Facades\Route;
     /*=== end:オファー機能 関係 ===============================================*/
 
     /*=== スケジュール登録 関係 ===============================================*/
+    //mypage to schedule check function
+    Route::get('/interview/schedule/check', 'Hr_ScheduleController@check')->name('hr.interview.schedule.check');
+
     //mypage to schedule adding function
     Route::get('/interview/schedule/add', 'Hr_ScheduleController@add')->name('hr.interview.schedule.add');
 
@@ -75,6 +78,12 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/interview/schedule/confirm', "Hr_ScheduleController@confirm")->name('hr.interview.schedule.confirm');
     Route::post('/interview/schedule/confirm', "Hr_ScheduleController@send")->name('hr.interview.schedule.send');
+    
+    //check to comfirm page
+    Route::post('/interview/schedule/delete', 'Hr_ScheduleController@delete')->name('hr.interview.schedule.delete');
+
+    Route::get('/interview/schedule/delete/confirm', "Hr_ScheduleController@deleteConfirm")->name('hr.interview.schedule.deleteConfirm');
+    Route::post('/interview/schedule/delete/confirm', "Hr_ScheduleController@deleteSend")->name('hr.interview.schedule.deleteSend');
 
     Route::get('/interview/schedule/thanks', "Hr_ScheduleController@complete")->name('hr.interview.schedule.complete');
     /*=== end:スケジュール登録 関係 ===============================================*/

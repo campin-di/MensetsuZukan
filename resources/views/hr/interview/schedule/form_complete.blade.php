@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="container form-wrapper">
-  <div class="title">日程を追加しました。</div>
+  <div class="title">日程を更新しました。</div>
 
   @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'hr.mypage', 'var'=>'', 'underText' => 'マイページに戻る'])
 </div>

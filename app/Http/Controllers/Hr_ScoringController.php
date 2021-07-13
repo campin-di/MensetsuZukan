@@ -28,7 +28,6 @@ class Hr_ScoringController extends Controller
       $questions = Question::get();
       $zoomUrl = Interview::find($id)->zoomUrl;
 
-
       return view('hr/interview/scoring/form',[
         'id' => $id,
         'questions' => $questions,
