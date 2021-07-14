@@ -7,11 +7,13 @@
   z-index: 999;
 }
 .fixed-button span{
+  font-size: 14px;
   display: block;
   margin-bottom: 5px;
 }
 
 .fixed-button a{
+  font-size: 18px;
   display: block;
   background: linear-gradient(to right, #7CC4FF, #9681FF) !important;
   line-height: 3;

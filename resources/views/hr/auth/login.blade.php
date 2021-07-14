@@ -1,6 +1,6 @@
 @section('title', '人事ログイン')
 <link href="{{ asset('/css/st/auth/login.css') }}" rel="stylesheet">
-@extends('layouts.hr.common')
+@extends('layouts.hr.nofooter')
 @section('content')
 
 @include('components.parts.page_title', ['title'=>'人事ログイン'])

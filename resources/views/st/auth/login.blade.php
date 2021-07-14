@@ -1,7 +1,7 @@
 @section('title', '学生ログイン')
 <link href="{{ asset('/css/st/auth/login.css') }}" rel="stylesheet">
 
-@extends('layouts.st.common')
+@extends('layouts.st.nofooter')
 @section('content')
   @include('components.parts.page_title', ['title'=>'学生ログイン'])
 

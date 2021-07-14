@@ -3,7 +3,8 @@
   text-align: center;
 }
 .next-button button{
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   border-radius: 5px;
   color: #FFF;
   font-size: 18px;
