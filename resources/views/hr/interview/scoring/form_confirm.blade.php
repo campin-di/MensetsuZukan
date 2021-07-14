@@ -22,10 +22,17 @@
 
         地頭評価：{{$input['logic'.$index]}}
         人柄評価：{{$input['personality'.$index]}}
-
-				{{$input['review-'.$index]}}
       </div>
       @endfor
+      <div>
+      {{$input['review-good']}}
+      </div>
+      <div>
+      {{$input['review-more']}}
+      </div>
+      <div>
+      {{$input['review-message']}}
+      </div>
     </div>
 
     @include('components.parts.button.form.next_button')

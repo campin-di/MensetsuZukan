@@ -95,10 +95,18 @@
             </div>
           </div>
         </div>
-
-        <textarea name="review-{{ $index }}" placeholder="ここにレビューを書いてください。" required></textarea>
       </div>
       @endfor
+      <div>
+        <textarea name="review-good" placeholder="例：質問に対して意図や間を汲んでテンポ良く回答ができるのは素晴らしいです。ご自身らしい価値観を背景や理由におりまぜて話してくださるので、全体を通して人柄が伝わってくるコミュニケーションでした。" required></textarea>
+      </div>
+      <div>
+        <textarea name="review-more" placeholder="ビジョンに対する回答が漠然としており、曖昧な印象を受けました。抽象的でもいいので、目標やなりたい人物像などがもう少し整理でき意思をもって伝えられるとより良いです。" required></textarea>
+      </div>
+      <div>
+        <textarea name="review-message" placeholder="自己紹介と挑戦したエピソードから個性が伝わってきて、とても楽しかったです。話し方や口癖などコミュニケーションに癖がなくテンポも良いので、良い印象が残る面接官が多いと思います。" required></textarea>
+      </div>
+
     </div>
 
     <input type="hidden" name="interview_id" value="{{ $id }}">
@@ -108,5 +116,7 @@
 <script type="text/javascript">
   let zoomUrl = @json($zoomUrl);
 </script>
+<!--
 <script type="text/javascript" src="{{ asset('/js/hr/interview/scoring/form.js') }}"></script>
+-->
 @endsection
