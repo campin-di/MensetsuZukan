@@ -6,6 +6,6 @@
 <div class="container form-wrapper">
   <div class="title">日程を更新しました。</div>
 
-  @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'hr.mypage', 'var'=>'', 'underText' => 'マイページに戻る'])
+  @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'hr.interview.schedule.add', 'var'=>'', 'underText' => 'さらに日程を追加・変更する'])
 </div>
 @endsection
