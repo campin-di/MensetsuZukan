@@ -14,7 +14,7 @@ class CreateSchedulesTable extends Migration
     public function up()
     {
         Schema::create('schedules', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->integer('hr_id')->unsigned();
             $table->date('date');
             $table->boolean('nine');

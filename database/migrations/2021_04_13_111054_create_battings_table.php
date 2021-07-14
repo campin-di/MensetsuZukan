@@ -14,7 +14,7 @@ class CreateBattingsTable extends Migration
     public function up()
     {
         Schema::create('battings', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->date('date');
             $table->string('time');
             $table->integer('api_user');
