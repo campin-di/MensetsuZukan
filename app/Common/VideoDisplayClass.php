@@ -39,7 +39,9 @@ class VideoDisplayClass
             'score' => $video->score,
             'views' => $video->views,
             'good'  => $video->good,
-            'review'=> $video->review,
+            'review_good'=> $video->review_good,
+            'review_more'=> $video->review_more,
+            'review_message'=> $video->review_message,
             'diffDate' => $diffDate,
 
             'question' => $question,

@@ -97,9 +97,18 @@
       <a href="{{ route('hrpage', $mainVideo['hrId']) }}">
         {{ $mainVideo['hrNickname'] }}
       </a>
-      <p>
-        {{ $mainVideo['review'] }}
-      </p>
+      <div>よかった点</div>
+        <p>
+          {{ $mainVideo['review_good'] }}
+        </p>
+        <div>よかった点</div>
+        <p>
+          {{ $mainVideo['review_more'] }}
+        </p>
+        <div>学生へひとこと</div>
+        <p>
+          {{ $mainVideo['review_message'] }}
+        </p>
     </div>
   </div>
 </div>
