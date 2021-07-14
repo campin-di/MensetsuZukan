@@ -31,7 +31,7 @@ class St_MypageController extends Controller
     $pastVideos = Video::where('st_id', $userId)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::where('available', '!=', -1)->where('st_id', $userId)->with('hr_user:id,name,image_path,industry')->select('id', 'hr_id', 'date', 'zoomUrl')->get();
+    $interviewReservations = Interview::orderBy('date', 'asc')->where('available', '!=', -1)->where('st_id', $userId)->with('hr_user:id,name,image_path,industry')->select('id', 'hr_id', 'date', 'zoomUrl')->get();
 
     $interviewReservationsCollection = collect();
     foreach ($interviewReservations as $interviewReservation) {

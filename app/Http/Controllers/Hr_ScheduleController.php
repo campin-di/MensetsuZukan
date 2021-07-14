@@ -62,11 +62,19 @@ class Hr_ScheduleController extends Controller
     $userId = Auth::guard('hr')->id();
     $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
 
-    $schedule = new Schedule;
-    $schedule->hr_id = $userId;
-    $schedule->date = $input['date'];
-    foreach ($timeArray as $key => $time) {
-      $schedule->$key = IsBoolClass::IsBool($key, $input['time']);
+    $target = Schedule::where('hr_id', $userId)->where('date', $input['date']);
+    if($target->exists()){
+      $schedule = $target->first();
+      foreach ($input['time'] as $column) {
+        $schedule->$column = 1;
+      }
+    } else{
+      $schedule = new Schedule;
+      $schedule->hr_id = $userId;
+      $schedule->date = $input['date'];
+      foreach ($timeArray as $key => $time) {
+        $schedule->$key = IsBoolClass::IsBool($key, $input['time']);
+      }
     }
     $schedule->save();
 

@@ -22,8 +22,8 @@ class St_ScheduleController extends Controller
   {
     Schedule::where('date', '<', date('Y-m-d'))->delete();
 
-    $hrUser = HrUser::where('id', $hr_id)->select('id', 'name', 'company', 'image_path', 'industry')->first();
-    $scheduleData = Schedule::where('hr_id', $hr_id)->latest();
+    $hrUser = HrUser::where('id', $hr_id)->select('id', 'nickname', 'company', 'image_path', 'industry')->first();
+    $scheduleData = Schedule::orderBy('date', 'asc')->where('hr_id', $hr_id);
 
     if(!$scheduleData->exists()){
       $is_schedule = 0;
