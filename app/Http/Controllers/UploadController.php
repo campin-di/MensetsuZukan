@@ -128,7 +128,9 @@ class UploadController extends Controller
         $video->logic = $interview->$questionLogic;
         $video->personality = $interview->$questionPersonality;
         $video->score = $score;
-        $video->review = $interview->$questionReview;
+        $video->review_good = $interview->review_good;
+        $video->review_more = $interview->review_more;
+        $video->review_message = $interview->review_message;
         $video->views = 0;
         $video->good = 0;
         $video->type = $type;

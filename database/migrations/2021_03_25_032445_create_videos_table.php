@@ -26,7 +26,9 @@ class CreateVideosTable extends Migration
           $table->integer('logic');
           $table->integer('personality');
           $table->integer('score');
-          $table->string('review');
+          $table->string('review_good',1000);
+          $table->string('review_more',1000);
+          $table->string('review_message',1000);
           $table->integer('views');
           $table->integer('good');
           $table->boolean('type')->comment('0:学生, 1:人事');
