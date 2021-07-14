@@ -39,6 +39,22 @@
       </div>
 
       <div class="form-input-wrapper">
+        <label for="face" class="form-title">面接時に顔を公開したくありませんか？ *</label>
+        <div class="form-input">
+          <select id="face" class="form-control" name="face" required>
+              <option value="1" @if(old('face') == "公開しても構わない") selected @endif>公開しても構わない</option>
+              <option value="0" @if(old('face') == "公開できない（モザイク加工をして欲しい）") selected @endif>公開できない(モザイク加工をして欲しい)</option>
+          </select>
+
+          @if ($errors->has('face'))
+            <span class="help-block">
+              <strong>{{ $errors->first('face') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
+      <div class="form-input-wrapper">
         <label for="workplace" class="form-title">主な勤務地</label>
         <div class="form-input">
           <select id="workplace" class="form-control" name="workplace">
