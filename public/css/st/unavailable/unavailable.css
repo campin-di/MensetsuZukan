@@ -23,9 +23,8 @@ footer{
   position: absolute;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 102vh;
   z-index: 0;
-  padding-top: 100px;
 }
 .block-wrapper:before{
   content: '';
@@ -54,15 +53,16 @@ footer{
   opacity: 0.7;
 }
 .block-wrapper .img{
-  width: 65%;
+  width: 60%;
   margin: 0 auto;
 }
 
 .block {
   background: #FFF;
   width: 90%;
+  max-height: 80vh;
   padding: 50px 20px;
-  margin: auto;
+  margin: 5vh auto;
   text-align: center;
   position: relative;
   z-index: 99;
@@ -113,7 +113,6 @@ footer{
   .block{
     width: 60%;
     padding: 60px 5%;
-    margin-top: -5%;
   }
   .block h1{
     font-size: 30px;

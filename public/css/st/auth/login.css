@@ -24,21 +24,21 @@
   width: 100%;
   border-radius: 5px;
   color: #FFF;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   background: linear-gradient(to right, #7CC4FF, #9681FF);
   border: none;
   line-height: 2.8;
 }
 .button-wrapper .btn-link{
-  font-size: 18px;
+  font-size: 16px;
 }
 /* === end: フォーム部分 =================================================*/
 
 /* === begin: 採用担当者の方はこちら 部分 =================================================*/
 .to-hr-wrapper{
-  margin: 25px auto;
-  padding: 25px;
+  margin: 15px auto;
+  padding: 15px;
   border-top: 1px solid #555555;
   text-align: center;
 }
@@ -63,6 +63,9 @@
   }
   .transition-button {
     margin-bottom: 0px !important;
+  }
+  .button-wrapper button{
+    font-size: 18px;
   }
   .button-wrapper .btn-link{
     font-size: 18px;
