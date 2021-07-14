@@ -269,6 +269,11 @@ class RegisterController extends Controller
         $recruitment = $register3_input['recruitment'];
       }
 
+      $face = '公開できない(モザイク加工をしてほしい)';
+      if($register3_input['face']== 1){
+        $face = '公開しても構わない';
+      }
+
       $confirmArray = [
         '性別' => $gender,
         '名前' => $register_input['lastname']. ' '. $register_input['firstname'],
@@ -280,6 +285,7 @@ class RegisterController extends Controller
         '企業区分' => $register2_input['company_type'],
         '上場区分' => $register2_input['stock_type'],
         '担当選考フェーズ' => $register3_input['selection_phase'],
+        '面接時に顔を公開したくありませんか？' => $face,
         '主な勤務地' => $workplace,
         '事業概要' => $summary,
         '企業ページURL' => $site,
@@ -323,6 +329,7 @@ class RegisterController extends Controller
       $user->company_type = $register2_input['company_type'];
       $user->stock_type = $register2_input['stock_type'];
       $user->selection_phase = $register3_input['selection_phase'];
+      $user->face = $register3_input['face'];
 
       $user->status = config('const.USER_STATUS.UNAVAILABLE');
 

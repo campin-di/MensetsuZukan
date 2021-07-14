@@ -29,6 +29,7 @@ class CreateHrUsersTable extends Migration
         $table->string('image_path')->default('public/img/icon/hr-unset.png');
         $table->string('location')->default('設定されていません。');
         $table->string('selection_phase')->default('設定されていません。');
+        $table->tinyInteger('face')->unsigned()->default(0)->comment('0 : 公開不可, 1 : 公開可');
         $table->string('workplace')->default('設定されていません。');
         $table->string('summary', 1000)->default('設定されていません。');
         $table->string('recruitment', 1000)->default('設定されていません。');
