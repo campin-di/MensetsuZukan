@@ -91,9 +91,11 @@ class Hr_ScoringController extends Controller
         $interview->$questionCollumn = $questionId;
         $interview->$logicCollumn = $input['logic'. $index];
         $interview->$personalityCollumn = $input['personality'. $index];
-        $interview->$reviewCollumn = $input['review-'. $index];
         $interview->available = config('const.INTERVIEW.DONE');
       }
+      $interview->review_good = $input['review-good'];
+      $interview->review_more = $input['review-more'];
+      $interview->review_message = $input['review-message'];
       $interview->save();
 
       $stUser = User::find($interview->st_id);
