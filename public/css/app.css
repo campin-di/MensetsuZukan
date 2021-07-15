@@ -3411,6 +3411,7 @@ input[type=button].btn-block {
 .dropright,
 .dropdown,
 .dropleft {
+  text-align: end;
   position: relative;
 }
 
@@ -4590,6 +4591,7 @@ input[type=button].btn-block {
 }
 
 .navbar-nav .dropdown-menu {
+  text-align: center;
   position: static;
   float: none;
 }
