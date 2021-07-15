@@ -40,6 +40,19 @@
           </div>
         </div>
 
+        <div class="form-input-wrapper">
+          <label for="code" class="form-title">利用コード</label>
+          <div class="form-input">
+            <input id="code" type="code" class="form-control @error('code') is-invalid @enderror" name="code" placeholder="運営からコードを教えてもらってください。">
+
+            @error('code')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+          </div>
+        </div>
+
         @include('components.parts.button.form.next_button')
       </form>
     </div>

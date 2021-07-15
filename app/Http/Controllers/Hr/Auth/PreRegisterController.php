@@ -11,10 +11,25 @@ class PreRegisterController extends Controller
 {
   protected function validator(array $data)
   {
-      return Validator::make($data, [
-          'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-          'password' => ['required', 'string', 'min:8', 'confirmed'],
-      ]);
+    $rules = [
+      'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+      'password' => ['required', 'string', 'min:8', 'confirmed'],
+      'code' => ['required', 'string', 'in:M4n04t0u'],
+    ];
+
+    $messages = [
+      'code.in' => '利用コードが一致しません。',
+    ];
+
+    return Validator::make($data, $rules, $messages);
+    
+    /*
+    return Validator::make($data, [
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+        'code' => ['required', 'string', 'same:M4n04t0u'],
+    ]);
+    */
   }
 
   public function pre_check(Request $request){

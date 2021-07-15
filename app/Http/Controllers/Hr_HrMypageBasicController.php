@@ -50,18 +50,6 @@ class Hr_HrMypageBasicController extends Controller
 
     $input = $request->all();
 
-    //===== validator処理====================================
-    //================================================
-  /*
-    $validator = Validator::make($input, $this->validator);
-    if($validator->fails()){
-      return redirect()->action("MypageBasicController@show")
-        ->withInput()
-        ->withErrors($validator);
-    }
-  */
-    //================================================
-    //================================================
     //セッションに書き込む
     $request->session()->put("input", $input);
 
@@ -78,6 +66,9 @@ class Hr_HrMypageBasicController extends Controller
     }
 
     $inputArray = [];
+    if(isset($input['nickname'])){
+      $inputArray['ニックネーム'] = $input['nickname'];
+    }
     if(isset($input['password'])){
       $inputArray['パスワード'] = '********';
     }
@@ -103,6 +94,9 @@ class Hr_HrMypageBasicController extends Controller
     //=====処理内容====================================
     //================================================
     $user = HrUser::find(Auth::guard('hr')->id());
+    if(isset($input['nickname'])){
+      $user->nickname =  $input['nickname'];
+    }
     if(isset($input['password'])){
       $user->password = Hash::make($input['password']);
     }
