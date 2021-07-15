@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="firstview-register-wrapper">
-      <span class="firstview-register-upper">たった3分で完了！</span>
+      <span class="firstview-register-upper">無料＆3分で完了！</span>
       <a href="{{ route('register.choice') }}">
         <div class="firstview-register-button updown-btn">
           まずは会員登録する
@@ -289,7 +289,7 @@
 <div class="promotion-wrapper">
   <h1>新規会員登録はここから</h1>
   <div class="promotion">
-    <span>たった3分で完了！</span>
+    <span>無料＆3分で完了！</span>
     <a href="{{ route('register.choice') }}">
       <div class="promotion-button updown-btn">
         まずは会員登録する
@@ -300,8 +300,8 @@
 
 <div class="footer">
   <div class="flex">
-    <a href="#">利用規約</a>
-    <a href="#">プライバシーポリシー</a>
+    <h2><a href="{{ route('policy') }}"><span>利用規約</span></a></h2>
+    <h2><a href="{{ route('policy') }}"><span>プライバシーポリシー</span></a></h2>
   </div>
     Copyright © 2021 株式会社ぱむ Inc.All rights reserved
 </div>

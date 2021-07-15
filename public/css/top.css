@@ -934,10 +934,40 @@ img{
 
   /* === begin: "フッター" 部分 =================================================*/
   .footer{
-    margin: 0 calc(50% - 50vw);
+    margin: 60px calc(50% - 50vw);
+    padding-top: 50px;
     width: 100vw;
     left: 0;
+    background-color: #F5F5F5;
+    font-size: 14px;
   }
+  .footer .flex{
+    margin-bottom: 40px;
+  }
+  .footer .flex a{
+    font-size: 18px;
+  }
+
+ .footer h2 {
+    position: relative;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+ .footer h2:before {
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 5px;
+    content: '';
+    border-radius: 3px;
+  }
+  
+  .footer h2::before{
+    background: linear-gradient(to right, #7CC4FF, #9681FF);
+  }
+
   /* === end: "フッター" 部分 =================================================*/
 
 }

@@ -102,7 +102,7 @@
         <p>
           {{ $mainVideo['review_good'] }}
         </p>
-        <div>よかった点</div>
+        <div>もっと魅力が伝わる面接にするには？</div>
         <p>
           {{ $mainVideo['review_more'] }}
         </p>

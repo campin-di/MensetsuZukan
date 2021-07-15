@@ -158,7 +158,13 @@ Route::get('/admin/upload/form/confirm', 'UploadController@confirm')->name("form
 Route::post('/admin/upload/form/confirm', 'UploadController@send')->name("form.send");
 
 Route::get('/admin/upload/form/thanks', 'UploadController@complete')->name("form.complete");
-//===========================================
+/*=== 管理画面 関係 =============================================================*/
+
+/*=== start: プライバシーポリシー関係 =============================================================*/
+//プライバシーポリシーページ
+Route::get('/policy', 'PolicyController@index')->name('policy');
+/*=== end: プライバシーポリシー関係 =============================================================*/
+
 /*=== end:管理画面 関係 =========================================================*/
 
 

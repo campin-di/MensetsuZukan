@@ -176,12 +176,11 @@ use Illuminate\Support\Facades\Route;
 
     /*=== end:mypage関係 =========================================================*/
 
-    /*=== 人事マイページ関係 =============================================================*/
-    // to HrMypage
-    //Route::get('/hrMypage/hrMypage', 'Hr_HrMypageController@index')->name('hr.mypage');
+    /*=== start: プライバシーポリシー関係 =============================================================*/
+    //プライバシーポリシーページ
+    Route::get('/policy', 'PolicyController@hrIndex')->name('hr.policy');
+    /*=== end: プライバシーポリシー関係 =============================================================*/
 
-
-    /*=== end:人事マイページ関係 =========================================================*/
 
     // to 人事を探す(search) page
 //    Route::get('/interview/search', 'Hr_InterviewController@search')->name('hr.interview.search');
