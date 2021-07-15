@@ -13,6 +13,7 @@ use App\Models\Interview;
 use App\Models\Batting;
 use Illuminate\Support\Facades\Mail;
 
+use App\Common\GoogleSheetClass;
 use App\Common\MeetingClass;
 use App\Common\ReturnUserInformationArrayClass;
 
@@ -134,13 +135,13 @@ class St_ScheduleController extends Controller
       $created_meeting = $meeting->createMeeting($batting->api_user, $date, $timeKey);
 
     } else {
-      $newBatting = new Batting;
-      $newBatting->date = $date;
-      $newBatting->time = $timeKey;
-      $newBatting->api_user = 0;
-      $newBatting->save();
+      $batting = new Batting;
+      $batting->date = $date;
+      $batting->time = $timeKey;
+      $batting->api_user = 0;
+      $batting->save();
 
-      $created_meeting = $meeting->createMeeting($newBatting->api_user, $date, $timeKey);
+      $created_meeting = $meeting->createMeeting($batting->api_user, $date, $timeKey);
     }
 
     $interview = new Interview;
@@ -157,6 +158,40 @@ class St_ScheduleController extends Controller
     \DB::table('schedules')->where('id', $schedule->id)->update([
       $timeKey => 0,
     ]);
+
+    /*=== スプシに記入する処理 =================*/
+    $responsibility = '吉田';
+    if($batting->api_user != 0){
+      $responsibility = 'ゴダール';
+    }
+
+    $sheets = GoogleSheetClass::instance();
+    $sheet_id = '1QFSHSQxUnfzYkAg7L3XtaqeWd1zJFAael_xnYoc8Kmc';
+
+    $appointment = [
+      $interview->id,
+      $st->name. '('. $st->nickname. ')',
+      $hr->name. '('. $st->nickname. ')',
+      $hr->company,
+      $interview->date,
+      $interview->time,
+      $responsibility,
+      $interview->zoomUrl,
+      $interview->zoomId,
+      $interview->zoomPass,
+    ];
+
+    $values = new \Google_Service_Sheets_ValueRange();
+    $values->setValues([
+        'values' => $appointment
+    ]);
+    $params = ['valueInputOption' => 'USER_ENTERED'];
+    $sheets->spreadsheets_values->append(
+        $sheet_id,
+        '面接予定表!A4',
+        $values,
+        $params
+    );
 
     Mail::send('st/interview/schedule/mail/reservation', ['interview' => $interview, 'hr' => $hr, 'st' => $st],
       function ($message) use ($hr, $st){
