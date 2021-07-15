@@ -33,6 +33,19 @@
 			@csrf
 
 			<div class="form-input-wrapper">
+				<label for="nickname" class="form-title">ニックネーム</label>
+				<span id="edit_nickname">(編集)</span>
+				<div class="form-input">
+					<input id="nickname" type="nickname" class="form-control @error('nickname') is-invalid @enderror" name="nickname" value="{{ old('nickname') }}" disabled placeholder={{$userData->nickname}} autocomplete="nickname" autofocus>
+					@error('nickname')
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+					@enderror
+				</div>
+			</div>
+
+			<div class="form-input-wrapper">
 				<label for="password" class="form-title">パスワード</label>
 				<span id="edit_password">(編集)</span>
 				<div class="form-input">
@@ -48,5 +61,5 @@
 			@include('components.parts.button.form.next_button')
 		</form>
 	</div>
-	<script type="text/javascript" src="{{ asset('/js/hr/mypage/basic/form.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/js/st/mypage/basic/form.js') }}"></script>
 @endsection

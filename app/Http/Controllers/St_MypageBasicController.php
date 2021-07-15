@@ -49,19 +49,7 @@ class St_MypageBasicController extends Controller
   function post(Request $request){
 
     $input = $request->all();
-
-    //===== validator処理====================================
-    //================================================
-  /*
-    $validator = Validator::make($input, $this->validator);
-    if($validator->fails()){
-      return redirect()->action("St_MypageBasicController@show")
-        ->withInput()
-        ->withErrors($validator);
-    }
-  */
-    //================================================
-    //================================================
+    
     //セッションに書き込む
     $request->session()->put("input", $input);
 

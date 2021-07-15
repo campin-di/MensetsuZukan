@@ -8,6 +8,10 @@ use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Interview;
 use App\Models\Question;
+use App\Models\Batting;
+
+use Carbon\Carbon;
+use DateTime;
 
 class Hr_ScoringController extends Controller
 {
@@ -114,6 +118,15 @@ class Hr_ScoringController extends Controller
     }
 
     function complete(){
+
+    //昨日以前のbattingテーブルのデータを削除する
+    $yesterday = new DateTime('-1 day');
+    $targets = Batting::where('date', '<', $yesterday)->get();
+
+    foreach($targets as $target){
+      $target->delete();
+    }
+
       return view("hr/interview/scoring/form_complete");
     }
 }
