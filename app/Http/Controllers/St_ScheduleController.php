@@ -170,8 +170,8 @@ class St_ScheduleController extends Controller
 
     $appointment = [
       $interview->id,
-      $st->name. '('. $st->nickname. ')',
-      $hr->name. '('. $st->nickname. ')',
+      $st->name. '（'. $st->nickname. '）',
+      $hr->name. '（'. $hr->nickname. '）',
       $hr->company,
       $interview->date,
       $interview->time,
