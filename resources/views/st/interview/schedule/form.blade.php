@@ -17,18 +17,16 @@
           面接日程を下記から選択してください。
         </div>
 
-        @foreach($schedules as $schedule)
+        @foreach($scheduleCollection as $date => $timeArray)
           <div class="form-input-wrapper">
             <div class="form-input">
-              <select id="{{ $schedule->date }}" name="{{ $schedule->date }}" class="form-control" required>
-                <option value="">{{ $schedule->date }}</option>
+              <select id="{{ $date }}" name="{{ $date }}" class="form-control" required>
+                <option value="">{{ $date }}</option>
                 @foreach($timeArray as $key => $time)
-                  @if($schedule->$key == 1)
-                    <option value="{{ $schedule->date }}:{{ $key }}" @if(old('schedule') == "{{ $key }}{{ $time }}") selected @endif>{{ $schedule->date }}：{{ $time }}</option>
-                  @endif
+                  <option value="{{ $date }}:{{ $key }}" @if(old('date') == "{{ $date }}:{{ $key }}") selected @endif>{{ $date }}：{{ $time }}</option>
                 @endforeach
               </select>
-              <input type="hidden" name="hr_id" value="{{ $schedule->hr_id }}">
+              <input type="hidden" name="hr_id" value="{{ $hrUser->id }}">
             </div>
           </div>
         @endforeach

@@ -16,5 +16,11 @@ return [
         'AVAILABLE' => '1',
         'UNSCORE' => '2',
         'DONE' => '-1',
+    ],
+    'TIME' => [
+        'ZERO' => '0',
+        'TO_HARF' => '1',
+        'FROM_HARF' => '2',
+        'BOTH' => '3',
     ]
 ];

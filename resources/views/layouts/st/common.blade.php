@@ -42,10 +42,9 @@
     <!-- end:JS -->
 
     <!-- ファビコン -->
-    <link rel="icon" href="{{ asset('/img/logo/favicon.ico') }}">
-    <!-- ホーム画面に追加したときのアイコン -->
-    <link rel="apple-touch-icon" href="{{ asset('/img/logo/apple-touch-icon.png') }}" sizes="180x180">
-    <link rel="shortcut icon" href="{{ asset('/img/logo/favicon.ico') }}">    <!-- Windows用アイコン -->
+    <link rel="icon" href="{{ asset('/img/logo/favicon.ico') }}" id="favicon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/img/logo/apple-touch-icon.png') }}">
+    
     <!--
     <meta name="application-name" content="{サイト名}"/>
     <meta name="msapplication-square70x70logo" content="small.jpg"/>

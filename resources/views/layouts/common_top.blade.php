@@ -17,12 +17,10 @@
 
     <!-- begin:ODP -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:site_name" content="">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
-    <meta property="og:app_id" content="">
+    <meta property="og:title" content="面接図鑑|トップページ">
+    <meta property="og:description" content="就活において、避けては通れない面接。面接図鑑は、そんな面接に対する過度な不安を払拭するためのサービスです。実際の人事と面接の場数をこなせるだけでなく、採点とアドバイス付きで、面接力をどんどんアップデート。他の就活生の面接も見放題なので、「受かる」面接を徹底解剖できます。">
+    <meta property="og:site_name" content="面接図鑑">
+    <meta property="og:url" content="https://mensetsu-zukan.online/">
     <!-- end:ODP -->
 
     <!-- bootstrap
@@ -39,10 +37,8 @@
     <!-- end:JS -->
 
     <!-- ファビコン -->
-    <link rel="icon" href="{{ asset('/img/logo/favicon.ico') }}">
-    <!-- ホーム画面に追加したときのアイコン -->
-    <link rel="shortcut icon" href="{{ asset('/img/logo/favicon.ico') }}">
-    <link rel="apple-touch-icon" href="{{ asset('/img/logo/apple-touch-icon.png') }}" sizes="180x180">
+    <link rel="icon" href="{{ asset('/img/logo/favicon.ico') }}" id="favicon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/img/logo/apple-touch-icon.png') }}">
     <!-- Windows用アイコン -->
     <!--
     <meta name="application-name" content="{サイト名}"/>

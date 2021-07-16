@@ -222,6 +222,43 @@ class ReturnUserInformationArrayClass
     public static function returnTimeArray()
     {
       $timeArray = [
+        'nine' => "9:00 - 9:30",
+        'nine_h' => "9:30 - 10:00",
+        'ten' => "10:00 - 10:30",
+        'ten_h' => "10:30 - 11:00",
+        'eleven' => "11:00 - 11:30",
+        'eleven_h' => "11:30 - 12:00",
+        'twelve' => "12:00 - 12:30",
+        'twelve_h' => "12:30 - 13:00",
+        'thirteen' => "13:00 - 13:30",
+        'thirteen_h' => "13:30 - 14:00",
+        'fourteen' => "14:00 - 14:30",
+        'fourteen_h' => "14:30 - 15:00",
+        'fifteen' => "15:00 - 15:30",
+        'fifteen_h' => "15:30 - 16:00",
+        'sixteen' => "16:00 - 16:30",
+        'sixteen_h' => "16:30 - 17:00",
+        'seventeen' => "17:00 - 17:30",
+        'seventeen_h' => "17:30 - 18:00",
+        'eighteen' => "18:00 - 18:30",
+        'eighteen_h' => "18:30 - 19:00",
+        'nineteen' => "19:00 - 19:30",
+        'nineteen_h' => "19:30 - 20:00",
+        'twenty' => "20:00 - 20:30",
+        'twenty_h' => "20:30 - 21:00",
+        'twentyone' => "21:00 - 21:30",
+        'twentyone_h' => "21:30 - 22:00",
+        'twentytwo' => "22:00 - 22:30",
+        'twentytwo_h' => "22:30 - 23:00",
+        'twentythree' => "23:00 - 23:30",
+        'twentythree_h' => "23:30 - 24:00",
+      ];
+      return $timeArray;
+    }
+
+    public static function returnTimeColumns()
+    {
+      $timeColumns = [
         'nine' => "9:00 - 10:00",
         'ten' => "10:00 - 11:00",
         'eleven' => "11:00 - 12:00",
@@ -238,7 +275,7 @@ class ReturnUserInformationArrayClass
         'twentytwo' => "22:00 - 23:00",
         'twentythree' => "23:00 - 24:00",
       ];
-      return $timeArray;
+      return $timeColumns;
     }
 
     public static function returnStartTimeArray()
