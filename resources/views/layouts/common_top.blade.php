@@ -12,7 +12,7 @@
     
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>面接図鑑｜就活生の面接が見放題！</title>
-    <meta name="description" content="面接に対する過度な不安を払拭するためのサービスです。実際の人事と面接の場数をこなせるだけでなく、採点とフィードバック付きで、面接力をどんどんアップデート。他の就活生の面接も見放題なので、「受かる」面接を徹底解剖できます。">
+    <meta name="description" content="就活において、避けては通れない面接。面接図鑑は、そんな面接に対する過度な不安を払拭するためのサービスです。実際の人事と面接の場数をこなせるだけでなく、採点とアドバイス付きで、面接力をどんどんアップデート。他の就活生の面接も見放題なので、「受かる」面接を徹底解剖できます。">
     <meta name="viewport" content="width=device-width">
 
     <!-- begin:ODP -->
