@@ -61,25 +61,57 @@ class Hr_ScheduleController extends Controller
     //=====処理内容====================================
     $userId = Auth::guard('hr')->id();
     $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
+    $timeColumns = ReturnUserInformationArrayClass::returnTimeColumns();
 
     $target = Schedule::where('hr_id', $userId)->where('date', $input['date']);
     if($target->exists()){
       $schedule = $target->first();
-      foreach ($input['time'] as $column) {
-        $schedule->$column = 1;
+      foreach ($input['time'] as $time) {
+        $time = explode('_', $time);
+
+        $time_key = $time[0];
+        if(array_key_exists(1, $time) && $time[1] == 'h'){
+          if($schedule->$time_key % 2 == 1){
+            $schedule->$time_key = 3;
+          } else{
+            $schedule->$time_key = 2;
+          }
+        } else {
+          if($schedule->$time_key >= 2){
+            $schedule->$time_key = 3;
+          } else{
+            $schedule->$time_key = 1;
+          }
+        }
       }
     } else{
       $schedule = new Schedule;
       $schedule->hr_id = $userId;
       $schedule->date = $input['date'];
-      foreach ($timeArray as $key => $time) {
-        $schedule->$key = IsBoolClass::IsBool($key, $input['time']);
+      foreach ($timeColumns as $key => $column) {
+        if(in_array($key, $input['time'])){
+          $schedule->$key = 1;
+        } else{
+          $schedule->$key = 0;
+        }
+      }
+
+      foreach ($input['time'] as $time) {
+        $time = explode('_', $time);
+
+        $time_key = $time[0];
+        if(array_key_exists(1, $time) && $time[1] == 'h'){
+          if($schedule->$time_key % 2 == 1){
+            $schedule->$time_key = 3;
+          } else {
+            $schedule->$time_key = 2;
+          }
+        }
       }
     }
     $schedule->save();
 
     //================================================
-
     //セッションを空にする
     $request->session()->forget("form_input");
 

@@ -25,6 +25,9 @@ class St_ScheduleController extends Controller
 
     $hrUser = HrUser::where('id', $hr_id)->select('id', 'nickname', 'company', 'image_path', 'industry')->first();
     $scheduleData = Schedule::orderBy('date', 'asc')->where('hr_id', $hr_id);
+    
+    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
+    $timeColumns = ReturnUserInformationArrayClass::returnTimeColumns();
 
     if(!$scheduleData->exists()){
       $is_schedule = 0;
@@ -34,16 +37,33 @@ class St_ScheduleController extends Controller
       ]);
     } else {
       $schedules = $scheduleData->get();
+
+
+      $scheduleCollection = collect([]);
+      foreach($schedules as $schedule){
+        $tmpArray = [];
+        foreach($timeColumns as $key => $item){
+          if($schedule->$key == 1){
+            $tmpArray += [$key => $timeArray[$key]];
+          } elseif($schedule->$key == 2){
+            $tmpArray += [$key.'_h' => $timeArray[$key.'_h']];
+          } elseif($schedule->$key == 3){
+            $tmpArray += [$key => $timeArray[$key]];
+            $tmpArray += [$key.'_h' => $timeArray[$key.'_h']];
+          }
+        }
+
+          $scheduleCollection = $scheduleCollection->put($schedule->date, $tmpArray);
+      }
       $is_schedule = 1;
     }
-
-    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
 
     return view('st/interview/schedule/form', [
       'hrUser' => $hrUser,
       'schedules' => $schedules,
       'timeArray' => $timeArray,
       'is_schedule' => $is_schedule,
+      'scheduleCollection' => $scheduleCollection,
     ]);
   }
 
@@ -87,18 +107,6 @@ class St_ScheduleController extends Controller
   function send(Request $request){
     //セッションから値を取り出す
     $input = $request->session()->get("form_input");
-    foreach ($input as $key => $schedule) {
-      $isDateFormat = preg_match('/\A[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}\z/', $key);
-      if($isDateFormat && !is_null($schedule)) {
-        $explode = explode(':', $schedule);
-        $date = $explode[0];
-        $timeKey = $explode[1];
-      }
-    }
-
-    $schedule = Schedule::where('hr_id', $input['hr_id'])->where('date', $date)->get();
-    $schedule = $schedule[0];
-
     //戻るボタンが押された時
     if($request->has("back")){
       return redirect()->action("St_InterviewController@search")->withInput($input);
@@ -108,6 +116,20 @@ class St_ScheduleController extends Controller
     if(!$input){
       return redirect()->action("St_InterviewController@search");
     }
+    
+    foreach ($input as $key => $schedule) {
+      $isDateFormat = preg_match('/\A[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}\z/', $key);
+      if($isDateFormat && !is_null($schedule)) {
+        $explode = explode(':', $schedule);
+        $date = $explode[0];
+        $timeKey = $explode[1];
+
+        $dbKey = explode('_', $explode[1])[0];
+      }
+    }
+
+    $schedule = Schedule::where('hr_id', $input['hr_id'])->where('date', $date)->get();
+    $schedule = $schedule[0];
 
     //=====処理内容====================================
     $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
@@ -128,7 +150,7 @@ class St_ScheduleController extends Controller
         $targetSchedules = Schedule::where('date', $batting->date)->get();
         foreach ($targetSchedules as $eachSchedule) {
           \DB::table('schedules')->where('id', $eachSchedule->id)->update([
-            $timeKey => 0,
+            $dbKey => 0,
           ]);
         }
       }
@@ -156,7 +178,7 @@ class St_ScheduleController extends Controller
     $interview->save();
 
     \DB::table('schedules')->where('id', $schedule->id)->update([
-      $timeKey => 0,
+      $dbKey => 0,
     ]);
 
     /*=== スプシに記入する処理 =================*/
