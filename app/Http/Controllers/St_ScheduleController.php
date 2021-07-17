@@ -210,7 +210,7 @@ class St_ScheduleController extends Controller
     $params = ['valueInputOption' => 'USER_ENTERED'];
     $sheets->spreadsheets_values->append(
         $sheet_id,
-        '面接予定表!A4',
+        '面接予定表!B4',
         $values,
         $params
     );

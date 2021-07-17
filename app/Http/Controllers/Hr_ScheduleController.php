@@ -120,7 +120,9 @@ class Hr_ScheduleController extends Controller
 
   public function check()
   {
+    $timeColumns = ReturnUserInformationArrayClass::returnTimeColumns();
     $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
+
 
     $userId = Auth::guard('hr')->id();
     $addTimeArray = Schedule::where('hr_id', $userId)->orderBy('date', 'asc')->get();
@@ -129,9 +131,16 @@ class Hr_ScheduleController extends Controller
     
     foreach($addTimeArray as $addTime){
       $dayArray = [];
-      foreach($timeArray as $key => $val){
-        if($addTime->$key == 1){
-          $dayArray += [$key => $val]; 
+      foreach($timeColumns as $key => $val){
+        if($addTime->$key == 0){
+          continue;
+        } elseif($addTime->$key == 1) {
+          $dayArray += [$key => $timeArray[$key]];
+        } elseif($addTime->$key == 2) {
+          $dayArray += [$key.'_h' => $timeArray[$key.'_h']];
+        } else {
+          $dayArray += [$key => $timeArray[$key]];
+          $dayArray += [$key.'_h' => $timeArray[$key.'_h']];
         }
       }
 
@@ -142,7 +151,6 @@ class Hr_ScheduleController extends Controller
 
   public function delete(Request $request)
   {
-
     $input = $request->all();
     $request->session()->put("form_input", $input);
 
@@ -182,7 +190,7 @@ class Hr_ScheduleController extends Controller
   function deleteSend(Request $request){
     //セッションから値を取り出す
     $input = $request->session()->get("form_input");
-
+    
     //戻るボタンが押された時
     if($request->has("back")){
       return redirect()->action("Hr_ScheduleController@check")
@@ -199,15 +207,32 @@ class Hr_ScheduleController extends Controller
     $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
 
     $scheduleArray = [];
-    foreach($input as $key => $array){
-      if($key == 'schedule'){
+    foreach($input as $inputKey => $array){
+      if($inputKey == 'schedule'){
         foreach($array as $schedule){
           $dates = explode(':', $schedule);
           $date = $dates[0];
-          $hour = $dates[1];
-        
+          $key = $dates[1];
+
+          $tmp = explode('_', $key);
+          $dbKey = $tmp[0];
+
+          // _h がない時flagは1
+          $flag = FALSE;
+          if(array_key_exists(1, $tmp)){
+            $flag = TRUE;
+          }
+          
           $target = Schedule::where('hr_id', $userId)->where('date', $date)->first();
-          $target->$hour = 0;
+          if($target->$dbKey < 3){
+            $target->$dbKey = 0;
+          } else {
+            if($flag == FALSE) {
+              $target->$dbKey = 2;
+            } else {
+              $target->$dbKey = 1;
+            }
+          }
           $target->save();
         }
       }
