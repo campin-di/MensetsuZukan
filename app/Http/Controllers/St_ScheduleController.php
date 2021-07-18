@@ -201,6 +201,7 @@ class St_ScheduleController extends Controller
       $interview->zoomUrl,
       $interview->zoomId,
       $interview->zoomPass,
+      0
     ];
 
     $values = new \Google_Service_Sheets_ValueRange();
@@ -210,7 +211,7 @@ class St_ScheduleController extends Controller
     $params = ['valueInputOption' => 'USER_ENTERED'];
     $sheets->spreadsheets_values->append(
         $sheet_id,
-        '面接予定表!B4',
+        '面接予定表!A4',
         $values,
         $params
     );

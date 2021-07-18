@@ -18,7 +18,7 @@
     <!-- begin:ODP -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="面接図鑑|トップページ">
-    <meta property="og:description" content="就活において、避けては通れない面接。面接図鑑は、そんな面接に対する過度な不安を払拭するためのサービスです。実際の人事と面接の場数をこなせるだけでなく、採点とアドバイス付きで、面接力をどんどんアップデート。他の就活生の面接も見放題なので、「受かる」面接を徹底解剖できます。">
+    <meta property="og:description" content="就活において避けては通れない面接。面接図鑑は、そんな面接に対する過度な不安を払拭するためのサービスです。実際の人事と面接の場数をこなせるだけでなく、採点とアドバイス付きで、面接力をどんどんアップデート。他の就活生の面接も見放題なので「受かる」面接を徹底解剖できます。">
     <meta property="og:site_name" content="面接図鑑">
     <meta property="og:url" content="https://mensetsu-zukan.online/">
     <!-- end:ODP -->

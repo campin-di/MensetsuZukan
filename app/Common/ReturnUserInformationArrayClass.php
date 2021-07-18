@@ -222,6 +222,10 @@ class ReturnUserInformationArrayClass
     public static function returnTimeArray()
     {
       $timeArray = [
+        'seven' => "7:00 - 7:30",
+        'seven_h' => "7:30 - 8:00",
+        'eight' => "8:00 - 8:30",
+        'eight_h' => "8:30 - 9:00",
         'nine' => "9:00 - 9:30",
         'nine_h' => "9:30 - 10:00",
         'ten' => "10:00 - 10:30",
@@ -259,6 +263,8 @@ class ReturnUserInformationArrayClass
     public static function returnTimeColumns()
     {
       $timeColumns = [
+        'seven' => "7:00 - 8:00",
+        'eight' => "8:00 - 9:00",
         'nine' => "9:00 - 10:00",
         'ten' => "10:00 - 11:00",
         'eleven' => "11:00 - 12:00",
