@@ -4,6 +4,7 @@ set:
 	composer install
 	mkdir -p vendor/laravel/ui/auth-backend/backup
 	mkdir storage/app/json/
+	cp -r ../MensetsuZukan2/storage/app/public/uploads/ storage/app/public/
 	cp ../common/storage/mensetsuzukan-a811af6e10b1.json storage/app/json/
 	mv vendor/laravel/ui/auth-backend/AuthenticatesUsers.php vendor/laravel/ui/auth-backend/backup/
 	mv vendor/laravel/ui/auth-backend/RegistersUsers.php vendor/laravel/ui/auth-backend/backup/
