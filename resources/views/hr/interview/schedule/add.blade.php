@@ -25,9 +25,10 @@
     @include('components.parts.button.form.next_button')
   </form>
 
-  @include('components.parts.button.fixed_button',['routeName' => 'hr.interview.schedule.check', 'var'=>'', 'msg' => '', 'text' => '面接可能日を確認・変更する'])
+  <div id="delete-date">
+    @include('components.parts.button.fixed_button',['routeName' => 'hr.interview.schedule.check', 'var'=>'', 'msg' => '', 'text' => '面接可能日を確認・変更する'])
+  </div>
 
 </div>
-
 <script type="text/javascript" src="{{ asset('/js/hr/interview/schedule/add.js') }}"></script>
 @endsection

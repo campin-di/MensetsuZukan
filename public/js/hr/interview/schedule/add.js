@@ -12,6 +12,9 @@ input_date.addEventListener("input", function(){
   elements.forEach(element => {
     element.style.display = 'block';
   });
+
+  let deleteDate = document.getElementById('delete-date');
+  deleteDate.style.display = 'none';
 });
 
 let checkboxs = document.getElementsByClassName('check');
@@ -32,3 +35,5 @@ checkboxs.forEach(checkbox => {
     }
   });
 });
+
+
