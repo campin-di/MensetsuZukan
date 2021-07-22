@@ -144,6 +144,11 @@ Route::get('/interview/schedule/{id}', 'St_ScheduleController@schedule')->name('
 /*=== 管理画面 関係 =============================================================*/
 Route::get('/admin', 'AdminController@index')->name('admin');
 
+//動画編集用のコマンドを作成するフォームへのルーティング
+Route::get('/admin/comand', 'ComandController@index')->name('comand');
+//動画編集用のコマンドを作成するルーティング
+Route::get('/admin/comand/trim', 'ComandController@trim')->name('trim');
+
 //サービス内に動画をアップロードするルーティング
 Route::get('/admin/upload', 'UploadController@show')->name('upload');
 //サムネイル画像をアップロードするフォームへ
