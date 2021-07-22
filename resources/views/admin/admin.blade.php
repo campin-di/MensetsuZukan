@@ -3,9 +3,12 @@
 @extends('layouts.st.common')
 @section('content')
 <div class="container table-responsive">
-		<div class="upload-wrapper">
+		<div class="upload-wrapper flex">
 			<div class="upload">
 				<a href="{{route('upload')}}">新しく動画をアップロードする</a>
+			</div>
+			<div class="upload">
+				<a href="{{route('trim')}}">コマンドを作成する</a>
 			</div>
 		</div>
 		<table class="table table-hover table-sm">
