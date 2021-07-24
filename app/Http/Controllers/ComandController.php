@@ -42,6 +42,7 @@ class ComandController extends Controller
             $cmd = [
                 'make folder name="' . $folderName .'"',
                 'make edit name="'. $folderName .'" st1="' . $question1_start . '" end1="'. $question1_while. '" st2="'. $question2_start .'" end2="'. $question2_while .'" st3="'. $question3_start .'" end3="' . $question3_while. '"',
+                'make done name="'. $folderName .'"',
             ];
             $values->setValues([
                 'values' => $cmd

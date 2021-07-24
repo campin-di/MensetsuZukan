@@ -30,7 +30,7 @@
           <a class="item" href="{{ route('interview.detail', $interviewReservation['id']) }}">
             <div class="left_child">
               <img class="item_img" src="{{ asset($interviewReservation['imagePath']) }}" alt="">
-              <span class="item_name">{{ $interviewReservation['name'] }}</span>
+              <span class="item_name">{{ $interviewReservation['nickname'] }}</span>
             </div>
             <div class="right_child item_date">
               {{ $interviewReservation['date'] }}
