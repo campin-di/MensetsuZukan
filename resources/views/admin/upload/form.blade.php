@@ -18,19 +18,15 @@
 		@csrf
 		<table>
 			<tr>
-				<th height="75px">対象ユーザー</th>
+				<th height="75px">Vimeoの学生用動画ID</th>
 				<th class="right-block">
-					<select name="type">
-						<option value=""> 選択してください。</option>
-		        <option value="st"> 学生</option>
-		        <option value="hr"> 人事</option>
-		      </select>
+					<input type="text" name="st_vimeo_id" class="form-control" placeholder="IDを入力してください。">
 				</th>
 			</tr>
 			<tr>
-				<th height="75px">Vimeoの動画ID</th>
+				<th height="75px">Vimeoの人事用動画ID</th>
 				<th class="right-block">
-					<input type="text" name="vimeo_id" class="form-control" placeholder="IDを入力してください。">
+					<input type="text" name="hr_vimeo_id" class="form-control" placeholder="IDを入力してください。">
 				</th>
 			</tr>
 			<!--

@@ -105,23 +105,37 @@ class UploadController extends Controller
         $questionLogic = 'question_'. $i . '_logic';
         $questionPersonality = 'question_'. $i . '_personality';
         $questionScore = 'question_'. $i . '_score';
-        $questionReview = 'question_'. $i . '_review';
         $startSecond = 'start_time_'. $i;
 
         $question = Question::find($interview->$questionId)->name;
-        if($input['type'] == 'hr'){
-          $title = $stData->name . "さんの「". $question . "」に対する答え方";
-          $type = 1;
-        } else {
-          $title = $stData->nickname . "さんの「". $question . "」に対する答え方";
-          $type = 0;
-        }
+        $title = $stData->nickname . "さんの「". $question . "」に対する答え方";
+        $type = 0;
+
 
         $video = new Video;
         $video->title = $title;
         //$video->thumbnail_src = $input["thumbnail_src"];
-        $video->vimeo_src = 'https://player.vimeo.com/video/' . $input["vimeo_id"] . '#t=' . $input[$startSecond].'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
-        $video->vimeo_id = $input["vimeo_id"];
+        $video->vimeo_src = 'https://player.vimeo.com/video/' . $input["st_vimeo_id"] . '#t=' . $input[$startSecond].'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
+        $video->vimeo_id = $input["st_vimeo_id"];
+        $video->question_id = $interview->$questionId;
+        $video->st_id = $interview->st_id;
+        $video->hr_id = $interview->hr_id;
+        $video->logic = $interview->$questionLogic;
+        $video->personality = $interview->$questionPersonality;
+        $video->score = $score;
+        $video->review_good = $interview->review_good;
+        $video->review_more = $interview->review_more;
+        $video->review_message = $interview->review_message;
+        $video->views = 0;
+        $video->good = 0;
+        $video->type = $type;
+        $video->save();
+
+        $video = new Video;
+        $video->title = $title;
+        //$video->thumbnail_src = $input["thumbnail_src"];
+        $video->vimeo_src = 'https://player.vimeo.com/video/' . $input["hr_vimeo_id"] . '#t=' . $input[$startSecond].'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
+        $video->vimeo_id = $input["hr_vimeo_id"];
         $video->question_id = $interview->$questionId;
         $video->st_id = $interview->st_id;
         $video->hr_id = $interview->hr_id;
