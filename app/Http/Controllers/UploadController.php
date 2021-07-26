@@ -97,20 +97,17 @@ class UploadController extends Controller
         }else{
           $weight = 4;
         }
-        $score += ($interview->$questionLogic * $weight) + ($interview->$questionPersonality * $weight);
+        $score += (($interview->$questionLogic * $weight) + ($interview->$questionPersonality * $weight));
       }
       
       for ($i=1; $i <=3 ; $i++) {
         $questionId = 'question_'. $i . '_id';
         $questionLogic = 'question_'. $i . '_logic';
         $questionPersonality = 'question_'. $i . '_personality';
-        $questionScore = 'question_'. $i . '_score';
         $startSecond = 'start_time_'. $i;
 
         $question = Question::find($interview->$questionId)->name;
         $title = $stData->nickname . "さんの「". $question . "」に対する答え方";
-        $type = 0;
-
 
         $video = new Video;
         $video->title = $title;
@@ -128,7 +125,7 @@ class UploadController extends Controller
         $video->review_message = $interview->review_message;
         $video->views = 0;
         $video->good = 0;
-        $video->type = $type;
+        $video->type = 0;
         $video->save();
 
         $video = new Video;
@@ -147,7 +144,7 @@ class UploadController extends Controller
         $video->review_message = $interview->review_message;
         $video->views = 0;
         $video->good = 0;
-        $video->type = $type;
+        $video->type = 1;
         $video->save();
       }
 
