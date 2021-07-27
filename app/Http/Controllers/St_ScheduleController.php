@@ -25,9 +25,14 @@ class St_ScheduleController extends Controller
 
     $hrUser = HrUser::where('id', $hr_id)->select('id', 'nickname', 'company', 'image_path', 'industry')->first();
     $scheduleData = Schedule::orderBy('date', 'asc')->where('hr_id', $hr_id);
-    
+
     $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
     $timeColumns = ReturnUserInformationArrayClass::returnTimeColumns();
+    
+    $tommorow = date('Y-m-d', strtotime('+1 day'));
+    $scheduleData->where('date', $tommorow)->delete();
+
+    $scheduleData = Schedule::orderBy('date', 'asc')->where('hr_id', $hr_id);
 
     if(!$scheduleData->exists()){
       $is_schedule = 0;
@@ -37,7 +42,6 @@ class St_ScheduleController extends Controller
       ]);
     } else {
       $schedules = $scheduleData->get();
-
 
       $scheduleCollection = collect([]);
       foreach($schedules as $schedule){
