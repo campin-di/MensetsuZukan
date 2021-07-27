@@ -98,17 +98,17 @@
         {{ $mainVideo['hrNickname'] }}
       </a>
       <div>よかった点</div>
-        <p>
-          {{ $mainVideo['review_good'] }}
-        </p>
-        <div>よかった点</div>
-        <p>
-          {{ $mainVideo['review_more'] }}
-        </p>
-        <div>学生へひとこと</div>
-        <p>
-          {{ $mainVideo['review_message'] }}
-        </p>
+      <p>
+        {{ $mainVideo['review_good'] }}
+      </p>
+      <div>もっと魅力が伝わる面接にするには？</div>
+      <p>
+        {{ $mainVideo['review_more'] }}
+      </p>
+      <div>学生へひとこと</div>
+      <p>
+        {{ $mainVideo['review_message'] }}
+      </p>
     </div>
   </div>
 </div>
