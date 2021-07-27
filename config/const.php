@@ -22,5 +22,9 @@ return [
         'TO_HARF' => '1',
         'FROM_HARF' => '2',
         'BOTH' => '3',
+    ],
+    'STHR' => [
+        'ST' => '0',
+        'HR' => '1',
     ]
 ];

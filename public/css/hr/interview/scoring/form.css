@@ -174,8 +174,18 @@ ol.evaluation-personality li:before{
   padding: 10px;
   visibility: visible;
 }
-
 /*=== end: アコーディオン基準 部分 =================================*/
+.review{
+  margin: 50px auto;
+}
+.review textarea{
+  width: 90%;
+  margin: 10px auto;
+  padding: 15px 5px;
+  font-size: 14px;
+  height: 150px;
+  border: solid 2px #ADDAFF;
+}
 
 /*=== end: 採点基準 部分 =================================*/
 
@@ -400,8 +410,13 @@ form label{
   }
 
   /* ===  start:折りたたみ部分 === */
-  
-
+  .review textarea{ 
+    width: 80%;
+    margin: 15px auto;
+    padding: 15px;
+    font-size: 16px;
+    height: 150px;
+  }
   /*=== end: 採点基準 部分 =================================*/
 
   .content {
