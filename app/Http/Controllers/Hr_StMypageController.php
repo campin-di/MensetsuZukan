@@ -17,7 +17,7 @@ class Hr_StMypageController extends Controller
   {
     $userData = User::find($stId);
 
-    $pastVideos = Video::where('st_id', $stId)->get();
+    $pastVideos = Video::where('st_id', $stId)->where('type', config('const.STHR.HR'))->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
     return view('hr/stpage/stpage', [

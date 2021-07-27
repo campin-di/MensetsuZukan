@@ -14,7 +14,7 @@
     position: relative;
     width: 100%;
     padding: 20px 0;
-    background-color: #000;
+    background: linear-gradient(#7CC4FF, #9681FF);
 }
 .video-thumbnail:before {
     content:"";

@@ -46,7 +46,7 @@ class St_HomeController extends Controller
       array_push($questions, $question->name);
     }
 
-    $videos = Video::latest()->where('type', 0)->get();
+    $videos = Video::latest()->where('type', config('const.STHR.ST'))->get();
     $videosCollection = VideoDisplayClass::VideoDisplay($videos);
 
     return view('st.home',[
