@@ -33,7 +33,7 @@
               <span class="item_name">{{ $interviewReservation['nickname'] }}</span>
             </div>
             <div class="right_child item_date">
-              {{ $interviewReservation['date'] }}
+              {{ $interviewReservation['date'] }}：{{ $interviewReservation['time'] }}
             </div>
           </a>
         </li>

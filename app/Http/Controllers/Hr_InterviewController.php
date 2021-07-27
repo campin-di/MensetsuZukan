@@ -23,15 +23,15 @@ class Hr_InterviewController extends Controller
 
     $now = new Carbon('now', 'Asia/Tokyo');
 
+    $flag = config('const.INTERVIEW.AVAILABLE');
     //もし面接時間を30分すぎていたら、interview->availableを2に設定する。
     if($now->min($startedInterview) == $startedInterview) {
       \DB::table('interviews')->where('id', $id)->update([
         'available' => config('const.INTERVIEW.UNSCORE'),
-        'url' => 'done',
+        'zoomUrl' => 'done',
       ]);
+      $flag = config('const.INTERVIEW.UNSCORE');
     }
-
-    $flag = $interviewInfo->available;
 
     return view('hr/interview/detail', [
       'interviewInfo' => $interviewInfo,
