@@ -24,7 +24,7 @@
             <span class="item_name">{{ $interviewReservation['name'] }}</span>
           </div>
           <div class="right_child item_date">
-            {{ $interviewReservation['date'] }}
+            {{ $interviewReservation['date'] }}：{{ $interviewReservation['date'] }}
           </div>
         </a>
       </li>

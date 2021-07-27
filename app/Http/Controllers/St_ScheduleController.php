@@ -57,7 +57,7 @@ class St_ScheduleController extends Controller
           }
         }
 
-          $scheduleCollection = $scheduleCollection->put($schedule->date, $tmpArray);
+        $scheduleCollection = $scheduleCollection->put($schedule->date, $tmpArray);
       }
       $is_schedule = 1;
     }

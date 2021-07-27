@@ -49,6 +49,14 @@
       所定の時間に「面接を開始」ボタンから、面接を開始してください。
     </div>
   </div>
+  
+  @if($flag == 2)
+    <div class="button-wrapper uppest">
+      <button type="submit">
+        <a href="{{ route('hr.interview.scoring.form', $interviewInfo->id) }}">採点を行う</a>
+      </button>
+    </div>
+  @else
 
   <div class="attention-wrapper">
     <h2>注意事項</h2>
@@ -60,15 +68,6 @@
     </ul>
   </div>
 
-  
-
-  @if($flag == 2)
-    <div class="button-wrapper uppest">
-      <button type="submit">
-        <a href="{{ route('hr.interview.scoring.form', $interviewInfo->id) }}">面接が終了した</a>
-      </button>
-    </div>
-  @else
   <div class="button-wrapper">
     <a href="{{ route('hr.interview.pre', $interviewInfo->id) }}">
       <button type="submit">

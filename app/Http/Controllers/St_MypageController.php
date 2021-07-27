@@ -31,16 +31,24 @@ class St_MypageController extends Controller
     $pastVideos = Video::where('st_id', $userId)->where('type', config('const.STHR.HR'))->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
-    $interviewReservations = Interview::orderBy('date', 'asc')->where('available', '!=', -1)->where('st_id', $userId)->with('hr_user:id,nickname,image_path,industry')->select('id', 'hr_id', 'date', 'zoomUrl')->get();
+    $interviewReservations = Interview::orderBy('date', 'asc')->where('available', '!=', -1)->where('st_id', $userId)->with('hr_user:id,nickname,image_path,industry')->select('id', 'hr_id', 'date', 'time', 'zoomUrl')->get();
 
     $interviewReservationsCollection = collect();
     foreach ($interviewReservations as $interviewReservation) {
+      $dateArray = explode('-', $interviewReservation->date);
+
+      $month = $dateArray[1];
+      if((str_split($dateArray[1])[0] == 0)){
+        $month = str_split($dateArray[1])[1];
+      }
+      
       $interviewReservationsCollection = $interviewReservationsCollection->concat([
         [
           'id' => $interviewReservation->id,
           'nickname' => $interviewReservation->hr_user->nickname,
           'imagePath' => $interviewReservation->hr_user->image_path,
-          'date' => $interviewReservation->date,
+          'date' => $month.'月'.$dateArray[2].'日',
+          'time' => $interviewReservation->time,
         ],
       ]);
     }
