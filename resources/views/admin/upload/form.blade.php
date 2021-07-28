@@ -45,21 +45,21 @@
 			</tr>
 
 			<tr>
-				<th height="75px">1番目の質問の開始時間（s）</th>
+				<th height="75px">1番目の質問の開始時間</th>
 				<th class="right-block">
-					<input type="number" name="start_time_1" class="form-control" placeholder="秒に変換して入力してください。">
+           	     <input type="time" name="question1_start" size="30" maxlength="20" required>
 				</th>
 			</tr>
 			<tr>
-				<th height="75px">2番目の質問の開始時間（s）</th>
+				<th height="75px">2番目の質問の開始時間</th>
 				<th class="right-block">
-					<input type="number" name="start_time_2" class="form-control" placeholder="秒に変換して入力してください。">
+            	    <input type="time" name="question2_start" size="30" maxlength="20" required>
 				</th>
 			</tr>
 			<tr>
-				<th height="75px">3番目の質問の開始時間（s）</th>
+				<th height="75px">3番目の質問の開始時間</th>
 				<th class="right-block">
-					<input type="number" name="start_time_3" class="form-control" placeholder="秒に変換して入力してください。">
+         	       <input type="time" name="question3_start" size="30" maxlength="20" required>
 				</th>
 			</tr>
 		</table>

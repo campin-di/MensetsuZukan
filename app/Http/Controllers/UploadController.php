@@ -17,36 +17,12 @@ use Validator;
 
 class UploadController extends Controller
 {
-    private $formItems = ["name", "title", "body"];
-
-    private $validator = [
-      /*
-      "name" => "required|string|max:100",
-      "title" => "required|string|max:100",
-      "body" => "required|string|max:100"
-      */
-    ];
-
     function show(){
       return view("admin/upload/form");
     }
 
     function post(Request $request){
-
       $input = $request->all();
-
-      //=====部分処理====================================
-      //================================================
-/*
-      $validator = Validator::make($input, $this->validator);
-      if($validator->fails()){
-        return redirect()->action("UploadController@show")
-          ->withInput()
-          ->withErrors($validator);
-      }
-*/
-      //================================================
-      //================================================
       //セッションに書き込む
       $request->session()->put("form_input", $input);
 
@@ -86,7 +62,6 @@ class UploadController extends Controller
       $stData = User::find($interview->st_id);
       $hrData = HrUser::find($interview->hr_id);
 
-      
       $score = 0;
       for ($i=1; $i <=3 ; $i++) {
         $questionLogic = 'question_'. $i . '_logic';
@@ -104,7 +79,7 @@ class UploadController extends Controller
         $questionId = 'question_'. $i . '_id';
         $questionLogic = 'question_'. $i . '_logic';
         $questionPersonality = 'question_'. $i . '_personality';
-        $startSecond = 'start_time_'. $i;
+        $startSecond = $this->cut($input['question'. $i. '_start']);
 
         $question = Question::find($interview->$questionId)->name;
         $title = $stData->nickname . "さんの「". $question . "」に対する答え方";
@@ -112,7 +87,7 @@ class UploadController extends Controller
         $video_st = new Video;
         $video_st->title = $title;
         //$video_st->thumbnail_src = $input["thumbnail_src"];
-        $video_st->vimeo_src = 'https://player.vimeo.com/video/' . $input["st_vimeo_id"] . '#t=' . $input[$startSecond].'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
+        $video_st->vimeo_src = 'https://player.vimeo.com/video/' . $input["st_vimeo_id"] . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
         $video_st->vimeo_id = $input["st_vimeo_id"];
         $video_st->question_id = $interview->$questionId;
         $video_st->st_id = $interview->st_id;
@@ -131,7 +106,7 @@ class UploadController extends Controller
         $video_hr = new Video;
         $video_hr->title = $title;
         //$video_hr->thumbnail_src = $input["thumbnail_src"];
-        $video_hr->vimeo_src = 'https://player.vimeo.com/video/' . $input["hr_vimeo_id"] . '#t=' . $input[$startSecond].'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
+        $video_hr->vimeo_src = 'https://player.vimeo.com/video/' . $input["hr_vimeo_id"] . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
         $video_hr->vimeo_id = $input["hr_vimeo_id"];
         $video_hr->question_id = $interview->$questionId;
         $video_hr->st_id = $interview->st_id;
@@ -185,6 +160,13 @@ class UploadController extends Controller
   			}
   		}
 
-      return view("admin/upload/form_complete");
+      return redirect()->action("AdminController@index");
+    }
+
+    function cut($time){
+      $secs = explode(':', $time);
+      $sec = $secs[0]*60 + $secs[1];
+
+      return $sec;
     }
 }

@@ -27,3 +27,7 @@
 .container table thead tr{
   white-space: nowrap;
 }
+
+.table-sm th, .table-sm td {
+  max-width: 175px;
+}
