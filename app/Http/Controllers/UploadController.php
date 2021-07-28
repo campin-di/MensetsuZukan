@@ -62,17 +62,23 @@ class UploadController extends Controller
       $stData = User::find($interview->st_id);
       $hrData = HrUser::find($interview->hr_id);
 
-      $score = 0;
+      $score = 16;
       for ($i=1; $i <=3 ; $i++) {
         $questionLogic = 'question_'. $i . '_logic';
-        $questionPersonality = 'question_'. $i . '_personality';
-
-        if($i == 1){
-          $weight = 2;
+        if($interview->$questionLogic == 5){
+          $questionLogicScore = 14;
         }else{
-          $weight = 4;
+          $questionLogicScore = 3 * $interview->$questionLogic;
         }
-        $score += (($interview->$questionLogic * $weight) + ($interview->$questionPersonality * $weight));
+        
+        $questionPersonality = 'question_'. $i . '_personality';
+        if($interview->$questionPersonality == 5){
+          $questionPersonalityScore = 14;
+        }else{
+          $questionPersonalityScore = 3 * $interview->$questionPersonality;
+        }
+
+        $score += $questionLogicScore + $questionPersonalityScore;
       }
       
       for ($i=1; $i <=3 ; $i++) {
