@@ -10,47 +10,50 @@ use App\Common\CutStringClass;
 class AdminController extends Controller
 {
   function index(){
-
     $videos = Video::latest()->with(['hrUser','user'])->get();
-/*
-    foreach ($videos as $value) {
-      if(!is_null($value->hrUser)){
-        echo $value->hrUser;
-      } else {
-        echo "222";
-      }
-    }
-*/
-    //$videos = Interview::where('st_id', $userId)->with('hr_user')->select('id', 'hr_id', 'date', 'url')->get();
 
-
-    $videoCollection = collect();
+    $stVideoCollection = collect();
+    $hrVideoCollection = collect();
     foreach ($videos as $video) {
-      if($video->type == 0){
-        $type = '学生';
+      if($video->type == config('const.STHR.ST')){
+        $stVideoCollection = $stVideoCollection->concat([
+          [
+            'id' => $video->id,
+            'title' => CutStringClass::CutString($video->title, 20),
+            'vimeoUrl' => $video->vimeo_src,
+            'vimeoId' => $video->vimeo_id,
+            'stName' => $video->user->name,
+            'stNickname' => $video->user->nickname,
+            'hrName' => $video->hrUser->name,
+            'company' => $video->hrUser->company,
+            'score' => $video->score,
+            'review' => CutStringClass::CutString($video->review, 7),
+            'type' => '学生',
+            'upload' => $video->created_at,
+            'thumbnail_name' => $video->thumbnail_name,
+          ],
+        ]);
       } else {
-        $type = '人事';
+        $hrVideoCollection = $hrVideoCollection->concat([
+          [
+            'id' => $video->id,
+            'title' => CutStringClass::CutString($video->title, 20),
+            'vimeoUrl' => $video->vimeo_src,
+            'vimeoId' => $video->vimeo_id,
+            'stName' => $video->user->name,
+            'stNickname' => $video->user->nickname,
+            'hrName' => $video->hrUser->name,
+            'company' => $video->hrUser->company,
+            'score' => $video->score,
+            'review' => CutStringClass::CutString($video->review, 7),
+            'type' => '人事',
+            'upload' => $video->created_at,
+            'thumbnail_name' => $video->thumbnail_name,
+          ],
+        ]);
       }
-
-      $videoCollection = $videoCollection->concat([
-        [
-          'id' => $video->id,
-          'title' => CutStringClass::CutString($video->title, 20),
-          'vimeoUrl' => $video->vimeo_src,
-          'vimeoId' => $video->vimeo_id,
-          'stName' => $video->user->name,
-          'stNickname' => $video->user->nickname,
-          'hrName' => $video->hrUser->name,
-          'company' => $video->hrUser->company,
-          'score' => $video->score,
-          'review' => CutStringClass::CutString($video->review, 7),
-          'type' => $type,
-          'upload' => $video->created_at,
-          'thumbnail_name' => $video->thumbnail_name,
-        ],
-      ]);
     }
 
-    return view("admin.admin", compact('videoCollection'));
+    return view("admin.admin", compact('stVideoCollection', 'hrVideoCollection'));
   }
 }
