@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Common\GoogleSheetClass;
 
+use App\Models\Interview;
+
 class ComandController extends Controller
 {
     public function index()
@@ -74,5 +76,43 @@ class ComandController extends Controller
         $sec = $secs[0]*60 + $secs[1];
 
         return $sec;
+    }
+
+    public function result(Request $request)
+    {
+        /*=== スプシから情報を取得する処理 =================*/
+        $spreadsheet_service = GoogleSheetClass::instance();
+        $spreadsheet_id = '1N_IZkPLLnB-dcg4T8Qr5vSC46AGA-NsINPwLdJd1rCA';
+        $contentsArray = $spreadsheet_service->spreadsheets_values->get($spreadsheet_id, '質問の区切れ!A2:F')["values"];
+        $values = new \Google_Service_Sheets_ValueRange();
+
+        $interviews = Interview::orderBy('date', 'asc')->where('available', -1)->with('hr_user:id,name,nickname')->with('st_user:id,name,nickname')->with('question1')->with('question2')->with('question3')->get();
+        
+        foreach($interviews as $interview){
+            echo $interview->st_user->name;
+
+            $result = [
+                $interview->id,
+                $interview->st_user->name. '('. $interview->st_user->nickname . ')',
+                $interview->hr_user->name. '('. $interview->hr_user->nickname . ')',
+                $interview->question1->name,
+                $interview->question2->name,
+                $interview->question3->name,
+                $interview->date,
+                $interview->time,
+            ];
+            $values->setValues([
+                'values' => $result
+            ]);
+            $params = ['valueInputOption' => 'USER_ENTERED'];
+            $spreadsheet_service->spreadsheets_values->append(
+                $spreadsheet_id,
+                '面接結果!A2',
+                $values,
+                $params
+            );
+        }
+
+        return vi3ew('admin.comand.form_complete');
     }
 }

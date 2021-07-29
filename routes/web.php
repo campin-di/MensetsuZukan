@@ -148,7 +148,9 @@ Route::middleware(['auth'])->group(function() {
   Route::get('/admin/comand', 'ComandController@index')->name('comand');
   //動画編集用のコマンドを作成するルーティング
   Route::get('/admin/comand/trim', 'ComandController@trim')->name('trim');
-  
+  //動画編集用のコマンドを作成するルーティング
+  Route::get('/admin/comand/result', 'ComandController@result')->name('result');
+
   //サービス内に動画をアップロードするルーティング
   Route::get('/admin/upload', 'UploadController@show')->name('upload');
   //サムネイル画像をアップロードするフォームへ
