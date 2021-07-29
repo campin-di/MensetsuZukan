@@ -23,7 +23,7 @@ class St_HrMypageController extends Controller
       'introduction' => $userData->introduction,
     ];
 
-    $pastVideos = Video::where('hr_id', $userData->id)->get();
+    $pastVideos = Video::where('hr_id', $userData->id)->where('type', config('const.STHR.ST'))->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
     
     return view('st/hrpage/hrpage', [

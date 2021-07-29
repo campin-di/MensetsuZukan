@@ -18,6 +18,12 @@
 		@csrf
 		<table>
 			<tr>
+				<th height="75px">面接のID（interviews table）</th>
+				<th class="right-block">
+					<input type="text" name="interview_id" class="form-control" placeholder="IDを入力してください。">
+				</th>
+			</tr>
+			<tr>
 				<th height="75px">Vimeoの学生用動画ID</th>
 				<th class="right-block">
 					<input type="text" name="st_vimeo_id" class="form-control" placeholder="IDを入力してください。">
@@ -38,32 +44,20 @@
 			</tr>
 			-->
 			<tr>
-				<th height="75px">面接のID（interviews table）</th>
-				<th class="right-block">
-					<input type="text" name="interview_id" class="form-control" placeholder="IDを入力してください。">
-				</th>
-			</tr>
-
-			<tr>
-				<th height="75px">1番目の質問の開始時間</th>
-				<th class="right-block">
-           	     <input type="time" name="question1_start" size="30" maxlength="20" required>
-				</th>
-			</tr>
-			<tr>
 				<th height="75px">2番目の質問の開始時間</th>
 				<th class="right-block">
-            	    <input type="time" name="question2_start" size="30" maxlength="20" required>
+					<input type="time" name="question2_start" size="30" maxlength="20" required>
 				</th>
 			</tr>
 			<tr>
 				<th height="75px">3番目の質問の開始時間</th>
 				<th class="right-block">
-         	       <input type="time" name="question3_start" size="30" maxlength="20" required>
+					<input type="time" name="question3_start" size="30" maxlength="20" required>
 				</th>
 			</tr>
 		</table>
 		<div class="next-button">
+			<input type="hidden" name="question1_start" value="0:00">
 			<input class="btn btn-primary" type="submit" value="送信" />
 		</div>
 	</form>
