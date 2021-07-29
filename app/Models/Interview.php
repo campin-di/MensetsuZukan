@@ -38,19 +38,4 @@ class Interview extends Model
     {
       return $this->belongsTo('App\Models\Question', 'question_3_id');
     }
-
-    public function question4()
-    {
-      return $this->belongsTo('App\Models\Question', 'question_4_id');
-    }
-
-    public function question5()
-    {
-      return $this->belongsTo('App\Models\Question', 'question_5_id');
-    }
-
-    public function question6()
-    {
-      return $this->belongsTo('App\Models\Question', 'question_6_id');
-    }
 }

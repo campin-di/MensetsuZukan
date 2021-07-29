@@ -10,6 +10,9 @@
 			<div class="upload">
 				<a href="{{route('trim')}}">コマンドを作成する</a>
 			</div>
+			<div class="upload">
+				<a href="{{route('result')}}">面接結果を表示</a>
+			</div>
 		</div>
 
 		<h2>学生用動画</h2>

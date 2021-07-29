@@ -13,7 +13,6 @@
 	</div>
 	@endif
 
-	<!--研究室登録フォーム-->
 	<form method="post" action="{{ route('form.post') }}">
 		@csrf
 		<table>
