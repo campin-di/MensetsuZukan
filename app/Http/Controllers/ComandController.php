@@ -89,8 +89,6 @@ class ComandController extends Controller
         $interviews = Interview::orderBy('date', 'asc')->where('available', -1)->with('hr_user:id,name,nickname')->with('st_user:id,name,nickname')->with('question1')->with('question2')->with('question3')->get();
         
         foreach($interviews as $interview){
-            echo $interview->st_user->name;
-
             $result = [
                 $interview->id,
                 $interview->st_user->name. '('. $interview->st_user->nickname . ')',
@@ -113,6 +111,6 @@ class ComandController extends Controller
             );
         }
 
-        return vi3ew('admin.comand.form_complete');
+        return view('admin.comand.form_complete');
     }
 }
