@@ -14,7 +14,7 @@ Route::get('/', function () {
       return redirect()->action('Hr\HrHomeController@index');
     }
 
-    $contentsNumber = Video::count();
+    $contentsNumber = Video::where('type', 0)->count();
 
     return view('top', compact('contentsNumber'));
 });
@@ -61,117 +61,118 @@ Route::get('/pre/audience', 'St_HomeController@preAudience')->name('pre.audience
 //redirect to pre register page
 Route::get('/pre/register', 'St_HomeController@preRegister')->name('pre.register');
 
-//top to home
-Route::get('/home', 'St_HomeController@index')->name('home');
+Route::middleware(['auth'])->group(function() {
+  //top to home
+  Route::get('/home', 'St_HomeController@index')->name('home');
 
-//home to watch
-Route::get('/watch/{id}', 'St_WatchController@index')->name('watch');
+  //home to watch
+  Route::get('/watch/{id}', 'St_WatchController@index')->name('watch');
 
-//mypage to interviewDetails
-Route::get('/interview/detail/{id}', 'St_InterviewController@detail')->name('interview.detail');
+  //mypage to interviewDetails
+  Route::get('/interview/detail/{id}', 'St_InterviewController@detail')->name('interview.detail');
 
-//interviewDetails to cancel-confirm
-Route::get('/interview/cancel/{id}/confirm', 'St_InterviewController@cancelConfirm')->name('interview.cancel.confirm');
+  //interviewDetails to cancel-confirm
+  Route::get('/interview/cancel/{id}/confirm', 'St_InterviewController@cancelConfirm')->name('interview.cancel.confirm');
 
-Route::post('/interview/cancel/{id}', 'St_InterviewController@cancel')->name('interview.cancel');
-/*=== スケジュール登録 関係 ===============================================*/
+  Route::post('/interview/cancel/{id}', 'St_InterviewController@cancel')->name('interview.cancel');
+  /*=== スケジュール登録 関係 ===============================================*/
 
-//mypage to schedule adding function
-Route::post('/interview/schedule/post', 'St_ScheduleController@post')->name('interview.schedule.post');
+  //mypage to schedule adding function
+  Route::post('/interview/schedule/post', 'St_ScheduleController@post')->name('interview.schedule.post');
 
-Route::get('/interview/schedule/confirm', "St_ScheduleController@confirm")->name('interview.schedule.confirm');
-Route::post('/interview/schedule/confirm', "St_ScheduleController@send")->name('interview.schedule.send');
+  Route::get('/interview/schedule/confirm', "St_ScheduleController@confirm")->name('interview.schedule.confirm');
+  Route::post('/interview/schedule/confirm', "St_ScheduleController@send")->name('interview.schedule.send');
 
-Route::get('/interview/schedule/thanks', "St_ScheduleController@complete")->name('interview.schedule.complete');
-/*=== end:スケジュール登録 関係 ===============================================*/
+  Route::get('/interview/schedule/thanks', "St_ScheduleController@complete")->name('interview.schedule.complete');
+  /*=== end:スケジュール登録 関係 ===============================================*/
 
-/*=== マイページ関係 =============================================================*/
-//to mypage
-Route::get('/mypage', 'St_MypageController@index')->name('mypage');
+  /*=== マイページ関係 =============================================================*/
+  //to mypage
+  Route::get('/mypage', 'St_MypageController@index')->name('mypage');
 
-// mypage to detail Page
-Route::get('/mypage/detail', 'St_MypageController@myDetail')->name('mypage.detail');
+  // mypage to detail Page
+  Route::get('/mypage/detail', 'St_MypageController@myDetail')->name('mypage.detail');
 
-/*--- プロフィール画像のアップロード  -------------------------*/
-Route::get('/mypage/upload/{id}', 'St_MypageBasicController@upload')->name('mypage.basic.upload');
-Route::post('/mypage/upload/complete', 'St_MypageBasicController@uploadPost')->name('mypage.basic.upload.post');
+  /*--- プロフィール画像のアップロード  -------------------------*/
+  Route::get('/mypage/upload/{id}', 'St_MypageBasicController@upload')->name('mypage.basic.upload');
+  Route::post('/mypage/upload/complete', 'St_MypageBasicController@uploadPost')->name('mypage.basic.upload.post');
 
-/*--- 基本情報の変更 -------------------------*/
-Route::get('/mypage/edit/basic', 'St_MypageBasicController@show')->name("mypage.basic.show");
-Route::post('/mypage/edit/basic', 'St_MypageBasicController@post')->name("mypage.basic.post");
+  /*--- 基本情報の変更 -------------------------*/
+  Route::get('/mypage/edit/basic', 'St_MypageBasicController@show')->name("mypage.basic.show");
+  Route::post('/mypage/edit/basic', 'St_MypageBasicController@post')->name("mypage.basic.post");
 
-Route::get('/mypage/edit/basic/confirm', 'St_MypageBasicController@confirm')->name("mypage.basic.confirm");
-Route::post('/mypage/edit/basic/confirm', 'St_MypageBasicController@send')->name("mypage.basic.send");
+  Route::get('/mypage/edit/basic/confirm', 'St_MypageBasicController@confirm')->name("mypage.basic.confirm");
+  Route::post('/mypage/edit/basic/confirm', 'St_MypageBasicController@send')->name("mypage.basic.send");
 
-Route::get('/mypage/edit/basic/thanks', 'St_MypageBasicController@complete')->name("mypage.basic.complete");
-/*--- end:基本情報の変更 ---------------------*/
+  Route::get('/mypage/edit/basic/thanks', 'St_MypageBasicController@complete')->name("mypage.basic.complete");
+  /*--- end:基本情報の変更 ---------------------*/
 
-/*--- 詳細プロフィールの変更 -----------------*/
-Route::get('/mypage/edit/detail/step1', 'St_MypageDetailController@step1')->name("mypage.detail.step1");
-Route::post('/mypage/edit/detail/step2', 'St_MypageDetailController@step2')->name("mypage.detail.step2");
-Route::post('/mypage/edit/detail', 'St_MypageDetailController@post')->name("mypage.detail.post");
+  /*--- 詳細プロフィールの変更 -----------------*/
+  Route::get('/mypage/edit/detail/step1', 'St_MypageDetailController@step1')->name("mypage.detail.step1");
+  Route::post('/mypage/edit/detail/step2', 'St_MypageDetailController@step2')->name("mypage.detail.step2");
+  Route::post('/mypage/edit/detail', 'St_MypageDetailController@post')->name("mypage.detail.post");
 
-Route::get('/mypage/edit/detail/confirm', 'St_MypageDetailController@confirm')->name("mypage.detail.confirm");
-Route::post('/mypage/edit/detail/confirm', 'St_MypageDetailController@send')->name("mypage.detail.send");
+  Route::get('/mypage/edit/detail/confirm', 'St_MypageDetailController@confirm')->name("mypage.detail.confirm");
+  Route::post('/mypage/edit/detail/confirm', 'St_MypageDetailController@send')->name("mypage.detail.send");
 
-Route::get('/mypage/edit/detail/thanks', 'St_MypageDetailController@complete')->name("mypage.detail.complete");
-/*--- end:詳細プロフィールの変更 ------------*/
+  Route::get('/mypage/edit/detail/thanks', 'St_MypageDetailController@complete')->name("mypage.detail.complete");
+  /*--- end:詳細プロフィールの変更 ------------*/
 
-// from watch to stPage
-Route::get('/stpage/{id}', 'St_MypageController@stpage')->name('stpage');
+  // from watch to stPage
+  Route::get('/stpage/{id}', 'St_MypageController@stpage')->name('stpage');
 
-// from stPage to detail
-Route::get('/stpage/{id}/detail', 'St_MypageController@stDetail')->name('stpage.detail');
+  // from stPage to detail
+  Route::get('/stpage/{id}/detail', 'St_MypageController@stDetail')->name('stpage.detail');
 
-/*=== end:mypage関係 =========================================================*/
+  /*=== end:mypage関係 =========================================================*/
 
-/*=== 人事マイページ関係 =============================================================*/
-// to hrMypage
-Route::get('/hrpage/{id}', 'St_HrMypageController@index')->name('hrpage');
+  /*=== 人事マイページ関係 =============================================================*/
+  // to hrMypage
+  Route::get('/hrpage/{id}', 'St_HrMypageController@index')->name('hrpage');
 
-// from hrMypage to detail
-Route::get('/hrpage/detail/{id}', 'St_HrMypageController@detail')->name('hrpage.detail');
+  // from hrMypage to detail
+  Route::get('/hrpage/detail/{id}', 'St_HrMypageController@detail')->name('hrpage.detail');
 
-/*=== end:人事マイページ関係 =========================================================*/
-
-// to 人事を探す(search) page
-Route::get('/interview/search', 'St_InterviewController@search')->name('interview.search');
-
-// to 面接スケジュール page
-Route::get('/interview/schedule/{id}', 'St_ScheduleController@schedule')->name('interview.schedule');
-
-
-/*=== 管理画面 関係 =============================================================*/
-Route::get('/admin', 'AdminController@index')->name('admin');
-
-//動画編集用のコマンドを作成するフォームへのルーティング
-Route::get('/admin/comand', 'ComandController@index')->name('comand');
-//動画編集用のコマンドを作成するルーティング
-Route::get('/admin/comand/trim', 'ComandController@trim')->name('trim');
-
-//サービス内に動画をアップロードするルーティング
-Route::get('/admin/upload', 'UploadController@show')->name('upload');
-//サムネイル画像をアップロードするフォームへ
-Route::get('/admin/upload/thumbnail/{id}', 'UploadController@thumbnail')->name("thumbnail");
-//サムネイル画像をアップロード処理 and to 完了ページ
-Route::post('/admin/upload/thumbnail/upload', 'UploadController@thumbnailPost')->name("thumbnail.post");
-
-Route::get('/admin/upload/form', 'UploadController@show')->name("form.show");
-Route::post('/admin/upload/form', 'UploadController@post')->name("form.post");
-
-Route::get('/admin/upload/form/confirm', 'UploadController@confirm')->name("form.confirm");
-Route::post('/admin/upload/form/confirm', 'UploadController@send')->name("form.send");
-
-Route::get('/admin/upload/form/thanks', 'UploadController@complete')->name("form.complete");
-/*=== 管理画面 関係 =============================================================*/
-
-/*=== start: プライバシーポリシー関係 =============================================================*/
-//プライバシーポリシーページ
-Route::get('/policy', 'PolicyController@index')->name('policy');
-/*=== end: プライバシーポリシー関係 =============================================================*/
-
-/*=== end:管理画面 関係 =========================================================*/
-
+  /*=== end:人事マイページ関係 =========================================================*/
+  // to 人事を探す(search) page
+  Route::get('/interview/search', 'St_InterviewController@search')->name('interview.search');
+  
+  // to 面接スケジュール page
+  Route::get('/interview/schedule/{id}', 'St_ScheduleController@schedule')->name('interview.schedule');
+  
+  
+  /*=== start: 管理画面 関係 =============================================================*/
+  Route::get('/admin', 'AdminController@index')->name('admin');
+  
+  //動画編集用のコマンドを作成するフォームへのルーティング
+  Route::get('/admin/comand', 'ComandController@index')->name('comand');
+  //動画編集用のコマンドを作成するルーティング
+  Route::get('/admin/comand/trim', 'ComandController@trim')->name('trim');
+  
+  //サービス内に動画をアップロードするルーティング
+  Route::get('/admin/upload', 'UploadController@show')->name('upload');
+  //サムネイル画像をアップロードするフォームへ
+  Route::get('/admin/upload/thumbnail/{id}', 'UploadController@thumbnail')->name("thumbnail");
+  //サムネイル画像をアップロード処理 and to 完了ページ
+  Route::post('/admin/upload/thumbnail/upload', 'UploadController@thumbnailPost')->name("thumbnail.post");
+  
+  Route::get('/admin/upload/form', 'UploadController@show')->name("form.show");
+  Route::post('/admin/upload/form', 'UploadController@post')->name("form.post");
+  
+  Route::get('/admin/upload/form/confirm', 'UploadController@confirm')->name("form.confirm");
+  Route::post('/admin/upload/form/confirm', 'UploadController@send')->name("form.send");
+  
+  Route::get('/admin/upload/form/thanks', 'UploadController@complete')->name("form.complete");
+  /*=== end: 管理画面 関係 =============================================================*/
+});
+  
+  /*=== start: プライバシーポリシー関係 =============================================================*/
+  //プライバシーポリシーページ
+  Route::get('/policy', 'PolicyController@index')->name('policy');
+  /*=== end: プライバシーポリシー関係 =============================================================*/
+  
+  /*=== end:管理画面 関係 =========================================================*/
+  
 
 /*=== 課金関係 =============================================================*/
 Route::prefix('user')->middleware(['auth'])->group(function() {

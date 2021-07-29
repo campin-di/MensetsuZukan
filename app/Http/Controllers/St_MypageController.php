@@ -36,7 +36,6 @@ class St_MypageController extends Controller
     $interviewReservationsCollection = collect();
     foreach ($interviewReservations as $interviewReservation) {
       $dateArray = explode('-', $interviewReservation->date);
-
       $month = $dateArray[1];
       if((str_split($dateArray[1])[0] == 0)){
         $month = str_split($dateArray[1])[1];
