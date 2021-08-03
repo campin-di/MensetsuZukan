@@ -27,17 +27,20 @@ class CreateInterviewsTable extends Migration
           $table->string('zoomId')->nullable();
           $table->string('zoomPass')->nullable();
           $table->integer('question_1_id')->nullable();
-          $table->integer('question_1_logic')->nullable();
-          $table->integer('question_1_personality')->nullable();
           $table->integer('question_2_id')->nullable();
-          $table->integer('question_2_logic')->nullable();
-          $table->integer('question_2_personality')->nullable();
           $table->integer('question_3_id')->nullable();
-          $table->integer('question_3_logic')->nullable();
-          $table->integer('question_3_personality')->nullable();
+          $table->integer('score_1')->nullable();
+          $table->integer('score_2')->nullable();
+          $table->integer('score_3')->nullable();
+          $table->integer('score_4')->nullable();
+          $table->integer('score_5')->nullable();
+          $table->integer('score_6')->nullable();
+          $table->integer('score_7')->nullable();
+          $table->integer('score_8')->nullable();
+          $table->integer('score_9')->nullable();
+          $table->integer('score_10')->nullable();
           $table->string('review_good', 1000)->nullable();
           $table->string('review_more', 1000)->nullable();
-          $table->string('review_message', 1000)->nullable();
           $table->timestamps();
 
           $table->foreign('st_id')->references('id')->on('users')->onDelete('no action');

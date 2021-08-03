@@ -28,6 +28,7 @@ class QuestionsTableSeeder extends Seeder
         '就活の軸',
         '自己PR',
         '仕事のモチベーション',
+        '気になるニュース',
       ];
 
       foreach ($questionArray as $index => $question) {

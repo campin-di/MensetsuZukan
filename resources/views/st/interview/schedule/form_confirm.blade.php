@@ -45,7 +45,7 @@
 				<input id="c_agree" type="checkbox" name="agree" value="1" required> 注意事項を確認した。
 			</label>
 		</div>
-    @include('components.parts.button.form.transition_button', ['text' => '予約を完了する'])
+    	@include('components.parts.button.form.transition_button', ['text' => '予約を完了する'])
 	</form>
 </div>
 @endsection

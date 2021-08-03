@@ -9,6 +9,15 @@
 .container{
   background-color: #FFFFFF;
 }
+
+@font-face{
+  font-family:'digital';
+  src: url('../../img/digital-7.ttf');
+ }
+
+ .digital{
+  font-family: 'digital', sans-serif;
+ }
 /* === end: 共通部分 =================================================*/
 
 /* === begin: オファーボタン 部分(人事のみ) =================================================*/
@@ -57,6 +66,23 @@
     -ms-transform: translate(-50%, -50%);
     width: 100vw;
     height: 100%;
+}
+
+.video-iframe-under::before {
+  content: "";
+  color: rgb(0, 173, 239);
+  padding: 0px 6px;
+  margin: 0 5px;
+  border: 5px solid #FFF;
+  background: rgb(0, 173, 239);
+  border-radius: 50%;
+}
+.video-iframe-under {
+  font-size: 12px;
+  text-align: center;
+  color: #FFF;
+  padding: 5px 0;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
 }
 /*=== end ========*/
 
@@ -114,90 +140,192 @@
 }
 /* === end: 再生動画 部分 =================================================*/
 
-/* === begin: 他の質問の動画 部分 =================================================*/
-.other-videos-wrapper{
-  margin-top: 40px;
+
+/* === begin: 学生・人事タイプ 部分 =================================================*/
+.type-wrapper{
+  margin: 0 auto;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.type-child{
+  border-radius: 8px;
+  border: solid 2px #e6e6e6;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+.type{
+  list-style: none;
+  padding-left: 10px;
 }
 
-.other-videos-title-wrapper{
-  justify-content: space-between;
-  border: solid 1.5px #D5E3FF;
-  padding: 5px 10px 0px;
-  margin-bottom: 20px;
+/* === end: 学生・人事タイプ 部分 =================================================*/
+.profile{
+  text-align: center;
 }
-
-.other-videos-title h2{
-  line-height: 2;
+.profile img{
+  width: 65px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.profile a{
+  color: #606060;
+  align-items: center;
+}
+.profile a:hover{
+  color: #030303;
+}
+.profile .nickname{
   font-size: 18px;
+  margin: 5px auto 15px;
 }
 
-.other-videos-mark{
-  line-height: 2;
-  color: #6B8BE9;
+.profile-st-user{
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+.profile-st-user img{
+  border: 2px solid #7CC4FF;
+}
+.profile-hr-user img{
+  border: 2px solid #9681FF;
 }
 
-.other-video .left-child{
-  width: 35%;
-  margin-right: 5%;
+.profile-comment img {
+  width: 40px;
 }
-.other-video .right-child{
-  width: 60%;
+
+/* === begin: 面接採点DX 部分 =================================================*/
+.score{
   display: flex;
   flex-direction: column;
+}
+.each-score{
   justify-content: space-between;
+  width: 70%;
+  margin: 0 auto 5px;
+  align-items: center;
 }
-
-.other-video{
-  margin-bottom: 10px;
+.each-score::before{
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border: 1px solid;
+  border-radius: 50%;
+  margin: auto -30px auto 0px;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+  
 }
-
-.other-video-thumbnail{
-    position: relative;
-    width: 100%;
+.score-value{
+  font-size: 24px;
 }
-.other-video-thumbnail:before {
-    content:"";
-    display: block;
-    padding-top: 56.25%;
+.score-value .count-up{
+  display: inline-block;
+  text-align: right;
+  width: 20px;
 }
-.other-video-thumbnail img{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-}
-
-.other-video-title a{
-  font-size: 14px;
-  color: #333;
-}
-
-.other-video-views-score-wrapper{
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-.other-video-views{
+.score-unit{
   font-size: 14px;
 }
 
-.other-video-score{
-  color: #FFF;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 2.5;
-  width: 50px;
-  height: 30px;
+.score-basic{
+  border-bottom: 2px solid #13CA91;
+  color: #13CA91; 
+  text-shadow:0px 1px 1px #E7FCF6,0px 0px 1px #E7FCF6,1px 0px 1px #E7FCF6,0px -1px 1px #E7FCF6,-1px -1px 1px #E7FCF6,-1px 0px 1px #E7FCF6;
+}
+.score-basic::before{
+  background-image: url(../../img/icon/basic.svg);
+  border-color: #13CA91;
+}
+
+.score-logic{
+  border-bottom: 2px solid #75D5FD;
+  color: #75D5FD; 
+  text-shadow:0px 1px 1px #E8F8FC,0px 0px 1px #E8F8FC,1px 0px 1px #E8F8FC,0px -1px 1px #E8F8FC,-1px -1px 1px #E8F8FC,-1px 0px 1px #E8F8FC;
+}
+.score-logic::before{
+  background-image: url(../../img/icon/logical.svg);
+  border-color: #75D5FD;
+}
+
+.score-expression{
+  border-bottom: 2px solid #FE53BB;
+  color: #FE53BB; 
+  text-shadow:0px 1px 1px #FEE5F5,0px 0px 1px #FEE5F5,1px 0px 1px #FEE5F5,0px -1px 1px #FEE5F5,-1px -1px 1px #FEE5F5,-1px 0px 1px #FEE5F5;
+}
+.score-expression::before{
+  background-image: url(../../img/icon/expression.svg);
+  border-color: #FE53BB;
+}
+
+.score-creative{
+  border-bottom: 2px solid #B76CFD;
+  color: #B76CFD; 
+  text-shadow:0px 1px 1px #F2E5FE,0px 0px 1px #F2E5FE,1px 0px 1px #F2E5FE,0px -1px 1px #F2E5FE,-1px -1px 1px #F2E5FE,-1px 0px 1px #F2E5FE;
+}
+.score-creative::before{
+  background-image: url(../../img/icon/creative.svg);
+  border-color: #B76CFD;
+}
+
+.score-vitality{
+  border-bottom: 2px solid #F5D300;
+  color: #F5D300; 
+  text-shadow:0px 1px 1px #FFFBE5,0px 0px 1px #FFFBE5,1px 0px 1px #FFFBE5,0px -1px 1px #FFFBE5,-1px -1px 1px #FFFBE5,-1px 0px 1px #FFFBE5;
+}
+.score-vitality::before{
+  background-image: url(../../img/icon/vitality.svg);
+  border-color: #F5D300;
+}
+
+.total-score-wrapper{
   text-align: center;
-  margin-right: 10px;
-  background-color: #E6B422;
-  border-radius: 5px;
+  color: #FFF;
+  margin: 15px auto;
+  padding: 15px 30px;
+  border: 1px solid #EEE;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #7CC4FF, #9681FF);
+  text-shadow:0px 1px 1px #8AA1FF,0px 0px 1px #8AA1FF,1px 0px 1px #8AA1FF,0px -1px 1px #8AA1FF,-1px -1px 1px #8AA1FF,-1px 0px 1px #8AA1FF; 
 }
-/* === end: 他の質問の動画 部分 =================================================*/
+
+.total-score-title{
+  font-size: 16px;
+  margin-top: 5px;
+}
+.total-score{
+  font-size: 100px;
+  margin: -35px auto -50px;
+  width: 120px;
+}
+.total-score::before{
+  box-sizing: initial;
+}
+.total-score::after{
+  box-sizing: initial;
+}
+.total-score-under{
+  font-size: 24px;
+}
+.total-score-under .count-up{
+  font-size: 24px;
+}
+
+.child_1{
+  order: 2;
+}
+.child_2{
+  order: 1;
+}
+
+.fix-width{
+  display: inline-block;
+  width: 45px;
+  text-align: center;
+}
+/* === end: 面接採点DX 部分 =================================================*/
 
 /* === begin: 人事のレビュー 部分 =================================================*/
 .review-wrapper{
@@ -222,14 +350,25 @@
 }
 
 .review{
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
-
+.review .nickname{
+  font-size: 18px;
+}
 .review a{
   color: #333;
   font-weight: bold;
   margin-bottom: 20px;
+  align-items: center;
+}
+.review h3{
+  color: #9681FF;
+  font-weight: bold;
+  font-size: 16px;
+}
+.review p{
+  font-size: 15px;
 }
 /* === end: 人事のレビュー 部分 =================================================*/
 
@@ -263,19 +402,30 @@
     max-width: 1008px;
     width: 100%;
   }
+
+  .video-iframe-under {
+    font-size: 16px;
+    padding: 5px 0 10px;
+  }
+  .video-iframe-under::before {
+    padding: 0px 8px;
+
+  }
+
   .video-title{
     font-size: 24px;
-    margin: 30px auto;
+    margin: 30px auto 10px;
   }
 
   .video-view-good-wrapper{
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .other-question-wrapper {
     overflow-x: hidden;
     flex-wrap: wrap;
     margin-bottom: 0px;
+    margin-top: 10px;
   }
   .other-question-wrapper div {
     font-size: 16px;
@@ -309,48 +459,82 @@
     font-size: 18px;
   }
 
-  .other-videos-title-wrapper{
-    padding: 10px 20px 0px;
+  .profile a{
+    font-size: 18px;
   }
 
-  .other-videos-title h2 {
-    font-size: 22px;
-    font-weight: bold;
+
+  /* === start: 学生・人事タイプ ===========================================================*/
+  .type-wrapper{
+    flex-direction: row;
+  }
+  .type-child{
+    padding: 40px 60px;
   }
 
-  .other-videos-mark{
-    font-size: 24px;
-  }
+  /* === end: 学生・人事タイプ ===========================================================*/
 
-  .other-video {
-    margin-bottom: 20px;
-  }
-
-  .other-video-title a {
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  .other-video-views-score-wrapper {
+  .score{
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
-
-  .other-video-views{
+  .each-score {
+    width: initial;
+    margin: 15px auto;
+    padding-bottom: 3px;
+  }
+  .each-score::before {
+    width: 40px;
+    height: 40px;
+    border: 2px solid;
+    margin: auto 10px auto 0px;
+  }
+  .each-score .item{
     font-size: 18px;
   }
-  .other-video-views .flex{
-    flex-direction: column;
+
+  .score-value{
+    font-size: 30px;
+    margin-left: 25px;
+  }
+  .score-value .count-up {
+    width: 30px;
+    text-align: right;
+  }
+  .child_1{
+    order: 1;
+    width: 50%;
+    padding: 0 5%;
+  }
+  .child_2{
+    order: 2;
+    width: 50%;
   }
 
-  .other-video-score{
-    font-size: 18px;
-    line-height: 2.5;
-    width: 250px;
-    height: 65px;
-    border-radius: 10px;
+  .total-score-wrapper{
+    padding: 25px;
+    width: initial;
   }
-  .other-video-score span{
+  .total-score-title{
+    font-size: 24px;
+  }
+  .total-score {
+    font-size: 150px;
+    margin: -50px auto -75px;
+    width: 200px;
+  }
+  .total-score-under{
     font-size: 28px;
+  }
+  .total-score-under .count-up{
+    font-size: 28px;
+  }
+  .total-score-under span{
+    font-size: 20px;
   }
 
   .review-title-wrapper {
@@ -366,8 +550,17 @@
     line-height: 2;
   }
 
+  .review{
+    width: 80%;
+  }
+
   .review a{
     font-size: 24px;
+    margin-left: -50px;
+  }
+  .review h3{
+    font-size: 20px;
+    margin-top: 10px;
   }
   .review p{
     font-size: 18px;

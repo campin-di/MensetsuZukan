@@ -1,13 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Video;
 
     Route::get('/', function () {
         $loginFlag = Auth::guard('hr')->check();
         if($loginFlag){
           return redirect()->action('Hr\HrHomeController@index');
         }
-        return view('top');
+        $contentsNumber = Video::where('type', 0)->count();
+        return view('top', compact("contentsNumber"));
     })->name('hr.home');
 
     /*=== 認証関係 =============================================================*/

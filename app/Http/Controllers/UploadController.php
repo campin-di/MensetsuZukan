@@ -9,6 +9,7 @@ use App\Models\Video;
 use App\Models\Interview;
 use App\Models\Question;
 
+use App\Common\ScoringAlgorithmClass;
 use Validator;
 
 /*==============================
@@ -62,72 +63,47 @@ class UploadController extends Controller
       $stData = User::find($interview->st_id);
       $hrData = HrUser::find($interview->hr_id);
 
-      $score = 16;
-      for ($i=1; $i <=3 ; $i++) {
-        $questionLogic = 'question_'. $i . '_logic';
-        if($interview->$questionLogic == 5){
-          $questionLogicScore = 14;
-        }else{
-          $questionLogicScore = 3 * $interview->$questionLogic;
-        }
-        
-        $questionPersonality = 'question_'. $i . '_personality';
-        if($interview->$questionPersonality == 5){
-          $questionPersonalityScore = 14;
-        }else{
-          $questionPersonalityScore = 3 * $interview->$questionPersonality;
-        }
+      $scores = ScoringAlgorithmClass::scoringAlgorithm($interview);
 
-        $score += $questionLogicScore + $questionPersonalityScore;
-      }
-      
-      for ($i=1; $i <=3 ; $i++) {
-        $questionId = 'question_'. $i . '_id';
-        $questionLogic = 'question_'. $i . '_logic';
-        $questionPersonality = 'question_'. $i . '_personality';
-        $startSecond = $this->cut($input['question'. $i. '_start']);
+      $video_st = new Video;
+      $video_st->vimeo_src = 'https://player.vimeo.com/video/' . $input["st_vimeo_id"] . '#t=0s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
+      $video_st->vimeo_id = $input["st_vimeo_id"];
+      $video_st->st_id = $interview->st_id;
+      $video_st->hr_id = $interview->hr_id;
+      $video_st->question_1_id = $interview->question_1_id;
+      $video_st->question_2_id = $interview->question_2_id;
+      $video_st->question_3_id = $interview->question_3_id;
+      $video_st->basic_score = $scores["basic"];
+      $video_st->expression_score = $scores["expression"];
+      $video_st->logical_score = $scores["logical"];
+      $video_st->vitality_score = $scores["vitality"];
+      $video_st->creative_score = $scores["creative"];
+      $video_st->review_good = $interview->review_good;
+      $video_st->review_more = $interview->review_more;
+      $video_st->views = 0;
+      $video_st->good = 0;
+      $video_st->type = 0;
+      $video_st->save();
 
-        $question = Question::find($interview->$questionId)->name;
-        $title = $stData->nickname . "さんの「". $question . "」に対する答え方";
-
-        $video_st = new Video;
-        $video_st->title = $title;
-        //$video_st->thumbnail_src = $input["thumbnail_src"];
-        $video_st->vimeo_src = 'https://player.vimeo.com/video/' . $input["st_vimeo_id"] . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
-        $video_st->vimeo_id = $input["st_vimeo_id"];
-        $video_st->question_id = $interview->$questionId;
-        $video_st->st_id = $interview->st_id;
-        $video_st->hr_id = $interview->hr_id;
-        $video_st->logic = $interview->$questionLogic;
-        $video_st->personality = $interview->$questionPersonality;
-        $video_st->score = $score;
-        $video_st->review_good = $interview->review_good;
-        $video_st->review_more = $interview->review_more;
-        $video_st->review_message = $interview->review_message;
-        $video_st->views = 0;
-        $video_st->good = 0;
-        $video_st->type = 0;
-        $video_st->save();
-
-        $video_hr = new Video;
-        $video_hr->title = $title;
-        //$video_hr->thumbnail_src = $input["thumbnail_src"];
-        $video_hr->vimeo_src = 'https://player.vimeo.com/video/' . $input["hr_vimeo_id"] . '#t=' . $startSecond.'s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
-        $video_hr->vimeo_id = $input["hr_vimeo_id"];
-        $video_hr->question_id = $interview->$questionId;
-        $video_hr->st_id = $interview->st_id;
-        $video_hr->hr_id = $interview->hr_id;
-        $video_hr->logic = $interview->$questionLogic;
-        $video_hr->personality = $interview->$questionPersonality;
-        $video_hr->score = $score;
-        $video_hr->review_good = $interview->review_good;
-        $video_hr->review_more = $interview->review_more;
-        $video_hr->review_message = $interview->review_message;
-        $video_hr->views = 0;
-        $video_hr->good = 0;
-        $video_hr->type = 1;
-        $video_hr->save();
-      }
+      $video_hr = new Video;
+      $video_hr->vimeo_src = 'https://player.vimeo.com/video/' . $input["hr_vimeo_id"] . '#t=0s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
+      $video_hr->vimeo_id = $input["hr_vimeo_id"];
+      $video_hr->st_id = $interview->st_id;
+      $video_hr->hr_id = $interview->hr_id;
+      $video_hr->question_1_id = $interview->question_1_id;
+      $video_hr->question_2_id = $interview->question_2_id;
+      $video_hr->question_3_id = $interview->question_3_id;
+      $video_hr->basic_score = $scores["basic"];
+      $video_hr->expression_score = $scores["expression"];
+      $video_hr->logical_score = $scores["logical"];
+      $video_hr->vitality_score = $scores["vitality"];
+      $video_hr->creative_score = $scores["creative"];
+      $video_hr->review_good = $interview->review_good;
+      $video_hr->review_more = $interview->review_more;
+      $video_hr->views = 0;
+      $video_hr->good = 0;
+      $video_hr->type = 1;
+      $video_hr->save();
 
       //================================================
       //================================================

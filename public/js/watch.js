@@ -39,8 +39,6 @@ otherScores = Array.from(otherScores);
 changeBackgroundColor(scores);
 changeBackgroundColor(otherScores);
 
-
-
 if (window.matchMedia('(max-width: 767px)').matches) {
   //ここに書いた処理はスマホの時だけ有効
   var elements = document.getElementsByClassName('other-video-title-a');
@@ -50,3 +48,39 @@ if (window.matchMedia('(max-width: 767px)').matches) {
     element.innerText = cutString(text, 30);
   });
 }
+
+$('#total').on('inview', function(event, isInView) {
+  if (isInView) {
+    //要素が見えたときに実行する処理
+    $("#total .count-up").each(function(){
+      $(this).prop('Counter',0).animate({ //0からカウントアップ
+            Counter: $(this).text()
+        }, {
+        // スピードやアニメーションの設定
+            duration: 3000,//数字が大きいほど変化のスピードが遅くなる。2000=2秒
+            easing: 'swing',//動きの種類。他にもlinearなど設定可能
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+  }
+});
+
+$('#each').on('inview', function(event, isInView) {
+  if (isInView) {
+    //要素が見えたときに実行する処理
+    $("#each .count-up").each(function(){
+      $(this).prop('Counter',0).animate({//0からカウントアップ
+            Counter: $(this).text()
+        }, {
+        // スピードやアニメーションの設定
+            duration: 1000,//数字が大きいほど変化のスピードが遅くなる。2000=2秒
+            easing: 'swing',//動きの種類。他にもlinearなど設定可能
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+  }
+});

@@ -15,14 +15,11 @@
 /* === end: 画面タイトル 部分 =================================================*/
 
 /* === begin: フォーム部分 =================================================*/
-.container{
-
-}
-
 .card{
   margin-top: 50px;
   padding: 40px 5%;
   text-align: center;
+  border-radius: 15px !important;
 }
 .card span{
   display: contents;
@@ -66,6 +63,7 @@
   .card{
     padding-left: 10%;
     padding-right: 10%;
+    border-radius: 15px !important;
   }
   .card p{
     font-size: 16px;

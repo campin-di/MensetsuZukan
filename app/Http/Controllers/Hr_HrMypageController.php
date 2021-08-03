@@ -19,7 +19,7 @@ class Hr_HrMypageController extends Controller
     $userId = Auth::guard('hr')->id();
     $userData = HrUser::find($userId);
 
-    $pastVideos = Video::where('hr_id', $userId)->get();
+    $pastVideos = Video::where('hr_id', $userId)->where('type', 1)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
     $interviewReservations = Interview::orderBy('date', 'asc')->where('available', '!=', -1)->where('hr_id', $userId)->with('st_user')->select('id', 'st_id', 'date', 'time', 'zoomUrl')->get();
@@ -70,7 +70,7 @@ class Hr_HrMypageController extends Controller
 
     $userData = HrUser::find($id);
 
-    $pastVideos = Video::where('hr_id', $userData->id)->get();
+    $pastVideos = Video::where('hr_id', $userData->id)->where('type', 1)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
     return view('hr/hrpage/hrpage', [
