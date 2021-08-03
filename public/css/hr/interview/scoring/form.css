@@ -9,6 +9,17 @@
 .container{
   background-color: #FFFFFF;
 }
+.container h2{
+  font-size: 26px;
+  font-weight: 700;
+  margin: 50px auto 20px;
+}
+.container h3{
+  font-size: 20px;
+  font-weight: 700;
+  margin: 50px auto 20px;
+  color: #6A4CFF;
+}
 /* === end: 共通部分 =================================================*/
 
 /* === begin: 画面タイトル 部分 =================================================*/
@@ -186,6 +197,14 @@ ol.evaluation-personality li:before{
   height: 150px;
   border: solid 2px #ADDAFF;
 }
+.memo{
+  width: 100%;
+  margin: 10px auto;
+  padding: 15px 5px;
+  font-size: 14px;
+  height: 150px;
+  border: solid 2px #ADDAFF;
+}
 
 /*=== end: 採点基準 部分 =================================*/
 
@@ -199,7 +218,7 @@ ol.evaluation-personality li:before{
 }
 .question select{
   width: 90%;
-  height: 50px;
+  height: 45px;
   border-radius: 30px;
   border: 2px solid #D5E3FF;
   padding: 0 20px;
@@ -217,7 +236,15 @@ h1{
   font-weight: 100;
 }
 .score{
+  margin: 25px auto;
   flex-direction: column;
+  align-items: center;
+}
+
+.scoring_term{
+  font-size: 14px;
+  text-align: left;
+  width: 90%;
 }
 
 .logic-title, .personality-title{
@@ -238,8 +265,16 @@ h1{
 
 .radios{
   position:relative;
-  width:80%;
+  width: 80%;
   margin:15px auto;
+}
+.radios label img{
+  width: 50px;
+  margin: 3px 0;
+}
+.score-triangle{
+  width: 30px !important;
+  margin: 13px auto !important;
 }
 input[type="radio"]{
   position:absolute;
@@ -247,8 +282,8 @@ input[type="radio"]{
 }
 form label{
   float:left;
-  width:15%; 
-  padding-bottom:15%;
+  width:20%; 
+  padding-bottom:0%;
   margin:0 2.5%;
   border-radius:50%;
   cursor:pointer;
@@ -272,7 +307,7 @@ form label{
   top:0;
   width:10%; 
   padding-bottom:10%;
-  margin:2.5% 0 0 5%;
+  margin:5% 0 0 5%;
   transition:transform 1s;
   border-radius:50%;
   animation-timing-function: ease-in-out;
@@ -281,69 +316,115 @@ form label{
   transition: 0.2s left .05s ease-in-out;
 }
 
-#logic1-1:checked  ~ #logic-slider1{ animation-name: logic1-1; left:0; }
-#logic1-2:checked  ~ #logic-slider1{ animation-name: logic1-2; left:20%; }
-#logic1-3:checked  ~ #logic-slider1{ animation-name: logic1-3; left:40%; }
-#logic1-4:checked  ~ #logic-slider1{ animation-name: logic1-4; left:60%; }
-#logic1-5:checked  ~ #logic-slider1{ animation-name: logic1-5; left:80%; }
-#logic2-1:checked  ~ #logic-slider2{ animation-name: logic2-1; left:0; }
-#logic2-2:checked  ~ #logic-slider2{ animation-name: logic2-2; left:20%; }
-#logic2-3:checked  ~ #logic-slider2{ animation-name: logic2-3; left:40%; }
-#logic2-4:checked  ~ #logic-slider2{ animation-name: logic2-4; left:60%; }
-#logic2-5:checked  ~ #logic-slider2{ animation-name: logic2-5; left:80%; }
-#logic3-1:checked  ~ #logic-slider3{ animation-name: logic3-1; left:0; }
-#logic3-2:checked  ~ #logic-slider3{ animation-name: logic3-2; left:20%; }
-#logic3-3:checked  ~ #logic-slider3{ animation-name: logic3-3; left:40%; }
-#logic3-4:checked  ~ #logic-slider3{ animation-name: logic3-4; left:60%; }
-#logic3-5:checked  ~ #logic-slider3{ animation-name: logic3-5; left:80%; }
+#term1-1:checked  ~ #term-slider1{ animation-name: logic1-1; left:2.5%; }
+#term1-2:checked  ~ #term-slider1{ animation-name: logic1-2; left:27.5%; }
+#term1-3:checked  ~ #term-slider1{ animation-name: logic1-3; left:52.5%; }
+#term1-4:checked  ~ #term-slider1{ animation-name: logic1-4; left:77.5%; }
+
+#term2-1:checked  ~ #term-slider2{ animation-name: logic1-1; left:2.5%; }
+#term2-2:checked  ~ #term-slider2{ animation-name: logic1-2; left:27.5%; }
+#term2-3:checked  ~ #term-slider2{ animation-name: logic1-3; left:52.5%; }
+#term2-4:checked  ~ #term-slider2{ animation-name: logic1-4; left:77.5%; }
+
+#term3-1:checked  ~ #term-slider3{ animation-name: logic1-1; left:2.5%; }
+#term3-2:checked  ~ #term-slider3{ animation-name: logic1-2; left:27.5%; }
+#term3-3:checked  ~ #term-slider3{ animation-name: logic1-3; left:52.5%; }
+#term3-4:checked  ~ #term-slider3{ animation-name: logic1-4; left:77.5%; }
+
+#term4-1:checked  ~ #term-slider4{ animation-name: logic1-1; left:2.5%; }
+#term4-2:checked  ~ #term-slider4{ animation-name: logic1-2; left:27.5%; }
+#term4-3:checked  ~ #term-slider4{ animation-name: logic1-3; left:52.5%; }
+#term4-4:checked  ~ #term-slider4{ animation-name: logic1-4; left:77.5%; }
+
+#term5-1:checked  ~ #term-slider5{ animation-name: logic1-1; left:2.5%; }
+#term5-2:checked  ~ #term-slider5{ animation-name: logic1-2; left:27.5%; }
+#term5-3:checked  ~ #term-slider5{ animation-name: logic1-3; left:52.5%; }
+#term5-4:checked  ~ #term-slider5{ animation-name: logic1-4; left:77.5%; }
+
+#term6-1:checked  ~ #term-slider6{ animation-name: logic1-1; left:2.5%; }
+#term6-2:checked  ~ #term-slider6{ animation-name: logic1-2; left:27.5%; }
+#term6-3:checked  ~ #term-slider6{ animation-name: logic1-3; left:52.5%; }
+#term6-4:checked  ~ #term-slider6{ animation-name: logic1-4; left:77.5%; }
+
+#term7-1:checked  ~ #term-slider7{ animation-name: logic1-1; left:2.5%; }
+#term7-2:checked  ~ #term-slider7{ animation-name: logic1-2; left:27.5%; }
+#term7-3:checked  ~ #term-slider7{ animation-name: logic1-3; left:52.5%; }
+#term7-4:checked  ~ #term-slider7{ animation-name: logic1-4; left:77.5%; }
+
+#term8-1:checked  ~ #term-slider8{ animation-name: logic1-1; left:2.5%; }
+#term8-2:checked  ~ #term-slider8{ animation-name: logic1-2; left:27.5%; }
+#term8-3:checked  ~ #term-slider8{ animation-name: logic1-3; left:52.5%; }
+#term8-4:checked  ~ #term-slider8{ animation-name: logic1-4; left:77.5%; }
+
+#term9-1:checked  ~ #term-slider9{ animation-name: logic1-1; left:2.5%; }
+#term9-2:checked  ~ #term-slider9{ animation-name: logic1-2; left:27.5%; }
+#term9-3:checked  ~ #term-slider9{ animation-name: logic1-3; left:52.5%; }
+#term9-4:checked  ~ #term-slider9{ animation-name: logic1-4; left:77.5%; }
+
+#term10-1:checked  ~ #term-slider10{ animation-name: logic1-1; left:2.5%; }
+#term10-2:checked  ~ #term-slider10{ animation-name: logic1-2; left:27.5%; }
+#term10-3:checked  ~ #term-slider10{ animation-name: logic1-3; left:52.5%; }
+#term10-4:checked  ~ #term-slider10{ animation-name: logic1-4; left:77.5%; }
 
 @keyframes logic1-1{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic1-2{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic1-3{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic1-4{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic1-5{ 30%, 70% { transform:scale(0.5); } }
+
 @keyframes logic2-1{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic2-2{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic2-3{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic2-4{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic2-5{ 30%, 70% { transform:scale(0.5); } }
+
 @keyframes logic3-1{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic3-2{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic3-3{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic3-4{ 30%, 70% { transform:scale(0.5); } }
 @keyframes logic3-5{ 30%, 70% { transform:scale(0.5); } }
 
-#personality1-1:checked  ~ #personality-slider1{ animation-name: personality1-1; left:0; }
-#personality1-2:checked  ~ #personality-slider1{ animation-name: personality1-2; left:20%; }
-#personality1-3:checked  ~ #personality-slider1{ animation-name: personality1-3; left:40%; }
-#personality1-4:checked  ~ #personality-slider1{ animation-name: personality1-4; left:60%; }
-#personality1-5:checked  ~ #personality-slider1{ animation-name: personality1-5; left:80%; }
-#personality2-1:checked  ~ #personality-slider2{ animation-name: personality2-1; left:0; }
-#personality2-2:checked  ~ #personality-slider2{ animation-name: personality2-2; left:20%; }
-#personality2-3:checked  ~ #personality-slider2{ animation-name: personality2-3; left:40%; }
-#personality2-4:checked  ~ #personality-slider2{ animation-name: personality2-4; left:60%; }
-#personality2-5:checked  ~ #personality-slider2{ animation-name: personality2-5; left:80%; }
-#personality3-1:checked  ~ #personality-slider3{ animation-name: personality3-1; left:0; }
-#personality3-2:checked  ~ #personality-slider3{ animation-name: personality3-2; left:20%; }
-#personality3-3:checked  ~ #personality-slider3{ animation-name: personality3-3; left:40%; }
-#personality3-4:checked  ~ #personality-slider3{ animation-name: personality3-4; left:60%; }
-#personality3-5:checked  ~ #personality-slider3{ animation-name: personality3-5; left:80%; }
+@keyframes logic4-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic4-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic4-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic4-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic4-5{ 30%, 70% { transform:scale(0.5); } }
 
-@keyframes personality1-1{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality1-2{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality1-3{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality1-4{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality1-5{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality2-1{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality2-2{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality2-3{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality2-4{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality2-5{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality3-1{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality3-2{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality3-3{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality3-4{ 30%, 70% { transform:scale(0.5); } }
-@keyframes personality3-5{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic5-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic5-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic5-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic5-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic5-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic6-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic6-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic6-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic6-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic6-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic7-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic7-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic7-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic7-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic7-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic8-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic8-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic8-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic8-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic8-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic9-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic9-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic9-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic9-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic9-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic10-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic10-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic10-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic10-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic10-5{ 30%, 70% { transform:scale(0.5); } }
 /*======= end:５段階評価部=========================================*/
 
 .content textarea{
@@ -417,12 +498,29 @@ form label{
     font-size: 16px;
     height: 150px;
   }
+  .memo{ 
+    width: 100%;
+    margin: 15px auto;
+    padding: 15px;
+    font-size: 16px;
+    height: 150px;
+  }
+  
   /*=== end: 採点基準 部分 =================================*/
 
   .content {
     margin: 100px auto;
   }
+  .content h2{
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 50px;
+  }
+  
 
+  .question-select-wrapper{
+    display: inline-flex;
+  }
   .question select{
     font-size: 18px;
     height: 60px;
@@ -430,10 +528,13 @@ form label{
   }
 
   .radios{
-    width:30%;
+    width: 30% !important;
   }
-
+  .score-triangle{
+    margin: 10px auto;
+  }
   .score{
+    margin: 0px auto;
     flex-direction: initial;
   }
   .score div{
@@ -441,6 +542,12 @@ form label{
   }
   .score div span{
     font-size: 20px;
+  }
+  .scoring_term{
+    font-size: 16px;
+    text-align: left;
+    padding-left: 15%;
+    white-space: nowrap;
   }
 
   .content textarea {

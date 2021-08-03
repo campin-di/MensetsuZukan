@@ -238,6 +238,8 @@ return [
         'ReturnUserInformationArrayClass' => app\Common\ReturnUserInformationArrayClass::class,
         'RetUniversityClass' => app\Common\RetUniversityClass::class,
         'GoogleSheetClass' => app\Common\GoogleSheetClass::class,
+        'ScoringTerms' => app\Common\ScoringTermsClass::class,
+        'ScoringAlgorithm' => app\Common\ScoringAlgorithmClass::class,
     ],
 
 ];

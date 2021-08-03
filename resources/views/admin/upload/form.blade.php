@@ -34,26 +34,6 @@
 					<input type="text" name="hr_vimeo_id" class="form-control" placeholder="IDを入力してください。">
 				</th>
 			</tr>
-			<!--
-			<tr>
-				<th height="75px">サムネイルの画像パス</th>
-				<th class="right-block">
-					<input type="text" name="thumbnail_src" class="form-control" placeholder="画像をアップロードしてください。">
-				</th>
-			</tr>
-			-->
-			<tr>
-				<th height="75px">2番目の質問の開始時間</th>
-				<th class="right-block">
-					<input type="time" name="question2_start" size="30" maxlength="20" required>
-				</th>
-			</tr>
-			<tr>
-				<th height="75px">3番目の質問の開始時間</th>
-				<th class="right-block">
-					<input type="time" name="question3_start" size="30" maxlength="20" required>
-				</th>
-			</tr>
 		</table>
 		<div class="next-button">
 			<input type="hidden" name="question1_start" value="0:00">

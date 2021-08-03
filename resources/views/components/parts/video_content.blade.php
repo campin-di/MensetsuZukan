@@ -12,15 +12,12 @@
       <div class="right-child-pc">
         <a href="{{ route($routeName, $video['id'])}}">
           <div class="video-title">
-            {{ $video['title'] }}
+            {{ $video['stNickname'] }}さんと{{ $video['hrNickname'] }}さんとの面接
           </div>
         </a>
         <div class="other-question-wrapper">
-          <div class="other-question-selected">{{ $video['question'] }}</div>
           @foreach($video['otherQuestionsArray'] as $otherQuestion)
-            <div class="other-question">
-              {{ $otherQuestion['question']->name }}
-            </div>
+            <div class="other-question-selected">{{ $otherQuestion }}</div>
           @endforeach
         </div>
 
@@ -33,9 +30,27 @@
               'hrImagePath' => $video['hrImagePath']
             ])
           </div>
-          <div class="right-child video-score">
-            <span>{{ $video['score']}}</span>点
+          <div class="right-child video-score box">
+            <div class="total-score count-up digital">{{ $video['total_score_integer']}}</div>
+              @if($video['total_score_double'] > 99)
+              <span class="digital">.{{$video['total_score_double']}}</span><span class="score-label">点</span>
+              @else
+              <span class="digital">.0{{$video['total_score_double']}}</span><span class="score-label">点</span>
+              @endif
+              <!--
+              <div class='wave -one'></div>
+              <div class='wave -two'></div>
+              <div class='wave -three'></div>
+            -->
           </div>
+          <!--
+          <div class='box'>
+            <div class='wave -one'></div>
+            <div class='wave -two'></div>
+            <div class='wave -three'></div>
+            <div class='title'>Capacities</div>
+          </div>
+            -->
         </div>
         <div class="date">
           {{ $video['diffDate'] }}

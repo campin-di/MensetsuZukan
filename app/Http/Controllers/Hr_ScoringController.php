@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Common\ScoringTermsClass;
 use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Interview;
@@ -18,30 +19,15 @@ class Hr_ScoringController extends Controller
     //== 質問リスト作成 関係　=======================================================
     public function form($id)
     {
-      /*
-      $interview = Interview::with('question1:id,name')->with('question2:id,name')->with('question3:id,name')
-                 ->select('id', 'zoomUrl', 'question_1_id', 'question_2_id', 'question_3_id')->find($id);
-
-      $questionArray = ['question1', 'question2', 'question3'];
-      
-      return view('hr/interview/scoring/form',[
-        'interview' => $interview,
-        'questionArray' => $questionArray,
-      ]);
-      */
       $questions = Question::get();
+      $scoringTerms = ScoringTermsClass::scoringTerms();
       $zoomUrl = Interview::find($id)->zoomUrl;
 
-      return view('hr/interview/scoring/form',[
-        'id' => $id,
-        'questions' => $questions,
-        'zoomUrl' => $zoomUrl,
-      ]);
+      return view('hr/interview/scoring/form', compact('id', 'questions', 'scoringTerms', 'zoomUrl'));
     }
 
     public function post(Request $request)
     {
-
       $input = $request->all();
 
       //セッションに書き込む
@@ -56,9 +42,12 @@ class Hr_ScoringController extends Controller
 
       //セッションに値が無い時はフォームに戻る
       if(!$input){
-        return redirect()->action("Hr_ScoringController@form");
+        return redirect()->action("Hr_HrMypageController@index");
       }
-      return view("hr/interview/scoring/form_confirm",['input' => $input]);
+
+      $scoringTerms = ScoringTermsClass::scoringTerms();
+      $scoringSignals = ScoringTermsClass::scoringSignals();
+      return view("hr/interview/scoring/form_confirm",compact('input', 'scoringTerms', 'scoringSignals'));
     }
 
     function send(Request $request){
@@ -67,13 +56,13 @@ class Hr_ScoringController extends Controller
 
       //戻るボタンが押された時
       if($request->has("back")){
-        return redirect()->action("Hr_ScoringController@form")
+        return redirect()->action("Hr_HrMypageController@index")
           ->withInput($input);
       }
 
       //セッションに値が無い時はフォームに戻る
       if(!$input){
-        return redirect()->action("Hr_ScoringController@form");
+        return redirect()->action("Hr_HrMypageController@index");
       }
 
       //=====処理内容====================================
@@ -84,22 +73,21 @@ class Hr_ScoringController extends Controller
       for ($index = 1; $index <= 3; $index++) {
         $questionData = Question::where('name', $input['question-'.$index]);
         $questionData->increment('times');
-
         $questionId = $questions->where('name', $input['question-'. $index])->first()->id;
-
-        $questionCollumn = 'question_'. $index. '_id';
-        $logicCollumn = 'question_'. $index. '_logic';
-        $personalityCollumn = 'question_'. $index. '_personality';
-        $reviewCollumn = 'question_'. $index. '_review';
-
-        $interview->$questionCollumn = $questionId;
-        $interview->$logicCollumn = $input['logic'. $index];
-        $interview->$personalityCollumn = $input['personality'. $index];
-        $interview->available = config('const.INTERVIEW.DONE');
+        $questionColumn = 'question_'. $index. '_id';
+        $interview->$questionColumn = $questionId;
       }
+
+      $interview->available = config('const.INTERVIEW.DONE');
+
+      for ($index = 1; $index <= 10; $index++) {
+        $scoreColumn = 'score_'. $index;
+        $interview->$scoreColumn = $input['term'.$index];
+      }
+
       $interview->review_good = $input['review-good'];
       $interview->review_more = $input['review-more'];
-      $interview->review_message = $input['review-message'];
+
       $interview->save();
 
       $stUser = User::find($interview->st_id);

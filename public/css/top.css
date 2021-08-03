@@ -240,7 +240,7 @@ img{
 
 /* === begin: "サービス概要" 部分 =================================================*/
 .outline-wrapper{
-  margin: 200px 0 0 0;
+  margin: 200px 0;
   color: #FFF;
   background: linear-gradient(to right, #7CC4FF, #9681FF);
   position: relative;
@@ -264,7 +264,7 @@ img{
   width: 100%;
   position: absolute;
   z-index: -1;
-  margin-top: -50px;
+  margin-top: -30px;
 }
 
 
@@ -279,6 +279,9 @@ img{
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+}
+.contents-detail{
+  margin-bottom: 25px;
 }
 
 .outline-achievement-wrapper{
@@ -469,6 +472,7 @@ img{
   margin: 100px auto 50px;
   background-color: #F5FAFF;
   text-align: center;
+  padding: 25px 0;
 }
 
 .cost-title-upper{
@@ -553,6 +557,136 @@ img{
   font-size: 12px;
 }
 /* === end: "フッター" 部分 =================================================*/
+
+/* === begin: "よくある質問" 部分 =================================================*/
+/*--- qandaセクション -------------------------------------------------------*/
+
+.qanda-wrapper{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 100px;
+}
+
+.qanda-title{
+  color: #FFF;
+  background-color: #666666;
+  padding: 15px 0;
+  margin-top: 150px;
+  margin-bottom: 20px;
+}
+
+/* begin : 開閉フォーム */
+
+.cp_qa *, .cp_qa *:after, .cp_qa *:before {
+ -webkit-box-sizing: border-box;
+         box-sizing: border-box;
+}
+
+.cp_qa .cp_actab {
+ position: relative;
+  z-index: 1;
+ overflow: hidden;
+ width: 100%;
+ margin-bottom: 15px;
+ color: #333333;
+}
+
+.cp_actab{
+  border-radius: 10px;
+}
+
+.cp_qa .cp_actab input {
+  z-index: 1;
+ position: absolute;
+ opacity: 0;
+}
+
+/* 質問 */
+.cp_qa .cp_actab label {
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin: 0 0 0 0;
+  padding: 0.6em 1em 0.6em 2.5em;
+  cursor: pointer;
+  background-color: #F5F5F5;
+}
+
+/* 答え */
+.cp_qa .cp_actab .cp_actab-content {
+ overflow: hidden;
+ max-height: 0;
+ -webkit-transition: max-height 0.5s ease;
+         transition: max-height 0.5s ease;
+ color: #333333;
+ background-color: #F5F5F5;
+ padding-left: 2.5em; 
+ font-size: 14px;
+}
+.cp_actab-content::before {
+  content: "A";
+  font-size: 16px;
+  font-family: system-ui;
+  margin-left: -25px;
+  position: absolute;
+}
+.cp_actab-content p{
+  font-size: 18pt;
+  line-height: 26pt;
+  width: 80%;
+  margin: 0 auto 25px auto;
+}
+
+.cp_actab-content ol{
+  font-size: 18pt;
+ width: 80%;
+  margin: 0 auto 25px auto;
+}
+
+.cp_actab-content ol p{
+  font-size: 14pt;
+ width: 100%;
+  margin: 10px 0 15px 0;
+}
+
+.cp_actab-content ol p a{
+  border-bottom: 1px solid #333333;
+  color: #333333;
+}
+
+/* 質問を開いた時の仕様 */
+
+/* --答えの高さ */
+.cp_qa .cp_actab input:checked ~ .cp_actab-content {
+  max-height: 100em;
+  padding: 0.6em 1em 0.6em 2.5em;
+}
+
+/* 質問をクリックした時のアイコンの動き */
+.cp_qa .cp_actab label::after {
+ line-height: 0.8;
+ position: absolute;
+ top: 50%;
+ display: block;
+ width: 0px;
+ margin-top: -10px;
+ margin-left: -25px;
+ -webkit-transition: all 0.5s ease;
+         transition: all 0.5s ease;
+ text-align: center;
+}
+
+.cp_qa .cp_actab input[type=checkbox] + label::after {
+ content: 'Q';
+ font-family: system-ui;
+}
+.cp_qa .cp_actab input[type=checkbox]:checked + label::after {
+ -webkit-transform: rotate(360deg);
+ transform: rotate(360deg);
+}
+/* end : 開閉フォーム */
+/* === end: "よくある質問" 部分 =================================================*/
 
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
@@ -725,7 +859,7 @@ img{
 
   .outline-description{
     font-size: 28px;
-    margin: 20px auto;
+    margin: 25px auto 50px;
   }
 
   .outline-achievement-wrapper{
@@ -918,6 +1052,24 @@ img{
     margin: 0 10px;
   }
   /* === end: "利用料金" 部分 =================================================*/
+
+  /* === start: よくある質問 部分 ==============================================*/
+  .qanda-wrapper {
+    margin: 100px auto 200px;
+  }
+  .cp_qa .cp_actab label {
+    font-size: 16px;
+    margin: 0px auto;
+    padding: 1.5em 4em;
+  }
+  .cp_qa .cp_actab .cp_actab-content {
+    font-size: 16px;
+    padding: 0px 4em;
+  }
+  .cp_qa .cp_actab input:checked ~ .cp_actab-content {
+    padding: 0em 4em 1em 4em;
+}
+  /* === end: よくある質問 部分 ==============================================*/
 
   /* === begin: "新規会員登録はここから" 部分 =================================================*/
   .promotion span{

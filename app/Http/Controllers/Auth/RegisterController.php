@@ -113,7 +113,7 @@ class RegisterController extends Controller
       } else {
           $user = User::where('email_verify_token', $email_token)->first();
           // 本登録済みユーザーか
-          if ($user->status == config('const.USER_STATUS.REGISTER')) //REGISTER=1
+          if ($user->status != config('const.USER_STATUS.MAIL_AUTHED') && $user->status != config('const.USER_STATUS.PRE_REGISTER'))
           {
               logger("status". $user->status );
               return view('st/auth.main.register')->with('message', 'すでに本登録されています。ログインして利用してください。');

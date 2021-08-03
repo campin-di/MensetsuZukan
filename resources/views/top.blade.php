@@ -118,13 +118,12 @@
       </div>
       <div class="outline-achievement">
         <div class="outline-achievement-title">満足度</div>
-        <div class="outline-achievement-value">96.2％</div>
+        <div class="outline-achievement-value">95.6％</div>
       </div>
     </div>
     <span class="outline-achievement-comment">※β版実績</span>
   </div>
-
-    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/568076489?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="面接図鑑 サービス紹介動画"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+  <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/568076489?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="面接図鑑 サービス紹介動画"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
   <img class="outline-under-background" src="{{ asset('/img/top/outline-bottom.png') }}" alt="サービス概要下部の背景画像">
 </div>
 
@@ -278,12 +277,101 @@
   </div>
 </div>
 
+
+
 <div class="cost-wrapper">
-  <img class="cost-wrapper-img" src="./img/top/cost-upper.jpg" alt="料金体系の上部背景画像">
   <span class="cost-title-upper">COST</span>
   <h1>利用料金</h1>
   <img class="cost-table-img" src="./img/top/price.jpg" alt="仮置き">
-  <img class="cost-wrapper-img" src="./img/top/cost-bottom.jpg" alt="料金体系の下部背景画像">
+</div>
+
+<div class="outline-wrapper">
+  <img class="outline-upper-background" src="{{ asset('/img/top/outline-upper.jpeg') }}" alt="サービス概要上部の背景画像">
+  <div class="outline-logo">
+    <h1>コンテンツはどんな感じ？</h1>
+  </div>
+  <div class="outline-description contents-detail">
+    面接図鑑には全国の就活生が行った<br>面接動画が公開されています。
+  </div>
+  <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/581707645?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="面接図鑑 サービス紹介動画"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+  <img class="outline-under-background" src="{{ asset('/img/top/outline-bottom.png') }}" alt="サービス概要下部の背景画像">
+</div>
+
+<div class="audience-wrapper">
+  <h1 class="qanda-title pc"><a name="qanda">よくある質問</a></h1>
+  <section class="container">
+    <div class="qanda-wrapper">
+      <div class="qanda-content">
+        <div class="cp_qa">
+          <div class="cp_actab">
+            <input id="cp_tabfour01" type="checkbox" name="tabs">
+            <label for="cp_tabfour01">どのような内容が質問されますか？</label>
+            <div class="cp_actab-content">いわゆる頻出質問と呼ばれるものを3問ほど出題します。解答に対しては、人事が自由に深堀を行います。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour02" type="checkbox" name="tabs">
+            <label for="cp_tabfour02">顔・氏名など個人情報が公開されたくありません。</label>
+            <div class="cp_actab-content">動画は匿名・モザイク付きで公開されます。モザイクなしの動画を見ることができるのは、サービスに登録した人事のみとなります。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour03" type="checkbox" name="tabs">
+            <label for="cp_tabfour03">面接官の企業名は事前に知ることができますか？</label>
+            <div class="cp_actab-content">人事の企業名は基本的に非公開となっています。人事から学生にオファーが来た時点で、その学生にのみ企業情報が開示されます。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour04" type="checkbox" name="tabs">
+            <label for="cp_tabfour04">人事の方は本当の人事ですか？経験は豊富ですか？</label>
+            <div class="cp_actab-content">業界は様々ですが、面接官を行う方々は実際に企業で人事経験を積んでいます。また、こちらで作成したマニュアルに基づいて面接を行うため、一定の面接レベルは保証されます。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour05" type="checkbox" name="tabs">
+            <label for="cp_tabfour05">人志望理由は用意しておかないといけませんか？</label>
+            <div class="cp_actab-content">特定の企業を想定した面接ではないため、企業への志望理由は必要ありません。しかし、現時点で一番志望している業界とその理由は問われることがあります。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour06" type="checkbox" name="tabs">
+            <label for="cp_tabfour06">相手企業の「求める人材」を知ることはできますか？</label>
+            <div class="cp_actab-content">特定の企業を想定した面接ではないので、企業に受かるためではなく、自分の魅力を最大限に伝えるという意識で望んでいただければと思います。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour07" type="checkbox" name="tabs">
+            <label for="cp_tabfour07">企業の業界・規模などによってどのように自分を表現し分けたらいいですか？</label>
+            <div class="cp_actab-content">あなたらしさを素直に表現していただければと思います。しかし、普段面接ごとにキャラを使い分けているのであれば、どのキャラが最も受けがいいか採点機能を利用して検証するのも面白いかもしれません。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour08" type="checkbox" name="tabs">
+            <label for="cp_tabfour08">どの内容を軸として話せば評価されやすいですか？</label>
+            <div class="cp_actab-content">何度も面接を受けることができるので試行錯誤してみることをオススメします！ただし、相手企業によって答えが変わるような質問はなるべく避けるようにいたします。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour09" type="checkbox" name="tabs">
+            <label for="cp_tabfour09">誤って個人を特定できる発言をしてしまった場合は？</label>
+            <div class="cp_actab-content">公開前の動画は一度運営がチェックしており、個人が特定される恐れがある発言はカットしています。もしご自身の発言内容に不安があれば、運営までお問い合わせください。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour10" type="checkbox" name="tabs">
+            <label for="cp_tabfour10">面接はスーツで受けなければなりませんか？</label>
+            <div class="cp_actab-content">スーツでなくても大丈夫です。あなたらしさを一番伝えられる服装でお越しください。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour11" type="checkbox" name="tabs">
+            <label for="cp_tabfour11">面接中に回線が悪くなった場合は？</label>
+            <div class="cp_actab-content">一度通信が安定するまでお待ちいただき、通信環境が改善されましたら再開します。再開の目途が立たない場合は後日面接を再設定となりますので、できるだけ通信環境を整えてご参加ください。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour12" type="checkbox" name="tabs">
+            <label for="cp_tabfour12">PC内蔵のスピーカーやマイクで面接を受けても大丈夫ですか？</label>
+            <div class="cp_actab-content">ハウリング・片方の音声しか録音されないといった問題がございますので、可能な限りマイク付きイヤホンでのご参加をお願いいたします。</div>
+          </div>
+          <div class="cp_actab">
+            <input id="cp_tabfour13" type="checkbox" name="tabs">
+            <label for="cp_tabfour13">面接中の水分補給は？</label>
+            <div class="cp_actab-content">熱中症を避けるための水分補給は行ってください。ただし、実際のオンライン面接を想定しておりますので、選考中の振る舞いが評価に影響するかどうかは担当の面接官に依存します。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <div class="promotion-wrapper">
