@@ -33,9 +33,9 @@
           <div class="right-child video-score box">
             <div class="total-score count-up digital">{{ $video['total_score_integer']}}</div>
               @if($video['total_score_double'] > 99)
-              <span class="digital">.{{$video['total_score_double']}}</span><span class="score-label">点</span>
+                <span class="digital">.{{$video['total_score_double']}}</span><span class="score-label">点</span>
               @else
-              <span class="digital">.0{{$video['total_score_double']}}</span><span class="score-label">点</span>
+                <span class="digital">.0{{$video['total_score_double']}}</span><span class="score-label">点</span>
               @endif
               <!--
               <div class='wave -one'></div>

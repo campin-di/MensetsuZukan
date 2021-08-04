@@ -201,7 +201,7 @@
 }
 .each-score{
   justify-content: space-between;
-  width: 70%;
+  width: 80%;
   margin: 0 auto 5px;
   align-items: center;
 }
@@ -220,11 +220,11 @@
 }
 .score-value{
   font-size: 24px;
+  margin-left: -20px;
 }
 .score-value .count-up{
   display: inline-block;
   text-align: right;
-  width: 20px;
 }
 .score-unit{
   font-size: 14px;
@@ -322,7 +322,7 @@
 
 .fix-width{
   display: inline-block;
-  width: 45px;
+  width: 35px;
   text-align: center;
 }
 /* === end: 面接採点DX 部分 =================================================*/
@@ -502,13 +502,12 @@
     margin-left: 25px;
   }
   .score-value .count-up {
-    width: 30px;
     text-align: right;
   }
   .child_1{
     order: 1;
     width: 50%;
-    padding: 0 5%;
+    padding: 0 20px;
   }
   .child_2{
     order: 2;
