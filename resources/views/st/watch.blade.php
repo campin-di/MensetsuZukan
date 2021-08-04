@@ -1,4 +1,4 @@
-@section('title', $mainVideo['title'])
+@section('title', $mainVideo['stNickname'].'さんと'.$mainVideo['hrNickname'].'さんの面接')
 <link href='https://fonts.googleapis.com/css?family=Digital-7 Regular' rel='stylesheet' type='text/css'>
 <link href="{{ asset('/css/st/watch.css') }}" rel="stylesheet">
 @extends('layouts.st.common')
@@ -41,23 +41,60 @@
       <div class="each-score-wrapper child_1" id="each">
         <div class="each-score score-basic flex">
           <div class="item">面接基礎力</div>
-          <div class="score-value digital"><span class="count-up">{{ $mainVideo['basic_score'] }}</span><span class="fix-width">/32</span><span class="score-unit">点</span></div>
-        </div>
+          <div class="score-value digital">
+            @if($mainVideo['basic_score_double'] == 0)
+              <span class="count-up">{{ $mainVideo['basic_score_integer'] }}</span>.<span class="zero">000</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @elseif($mainVideo['basic_score_double'] < 100)
+              <span class="count-up">{{ $mainVideo['basic_score_integer'] }}</span>.0<span class="count-up">{{ $mainVideo['basic_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @else
+              <span class="count-up">{{ $mainVideo['basic_score_integer'] }}</span>.<span class="count-up">{{ $mainVideo['basic_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @endif
+         </div>        </div>
         <div class="each-score score-expression flex">
           <div class="item">自己表現力</div>
-          <div class="score-value digital"><span class="count-up">{{ $mainVideo['expression_score'] }}</span><span class="fix-width">/20</span><span class="score-unit">点</span></div>
-        </div>
+          <div class="score-value digital">
+            @if($mainVideo['expression_score_double'] == 0)
+              <span class="count-up">{{ $mainVideo['expression_score_integer'] }}</span>.<span class="zero">000</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @elseif($mainVideo['expression_score_double'] < 100)
+              <span class="count-up">{{ $mainVideo['expression_score_integer'] }}</span>.0<span class="count-up">{{ $mainVideo['expression_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @else
+              <span class="count-up">{{ $mainVideo['expression_score_integer'] }}</span>.<span class="count-up">{{ $mainVideo['expression_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @endif
+         </div>        </div>
         <div class="each-score score-logic flex">
           <div class="item">ロジカル力</div>
-          <div class="score-value digital"><span class="count-up">{{ $mainVideo['logical_score'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span></div>
-        </div>
+          <div class="score-value digital">
+            @if($mainVideo['logical_score_double'] == 0)
+              <span class="count-up">{{ $mainVideo['logical_score_integer'] }}</span>.<span class="zero">000</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @elseif($mainVideo['logical_score_double'] < 100)
+              <span class="count-up">{{ $mainVideo['logical_score_integer'] }}</span>.0<span class="count-up">{{ $mainVideo['logical_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @else
+              <span class="count-up">{{ $mainVideo['logical_score_integer'] }}</span>.<span class="count-up">{{ $mainVideo['logical_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @endif
+         </div>        </div>
         <div class="each-score score-vitality flex">
           <div class="item">バイタリティ</div>
-          <div class="score-value digital"><span class="count-up">{{ $mainVideo['creative_score'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span></div>
+          <div class="score-value digital">
+            @if($mainVideo['vitality_score_double'] == 0)
+              <span class="count-up">{{ $mainVideo['vitality_score_integer'] }}</span>.<span class="zero">000</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @elseif($mainVideo['vitality_score_double'] < 100)
+              <span class="count-up">{{ $mainVideo['vitality_score_integer'] }}</span>.0<span class="count-up">{{ $mainVideo['vitality_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @else
+              <span class="count-up">{{ $mainVideo['vitality_score_integer'] }}</span>.<span class="count-up">{{ $mainVideo['vitality_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @endif
+         </div>
         </div>
         <div class="each-score score-creative flex">
           <div class="item">創造力</div>
-          <div class="score-value digital"><span class="count-up">{{ $mainVideo['vitality_score'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span></div>
+          <div class="score-value digital">
+            @if($mainVideo['creative_score_double'] == 0)
+              <span class="count-up">{{ $mainVideo['creative_score_integer'] }}</span>.<span class="zero">000</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @elseif($mainVideo['creative_score_double'] < 100)
+              <span class="count-up">{{ $mainVideo['creative_score_integer'] }}</span>.0<span class="count-up">{{ $mainVideo['creative_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @else
+              <span class="count-up">{{ $mainVideo['creative_score_integer'] }}</span>.<span class="count-up">{{ $mainVideo['creative_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+            @endif
+         </div>
         </div>
       </div>
       <div class="total-score-wrapper child_2" id="total">
