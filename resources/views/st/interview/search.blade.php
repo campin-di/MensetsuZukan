@@ -54,7 +54,7 @@
         <img class="hr-photo" src="{{ asset($hr['imagePath']) }}" alt="プロフィール写真">
       </div>
       <div class="right-child">
-        {{ $hr['nickname'] }} ( {{ $hr['selectionPhase'] }} )
+        {{ $hr['nickname'] }} ( {{ $hr['selectionPhase'] }} 対策 )
       </div>
     </div>
     <div class="company-information-wrapper flex">

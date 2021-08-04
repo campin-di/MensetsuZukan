@@ -111,7 +111,7 @@
   width: 100px;
   height: 100px;
   text-align: center;
-  background-color: #E6B422;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
   border-radius: 50%;
 }
 .video-score-wrapper .right-child span{
@@ -155,7 +155,7 @@
   box-sizing: initial;
 }
 
-.hundred span{
+.hundred span, .hundred .digital{
   /* フォントサイズなど任意指定 */
   text-transform: uppercase;
   /* 背景グラデーションを指定・幅を 200% にしておく */

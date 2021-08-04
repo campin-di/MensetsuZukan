@@ -4,7 +4,7 @@ button.onclick = () => {
     setTimeout(() => {
         button.disabled = false;
         button.style.background = "linear-gradient(to right, #7CC4FF, #7F66FF)";
-    }, 5000);
+    }, 6000);
 }
 
 const disabled = ($target) => {

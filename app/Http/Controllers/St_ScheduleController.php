@@ -128,7 +128,8 @@ class St_ScheduleController extends Controller
         $date = $explode[0];
         $timeKey = $explode[1];
 
-        $dbKey = explode('_', $explode[1])[0];
+        $tmp = explode('_', $timeKey);
+        $dbKey = $tmp[0];
       }
     }
 
@@ -181,9 +182,31 @@ class St_ScheduleController extends Controller
     $interview->available = config('const.INTERVIEW.UNAVAILABLE');
     $interview->save();
 
-    \DB::table('schedules')->where('id', $schedule->id)->update([
-      $dbKey => 0,
-    ]);
+    $halfFlag = FALSE;
+    if(array_key_exists(1, $tmp)){
+      $halfFlag = TRUE;
+    }
+    if($schedule->$dbKey < 3){
+      $schedule->$dbKey = 0;
+    } else {
+      if($halfFlag == FALSE) {
+        $schedule->$dbKey = 2;
+      } else {
+        $schedule->$dbKey = 1;
+      }
+    }
+    $schedule->save();
+
+    $flag = TRUE;
+    $timeColumns = ReturnUserInformationArrayClass::returnTimeColumns();
+    foreach($timeColumns as $timeColumn => $time){
+      if($schedule->$timeColumn != 0){
+        $flag = FALSE;
+      }
+    }
+    if($flag == TRUE){
+      Schedule::find($schedule->id)->delete();
+    }
 
     /*=== スプシに記入する処理 =================*/
     $responsibility = '吉田';
