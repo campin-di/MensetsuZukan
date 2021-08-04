@@ -19,4 +19,13 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+    public function showLinkRequestForm()
+    {
+        return view('hr.auth.passwords.email');
+    }
+    public function broker()
+    {
+        // 管理者ユーザ用のパスワードブローカーを指定
+        return \Password::broker('hr_users');
+    }
 }
