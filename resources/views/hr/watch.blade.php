@@ -28,59 +28,49 @@
     @endforeach
   </div>
 
-  <div class="other-videos-wrapper">
-    <div class="other-videos-title-wrapper flex">
-      <div class="other-videos-title">
-        <h2>面接中にされた他の質問</h2>
+  <div class="review-wrapper">
+    <div class="review-title-wrapper flex">
+      <div class="review-title">
+        <h2>面接採点DX</h2>
       </div>
-      <div class="other-videos-mark">
+      <div class="review-mark">
         ▼
       </div>
     </div>
-
-    <div class="review-wrapper">
-  <div class="review-title-wrapper flex">
-    <div class="review-title">
-      <h2>面接採点DX</h2>
+    <div class="score">
+      <div class="each-score-wrapper child_1" id="each">
+        <div class="each-score score-basic flex">
+          <div class="item">面接基礎力</div>
+          <div class="score-value digital"><span class="count-up">{{ $mainVideo['basic_score'] }}</span><span class="fix-width">/32</span><span class="score-unit">点</span></div>
+        </div>
+        <div class="each-score score-expression flex">
+          <div class="item">自己表現力</div>
+          <div class="score-value digital"><span class="count-up">{{ $mainVideo['expression_score'] }}</span><span class="fix-width">/20</span><span class="score-unit">点</span></div>
+        </div>
+        <div class="each-score score-logic flex">
+          <div class="item">ロジカル力</div>
+          <div class="score-value digital"><span class="count-up">{{ $mainVideo['logical_score'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span></div>
+        </div>
+        <div class="each-score score-vitality flex">
+          <div class="item">バイタリティ</div>
+          <div class="score-value digital"><span class="count-up">{{ $mainVideo['creative_score'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span></div>
+        </div>
+        <div class="each-score score-creative flex">
+          <div class="item">創造力</div>
+          <div class="score-value digital"><span class="count-up">{{ $mainVideo['vitality_score'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span></div>
+        </div>
+      </div>
+      <div class="total-score-wrapper child_2" id="total">
+        <div class="total-score-title">総合得点</div>
+        <div class="total-score count-up digital">{{ $mainVideo['total_score_integer'] }}</div>
+        @if($mainVideo['total_score_double'] > 99)
+          <div class="total-score-under digital">.<span class="count-up">{{ $mainVideo['total_score_double'] }}</span><span>点</span></div>
+        @else
+          <div class="total-score-under digital">.0<span class="count-up">{{ $mainVideo['total_score_double'] }}</span><span>点</span></div>
+        @endif
+      </div>
     </div>
-    <div class="review-mark">
-      ▼
-    </div>
-  </div>
-  <div class="score">
-    <div class="each-score-wrapper child_1" id="each">
-      <div class="each-score score-basic flex">
-        <div class="item">面接基礎力</div>
-        <div class="score-value digital"><span class="count-up">{{ $mainVideo['basic_score'] }}</span><span class="fix-width">/32</span><span class="score-unit">点</span></div>
-      </div>
-      <div class="each-score score-expression flex">
-        <div class="item">自己表現力</div>
-        <div class="score-value digital"><span class="count-up">{{ $mainVideo['expression_score'] }}</span><span class="fix-width">/20</span><span class="score-unit">点</span></div>
-      </div>
-      <div class="each-score score-logic flex">
-        <div class="item">ロジカル力</div>
-        <div class="score-value digital"><span class="count-up">{{ $mainVideo['logical_score'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span></div>
-      </div>
-      <div class="each-score score-vitality flex">
-        <div class="item">バイタリティ</div>
-        <div class="score-value digital"><span class="count-up">{{ $mainVideo['creative_score'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span></div>
-      </div>
-      <div class="each-score score-creative flex">
-        <div class="item">創造力</div>
-        <div class="score-value digital"><span class="count-up">{{ $mainVideo['vitality_score'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span></div>
-      </div>
-    </div>
-    <div class="total-score-wrapper child_2" id="total">
-      <div class="total-score-title">総合得点</div>
-      <div class="total-score count-up digital">{{ $mainVideo['total_score_integer'] }}</div>
-      @if($mainVideo['total_score_double'] > 99)
-        <div class="total-score-under digital">.<span class="count-up">{{ $mainVideo['total_score_double'] }}</span><span>点</span></div>
-      @else
-        <div class="total-score-under digital">.0<span class="count-up">{{ $mainVideo['total_score_double'] }}</span><span>点</span></div>
-      @endif
-    </div>
-  </div>
-    <div class="score-detail">
+  <div class="score-detail">
 
     </div>
   </div>
