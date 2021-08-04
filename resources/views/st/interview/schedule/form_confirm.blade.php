@@ -5,7 +5,6 @@
 
 @include('components.parts.page_title', ['title'=>'確認'])
 
-
 <div class="container confirm-wrapper">
 	<form method="post" action="{{ route('interview.schedule.send') }}">
 		@csrf
@@ -48,4 +47,5 @@
     	@include('components.parts.button.form.transition_button', ['text' => '予約を完了する'])
 	</form>
 </div>
+<script type="text/javascript" src="{{ asset('/js/st/interview/schedule/alert_double_click.js') }}"></script>
 @endsection

@@ -47,8 +47,15 @@ const displayAllElement = () => {
 }
 
 //質問によって、コンテンツを非表示にする関数
-const hideAboutQuestion = ($element, $targetQuestion, $question) => {
-  if(($targetQuestion !== $question) && ($question !== 'null')){
+const hideAboutQuestion = ($element, $targetQuestions, $question) => {
+  flag = false;
+  $targetQuestions.forEach($targetQuestion => {
+    if($targetQuestion == $question || $question == 'null'){
+      flag = true;
+    }
+  });
+
+  if(flag === false){
     $element.closest(".video-wrapper").style.display = "none";
   }
 }
@@ -118,11 +125,21 @@ const hideAboutPostedDate = ($element, $targetDate, $postedDate) => {
 //selectで選択した値に該当しないコンテンツを非表示
 const displayElement = ($question, $score, $postedDate) => {
   elements.forEach(element => {
-    targetQuestion = element.getElementsByClassName('other-question-selected')[0].innerText;
+    //targetQuestion = element.getElementsByClassName('other-question-selected')[0].innerText;
+    targetQuestionObjects = element.getElementsByClassName('other-question-selected');
+    targetQuestionObjects = Array.from(targetQuestionObjects);
+
+    targetQuestions = [];
+    targetQuestionObjects.forEach(targetQuestionObject => {
+      //console.log(targetQuestionObject.innerText);
+      targetQuestions.push(targetQuestionObject.innerText);
+    });
+    console.log(targetQuestions);
+    
     targetScore = element.getElementsByClassName('video-score')[0].children[0].innerText;
     targetDate = element.getElementsByClassName('date')[0].innerText;
 
-    hideAboutQuestion(element, targetQuestion, $question);
+    hideAboutQuestion(element, targetQuestions, $question);
     hideAboutScore(element, targetScore, $score);
     hideAboutPostedDate(element, targetDate, $postedDate);
   });
@@ -138,19 +155,19 @@ const onchange = ($question, $score, $date) => {
 const changeBackgroundColor = ($scores) => {
   $scores.forEach(scoreElement => {
     let score = scoreElement.children[0].innerText;
-
+    
     if(score >= 60 && score < 70){
-      scoreElement.style.background = "linear-gradient(to right, #537895, #09203f)";
+      scoreElement.style.background = "linear-gradient(360deg, #537895, #09203f)";
     } else if(score >= 70 && score < 80){
-      scoreElement.style.background = "linear-gradient(to right, #2a5298, #1e3c72)";
+      scoreElement.style.background = "linear-gradient(360deg, #8ec5fc, #e0c3fc)";
     } else if(score >= 80 && score < 90){
-      scoreElement.style.background = "linear-gradient(to right, #7CC4FF, #9681FF)";
+      scoreElement.style.background = "linear-gradient(360deg, #7CC4FF, #9681FF)";
     } else if(score >= 90 && score < 95){
-      scoreElement.style.background = "linear-gradient(45deg, #757575 0%, #9E9E9E 45%, #E8E8E8 70%, #9E9E9E 85%, #757575 90% 100%)";
+      scoreElement.style.background = "linear-gradient(360deg, #fee140, #fa709a)";
     } else if(score >= 95 && score < 100){
-      scoreElement.style.background = "linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%)";
+      scoreElement.style.background = "linear-gradient(45deg, #fee140 0%, #fee140 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%)";
     } else if(score == 100){
-      scoreElement.style.background = "linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%)";
+      scoreElement.style.background = "linear-gradient(45deg, #fee140 0%, #fee140 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%)";
       scoreElement.classList.add('hundred');
     } else {
       scoreElement.style.background = "#555";
