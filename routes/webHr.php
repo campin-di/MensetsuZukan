@@ -8,6 +8,7 @@ use App\Models\Video;
         if($loginFlag){
           return redirect()->action('Hr\HrHomeController@index');
         }
+        Auth::logout();
         $contentsNumber = Video::where('type', 0)->count();
         return view('top', compact("contentsNumber"));
     })->name('hr.home');
