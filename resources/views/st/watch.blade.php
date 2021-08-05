@@ -45,9 +45,9 @@
             @if($mainVideo['basic_score_double'] == 0)
               <span class="count-up">{{ $mainVideo['basic_score_integer'] }}</span>.<span class="zero">000</span><span class="fix-width">/16</span><span class="score-unit">点</span>
             @elseif($mainVideo['basic_score_double'] < 100)
-              <span class="count-up">{{ $mainVideo['basic_score_integer'] }}</span>.0<span class="count-up">{{ $mainVideo['basic_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+              <span class="count-up">{{ $mainVideo['basic_score_integer'] }}</span>.0<span class="count-up">{{ $mainVideo['basic_score_double'] }}</span><span class="fix-width">/32</span><span class="score-unit">点</span>
             @else
-              <span class="count-up">{{ $mainVideo['basic_score_integer'] }}</span>.<span class="count-up">{{ $mainVideo['basic_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+              <span class="count-up">{{ $mainVideo['basic_score_integer'] }}</span>.<span class="count-up">{{ $mainVideo['basic_score_double'] }}</span><span class="fix-width">/32</span><span class="score-unit">点</span>
             @endif
          </div>        </div>
         <div class="each-score score-expression flex">
@@ -56,9 +56,9 @@
             @if($mainVideo['expression_score_double'] == 0)
               <span class="count-up">{{ $mainVideo['expression_score_integer'] }}</span>.<span class="zero">000</span><span class="fix-width">/16</span><span class="score-unit">点</span>
             @elseif($mainVideo['expression_score_double'] < 100)
-              <span class="count-up">{{ $mainVideo['expression_score_integer'] }}</span>.0<span class="count-up">{{ $mainVideo['expression_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+              <span class="count-up">{{ $mainVideo['expression_score_integer'] }}</span>.0<span class="count-up">{{ $mainVideo['expression_score_double'] }}</span><span class="fix-width">/20</span><span class="score-unit">点</span>
             @else
-              <span class="count-up">{{ $mainVideo['expression_score_integer'] }}</span>.<span class="count-up">{{ $mainVideo['expression_score_double'] }}</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+              <span class="count-up">{{ $mainVideo['expression_score_integer'] }}</span>.<span class="count-up">{{ $mainVideo['expression_score_double'] }}</span><span class="fix-width">/20</span><span class="score-unit">点</span>
             @endif
          </div>        </div>
         <div class="each-score score-logic flex">
