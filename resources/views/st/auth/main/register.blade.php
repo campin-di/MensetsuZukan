@@ -81,7 +81,7 @@
       </div>
 
       <div class="form-input-wrapper">
-      <label for="nickname" class="form-title">ニックネーム*</label>
+        <label for="nickname" class="form-title">ニックネーム*</label>
         <div class="form-input flex">
           <input id="nickname" type="text" class="form-control {{ $errors->has('nickname') ? ' is-invalid' : '' }}" name="nickname" value="{{ old('nickname') }}" placeholder="例：よっしー" required>
 
@@ -93,12 +93,30 @@
         </div>
       </div>
 
-       <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>
+      <div class="form-input-wrapper">
+        <label for="channel" class="form-title">サービスを知ったきっかけ*</label>
+        <div class="form-input flex">
+          <select id="channel" class="form-control" name="channel" required>
+            <option value="">選択してください。</option>
+            @foreach($channelArray as $channel)
+              <option value="{{ $channel }}" @if(old('channel') == "{{ $channel }}") selected @endif>{{ $channel }}</option>
+            @endforeach          
+          </select>
+          @if ($errors->has('channel'))
+            <span class="invalid-feedback">
+              <strong>{{ $errors->first('channel') }}</strong>
+            </span>
+          @endif
+        </div>
+        <input id="supplement" type="text" class="form-control {{ $errors->has('supplement') ? ' is-invalid' : '' }}" name="supplement" value="{{ old('supplement') }}" placeholder="例：吉田裕哉">
+      </div>
 
+      <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>
       @include('components.parts.button.form.next_button')
     </form>
   </div>
   @endempty
 
-<script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
+  <script type="text/javascript" src="{{ asset('/js/auth/main/register.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
 @endsection

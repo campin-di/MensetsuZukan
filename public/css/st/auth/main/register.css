@@ -71,6 +71,12 @@ input::-ms-input-placeholder {
   font-size: 1.1rem;
 }
 
+#supplement{
+  display: none;
+  margin: 10px auto;
+  width: 95%;
+}
+
 .button-wrapper{
   margin-top: 50px;
   text-align: center;
