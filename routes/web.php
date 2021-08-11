@@ -188,3 +188,9 @@ Route::prefix('user')->middleware(['auth'])->group(function() {
   Route::post('ajax/subscription/update_card', 'User\Ajax\SubscriptionController@update_card');
 });
 /*=== end:課金関係 =========================================================*/
+
+/************************ LINE *************************/
+// line webhook受取用
+Route::post('/line/callback',    'LineApiController@postWebhook');
+// line メッセージ送信用
+Route::get('/line/message/send', 'LineApiController@sendMessage');
