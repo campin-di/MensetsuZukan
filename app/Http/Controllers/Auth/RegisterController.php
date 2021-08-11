@@ -122,53 +122,54 @@ class RegisterController extends Controller
           $user->status = config('const.USER_STATUS.MAIL_AUTHED');
           $user->email_verified_at = Carbon::now('asia/Tokyo');
           if($user->save()) {
-              return view('st/auth.main.register', compact('email_token'));
+            $channelArray = ReturnUserInformationArrayClass::returnChannelArray();
+            return view('st/auth.main.register', compact('email_token', 'channelArray'));
           } else{
-              return view('st/auth.main.register')->with('message', 'メール認証に失敗しました。再度、メールからリンクをクリックしてください。');
+            return view('st/auth.main.register')->with('message', 'メール認証に失敗しました。再度、メールからリンクをクリックしてください。');
           }
       }
     }
 
      public function showForm2(Request $request)
      {
-         $input = $request->all();
+      $input = $request->all();
 
-         //== Validator処理 ======================================================
-         $rules = [
-           //全角カナだけ通す正規表現：regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u'
-           'gender' => 'required|digits_between:1,2',
-           'lastname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
-           'firstname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
-           'kana_lastname' => 'required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
-           'kana_firstname' => 'required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
-           'nickname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
-         ];
-         $messages = [
-           'gender.required' => '性別を選択してください。',
-           'lastname.required' => '「性」を入力してください。',
-           'lastname.regex' => '日本語で入力してください。',
-           'lastname.string' => '文字列を入力してください。',
-           'firstname.required' => '「名」を入力してください。',
-           'firstname.regex' => '日本語で入力してください。',
-           'firstname.string' => '文字列を入力してください。',
-           'kana_lastname.required' => 'フリガナを入力してください。',
-           'kana_lastname.string' => '文字列を入力してください。',
-           'kana_lastname.regex' => 'カタカナで入力してください。',
-           'kana_firstname.required' => 'フリガナを入力してください。',
-           'kana_firstname.string' => '文字列を入力してください。',
-           'kana_firstname.regex' => 'カタカナで入力してください。',
-           'nickname.required' => 'ニックネームを入力してください。',
-           'nickname.string' => '文字列を入力してください。',
-           'nickname.regex' => '日本語で入力してください。',
-         ];
-         $validator = Validator::make($input, $rules, $messages);
-         $validated = $validator->validate(); //元のページにリダイレクトしてくれる。
-         //=======================================================================
+      //== Validator処理 ======================================================
+      $rules = [
+        //全角カナだけ通す正規表現：regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u'
+        'gender' => 'required|digits_between:1,2',
+        'lastname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
+        'firstname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
+        'kana_lastname' => 'required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
+        'kana_firstname' => 'required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
+        'nickname' => 'required|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
+      ];
+      $messages = [
+        'gender.required' => '性別を選択してください。',
+        'lastname.required' => '「性」を入力してください。',
+        'lastname.regex' => '日本語で入力してください。',
+        'lastname.string' => '文字列を入力してください。',
+        'firstname.required' => '「名」を入力してください。',
+        'firstname.regex' => '日本語で入力してください。',
+        'firstname.string' => '文字列を入力してください。',
+        'kana_lastname.required' => 'フリガナを入力してください。',
+        'kana_lastname.string' => '文字列を入力してください。',
+        'kana_lastname.regex' => 'カタカナで入力してください。',
+        'kana_firstname.required' => 'フリガナを入力してください。',
+        'kana_firstname.string' => '文字列を入力してください。',
+        'kana_firstname.regex' => 'カタカナで入力してください。',
+        'nickname.required' => 'ニックネームを入力してください。',
+        'nickname.string' => '文字列を入力してください。',
+        'nickname.regex' => '日本語で入力してください。',
+      ];
+      $validator = Validator::make($input, $rules, $messages);
+      $validated = $validator->validate(); //元のページにリダイレクトしてくれる。
+      //=======================================================================
 
-         //セッションに書き込む
-         $request->session()->put("register_input", $input);
+      //セッションに書き込む
+      $request->session()->put("register_input", $input);
 
-         return view('st/auth.main.register2');
+      return view('st/auth.main.register2');
      }
 
      public function redirectShowForm2()
@@ -253,11 +254,18 @@ class RegisterController extends Controller
          $gender = '女';
        }
 
+       if(!is_null($register_input['supplement'])){
+        $channel = $register_input['channel'].'('.$register_input['supplement'].')';
+       } else{
+        $channel = $register_input['channel'];
+       }
+
        $confirmArray = [
          '性別' => $gender,
          '名前' => $register_input['lastname']. ' '. $register_input['firstname'],
          'フリガナ' => $register_input['kana_lastname']. ' '. $register_input['kana_firstname'],
          'ニックネーム' => $register_input['nickname'],
+         'サービスを知ったきっかけ' => $channel,
          '大学名' => $register2_input['university'],
          '学部名' => $register2_input['faculty'],
          '学科名' => $register2_input['department'],
@@ -315,13 +323,11 @@ class RegisterController extends Controller
        $user->english_level = $register3_input['english_level'];
        $user->toeic = $register3_input['toeic'];
 
-       /*
-       if($register4_input['plan'] == '投稿者プラン'){
-         $user->plan = "contributor";
-       } else{
-         $user->plan = "audience";
-       }
-       */
+       if(!is_null($register_input['supplement'])){
+        $user->channel = $register_input['channel']. ':'. $register_input['supplement'];
+      } else {
+        $user->channel = $register_input['channel'];
+      }
 
        $user->plan = "contributor";
 
@@ -331,11 +337,9 @@ class RegisterController extends Controller
        if(!is_null($register3_input['start_time'])){
          $user->start_time = $register3_input['start_time'];
        }
-
        $user->save();
 
        //================================================
-
        //セッションを空にする
        $request->session()->forget("register_input");
        $request->session()->forget("register2_input");

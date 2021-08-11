@@ -5,6 +5,17 @@ use Carbon\Carbon;
 
 class ReturnUserInformationArrayClass
 {
+    public static function returnChannelArray()
+    {
+      $channelArray = [
+        'Twitter',
+        'Instagram',
+        '知人/運営からの紹介',
+        '所属組織/団体',
+        'その他',
+      ];
+      return $channelArray;
+    }
     public static function returnCompanyTypeArray()
     {
       $companyTypeArray = [
