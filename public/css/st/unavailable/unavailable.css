@@ -76,6 +76,7 @@ footer{
   margin: 20px auto 40px;
   font-weight: bold;
   word-break: keep-all;
+  overflow: hidden;
 }
 
 .button{

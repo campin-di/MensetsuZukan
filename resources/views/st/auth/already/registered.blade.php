@@ -6,7 +6,7 @@
 
 <div class="container form-wrapper">
   <div class="card">
-    <div class="title">LINEアカウントの連携が完了しました</div>
+    <div class="title">LINEアカウント連携が完了しました！</div>
     <p>
       次回からLINEを用いてログインしてください。<br><br>
       面接図鑑「公式LINE」の友だち追加が完了していない方は、下のボタンから追加してください。<br>

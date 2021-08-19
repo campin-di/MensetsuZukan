@@ -98,7 +98,7 @@ class RegisterController extends Controller
         }
         $user = $user->first();
   
-        auth()->login($user->first());
+        auth()->login($user);
         //ログインページに飛ばして、アラートで「すでに会員登録済みです」が出るように実行。
       }
       return redirect()->action('St_HomeController@index');
