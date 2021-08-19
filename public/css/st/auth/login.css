@@ -65,14 +65,17 @@
 }
 
 .top-content h1 {
-  font-size: 28px !important;
+  font-size: 20px !important;
 }
 
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
 
   .form-wrapper{
-    padding: 50px 25% 0px !important;
+    padding: 10px 20% 0px !important;
+  }
+  .form-input-wrapper{
+    width: 80%;
   }
 
   .button-wrapper{
@@ -86,6 +89,10 @@
   }
   .button-wrapper .btn-link{
     font-size: 18px;
+  }
+
+  .top-content h1 {
+    font-size: 28px !important;
   }
 
 

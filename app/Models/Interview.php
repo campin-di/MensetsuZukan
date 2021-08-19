@@ -9,11 +9,6 @@ class Interview extends Model
 {
     use HasFactory;
 
-    public function user()
-    {
-      return $this->belongsTo('App\Models\User');
-    }
-
     public function hr_user()
     {
       return $this->belongsTo('App\Models\HrUser', 'hr_id');

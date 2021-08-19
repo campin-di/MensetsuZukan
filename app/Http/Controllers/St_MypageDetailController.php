@@ -45,18 +45,6 @@ class St_MypageDetailController extends Controller
 
     $input = $request->all();
 
-    //===== validator処理====================================
-    //================================================
-  /*
-    $validator = Validator::make($input, $this->validator);
-    if($validator->fails()){
-      return redirect()->action("St_MypageDetailController@step1")
-        ->withInput()
-        ->withErrors($validator);
-    }
-  */
-    //================================================
-    //================================================
     //セッションに書き込む
     $request->session()->put("step2", $input);
 

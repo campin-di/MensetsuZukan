@@ -26,17 +26,6 @@ class Hr_QuestionListController extends Controller
 
     $input = $request->all();
 
-    //=====部分処理====================================
-/*
-    $validator = Validator::make($input, $this->validator);
-    if($validator->fails()){
-      return redirect()->action("Hr_QuestionListController@show")
-        ->withInput()
-        ->withErrors($validator);
-    }
-*/
-    //================================================
-
     //セッションに書き込む
     $request->session()->put("form_input", $input);
 

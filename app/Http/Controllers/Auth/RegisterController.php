@@ -40,7 +40,6 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-
         // :point_down: アクセストークン
         $this->access_token = env('LINE_ACCESS_TOKEN');
         // :point_down: チャンネルシークレット
@@ -61,7 +60,7 @@ class RegisterController extends Controller
       $line_user_id = $social_user->getId();
 
       $auth = Auth::user();
-      if($auth->line_id == "NULL"){
+      if($auth->line_id == NULL){
         $auth->email = $social_email;
         $auth->line_id = $social_user->getId();
         $auth->save();
@@ -69,7 +68,6 @@ class RegisterController extends Controller
         return view('st.auth.already.registered');
       }
       
-
       $user = User::where('line_id', $line_user_id);
       if(!$user->exists()) {
           $user = User::create([

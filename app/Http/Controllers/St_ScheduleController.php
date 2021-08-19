@@ -21,7 +21,7 @@ class St_ScheduleController extends Controller
 {
   public function schedule($hr_id)
   {
-    Schedule::where('date', '<', date('Y-m-d'))->delete();
+    Schedule::where('date', '<', date('Y-n-j'))->delete();
 
     $hrUser = HrUser::where('id', $hr_id)->select('id', 'nickname', 'company', 'image_path', 'industry')->first();
     $scheduleData = Schedule::orderBy('date', 'asc')->where('hr_id', $hr_id);

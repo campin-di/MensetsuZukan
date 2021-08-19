@@ -47,16 +47,16 @@
         </div>
       </div>
       <div class="container form-wrapper">
-        @include('components.parts.page_title', ['title'=>'LINEで会員登録をした方'])
+        @include('components.parts.page_title', ['title'=>'LINEで会員登録した方'])
 
+        @include('components.parts.button.line_button', ['text'=>'ログイン', 'routeName'=>'social_login.redirect', 'var'=>'line'])
+        <hr class="my-3">
         <div class="mt-3">
           <ol>
             <li>LINEで会員登録をした方のみボタンをクリックしてください。</li>
             <li>未会員登録ユーザーがクリックすると仮会員登録を行います。</li>
           </ol>
         </div>
-        <hr class="my-3">
-        @include('components.parts.button.line_button', ['text'=>'ログイン', 'routeName'=>'social_login.redirect', 'var'=>'line'])
       </div>
     </form>
 
