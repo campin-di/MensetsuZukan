@@ -6,24 +6,24 @@
 @include('components.parts.page_title_reverse', ['title'=>'新規会員登録'])
 
 <div class="container form-wrapper">
-  <h3 class="register-h3">STEP１：面接図鑑公式LINEを友達追加</h3>
+  <h3 class="register-h3">STEP１：公式LINEを友だち追加</h3>
   <div class="register-step">
     <ol>
       <li>面接図鑑のご利用にはLINEアカウントが必要です。</li>
       <li>面接図鑑のご利用に必要な情報は公式LINEよりお知らせしますので、ブロックしないでください。</li>
-      <li>下の「友だち追加」より、公式LINEの追加を行ってください。</li>
+      <li>「友だち追加」より、公式LINEの友だち追加を行ってください。</li>
     </ol>
     <hr class="my-3">
     <div class="friend-addition">
       <a class="line-register-wrapper" href="https://lin.ee/Fgn5e1O">
       <div class="my-2 line-register">
-        <img style="height:75px" src="{{ asset('/img/icon/line-icon.jpeg') }}">
+        <img src="{{ asset('/img/icon/line-icon.png') }}">
         <span>友だち追加</span>
       </div>
     </a>
     </div>
   </div>
-  <h3 class="register-h3">STEP２：会員登録をする</h3>
+  <h3 class="register-h3">STEP２：会員登録</h3>
   <div class="register-step">
     <div class="mt-3">
       <ol>

@@ -50,7 +50,7 @@ class St_HomeController extends Controller
     //==========================================================================
 
     //=== LINEアカウントが未登録の人はリダイレクト ===============
-      if(Auth::user()->line_id == "NULL"){
+      if(Auth::user()->line_id == NULL){
         return view('st.auth.already.register',[]);
       }
     //======================================================

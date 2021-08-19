@@ -4,6 +4,7 @@
 }
 .next-button a{
   width: 90%;
+  margin: 0 auto;
   border-radius: 5px;
   color: #FFF;
   font-size: 18px;
