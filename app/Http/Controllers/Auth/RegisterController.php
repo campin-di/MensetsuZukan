@@ -60,47 +60,48 @@ class RegisterController extends Controller
       $line_user_id = $social_user->getId();
 
       $auth = Auth::user();
-      if($auth->line_id == NULL){
-        $auth->email = $social_email;
-        $auth->line_id = $social_user->getId();
-        $auth->save();
-
-        return view('st.auth.already.registered');
+      if(!is_null($auth)){
+        if($auth->line_id == NULL){
+          $auth->email = $social_email;
+          $auth->line_id = $social_user->getId();
+          $auth->save();
+          
+          return view('st.auth.already.registered');
+        }
+      } else{
+        $user = User::where('line_id', $line_user_id);
+        if(!$user->exists()) {
+            $user = User::create([
+                'email' => $social_email,
+                'password' => Hash::make(Str::random()),
+                'line_id' => $social_user->getId(),
+                'status' => config('const.USER_STATUS.PRE_REGISTER'),
+                'email_verify_token' => base64_encode($social_email)
+            ]);
+  
+            //本会員登録リンク 送信部分
+            $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
+            $bot         = new \LINE\LINEBot($http_client, ['channelSecret' => $this->channel_secret]);
+        
+            $message = url('register/verify/'. $user['email_verify_token']);
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+            $response    = $bot->pushMessage($line_user_id, $textMessageBuilder);
+        
+            // 配信成功・失敗
+            if ($response->isSucceeded()) {
+                Log::info('Line 送信完了');
+            } else {
+                Log::error('投稿失敗: ' . $response->getRawBody());
+            }
+  
+            return view('st/auth.registered',['email' => 'test@gmail.com']);
+        }
+        $user = $user->first();
+  
+        auth()->login($user->first());
+        //ログインページに飛ばして、アラートで「すでに会員登録済みです」が出るように実行。
       }
-      
-      $user = User::where('line_id', $line_user_id);
-      if(!$user->exists()) {
-          $user = User::create([
-              'email' => $social_email,
-              'password' => Hash::make(Str::random()),
-              'line_id' => $social_user->getId(),
-              'status' => config('const.USER_STATUS.PRE_REGISTER'),
-              'email_verify_token' => base64_encode($social_email)
-          ]);
-
-          //本会員登録リンク 送信部分
-          $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
-          $bot         = new \LINE\LINEBot($http_client, ['channelSecret' => $this->channel_secret]);
-      
-          $message = url('register/verify/'. $user['email_verify_token']);
-          $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-          $response    = $bot->pushMessage($line_user_id, $textMessageBuilder);
-      
-          // 配信成功・失敗
-          if ($response->isSucceeded()) {
-              Log::info('Line 送信完了');
-          } else {
-              Log::error('投稿失敗: ' . $response->getRawBody());
-          }
-
-          return view('st/auth.registered',['email' => 'test@gmail.com']);
-      }
-      $user = $user->first();
-
-      auth()->login($user->first());
-      //ログインページに飛ばして、アラートで「すでに会員登録済みです」が出るように実行。
       return redirect()->action('St_HomeController@index');
-
   }
 
     /**
