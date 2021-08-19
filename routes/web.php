@@ -194,3 +194,18 @@ Route::prefix('user')->middleware(['auth'])->group(function() {
 Route::post('/line/callback',    'LineApiController@postWebhook');
 // line メッセージ送信用
 Route::get('/line/message/send', 'LineApiController@sendMessage');
+
+// ソーシャル・ログイン
+Route::prefix('login/{provider}')->where(['provider' => '(line|github)'])->group(function(){
+  Route::get('/', 'Auth\LoginController@redirectToProvider')->name('social_login.redirect');
+  Route::get('/callback', 'Auth\LoginController@handleProviderCallback')->name('social_login.callback');
+});
+
+Route::prefix('register/{provider}')->where(['provider' => '(line|github)'])->group(function(){
+  Route::get('/', 'Auth\RegisterController@redirectToProvider')->name('social_register.redirect');
+  Route::get('/callback', 'Auth\RegisterController@handleProviderCallback')->name('social_register.callback');
+});
+
+Route::prefix('line/{provider}')->where(['provider' => '(line|github)'])->group(function(){
+  Route::get('/', 'St_HomeController@redirectToProvider')->name('social_line.redirect');
+});

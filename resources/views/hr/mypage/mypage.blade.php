@@ -6,8 +6,8 @@
 @include('components.parts.page_title', ['title'=>'マイページ'])
 
 <div class="container">
-  @include('components.parts.profile', ['imagePath' => $userData->image_path, 'userName' => $userData->name, 'nickName' => '('.$userData->nickname.')', 'description' => $userData->company, 'introduction' => $userData->introduction])
-
+  @include('components.parts.profile', ['imagePath' => $userData->image_path, 'userName' => '', 'nickName' => $userDataArray['nickname'], 'description' => $userData->company, 'introduction' => $userData->introduction])
+  
   <div class="container_profile_btn">
     <a href="{{ route('hr.mypage.detail') }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
     <a href="{{ route('hr.mypage.basic.show') }}" class="mx-2 btn btn-primary container_profile_btn_info">基本情報の変更</a>

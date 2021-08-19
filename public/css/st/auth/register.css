@@ -61,6 +61,26 @@ input::-ms-input-placeholder {
   border: none;
   line-height: 2.8;
 }
+
+
+
+.register-h3{
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #9681FF;
+  margin: 25px auto;
+}
+.register-step{
+  margin: 0 auto 100px;
+}
+.register-step li{
+  margin: 5px auto;
+}
+
+.friend-addition{
+  text-align: center;
+}
 /* === end: フォーム部分 =================================================*/
 
 @media screen and (min-width:1025px) {

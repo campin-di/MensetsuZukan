@@ -1,0 +1,25 @@
+.line-register-wrapper{
+  margin-left: 15px;
+}
+
+.line-register{
+  background-color:#19BC03;
+  border-radius: 10px;
+  text-align: center;
+  margin-left: -15px;
+  width: 60%;
+  margin: 0 auto;
+}
+.line-register img{
+  margin-left: -15px;
+}
+.line-register span{
+  color: #FFF !important;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+
+}

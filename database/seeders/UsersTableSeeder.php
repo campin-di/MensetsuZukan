@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
           [
             'email' => 'yuu.yoshi12@outlook.jp',
             'password' => Hash::make('password'),
+            'line_id' => '00000000000',
             'nickname' => 'よっしー',
             'name' => '吉田 ゆうや',
             'kana_name' => 'ヨシダ ユウヤ',
@@ -46,6 +47,7 @@ class UsersTableSeeder extends Seeder
           [
             'email' => 'kinta@outlook.jp',
             'password' => Hash::make('password'),
+            'line_id' => '00000000001',
             'nickname' => 'キンタ',
             'name' => 'ゴダール 金太郎',
             'kana_name' => 'ゴダール キンタロウ',

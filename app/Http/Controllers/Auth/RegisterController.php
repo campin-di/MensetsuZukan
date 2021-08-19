@@ -8,8 +8,12 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
+use Log;
 
 use Illuminate\Http\Request;
+use Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailVerification;
@@ -36,8 +40,70 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+
+        // :point_down: アクセストークン
+        $this->access_token = env('LINE_ACCESS_TOKEN');
+        // :point_down: チャンネルシークレット
+        $this->channel_secret = env('LINE_CHANNEL_SECRET');
     }
+
+    public function redirectToProvider(Request $request) {
+      $provider = $request->provider;
+      return Socialite::driver($provider)->redirect();
+
+  }
+
+  public function handleProviderCallback(Request $request) {
+      $provider = $request->provider;
+      $social_user = Socialite::driver($provider)->user();
+      $social_email = $social_user->getEmail();
+      $social_name = $social_user->getName();
+      $line_user_id = $social_user->getId();
+
+      $auth = Auth::user();
+      if($auth->line_id == "NULL"){
+        $auth->email = $social_email;
+        $auth->line_id = $social_user->getId();
+        $auth->save();
+
+        return view('st.auth.already.registered');
+      }
+      
+
+      $user = User::where('line_id', $line_user_id);
+      if(!$user->exists()) {
+          $user = User::create([
+              'email' => $social_email,
+              'password' => Hash::make(Str::random()),
+              'line_id' => $social_user->getId(),
+              'status' => config('const.USER_STATUS.PRE_REGISTER'),
+              'email_verify_token' => base64_encode($social_email)
+          ]);
+
+          //本会員登録リンク 送信部分
+          $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
+          $bot         = new \LINE\LINEBot($http_client, ['channelSecret' => $this->channel_secret]);
+      
+          $message = url('register/verify/'. $user['email_verify_token']);
+          $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+          $response    = $bot->pushMessage($line_user_id, $textMessageBuilder);
+      
+          // 配信成功・失敗
+          if ($response->isSucceeded()) {
+              Log::info('Line 送信完了');
+          } else {
+              Log::error('投稿失敗: ' . $response->getRawBody());
+          }
+
+          return view('st/auth.registered',['email' => 'test@gmail.com']);
+      }
+      $user = $user->first();
+
+      auth()->login($user->first());
+      //ログインページに飛ばして、アラートで「すでに会員登録済みです」が出るように実行。
+      return redirect()->action('St_HomeController@index');
+
+  }
 
     /**
      * Get a validator for an incoming registration request.

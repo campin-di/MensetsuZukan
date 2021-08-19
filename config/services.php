@@ -43,4 +43,10 @@ return [
             env('STRIPE_PREMIUM_ID') => '視聴者プラン（３ヶ月契約）'
         ]
     ],
+
+    'line' => [
+        'client_id' => env('LINE_CLIENT_ID'),
+        'client_secret' => env('LINE_CLIENT_SECRET'),
+        'redirect' => env('LINE_REDIRECT_URI')
+    ]
 ];
