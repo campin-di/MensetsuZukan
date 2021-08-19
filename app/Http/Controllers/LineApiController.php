@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use Log;
 
 class LineApiController extends Controller
@@ -56,12 +57,29 @@ class LineApiController extends Controller
             // 友だち追加 or ブロック解除
             case 'follow':
                 // ユーザー固有のIDを取得
-                $mid = $request['events'][0]['source']['userId'];
+                $line_user_id = $request['events'][0]['source']['userId'];
                 // ユーザー固有のIDはどこかに保存しておいてください。メッセージ送信の際に必要です。
-                LineUser::updateOrCreate(['line_id' => $mid]);
-                Log::info("ユーザーを追加しました。 user_id = " . $mid);
+                Log::info("ユーザーを追加しました。 user_id = " . $line_user_id);
+
+                $userData = User::where('line_id', $line_user_id)->where('status', config('const.USER_STATUS.PRE_REGISTER'));
+                if($userData->exists()){
+                    $user = $userData->first();
+                    $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
+                    $bot         = new \LINE\LINEBot($http_client, ['channelSecret' => $this->channel_secret]);
+                
+                    $message = url('register/verify/'. $user->email_verify_token);
+                    $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+                    $response    = $bot->pushMessage($line_user_id, $textMessageBuilder);
+                
+                    // 配信成功・失敗
+                    if ($response->isSucceeded()) {
+                        Log::info('Line 送信完了');
+                    } else {
+                        Log::error('投稿失敗: ' . $response->getRawBody());
+                    }          
+                }
                 break;
-    
+
             // グループ・トークルーム参加
             case 'join':
                 Log::info("グループ・トークルームに追加されました。");

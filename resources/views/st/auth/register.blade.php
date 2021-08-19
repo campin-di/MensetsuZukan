@@ -6,6 +6,39 @@
 @include('components.parts.page_title_reverse', ['title'=>'新規会員登録'])
 
 <div class="container form-wrapper">
+  <h3 class="register-h3">STEP１：面接図鑑公式LINEを友達追加</h3>
+  <div class="register-step">
+    <ol>
+      <li>面接図鑑のご利用にはLINEアカウントが必要です。</li>
+      <li>面接図鑑のご利用に必要な情報は公式LINEよりお知らせしますので、ブロックしないでください。</li>
+      <li>下の「友だち追加」より、公式LINEの追加を行ってください。</li>
+    </ol>
+    <hr class="my-3">
+    <div class="friend-addition">
+      <a class="line-register-wrapper" href="https://lin.ee/Fgn5e1O">
+      <div class="my-2 line-register">
+        <img style="height:75px" src="{{ asset('/img/icon/line-icon.jpeg') }}">
+        <span>友だち追加</span>
+      </div>
+    </a>
+    </div>
+  </div>
+  <h3 class="register-h3">STEP２：会員登録をする</h3>
+  <div class="register-step">
+    <div class="mt-3">
+      <ol>
+        <li>面接図鑑はLINEアカウントでのみ会員登録が可能です。</li>
+        <li>本ウェブサービスでは、LINEによる認証ページで許可を得た場合のみメールアドレスを取得します。</li>
+        <li>そして、取得されたメールアドレスにつきましては本サービスのログイン以外の目的には一切使用しません。</li>
+        <li>もし、既に会員登録されている方が下のボタンをクリック場合、自動的に面接図鑑にログインされます。</li>
+      </ol>
+    </div>
+    <hr class="my-3">
+    @include('components.parts.button.line_button', ['text'=>'会員登録', 'routeName'=>'social_login.redirect', 'var'=>'line'])
+  </div>
+</div>
+
+  <!--
   <form method="POST" action="{{ route('register.pre_check') }}">
       @csrf
       <div class="form-input-wrapper">
@@ -42,7 +75,7 @@
 
       @include('components.parts.button.form.next_button')
     </form>
-  </div>
+-->
 
 <script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
 @endsection

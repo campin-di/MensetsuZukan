@@ -29,12 +29,6 @@ class St_InterviewController extends Controller
     ];
     $hrs = HrUser::whereIn('status', $status)->get();
 
-    $targetIds = Schedule::select('hr_id')->groupBy('hr_id')->get();
-    $hr_ids = [];
-    foreach($targetIds as $targetId){
-      array_push($hr_ids, $targetId->hr_id);
-    }
-
     $industries = ReturnUserInformationArrayClass::returnIndustry();
     $companyTypes = ReturnUserInformationArrayClass::returnCompanyTypeArray();
     $stockTypes = ReturnUserInformationArrayClass::returnStockTypeArray();
@@ -42,21 +36,19 @@ class St_InterviewController extends Controller
 
     $hrCollection = collect([]);
     foreach ($hrs as $hr) {
-      if(in_array($hr->id, $hr_ids)){
-        $hrCollection = $hrCollection->concat([
-          [
-            'id' => $hr->id,
-            'nickname' => $hr->nickname,
-            'imagePath' => $hr->image_path,
-            'industry' => $hr->industry,
-            'company_type' => $hr->company_type,
-            'stock_type' => $hr->stock_type,
-            'location' => $hr->location,
-            'selectionPhase' => $hr->selection_phase,
-            'introduction' => CutStringClass::CutString($hr->introduction, 105),
-          ],
-        ]);
-      }
+      $hrCollection = $hrCollection->concat([
+        [
+          'id' => $hr->id,
+          'nickname' => $hr->nickname,
+          'imagePath' => $hr->image_path,
+          'industry' => $hr->industry,
+          'company_type' => $hr->company_type,
+          'stock_type' => $hr->stock_type,
+          'location' => $hr->location,
+          'selectionPhase' => $hr->selection_phase,
+          'introduction' => CutStringClass::CutString($hr->introduction, 105),
+        ],
+      ]);
     }
 
     return view('st/interview/search', compact('hrCollection', 'industries', 'stockTypes', 'prefecturesArray'));

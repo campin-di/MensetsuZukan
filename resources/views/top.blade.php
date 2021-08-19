@@ -325,7 +325,7 @@
           </div>
           <div class="cp_actab">
             <input id="cp_tabfour05" type="checkbox" name="tabs">
-            <label for="cp_tabfour05">人志望理由は用意しておかないといけませんか？</label>
+            <label for="cp_tabfour05">志望理由は用意しておかないといけませんか？</label>
             <div class="cp_actab-content">特定の企業を想定した面接ではないため、企業への志望理由は必要ありません。しかし、現時点で一番志望している業界とその理由は問われることがあります。</div>
           </div>
           <div class="cp_actab">

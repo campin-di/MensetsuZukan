@@ -8,8 +8,8 @@
 <div class="container">
   @include('components.parts.profile',[
     'imagePath' => $userDataArray['imagePath'],
-    'userName' => $userDataArray['name'],
-    'nickName' => '('. $userDataArray['nickname'] . ')',
+    'userName' => '',
+    'nickName' => $userDataArray['nickname'],
     'description' => $userDataArray['graduate_year'] .'年卒 / '. $userDataArray['industry']. ' 志望',
     'introduction' => $userDataArray['introduction']
   ])

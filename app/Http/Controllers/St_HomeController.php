@@ -7,6 +7,10 @@ use Carbon\Carbon;
 use App\Common\RedirectClass;
 use DateTime;
 use Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
+use Log;
 
 use App\Models\Video;
 use App\Models\Question;
@@ -23,6 +27,11 @@ class St_HomeController extends Controller
   public function __construct()
   {
       $this->middleware('auth');
+
+      // :point_down: アクセストークン
+      $this->access_token = env('LINE_ACCESS_TOKEN');
+      // :point_down: チャンネルシークレット
+      $this->channel_secret = env('LINE_CHANNEL_SECRET');
   }
 
   /**
@@ -40,6 +49,11 @@ class St_HomeController extends Controller
     }
     //==========================================================================
 
+    //=== LINEアカウントが未登録の人はリダイレクト ===============
+      if(Auth::user()->line_id == "NULL"){
+        return view('st.auth.already.register',[]);
+      }
+    //======================================================
     $questionsData = Question::get('name');
     $questions = [];
     foreach ($questionsData as $question) {
@@ -74,6 +88,12 @@ class St_HomeController extends Controller
     Auth::logout();
     return view('st.unavailable.register',[
     ]);
+  }
+
+  public function redirectToProvider(Request $request) {
+      $provider = $request->provider;
+      return Socialite::driver($provider)->redirect();
+
   }
 
 }

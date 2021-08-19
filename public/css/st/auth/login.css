@@ -49,16 +49,33 @@
   font-weight: bold;
 }
 /* === end: 採用担当者の方はこちら 部分 =================================================*/
+.line-register-wrapper{
+  margin-left: 15px;
+}
+
+.line-register{
+  background-color:#06C755;
+  border-radius: 15px;
+  text-align: center;
+  margin-left: -15px;
+}
+.line-register span{
+  color: #FFF !important;
+  font-weight: bold;
+}
+
+.top-content h1 {
+  font-size: 28px !important;
+}
 
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
 
   .form-wrapper{
-    padding: 50px 25% !important;
+    padding: 50px 25% 0px !important;
   }
 
   .button-wrapper{
-    margin-top: 100px;
     padding: 0 5%;
   }
   .transition-button {
