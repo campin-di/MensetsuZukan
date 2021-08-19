@@ -76,7 +76,7 @@ class RegisterController extends Controller
                 'password' => Hash::make(Str::random()),
                 'line_id' => $social_user->getId(),
                 'status' => config('const.USER_STATUS.PRE_REGISTER'),
-                'email_verify_token' => base64_encode($social_email)
+                'email_verify_token' => base64_encode($line_user_id)
             ]);
   
             //本会員登録リンク 送信部分
@@ -85,7 +85,7 @@ class RegisterController extends Controller
         
             $message = url('register/verify/'. $user['email_verify_token']);
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-            $response    = $bot->pushMessage($line_user_id, $textMessageBuilder);
+            $response = $bot->pushMessage($line_user_id, $textMessageBuilder);
         
             // 配信成功・失敗
             if ($response->isSucceeded()) {
