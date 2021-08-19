@@ -75,6 +75,7 @@ footer{
 .description{
   margin: 20px auto 40px;
   font-weight: bold;
+  word-break: keep-all;
 }
 
 .button{
@@ -122,6 +123,7 @@ footer{
   .description {
     margin: 40px auto 70px;
     font-size: 20px;
+    word-break: break-all;
   }
 
   .button{
