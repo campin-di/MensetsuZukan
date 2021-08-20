@@ -41,8 +41,23 @@ class LineApiController extends Controller
                 $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
                 $bot         = new \LINE\LINEBot($http_client, ['channelSecret' => $this->channel_secret]);
                 // LINEの投稿処理
-                $message_data = "メッセージありがとうございます。ただいま準備中です";
-                $response     = $bot->replyText($reply_token, $message_data);
+
+                /* 絵文字 処理 */
+                $code = '10008D';
+                $bin = hex2bin(str_repeat('0', 8 - strlen($code)) . $code);
+                $emoticon =  mb_convert_encoding($bin, 'UTF-8', 'UTF-32BE');
+                /* 絵文字 処理 */
+
+                $builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+                // ビルダーにメッセージをすべて追加
+                $msgs = [
+                    new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('メッセージありがとうございます。面接図鑑です'.$emoticon),
+                    new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('お問い合わせ or よくある質問を知りたい方は、トーク画面下部の「お問い合わせ」をクリックしてください！'),
+                ];
+                foreach($msgs as $value){
+                  $builder->add($value);
+                }
+                $response     = $bot->replyMessage($reply_token, $builder);
 
                 // Succeeded
                 if ($response->isSucceeded()) {

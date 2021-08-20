@@ -49,7 +49,6 @@ class RegisterController extends Controller
     public function redirectToProvider(Request $request) {
       $provider = $request->provider;
       return Socialite::driver($provider)->redirect();
-
   }
 
   public function handleProviderCallback(Request $request) {
@@ -83,9 +82,17 @@ class RegisterController extends Controller
             $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
             $bot         = new \LINE\LINEBot($http_client, ['channelSecret' => $this->channel_secret]);
         
-            $message = url('register/verify/'. $user['email_verify_token']);
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-            $response = $bot->pushMessage($line_user_id, $textMessageBuilder);
+
+            $builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+            // ビルダーにメッセージをすべて追加
+            $msgs = [
+                new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('仮会員登録ありがとうございます！下のURLより本会員登録を行ってください。'),
+                new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(url('register/verify/'. $user['email_verify_token'])),
+            ];
+            foreach($msgs as $value){
+              $builder->add($value);
+            }
+            $response = $bot->pushMessage($line_user_id, $builder);
         
             // 配信成功・失敗
             if ($response->isSucceeded()) {
