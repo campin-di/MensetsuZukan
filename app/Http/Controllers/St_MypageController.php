@@ -15,6 +15,12 @@ class St_MypageController extends Controller
 {
   public function index()
   {
+      //=== LINEアカウントが未登録の人はリダイレクト ===============
+      if(is_null(Auth::user()->line_id)){
+        return view('st.auth.already.register');
+      }
+    //======================================================
+
     $userId = Auth::user()->id;
     $userData = User::find($userId);
 
