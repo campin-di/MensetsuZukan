@@ -13,7 +13,7 @@
         <div class="description" style="font-size:14px">
           面接図鑑ではLINE連携が必須となりました。<br>
           オファー通知などは公式LINEから行われます。<br>
-          「LINEと連携」よりLINEアカウントを登録してください。<br>
+          「LINEと連携」よりLINEと連携してください。<br>
         </div>
         @include('components.parts.button.line_button', ['text'=>'LINEと連携', 'routeName'=>'social_line.redirect', 'var'=>'line'])
       </div>

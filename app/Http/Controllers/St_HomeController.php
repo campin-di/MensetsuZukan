@@ -41,6 +41,11 @@ class St_HomeController extends Controller
    */
   public function index()
   {
+    //=== LINEアカウントが未登録の人はリダイレクト ===============
+      if(is_null(Auth::user()->line_id)){
+        return view('st.auth.already.register',[]);
+      }
+    //======================================================
     //=====もし視聴不可状態のときはリダイレクト===================================
     if($redirect = RedirectClass::stRedirect()){
       if($redirect){
@@ -49,11 +54,6 @@ class St_HomeController extends Controller
     }
     //==========================================================================
 
-    //=== LINEアカウントが未登録の人はリダイレクト ===============
-      if(is_null(Auth::user()->line_id)){
-        return view('st.auth.already.register',[]);
-      }
-    //======================================================
     $questionsData = Question::get('name');
     $questions = [];
     foreach ($questionsData as $question) {
