@@ -90,7 +90,7 @@ class LineApiController extends Controller
                     }
 
                     $carousel = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder($columns);
-                    $carousel_message = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('aaaaa',$carousel);
+                    $carousel_message = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('よくある質問',$carousel);
 
                     $msgs = [
                         $carousel_message,
