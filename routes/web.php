@@ -76,14 +76,23 @@ Route::middleware(['auth'])->group(function() {
 
   Route::post('/interview/cancel/{id}', 'St_InterviewController@cancel')->name('interview.cancel');
   /*=== スケジュール登録 関係 ===============================================*/
-
+  
   //mypage to schedule adding function
   Route::post('/interview/schedule/post', 'St_ScheduleController@post')->name('interview.schedule.post');
-
+  
   Route::get('/interview/schedule/confirm', "St_ScheduleController@confirm")->name('interview.schedule.confirm');
   Route::post('/interview/schedule/confirm', "St_ScheduleController@send")->name('interview.schedule.send');
+  
+  //mypage to schedule check function
+  Route::get('/interview/schedule/check', 'St_ScheduleController@check')->name('interview.schedule.check');
+  
+  //check to comfirm page
+  Route::post('/interview/schedule/delete', 'St_ScheduleController@delete')->name('interview.schedule.delete');
+  
+  Route::get('/interview/schedule/delete/confirm', "St_ScheduleController@deleteConfirm")->name('interview.schedule.deleteConfirm');
+  Route::post('/interview/schedule/delete/confirm', "St_ScheduleController@deleteSend")->name('interview.schedule.deleteSend');
 
-  Route::get('/interview/schedule/thanks', "St_ScheduleController@complete")->name('interview.schedule.complete');
+  Route::get('/interview/schedule/delete/done', "St_ScheduleController@deleteComplete")->name('interview.schedule.delete.complete');
   /*=== end:スケジュール登録 関係 ===============================================*/
 
   /*=== マイページ関係 =============================================================*/

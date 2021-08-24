@@ -15,10 +15,10 @@ class St_MypageController extends Controller
 {
   public function index()
   {
-      //=== LINEアカウントが未登録の人はリダイレクト ===============
-      if(is_null(Auth::user()->line_id)){
-        return view('st.auth.already.register');
-      }
+    //=== LINEアカウントが未登録の人はリダイレクト ===============
+    if(is_null(Auth::user()->line_id)){
+      return view('st.auth.already.register');
+    }
     //======================================================
 
     $userId = Auth::user()->id;
@@ -46,6 +46,7 @@ class St_MypageController extends Controller
       if((str_split($dateArray[1])[0] == 0)){
         $month = str_split($dateArray[1])[1];
       }
+      $time = explode('-', $interviewReservation->time)[0].'〜';
       
       $interviewReservationsCollection = $interviewReservationsCollection->concat([
         [
@@ -53,7 +54,7 @@ class St_MypageController extends Controller
           'nickname' => $interviewReservation->hr_user->nickname,
           'imagePath' => $interviewReservation->hr_user->image_path,
           'date' => $month.'月'.$dateArray[2].'日',
-          'time' => $interviewReservation->time,
+          'time' => $time,
         ],
       ]);
     }

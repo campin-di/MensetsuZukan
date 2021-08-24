@@ -1,27 +1,39 @@
+let elements = document.getElementsByClassName('inputGroup');
+elements = Array.from(elements);
 
-
-//selectが変更されたときのみ実行される。
-schedules.forEach(schedule => {
-  document.getElementById(schedule.date).onchange = function(){
-    console.log('Hello');
-    colorChanger(schedule.date);
-  }
+window.addEventListener('DOMContentLoaded', function(){
+  elements.forEach(element => {
+    element.style.display = 'none';
+  });
 });
 
-const colorChanger = ($id) =>{
-  schedules.forEach(schedule => {
-    if(schedule.date !== $id){
-      scheduleElement = document.getElementById(schedule.date);
-      scheduleElement.options[0].selected = true;
-      scheduleElement.required = false;
+let input_date = document.getElementById('date');
+input_date.addEventListener("input", function(){
+  elements.forEach(element => {
+    element.style.display = 'block';
+  });
 
-      scheduleElement.style.color = '#CCC';
-      scheduleElement.style.background = '#FFF';
-      scheduleElement.style.fontWeight = 'initial';
+  let deleteDate = document.getElementById('delete-date');
+  deleteDate.style.display = 'none';
+});
+
+let checkboxs = document.getElementsByClassName('check');
+checkboxs = Array.from(checkboxs);
+
+let sumChecked;
+checkboxs.forEach(checkbox => {
+  checkbox.addEventListener("input", function(){
+    sumChecked = 0;
+    checkboxs.forEach(checkbox => {
+      if(checkbox.checked === true) sumChecked += 1;
+    });
+
+    if(sumChecked > 0){
+      checkboxs.forEach(checkbox => {
+        checkbox.required = false;
+      });
     }
   });
-  selectedElement = document.getElementById($id);
-  selectedElement.style.color = '#FFF';
-  selectedElement.style.fontWeight = 'bold';
-  selectedElement.style.background = '#6B8BE9';
-}
+});
+
+

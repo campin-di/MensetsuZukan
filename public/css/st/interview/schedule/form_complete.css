@@ -11,9 +11,20 @@
 }
 /* === end: メイン部分 =================================================*/
 
-/* === begin: ポップアップ部分 =================================================*/
-
-/* === end: ポップアップ部分 =================================================*/
+/* === begin: LINE部分 =================================================*/
+.line-wrapper{
+  margin-top: 50px;
+  padding: 40px 5%;
+  text-align: center;
+  border-radius: 15px !important;
+  border: solid 1px #EEE;
+}
+.line-description{
+  text-align: left;
+  width: 80%;
+  margin: 0 auto;
+}
+/* === end: LINE部分 =================================================*/
 
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/

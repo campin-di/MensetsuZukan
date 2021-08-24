@@ -64,6 +64,14 @@
 .pr-message{
   color: #333;
   margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.hr-mypage{
+  font-size: 14px;
+}
+.hr-mypage::before{
+  content: '>>';
 }
 
 /* === end: 各人事部分 =================================================*/
@@ -102,5 +110,10 @@
   .pr-message {
     margin-top: 15px;
     font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .hr-mypage{
+    font-size: 14px;
   }
 }

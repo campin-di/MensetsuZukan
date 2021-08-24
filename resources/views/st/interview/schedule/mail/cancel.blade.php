@@ -1,16 +1,14 @@
 <div class="container">
   <div>
-    {{ $st->nickname }}さんから面接予約がありました。
+    {{ $st->nickname }}さんとの下記面接がキャンセルされました。
   </div>
   <br>
   <div>
-    候補日時：{{ $mailDateArray['date'] }}：
-    @foreach($mailDateArray['time'] as $time)
-      {{ $time }}, 
-    @endforeach
+    面接日時：{{ $mailDateArray['date'] }}：$mailDateArray['time']
   </div>
   <br>
-  面接図鑑にログインいただき、「マイページ」→下のバー「面接リクエストを確認する」から面接日を選択してください！<br>
+  お時間を確保していただいていたにも関わらず、大変申しわけございません。<br>
+  再び学生からの面接リクエストをお待ちください。
   <br>
   ※ 何か不明な点があった場合は、下記問い合わせ窓口までお問い合わせください。
   <br>

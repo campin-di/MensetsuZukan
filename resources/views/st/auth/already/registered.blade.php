@@ -13,7 +13,7 @@
       オファーなどの連絡は公式LINEを通して行われますので、ブロックしないようにしてください。
     </p>
     <a href="https://lin.ee/Fgn5e1O">
-      <img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="75" border="0">
+      <img class="line-add-img" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加">
     </a>
   </div>
 </div>

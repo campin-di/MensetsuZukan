@@ -41,7 +41,7 @@
     </ul>
   </div>
 
-  @include('components.parts.button.fixed_button',['routeName' => 'interview.search', 'var'=>'', 'msg' => '', 'text' => '面接の予約'])
+  @include('components.parts.button.fixed_button',['routeName' => 'interview.search', 'var'=>'', 'msg' => '', 'text' => '現役人事と面接練習！'])
 
   <div class="container_pastVideo">
     <h2 class="container_schedule_title">過去の面接動画</h2>

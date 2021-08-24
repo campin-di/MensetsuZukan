@@ -16,7 +16,7 @@
 
 /* === begin: フォーム部分 =================================================*/
 .card{
-  margin-top: 50px;
+  margin: 50px auto 25px;
   padding: 40px 5%;
   text-align: center;
   border-radius: 15px !important;
@@ -43,6 +43,14 @@
 }
 /* === end: フォーム部分 =================================================*/
 
+.line-add-img{
+  height: 50px;
+}
+
+.upper-button, .under-button {
+  text-align: center !important;
+}
+
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
   .top-content-wrapper{
@@ -61,11 +69,17 @@
   }
 
   .card{
+    margin: 50px auto;
     padding-left: 10%;
     padding-right: 10%;
     border-radius: 15px !important;
   }
   .card p{
     font-size: 16px;
+    text-align: left;
+  }
+
+  .line-add-img{
+    height: 70px;
   }
 }

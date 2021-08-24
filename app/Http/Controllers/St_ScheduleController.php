@@ -25,50 +25,13 @@ class St_ScheduleController extends Controller
 
     $hrUser = HrUser::where('id', $hr_id)->select('id', 'nickname', 'company', 'image_path', 'industry')->first();
     $scheduleData = Schedule::orderBy('date', 'asc')->where('hr_id', $hr_id);
-
-    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
-    $timeColumns = ReturnUserInformationArrayClass::returnTimeColumns();
     
     $tommorow = date('Y-m-d', strtotime('+1 day'));
     $scheduleData->where('date', $tommorow)->delete();
 
-    $scheduleData = Schedule::orderBy('date', 'asc')->where('hr_id', $hr_id);
-
-    if(!$scheduleData->exists()){
-      $is_schedule = 0;
-      return view('st/interview/schedule/form', [
-        'hrUser' => $hrUser,
-        'is_schedule' => $is_schedule,
-      ]);
-    } else {
-      $schedules = $scheduleData->get();
-
-      $scheduleCollection = collect([]);
-      foreach($schedules as $schedule){
-        $tmpArray = [];
-        foreach($timeColumns as $key => $item){
-          if($schedule->$key == 1){
-            $tmpArray += [$key => $timeArray[$key]];
-          } elseif($schedule->$key == 2){
-            $tmpArray += [$key.'_h' => $timeArray[$key.'_h']];
-          } elseif($schedule->$key == 3){
-            $tmpArray += [$key => $timeArray[$key]];
-            $tmpArray += [$key.'_h' => $timeArray[$key.'_h']];
-          }
-        }
-
-        $scheduleCollection = $scheduleCollection->put($schedule->date, $tmpArray);
-      }
-      $is_schedule = 1;
-    }
-
-    return view('st/interview/schedule/form', [
-      'hrUser' => $hrUser,
-      'schedules' => $schedules,
-      'timeArray' => $timeArray,
-      'is_schedule' => $is_schedule,
-      'scheduleCollection' => $scheduleCollection,
-    ]);
+    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
+    
+    return view('st/interview/schedule/form', compact('hrUser','timeArray'));
   }
 
   public function post(Request $request)
@@ -89,23 +52,63 @@ class St_ScheduleController extends Controller
     if(!$input){
       return redirect()->action("St_InterviewController@search");
     }
-    foreach ($input as $key => $schedule) {
-      $isDateFormat = preg_match('/\A[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}\z/', $key);
-      if($isDateFormat && !is_null($schedule)) {
-        $explode = explode(':', $schedule);
-        $date = $explode[0];
-        $timeKey = $explode[1];
-      }
-    }
-
     $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
-    foreach ($timeArray as $key => $value) {
-      if($key == $timeKey){
-        $time = $value;
+
+    return view('st/interview/schedule/form_confirm', compact('input', 'timeArray'));
+  }
+
+  // $timeKeyArray : 入力されたタイムキーの配列
+  // $target : 追加or変更するScheduleデータ
+  public function setTimeNumber($timeKeyArray, $target, $hr_id, $date) {
+    $newTimeKeyArray = []; //他の人事とのスケジュールに同日程の予定があった場合を除くタイムキー配列
+    foreach($timeKeyArray as $timeKey){
+      $battingData = Batting::where('date', $date)->where('time', $timeKey);
+      if(!$battingData->exists()){
+        $timeArray = explode('_', $timeKey);
+        $alreadySchedule = Schedule::where('hr_id', '!=', $hr_id)->where('date', $date)->where($timeArray[0], '>', 0)->first();
+        if(!is_null($alreadySchedule)){
+          $tmpTimeKey = $timeArray[0];
+          $val = $alreadySchedule->$tmpTimeKey;
+          if(array_key_exists(1, $timeArray) && $timeArray[1] == 'h'){
+            if($val == 1) {
+              array_push($newTimeKeyArray, $timeKey);
+            }
+          } else {
+            if($val == 2) {
+              array_push($newTimeKeyArray, $timeKey);
+            }
+          }
+        } else {
+          array_push($newTimeKeyArray, $timeKey);
+        }
       }
     }
 
-    return view('st/interview/schedule/form_confirm', compact('date', 'time'));
+    if(empty($newTimeKeyArray)){
+      return $newTimeKeyArray;
+    }
+
+    foreach ($newTimeKeyArray as $time) {
+      $time = explode('_', $time);
+
+      $time_key = $time[0];
+      if(array_key_exists(1, $time) && $time[1] == 'h'){
+        if($target->$time_key % 2 == 1){
+          $target->$time_key = 3;
+        } else {
+          $target->$time_key = 2;
+        }
+      } else {
+        //キーがhogeの形のとき
+        if($target->$time_key >= 2){
+          $target->$time_key = 3;
+        } else{
+          $target->$time_key = 1;
+        }
+      }
+    }
+
+    return $newTimeKeyArray;
   }
 
   function send(Request $request){
@@ -120,146 +123,201 @@ class St_ScheduleController extends Controller
     if(!$input){
       return redirect()->action("St_InterviewController@search");
     }
-    
-    foreach ($input as $key => $schedule) {
-      $isDateFormat = preg_match('/\A[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}\z/', $key);
-      if($isDateFormat && !is_null($schedule)) {
-        $explode = explode(':', $schedule);
-        $date = $explode[0];
-        $timeKey = $explode[1];
-
-        $tmp = explode('_', $timeKey);
-        $dbKey = $tmp[0];
-      }
-    }
-
-    $schedule = Schedule::where('hr_id', $input['hr_id'])->where('date', $date)->get();
-    $schedule = $schedule[0];
 
     //=====処理内容====================================
     $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
+    $timeColumns = ReturnUserInformationArrayClass::returnTimeColumns();
 
-    $hr_id = $schedule->hr_id;
-    $st = User::find(Auth::user()->id);
+    $hr_id = $input['hr_id'];
     $hr = HrUser::find($hr_id);
 
-    $meeting = new MeetingClass();
-    $battingData = Batting::where('date', $date)->where('time', $timeKey);
+    $st_id = Auth::user()->id;
+    $st = User::find($st_id);
 
-    if($battingData->exists()){
-      $batting = $battingData->get();
-      $batting = $batting[0];
-      $batting->increment('api_user');
-      //api_userが1(2人分:0と1)になったら全てのスケジュール内の日と時間をゼロにする。
-      if($batting->api_user == 1){
-        $targetSchedules = Schedule::where('date', $batting->date)->get();
-        foreach ($targetSchedules as $eachSchedule) {
-          \DB::table('schedules')->where('id', $eachSchedule->id)->update([
-            $dbKey => 0,
-          ]);
+    $date = $input['date'];
+
+    $schedule = Schedule::where('st_id', $st_id);
+    
+    $target = $schedule->where('hr_id', $hr_id)->where('date', $date);
+    if($target->exists()){
+      $target = $target->first();
+
+      $newTimeKeyArray = $this->setTimeNumber($input['time'], $target, $hr_id, $date);
+    } else{
+      $target = new Schedule;
+      $target->hr_id = $hr_id;
+      $target->st_id = $st_id;
+      $target->date = $date;
+
+      //キーが存在しなかったカラムを0で埋める。
+      foreach ($timeColumns as $key => $column) {
+        $target->$key = 0;
+      }
+      $newTimeKeyArray = $this->setTimeNumber($input['time'], $target, $hr_id, $date);
+    }
+
+    $flag = 1;
+    if(empty($newTimeKeyArray)){
+      $flag = 0;
+    }
+
+    if($flag == 1){
+      $target->save();
+      
+      $mailDateArray = [
+        "date" => $date,
+        "time" => [],
+      ];
+      
+      foreach($newTimeKeyArray as $timeKey){
+        array_push($mailDateArray['time'], $timeArray[$timeKey]);
+      }
+      
+      Mail::send('st/interview/schedule/mail/reservation', ['mailDateArray' => $mailDateArray, 'hr' => $hr, 'st' => $st],
+        function ($message) use ($hr, $st){
+          $message->subject($st->name. 'さんから面接リクエストがありました！');
+          $message->from('mensetsuzukan@pampam.co.jp', '面接図鑑');
+          $message->to($hr->email);
+        }
+      );
+    }
+    //================================================
+    
+    //セッションを空にする
+    $request->session()->forget("form_input");
+
+    return view('st/interview/schedule/form_complete', compact('flag'));
+  }
+
+
+  public function check()
+  {
+    $timeColumns = ReturnUserInformationArrayClass::returnTimeColumns();
+    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
+
+    $userId = Auth::user()->id;
+    $addTimeArray = Schedule::where('st_id', $userId)->orderBy('date', 'asc')->get();
+
+    $scheduleArray = [];
+    foreach($addTimeArray as $addTime){
+      $dayArray = [];
+      foreach($timeColumns as $key => $val){
+        if($addTime->$key == 0){
+          continue;
+        } elseif($addTime->$key == 1) {
+          $dayArray += [$key => $timeArray[$key]];
+        } elseif($addTime->$key == 2) {
+          $dayArray += [$key.'_h' => $timeArray[$key.'_h']];
+        } else {
+          $dayArray += [$key => $timeArray[$key]];
+          $dayArray += [$key.'_h' => $timeArray[$key.'_h']];
         }
       }
-      $created_meeting = $meeting->createMeeting($batting->api_user, $date, $timeKey);
 
-    } else {
-      $batting = new Batting;
-      $batting->date = $date;
-      $batting->time = $timeKey;
-      $batting->api_user = 0;
-      $batting->save();
+      $scheduleArray += [$addTime->date => $dayArray];
+     }
+    return view('st/interview/schedule/check', compact('scheduleArray'));
+  }
 
-      $created_meeting = $meeting->createMeeting($batting->api_user, $date, $timeKey);
+  public function delete(Request $request)
+  {
+    $input = $request->all();
+    $request->session()->put("form_input", $input);
+
+    return redirect()->action("St_ScheduleController@deleteConfirm");
+  }
+
+  function deleteConfirm(Request $request){
+    //セッションから値を取り出す
+    $input = $request->session()->get("form_input");
+
+    //セッションに値が無い時はフォームに戻る
+    if(!$input){
+      return redirect()->action("St_ScheduleController@check");
     }
 
-    $interview = new Interview;
-    $interview->st_id = $st->id;
-    $interview->hr_id = $hr_id;
-    $interview->date = $date;
-    $interview->time = $timeArray[$timeKey];
-    $interview->zoomUrl = $created_meeting['join_url'];
-    $interview->zoomId = $created_meeting['id'];
-    $interview->zoomPass = $created_meeting['password'];
-    $interview->available = config('const.INTERVIEW.UNAVAILABLE');
-    $interview->save();
+    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
 
-    $halfFlag = FALSE;
-    if(array_key_exists(1, $tmp)){
-      $halfFlag = TRUE;
-    }
-    if($schedule->$dbKey < 3){
-      $schedule->$dbKey = 0;
-    } else {
-      if($halfFlag == FALSE) {
-        $schedule->$dbKey = 2;
-      } else {
-        $schedule->$dbKey = 1;
+    $scheduleArray = [];
+    foreach($input as $key => $array){
+      if($key == 'schedule'){
+        foreach($array as $schedule){
+          $dates = explode(':', $schedule);
+          $date = $dates[0];
+          $hour = $dates[1];
+
+          if(isset($scheduleArray[$date])){
+            $scheduleArray[$date] = $scheduleArray[$date] .', '. $timeArray[$hour];
+          }
+          $scheduleArray += [$date => $timeArray[$hour]];
+        
+        }
       }
     }
-    $schedule->save();
+    return view("st/interview/schedule/delete_confirm", compact('scheduleArray'));
+  }
 
-    $flag = TRUE;
-    $timeColumns = ReturnUserInformationArrayClass::returnTimeColumns();
-    foreach($timeColumns as $timeColumn => $time){
-      if($schedule->$timeColumn != 0){
-        $flag = FALSE;
+  function deleteSend(Request $request){
+    //セッションから値を取り出す
+    $input = $request->session()->get("form_input");
+    
+    //戻るボタンが押された時
+    if($request->has("back")){
+      return redirect()->action("St_ScheduleController@check")
+        ->withInput($input);
+    }
+
+    //セッションに値が無い時はフォームに戻る
+    if(!$input){
+      return redirect()->action("St_ScheduleController@check");
+    }
+
+    //=====処理内容====================================
+    $userId = Auth::user()->id;
+    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
+
+    $scheduleArray = [];
+    foreach($input as $inputKey => $array){
+      if($inputKey == 'schedule'){
+        foreach($array as $schedule){
+          $dates = explode(':', $schedule);
+          $date = $dates[0];
+          $key = $dates[1];
+
+          $tmp = explode('_', $key);
+          $dbKey = $tmp[0];
+
+          // _h がない時flagは1
+          $flag = FALSE;
+          if(array_key_exists(1, $tmp)){
+            $flag = TRUE;
+          }
+          
+          $target = Schedule::where('st_id', $userId)->where('date', $date)->first();
+          if($target->$dbKey < 3){
+            $target->$dbKey = 0;
+          } else {
+            if($flag == FALSE) {
+              $target->$dbKey = 2;
+            } else {
+              $target->$dbKey = 1;
+            }
+          }
+          $target->save();
+        }
       }
     }
-    if($flag == TRUE){
-      Schedule::find($schedule->id)->delete();
-    }
 
-    /*=== スプシに記入する処理 =================*/
-    $responsibility = '吉田';
-    if($batting->api_user != 0){
-      $responsibility = 'ゴダール';
-    }
-
-    $sheets = GoogleSheetClass::instance();
-    $sheet_id = '1QFSHSQxUnfzYkAg7L3XtaqeWd1zJFAael_xnYoc8Kmc';
-
-    $appointment = [
-      $interview->id,
-      $st->name. '（'. $st->nickname. '）',
-      $hr->name. '（'. $hr->nickname. '）',
-      $hr->company,
-      $interview->date,
-      $interview->time,
-      $responsibility,
-      $interview->zoomUrl,
-      $interview->zoomId,
-      $interview->zoomPass,
-      0
-    ];
-
-    $values = new \Google_Service_Sheets_ValueRange();
-    $values->setValues([
-        'values' => $appointment
-    ]);
-    $params = ['valueInputOption' => 'USER_ENTERED'];
-    $sheets->spreadsheets_values->append(
-        $sheet_id,
-        '面接予定表!A4',
-        $values,
-        $params
-    );
-
-    Mail::send('st/interview/schedule/mail/reservation', ['interview' => $interview, 'hr' => $hr, 'st' => $st],
-      function ($message) use ($hr, $st){
-        $message->subject($st->name. 'さんから面接予約がありました！');
-        $message->from('mensetsuzukan@pampam.co.jp', '面接図鑑');
-        $message->to($hr->email);
-      }
-    );
     //================================================
 
     //セッションを空にする
     $request->session()->forget("form_input");
 
-    return redirect()->action("St_ScheduleController@complete");
+    return redirect()->action("St_ScheduleController@deleteComplete");
   }
 
-  function complete(){
-    return view('st/interview/schedule/form_complete');
+  function deleteComplete(){
+    return view('st/interview/schedule/delete_complete');
   }
 
 }

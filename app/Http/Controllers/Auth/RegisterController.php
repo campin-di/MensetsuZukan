@@ -257,7 +257,7 @@ class RegisterController extends Controller
        $rules = [
          'university' => 'required|string|ends_with:大学',
          'faculty' => 'required|string|ends_with:学部,学群,学域',
-         'department' => 'required|string|ends_with:学科,コース,過程,類',
+         'department' => 'required|string|ends_with:学科,コース,課程,類',
          'graduate_year' => 'required',
        ];
        $messages = [
@@ -269,7 +269,7 @@ class RegisterController extends Controller
          'faculty.ends_with' => '〇〇学部/学群/学域の形式で入力してください。',
          'department.required' => '学科名を入力してください。',
          'department.string' => '日本語で入力してください。',
-         'department.ends_with' => '〇〇学科/コース/類/過程の形式で入力してください。',
+         'department.ends_with' => '〇〇学科/コース/類/課程の形式で入力してください。',
          'graduate_year.required' => '卒業年度を選択してください。',
        ];
        $validator = Validator::make($input, $rules, $messages);

@@ -28,7 +28,6 @@
     width: 100vw;
     margin-left: calc(((100vw - 100%) / 2) * -1);
     margin-right: calc(((100vw - 100%) / 2) * -1);
-    overflow-x: hidden;
   }
 
   .header-logo img{

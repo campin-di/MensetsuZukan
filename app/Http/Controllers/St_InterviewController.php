@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Interview;
 use App\Models\Schedule;
@@ -62,17 +65,25 @@ class St_InterviewController extends Controller
   public function cancel($id)
   {
     $interviewInfo = Interview::with('hr_user')->find($id);
-    $hrSchedule = Schedule::where('hr_id', $interviewInfo->hr_id)->where('date', $interviewInfo->date)->first();
+    
+    $hr_id = $interviewInfo->hr_user->id;
+    $hr = HrUser::find($hr_id);
+    $st = User::find(Auth::user()->id);
 
-    $timeArray = ReturnUserInformationArrayClass::returnTimeArray();
-    foreach ($timeArray as $key => $value) {
-      if($value == $interviewInfo->time){
-        $hrSchedule->$key = 1;
-        $hrSchedule->save();
-      }
-    }
+    $mailDateArray = [
+      'date' => $interviewInfo->date,
+      'time' => $interviewInfo->time,
+    ];
 
     $interviewInfo->delete();
+
+    Mail::send('st/interview/schedule/mail/cancel', ['mailDateArray' => $mailDateArray, 'hr' => $hr, 'st' => $st],
+      function ($message) use ($hr, $st){
+        $message->subject($st->name. 'さんとの面接がキャンセルされました。');
+        $message->from('mensetsuzukan@pampam.co.jp', '面接図鑑');
+        $message->to($hr->email);
+      }
+    );
 
     return view('st/interview/cancel/complete');
   }
