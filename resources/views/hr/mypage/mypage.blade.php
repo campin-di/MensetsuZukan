@@ -21,7 +21,7 @@
         <a class="item" href="{{ route('hr.interview.detail', $interviewReservation['id']) }}">
           <div class="left_child">
             <img class="item_img" src="{{ asset($userData->image_path) }}" alt="">
-            <span class="item_name">{{ $interviewReservation['name'] }}</span>
+            <span class="item_name">{{ $interviewReservation['nickname'] }}</span>
           </div>
           <div class="right_child item_date">
             {{ $interviewReservation['date'] }}：{{ $interviewReservation['time'] }}
@@ -32,7 +32,7 @@
     </ul>
   </div>
 
-  @include('components.parts.button.fixed_button',['routeName' => 'hr.interview.schedule.add', 'var'=>'', 'msg' => '', 'text' => '面接可能日を追加・変更する'])
+  @include('components.parts.button.fixed_button',['routeName' => 'hr.interview.schedule.request', 'var'=>'', 'msg' => '', 'text' => '面接リクエストを確認する'])
   
   <div class="container_pastVideo">
     <h2 class="container_schedule_title">過去の面接動画</h2>

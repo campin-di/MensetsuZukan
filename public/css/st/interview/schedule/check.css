@@ -19,7 +19,91 @@
 }
 /* === end: 日付部分 =================================================*/
 
+
+/*=== start: アコーディオン基準 部分 =================================*/
+
+.container_detail .item {
+  margin-bottom: 20px;
+}
+
+.container_detail .item .acd-check {
+  display: none;
+}
+
+.container_detail .item .acd-label {
+  font-weight: bold;
+  display: block;
+  position: relative;
+  margin-bottom: 1px;
+  padding: 10px;
+  border-bottom: 1px solid #6b8be9;
+  font-size: 18px;
+}
+
+.container_detail .item .acd-label a {
+  color: #6b8be9;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.container_detail .item .acd-label:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: 0px;
+  border-top: solid 2px #6b8be9;
+  border-right: solid 2px #6b8be9;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  margin-top: -4px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+  position: absolute;
+  right: 5%;
+}
+
+.container_detail .item .acd-content {
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  padding: 0px 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  visibility: hidden;
+}
+
+.container_detail .item .acd-check:checked + .acd-label + .acd-content {
+  height: auto;
+  opacity: 1;
+  padding: 10px;
+  visibility: visible;
+}
+
+/*=== end: アコーディオン基準 部分 =================================*/
+
 /* === begin: 時間部分 =================================================*/
+
 .inputGroup {
   background-color: #fff;
   display: block;
@@ -106,46 +190,6 @@
   line-height: 36px;
 }
 /* === end: 時間部分 =================================================*/
-
-/* === begin: スケジュール部分 =================================================*/
-.schedule-wrapper{
-  text-align: center;
-  margin: 25px auto;
-}
-
-.schedule-description{
-  margin-bottom: 20px;
-}
-
-.form-input-wrapper{
-  width: 80%;
-  margin: 0 auto 20px;
-}
-
-.form-input select{
-  border-radius: 30px;
-  height: 45px;
-  border: 1.5px solid #BCE0FD;
-}
-.form-input select option{
-  text-align: center !important;
-}
-
-.button-wrapper{
-  margin-top: 50px;
-  text-align: center;
-}
-.button-wrapper button{
-  width: 80%;
-  border-radius: 5px;
-  color: #FFF;
-  font-size: 18px;
-  font-weight: bold;
-  background: linear-gradient(to right, #7CC4FF, #9681FF);
-  border: none;
-  line-height: 2.8;
-}
-/* === end: スケジュール部分 =================================================*/
 
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/

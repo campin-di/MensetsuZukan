@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     use HasFactory;
+
+    public function st_user()
+    {
+      return $this->belongsTo('App\Models\User', 'st_id');
+    }
 }

@@ -1,39 +1,48 @@
-let elements = document.getElementsByClassName('inputGroup');
-elements = Array.from(elements);
-
-window.addEventListener('DOMContentLoaded', function(){
-  elements.forEach(element => {
-    element.style.display = 'none';
-  });
+//selectが変更されたときのみ実行される。
+schedules.forEach(schedule => {
+  document.getElementById(schedule.date).onchange = function(){
+    colorChanger(schedule.date);
+  }
 });
 
-let input_date = document.getElementById('date');
-input_date.addEventListener("input", function(){
-  elements.forEach(element => {
-    element.style.display = 'block';
+none = document.getElementById('none');
+console.log(none);
+none.onchange = function(){
+  none.style.background = '#6B8BE9';
+
+  schedules.forEach(schedule => {
+    colorChanger(none);
   });
+}
 
-  let deleteDate = document.getElementById('delete-date');
-  deleteDate.style.display = 'none';
-});
+const colorChanger = ($id) =>{
+  schedules.forEach(schedule => {
+    if(schedule.date !== $id){
+      scheduleElement = document.getElementById(schedule.date);
+      scheduleElement.options[0].selected = true;
+      scheduleElement.required = false;
 
-let checkboxs = document.getElementsByClassName('check');
-checkboxs = Array.from(checkboxs);
-
-let sumChecked;
-checkboxs.forEach(checkbox => {
-  checkbox.addEventListener("input", function(){
-    sumChecked = 0;
-    checkboxs.forEach(checkbox => {
-      if(checkbox.checked === true) sumChecked += 1;
-    });
-
-    if(sumChecked > 0){
-      checkboxs.forEach(checkbox => {
-        checkbox.required = false;
-      });
+      scheduleElement.style.color = '#CCC';
+      scheduleElement.style.background = '#FFF';
+      scheduleElement.style.fontWeight = 'initial';
     }
   });
-});
 
+  if($id !== none){
+    none.options[0].selected = true;
+    none.required = false;
 
+    none.style.color = '#CCC';
+    none.style.background = '#FFF';
+    none.style.fontWeight = 'initial';
+
+    selectedElement = document.getElementById($id);
+    selectedElement.style.color = '#FFF';
+    selectedElement.style.fontWeight = 'bold';
+    selectedElement.style.background = '#6B8BE9';
+  } else {
+    none.style.color = '#FFF';
+    none.style.fontWeight = 'bold';
+    none.style.background = '#6B8BE9';
+  }
+}

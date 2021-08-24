@@ -31,13 +31,14 @@ class Hr_HrMypageController extends Controller
       if((str_split($dateArray[1])[0] == 0)){
         $month = str_split($dateArray[1])[1];
       }
+      $time = explode('-', $interviewReservation->time)[0].'〜';
 
       $interviewReservationsCollection = $interviewReservationsCollection->concat([
         [
           'id' => $interviewReservation->id,
-          'name' => $interviewReservation->st_user->name,
+          'nickname' => $interviewReservation->st_user->nickname,
           'date' => $month.'月'.$dateArray[2].'日',
-          'time' => $interviewReservation->time,
+          'time' => $time,
         ],
       ]);
     }

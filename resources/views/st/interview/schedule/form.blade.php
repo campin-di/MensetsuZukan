@@ -9,44 +9,30 @@
   @include('components.parts.profile', ['imagePath' => $hrUser->image_path, 'userName' => '', 'nickName' => $hrUser->nickname, 'description' => $hrUser->industry, 'introduction' => $hrUser->introduction ])
 
   <div class="schedule-wrapper">
-    @if($is_schedule)
-      <form method="post" action="{{ route('interview.schedule.post') }}">
-        @csrf
+    <form method="post" class="form" action="{{ route('interview.schedule.post') }}">
+      @csrf
 
-        <div class="schedule-description">
-          面接日程を下記から選択してください。
-        </div>
-
-        @foreach($scheduleCollection as $date => $timeArray)
-          <div class="form-input-wrapper">
-            <div class="form-input">
-              <select id="{{ $date }}" name="{{ $date }}" class="form-control" required>
-                <option value="">{{ $date }}</option>
-                @foreach($timeArray as $key => $time)
-                  <option value="{{ $date }}:{{ $key }}" @if(old('date') == "{{ $date }}:{{ $key }}") selected @endif>{{ $date }}：{{ $time }}</option>
-                @endforeach
-              </select>
-              <input type="hidden" name="hr_id" value="{{ $hrUser->id }}">
-            </div>
-          </div>
-        @endforeach
-
-        @include('components.parts.button.form.next_button')
-      </form>
-    @else
-      <div class="container form-wrapper">
-        <div class="title">面接が可能な日程はありません。</div>
-
-        @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'mypage', 'underText' => 'マイページに戻る', 'var' => ''])
+      <div class="schedule-description">
+        面接候補日を選択してください。
       </div>
-    @endif
+
+      <div class="date-wrapper">
+        <lavel>
+          <input type="date" name="date" id="date" class="form-control" required>
+        </label>
+      </div>
+
+      @foreach($timeArray ?? '' as $val => $time)
+        <div class="inputGroup">
+          <input id="option{{ $loop->iteration }}" name="time[]" type="checkbox" value="{{ $val }}" class="check" required>
+          <label for="option{{ $loop->iteration }}">{{ $time }}</label>
+        </div>
+      @endforeach
+
+      <input type="hidden" name="hr_id" value="{{$hrUser->id}}">
+      @include('components.parts.button.form.next_button')
+    </form>
   </div>
 </div>
-
-<script type="text/javascript">
-  @if($is_schedule)
-    let schedules = @json($schedules);
-  @endif
-</script>
 <script type="text/javascript" src="{{ asset('/js/st/interview/schedule/form.js') }}"></script>
 @endsection

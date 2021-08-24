@@ -48,7 +48,7 @@
 
   @foreach($hrCollection as $hr)
   <div class="hr-profile-wrapper">
-    <a href="{{ route('hrpage', $hr['id']) }}">
+    <a href="{{ route('interview.schedule', $hr['id']) }}">
     <div class="flex">
       <div class="left-child">
         <img class="hr-photo" src="{{ asset($hr['imagePath']) }}" alt="プロフィール写真">
@@ -72,12 +72,17 @@
       </div>
     </div>
     <div class="pr-message">
-      {{ $hr['introduction'] }}
+      {{ $hr['introduction'] }} 
     </div>
-    </a>
+  </a>
+  <a class="hr-mypage" href="{{ route('hrpage', $hr['id']) }}">{{$hr['nickname']}}さんについて詳しく見る</a>
   </div>
   @endforeach
 </div>
+
+<div id="delete-date">
+    @include('components.parts.button.fixed_button',['routeName' => 'interview.schedule.check', 'var'=>'', 'msg' => '', 'text' => '面接リクエストを確認・変更する'])
+  </div>
 
 <script type="text/javascript">
   let industries = @json($industries);
