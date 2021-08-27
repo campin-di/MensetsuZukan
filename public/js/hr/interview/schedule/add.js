@@ -6,7 +6,6 @@ schedules.forEach(schedule => {
 });
 
 none = document.getElementById('none');
-console.log(none);
 none.onchange = function(){
   none.style.background = '#6B8BE9';
 

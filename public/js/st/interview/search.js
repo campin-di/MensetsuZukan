@@ -80,7 +80,6 @@ const selectCutElement = ($class, $length) => {
     //ここに書いた処理はスマホの時だけ有効
     let strings = document.getElementsByClassName($class);
     strings = Array.from(strings);
-    console.log(strings);
     strings.forEach(string => {
       let text = string.innerText;
       string.innerText = cutString(text, $length);

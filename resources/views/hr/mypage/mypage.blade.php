@@ -32,6 +32,12 @@
     </ul>
   </div>
 
+  @if(!$flag->isEmpty())
+    <div class="circle-wrapper">
+      <div class="circle">NEW!!</div>
+    </div>
+  @endif
+
   @include('components.parts.button.fixed_button',['routeName' => 'hr.interview.schedule.request', 'var'=>'', 'msg' => '', 'text' => '面接リクエストを確認する'])
   
   <div class="container_pastVideo">
