@@ -161,6 +161,8 @@ class St_ScheduleController extends Controller
       $flag = 0;
     }
 
+    echo $flag;
+
     if($flag == 1){
       $target->save();
       
@@ -175,7 +177,7 @@ class St_ScheduleController extends Controller
       
       Mail::send('st/interview/schedule/mail/reservation', ['mailDateArray' => $mailDateArray, 'hr' => $hr, 'st' => $st],
         function ($message) use ($hr, $st){
-          $message->subject($st->name. 'さんから面接リクエストがありました！');
+          $message->subject($st->nickname. 'さんから面接リクエストがありました！');
           $message->from('mensetsuzukan@pampam.co.jp', '面接図鑑');
           $message->to($hr->email);
         }
@@ -213,9 +215,13 @@ class St_ScheduleController extends Controller
           $dayArray += [$key.'_h' => $timeArray[$key.'_h']];
         }
       }
+      if(array_key_exists($addTime->date, $scheduleArray)){
+        $scheduleArray[$addTime->date] = array_merge($scheduleArray[$addTime->date], $dayArray);
+      } else {
+        $scheduleArray += [$addTime->date => $dayArray];
+      }
+    }
 
-      $scheduleArray += [$addTime->date => $dayArray];
-     }
     return view('st/interview/schedule/check', compact('scheduleArray'));
   }
 
@@ -291,9 +297,11 @@ class St_ScheduleController extends Controller
           $flag = FALSE;
           if(array_key_exists(1, $tmp)){
             $flag = TRUE;
+            $target = Schedule::where('st_id', $userId)->where('date', $date)->where($dbKey, '>', 1)->first();
+          } else {
+            $target = Schedule::where('st_id', $userId)->where('date', $date)->where($dbKey, 1)->first();
           }
-          
-          $target = Schedule::where('st_id', $userId)->where('date', $date)->first();
+
           if($target->$dbKey < 3){
             $target->$dbKey = 0;
           } else {

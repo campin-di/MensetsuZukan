@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Video;
 use App\Models\Interview;
+use App\Models\Schedule;
 
 use App\Common\VideoDisplayClass;
 
@@ -43,10 +44,13 @@ class Hr_HrMypageController extends Controller
       ]);
     }
 
+    $flag = Schedule::where('hr_id', $userId)->get();
+
     return view('hr/mypage/mypage', [
       'userData' => $userData,
       'pastVideosCollection' => $pastVideosCollection,
       'interviewReservationsCollection' => $interviewReservationsCollection,
+      'flag' => $flag,
     ]);
   }
 

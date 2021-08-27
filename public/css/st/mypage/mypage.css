@@ -122,6 +122,26 @@
   border-image-slice: 1;
 }
 
+.circle-wrapper{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  bottom: 40px;
+  left: 20%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  background: #FF7D83;
+}
+.circle{
+  margin: auto;
+  color: #FFF;
+}
+
 @media screen and (min-width: 1024px) {
   .container_title {
     font-size: 32px;
