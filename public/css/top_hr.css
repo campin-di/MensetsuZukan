@@ -539,9 +539,16 @@ img{
 }
 /* === end: "新規会員登録はここから" 部分 =================================================*/
 
+.w-block{
+  width: 100vw;
+  height: 120px;
+  background: #FFF;
+  margin-top: -100px;
+  position: absolute;
+}
 /* === begin: "フッター" 部分 =================================================*/
 .footer{
-  margin: 50px auto;
+  margin: 0px auto 50px;
   padding: 100px 0 5px;
   text-align: center;
   color: #333333;
@@ -1090,6 +1097,10 @@ img{
   }
   /* === end: "新規会員登録はここから" 部分 =================================================*/
 
+  .w-block{
+    margin-top: -100px;
+    left: 0;
+  }
   /* === begin: "フッター" 部分 =================================================*/
   .footer{
     margin: 60px calc(50% - 50vw);

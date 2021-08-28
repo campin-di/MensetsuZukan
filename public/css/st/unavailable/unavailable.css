@@ -23,7 +23,8 @@ footer{
   position: absolute;
   left: 0;
   width: 100vw;
-  height: 102vh;
+  height: 100vh;
+  overflow-y: hidden;
   z-index: 0;
 }
 .block-wrapper:before{
@@ -47,10 +48,7 @@ footer{
   width: 102vw;
   height: 100vh;
   overflow: hidden;
-  top: -56px;
   left: 0;
-  background-color: #000;
-  opacity: 0.7;
 }
 .block-wrapper .img{
   width: 60%;
@@ -61,8 +59,8 @@ footer{
   background: #FFF;
   width: 90%;
   max-height: 80vh;
-  padding: 50px 20px;
-  margin: 5vh auto;
+  padding: 10% 10px;
+  margin: 5% auto;
   text-align: center;
   position: relative;
   z-index: 99;
@@ -74,8 +72,6 @@ footer{
 
 .description{
   margin: 20px auto 40px;
-  font-weight: bold;
-  word-break: keep-all;
   overflow: hidden;
 }
 
