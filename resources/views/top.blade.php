@@ -16,7 +16,7 @@
         </p>
       </div>
       <div class="right-child-pc">
-        <img class="firstview-pc-img" src="./img/top/firstview-pc.svg" alt="PCイラスト">
+        <img class="firstview-pc-img" src="{{ asset('/img/top/firstview-pc.svg') }}" alt="PCイラスト">
       </div>
     </div>
     <div class="firstview-register-wrapper">
@@ -24,6 +24,11 @@
       <a href="{{ route('register.choice') }}">
         <div class="firstview-register-button updown-btn">
           まずは会員登録する
+        </div>
+      </a>
+      <a href="{{ route('top.hr') }}">
+        <div class="firstview-hr-button">
+          採用担当者はこちら
         </div>
       </a>
     </div>

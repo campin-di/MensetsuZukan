@@ -19,6 +19,14 @@ Route::get('/', function () {
     return view('top', compact('contentsNumber'));
 });
 
+// top to 採用担当者ページ
+Route::get('top/hr', function () {
+  $contentsNumber = Video::where('type', 0)->count();
+
+  return view('top_hr', compact('contentsNumber'));
+})->name('top.hr');
+
+
 /*=== 認証関係 =============================================================*/
 Auth::routes();
 
@@ -27,6 +35,7 @@ Route::prefix('hr')->namespace('Hr')->name('hr.')->group(function(){
 
     Route::get('/home', 'HrHomeController@index')->name('hr_home');
 });
+
 
 // top to 学生or人事選択ぺージ
 Route::get('register/choice', 'Auth\RegisterController@choice')->name('register.choice');

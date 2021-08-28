@@ -69,6 +69,13 @@ class St_HomeController extends Controller
     ]);
   }
 
+  public function topHr()
+  {
+
+    return view('top_hr',[
+    ]);
+  }
+
   public function preContributor()
   {
 
