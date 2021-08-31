@@ -56,11 +56,10 @@
       <h2>全ての面接が見放題！</h2>
       <div class="features-content flex">
         <div class="features-content-description left-child">
-          苦手なあの質問、<br>
-          みんなはどう答えてるの？<br>
-          ○○業界の面接傾向は？<br>
-          検索機能を活用して、<br>
-          気になる疑問を解消しよう。<br>
+          23卒の面接動画が見放題！<br>
+          表情・深掘りへの対応力など、<br>
+          ESだけではわからない<br>
+          情報を読み取ることができます。<br>
           <a href="https://storyset.com/work">Work illustrations by Storyset</a>
         </div>
         <div class="right-child">
@@ -71,14 +70,13 @@
     </div>
     <div class="features-content-wrapper hover-action">
       <span>02</span>
-      <h2>現役人事による採点！</h2>
+      <h2>人事による採点機能！</h2>
       <div class="features-content flex">
         <div class="features-content-description left-child">
-          採点を担当するのは、<br>
-          全員現役の人事。<br>
-          フィードバック付きの<br>
-          採点結果を見られるので、<br>
-          面接力UP間違いなし！<br>
+          ロジカル・バイタリティなどの<br>
+          細かい採点項目により、<br>
+          自社が求める能力を持った学生を<br>
+          簡単に探すことができます。<br>
           <a href="https://storyset.com/work">Work illustrations by Storyset</a>
         </div>
         <div class="right-child">
@@ -88,14 +86,13 @@
     </div>
     <div class="features-content-wrapper hover-action">
       <span>03</span>
-      <h2>企業からのオファー！</h2>
+      <h2>学生へのオファー！</h2>
       <div class="features-content flex">
         <div class="features-content-description left-child">
-          サービス内で面接を受けて<br>
-          動画投稿するだけで、<br>
-          日本全国の企業から<br>
-          『1次面接免除以上』の<br>
-          特別オファーが届く！<br>
+          全国の能動的な23卒の学生に<br>
+          オファーを出せます。<br>
+          地方学生も多く抱えているため、<br>
+          全国的な母集団形成も可能です。<br>
           <a href="https://storyset.com/work">Work illustrations by Storyset</a>
         </div>
         <div class="right-child">
