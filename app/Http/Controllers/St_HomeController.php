@@ -41,8 +41,9 @@ class St_HomeController extends Controller
    */
   public function index()
   {
+    $user = Auth::user();
     //=== LINEアカウントが未登録の人はリダイレクト ===============
-      if(is_null(Auth::user()->line_id)){
+      if(is_null($user->line_id)){
         return view('st.auth.already.register',[]);
       }
     //======================================================
@@ -53,20 +54,26 @@ class St_HomeController extends Controller
       }
     }
     //==========================================================================
-
+    
     $questionsData = Question::get('name');
     $questions = [];
     foreach ($questionsData as $question) {
       array_push($questions, $question->name);
     }
 
-    $videos = Video::latest()->where('type', config('const.STHR.ST'))->get();
+    if($user->status == config('const.USER_STATUS.UNAVAILABLE')){
+      $targetIds = [69, 55, 59];
+      $videos = Video::latest()->find($targetIds);
+      $coverVideos = Video::latest()->whereNotIn('id', $targetIds)->where('type', config('const.STHR.ST'))->get();
+      $coverVideosCollection = VideoDisplayClass::VideoDisplay($coverVideos);
+    } else{
+      $videos = Video::latest()->where('type', config('const.STHR.ST'))->get();
+      $coverVideosCollection = collect([]);
+    }
+
     $videosCollection = VideoDisplayClass::VideoDisplay($videos);
 
-    return view('st.home',[
-      'questions' => $questions,
-      'videosCollection' => $videosCollection,
-    ]);
+    return view('st.home',compact('questions', 'videosCollection', 'coverVideosCollection'));
   }
 
   public function topHr()
