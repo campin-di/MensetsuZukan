@@ -19,6 +19,29 @@
 }
 /* === end: 日付部分 =================================================*/
 
+/* === start: 面接リクエストない場合 部分 =================================================*/
+.none-block{
+  width: 90%;
+  margin: auto;
+}
+.none-block h1{
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #9681FF;
+}
+
+.none-img{
+  width: 60%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.description{
+  font-size: 14px;;
+}
+
+/* === end: 面接リクエストない場合 部分 =================================================*/
 
 /*=== start: アコーディオン基準 部分 =================================*/
 
@@ -199,5 +222,22 @@
   .pc{
     display: block !important;
   }
+  /* === start: 面接リクエストない場合 部分 =================================================*/
+  .none-block h1{
+    font-size: 22px;
+    margin: 50px auto;
+  }
+
+  .none-img{
+    width: 50%;
+  }
+
+  .description{
+    width: 70%;
+    margin: auto;
+    font-size: 16px;
+  }
+
+  /* === end: 面接リクエストない場合 部分 =================================================*/
 
 }

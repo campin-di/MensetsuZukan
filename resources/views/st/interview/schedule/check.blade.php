@@ -7,6 +7,7 @@
 
 <div class="container">
   
+  @if(!empty($scheduleArray))
   <form method="post" class="form" action="{{ route('interview.schedule.delete') }}">
     @csrf
     <div>
@@ -34,6 +35,18 @@
 
     @include('components.parts.button.form.next_button')
   </form>
+  @else 
+    <div class="none-img">
+      <img src="{{ asset('img/unavailable/unavailable-contributor.svg')}}" alt="面接官を探しているイラスト">
+      <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>        
+    </div>
+    <div class="description">
+      面接リクエストはまだ送信されていません。<br>
+      下のボタンから面接相手を見つけ、面接リクエストを送ってみましょう！<br>
+    </div>
+    @include('components.parts.button.transition_button', ['routeName'=>'interview.search', 'var'=>'', 'text'=>'現役人事と面接練習！'])
+
+  @endif
 </div>
 
 <script type="text/javascript" src="{{ asset('/js/hr/interview/schedule/check.js') }}"></script>

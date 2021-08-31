@@ -35,6 +35,12 @@
               <a class="dropdown-item" href="{{ route('mypage') }}">
                   マイページ
               </a>
+              <a class="dropdown-item" href="{{ route('interview.search') }}">
+                  現役人事と模擬面接
+              </a>
+              <a class="dropdown-item" href="{{ route('interview.schedule.check') }}">
+                  面接リクエストの確認
+              </a>
               <a class="dropdown-item" href="{{ route('logout') }}"
                  onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">

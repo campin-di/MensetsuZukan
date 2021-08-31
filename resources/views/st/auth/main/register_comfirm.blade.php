@@ -15,9 +15,6 @@
         </div>
       </div>
     @endforeach
-    <!--
-    <input name="back" type="submit" value="戻る" />
-    -->
     @include('components.parts.button.form.transition_button', ['text'=>'送信'])
 
   </form>

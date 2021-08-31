@@ -1,6 +1,6 @@
 @section('title', '面接官を探す')
 <link rel="stylesheet" href="{{ asset('css/st/interview/search.css') }}">
-@extends('layouts.st.common')
+@extends('layouts.st.nofooter')
 @section('content')
 
 @include('components.parts.page_title', ['title'=>'面接官を探す'])

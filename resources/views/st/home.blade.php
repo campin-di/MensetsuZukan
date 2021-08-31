@@ -113,6 +113,8 @@
     @endforeach
   @endif
 
+  @include('components.parts.button.fixed_button',['routeName' => 'interview.search', 'var'=>'', 'msg' => '', 'text' => '面接練習をしてみる！'])
+
 <script type="text/javascript">
   let questions = @json($questions);
 </script>
