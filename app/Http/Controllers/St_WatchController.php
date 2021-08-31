@@ -10,6 +10,7 @@ use App\Common\RedirectClass;
 
 use Google_Client;
 use Google_Service_YouTube;
+use Auth;
 
 use App\Models\User;
 use App\Models\HrUser;
@@ -26,6 +27,12 @@ class St_WatchController extends Controller
       }
     }
     //==========================================================================
+
+    $ids = [69, 55, 59];
+    if(Auth::user()->status == config('const.USER_STATUS.UNAVAILABLE') && !in_array($id, $ids)){
+      return redirect()->action('St_HomeController@preContributor');
+    }
+
     if(!session()->has('access')){
       $targetVideo = Video::where('id', $id)->first();
       $targetVideo->views++;
