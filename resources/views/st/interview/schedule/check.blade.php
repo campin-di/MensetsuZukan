@@ -45,7 +45,6 @@
       下のボタンから面接相手を見つけ、面接リクエストを送ってみましょう！<br>
     </div>
     @include('components.parts.button.transition_button', ['routeName'=>'interview.search', 'var'=>'', 'text'=>'現役人事と面接練習！'])
-
   @endif
 </div>
 

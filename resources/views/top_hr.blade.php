@@ -6,13 +6,12 @@
       <div class="left-child-pc">
         <img class="firstview-logo" src="{{ asset('/img/logo/logo_white.png') }}" alt="ロゴ">
         <P class="firstview-main-msg">
-          コミュ力の高い学生を<br>
-          採用できるスカウト採用サービス
+          現役人事が徹底分析した<br>
+          学生の模擬面接が見放題。
         </p>
         <p class="firstview-sub-msg">
-          ・経歴・プロフィールではソフトスキルが測れない。<br>
-          ・採用工数を削減したい。<br>
-          そういった悩みを持つ企業様におすすめ！<br>
+          ソフトスキルが測れる面接動画に加え、現役人事による定量・定性的な評価も公開しています。<br>
+          自社で活躍出来る人材かどうか、最も多くの判断材料をもって検討できます。<br>
         </p>
       </div>
       <div class="right-child-pc">
