@@ -108,9 +108,58 @@
       </div>
     </div>
     <div class="score-detail">
-
     </div>
   </div>
+
+  <div class="review-wrapper">
+    <div class="review-title-wrapper flex">
+      <div class="review-title">
+        <h2>コンピテンシー評価</h2>
+      </div>
+      <div class="review-mark">
+        ▼
+      </div>
+    </div>
+    <div class="score-detail">
+      <div class="List">
+        @foreach($scoreDetailsArray as $scoreDetail)
+          <div class="List-Item">
+            <p class="List-Item-Title">{{$scoreDetail[0]}}</p>
+            <p class="List-Item-Mid">ー</p>
+            <p class="List-Item-Text">{{$scoreDetail[1]}}</p>
+          </div>
+        @endforeach
+      </div>
+    </div>
+  </div>
+
+  <div class="review-wrapper">
+    <div class="review-title-wrapper flex">
+      <div class="review-title">
+        <h2>面接官からのコメント</h2>
+      </div>
+      <div class="review-mark">
+        ▼
+      </div>
+    </div>
+    <div class="review">
+      <a class="flex" href="{{ route('hrpage', $mainVideo['hrId']) }}">
+        <div class="profile profile-hr-user profile-comment">
+          <img src="{{ asset($mainVideo['hrImagePath']) }}">
+        </div>
+        <div class="nickname">{{ $mainVideo['hrNickname'] }}</div>
+      </a>
+      <h3>よかった点</h3>
+      <p>
+        {{ $mainVideo['review_good'] }}
+      </p>
+      <h3>もっと魅力が伝わる面接にするには？</h3>
+      <p>
+        {{ $mainVideo['review_more'] }}
+      </p>
+    </div>
+  </div>
+</div>
   
   <div class="review-wrapper">
     <div class="review-title-wrapper flex">
@@ -216,34 +265,6 @@
       </div>
     </div>
   </div>
-
-  <div class="review-wrapper">
-    <div class="review-title-wrapper flex">
-      <div class="review-title">
-        <h2>面接官からのコメント</h2>
-      </div>
-      <div class="review-mark">
-        ▼
-      </div>
-    </div>
-    <div class="review">
-      <a class="flex" href="{{ route('hrpage', $mainVideo['hrId']) }}">
-        <div class="profile profile-hr-user profile-comment">
-          <img src="{{ asset($mainVideo['hrImagePath']) }}">
-        </div>
-        <div class="nickname">{{ $mainVideo['hrNickname'] }}</div>
-      </a>
-      <h3>よかった点</h3>
-      <p>
-        {{ $mainVideo['review_good'] }}
-      </p>
-      <h3>もっと魅力が伝わる面接にするには？</h3>
-      <p>
-        {{ $mainVideo['review_more'] }}
-      </p>
-    </div>
-  </div>
-</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
