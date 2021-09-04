@@ -70,6 +70,7 @@ class UploadController extends Controller
       $video_st->vimeo_id = $input["st_vimeo_id"];
       $video_st->st_id = $interview->st_id;
       $video_st->hr_id = $interview->hr_id;
+      $video_st->interview_id = $input["interview_id"];
       $video_st->question_1_id = $interview->question_1_id;
       $video_st->question_2_id = $interview->question_2_id;
       $video_st->question_3_id = $interview->question_3_id;
@@ -90,6 +91,7 @@ class UploadController extends Controller
       $video_hr->vimeo_id = $input["hr_vimeo_id"];
       $video_hr->st_id = $interview->st_id;
       $video_hr->hr_id = $interview->hr_id;
+      $video_hr->interview_id = $input["interview_id"];
       $video_hr->question_1_id = $interview->question_1_id;
       $video_hr->question_2_id = $interview->question_2_id;
       $video_hr->question_3_id = $interview->question_3_id;

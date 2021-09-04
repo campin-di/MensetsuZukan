@@ -21,6 +21,7 @@ class CreateVideosTable extends Migration
           $table->string('vimeo_id')->unipue();
           $table->integer('st_id')->unsigned();
           $table->integer('hr_id')->unsigned();
+          $table->integer('interview_id')->unsigned();
           $table->integer('question_1_id');
           $table->integer('question_2_id');
           $table->integer('question_3_id');

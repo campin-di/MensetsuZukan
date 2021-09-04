@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Common\GoogleSheetClass;
 
 use App\Models\Interview;
+use App\Models\Video;
 
 class ComandController extends Controller
 {
@@ -106,6 +107,39 @@ class ComandController extends Controller
             $spreadsheet_service->spreadsheets_values->append(
                 $spreadsheet_id,
                 '面接結果!A2',
+                $values,
+                $params
+            );
+        }
+
+        return view('admin.comand.form_complete');
+    }
+
+    public function videoInterview()
+    {
+        /*=== スプシから情報を取得する処理 =================*/
+        $spreadsheet_service = GoogleSheetClass::instance();
+        $spreadsheet_id = '1N_IZkPLLnB-dcg4T8Qr5vSC46AGA-NsINPwLdJd1rCA';
+        $contentsArray = $spreadsheet_service->spreadsheets_values->get($spreadsheet_id, '質問の区切れ!A2:F')["values"];
+        $values = new \Google_Service_Sheets_ValueRange();
+
+        $videos = Video::get();
+        
+        foreach($videos as $video){
+            $interview = Interview::where('st_id', $video->st_id)->where('hr_id', $video->hr_id)->with('st_user:id,name')->first();
+            $result = [
+                $video->id,
+                $interview->id,
+                $interview->st_user->name,
+                $interview->hr_user->name,
+            ];
+            $values->setValues([
+                'values' => $result
+            ]);
+            $params = ['valueInputOption' => 'USER_ENTERED'];
+            $spreadsheet_service->spreadsheets_values->append(
+                $spreadsheet_id,
+                'videoとinterview!A2',
                 $values,
                 $params
             );
