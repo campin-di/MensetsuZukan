@@ -86,6 +86,8 @@ class VideoDisplayClass
             'hrId' => $video->hr_id,
             'stId' => $video->st_id,
 
+            'interview_id' => $video->interview_id,
+
             'stImagePath' => $stUser->image_path,
             'hrImagePath' => $hrUser->image_path,
           ],

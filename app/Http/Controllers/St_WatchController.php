@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Common\DiffDateClass;
 use App\Common\VideoDisplayClass;
 use App\Common\RedirectClass;
+use App\Common\ScoringTermsClass;
 
 use Google_Client;
 use Google_Service_YouTube;
@@ -15,6 +16,7 @@ use Auth;
 use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Video;
+use App\Models\Interview;
 
 class St_WatchController extends Controller
 {
@@ -43,10 +45,26 @@ class St_WatchController extends Controller
 
     $video = Video::where('id', $id)->get();
 
+    if($video[0]->type == 1){
+      return redirect()->route('watch',$id-1);
+    }
+    
     $videosCollection = VideoDisplayClass::VideoDisplay($video);
     $mainVideo = current($videosCollection)[0];
 
-    return view('st.watch',compact('mainVideo'));
+    $interview = Interview::find($mainVideo['interview_id']);
+
+    $scoringTerms = ScoringTermsClass::scoringTerms();
+    $scoringSignals = ScoringTermsClass::scoringSignals();
+    $scoreDetailsArray = [];
+    $cnt = 1;
+    foreach($scoringTerms as $scoringTerm){
+      $colomn = 'score_'. $cnt;
+      array_push($scoreDetailsArray, [$scoringTerm, $scoringSignals[$interview[$colomn]-1]]);
+      $cnt++;
+    }
+
+    return view('st.watch',compact('mainVideo', 'scoreDetailsArray'));
   }
 
 }
