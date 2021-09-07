@@ -49,12 +49,13 @@
             @else
               <span class="count-up">{{ $mainVideo['basic_score_integer'] }}</span>.<span class="count-up">{{ $mainVideo['basic_score_double'] }}</span><span class="fix-width">/32</span><span class="score-unit">点</span>
             @endif
-         </div>        </div>
+           </div>        
+        </div>
         <div class="each-score score-expression flex">
           <div class="item">自己表現力</div>
           <div class="score-value digital">
             @if($mainVideo['expression_score_double'] == 0)
-              <span class="count-up">{{ $mainVideo['expression_score_integer'] }}</span>.<span class="zero">000</span><span class="fix-width">/16</span><span class="score-unit">点</span>
+              <span class="count-up">{{ $mainVideo['expression_score_integer'] }}</span>.<span class="zero">000</span><span class="fix-width">/20</span><span class="score-unit">点</span>
             @elseif($mainVideo['expression_score_double'] < 100)
               <span class="count-up">{{ $mainVideo['expression_score_integer'] }}</span>.0<span class="count-up">{{ $mainVideo['expression_score_double'] }}</span><span class="fix-width">/20</span><span class="score-unit">点</span>
             @else
@@ -109,6 +110,28 @@
     </div>
   <div class="score-detail">
 
+    </div>
+  </div>
+
+  <div class="review-wrapper">
+    <div class="review-title-wrapper flex">
+      <div class="review-title">
+        <h2>評価の内訳</h2>
+      </div>
+      <div class="review-mark">
+        ▼
+      </div>
+    </div>
+    <div class="score-detail">
+      <div class="List">
+        @foreach($scoreDetailsArray as $scoreDetail)
+          <div class="List-Item">
+            <p class="List-Item-Title">{{$scoreDetail[0]}}</p>
+            <p class="List-Item-Mid">ー</p>
+            <p class="List-Item-Text">{{$scoreDetail[1]}}</p>
+          </div>
+        @endforeach
+      </div>
     </div>
   </div>
   
@@ -207,7 +230,7 @@
           </li>
           <li class="type_item">
             <dl class="wrap_features flex">
-              <dt class="header_features">普段の担当選考フェーズ：</dt>
+              <dt class="header_features">担当選考フェーズ：</dt>
               <dd class="content_features ">{{ $mainVideo['hrSelectionPhase'] }}</dd>            
             </dl>
           </li>
