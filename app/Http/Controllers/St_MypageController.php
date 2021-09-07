@@ -34,7 +34,7 @@ class St_MypageController extends Controller
       'plan' => $userData->plan,
     ];
 
-    $pastVideos = Video::where('st_id', $userId)->where('type', config('const.STHR.HR'))->get();
+    $pastVideos = Video::where('st_id', $userId)->whereIn('type', [config('const.STHR.HR'), config('const.STHR.HR_N')])->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
 
     $interviewReservations = Interview::orderBy('date', 'asc')->where('available', '!=', -1)->where('st_id', $userId)->with('hr_user:id,nickname,image_path,industry')->select('id', 'hr_id', 'date', 'time', 'zoomUrl')->get();

@@ -26,6 +26,9 @@
                 <a class="dropdown-item" href="{{ route('hr.mypage') }}">
                     マイページ
                 </a>
+                <a class="dropdown-item" href="{{ route('hr.interview.schedule.request') }}">
+                    面接リクエストの確認
+                </a>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">

@@ -61,7 +61,9 @@ class RegisterController extends Controller
       $auth = Auth::user();
       if(!is_null($auth)){
         if($auth->line_id == NULL){
-          $auth->email = $social_email;
+          if($auth->email != $social_email){
+            $auth->email = $social_email;
+          }
           $auth->line_id = $social_user->getId();
           $auth->save();
           
@@ -81,7 +83,6 @@ class RegisterController extends Controller
             //本会員登録リンク 送信部分
             $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
             $bot         = new \LINE\LINEBot($http_client, ['channelSecret' => $this->channel_secret]);
-        
 
             $builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
             // ビルダーにメッセージをすべて追加

@@ -11,9 +11,9 @@
           <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>        
         </div>
         <div class="description">
-          現役人事と模擬面接を行ってください！<br>
-          模擬面接を行っていただくと、<br>
-          全国の就活生の面接をご覧いただけます！<br>
+          面接を行ってください！<br>
+          模擬面接を行っていただいたあと、<br>
+          全国の就活生の面接を全てご覧いただけます！<br>
         </div>
         <a href="{{ route('interview.search') }}">
           <div class="button">

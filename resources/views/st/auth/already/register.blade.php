@@ -5,11 +5,11 @@
   <div class="block-wrapper">
     <div class="block-background"></div>
       <div class="block">
-        <h1>LINEと連携してください</h1>
+        <h1>LINE連携を行ってください！</h1>
         <div class="img">
           <img src="../img/unavailable/line-auth.svg" alt="LINEを連携しているイラスト">
         </div>
-        <div class="description" style="font-size:14px">
+        <div class="description">
           面接図鑑ではLINE連携が<b>必須</b>となりました。<br>
           オファー通知などは公式LINEから行われます。<br>
           「LINE連携」よりLINEと連携してください。<br>

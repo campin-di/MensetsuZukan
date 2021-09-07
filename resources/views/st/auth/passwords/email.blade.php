@@ -1,6 +1,7 @@
 @section('title', 'パスワードの再設定')
 @extends('layouts.st.common')
 @section('content')
+@include('components.parts.page_title', ['title'=>'パスワードを忘れた方（学生）'])
 <div class="container" style="margin: 100px auto; min-height:50vh;">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -40,6 +41,9 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="{{ route('hr.password.request') }}">採用担当者の方はこちら</a>
             </div>
         </div>
     </div>

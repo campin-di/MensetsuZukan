@@ -18,7 +18,7 @@
     </div>
     <div class="video-view-good-wrapper flex">
       <div class="video-view">
-        {{ $mainVideo['views'] }}回視聴・{{ $mainVideo['diffDate'] }}
+        {{ $mainVideo['diffDate'] }}
       </div>
     </div>
 

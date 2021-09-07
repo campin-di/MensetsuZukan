@@ -73,6 +73,7 @@ footer{
 .description{
   margin: 20px auto 40px;
   overflow: hidden;
+  font-size: 14px;
 }
 
 .button{
@@ -118,7 +119,7 @@ footer{
 
   .description {
     margin: 40px auto 70px;
-    font-size: 20px;
+    font-size: 18px;
     word-break: break-all;
   }
 

@@ -13,12 +13,24 @@ use App\Models\Interview;
 use App\Models\Batting;
 use Illuminate\Support\Facades\Mail;
 
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
+use Log;
+
 use App\Common\GoogleSheetClass;
 use App\Common\MeetingClass;
 use App\Common\ReturnUserInformationArrayClass;
 
 class St_ScheduleController extends Controller
 {
+  public function __construct()
+  {
+      // :point_down: アクセストークン
+      $this->access_token = env('LINE_ACCESS_TOKEN');
+      // :point_down: チャンネルシークレット
+      $this->channel_secret = env('LINE_CHANNEL_SECRET');
+  }
+
   public function schedule($hr_id)
   {
     Schedule::where('date', '<', date('Y-n-j'))->delete();
@@ -161,9 +173,30 @@ class St_ScheduleController extends Controller
       $flag = 0;
     }
 
-    echo $flag;
-
     if($flag == 1){
+      /* === start :学生への面接リクエスト完了通知 =========================*/
+      //本会員登録リンク 送信部分
+      $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
+      $bot         = new \LINE\LINEBot($http_client, ['channelSecret' => $this->channel_secret]);
+
+      $builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+      // ビルダーにメッセージをすべて追加
+      $msgs = [
+          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('面接リクエストを送信しました！'),
+          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('マイページ情報を充実させると、リクエストの受諾率がアップします！トーク画面左下「マイページ」より、マイページ情報を充実させましょう！'),
+      ];
+      foreach($msgs as $value){
+        $builder->add($value);
+      }
+      $response = $bot->pushMessage($st->line_id, $builder);
+
+      // 配信成功・失敗
+      if ($response->isSucceeded()) {
+          Log::info('Line 送信完了');
+      } else {
+          Log::error('投稿失敗: ' . $response->getRawBody());
+      }
+
       $target->save();
       
       $mailDateArray = [
@@ -174,7 +207,7 @@ class St_ScheduleController extends Controller
       foreach($newTimeKeyArray as $timeKey){
         array_push($mailDateArray['time'], $timeArray[$timeKey]);
       }
-      
+        
       Mail::send('st/interview/schedule/mail/reservation', ['mailDateArray' => $mailDateArray, 'hr' => $hr, 'st' => $st],
         function ($message) use ($hr, $st){
           $message->subject($st->nickname. 'さんから面接リクエストがありました！');
@@ -185,12 +218,13 @@ class St_ScheduleController extends Controller
     }
     //================================================
     
+    $lineFlag = is_null($st->line_id);
+    echo $lineFlag;
     //セッションを空にする
     $request->session()->forget("form_input");
 
-    return view('st/interview/schedule/form_complete', compact('flag'));
+    return view('st/interview/schedule/form_complete', compact('flag', 'lineFlag'));
   }
-
 
   public function check()
   {
@@ -256,7 +290,6 @@ class St_ScheduleController extends Controller
             $scheduleArray[$date] = $scheduleArray[$date] .', '. $timeArray[$hour];
           }
           $scheduleArray += [$date => $timeArray[$hour]];
-        
         }
       }
     }
