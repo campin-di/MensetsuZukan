@@ -14,7 +14,8 @@
     <title>面接図鑑｜就活生の面接が見放題！</title>
     <meta name="description" content="面接図鑑は、実際の人事と面接を行うことで、面接力をどんどんアップデートできるサービスです。さらに全国の就活生の面接も得点＆アドバイス付きで見放題！">
     <meta name="viewport" content="width=device-width">
-
+    <meta http-equiv="Cache-Control" content="no-cache">
+    
     <!-- begin:ODP -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="面接図鑑|トップページ">

@@ -36,7 +36,6 @@ Route::prefix('hr')->namespace('Hr')->name('hr.')->group(function(){
     Route::get('/home', 'HrHomeController@index')->name('hr_home');
 });
 
-
 // top to 学生or人事選択ぺージ
 Route::get('register/choice', 'Auth\RegisterController@choice')->name('register.choice');
 // 仮会員登録ページ to 仮会員登録確認ページ
@@ -76,6 +75,9 @@ Route::middleware(['auth'])->group(function() {
 
   //home to watch
   Route::get('/watch/{id}', 'St_WatchController@index')->name('watch');
+
+  //watch to publicController
+  Route::get('/watch/public/{video_id}', 'St_PublicController@index')->name('public');
 
   //mypage to interviewDetails
   Route::get('/interview/detail/{id}', 'St_InterviewController@detail')->name('interview.detail');

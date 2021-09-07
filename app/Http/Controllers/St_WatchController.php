@@ -64,7 +64,9 @@ class St_WatchController extends Controller
       $cnt++;
     }
 
-    return view('st.watch',compact('mainVideo', 'scoreDetailsArray'));
+    $stId = Auth::user()->id;
+
+    return view('st.watch',compact('stId', 'mainVideo', 'scoreDetailsArray'));
   }
 
 }

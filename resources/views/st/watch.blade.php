@@ -18,7 +18,16 @@
   </div>
   <div class="video-view-good-wrapper flex">
     <div class="video-view">
-      {{ $mainVideo['diffDate'] }}
+      {{ $mainVideo['diffDate'] }} 
+      @if($mainVideo['stId'] == $stId)
+       ( <a id="public_button" href="{{ route('public', $mainVideo['id']) }}">
+        @if($mainVideo['type'] == 0 || $mainVideo['type'] == 1)
+          非公開にする
+        @else
+          公開する
+        @endif
+        </a> )
+      @endif
     </div>
   </div>
 

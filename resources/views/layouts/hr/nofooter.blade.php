@@ -17,6 +17,7 @@
       <meta name="description" itemprop="description" ontent="面接図鑑|就活生の面接が見放題！">
     @endif
     <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Cache-Control" content="no-cache">
 
     <!-- begin:ODP -->
     <meta property="og:type" content="website">

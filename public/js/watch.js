@@ -50,6 +50,10 @@ if (window.matchMedia('(max-width: 767px)').matches) {
   });
 }
 
+document.getElementById('public_button').onclick = function() {
+  window.alert('非公開にする場合は、公開している動画が0本になると面接視聴機能が制限されるのでご注意ください。');
+};
+
 $('#total').on('inview', function(event, isInView) {
   if (isInView) {
     //要素が見えたときに実行する処理
