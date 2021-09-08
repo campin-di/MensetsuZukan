@@ -524,7 +524,6 @@
   }
   .video-user-score-wrapper .right-child span{
     font-size: 34px;
-
   }
 
   .video-st-user{
@@ -540,13 +539,12 @@
     font-size: 18px;
   }
 
-
   /* === start: 学生・人事タイプ ===========================================================*/
   .type-wrapper{
     flex-direction: row;
   }
   .type-child{
-    padding: 40px 60px;
+    padding: 40px;
     width: 45%;
   }
 

@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Common\DiffDateClass;
-use App\Common\VideoDisplayClass;
-use App\Common\RedirectClass;
-use App\Common\ScoringTermsClass;
 
 use Google_Client;
 use Google_Service_YouTube;
@@ -17,6 +13,12 @@ use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Video;
 use App\Models\Interview;
+
+use App\Common\DiffDateClass;
+use App\Common\TypeDisplayClass;
+use App\Common\VideoDisplayClass;
+use App\Common\RedirectClass;
+use App\Common\ScoringTermsClass;
 
 class St_WatchController extends Controller
 {
@@ -64,9 +66,11 @@ class St_WatchController extends Controller
       $cnt++;
     }
 
+    $typeArray = TypeDisplayClass::TypeDisplay($video[0]);
+
     $stId = Auth::user()->id;
 
-    return view('st.watch',compact('stId', 'mainVideo', 'scoreDetailsArray'));
+    return view('st.watch', compact('stId', 'mainVideo', 'typeArray', 'scoreDetailsArray'));
   }
 
 }

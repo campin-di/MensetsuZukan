@@ -168,8 +168,7 @@
       </p>
     </div>
   </div>
-</div>
-  
+
   <div class="review-wrapper">
     <div class="review-title-wrapper flex">
       <div class="review-title">
@@ -182,98 +181,47 @@
     <div class="type-wrapper flex">
       <div class="type-child">
         <div class="profile profile-st-user">
-          <a href="{{ route('stpage', $mainVideo['stId']) }}">
+          <a href="{{ route('stpage', $typeArray['st']['id']) }}">
             <div>
-              <img src="{{ asset($mainVideo['stImagePath']) }}">
+              <img src="{{ asset($typeArray['st']['img']) }}">
             </div>
-            <div class="nickname">{{ $mainVideo['stNickname'] }}</div>
+            <div class="nickname">{{ $typeArray['st']['nickname'] }}</div>
           </a>
         </div>
         <ul class="type">
-          <li class="type_item">
-            <dl class="wrap_features flex">
-              <dt class="header_features">志望業界：</dt>
-              <dd class="content_features ">{{ $mainVideo['stIndustry'] }}</dd>
-            </dl>
-          </li>
-          <li class="type_item">
-            <dl class="wrap_features flex">
-              <dt class="header_features">志望企業タイプ：</dt>
-              <dd class="content_features ">{{ $mainVideo['stCompanyType'] }}</dd>
-            </dl>
-          </li>
-          <li class="type_item">
-            <dl class="wrap_features flex">
-              <dt class="header_features">志望職種：</dt>
-              <dd class="content_features ">{{ $mainVideo['stJobType'] }}</dd>
-            </dl>
-          </li>
-          <li class="type_item">
-            <dl class="wrap_features flex">
-              <dt class="header_features">大学群：</dt>
-              <dd class="content_features ">{{ $mainVideo['stUniversityClass'] }}</dd>            
-            </dl>
-          </li>
-          <li class="type_item">
-            <dl class="wrap_features flex">
-              <dt class="header_features">卒業年度（見込み）：</dt>
-              <dd class="content_features ">{{ $mainVideo['stGraduateYear'] }}</dd>            
-            </dl>
-          </li>
-          </li>
-          <li class="type_item">
-            <dl class="wrap_features flex">
-              <dt class="header_features">就活を開始した時期：</dt>
-              <dd class="content_features ">{{ $mainVideo['stStartTime'] }}</dd>            
-            </dl>
-          </li>
+          @foreach($typeArray['st']['content'] as $type => $content)
+            <li class="type_item">
+              <dl class="wrap_features flex">
+                <dt class="header_features">{{$type}}：</dt>
+                <dd class="content_features ">{{$content}}</dd>
+              </dl>
+            </li>
+          @endforeach
         </ul>
       </div>
       <div class="type-child">
         <div class="profile profile-hr-user">
-          <a href="{{ route('hrpage', $mainVideo['hrId']) }}">
+          <a href="{{ route('hrpage', $typeArray['hr']['id']) }}">
             <div>
-              <img src="{{ asset($mainVideo['hrImagePath']) }}">
+              <img src="{{ asset($typeArray['hr']['img']) }}">
             </div>
-            <div class="nickname">{{ $mainVideo['hrNickname'] }}</div>
+            <div class="nickname">{{ $typeArray['hr']['nickname'] }}</div>
           </a>
         </div>
         <ul class="type">
-          <li class="type_item">
-            <dl class="wrap_features flex">
-              <dt class="header_features">所属業界：</dt>
-              <dd class="content_features ">{{ $mainVideo['hrIndustry'] }}</dd>
-            </dl>
-          </li>
-          <li class="type_item">
-            <dl class="wrap_features flex">
-              <dt class="header_features">所属企業所在地：</dt>
-              <dd class="content_features ">{{ $mainVideo['hrLocation'] }}</dd>            
-            </dl>
-          </li>
-          <li class="type_item">
-            <dl class="wrap_features flex">
-              <dt class="header_features">企業タイプ：</dt>
-              <dd class="content_features ">{{ $mainVideo['hrCompanyType'] }}</dd>
-            </dl>
-          </li>
-          <li class="type_item">
-            <dl class="wrap_features flex">
-              <dt class="header_features">上場区分：</dt>
-              <dd class="content_features ">{{ $mainVideo['hrStockType'] }}</dd>
-            </dl>
-          </li>
-          <li class="type_item">
-            <dl class="wrap_features flex">
-              <dt class="header_features">担当選考フェーズ：</dt>
-              <dd class="content_features ">{{ $mainVideo['hrSelectionPhase'] }}</dd>            
-            </dl>
-          </li>
-
+          @foreach($typeArray['hr']['content'] as $type => $content)
+            <li class="type_item">
+              <dl class="wrap_features flex">
+                <dt class="header_features">{{$type}}：</dt>
+                <dd class="content_features ">{{$content}}</dd>
+              </dl>
+            </li>
+          @endforeach
         </ul>
       </div>
     </div>
   </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>

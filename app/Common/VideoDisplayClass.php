@@ -69,20 +69,6 @@ class VideoDisplayClass
             'stNickname' => $stUser->nickname,
             'hrNickname' => $hrUser->nickname,
 
-            'stIndustry' => $stUser->industry,
-            'stCompanyType' => $stCompanyType,
-            'stJobType' => $stUser->jobtype,
-            'stUniversityClass' => $stUser->university_class,
-            'stFaculty' => $stUser->faculty,
-            'stGraduateYear' => $stUser->graduate_year. '年卒',
-            'stStartTime' => $stUser->start_time,
-            
-            'hrSelectionPhase' => $hrUser->selection_phase,
-            'hrIndustry' => $hrUser->industry,
-            'hrCompanyType' => $hrCompanyType,
-            'hrStockType' => $hrUser->stock_type,
-            'hrLocation' => $hrUser->location,
-
             'hrId' => $video->hr_id,
             'stId' => $video->st_id,
 
