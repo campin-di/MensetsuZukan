@@ -3,6 +3,7 @@
 namespace App\Console;
 use Log;
 use App\Console\Commands\LineRemind;
+use App\Console\Commands\UserData;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
