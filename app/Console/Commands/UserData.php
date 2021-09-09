@@ -110,10 +110,8 @@ class UserData extends Command
                     $values,
                     $params
                 );
-            }
-                
+            }   
         }
-        
         return 0;
     }
 }

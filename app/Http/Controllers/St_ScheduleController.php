@@ -174,6 +174,25 @@ class St_ScheduleController extends Controller
     }
 
     if($flag == 1){
+      /*=== スプシから情報を取得する処理 =================*/
+      $spreadsheet_service = GoogleSheetClass::instance();
+      $spreadsheet_id = '1ZXOI9wbOVZzQSC1HqsgIDFLtlVlA0589yOOkAr4pEMA';
+      $values = new \Google_Service_Sheets_ValueRange();
+      
+      $result = [
+          $st->name.' ('. $st->nickname. ')', $hr->name.' ('. $hr->nickname. ')', $date
+      ];
+      $values->setValues([
+          'values' => $result
+      ]);
+      $params = ['valueInputOption' => 'USER_ENTERED'];
+      $spreadsheet_service->spreadsheets_values->append(
+          $spreadsheet_id,
+          '面接リクエスト表!A2',
+          $values,
+          $params
+      );
+
       /* === start :学生への面接リクエスト完了通知 =========================*/
       //本会員登録リンク 送信部分
       $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
