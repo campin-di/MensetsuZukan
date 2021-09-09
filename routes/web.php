@@ -169,9 +169,11 @@ Route::middleware(['auth'])->group(function() {
   //動画編集用のコマンドを作成するルーティング
   Route::get('/admin/comand/trim', 'ComandController@trim')->name('trim');
   //動画編集用のコマンドを作成するルーティング
-  Route::get('/admin/comand/result', 'ComandController@result')->name('result');
+  //Route::get('/admin/comand/result', 'ComandController@result')->name('result');
  
   //Route::get('/admin/comand/result', 'ComandController@videoInterview')->name('result');
+
+  Route::get('/admin/comand/result', 'ComandController@stVideo')->name('result');
 
   //サービス内に動画をアップロードするルーティング
   Route::get('/admin/upload', 'UploadController@show')->name('upload');
@@ -196,7 +198,6 @@ Route::middleware(['auth'])->group(function() {
   /*=== end: プライバシーポリシー関係 =============================================================*/
   
   /*=== end:管理画面 関係 =========================================================*/
-  
 
 /*=== 課金関係 =============================================================*/
 Route::prefix('user')->middleware(['auth'])->group(function() {

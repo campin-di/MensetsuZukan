@@ -50,9 +50,9 @@ class Hr_WatchController extends Controller
     $scoringSignals = ScoringTermsClass::scoringSignals();
     $scoreDetailsArray = [];
     $cnt = 1;
-    foreach($scoringTerms as $scoringTerm){
+    foreach($scoringTerms as $scoringTerm => $termIconArray){
       $colomn = 'score_'. $cnt;
-      array_push($scoreDetailsArray, [$scoringTerm, $scoringSignals[$interview[$colomn]-1]]);
+      array_push($scoreDetailsArray, [$termIconArray, $scoringTerm, $scoringSignals[$interview[$colomn]-1]]);
       $cnt++;
     }
 

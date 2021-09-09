@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         LineRemind::class,
+        UserData::Class,
     ];
 
     /**
