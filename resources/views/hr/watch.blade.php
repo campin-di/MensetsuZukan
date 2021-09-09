@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="score">
-    <div class="each-score-wrapper child_1" id="each">
+      <div class="each-score-wrapper child_1" id="each">
         <div class="each-score score-basic flex">
           <div class="item">面接基礎力</div>
           <div class="score-value digital">
