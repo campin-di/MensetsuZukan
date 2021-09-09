@@ -124,13 +124,40 @@
     </div>
     <div class="score-detail">
       <div class="List">
+        <div class="List-Item item-title">
+          <p class="List-Item-Title">項目</p>
+          <p class="List-Item-Text">評価</p>
+          <p class="List-Item-force ">関係する力</p>
+        </div>
         @foreach($scoreDetailsArray as $scoreDetail)
           <div class="List-Item">
-            <p class="List-Item-Title">{{$scoreDetail[0]}}</p>
-            <p class="List-Item-Mid">ー</p>
-            <p class="List-Item-Text">{{$scoreDetail[1]}}</p>
+            <p class="List-Item-Title">{{$scoreDetail[1]}}</p>
+            <p class="List-Item-Text">{{$scoreDetail[2]}}</p>
+            <p class="List-Item-force">
+              @foreach($scoreDetail[0] as $icon)
+                <img class="force-logo {{$icon}}" src="{{ asset('img/icon/'.$icon.'.svg') }}">
+              @endforeach
+            </p>
           </div>
         @endforeach
+      </div>
+    </div>
+    <div class="score-description-wrapper">
+      <div class="flex">
+        <div class="score-signal"> ×<span>：</span></div>
+        <div class="score-description">改善しなければデメリットになる可能性が高い。</div>
+      </div>
+      <div class="flex">
+        <div class="score-signal"> △<span>：</span></div>
+        <div class="score-description">人事さんによってはウィークポイントに感じる可能性がある。</div>
+      </div>
+      <div class="flex">
+        <div class="score-signal"> ○<span>：</span></div>
+        <div class="score-description">ほとんどの人事さんが良い印象・判断をすると思われる。</div>
+      </div>
+      <div class="flex">
+        <div class="score-signal">◎<span>：</span></div>
+        <div class="score-description">明確にストロングポイントになる。</div>
       </div>
     </div>
   </div>

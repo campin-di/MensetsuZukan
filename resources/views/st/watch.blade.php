@@ -149,6 +149,24 @@
         @endforeach
       </div>
     </div>
+    <div class="score-description-wrapper">
+      <div class="flex">
+        <div class="score-signal"> ×<span>：</span></div>
+        <div class="score-description">改善しなければデメリットになる可能性が高い。</div>
+      </div>
+      <div class="flex">
+        <div class="score-signal"> △<span>：</span></div>
+        <div class="score-description">人事さんによってはウィークポイントに感じる可能性がある。</div>
+      </div>
+      <div class="flex">
+        <div class="score-signal"> ○<span>：</span></div>
+        <div class="score-description">ほとんどの人事さんが良い印象・判断をすると思われる。</div>
+      </div>
+      <div class="flex">
+        <div class="score-signal">◎<span>：</span></div>
+        <div class="score-description">明確にストロングポイントになる。</div>
+      </div>
+    </div>
   </div>
 
   <div class="review-wrapper">
