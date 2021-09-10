@@ -1,13 +1,13 @@
 /* === begin: 共通部分 =================================================*/
 h1{
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
 }
 
 h2{
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -30,6 +30,14 @@ img{
 
 .center{
   text-align: center;
+}
+
+.font-gradient{
+  background: linear-gradient(to right,#7CC4FF, #9681FF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 /* === end: 共通部分 =================================================*/
 
@@ -56,7 +64,8 @@ img{
 
 .firstview-content p{
   color: #FFF;
-  font-weight: bold;
+  letter-spacing: .14em;
+  font-weight: 500;
 }
 
 .firstview-main-msg{
@@ -64,6 +73,7 @@ img{
   margin: 30px 0 10px;
   padding-bottom: 15px;
   border-bottom: solid 1px #FFF;
+  font-weight: 600 !important;
 }
 
 .firstview-sub-msg{
@@ -79,19 +89,20 @@ img{
 
 .firstview-register-upper{
   color: #6B8BE9;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .firstview-register-wrapper span{
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .firstview-register-button{
+  font-size: 18px;
   margin: 5px auto;
   width: 80%;
   height: 50px;
   color: #FFF;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 3;
   border-radius: 30px;
   background: linear-gradient(to right, #7CC4FF, #9681FF);
@@ -171,7 +182,7 @@ img{
 }
 .bottom-fixed-button a li{
   color: #FFF;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .bottom-button-left{
@@ -221,9 +232,9 @@ img{
 }
 .features-content-wrapper span{
   position: absolute;
-  font-size: 38px;
+  font-size: 30px;
   color: #6B8BE9;
-  font-weight: bold;
+  font-weight: 600;
   top: 5px;
   left: 10px;
 }
@@ -279,8 +290,8 @@ img{
   width: 125px;
 }
 .outline-description{
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 500;
   text-align: center;
 }
 .contents-detail{
@@ -289,7 +300,7 @@ img{
 
 .outline-achievement-wrapper{
   margin-bottom: 50px;
-  font-weight: bold;
+  font-weight: 500;
   text-align: center;
 }
 
@@ -303,6 +314,7 @@ img{
 .outline-achievement-value{
   font-size: 36px;
   margin: 0 10px;
+  font-weight: 600;
 }
 
 .outline-achievement-comment{
@@ -362,34 +374,55 @@ img{
 }
 .plan-description ol li{
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 5px;
 }
 .plan-description ol div{
   font-size: 12px;
 }
 /* === end: "プランの説明" 部分 =================================================*/
+.step{
+  font-size: 16px;
+  font-weight: 600;
+  color: #888;
+  display: inline-block;
+  padding-bottom: 5px;
+  border-bottom: solid 2px #888;
+  letter-spacing: .08em;
+}
 
 /* === begin: "投稿者プランの詳細" 部分 =================================================*/
+.dt{
+  background-size: 15px 15px;
+  height: 75px;
+  position: absolute;
+  z-index: 3;
+}
+.dt-left{
+  width: 32%;
+  background-image: radial-gradient(#7CC4FF 10%, transparent 20%);
+}
+.dt-right{
+  width: 40%;
+  background-image: radial-gradient(#9681FF 10%, transparent 20%);
+  right: 0;
+}
+
 .contributor-wrapper h1{
   width: 100%;
   padding: 20px 0;
-  color: #FFF;
-  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  color: #333;
+  position: relative;
+  z-index: 10;
 }
 
 .contributor-step{
   margin: 50px auto 0;
 }
-.contributor-step h2{
-  display: inline-block;
-  padding-bottom: 10px;
-  border-bottom: solid 2px #555;
-}
+
 .contributor-step h3{
   font-size: 22px;
-  font-weight: bold;
-  color: #6B8BE9;
+  font-weight: 600;
   margin-top: 15px;
 }
 
@@ -426,8 +459,9 @@ img{
 .audience-wrapper h1{
   width: 100%;
   padding: 20px 0;
-  color: #FFF;
-  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  color: #333;
+  z-index: 10;
+  position: relative;
 }
 
 .audience-step{
@@ -440,7 +474,7 @@ img{
 }
 .audience-step h3{
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 600;
   color: #6B8BE9;
   margin-top: 15px;
 }
@@ -491,7 +525,7 @@ img{
 
 .cost-promotion{
   margin: 50px 0 25px;
-  font-weight: bold;
+  font-weight: 600;
   justify-content: center;
   align-items: baseline;
 }
@@ -516,17 +550,17 @@ img{
   margin: 50px auto;
 }
 .promotion span{
-  color: #6B8BE9;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .promotion-button{
+  font-size: 18px;
   margin: 5px auto;
   width: 80%;
   height: 50px;
   color: #FFF;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 3;
   border-radius: 30px;
   background: linear-gradient(to right, #7CC4FF, #9681FF);
@@ -563,6 +597,9 @@ img{
 
 /* === begin: "よくある質問" 部分 =================================================*/
 /*--- qandaセクション -------------------------------------------------------*/
+.dt-q{
+  width: 20%;
+}
 
 .qanda-wrapper{
   width: 90%;
@@ -572,10 +609,9 @@ img{
 
 .qanda-title{
   color: #FFF;
-  background-color: #666666;
   padding: 15px 0;
   margin-top: 150px;
-  margin-bottom: 20px;
+  margin-bottom: 45px;
 }
 
 /* begin : 開閉フォーム */
@@ -704,7 +740,8 @@ img{
   }
 
   h2{
-    font-size: 20px;
+    font-size: 22px;
+    margin: 20px auto auto 15px;
   }
 
   .flex-pc{
@@ -731,7 +768,10 @@ img{
     height: 65vh;
     padding: 100px 10vw 0;
   }
-
+  .features-content-wrapper::after {
+    border-right: 75px solid transparent;
+    border-top: 75px solid #D5E3FF;
+  }
   .firstview-pc-img{
     width: 100%;
     max-width: 600px;
@@ -818,7 +858,7 @@ img{
   .features-content .left-child{
     width: 100%;
     margin: 10px auto;
-    font-size: 18px;
+    font-size: 16px;
 
     -webkit-box-ordinal-group:2;
 　　-ms-flex-order:2;
@@ -931,6 +971,17 @@ img{
     margin-bottom: 10px;
   }
   /* === end: "プランの説明" 部分 =================================================*/
+  .dt{
+    height: 120px;
+  }
+  .dt-left {
+    width: 30%;
+    left: 0;
+  }
+  .dt-right {
+    width: 30%;
+    right: 0;
+  }
 
   /* === begin: "投稿者プランの詳細" 部分 =================================================*/
   .contributor-wrapper h1{
@@ -949,7 +1000,8 @@ img{
   }
 
   .contributor-content-description {
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 1.8;
   }
 
   .contributor-content-wrapper .left-child {
@@ -1039,7 +1091,7 @@ img{
   }
   .cost-title-upper {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 600;
   }
   .cost-table-img{
     width: 60%;

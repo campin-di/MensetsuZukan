@@ -10,9 +10,9 @@
           就活生の面接が見放題！
         </p>
         <p class="firstview-sub-msg">
-          他の就活生は、いったいどんな面接をしているの？<br>
-          様々な業界の人事・学生の面接が得点付きで見放題！<br>
-          面接を受けると、企業からのオファーも貰える！<br>
+          他の就活生は、どんな面接をしているの？<br>
+          現役人事と学生の面接が得点付きで見放題！<br>
+          面接練習しながらオファーも貰える！<br>
         </p>
       </div>
       <div class="right-child-pc">
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="firstview-register-wrapper">
-      <span class="firstview-register-upper">無料＆3分で完了！</span>
+      <span class="firstview-register-upper font-gradient">無料＆3分で完了！</span>
       <a href="{{ route('register.choice') }}">
         <div class="firstview-register-button updown-btn">
           まずは会員登録する
@@ -53,7 +53,7 @@
   <div class="flex-pc">
     <div class="features-content-wrapper hover-action">
       <span>01</span>
-      <h2>全ての面接が見放題！</h2>
+      <h2 class="font-gradient">全ての面接が見放題！</h2>
       <div class="features-content flex">
         <div class="features-content-description left-child">
           苦手なあの質問、<br>
@@ -71,7 +71,7 @@
     </div>
     <div class="features-content-wrapper hover-action">
       <span>02</span>
-      <h2>現役人事による採点！</h2>
+      <h2 class="font-gradient">現役人事による採点！</h2>
       <div class="features-content flex">
         <div class="features-content-description left-child">
           採点を担当するのは、<br>
@@ -88,7 +88,7 @@
     </div>
     <div class="features-content-wrapper hover-action">
       <span>03</span>
-      <h2>企業からのオファー！</h2>
+      <h2 class="font-gradient">企業からのオファー！</h2>
       <div class="features-content flex">
         <div class="features-content-description left-child">
           サービス内で面接を受けて<br>
@@ -133,11 +133,12 @@
 </div>
 
 <div class="contributor-wrapper">
-  <h1>面接の実施方法</h1>
+  <div class="dt dt-left"></div>
+  <h1>面接練習の実施方法</h1>
   <div class="contributor-step">
     <div class="center contributor-title-left">
-      <h2>STEP1</h2>
-      <h3>面接官を選んで日程調整</h3>
+      <h2 class="step">STEP1</h2>
+      <h3 class="font-gradient">面接官を選んで日程調整</h3>
     </div>
     <div class="contributor-content-wrapper flex">
       <div class="contributor-content-description left-child">
@@ -156,8 +157,8 @@
 
   <div class="contributor-step">
     <div class="center contributor-title-right">
-      <h2>STEP2</h2>
-      <h3>面接＆フィードバック</h3>
+      <h2 class="step">STEP2</h2>
+      <h3 class="font-gradient">面接＆フィードバック</h3>
     </div>
     <div class="contributor-content-wrapper flex">
       <div class="contributor-content-description left-child flex-reverse-1">
@@ -177,8 +178,8 @@
 
   <div class="contributor-step">
     <div class="center contributor-title-left">
-      <h2>STEP3</h2>
-      <h3>動画をサービス内にアップロード</h3>
+      <h2 class="step">STEP3</h2>
+      <h3 class="font-gradient">動画をサービス内にアップロード</h3>
     </div>
     <div class="contributor-content-wrapper flex">
       <div class="contributor-content-description left-child">
@@ -198,8 +199,8 @@
 
   <div class="contributor-step">
     <div class="center contributor-title-right">
-      <h2>STEP4</h2>
-      <h3>1次面接免除の特別オファー</h3>
+      <h2 class="step">STEP4</h2>
+      <h3 class="font-gradient">1次面接免除の特別オファー</h3>
     </div>
     <div class="contributor-content-wrapper flex">
       <div class="contributor-content-description left-child flex-reverse-1">
@@ -219,11 +220,12 @@
 </div>
 
 <div class="audience-wrapper">
+  <div class="dt dt-right"></div>
   <h1>面接の視聴方法</h1>
   <div class="audience-step">
     <div class="center contributor-title-left">
-      <h2>STEP1</h2>
-      <h3>気になる質問を検索</h3>
+      <h2 class="step">STEP1</h2>
+      <h3 class="font-gradient">気になる質問を検索</h3>
     </div>
     <div class="audience-content-wrapper flex">
       <div class="audience-content-description left-child">
@@ -242,8 +244,8 @@
 
   <div class="audience-step">
     <div class="center contributor-title-right">
-      <h2>STEP2</h2>
-      <h3>動画を選択し、視聴</h3>
+      <h2 class="step">STEP2</h2>
+      <h3 class="font-gradient">動画を選択し、視聴</h3>
     </div>
     <div class="audience-content-wrapper flex">
       <div class="audience-content-description left-child flex-reverse-1">
@@ -263,8 +265,8 @@
 
   <div class="audience-step">
     <div class="center contributor-title-left">
-      <h2>STEP3</h2>
-      <h3>人事からの採点・FBも見られる</h3>
+      <h2 class="step">STEP3</h2>
+      <h3 class="font-gradient">人事からの採点・FBも見られる</h3>
     </div>
     <div class="audience-content-wrapper flex">
       <div class="audience-content-description left-child">
@@ -283,13 +285,6 @@
 </div>
 
 
-
-<div class="cost-wrapper">
-  <span class="cost-title-upper">COST</span>
-  <h1>利用料金</h1>
-  <img class="cost-table-img" src="./img/top/price.jpg" alt="仮置き">
-</div>
-
 <div class="outline-wrapper">
   <img class="outline-upper-background" src="{{ asset('/img/top/outline-upper.jpeg') }}" alt="サービス概要上部の背景画像">
   <div class="outline-logo">
@@ -303,6 +298,8 @@
 </div>
 
 <div class="audience-wrapper">
+  <div class="dt dt-right dt-q"></div>
+  <div class="dt dt-left dt-q"></div>
   <h1 class="qanda-title pc"><a name="qanda">よくある質問</a></h1>
   <section class="container">
     <div class="qanda-wrapper">
@@ -382,7 +379,7 @@
 <div class="promotion-wrapper">
   <h1>新規会員登録はここから</h1>
   <div class="promotion">
-    <span>無料＆3分で完了！</span>
+    <span class="font-gradient">無料＆3分で完了！</span>
     <a href="{{ route('register.choice') }}">
       <div class="promotion-button updown-btn">
         まずは会員登録する
