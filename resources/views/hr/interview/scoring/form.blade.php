@@ -29,7 +29,7 @@
       </div>
 
       <h2>採点を行ってください。</h2>
-      @foreach($scoringTerms as $scoringTerm)
+      @foreach($scoringTerms as $scoringTerm => $item)
         <div class="score flex">
           <div class="scoring_term">{{ $scoringTerm }}</div>
           <div class="radios logic">

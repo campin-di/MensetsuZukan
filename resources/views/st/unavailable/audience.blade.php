@@ -7,7 +7,7 @@
       <div class="block">
         <h1>面接を見るためには？</h1>
         <div class="img">
-        <img src="{{ asset('img/unavailable/unavailable-contributor.svg') }}" alt="面接官を探しているイラスト">
+          <img src="{{ asset('img/unavailable/unavailable-contributor.svg') }}" alt="面接官を探しているイラスト">
         </div>
       <div class="description">
         下記ボタンからお支払い情報の設定を<br>

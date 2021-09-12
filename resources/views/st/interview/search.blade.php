@@ -3,7 +3,7 @@
 @extends('layouts.st.nofooter')
 @section('content')
 
-@include('components.parts.page_title', ['title'=>'面接官を探す'])
+@include('components.parts.page_title', ['title'=>'面接したい人事を選択しよう！'])
 
 <div class="container">
   <div class="filter-wrapper flex">
@@ -79,10 +79,6 @@
   </div>
   @endforeach
 </div>
-
-<div id="delete-date">
-    @include('components.parts.button.fixed_button',['routeName' => 'interview.schedule.check', 'var'=>'', 'msg' => '', 'text' => '面接リクエストを確認・変更する'])
-  </div>
 
 <script type="text/javascript">
   let industries = @json($industries);

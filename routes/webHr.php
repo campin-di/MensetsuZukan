@@ -149,7 +149,6 @@ use App\Models\Video;
     Route::get('/mypage/edit/detail/step1', "Hr_HrMypageDetailController@step1")->name('hr.mypage.detail.step1');
     Route::post('/mypage/edit/detail/step2', "Hr_HrMypageDetailController@step2")->name('hr.mypage.detail.step2');
 
-
     Route::post('/mypage/edit/detail', "Hr_HrMypageDetailController@post")->name('hr.mypage.detail.post');
 
     Route::get('/mypage/edit/detail/confirm', "Hr_HrMypageDetailController@confirm")->name('hr.mypage.detail.confirm');

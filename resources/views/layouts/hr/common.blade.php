@@ -18,6 +18,8 @@
       <meta name="description" itemprop="description" ontent="面接図鑑|就活生の面接が見放題！">
     @endif
     <meta name="viewport" content="width=device-width">
+
+    <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-Control" content="no-cache">
 
     <!-- begin:ODP -->
@@ -35,7 +37,7 @@
     <!-- begin:CSS -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/st/parts/header.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/st/parts/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/st/parts/bottom_menu.css') }}" rel="stylesheet">
     <!-- end:CSS -->
 
     <!-- begin:JS -->
@@ -64,9 +66,18 @@
         <div id="template-content">
           @yield('content')
         </div>
-        @include('parts.hr.footer.normal')
+        @auth('hr')
+          @include('parts.hr.footer.bottom_menu')
+        @endauth
       </div>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
   </body>
+  @guest
+    <style type="text/css">
+      .fixed-button {
+        bottom: 0px !important;
+      }
+    </style>
+  @endguest
 </html>

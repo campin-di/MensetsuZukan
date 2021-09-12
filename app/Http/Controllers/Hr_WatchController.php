@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Google_Client;
 use Google_Service_YouTube;
 
+use Auth;
+
 use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Video;
 use App\Models\Interview;
+use App\Models\Schedule;
 
 use App\Common\DiffDateClass;
 use App\Common\TypeDisplayClass;
@@ -58,6 +61,8 @@ class Hr_WatchController extends Controller
 
     $typeArray = TypeDisplayClass::TypeDisplay($video[0]);
 
-    return view('hr.watch',compact('mainVideo', 'typeArray', 'scoreDetailsArray'));
+    $flag = Schedule::where('hr_id', Auth::guard('hr')->id())->select('st_id')->groupBy('st_id')->get()->count();
+
+    return view('hr.watch',compact('mainVideo', 'typeArray', 'scoreDetailsArray', 'flag'));
   }
 }

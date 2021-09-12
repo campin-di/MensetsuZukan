@@ -44,8 +44,7 @@ class Hr_HrMypageController extends Controller
       ]);
     }
 
-    $flag = Schedule::where('hr_id', $userId)->get();
-
+    $flag = Schedule::where('hr_id', $userId)->select('st_id')->groupBy('st_id')->get()->count();
     return view('hr/mypage/mypage', [
       'userData' => $userData,
       'pastVideosCollection' => $pastVideosCollection,

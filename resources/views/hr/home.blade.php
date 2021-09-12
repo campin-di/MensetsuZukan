@@ -44,6 +44,12 @@
     @include('components.parts.video_content', ['routeName' => 'hr.watch', 'upperRouteName' => 'hr.stpage', 'underRouteName' => 'hr.hrpage'])
   </div>
 
+  @include('components.parts.pc_right_fixed',[
+    'img' => 'img/interview-list.svg', 
+    'route' => 'hr.interview.schedule.request',
+    'description' => '面接リクエストの確認' 
+  ]) 
+
   <script type="text/javascript">
     let questions = @json($questions);
   </script>

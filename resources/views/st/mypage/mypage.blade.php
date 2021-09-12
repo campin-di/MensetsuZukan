@@ -41,12 +41,22 @@
     </ul>
   </div>
 
-  @include('components.parts.button.fixed_button',['routeName' => 'interview.search', 'var'=>'', 'msg' => '', 'text' => '現役人事と面接練習！'])
+  @include('components.parts.pc_left_fixed',[
+    'img' => 'img/interview-list.svg', 
+    'route' => 'interview.schedule.check',
+    'description' => '面接リクエストの確認・変更' 
+  ])
+
+
+  @include('components.parts.pc_right_fixed',[
+    'img' => 'img/search-hr.svg', 
+    'route' => 'interview.search',
+    'description' => '面接練習にチャレンジ！' 
+  ]) 
 
   <div class="container_pastVideo">
     <h2 class="container_schedule_title">過去の面接動画</h2>
   </div>
-
   @include('components.parts.video_content',[
     'videosCollection' => $pastVideosCollection,
     'routeName' => 'watch',
