@@ -37,11 +37,6 @@
               @else
                 <span class="digital">.0{{$video['total_score_double']}}</span><span class="score-label">点</span>
               @endif
-              <!--
-              <div class='wave -one'></div>
-              <div class='wave -two'></div>
-              <div class='wave -three'></div>
-            -->
           </div>
         </div>
         <div class="date">

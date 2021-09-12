@@ -61,19 +61,10 @@ class St_HomeController extends Controller
       array_push($questions, $question->name);
     }
 
-    if($user->status == config('const.USER_STATUS.UNAVAILABLE')){
-      $targetIds = [69, 55, 59];
-      $videos = Video::latest()->find($targetIds);
-      $coverVideos = Video::latest()->whereNotIn('id', $targetIds)->where('type', config('const.STHR.ST'))->get();
-      $coverVideosCollection = VideoDisplayClass::VideoDisplay($coverVideos);
-    } else{
-      $videos = Video::latest()->where('type', config('const.STHR.ST'))->get();
-      $coverVideosCollection = collect([]);
-    }
-
+    $videos = Video::latest()->where('type', config('const.STHR.ST'))->get();
     $videosCollection = VideoDisplayClass::VideoDisplay($videos);
 
-    return view('st.home',compact('questions', 'videosCollection', 'coverVideosCollection'));
+    return view('st.home',compact('questions', 'videosCollection'));
   }
 
   public function topHr()

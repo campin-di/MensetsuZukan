@@ -25,14 +25,8 @@ class St_PublicController extends Controller
                 case config('const.STHR.ST'):
                     $video->type = config('const.STHR.ST_N');
                     break;
-                case config('const.STHR.HR'):
-                    $video->type = config('const.STHR.HR_N');
-                    break;
                 case config('const.STHR.ST_N'):
                     $video->type = config('const.STHR.ST');
-                    break;
-                case config('const.STHR.HR_N'):
-                    $video->type = config('const.STHR.HR');
                     break;
                 default:
                     break;

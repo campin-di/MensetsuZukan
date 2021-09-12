@@ -12,7 +12,7 @@
 <div class="container offer-wrapper">
   <div class="st-information-wrapper">
     <div class="st-profile-img">
-      <img class="st-photo" src="{{ asset('/img/yoshi.jpg') }}" alt="プロフィール写真">
+      <img class="st-photo" src="{{ asset($stData->image_path) }}" alt="プロフィール写真">
     </div>
     <div class="st-name">
       {{ $stData->name }}
