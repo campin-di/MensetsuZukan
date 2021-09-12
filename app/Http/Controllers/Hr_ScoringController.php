@@ -106,14 +106,13 @@ class Hr_ScoringController extends Controller
     }
 
     function complete(){
+      //昨日以前のbattingテーブルのデータを削除する
+      $yesterday = new DateTime('-1 day');
+      $targets = Batting::where('date', '<', $yesterday)->get();
 
-    //昨日以前のbattingテーブルのデータを削除する
-    $yesterday = new DateTime('-1 day');
-    $targets = Batting::where('date', '<', $yesterday)->get();
-
-    foreach($targets as $target){
-      $target->delete();
-    }
+      foreach($targets as $target){
+        $target->delete();
+      }
 
       return view("hr/interview/scoring/form_complete");
     }

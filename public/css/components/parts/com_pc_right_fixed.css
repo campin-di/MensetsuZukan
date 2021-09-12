@@ -1,0 +1,81 @@
+.interview-wrapper{
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .circle-wrapper {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    bottom: 10px;
+    left: -20px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    z-index: 10000;
+    background: #FF3A2E;
+    animation-name: circle;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 0.5s;
+  }
+  @keyframes circle{
+    0% {
+        transform: translate(0,0px);
+    }
+    100% {
+        transform: translate(0,-5px)
+    }
+}
+  .circle {
+    margin: auto;
+    color: #FFF;
+  }
+
+  .interview-wrapper{
+    display: initial;
+    position: fixed;
+    bottom: 50px;
+    right: 40px;
+    transition: .3s;
+    z-index: 9999;
+  }
+  .interview-wrapper:hover{
+    transform: translateY(-0.3em);
+    transition: .3s;
+  }
+  .interview-img img{
+    width: 225px;
+  }
+  .interview-description{
+    text-align: center;
+    background: linear-gradient(to right, #fc0, #ff9d23);
+    padding: 12px 15px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -15px;
+    width: 250px;
+    color: #FFF;
+    white-space: nowrap;
+  }
+  .fuwafuwa {
+    -webkit-animation:fuwafuwa 1s infinite linear alternate;
+    animation:fuwafuwa 1s infinite linear alternate;
+  }
+    
+  @-webkit-keyframes fuwafuwa {
+    0% {-webkit-transform:translate(0, 0) rotate(-1deg);}
+    50% {-webkit-transform:translate(0, -5px) rotate(0deg);}
+    100% {-webkit-transform:translate(0, 0)rotate(1deg);}
+  }
+    
+  @keyframes fuwafuwa {
+    0% {transform:translate(0, 0) rotate(-1deg);}
+    50% {transform:translate(0, -5px) rotate(0deg);}
+    100% {transform:translate(0, 0)rotate(1deg);}
+  }
+}

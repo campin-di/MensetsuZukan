@@ -32,7 +32,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($scoringTerms as $scoringTerm)
+          @foreach($scoringTerms as $scoringTerm => $item)
             <tr>
               <td>{{$scoringTerm}}</td>
               <td>{{$scoringSignals[$input['term'.$loop->iteration]-1]}}</td>

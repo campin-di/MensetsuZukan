@@ -113,7 +113,17 @@
     @endforeach
   @endif
 
-  @include('components.parts.button.fixed_button',['routeName' => 'interview.search', 'var'=>'', 'msg' => '', 'text' => '面接練習をしてみる！'])
+  @include('components.parts.pc_left_fixed',[
+    'img' => 'img/interview-list.svg', 
+    'route' => 'interview.schedule.check',
+    'description' => '面接リクエストの確認・変更' 
+  ])
+
+  @include('components.parts.pc_right_fixed',[
+    'img' => 'img/search-hr.svg', 
+    'route' => 'interview.search',
+    'description' => '面接練習にチャレンジ！' 
+  ]) 
 
 <script type="text/javascript">
   let questions = @json($questions);

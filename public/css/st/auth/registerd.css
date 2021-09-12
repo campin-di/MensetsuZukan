@@ -1,3 +1,7 @@
+.img{
+  margin: 25px auto;
+  width: 70%;
+}
 /* === begin: 画面タイトル 部分 =================================================*/
 .top-content-wrapper{
   background: linear-gradient(to right, #7CC4FF, #9681FF);
@@ -53,6 +57,9 @@
 
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
+  .img{
+    width: 60%;
+  }
   .top-content-wrapper{
     width: 105vw;
     margin-left: -25%;
