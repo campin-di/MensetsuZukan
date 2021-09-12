@@ -12,15 +12,7 @@ class RedirectClass
     public static function stRedirect()
     {
       $user = Auth::user();
-      if($user->status == config('const.USER_STATUS.UNAVAILABLE')){
-        if($user->plan == 'contributor'){
-          //return "St_HomeController@preContributor";
-          return 0;
-        } else {
-          //return "St_HomeController@preAudience";
-          return 0;
-        }
-      }elseif($user->status == config('const.USER_STATUS.MAIL_AUTHED') ||
+      if($user->status == config('const.USER_STATUS.MAIL_AUTHED') ||
               $user->status == config('const.USER_STATUS.PRE_REGISTER') ||
               $user->status == config('const.USER_STATUS.REGISTER')){
           return "St_HomeController@preRegister";

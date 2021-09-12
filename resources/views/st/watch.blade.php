@@ -19,12 +19,12 @@
   <div class="video-view-good-wrapper flex">
     <div class="video-view">
       {{ $mainVideo['diffDate'] }} 
-      @if($mainVideo['stId'] == $stId)
+      @if($mainVideo['stId'] == $st->id)
        ( <a id="public_button" href="{{ route('public', $mainVideo['id']) }}">
-        @if($mainVideo['type'] == 0 || $mainVideo['type'] == 1)
-          非公開にする
+        @if($mainVideo['type'] == 0)
+          公開設定：全員
         @else
-          公開する
+          公開設定：人事のみ
         @endif
         </a> )
       @endif
@@ -129,42 +129,74 @@
         ▼
       </div>
     </div>
-    <div class="score-detail">
-      <div class="List">
-        <div class="List-Item item-title">
-          <p class="List-Item-Title">項目</p>
-          <p class="List-Item-Text">評価</p>
-          <p class="List-Item-force ">関係する力</p>
-        </div>
-        @foreach($scoreDetailsArray as $scoreDetail)
-          <div class="List-Item">
-            <p class="List-Item-Title">{{$scoreDetail[1]}}</p>
-            <p class="List-Item-Text">{{$scoreDetail[2]}}</p>
-            <p class="List-Item-force">
-              @foreach($scoreDetail[0] as $icon)
-                <img class="force-logo {{$icon}}" src="{{ asset('img/icon/'.$icon.'.svg') }}">
-              @endforeach
-            </p>
+
+    <div class="score-detail">    
+      @if($st->status != 11)  
+        <div class="recomend-wrapper">
+          <h1>評価の内訳を見るには？</h1>
+          <div class="recomend-pc-flex">
+            <div class="recomend-img">
+              <img src="{{ asset('img/unavailable/unavailable-register.svg') }}" alt="面接官を探しているイラスト">
+            </div>
+            <div class="recomend-message">
+              <b>面接機能（無料）</b>をご利用いただくと、<br>
+              評価の内訳が閲覧できるようになります！<br><br>
+  
+              面接機能は、人事と<b>模擬面接</b>ができる機能で、<br>
+              面接を客観的に分析することができます！<br>
+              もちろん<b>採点・評価</b>も付いてきます！<br><br>
+  
+              カラオケ採点感覚でご利用ください！<br>
+              早速、面接練習を行う面接官を探しましょう。<br>
+            </div>
           </div>
-        @endforeach
-      </div>
-    </div>
+          
+          <a href="{{ route('interview.search') }}">
+            <div class="button">
+              <span>面接官を探す</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="List mosaic">
+      @else
+        <div class="List">
+      @endif
+          <div class="List-Item item-title">
+            <p class="List-Item-Title">項目</p>
+            <p class="List-Item-Text">評価</p>
+            <p class="List-Item-force ">関係する力</p>
+          </div>
+          @foreach($scoreDetailsArray as $scoreDetail)
+            <div class="List-Item">
+              <p class="List-Item-Title">{{$scoreDetail[1]}}</p>
+              <p class="List-Item-Text">{{$scoreDetail[2]}}</p>
+              <p class="List-Item-force">
+                @foreach($scoreDetail[0] as $icon)
+                  <img class="force-logo {{$icon}}" src="{{ asset('img/icon/'.$icon.'.svg') }}">
+                @endforeach
+              </p>
+            </div>
+          @endforeach
+        </div>
+
+
     <div class="score-description-wrapper">
       <div class="flex">
         <div class="score-signal"> ×<span>：</span></div>
-        <div class="score-description">改善しなければデメリットになる可能性が高い。</div>
+        <div class="score-description">低い評価をする選考官が多いと判断。要改善。</div>
       </div>
       <div class="flex">
         <div class="score-signal"> △<span>：</span></div>
-        <div class="score-description">人事さんによってはウィークポイントに感じる可能性がある。</div>
+        <div class="score-description">選考官によっては評価が低くなる可能性があると判断。</div>
       </div>
       <div class="flex">
         <div class="score-signal"> ○<span>：</span></div>
-        <div class="score-description">ほとんどの人事さんが良い印象・判断をすると思われる。</div>
+        <div class="score-description">高評価をする選考官が多いと判断。</div>
       </div>
       <div class="flex">
         <div class="score-signal">◎<span>：</span></div>
-        <div class="score-description">明確にストロングポイントになる。</div>
+        <div class="score-description">ほとんどの選考官が高評価をすると判断。明確にストロングポイント。</div>
       </div>
     </div>
   </div>
@@ -249,6 +281,19 @@
     </div>
   </div>
 </div>
+
+@include('components.parts.pc_left_fixed',[
+    'img' => 'img/interview-list.svg', 
+    'route' => 'interview.schedule.check',
+    'description' => '面接リクエストの確認・変更' 
+  ])
+
+
+  @include('components.parts.pc_right_fixed',[
+    'img' => 'img/search-hr.svg', 
+    'route' => 'interview.search',
+    'description' => '面接練習にチャレンジ！' 
+  ]) 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>

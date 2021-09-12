@@ -32,11 +32,6 @@ class St_WatchController extends Controller
     }
     //==========================================================================
 
-    $ids = [69, 55, 59];
-    if(Auth::user()->status == config('const.USER_STATUS.UNAVAILABLE') && !in_array($id, $ids)){
-      return redirect()->action('St_HomeController@preContributor');
-    }
-
     if(!session()->has('access')){
       $targetVideo = Video::where('id', $id)->first();
       $targetVideo->views++;
@@ -68,9 +63,9 @@ class St_WatchController extends Controller
 
     $typeArray = TypeDisplayClass::TypeDisplay($video[0]);
 
-    $stId = Auth::user()->id;
+    $st = Auth::user();
 
-    return view('st.watch', compact('stId', 'mainVideo', 'typeArray', 'scoreDetailsArray'));
+    return view('st.watch', compact('st', 'mainVideo', 'typeArray', 'scoreDetailsArray'));
   }
 
 }

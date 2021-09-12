@@ -453,6 +453,9 @@
 .creative{
   border: solid 2px #B76CFD;
 }
+.score-detail{
+  position: relative;
+}
 
 .score-description-wrapper{
   width: 90%;
@@ -477,6 +480,52 @@
   color: #333;
   font-weight: 400;
 }
+
+/* --- start: モザイク部分 --------------------------------*/
+.recomend-wrapper{
+  position: absolute;
+  z-index: 100;
+  text-align: center;
+  width: 100%;
+  margin-top: 75px;
+}
+.recomend-wrapper h1{
+  font-size: 22px;
+  font-weight: 600;
+  background: linear-gradient(to right,#7CC4FF, #9681FF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.recomend-wrapper .button{
+  width: 75%;
+  margin: 40px auto 0;
+  border-radius: 40px;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+.recomend-wrapper .button span{
+  font-size: 20px;
+  color: #FFF;
+  line-height: 3;
+}
+.recomend-message{
+  font-size: 15px;
+  letter-spacing: -.5;
+}
+.recomend-img{
+  margin: 30px auto;
+}
+.recomend-img img{
+  width: 300px;
+  max-width: 90%;
+}
+.mosaic{
+	-ms-filter: blur(10px);
+	filter: blur(10px);
+}
+/* --- end: モザイク部分 --------------------------------*/
+
 /* === end: 採点表部分 =================================================*/
 @media screen and (min-width:1025px) {
 /*　画面サイズが1025px以上はここを読み込む　*/
@@ -685,6 +734,25 @@
   .force-logo{
     width: 30px;
     height: 30px;
+  }
+  .recomend-wrapper h1 {
+    font-size: 24px;
+  }
+  .recomend-pc-flex{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .recomend-img,
+  .recomend-message{
+    width: 50%;
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+  .recomend-wrapper .button {
+    width: 50%;
+    margin: 25px auto 0;
   }
   /* === end: 評価の内訳部分 ===============================*/
   .score-description-wrapper{

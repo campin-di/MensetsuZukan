@@ -17,10 +17,12 @@
   <div class="container_profile_btn">
     <a href="{{ route('mypage.detail') }}" class="mx-2 btn btn-primary container_profile_btn_profile">プロフィール詳細</a>
     <a href="{{ route('mypage.basic.show') }}" class="mx-2 btn btn-primary container_profile_btn_info">基本情報の変更</a>
-    @if($userDataArray['plan'] == "admin")
-      <a href="{{ route('admin') }}" class="mx-2 btn btn-primary container_profile_btn_info">管理画面</a>
-    @endif
   </div>
+  @if($userDataArray['plan'] == "admin")
+    <div class="container_profile_btn" style="margin-top:10px;">
+      <a href="{{ route('admin') }}" class="mx-2 btn btn-secondary container_profile_btn_info">管理画面</a>
+    </div>
+  @endif
 
   <div class="container_schedule">
     <h2 class="container_schedule_title">面接予定</h2>

@@ -8,12 +8,11 @@
         <h1>本会員登録が完了していません。</h1>
         <div class="img">
           <img src="../img/unavailable/unavailable-register.svg" alt="ログインを試みるイラスト">
-          <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>        
         </div>
         <div class="description">
-          仮会員登録時に届いたメールから本会員登録を行ってください。<br><br>
-          ＜メールを紛失した場合は？＞<br>
-          仮会員登録より24時間以上経ってから、再度会員登録を行ってください。
+          仮会員登録時に届いたLINEから本会員登録を行ってください。<br><br>
+          届かなかった場合は、下記メールアドレスまでご連絡ください。<br><br>
+          mensetsu-zukan@pampam.co.jp
         </div>
         <a href="{{ url('/') }}">
           <div class="button">
