@@ -283,17 +283,16 @@
 </div>
 
 @include('components.parts.pc_left_fixed',[
-    'img' => 'img/interview-list.svg', 
-    'route' => 'interview.schedule.check',
-    'description' => '面接リクエストの確認・変更' 
-  ])
+  'img' => 'img/interview-list.svg', 
+  'route' => 'interview.schedule.check',
+  'description' => '面接リクエストの確認・変更' 
+])
 
-
-  @include('components.parts.pc_right_fixed',[
-    'img' => 'img/search-hr.svg', 
-    'route' => 'interview.search',
-    'description' => '面接練習にチャレンジ！' 
-  ]) 
+@include('components.parts.pc_right_fixed',[
+  'img' => 'img/search-hr.svg', 
+  'route' => 'interview.search',
+  'description' => '面接練習にチャレンジ！' 
+]) 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
