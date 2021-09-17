@@ -1,7 +1,10 @@
 @section('title', 'トップページ')
+<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/st/home.css') }}">
 @extends('layouts.hr.common')
 @section('content')
+
+@include('components.parts.modal.confirm_request') 
 
   <div class="filter-wrapper flex">
     <div class="form-input-wrapper">

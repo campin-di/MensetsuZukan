@@ -454,6 +454,8 @@
   border: solid 2px #B76CFD;
 }
 .score-detail{
+  text-align: center;
+  margin: 10px auto 0;
   position: relative;
 }
 
@@ -480,6 +482,173 @@
   color: #333;
   font-weight: 400;
 }
+
+/* --- start: 得点の特徴・改善策 部分 --------------------------------*/
+
+.btn-primary {
+  background: linear-gradient(to right, #7CC4FF, #9681FF) !important;
+  border-color: transparent !important;
+}
+
+.close { 
+  font-size: 3rem !important;
+  line-height: 0 !important;
+  color: #FFF !important;
+  text-shadow: 0 1px 0 #fff !important;
+}
+
+.modal-body-wrapper{
+  overflow: hidden;
+
+}
+.modal-body{
+  width: 80%;
+  margin: auto;
+  padding: 1rem 0rem !important;
+}
+.modal-header{
+  border-bottom: solid 0px !important;
+}
+.modal-content{
+  border: 0px solid rgba(0, 0, 0, 0.2) !important;
+  background-color: transparent !important;
+}
+
+.modal-title-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  border-style: none none dotted !important;
+  align-items: center;
+  padding: 5px 0 15px;
+}
+
+.modal-score{
+  display: flex;
+  width: 40%;
+  margin: auto;
+  align-items: center;
+}
+
+.modal-score-ave{
+  font-size: 15px;
+}
+
+.modal-total-score-title{
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.modal-total-score{
+  font-size: 65px;
+  margin: -20px auto -30px;
+}
+.modal-total-score span{
+  font-size: 40px;
+}
+
+.swiper-container {
+  height: 450px;
+}
+.swiper-slide{
+  border-radius: 15px;
+  background: #FFF;
+  padding: 15px 0px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+.swiper-slide h2{
+  font-size: 18px;
+  margin-bottom: 0 !important;
+}
+
+.swiper-pagination {
+  bottom: 15px !important;
+}
+
+.swiper-button-next{
+  right: -25px !important;
+  color: #9681FF !important;
+}
+.swiper-button-prev{
+  left: -25px !important;
+  color: #7CC4FF !important;
+}
+
+.features{
+  font-size: 14px;
+  letter-spacing: 0.4px;
+}
+
+.features-item{
+  margin: 15px auto;
+  text-align: left;
+  padding: 0 20px;
+}
+.features-item .title{
+  font-size: 15px;
+  margin: 5px 0;
+  font-weight: 600;
+}
+
+/* -- 面接基礎力 ----------------------------*/
+.slide-basic .modal-title-wrapper{
+  border-bottom: solid 5px #13CA91;
+}
+.slide-basic .features-item .title{
+  color: #13CA91;
+}
+.slide-basic .modal-title-wrapper h2{
+  color: #13CA91;
+}
+
+/* -- 自己表現力 ----------------------------*/
+.slide-expression .modal-title-wrapper{
+  border-bottom: solid 5px #FE53BB;
+}
+.slide-expression .features-item .title{
+  color: #FE53BB;
+}
+.slide-expression .modal-title-wrapper h2{
+  color: #FE53BB;
+}
+
+/* -- ロジカル力 ----------------------------*/
+.slide-logical .modal-title-wrapper{
+  border-bottom: solid 5px #75D5FD;
+}
+.slide-logical .features-item .title{
+  color: #75D5FD;
+}
+.slide-logical .modal-title-wrapper h2{
+  color: #75D5FD;
+}
+
+/* -- バイタリティ ----------------------------*/
+.slide-vitality .modal-title-wrapper{
+  border-bottom: solid 5px #F5D300;
+}
+.slide-vitality .features-item .title{
+  color: #F5D300;
+}
+.slide-vitality .modal-title-wrapper h2{
+  color: #F5D300;
+}
+
+/* -- 創造力 ----------------------------*/
+.slide-creative .modal-title-wrapper{
+  border-bottom: solid 5px #B76CFD;
+}
+.slide-creative .features-item .title{
+  color: #B76CFD;
+}
+.slide-creative .modal-title-wrapper h2{
+  color: #B76CFD;
+}
+
+/* --- end: 得点の特徴・改善策 部分 --------------------------------*/
 
 /* --- start: モザイク部分 --------------------------------*/
 .recomend-wrapper{
@@ -717,6 +886,14 @@
   .review p{
     font-size: 18px;
   }
+
+  /*--- start: スコア別の特徴・改善方法 ------- */
+  .btn-primary {
+    width: 50%;
+    padding: 10px 0px !important;
+  }
+ 
+  /*--- end: スコア別の特徴・改善方法 ------- */
 
   /* === start: 評価の内訳部分 ===============================*/
   .List-Item{

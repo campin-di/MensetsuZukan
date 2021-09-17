@@ -51,6 +51,7 @@ class Hr_WatchController extends Controller
 
     $scoringTerms = ScoringTermsClass::scoringTerms();
     $scoringSignals = ScoringTermsClass::scoringSignals();
+    $scoringFeatures = ScoringTermsClass::scoringDetails($video[0]);
     $scoreDetailsArray = [];
     $cnt = 1;
     foreach($scoringTerms as $scoringTerm => $termIconArray){
@@ -63,6 +64,6 @@ class Hr_WatchController extends Controller
 
     $flag = Schedule::where('hr_id', Auth::guard('hr')->id())->select('st_id')->groupBy('st_id')->get()->count();
 
-    return view('hr.watch',compact('mainVideo', 'typeArray', 'scoreDetailsArray', 'flag'));
+    return view('hr.watch',compact('mainVideo', 'typeArray', 'scoreDetailsArray', 'flag', 'scoringFeatures'));
   }
 }
