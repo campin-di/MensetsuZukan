@@ -2,6 +2,27 @@
   display: none;
 } 
 @media (max-width: 720px) {
+  .practice a{
+    position: relative;
+  }
+  .circle-wrapper {
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 13px;
+    text-align: center;
+    right: 20px;
+    top: 0px;
+    position: absolute;
+    display: block;
+    align-items: center;
+    z-index: 10000;
+    background: #FF3A2E;
+  }
+  .circle{
+    color: #FFF;
+  }
+  
   .bottom-sticky-nav {
     height: 60px;
     position: fixed;

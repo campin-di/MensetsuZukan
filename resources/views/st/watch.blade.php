@@ -1,7 +1,9 @@
 @section('title', $mainVideo['stNickname'].'さんと'.$mainVideo['hrNickname'].'さんの面接')
 <link href='https://fonts.googleapis.com/css?family=Digital-7 Regular' rel='stylesheet' type='text/css'>
 <link href="{{ asset('/css/st/watch.css') }}" rel="stylesheet">
-@extends('layouts.st.common')
+
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>@extends('layouts.st.common')
 @section('content')
 
 <div class="video-iframe">
@@ -117,6 +119,59 @@
       </div>
     </div>
     <div class="score-detail">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        このスコア帯の特徴・改善方法
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body-wrapper">
+              <div class="modal-body">
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    @foreach($scoringFeatures as $key => $featuresArray)
+                      <div class="swiper-slide slide-{{ $key }}">
+                        <!-- start:コンテンツ -->
+                        <div class="modal-title-wrapper">
+                          <img class="force-logo {{ $key }}" src="{{ asset('img/icon/'.$key.'.svg') }}">
+                          <h2>{{ $featuresArray['title'] }}</h2>
+                        </div>
+                        <div class="modal-score">
+                          <div class="modal-total-score-title">得点率</div>
+                          <div class="modal-total-score count-up digital">{{ $featuresArray['rate'] }}<span>%</span></div>
+                        </div>
+                        <div class="modal-score-ave">（全国平均：{{ $featuresArray['ave'] }}％）</div>
+                        <div class="features">
+                          <div class="features-item">
+                            <div class="title">このスコア帯の人の特徴</div>
+                            <div class="content">{{ $featuresArray['feature'] }}</div>
+                          </div>
+                          <div class="features-item">
+                            <div class="title">次のステップに上がるために</div>
+                            <div class="content">{{ $featuresArray['measure'] }}</div>
+                          </div>
+                        </div>
+                        <!-- end:コンテンツ -->
+                      </div>
+                    @endforeach
+                  </div>
+                  <div class="swiper-pagination"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -129,7 +184,6 @@
         ▼
       </div>
     </div>
-
     <div class="score-detail">    
       @if($st->status != 11)  
         <div class="recomend-wrapper">
@@ -179,7 +233,7 @@
             </div>
           @endforeach
         </div>
-
+    </div>
 
     <div class="score-description-wrapper">
       <div class="flex">
@@ -293,6 +347,27 @@
   'route' => 'interview.search',
   'description' => '面接練習にチャレンジ！' 
 ]) 
+<script>
+  var mySwiper = new Swiper ('.swiper-container', {
+      effect:'coverflow',
+      loop: true,
+      centeredSlides: true,
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: false,
+      on: {
+        imagesReady: function(){
+          this.el.classList.remove('loading');
+        }
+      }
+  })
+  </script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>

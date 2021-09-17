@@ -53,6 +53,8 @@ class St_WatchController extends Controller
 
     $scoringTerms = ScoringTermsClass::scoringTerms();
     $scoringSignals = ScoringTermsClass::scoringSignals();
+    $scoringFeatures = ScoringTermsClass::scoringDetails($video[0]);
+
     $scoreDetailsArray = [];
     $cnt = 1;
     foreach($scoringTerms as $scoringTerm => $termIconArray){
@@ -65,7 +67,7 @@ class St_WatchController extends Controller
 
     $st = Auth::user();
 
-    return view('st.watch', compact('st', 'mainVideo', 'typeArray', 'scoreDetailsArray'));
+    return view('st.watch', compact('st', 'mainVideo', 'typeArray', 'scoreDetailsArray', 'scoringFeatures'));
   }
 
 }

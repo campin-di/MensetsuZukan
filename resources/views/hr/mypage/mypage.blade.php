@@ -5,6 +5,8 @@
 
 @include('components.parts.page_title', ['title'=>'マイページ'])
 
+@include('components.parts.modal.confirm_request') 
+
 <div class="container">
   @include('components.parts.profile', ['imagePath' => $userData->image_path, 'userName' => '', 'nickName' => $userData->nickname, 'description' => $userData->company, 'introduction' => $userData->introduction])
   
