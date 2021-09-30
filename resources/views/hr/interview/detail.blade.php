@@ -75,6 +75,9 @@
       </button>
     </a>
   </div>
+  <div class="cancel">
+    <a href="{{ route('hr.interview.cancel.confirm', $interviewInfo->id) }}">面接をキャンセルする</a>
+  </div>
   @endif
 </div>
 <script type="text/javascript" src="{{ asset('/js/st/interview/detail.js') }}"></script>

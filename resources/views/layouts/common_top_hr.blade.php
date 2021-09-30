@@ -28,7 +28,7 @@
     -->
 
     <!-- begin:CSS -->
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app-ori.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/top_hr.css') }}" rel="stylesheet">
     <!-- end:CSS -->
 

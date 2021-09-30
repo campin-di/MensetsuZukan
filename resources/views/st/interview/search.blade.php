@@ -3,7 +3,7 @@
 @extends('layouts.st.nofooter')
 @section('content')
 
-@include('components.parts.page_title', ['title'=>'面接したい人事を選択しよう！'])
+@include('components.parts.page_title', ['title'=>'面接したい人事を選択'])
 
 <div class="container">
   <div class="filter-wrapper flex">
@@ -48,7 +48,7 @@
 
   @foreach($hrCollection as $hr)
   <div class="hr-profile-wrapper">
-    <a href="{{ route('interview.schedule', $hr['id']) }}">
+    <a href="{{ route('interview.request', $hr['id']) }}">
     <div class="flex">
       <div class="left-child">
         <img class="hr-photo" src="{{ asset($hr['imagePath']) }}" alt="プロフィール写真">

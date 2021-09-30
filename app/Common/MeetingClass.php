@@ -10,7 +10,6 @@ use Lcobucci\JWT\Signer\Key;
 use Lcobucci\JWT\Builder;
 
 class MeetingClass {
-
     private const BASE_URI = 'https://api.zoom.us/v2/';
 
     private function createJwtToken($api_num)

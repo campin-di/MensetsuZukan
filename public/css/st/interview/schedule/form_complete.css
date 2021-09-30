@@ -9,6 +9,10 @@
   font-size: 20px;
   font-weight: bold;
 }
+
+.message-card{
+  margin: -50px auto 150px;
+}
 /* === end: メイン部分 =================================================*/
 
 /* === begin: LINE部分 =================================================*/
@@ -36,4 +40,9 @@
     font-size: 26px;
     margin: 100px auto 200px;
   }
+
+  .message-card{
+    margin: -100px auto 100px;
+  }
+
 }

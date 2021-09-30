@@ -1,0 +1,117 @@
+/* === begin: メイン部分 =================================================*/
+.form-wrapper{
+  text-align: center;
+}
+
+.title{
+  margin: 100px auto;
+  color: #6B8BE9;
+  font-size: 20px;
+  font-weight: bold;
+}
+/* === end: メイン部分 =================================================*/
+
+/* === begin: フォーム部分 =================================================*/
+.card{
+  margin: 50px auto 25px;
+  padding: 40px 5%;
+  text-align: center;
+  border-radius: 15px !important;
+}
+.card span{
+  display: contents;
+}
+.card p{
+  margin: 20px auto 40px;
+  font-size: 14px;
+}
+
+.title{
+  margin: 20px auto;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* === end: フォーム部分 =================================================*/
+
+
+/* === begin: LINE部分 =================================================*/
+.line-wrapper{
+  margin-top: 50px;
+  padding: 40px 5%;
+  text-align: center;
+  border-radius: 15px !important;
+  border: solid 1px #EEE;
+}
+.line-description{
+  text-align: left;
+  width: 80%;
+  margin: 0 auto;
+}
+/* === end: LINE部分 =================================================*/
+
+/* === start: すでに申し込みをしている場合 部分 =================================================*/
+.none-block{
+  width: 90%;
+  margin: auto;
+}
+.none-block h1{
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #9681FF;
+}
+
+.none-img{
+  width: 60%;
+  margin: 40px auto 25px;
+  text-align: center;
+}
+
+.description{
+  font-size: 14px;
+  margin-bottom: 50px;
+}
+
+.button{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border-radius: 30px;
+  width: 80%;
+  text-align: center;
+  margin: 35px auto;
+}
+.button span{
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFF;
+  line-height: 2.5;
+}
+
+/* === end: すでに申し込みをしている場合 部分 =================================================*/
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .form-wrapper{
+    padding: 0 20% !important;
+  }
+
+  .card{
+    margin: 50px auto;
+  }
+
+  .title{
+    font-size: 26px;
+    margin: 30px auto;
+  }
+
+  .none-img {
+    width: 75%;
+    margin: 0px auto 25px;
+  }
+
+  .description {
+    font-size: 16px;
+    margin-bottom: 75px;
+  }
+}

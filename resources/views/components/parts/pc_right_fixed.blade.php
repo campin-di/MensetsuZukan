@@ -6,9 +6,9 @@
   <div class="interview-description">
     {{ $description }}
   </div>
-  @if(isset($flag) && $flag > 0)
+  @if(isset($isRequest) && $isRequest > 0)
     <div class="circle-wrapper">
-      <div class="circle">{{$flag}}</div>
+      <div class="circle">{{ $isRequest }}</div>
     </div>
   @endif
 </a>

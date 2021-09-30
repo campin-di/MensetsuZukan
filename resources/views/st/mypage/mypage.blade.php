@@ -45,8 +45,8 @@
 
   @include('components.parts.pc_left_fixed',[
     'img' => 'img/interview-list.svg', 
-    'route' => 'interview.schedule.check',
-    'description' => '面接リクエストの確認・変更' 
+    'route' => 'interview.chat.list',
+    'description' => 'メッセージ' 
   ])
 
 

@@ -189,7 +189,7 @@
     display: none;
   }
   .pc{
-    display: block;
+    display: initial;
   }
   .flex-pc{
     display: flex;

@@ -66,7 +66,7 @@ class UploadController extends Controller
       $scores = ScoringAlgorithmClass::scoringAlgorithm($interview);
 
       $video_st = new Video;
-      $video_st->vimeo_src = 'https://player.vimeo.com/video/' . $input["st_vimeo_id"] . '#t=0s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
+      $video_st->vimeo_src = 'https://player.vimeo.com/video/' . $input["st_vimeo_id"] . '?h=cfd7d8ebbe&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
       $video_st->vimeo_id = $input["st_vimeo_id"];
       $video_st->st_id = $interview->st_id;
       $video_st->hr_id = $interview->hr_id;
@@ -87,7 +87,7 @@ class UploadController extends Controller
       $video_st->save();
 
       $video_hr = new Video;
-      $video_hr->vimeo_src = 'https://player.vimeo.com/video/' . $input["hr_vimeo_id"] . '#t=0s?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
+      $video_hr->vimeo_src = 'https://player.vimeo.com/video/' . $input["hr_vimeo_id"] . '?h=cfd7d8ebbe&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';
       $video_hr->vimeo_id = $input["hr_vimeo_id"];
       $video_hr->st_id = $interview->st_id;
       $video_hr->hr_id = $interview->hr_id;

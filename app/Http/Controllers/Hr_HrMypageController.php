@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Video;
 use App\Models\Interview;
-use App\Models\Schedule;
+use App\Models\InterviewRequest;
 
 use App\Common\VideoDisplayClass;
 
@@ -44,13 +44,9 @@ class Hr_HrMypageController extends Controller
       ]);
     }
 
-    $flag = Schedule::where('hr_id', $userId)->select('st_id')->groupBy('st_id')->get()->count();
-    return view('hr/mypage/mypage', [
-      'userData' => $userData,
-      'pastVideosCollection' => $pastVideosCollection,
-      'interviewReservationsCollection' => $interviewReservationsCollection,
-      'flag' => $flag,
-    ]);
+    $isRequest = InterviewRequest::where('hr_id', $userId)->where('status', 0)->count();
+
+    return view('hr/mypage/mypage', compact('userData', 'pastVideosCollection', 'interviewReservationsCollection', 'isRequest'));
   }
 
   public function myDetail()

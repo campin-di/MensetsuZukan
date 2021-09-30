@@ -14,7 +14,7 @@ Route::get('/', function () {
       return redirect()->action('Hr\HrHomeController@index');
     }
 
-    $contentsNumber = Video::where('type', 0)->count();
+    $contentsNumber = Video::where('type', [0, 2])->count();
 
     return view('top', compact('contentsNumber'));
 });
@@ -86,7 +86,41 @@ Route::middleware(['auth'])->group(function() {
   Route::get('/interview/cancel/{id}/confirm', 'St_InterviewController@cancelConfirm')->name('interview.cancel.confirm');
 
   Route::post('/interview/cancel/{id}', 'St_InterviewController@cancel')->name('interview.cancel');
+
+  /*=== start: 面接リクエスト 関係 ===============================================*/
+  // to 面接スケジュール page
+  Route::get('/interview/request/{id}', 'St\RequestController@index')->name('interview.request');
+
+  //mypage to request adding function
+  Route::post('/interview/request/post', 'St\RequestController@post')->name('interview.request.post');
+
+  Route::post('/interview/request/complete', "St\RequestController@send")->name('interview.request.send');
+  
+  //mypage to request check function
+  Route::get('/interview/request/check', 'St\RequestController@check')->name('interview.request.check');
+  
+  //check to comfirm page
+  Route::post('/interview/request/delete', 'St\RequestController@delete')->name('interview.request.delete');
+  
+  Route::get('/interview/request/delete/confirm', "St\RequestController@deleteConfirm")->name('interview.request.deleteConfirm');
+  Route::post('/interview/request/delete/confirm', "St\RequestController@deleteSend")->name('interview.request.deleteSend');
+
+  Route::get('/interview/request/delete/done', "St\RequestController@deleteComplete")->name('interview.request.delete.complete');
+  /*=== end:面接リクエスト 関係 ===============================================*/
+
+  /*=== start: チャット 関係 ===============================================*/
+  Route::get('interview/chat/list', 'St\ChatController@list')->name('interview.chat.list');
+
+  Route::get('interview/chat/talk/{id}', 'St\ChatController@chat')->name('interview.chat.talk');
+
+  Route::get('ajax/chat', 'St\Ajax\ChatController@index'); // メッセージ一覧を取得
+  Route::post('ajax/chat', 'St\Ajax\ChatController@create'); // チャット登録
+
+  /*=== end:チャット 関係 ===============================================*/
+
   /*=== スケジュール登録 関係 ===============================================*/
+  // to 面接スケジュール page
+  Route::get('/interview/schedule/{id}', 'St_ScheduleController@schedule')->name('interview.schedule');
   
   //mypage to schedule adding function
   Route::post('/interview/schedule/post', 'St_ScheduleController@post')->name('interview.schedule.post');
@@ -156,9 +190,6 @@ Route::middleware(['auth'])->group(function() {
   /*=== end:人事マイページ関係 =========================================================*/
   // to 人事を探す(search) page
   Route::get('/interview/search', 'St_InterviewController@search')->name('interview.search');
-  
-  // to 面接スケジュール page
-  Route::get('/interview/schedule/{id}', 'St_ScheduleController@schedule')->name('interview.schedule');
   
   
   /*=== start: 管理画面 関係 =============================================================*/

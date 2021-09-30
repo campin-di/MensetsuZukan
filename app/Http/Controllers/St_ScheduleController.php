@@ -238,7 +238,7 @@ class St_ScheduleController extends Controller
     //================================================
     
     $lineFlag = is_null($st->line_id);
-    echo $lineFlag;
+
     //セッションを空にする
     $request->session()->forget("form_input");
 

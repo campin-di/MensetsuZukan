@@ -22,6 +22,7 @@
         "laravel/ui": "3.*",
         "lcobucci/jwt": "3.2.5",
         "linecorp/line-bot-sdk": "^7.1",
+        "pusher/pusher-php-server": "^7.0",
         "socialiteproviders/line": "^4.1",
         "stripe/stripe-php": "^7.85"
     },

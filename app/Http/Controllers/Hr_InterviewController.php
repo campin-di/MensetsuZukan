@@ -1,14 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Common\CutStringClass;
 use App\Common\MeetingClass;
 
+use App\Models\User;
+use App\Models\HrUser;
 use App\Models\Interview;
 use App\Models\Question;
+
+use Illuminate\Support\Facades\Mail;
 
 class Hr_InterviewController extends Controller
 {
@@ -49,24 +54,33 @@ class Hr_InterviewController extends Controller
     ]);
   }
 
-/*
-  public function search()
+  public function cancelConfirm($id)
   {
-    $hrs = HrUser::get();
-
-    $hrCollection = collect([]);
-    foreach ($hrs as $hr) {
-      $hrCollection = $hrCollection->concat([
-        [
-          'name' => $hr->hr_user->name,
-          'introduction' => CutStringClass::CutString($hr->introduction, 40),
-        ],
-      ]);
-    }
-
-    return view('hr/interview/search', [
-      'hrCollection' => $hrCollection,
-    ]);
+    return view('hr/interview/cancel/confirm', compact('id'));
   }
-  */
+
+  public function cancel($id)
+  {
+    $interviewInfo = Interview::find($id);
+    
+    $hr = HrUser::find(Auth::guard('hr')->id());
+    $st = User::find($interviewInfo->st_id);
+
+    $mailDateArray = [
+      'date' => $interviewInfo->date,
+      'time' => $interviewInfo->time,
+    ];
+
+    $interviewInfo->delete();
+
+    Mail::send('hr/interview/cancel/mail/cancel', ['mailDateArray' => $mailDateArray, 'hr' => $hr, 'st' => $st],
+      function ($message) use ($hr, $st){
+        $message->subject($st->nickname. 'さんとの面接がキャンセルされました。');
+        $message->from('mensetsuzukan@pampam.co.jp', '面接図鑑');
+        $message->to($hr->email);
+      }
+    );
+
+    return view('hr/interview/cancel/complete');
+  }
 }
