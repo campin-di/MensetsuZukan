@@ -69,20 +69,47 @@ use App\Models\Video;
     Route::get('/offer/thanks', "Hr_OfferController@complete")->name('hr.offer.complete');
     /*=== end:オファー機能 関係 ===============================================*/
 
+    /*=== 面接リクエスト 関係 ===============================================*/
+    //mypage to request adding function
+    Route::get('/interview/request/request_list', 'Hr\RequestController@index')->name('hr.interview.request');
+    //mypage to request adding function
+    Route::get('/interview/request/form/{st_id}', 'Hr\RequestController@form')->name('hr.interview.request.form');
+    //form to comfirm page
+    Route::post('/interview/request/confirm', 'Hr\RequestController@post')->name('hr.interview.request.post');
+    //comfirm page to complete page
+    Route::post('/interview/request/complete', "Hr\RequestController@send")->name('hr.interview.request.send');
+
+    /*=== end:面接リクエスト 関係 ===============================================*/
+
+    /*=== start: チャット 関係 ===============================================*/
+    Route::get('interview/chat/list', 'Hr\ChatController@list')->name('hr.interview.chat.list');
+
+    Route::get('interview/chat/talk/{id}', 'Hr\ChatController@chat')->name('hr.interview.chat.talk');
+
+    Route::get('ajax/chat', 'Hr\Ajax\ChatController@index'); // メッセージ一覧を取得
+    Route::post('ajax/chat', 'Hr\Ajax\ChatController@create'); // チャット登録
+
+    /*=== end:チャット 関係 ===============================================*/
+
     /*=== スケジュール登録 関係 ===============================================*/
     //mypage to schedule adding function
-    Route::get('/interview/schedule/request_list', 'Hr_ScheduleController@request')->name('hr.interview.schedule.request');
-
+    //Route::get('/interview/schedule/request_list', 'Hr\ScheduleController@request')->name('hr.interview.schedule.request');
+    
     //mypage to schedule adding function
-    Route::get('/interview/schedule/form/{st_id}', 'Hr_ScheduleController@form')->name('hr.interview.schedule.form');
-
+    Route::get('/interview/schedule/form/{st_id}', 'Hr\ScheduleController@schedule')->name('hr.interview.schedule.form');
+    
     //form to comfirm page
-    Route::post('/interview/schedule/post', 'Hr_ScheduleController@post')->name('hr.interview.schedule.post');
+    Route::post('/interview/schedule/post', 'Hr\ScheduleController@post')->name('hr.interview.schedule.post');
+    Route::get('/interview/schedule/confirm', "Hr\ScheduleController@confirm")->name('hr.interview.schedule.confirm');
 
-    Route::get('/interview/schedule/confirm', "Hr_ScheduleController@confirm")->name('hr.interview.schedule.confirm');
-    Route::post('/interview/schedule/confirm', "Hr_ScheduleController@send")->name('hr.interview.schedule.send');
+    Route::post('/interview/schedule/confirm', "Hr\ScheduleController@send")->name('hr.interview.schedule.send');
 
-    Route::get('/interview/schedule/thanks', "Hr_ScheduleController@complete")->name('hr.interview.schedule.complete');
+    Route::get('/interview/schedule/thanks', "Hr\ScheduleController@complete")->name('hr.interview.schedule.complete');
+
+    //interview detail to cancel-confirm
+    Route::get('/interview/cancel/{id}/confirm', 'Hr_InterviewController@cancelConfirm')->name('hr.interview.cancel.confirm');
+
+    Route::post('/interview/cancel/{id}/done', 'Hr_InterviewController@cancel')->name('hr.interview.cancel');
     /*=== end:スケジュール登録 関係 ===============================================*/
 
     /*=== 質問リスト登録 関係 ===============================================*/

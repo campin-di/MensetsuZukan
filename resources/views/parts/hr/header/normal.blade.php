@@ -17,7 +17,7 @@
         <ul class="navbar-nav ml-auto">
           <!-- Authentication Links -->
           @auth('hr')
-            <li class="nav-item dropdown">
+            <li class="nav-itema dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::guard('hr')->user()->name }}
               </a>
@@ -26,8 +26,11 @@
                 <a class="dropdown-item" href="{{ route('hr.mypage') }}">
                     マイページ
                 </a>
-                <a class="dropdown-item" href="{{ route('hr.interview.schedule.request') }}">
-                    面接リクエストの確認
+                <a class="dropdown-item" href="{{ route('hr.interview.chat.list') }}">
+                  メッセージ
+                </a>
+                <a class="dropdown-item" href="{{ route('hr.interview.request') }}">
+                    面接の申し込み確認
                 </a>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();

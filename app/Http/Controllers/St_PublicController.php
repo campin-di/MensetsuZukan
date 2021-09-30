@@ -15,7 +15,7 @@ class St_PublicController extends Controller
         $interviewId = $selectedVideo->interview_id;
 
         if($selectedVideo->st_id != Auth::user()->id){
-        return redirect()->route('watch', $video_id);
+            return redirect()->route('watch', $video_id);
         }
 
         $videos = Video::where('interview_id', $interviewId)->get();

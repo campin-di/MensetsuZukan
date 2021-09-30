@@ -80,6 +80,8 @@ class UserData extends Command
             $status = '未面接';
             if($st->status == 11){
                 $status = '面接済み';
+            } elseif($st->status == 10){
+                $status = '未面接';
             }
 
             if($st->status != 2){

@@ -5,7 +5,7 @@
 
 @include('components.parts.page_title', ['title'=>'マイページ'])
 
-@include('components.parts.modal.confirm_request') 
+@include('components.parts.modal.confirm_request')
 
 <div class="container">
   @include('components.parts.profile', ['imagePath' => $userData->image_path, 'userName' => '', 'nickName' => $userData->nickname, 'description' => $userData->company, 'introduction' => $userData->introduction])
@@ -34,21 +34,20 @@
     </ul>
   </div>
 
-  @include('components.parts.pc_right_fixed',[
-    'img' => 'img/interview-list.svg', 
-    'route' => 'hr.interview.schedule.request',
-    'description' => '面接リクエストの確認' 
-  ]) 
-
   <div class="container_pastVideo">
     <h2 class="container_schedule_title">過去の面接動画</h2>
   </div>
-
-  @include('components.parts.video_content',[
-    'videosCollection' => $pastVideosCollection,
-    'routeName' => 'hr.watch',
-    'upperRouteName' => 'hr.stpage',
-    'underRouteName' => 'hr.hrpage'
+  
+  @include('components.parts.pc_left_fixed',[
+    'img' => 'img/interview-list.svg', 
+    'route' => 'hr.interview.chat.list',
+    'description' => 'メッセージ' 
   ])
+
+  @include('components.parts.pc_right_fixed',[
+    'img' => 'img/search-hr.svg', 
+    'route' => 'hr.interview.request',
+    'description' => '面接リクエストの確認' 
+  ]) 
 </div>
 @endsection

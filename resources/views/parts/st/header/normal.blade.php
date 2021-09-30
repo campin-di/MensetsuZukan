@@ -33,18 +33,18 @@
 
             <div class="header-dropdown-menu dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{ route('mypage') }}">
-                  マイページ
+                マイページ
+              </a>
+              <a class="dropdown-item" href="{{ route('interview.chat.list') }}">
+                メッセージ
               </a>
               <a class="dropdown-item" href="{{ route('interview.search') }}">
-                  現役人事と模擬面接
-              </a>
-              <a class="dropdown-item" href="{{ route('interview.schedule.check') }}">
-                  面接リクエストの確認
+                模擬面接の申し込み
               </a>
               <a class="dropdown-item" href="{{ route('logout') }}"
-                 onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
-                  ログアウト
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                ログアウト
               </a>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

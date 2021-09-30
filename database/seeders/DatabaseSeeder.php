@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         QuestionsTableSeeder::class,
         //CompaniesTableSeeder::class,
         //SchedulesTableSeeder::class,
+        //MessagesTableSeeder::class
       ]);
     }
 }

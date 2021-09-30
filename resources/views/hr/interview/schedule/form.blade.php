@@ -1,46 +1,34 @@
-@section('title', '面接可能日の追加')
-<link rel="stylesheet" href="{{ asset('css/hr/interview/schedule/add.css') }}">
+@section('title', '面接日程を決める')
+<link rel="stylesheet" href="{{ asset('css/st/interview/schedule/form.css') }}">
 @extends('layouts.hr.nofooter')
 @section('content')
 
-@include('components.parts.page_title', ['title'=>'面接候補日の選択'])
+@include('components.parts.page_title', ['title'=>'面接日程の選択'])
 
 <div class="container">
   <form method="post" class="form" action="{{ route('hr.interview.schedule.post') }}">
     @csrf
-    <div class="schedule-wrapper">
-      <div class="schedule-description">
-        面接日程を下記から選択してください。<br>
+
+    <div class="schedule-description">
+      面接日を選択してください。
+    </div>
+
+    <div class="date-wrapper">
+      <lavel>
+        <input type="date" name="date" id="date" class="form-control" required>
+      </label>
+    </div>
+
+    @foreach($timeArray ?? '' as $val => $time)
+      <div class="inputGroup">
+        <input id="option{{ $loop->iteration }}" name="time" type="radio" value="{{ $val }}" class="check" required>
+        <label for="option{{ $loop->iteration }}">{{ $time }}</label>
       </div>
+    @endforeach
 
-      @foreach($scheduleCollection as $date => $timeArray)
-        <div class="form-input-wrapper">
-          <div class="form-input">
-            <select id="{{ $date }}" name="{{ $date }}" class="form-control" required>
-              <option value="">{{ $date }}</option>
-              @foreach($timeArray as $key => $time)
-                <option value="{{ $date }}:{{ $key }}" @if(old('date') == "{{ $date }}:{{ $key }}") selected @endif>{{ $date }}：{{ $time }}</option>
-              @endforeach
-            </select>
-            <input type="hidden" name="st_id" value="{{ $st_id }}">
-          </div>
-        </div>
-        @endforeach
-        <div class="form-input-wrapper">
-          <div class="form-input">
-            <select id="none" name="none" class="form-control" required>
-              <option value="">希望の候補日がない場合</option>
-              <option value="none">候補日の日程が全て埋まっている</option>
-            </select>
-            <input type="hidden" name="st_id" value="{{ $st_id }}">
-          </div>
-        </div>
-
-      @include('components.parts.button.form.next_button')
+    <input type="hidden" name="stId" value="{{$st->id}}">
+    @include('components.parts.button.form.next_button')
   </form>
 </div>
-<script type="text/javascript">
-  let schedules = @json($schedules);
-</script>
-<script type="text/javascript" src="{{ asset('/js/hr/interview/schedule/add.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/st/interview/schedule/form.js') }}"></script>
 @endsection

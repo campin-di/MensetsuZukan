@@ -10,7 +10,7 @@ use DateTime;
 use Auth;
 use App\Models\Video;
 use App\Models\Question;
-use App\Models\Schedule;
+use App\Models\InterviewRequest;
 
 use App\Common\RedirectClass;
 use App\Common\VideoDisplayClass;
@@ -53,13 +53,9 @@ class HrHomeController extends Controller
       })->get();
 
       $videosCollection = VideoDisplayClass::VideoDisplay($videos);
-      $flag = Schedule::where('hr_id', Auth::guard('hr')->id())->select('st_id')->groupBy('st_id')->get()->count();
+      $isRequest = InterviewRequest::where('hr_id', Auth::guard('hr')->id())->where('status', 0)->get()->count();
 
-      return view('hr.home',[
-        'questions' => $questions,
-        'videosCollection' => $videosCollection,
-        'flag' => $flag,
-      ]);
+      return view('hr.home',compact('questions', 'videosCollection', 'isRequest'));
     }
 
     public function preHr()
