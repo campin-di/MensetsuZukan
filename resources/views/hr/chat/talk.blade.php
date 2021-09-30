@@ -47,7 +47,13 @@
     </div>
 </div>
 
-<script src="{{ asset('js/app.js') }}"></script>
+@if($spFlag == TRUE)
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+@else
+    <script src="{{ asset('js/app.js') }}"></script>
+@endif
+
 <script>
     const stId = @json($id);
 

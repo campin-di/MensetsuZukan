@@ -299,7 +299,7 @@
 
   @include('components.parts.pc_right_fixed',[
     'img' => 'img/interview-list.svg', 
-    'route' => 'hr.interview.schedule.request',
+    'route' => 'hr.interview.request',
     'description' => '面接リクエストの確認' 
   ]) 
 

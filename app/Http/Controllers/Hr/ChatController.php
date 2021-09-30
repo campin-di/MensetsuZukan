@@ -46,7 +46,7 @@ class ChatController extends Controller
         return view('hr.chat.list', compact('chatCollection')); 
     }
 
-    public function chat($id)
+    public function chat($id, Request $request)
     {
         //=====もし視聴不可状態のときはリダイレクト===================================
         if($redirect = RedirectClass::hrOfferRedirect()){
@@ -56,6 +56,16 @@ class ChatController extends Controller
         }
         //==========================================================================
   
+        //pcかmobileか判断
+        $user_agent =  $request->header('User-Agent');
+        if ((strpos($user_agent, 'iPhone') !== false)
+            || (strpos($user_agent, 'iPod') !== false)
+            || (strpos($user_agent, 'Android') !== false)) {
+            $spFlag = TRUE;
+        } else {
+            $spFlag = FALSE;
+        }
+
         $hrId = Auth::guard('hr')->id();
         $hrImgPath = User::find($hrId)->image_path;
 
@@ -63,6 +73,6 @@ class ChatController extends Controller
         $stNickname = $st->nickname;
         $stImgPath = $st->image_path;
 
-        return view('hr.chat.talk', compact('id', 'stNickname', 'stImgPath', 'hrImgPath')); 
+        return view('hr.chat.talk', compact('id', 'spFlag', 'stNickname', 'stImgPath', 'hrImgPath')); 
     }
 }

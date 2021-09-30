@@ -5,7 +5,7 @@
 
 @include('components.parts.page_title', ['title'=>$hrNickname])
 <div id="chat">
-    <div class="line__container">
+    <div class="line__container" id="scroll">
         <div class="line__contents" id="scroll-inner">
             <div v-for="m in messages">
                 <div class="line__content" v-bind:class="{'line__right':m.sender === 0}">
@@ -44,7 +44,13 @@
     </div>
 </div>
 
-<script src="{{ asset('js/app.js') }}"></script>
+@if($spFlag == TRUE)
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+@else
+    <script src="{{ asset('js/app.js') }}"></script>
+@endif
+
 <script>
     const hrId = @json($id);
 
@@ -84,9 +90,7 @@
                 this.message = '';
                 axios.post(url, params)
                     .then((response) => {
-                        
                     });
-
             },
             scroll() {
                 this.$nextTick(() => {
@@ -94,7 +98,8 @@
                     scrollObj.scrollTop = scrollObj.scrollHeight;
                 });
             },
+            
         },
     });
-</script>
+
 @endsection
