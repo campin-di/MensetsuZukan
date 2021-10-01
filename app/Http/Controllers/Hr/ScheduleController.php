@@ -110,7 +110,7 @@ class ScheduleController extends Controller
 
     $interview = new Interview;
     $interview->st_id = $st->id;
-    $interview->hr_id = $st->id;
+    $interview->hr_id = $hr->id;
     $interview->date = $date;
     $interview->time = $timeArray[$timeKey];
     $interview->zoomUrl = $created_meeting['join_url'];
@@ -131,7 +131,7 @@ class ScheduleController extends Controller
 
     $message = new Message;
     $message->st_id = $st->id;
-    $message->hr_id = $st->id;
+    $message->hr_id = $hr->id;
     $message->sender = 1;
     $message->date = $today;
     $message->time = $now;

@@ -36,7 +36,11 @@
     </div>
     <div class="line__message-wrapper">
         <div class="line__textarea">
-            <textarea v-model="message" placeholder="メッセージを入力"></textarea>
+            @if($spFlag == TRUE)
+                <textarea v-model="message" placeholder="メッセージを入力（メッセージ送信・受信後はページの再読み込みをお願いします。）"></textarea>
+            @else
+                <textarea v-model="message" placeholder="メッセージを入力"></textarea>
+            @endif        
         </div>
         <div class="send-button-wrapper">
             <button type="button" @click="send()">
@@ -70,8 +74,6 @@
                 .listen('MessageCreated', (e) => {
                     this.getMessages(); // 全メッセージを再読込
                 });
-
-            
         },
         methods: {
             getMessages() {

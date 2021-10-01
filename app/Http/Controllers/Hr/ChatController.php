@@ -37,7 +37,7 @@ class ChatController extends Controller
             [
                 'id' => $chat->st_user->id,
                 'nickname' => $chat->st_user->nickname,
-                'imagePath' => $chat->st_user->imagePath,
+                'imagePath' => $chat->st_user->image_path,
                 'latestMessage' => $latestMessage->body,
             ],
             ]);
@@ -67,7 +67,7 @@ class ChatController extends Controller
         }
 
         $hrId = Auth::guard('hr')->id();
-        $hrImgPath = User::find($hrId)->image_path;
+        $hrImgPath = HrUser::find($hrId)->image_path;
 
         $st = User::find($id);
         $stNickname = $st->nickname;
