@@ -34,12 +34,12 @@ class ChatController extends Controller
         foreach ($chats as $chat) {
             $latestMessage = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
             $chatCollection = $chatCollection->concat([
-            [
-                'id' => $chat->st_user->id,
-                'nickname' => $chat->st_user->nickname,
-                'imagePath' => $chat->st_user->image_path,
-                'latestMessage' => $latestMessage->body,
-            ],
+                [
+                    'id' => $chat->st_user->id,
+                    'nickname' => $chat->st_user->nickname,
+                    'imagePath' => $chat->st_user->image_path,
+                    'latestMessage' => $latestMessage->body,
+                ],
             ]);
         }
 

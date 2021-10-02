@@ -166,7 +166,7 @@ class RequestController extends Controller
             ];
         }
         foreach($msgs as $value){
-        $builder->add($value);
+            $builder->add($value);
         }
         $response = $bot->pushMessage($st->line_id, $builder);
 

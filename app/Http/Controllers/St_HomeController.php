@@ -61,10 +61,16 @@ class St_HomeController extends Controller
       array_push($questions, $question->name);
     }
 
+    $practiceFlag = FALSE;
+    if(!session()->has('practice')){
+      $practiceFlag = TRUE;
+      session(['practice' => true]);
+    } 
+
     $videos = Video::latest()->where('type', config('const.STHR.ST'))->get();
     $videosCollection = VideoDisplayClass::VideoDisplay($videos);
 
-    return view('st.home',compact('questions', 'videosCollection'));
+    return view('st.home',compact('questions', 'practiceFlag', 'videosCollection'));
   }
 
   public function topHr()

@@ -18,8 +18,8 @@
   padding-bottom: 30px;
 }
 /* === end: 日付部分 =================================================*/
-/* === begin: 時間部分 =================================================*/
 
+/* === begin: 時間部分 =================================================*/
 .inputGroup {
   background-color: #fff;
   display: block;
@@ -100,7 +100,7 @@
 .form {
   padding: 0 16px;
   max-width: 550px;
-  margin: 50px auto;
+  margin: 25px auto;
   font-size: 18px;
   font-weight: 600;
   line-height: 36px;
@@ -151,16 +151,59 @@
   font-weight: bold;
 }
 .schedule-wrapper p {
+  line-height: 28px;
   font-size: 14px;
   color: #333;
   font-weight: 400;
 }
 .schedule-wrapper textarea{
   width: 100%;
-  border-color: #CCC;
+  border: 0px solid transparent;
   font-size: 14px;
-  border-radius: 10px;
   line-height: 2rem;
+  padding: 15px 10px;
+  margin: 0;
+  color: #555;
+}
+
+.flame-textarea {
+  border: 4px double #45abff !important;
+}
+
+.flame-title-textarea {
+  color: #7CC4FF !important;
+}
+
+.flame27 {
+  position: relative;
+  margin: 3em auto;
+  padding: 5px;
+  width: 100%;
+  color: #686868;
+  background-color: #fff;
+  border: 2px solid #EEE;
+
+  font-size: 14px;
+}
+.flame27 .flame27-title {
+  position: absolute;
+  padding: 0 1em;
+  left: 20px;
+  top: -18px;
+  font-weight: bold;
+  background-color: #fff;
+  color: #555;
+  font-size: 15px;
+}
+.flame27 p {
+  padding: 10px 20px;
+  margin: 0;
+  color: #555;
+}
+
+.copy-button{
+  font-size: 14px;
+  
 }
 /* === end: 日程候補記入 部分 ===================================================*/
 

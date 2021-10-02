@@ -27,19 +27,32 @@
   <div class="container_schedule">
     <h2 class="container_schedule_title">面接予定</h2>
     <ul class="container_schedule_list">
-      @foreach($interviewReservationsCollection as $interviewReservation)
-        <li>
-          <a class="item" href="{{ route('interview.detail', $interviewReservation['id']) }}">
-            <div class="left_child">
-              <img class="item_img" src="{{ asset($interviewReservation['imagePath']) }}" alt="">
-              <span class="item_name">{{ $interviewReservation['nickname'] }}</span>
-            </div>
-            <div class="right_child item_date">
-              {{ $interviewReservation['date'] }}：{{ $interviewReservation['time'] }}
-            </div>
-          </a>
-        </li>
-      @endforeach
+      @if($interviewReservationsCollection->count() != 0)
+        @foreach($interviewReservationsCollection as $interviewReservation)
+          <li>
+            <a class="item" href="{{ route('interview.detail', $interviewReservation['id']) }}">
+              <div class="left_child">
+                <img class="item_img" src="{{ asset($interviewReservation['imagePath']) }}" alt="">
+                <span class="item_name">{{ $interviewReservation['nickname'] }}</span>
+              </div>
+              <div class="right_child item_date">
+                {{ $interviewReservation['date'] }}：{{ $interviewReservation['time'] }}
+              </div>
+            </a>
+          </li>
+        @endforeach
+      @else
+        <div class="none-reservation-wrapper">
+          <p style="width: 90%; margin: auto;">
+            まだ模擬面接の予定がありません...。
+            <br><br>
+            画面下の<b>
+              <span class="pc">「面接練習にチャレンジ」</span>
+              <span class="sp" >「面接練習」</span>
+            </b>から、面接申し込みをしてみましょう！
+          </p>
+        </div>
+      @endif
     </ul>
   </div>
 
