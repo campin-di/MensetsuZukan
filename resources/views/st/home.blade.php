@@ -2,6 +2,9 @@
 <link rel="stylesheet" href="{{ asset('css/st/home.css') }}">
 @extends('layouts.st.common')
 @section('content')
+
+  @include('components.parts.modal.interview_practice')
+
   <div class="filter-wrapper flex">
     <div class="form-input-wrapper">
       <div class="form-input">
@@ -39,10 +42,6 @@
     </div>
   </div>
 
-  <div class="contents-wrapper">
-    @include('components.parts.video_content', ['routeName' => 'watch', 'upperRouteName' => 'stpage', 'underRouteName' => 'hrpage'])
-  </div>
-
   @include('components.parts.pc_left_fixed',[
     'img' => 'img/interview-list.svg', 
     'route' => 'interview.chat.list',
@@ -54,6 +53,10 @@
     'route' => 'interview.search',
     'description' => '面接練習にチャレンジ！' 
   ]) 
+
+  <div class="contents-wrapper">
+    @include('components.parts.video_content', ['routeName' => 'watch', 'upperRouteName' => 'stpage', 'underRouteName' => 'hrpage'])
+  </div>
 
 <script type="text/javascript">
   let questions = @json($questions);

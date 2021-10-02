@@ -53,7 +53,7 @@ class RegisterController extends Controller
 
   public function handleProviderCallback(Request $request) {
       $provider = $request->provider;
-      $social_user = Socialite::driver($provider)->user();
+      $social_user = Socialite::driver($provider)->stateless()->user();
       $social_email = $social_user->getEmail();
       $social_name = $social_user->getName();
       $line_user_id = $social_user->getId();
