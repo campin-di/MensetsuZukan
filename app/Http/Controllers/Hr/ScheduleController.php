@@ -123,7 +123,7 @@ class ScheduleController extends Controller
     $this->lineNotification($st, $hr);
 
     // メッセージに自動送信 
-    $requestDate = "・9月28日：20:30〜21:00";
+    $requestDate = '・'.$date.'：'. $timeArray[$timeKey];
     $autoMessage = "※本メッセージは自動配信です。\n\n".$hr->nickname."さんと、下記の日程での模擬面接の実施が決定しました！\n\n". $requestDate. "\n\nその他、模擬面接に関する詳細情報は、マイページ「面接予定」よりご確認ください。\n"."面接日程がどうしても合わなくなった場合は、".$hr->nickname."さんに事情を伝え、面接日程を変更してもらってください。\n\nこのメッセージへの返信は不要です。";
 
     $today = date("n/j");

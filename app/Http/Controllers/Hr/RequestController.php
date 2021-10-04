@@ -157,7 +157,8 @@ class RequestController extends Controller
         if(is_null($rejectMessage)){
             $msgs = [
                 new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('面接申し込みが承諾されました！'),
-                new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('トーク画面右下の「マイページ」より面接図鑑にログインし、「メッセージ」から面接に関する情報をご確認ください。'),
+                new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('この後、提示日程と担当人事のご都合が合う場合は面接予約が行われ、合わない場合は担当人事からメッセージが届きます。'),
+                new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('担当人事の対応をお待ちください。'),
             ];
         } else {
             $msgs = [

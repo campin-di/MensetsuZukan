@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="{{ asset('css/st/chat/chat.css') }}">
 @extends('layouts.st.common')
 @section('content')
+<script src="{{ asset('js/app.js') }}"></script>
 
 @include('components.parts.page_title', ['title'=>$hrNickname])
 <div id="chat">
@@ -33,11 +34,7 @@
     </div>
     <div class="line__message-wrapper">
         <div class="line__textarea">
-            @if($spFlag == TRUE)
-                <textarea v-model="message" placeholder="メッセージを入力（メッセージ送信・受信後はページの再読み込みをお願いします。）"></textarea>
-            @else
-                <textarea v-model="message" placeholder="メッセージを入力"></textarea>
-            @endif
+            <textarea v-model="message" placeholder="メッセージを入力"></textarea>
         </div>
         <div class="send-button-wrapper">
             <button type="button" @click="send()">
@@ -47,13 +44,6 @@
         </div>
     </div>
 </div>
-
-@if($spFlag == TRUE)
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-@else
-    <script src="{{ asset('js/app.js') }}"></script>
-@endif
 
 <script>
     const hrId = @json($id);
