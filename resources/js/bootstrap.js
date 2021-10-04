@@ -1,3 +1,4 @@
+console.log('test');
 window._ = require('lodash');
 
 /**
