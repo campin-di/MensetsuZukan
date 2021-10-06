@@ -206,10 +206,16 @@ Route::middleware(['auth'])->group(function() {
 
   //Route::get('/admin/comand/result', 'ComandController@stVideo')->name('result');
 
+  //サービス内にコンテンツを登録するルーティング
+  Route::get('/admin/register', 'UploadController@showRegister')->name('content.register');
+  Route::post('/admin/register/complete', 'UploadController@register')->name("content.register.post");
+
   //サービス内に動画をアップロードするルーティング
-  Route::get('/admin/upload', 'UploadController@show')->name('upload');
+  Route::get('/admin/upload', 'UploadController@showUpload')->name('upload');
+
   //サムネイル画像をアップロードするフォームへ
   Route::get('/admin/upload/thumbnail/{id}', 'UploadController@thumbnail')->name("thumbnail");
+
   //サムネイル画像をアップロード処理 and to 完了ページ
   Route::post('/admin/upload/thumbnail/upload', 'UploadController@thumbnailPost')->name("thumbnail.post");
   

@@ -17,26 +17,31 @@
 		@csrf
 		<table>
 			<tr>
-				<th height="75px">面接のID（interviews table）</th>
+				<th height="75px"> 学生用動画のID</th>
 				<th class="right-block">
-					<input type="text" name="interview_id" class="form-control" placeholder="IDを入力してください。">
+					<input type="text" name="st_video_id" class="form-control" placeholder="IDを入力してください。">
 				</th>
 			</tr>
 			<tr>
-				<th height="75px">Vimeoの学生用動画ID</th>
+				<th height="75px"> 人事用動画のID</th>
 				<th class="right-block">
-					<input type="text" name="st_vimeo_id" class="form-control" placeholder="IDを入力してください。">
+					<input type="text" name="hr_video_id" class="form-control" placeholder="IDを入力してください。">
 				</th>
 			</tr>
 			<tr>
-				<th height="75px">Vimeoの人事用動画ID</th>
+				<th height="75px">Vimeoの学生用動画URL</th>
 				<th class="right-block">
-					<input type="text" name="hr_vimeo_id" class="form-control" placeholder="IDを入力してください。">
+					<input type="text" name="st_vimeo_url" class="form-control" placeholder="IDを入力してください。">
+				</th>
+			</tr>
+			<tr>
+				<th height="75px">Vimeoの人事用動画URL</th>
+				<th class="right-block">
+					<input type="text" name="hr_vimeo_url" class="form-control" placeholder="IDを入力してください。">
 				</th>
 			</tr>
 		</table>
 		<div class="next-button">
-			<input type="hidden" name="question1_start" value="0:00">
 			<input class="btn btn-primary" type="submit" value="送信" />
 		</div>
 	</form>
