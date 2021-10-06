@@ -32,6 +32,14 @@
     <meta property="og:app_id" content="">
     <!-- end:ODP -->
 
+    <!-- begin:Twitter ODP -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mensetsuZukan" />
+    <meta name="twitter:title" content="面接図鑑" />
+    <meta name="twitter:description" content="全国の就活生の面接を分析＆模擬面接で面接力をアップさせよう！" />
+    <meta name="twitter:image" content="{{ asset('/img/top/Twitter.jpg') }}" />
+    <!-- end:Twitter ODP -->
+
     <!-- bootstrap -->
 
     <!-- begin:CSS -->

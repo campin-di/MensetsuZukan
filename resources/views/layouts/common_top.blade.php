@@ -23,6 +23,14 @@
     <meta property="og:url" content="https://mensetsu-zukan.online/">
     <!-- end:ODP -->
 
+    <!-- begin:Twitter ODP -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mensetsuZukan" />
+    <meta name="twitter:title" content="面接図鑑" />
+    <meta name="twitter:description" content="全国の就活生の面接を分析＆模擬面接で面接力をアップさせよう！" />
+    <meta name="twitter:image" content="{{ asset('/img/top/Twitter.jpg') }}" />
+    <!-- end:Twitter ODP -->
+
     <!-- bootstrap
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     -->
