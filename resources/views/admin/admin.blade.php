@@ -5,13 +5,16 @@
 <div class="container table-responsive">
 		<div class="upload-wrapper flex">
 			<div class="upload">
-				<a href="{{route('upload')}}">新しく動画をアップロードする</a>
+				<a href="{{route('content.register')}}">コンテンツ登録</a>
 			</div>
 			<div class="upload">
-				<a href="{{route('trim')}}">コマンドを作成する</a>
+				<a href="{{route('upload')}}">動画アップロード</a>
 			</div>
 			<div class="upload">
-				<a href="{{route('result')}}">面接結果を表示</a>
+				<a href="{{route('trim')}}">コマンド作成</a>
+			</div>
+			<div class="upload">
+				<a href="{{route('result')}}">面接結果の表示</a>
 			</div>
 		</div>
 
