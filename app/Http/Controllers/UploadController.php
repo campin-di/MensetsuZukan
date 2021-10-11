@@ -12,12 +12,24 @@ use App\Models\Question;
 use App\Common\ScoringAlgorithmClass;
 use Validator;
 
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
+use Log;
+
 /*==============================
 部分処理と書いているところ以外はコピペで使い回しできると思う。
 ==============================*/
 
 class UploadController extends Controller
 {
+  public function __construct()
+  {
+      // :point_down: アクセストークン
+      $this->access_token = env('LINE_ACCESS_TOKEN');
+      // :point_down: チャンネルシークレット
+      $this->channel_secret = env('LINE_CHANNEL_SECRET');
+  }
+
   function showRegister(){
     $alreadyInterviewIds = Video::groupBy('interview_id')->select('interview_id')->get()->toArray();
     $alreadyInterviewIds = array_column($alreadyInterviewIds, 'interview_id');
@@ -103,6 +115,10 @@ class UploadController extends Controller
     $video_hr->type = 1;
     $video_hr->save();
 
+    $msg1 = "模擬面接の採点結果が公表されました！";
+    $msg2 = "マイページよりご確認いただけます！";
+    $this->lineNotification($stData, $hrData, $msg1, $msg2);
+
     return view("admin/upload/form_complete");
   }
   
@@ -158,6 +174,12 @@ class UploadController extends Controller
 
     //================================================
     //================================================
+    
+    $stData = User::find($stVideo->st_id);
+    $hrData = HrUser::find($stVideo->hr_id);
+    $msg1 = "模擬面接の録画がアップロードされました！";
+    $msg2 = "もう一度、自身の面接と人事さんからの評価を照らし合わせて、面接力をアップさせましょう！";
+    $this->lineNotification($stData, $hrData, $msg1, $msg2);
 
     //セッションを空にする
     $request->session()->forget("form_input");
@@ -201,5 +223,29 @@ class UploadController extends Controller
     $sec = $secs[0]*60 + $secs[1];
 
     return $sec;
+  }
+
+  public function lineNotification($st, $hr, $msg1, $msg2) { // 面接予約時にLINE通知する関数
+    //本会員登録リンク 送信部分
+    $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
+    $bot         = new \LINE\LINEBot($http_client, ['channelSecret' => $this->channel_secret]);
+
+    $builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+    // ビルダーにメッセージをすべて追加
+    $msgs = [
+        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($msg1),
+        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($msg2),
+    ];
+    foreach($msgs as $value){
+        $builder->add($value);
+    }
+    $response = $bot->pushMessage($st->line_id, $builder);
+
+    // 配信成功・失敗
+    if ($response->isSucceeded()) {
+        Log::info('Line 送信完了');
+    } else {
+        Log::error('投稿失敗: ' . $response->getRawBody());
+    }
   }
 }

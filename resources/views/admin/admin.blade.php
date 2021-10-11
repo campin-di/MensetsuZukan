@@ -16,6 +16,9 @@
 			<div class="upload">
 				<a href="{{route('result')}}">面接結果の表示</a>
 			</div>
+			<div class="upload">
+				<a href="{{route('notification.show')}}">LINE通知</a>
+			</div>
 		</div>
 
 		<h2>学生用動画</h2>
