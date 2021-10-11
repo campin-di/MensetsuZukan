@@ -21,7 +21,7 @@
       </div>
 
       <div class="form-input-wrapper">
-      <label for="university" class="form-title">大学名*</label>
+      <label for="university" class="form-title">大学/大学院名*</label>
         <div class="form-input flex">
           <input id="university" type="text" class="form-control {{ $errors->has('university') ? ' is-invalid' : '' }}" name="university" value="{{ old('university') }}" placeholder="面接大学" required>
           @if ($errors->has('university'))
@@ -33,7 +33,7 @@
       </div>
 
       <div class="form-input-wrapper">
-      <label for="faculty" class="form-title">学部名*</label>
+      <label for="faculty" class="form-title">学部/研究科名*</label>
         <div class="form-input flex">
           <input id="faculty" type="text" class="form-control {{ $errors->has('faculty') ? ' is-invalid' : '' }}" name="faculty" value="{{ old('faculty') }}" placeholder="面接学部" required>
           @if ($errors->has('faculty'))
@@ -45,7 +45,7 @@
       </div>
 
       <div class="form-input-wrapper">
-      <label for="department" class="form-title">学科名*</label>
+      <label for="department" class="form-title">学科/コース名*</label>
         <div class="form-input flex">
           <input id="department" type="text" class="form-control {{ $errors->has('department') ? ' is-invalid' : '' }}" name="department" value="{{ old('department') }}" placeholder="面接学科" required>
           @if ($errors->has('department'))

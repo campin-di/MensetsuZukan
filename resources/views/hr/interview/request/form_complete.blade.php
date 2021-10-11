@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="container form-wrapper">
-  <div class="title">メッセージより希望日程をご確認ください。</div>
+  <div class="title">メッセージより日程をご確認ください。</div>
 
   @include('components.parts.button.form.complete_button', ['upperRoute' => '/', 'upperText'=>'トップページに戻る', 'underRoute' => 'hr.interview.request', 'var'=>'', 'underText' => '他の面接リクエストを見る'])
 </div>

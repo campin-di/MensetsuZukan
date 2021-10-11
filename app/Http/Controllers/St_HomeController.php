@@ -67,7 +67,7 @@ class St_HomeController extends Controller
       session(['practice' => true]);
     } 
 
-    $videos = Video::latest()->where('type', config('const.STHR.ST'))->get();
+    $videos = Video::inRandomOrder()->where('type', config('const.STHR.ST'))->get();
     $videosCollection = VideoDisplayClass::VideoDisplay($videos);
 
     return view('st.home',compact('questions', 'practiceFlag', 'videosCollection'));

@@ -256,18 +256,18 @@ class RegisterController extends Controller
 
        //== Validator処理 ======================================================
        $rules = [
-         'university' => 'required|string|ends_with:大学',
-         'faculty' => 'required|string|ends_with:学部,学群,学域',
+         'university' => 'required|string|ends_with:大学,大学院',
+         'faculty' => 'required|string|ends_with:学部,学群,学域,研究科,部,学環,学府',
          'department' => 'required|string|ends_with:学科,コース,課程,類',
          'graduate_year' => 'required',
        ];
        $messages = [
-         'university.required' => '大学名を入力してください。',
+         'university.required' => '大学名・大学院名を入力してください。',
          'university.string' => '日本語で入力してください。',
          'university.ends_with' => '〇〇大学の形式で入力してください。',
-         'faculty.required' => '学部名を入力してください。',
+         'faculty.required' => '学部名・研究科名を入力してください。',
          'faculty.string' => '日本語で入力してください。',
-         'faculty.ends_with' => '〇〇学部/学群/学域の形式で入力してください。',
+         'faculty.ends_with' => '〇〇学部/学群/学域/研究科/部/学環/学府/の形式で入力してください。',
          'department.required' => '学科名を入力してください。',
          'department.string' => '日本語で入力してください。',
          'department.ends_with' => '〇〇学科/コース/類/課程の形式で入力してください。',
