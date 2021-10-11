@@ -6,7 +6,7 @@
       <div class="left-child-pc">
         <img class="firstview-logo" src="{{ asset('/img/logo/logo_white.png') }}" alt="ロゴ">
         <P class="firstview-main-msg">
-          現役人事が採点した<br>
+          現役人事と模擬面接！<br>
           就活生の面接が見放題！
         </p>
         <p class="firstview-sub-msg">

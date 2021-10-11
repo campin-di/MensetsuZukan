@@ -12,7 +12,7 @@ use App\Models\HrUser;
 use App\Models\InterviewRequest;
 
 use Illuminate\Support\Facades\Mail;
-
+use App\Common\GoogleSheetClass;
 use App\Common\ReturnUserInformationArrayClass;
 
 class RequestController extends Controller
@@ -72,10 +72,29 @@ class RequestController extends Controller
     
             Mail::send('st/interview/request/mail/reservation', ['hr' => $hr, 'st' => $st],
                 function ($message) use ($hr, $st){
-                $message->subject($st->nickname. 'さんから面接リクエストがありました！');
-                $message->from('mensetsuzukan@pampam.co.jp', '面接図鑑');
-                $message->to($hr->email);
+                    $message->subject($st->nickname. 'さんから面接リクエストがありました！');
+                    $message->from('mensetsuzukan@pampam.co.jp', '面接図鑑');
+                    $message->to($hr->email);
                 }
+            );
+
+            /*=== スプシに書き込む処理 =================*/
+            $spreadsheet_service = GoogleSheetClass::instance();
+            $spreadsheet_id = '1ZXOI9wbOVZzQSC1HqsgIDFLtlVlA0589yOOkAr4pEMA';
+            $values = new \Google_Service_Sheets_ValueRange();
+            
+            $result = [
+                $st->name.' ('. $st->nickname. ')', $hr->name.' ('. $hr->nickname. ')', str_replace(" ", "", $input['date']), date("Y-m-d H:i:s")
+            ];
+            $values->setValues([
+                'values' => $result
+            ]);
+            $params = ['valueInputOption' => 'USER_ENTERED'];
+            $spreadsheet_service->spreadsheets_values->append(
+                $spreadsheet_id,
+                '面接リクエスト表!A2',
+                $values,
+                $params
             );
         } else{
             $flag = TRUE;
@@ -89,9 +108,4 @@ class RequestController extends Controller
         return view('st/interview/request/form_complete', compact('flag', 'lineFlag'));
 
     }
-
-
-
-
-
 }

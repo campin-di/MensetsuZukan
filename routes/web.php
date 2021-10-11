@@ -226,6 +226,11 @@ Route::middleware(['auth'])->group(function() {
   Route::post('/admin/upload/form/confirm', 'UploadController@send')->name("form.send");
   
   Route::get('/admin/upload/form/thanks', 'UploadController@complete')->name("form.complete");
+
+  Route::get('/admin/notification/form', 'Admin\NotificationController@show')->name('notification.show');
+  Route::post('/admin/notification/confirm', 'Admin\NotificationController@confirm')->name('notification.confirm');
+  Route::post('/admin/notification/complete', 'Admin\NotificationController@send')->name('notification.send');
+
   /*=== end: 管理画面 関係 =============================================================*/
 });
   

@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Events\MessageCreated;
+use App\Models\HrUser;
 use App\Models\Message;
 
 use Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ChatController extends Controller
 {
@@ -21,18 +23,28 @@ class ChatController extends Controller
     }
     
     public function create(Request $request) { // メッセージを登録
-
         $today = date("n/j");
         $now = date("G:i");
 
+        $st = Auth::user();
+        $hr = HrUser::find($request->hrId);
+
         $message = new Message;
-        $message->st_id = Auth::user()->id;
-        $message->hr_id = $request->hrId;
+        $message->st_id = $st->id;
+        $message->hr_id = $hr->id;
         $message->sender = 0;
         $message->date = $today;
         $message->time = $now;
         $message->body = $request->message;
         $message->save();
+
+        Mail::send('st/chat/mail/notification', ['hr' => $hr, 'st' => $st],
+            function ($mail) use ($hr, $st){
+                $mail->subject($st->nickname. 'さんからの新着メッセージ');
+                $mail->from('mensetsuzukan@pampam.co.jp', '面接図鑑');
+                $mail->to($hr->email);
+            }
+        );
 
         event(new MessageCreated($message));
     }
