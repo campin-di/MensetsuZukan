@@ -52,7 +52,7 @@ class St_WatchController extends Controller
 
     $scoringTerms = ScoringTermsClass::scoringTerms();
     $scoringSignals = ScoringTermsClass::scoringSignals();
-    $scoringFeatures = ScoringTermsClass::scoringDetails($video[0]);
+    $scoringFeatures = ScoringTermsClass::scoringDetails($mainVideo);
 
     $scoreDetailsArray = [];
     $cnt = 1;

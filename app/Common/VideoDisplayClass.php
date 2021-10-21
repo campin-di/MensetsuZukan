@@ -29,15 +29,19 @@ class VideoDisplayClass
         $question = Question::find($video->question_1_id)->name;
         $otherQuestionsArray = [Question::find($video->question_1_id)->name, Question::find($video->question_2_id)->name, Question::find($video->question_3_id)->name];
 
-        $total_score = $video->basic_score + $video->expression_score + $video->logical_score + $video->vitality_score + $video->creative_score;
-        $total_scores = self::cutDecimal($total_score);
+        
+        $basic_scores = self::cutDecimal($video->basic_score, 32);
+        $expression_scores = self::cutDecimal($video->expression_score, 20);
+        $logical_scores = self::cutDecimal($video->logical_score, 16);
+        $vitality_scores = self::cutDecimal($video->vitality_score, 16);
+        $creative_scores = self::cutDecimal($video->creative_score, 16);
 
-        $basic_scores = self::cutDecimal($video->basic_score);
-        $expression_scores = self::cutDecimal($video->expression_score);
-        $logical_scores = self::cutDecimal($video->logical_score);
-        $vitality_scores = self::cutDecimal($video->vitality_score);
-        $creative_scores = self::cutDecimal($video->creative_score);
+        $total_score_double = $basic_scores[1] + $expression_scores[1] + $logical_scores[1] + $vitality_scores[1] + $creative_scores[1];
+        $digitUp = floor($total_score_double / 1000);
+        $total_score_double = $total_score_double % 1000;
 
+        $total_score_integer = $basic_scores[0] + $expression_scores[0] + $logical_scores[0] + $vitality_scores[0] + $creative_scores[0] + $digitUp;
+        
         $videosCollection = $videosCollection->concat([
           [
             'id' => $video->id,
@@ -55,8 +59,8 @@ class VideoDisplayClass
             'vitality_score_double' => $vitality_scores[1],
             'creative_score_integer' => $creative_scores[0],
             'creative_score_double' => $creative_scores[1],
-            'total_score_integer' => $total_scores[0],
-            'total_score_double' => $total_scores[1],
+            'total_score_integer' => $total_score_integer,
+            'total_score_double' => $total_score_double,
             'views' => $video->views,
             'good'  => $video->good,
             'review_good'=> $video->review_good,
@@ -83,14 +87,22 @@ class VideoDisplayClass
       }
       return $videosCollection;
     }
-    public static function cutDecimal($score)
+
+    public static function cutDecimal($score, $max)
     {
+      $score = self::addPoints($score, $max);
+     
       $score_integer = floor($score);
-      $score_double = round(($score - $score_integer)*1000, 3);
-
+      $score_double = round(($score - $score_integer)*1000);
+      
       $scoreArray = [$score_integer, $score_double];
-
+      
       return $scoreArray;
     }
+    
+    public static function addPoints($score, $max){
+      $addPoint = 0.3 * ($max - $score);
+      return $score + $addPoint;      
+    }
 
-}
+  }

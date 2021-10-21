@@ -205,11 +205,11 @@ class ScoringTermsClass
       $vitalityAveRate = round((Video::avg('vitality_score') / 16) * 100);
       $creativeAveRate = round((Video::avg('creative_score') / 16) * 100);
 
-      $basicRate = round(($video->basic_score / 32) * 100);
-      $expressionRate = round(($video->expression_score / 20) * 100);
-      $logicalRate = round(($video->logical_score / 16) * 100);
-      $vitalityRate = round(($video->vitality_score / 16) * 100);
-      $creativeRate = round(($video->creative_score / 16) * 100);
+      $basicRate = round(($video['basic_score_integer'] / 32) * 100);
+      $expressionRate = round(($video['expression_score_integer'] / 20) * 100);
+      $logicalRate = round(($video['logical_score_integer'] / 16) * 100);
+      $vitalityRate = round(($video['vitality_score_integer'] / 16) * 100);
+      $creativeRate = round(($video['creative_score_integer'] / 16) * 100);
             
       
       $basicRateIndex = self::rate2index($basicRate);

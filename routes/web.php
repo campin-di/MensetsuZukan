@@ -14,7 +14,7 @@ Route::get('/', function () {
       return redirect()->action('Hr\HrHomeController@index');
     }
 
-    $contentsNumber = Video::where('type', [0, 2])->count();
+    $contentsNumber = Video::where('type', 0)->orWhere('type', 2)->count();
 
     return view('top', compact('contentsNumber'));
 });
