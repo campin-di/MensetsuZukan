@@ -28,9 +28,10 @@
 				</th>
 			</tr>
 		</table>
-		<div class="next-button">
-			<input class="btn btn-primary" type="submit" value="送信" />
-		</div>
+    	@include('components.parts.button.form.transition_button', ['text' => '送信する'])
 	</form>
 </div>
+
+@include('components.parts.button.transition_button', ['routeName' => 'notification.event', 'text' => 'イベント告知を行う', 'var' => ''])
+
 @endsection

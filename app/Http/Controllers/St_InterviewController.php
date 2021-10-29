@@ -30,7 +30,7 @@ class St_InterviewController extends Controller
       config('const.USER_STATUS.UNAVAILABLE'),
       config('const.USER_STATUS.AVAILABLE'),
     ];
-    $hrs = HrUser::whereIn('status', $status)->get();
+    $hrs = HrUser::inRandomOrder()->whereIn('status', $status)->get();
 
     $industries = ReturnUserInformationArrayClass::returnIndustry();
     $companyTypes = ReturnUserInformationArrayClass::returnCompanyTypeArray();

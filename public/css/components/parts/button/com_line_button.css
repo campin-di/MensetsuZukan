@@ -4,7 +4,7 @@
 
 .line-register{
   background-color:#19BC03;
-  border-radius: 10px;
+  border-radius: 30px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@
   margin-left: -15px;
   width: 65%;
   margin: 0 auto;
-  padding: 5px;
+  padding: 0px;
 }
 .line-register img{
   height: 50px;
