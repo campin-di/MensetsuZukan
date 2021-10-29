@@ -4,7 +4,7 @@
 .form-input-wrapper{
   width: 95%;
   margin: 0 auto;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .form-title{
@@ -74,6 +74,7 @@
 /*　画面サイズが1025px以上はここを読み込む　*/
 
   .form-wrapper{
+    margin-top: 50px;
     padding: 10px 20% 0px !important;
   }
   .form-input-wrapper{

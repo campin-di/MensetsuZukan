@@ -16,10 +16,6 @@ use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use Log;
 
-/*==============================
-部分処理と書いているところ以外はコピペで使い回しできると思う。
-==============================*/
-
 class UploadController extends Controller
 {
   public function __construct()

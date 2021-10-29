@@ -191,7 +191,6 @@ Route::middleware(['auth'])->group(function() {
   // to 人事を探す(search) page
   Route::get('/interview/search', 'St_InterviewController@search')->name('interview.search');
   
-  
   /*=== start: 管理画面 関係 =============================================================*/
   Route::get('/admin', 'AdminController@index')->name('admin');
   
@@ -203,7 +202,6 @@ Route::middleware(['auth'])->group(function() {
   Route::get('/admin/comand/result', 'ComandController@result')->name('result');
  
   //Route::get('/admin/comand/result', 'ComandController@videoInterview')->name('result');
-
   //Route::get('/admin/comand/result', 'ComandController@stVideo')->name('result');
 
   //サービス内にコンテンツを登録するルーティング
@@ -227,6 +225,10 @@ Route::middleware(['auth'])->group(function() {
   
   Route::get('/admin/upload/form/thanks', 'UploadController@complete')->name("form.complete");
 
+  //LINE一斉送信にてイベント通知を行う機能
+  Route::get('/admin/notification/event/complete', 'Admin\NotificationController@eventNotification')->name('notification.event');
+
+  //任意の相手にLINE通知を行う機能
   Route::get('/admin/notification/form', 'Admin\NotificationController@show')->name('notification.show');
   Route::post('/admin/notification/confirm', 'Admin\NotificationController@confirm')->name('notification.confirm');
   Route::post('/admin/notification/complete', 'Admin\NotificationController@send')->name('notification.send');
