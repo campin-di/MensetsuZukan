@@ -12,6 +12,7 @@ use Auth;
 use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Message;
+use App\Models\Offer;
 use App\Models\InterviewRequest;
 
 class ChatController extends Controller
@@ -29,9 +30,26 @@ class ChatController extends Controller
         $userId = Auth::guard('hr')->id();
 
         $chats = InterviewRequest::where('status', 1)->where('hr_id', $userId)->with('st_user:id,nickname,image_path')->get();
+        $chatsOffer = Offer::where('hr_id', $userId)->with('st_user:id,nickname,image_path')->get();
 
         $chatCollection = collect([]);
         foreach ($chats as $chat) {
+            $latestMessage = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
+            $chatCollection = $chatCollection->concat([
+                [
+                    'id' => $chat->st_user->id,
+                    'nickname' => $chat->st_user->nickname,
+                    'imagePath' => $chat->st_user->image_path,
+                    'latestMessage' => $latestMessage->body,
+                ],
+            ]);
+        }
+
+        foreach($chatsOffer as $chat){
+            $exist = $chatCollection->diffKeys(['id' => $chat->st_user->id])->isEmpty();
+            if(!$exist){
+                continue;
+            }
             $latestMessage = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
             $chatCollection = $chatCollection->concat([
                 [

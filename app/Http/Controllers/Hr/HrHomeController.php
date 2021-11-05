@@ -48,7 +48,7 @@ class HrHomeController extends Controller
         array_push($questions, $question->name);
       }
 
-      $videos = Video::latest()->where('type', config('const.STHR.HR'))->whereHas('User', function($q){
+      $videos = Video::inRandomOrder()->where('type', config('const.STHR.HR'))->whereHas('User', function($q){
         $q->whereNotIn('graduate_year', ['2022']);
       })->get();
 
