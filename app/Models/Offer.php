@@ -9,13 +9,13 @@ class Offer extends Model
 {
     use HasFactory;
 
-    public function hr_user()
-    {
-      return $this->belongsTo('App\Models\HrUser', 'hr_id');
-    }
-
     public function st_user()
     {
       return $this->belongsTo('App\Models\User', 'st_id');
+    }
+
+    public function hr_user()
+    {
+      return $this->belongsTo('App\Models\HrUser', 'hr_id');
     }
 }

@@ -8,12 +8,23 @@ use App\Mail\OfferMail;
 use App\Common\RedirectClass;
 
 use Auth;
+use Log;
 use App\Models\User;
 use App\Models\HrUser;
 use App\Models\Offer;
+use App\Models\Message;
+
 
 class Hr_OfferController extends Controller
 {
+  public function __construct()
+  {
+      // :point_down: アクセストークン
+      $this->access_token = env('LINE_ACCESS_TOKEN');
+      // :point_down: チャンネルシークレット
+      $this->channel_secret = env('LINE_CHANNEL_SECRET');
+  }
+
   public function form($stId)
   {
     //=====もし視聴不可状態のときはリダイレクト===================================
@@ -32,17 +43,6 @@ class Hr_OfferController extends Controller
   {
 
     $input = $request->all();
-
-    //=====部分処理====================================
-/*
-    $validator = Validator::make($input, $this->validator);
-    if($validator->fails()){
-      return redirect()->action("Hr_OfferController@show")
-        ->withInput()
-        ->withErrors($validator);
-    }
-*/
-    //================================================
 
     //セッションに書き込む
     $request->session()->put("form_input", $input);
@@ -83,8 +83,7 @@ class Hr_OfferController extends Controller
 
     //=====処理内容====================================
     $userId = Auth::guard('hr')->id();
-    $hr = HrUser::with('company')->find($userId);
-
+    $hr = HrUser::find($userId);
     $st = User::find($input['stId']);
 
     $offer = new Offer;
@@ -93,12 +92,20 @@ class Hr_OfferController extends Controller
     $offer->content = $input['offer_content'];
     $offer->message = $input['message'];
     $offer->save();
-    
-    Mail::send('hr/offer/mail/example1', ['offer' => $offer, 'hr' => $hr, 'st' => $st], function ($message) use ($offer, $hr, $st){
-      $message->subject($hr->company. 'からオファーがありました！');
-      $message->from($hr->email, $hr->name);
-      $message->to($st->email);
-    });
+
+    $today = date("n/j");
+    $now = date("G:i");
+
+    $message = new Message;
+    $message->st_id = $st->id;
+    $message->hr_id = $userId;
+    $message->sender = 1;
+    $message->date = $today;
+    $message->time = $now;
+    $message->body = '『'.$input['offer_content']."』\n\n". $input['message'];;
+    $message->save();
+
+    $this->lineNotification($st, $hr);
     //================================================
 
     //セッションを空にする
@@ -109,6 +116,30 @@ class Hr_OfferController extends Controller
 
   function complete(){
     return view("hr/offer/form_complete");
+  }
+
+  public function lineNotification($st, $hr) { // 面接予約時にLINE通知する関数
+    //本会員登録リンク 送信部分
+    $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
+    $bot         = new \LINE\LINEBot($http_client, ['channelSecret' => $this->channel_secret]);
+
+    $builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+    // ビルダーにメッセージをすべて追加
+    $msgs = [
+        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($hr->company. 'からオファーがありました！'),
+        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('面接図鑑にログインし、「メッセージ」からオファー内容に返信してください。'),
+    ];
+    foreach($msgs as $value){
+      $builder->add($value);
+    }
+    $response = $bot->pushMessage($st->line_id, $builder);
+
+    // 配信成功・失敗
+    if ($response->isSucceeded()) {
+        Log::info('Line 送信完了');
+    } else {
+        Log::error('投稿失敗: ' . $response->getRawBody());
+    }
   }
 
 }
