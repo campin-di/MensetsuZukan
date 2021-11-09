@@ -29,7 +29,7 @@ class ChatController extends Controller
         $userId = Auth::user()->id;
 
         $chats = InterviewRequest::where('status', 1)->where('st_id', $userId)->with('hr_user:id,nickname,image_path')->get();
-        $chatsOffer = Offer::where('hr_id', $userId)->with('hr_user:id,nickname,image_path')->get();
+        $chatsOffer = Offer::where('st_id', $userId)->with('hr_user:id,nickname,image_path')->get();
         
         $chatCollection = collect([]);
         foreach ($chats as $chat) {
