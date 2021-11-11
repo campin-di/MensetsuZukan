@@ -8,7 +8,7 @@
 <div class="container content-wrapper">
   <div class="st-information-wrapper">
     <div class="st-profile-img">
-      <img class="st-photo" src="{{ asset($interviewInfo->st_user->imagePath) }}" alt="プロフィール写真">
+      <img class="st-photo" src="{{ asset($interviewInfo->st_user->image_path) }}" alt="プロフィール写真">
     </div>
     <div class="st-name">
       {{ $interviewInfo->st_user->name }}
