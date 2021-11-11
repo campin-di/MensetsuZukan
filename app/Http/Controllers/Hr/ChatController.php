@@ -33,7 +33,7 @@ class ChatController extends Controller
         $chatsOffer = Offer::where('hr_id', $userId)->with('st_user:id,nickname,image_path')->get();
 
         $chatCollection = collect([]);
-        foreach ($chats as $chat) {
+        foreach($chatsOffer as $chat){
             $latestMessage = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
             $chatCollection = $chatCollection->concat([
                 [
@@ -44,12 +44,8 @@ class ChatController extends Controller
                 ],
             ]);
         }
-
-        foreach($chatsOffer as $chat){
-            $exist = $chatCollection->diffKeys(['id' => $chat->st_user->id])->isEmpty();
-            if(!$exist){
-                continue;
-            }
+        
+        foreach ($chats as $chat) {
             $latestMessage = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
             $chatCollection = $chatCollection->concat([
                 [

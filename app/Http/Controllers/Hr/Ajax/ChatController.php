@@ -36,7 +36,6 @@ class ChatController extends Controller
     }
     
     public function create(Request $request) { // メッセージを登録
-
         $stId = $request->stId;
         $hrId = Auth::guard('hr')->id();
         $st = User::find($stId);

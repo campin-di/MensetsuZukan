@@ -17,6 +17,7 @@ class St_HrMypageController extends Controller
 
     $userDataArray = [
       'id' => $id,
+      'status' => $userData->status,
       'nickname' => $userData->nickname,
       'imagePath' => $userData->image_path,
       'industry' => $userData->industry,

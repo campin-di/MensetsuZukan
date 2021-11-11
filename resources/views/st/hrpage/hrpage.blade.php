@@ -8,7 +8,11 @@
     @include('components.parts.profile', ['imagePath' => $userDataArray['imagePath'], 'userName' => '', 'nickName' => $userDataArray['nickname'], 'description' => $userDataArray['industry'], 'introduction' => $userDataArray['introduction'] ])
     <div class="container_profile_btn">
       <a href="{{ route('hrpage.detail', $userDataArray['id']) }}" class="mx-2 btn btn-primary container_profile_btn_profile">詳しいプロフィール</a>
-      <a href="{{ route('interview.schedule', $userDataArray['id']) }}" class="mx-2 btn btn-primary container_profile_btn_offer">面接の予約</a>
+      @if($userDataArray['status'] != 99)
+        <a href="{{ route('interview.schedule', $userDataArray['id']) }}" class="mx-2 btn btn-primary container_profile_btn_offer">面接の予約</a>
+      @else
+        <a href="" class="mx-2 btn btn-primary container_profile_btn_offer">面接を受け付けていません</a>
+      @endif
     </div>
     @include('components.parts.button.fixed_button',['routeName' => 'interview.schedule', 'var' => $userDataArray['id'], 'msg' => '', 'text' =>  '面接の予約'])
   </div>
