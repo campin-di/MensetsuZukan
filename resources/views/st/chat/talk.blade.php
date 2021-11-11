@@ -11,8 +11,8 @@
             <div v-for="m in messages">
                 <div class="line__content" v-bind:class="{'line__right':m.sender === 0}">
                     <div class="img-wrapper">
-                        <img class="item_img" v-if="m.sender === 1" src="{{ asset($stImgPath) }}">
-                        <img class="item_img" v-else src="{{ asset($hrImgPath) }}">
+                        <img class="item_img" v-if="m.sender === 1" src="{{ asset($hrImgPath) }}">
+                        <img class="item_img" v-else src="{{ asset($stImgPath) }}">
                     </div>
                     <div class="line__text">
                         <!-- メッセージ内容 -->
