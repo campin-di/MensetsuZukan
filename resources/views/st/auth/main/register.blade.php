@@ -27,6 +27,7 @@
             <option value="">性別を選択してください。</option>
             <option value="1">男</option>
             <option value="2">女</option>
+            <option value="3">その他</option>
           </select>
           @if ($errors->has('gender'))
             <span class="help-block">

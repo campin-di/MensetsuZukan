@@ -183,6 +183,8 @@ class RetUniversityClass
         ],
       ];
 
+      $university = explode('大学院', $university)[0];
+
       foreach($universityClassArray as $universityClass => $universityArray){
         if(in_array($university, $universityArray)){
           return $universityClass;          

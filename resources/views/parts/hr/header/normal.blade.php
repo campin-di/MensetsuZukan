@@ -29,6 +29,9 @@
                 <a class="dropdown-item" href="{{ route('hr.interview.chat.list') }}">
                   メッセージ
                 </a>
+                <a class="dropdown-item" href="{{ route('hr.offer.search') }}">
+                    オファーする
+                </a>
                 <a class="dropdown-item" href="{{ route('hr.interview.request') }}">
                     面接の申し込み確認
                 </a>

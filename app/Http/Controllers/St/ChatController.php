@@ -34,32 +34,37 @@ class ChatController extends Controller
         $chatCollection = collect([]);
         foreach ($chats as $chat) {
             $latestMessage = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->orderBy('id', 'desc')->first();
+            if(empty($latestMessage)){
+                $body = "まだメッセージがありません。";
+            }else{
+                $body = $latestMessage->body;
+            }
             $chatCollection = $chatCollection->concat([
             [
                 'id' => $chat->hr_user->id,
                 'nickname' => $chat->hr_user->nickname,
                 'imagePath' => $chat->hr_user->imagePath,
-                'latestMessage' => $latestMessage->body,
+                'latestMessage' => $body,
             ],
             ]);
         }
 
         foreach($chatsOffer as $chat){
-            $exist = $chatCollection->diffKeys(['id' => $chat->st_user->id])->isEmpty();
-            if(!$exist){
-                continue;
-            }
             $latestMessage = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->orderBy('id', 'desc')->first();
+            if(empty($latestMessage)){
+                $body = "まだメッセージがありません。";
+            }else{
+                $body = $latestMessage->body;
+            }
             $chatCollection = $chatCollection->concat([
                 [
                     'id' => $chat->hr_user->id,
                     'nickname' => $chat->hr_user->nickname,
                     'imagePath' => $chat->hr_user->imagePath,
-                    'latestMessage' => $latestMessage->body,
+                    'latestMessage' => $body,
                 ],
             ]);
         }
-
 
         return view('st.chat.list', compact('chatCollection')); 
     }

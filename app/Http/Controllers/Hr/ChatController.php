@@ -35,24 +35,34 @@ class ChatController extends Controller
         $chatCollection = collect([]);
         foreach($chatsOffer as $chat){
             $latestMessage = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
+            if(empty($latestMessage)){
+                $body = "まだメッセージがありません。";
+            }else{
+                $body = $latestMessage->body;
+            }
             $chatCollection = $chatCollection->concat([
                 [
                     'id' => $chat->st_user->id,
                     'nickname' => $chat->st_user->nickname,
                     'imagePath' => $chat->st_user->image_path,
-                    'latestMessage' => $latestMessage->body,
+                    'latestMessage' => $body,
                 ],
             ]);
         }
         
         foreach ($chats as $chat) {
             $latestMessage = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
+            if(empty($latestMessage)){
+                $body = "まだメッセージがありません。";
+            }else{
+                $body = $latestMessage->body;
+            }
             $chatCollection = $chatCollection->concat([
                 [
                     'id' => $chat->st_user->id,
                     'nickname' => $chat->st_user->nickname,
                     'imagePath' => $chat->st_user->image_path,
-                    'latestMessage' => $latestMessage->body,
+                    'latestMessage' => $body,
                 ],
             ]);
         }
