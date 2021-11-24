@@ -57,6 +57,12 @@ use App\Models\Video;
     Route::get('/interview/pre/{id}', 'Hr_InterviewController@pre')->name('hr.interview.pre');
 
     /*=== オファー機能 関係 ===============================================*/
+    // home to offer target list
+    Route::get('/offer/list/', 'Hr\Offer\SearchController@search')->name('hr.offer.search');
+
+    // offer target list to filter offer target list
+    Route::post('/offer/list/', 'Hr\Offer\SearchController@search_filter')->name('hr.offer.search.filter');
+
     //detail to scoring form
     Route::get('/offer/form/{id}', 'Hr_OfferController@form')->name('hr.offer.form');
 

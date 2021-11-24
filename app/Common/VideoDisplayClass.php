@@ -71,7 +71,8 @@ class VideoDisplayClass
             'otherQuestionsArray' => $otherQuestionsArray,
 
             'stNickname' => $stUser->nickname,
-            'hrNickname' => $hrUser->nickname,
+            'hrNickname' =>$hrUser->nickname,
+            'cutHrNickname' => CutStringClass::CutString($hrUser->nickname, 12),
 
             'hrId' => $video->hr_id,
             'stId' => $video->st_id,

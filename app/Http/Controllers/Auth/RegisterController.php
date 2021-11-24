@@ -325,6 +325,8 @@ class RegisterController extends Controller
        $gender = "男";
        if($register_input['gender'] == 2){
          $gender = '女';
+       }else if($register_input['gender'] == 3){
+         $gender = 'その他';
        }
 
        if(!is_null($register_input['supplement'])){

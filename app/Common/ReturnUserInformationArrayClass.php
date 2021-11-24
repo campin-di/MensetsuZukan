@@ -132,6 +132,7 @@ class ReturnUserInformationArrayClass
       '整備・修理',
       '人材サービス',
       'その他事業サービス（警備、コールセンター等）',
+      '官公庁'
     ];
 
     return $industryArray;

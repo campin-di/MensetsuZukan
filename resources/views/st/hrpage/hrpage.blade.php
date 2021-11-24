@@ -9,12 +9,12 @@
     <div class="container_profile_btn">
       <a href="{{ route('hrpage.detail', $userDataArray['id']) }}" class="mx-2 btn btn-primary container_profile_btn_profile">詳しいプロフィール</a>
       @if($userDataArray['status'] != 99)
-        <a href="{{ route('interview.schedule', $userDataArray['id']) }}" class="mx-2 btn btn-primary container_profile_btn_offer">面接の予約</a>
+        <a href="{{ route('interview.request', $userDataArray['id']) }}" class="mx-2 btn btn-primary container_profile_btn_offer">面接の予約</a>
       @else
         <a href="" class="mx-2 btn btn-primary container_profile_btn_offer">面接を受け付けていません</a>
       @endif
     </div>
-    @include('components.parts.button.fixed_button',['routeName' => 'interview.schedule', 'var' => $userDataArray['id'], 'msg' => '', 'text' =>  '面接の予約'])
+    @include('components.parts.button.fixed_button',['routeName' => 'interview.request', 'var' => $userDataArray['id'], 'msg' => '', 'text' =>  '面接の予約'])
   </div>
 
   <div class="container_pastVideo">

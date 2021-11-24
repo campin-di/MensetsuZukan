@@ -8,6 +8,6 @@
 <div class="profile profile-hr-user">
   <a href="{{ route($underRouteName, $video['hrId']) }}">
     <img src="{{ asset($hrImagePath) }}">
-    {{ $video['hrNickname'] }}
+    {{ $video['cutHrNickname'] }}
   </a>
 </div>
