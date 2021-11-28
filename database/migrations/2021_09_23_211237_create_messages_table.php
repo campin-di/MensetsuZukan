@@ -21,6 +21,7 @@ class CreateMessagesTable extends Migration
             $table->string('date');
             $table->string('time');
             $table->text('body'); // メッセージ本文
+            $table->boolean('unread')->default(TRUE);
             $table->timestamps();
         });
     }

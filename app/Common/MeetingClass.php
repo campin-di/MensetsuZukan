@@ -85,35 +85,45 @@ class MeetingClass {
         'twentythree'   => "23:00:00",
         'twentythree_h' => "23:30:00",
       ];
+      /*
+      $endTimeH = explode(":",$timeArray[$time])[0];
+      $endTimeM = explode(":",$timeArray[$time])[1];
+      if($endTimeM == 30){
+        $endTimeM = "00";
+        $endTimeH = $endTimeH + 1;
+      }else{
+        $endTimeM = 30;
+      }
+      */
 
-        $user_id = $this->fetchUserId($api_num);
-        $params = [
-          'topic' => '面接',
-          'type' => 2, // 1-普通、2-意図した時間に会議を開始する。
-          'start_time' => $date.'T'.$timeArray[$time],
-          'timezone' => 'Asia/Tokyo',
-          'duration' => 30,
-          'agenda' => '面接の実施',
-          'settings' => [
-            'host_video' => true,
-            'participant_video' => true,
-            'join_before_host' => false,
-            'approval_type' => 0,
-            'auto_recording' => 'local',
-            'audio' => 'both',
-            'enforce_login' => false,
-            'waiting_room' => false,
-          ]
-        ];
+      $user_id = $this->fetchUserId($api_num);
+      $params = [
+        'topic' => '面接',
+        'type' => 2, // 1-普通、2-意図した時間に会議を開始する。
+        'start_time' => $date.'T'.$timeArray[$time],
+        'timezone' => 'Asia/Tokyo',
+        'duration' => 30,
+        'agenda' => '面接の実施',
+        'settings' => [
+          'host_video' => true,
+          'participant_video' => true,
+          'join_before_host' => false,
+          'approval_type' => 0,
+          'auto_recording' => 'local',
+          'audio' => 'both',
+          'enforce_login' => false,
+          'waiting_room' => false,
+        ]
+      ];
 
-        $method = 'POST';
-        $path = 'users/'. $user_id .'/meetings';
-        $client_params = [
-          'base_uri' => self::BASE_URI,
-          'json' => $params
-        ];
-        $result = $this->sendRequest($method, $path, $client_params, $api_num);
-        return $result;
+      $method = 'POST';
+      $path = 'users/'. $user_id .'/meetings';
+      $client_params = [
+        'base_uri' => self::BASE_URI,
+        'json' => $params
+      ];
+      $result = $this->sendRequest($method, $path, $client_params, $api_num);
+      return $result;
     }
 
     private function sendRequest($method, $path, $client_params, $api_num)

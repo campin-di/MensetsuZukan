@@ -35,6 +35,8 @@ class ChatController extends Controller
         $chatCollection = collect([]);
         foreach($chatsOffer as $chat){
             $latestMessage = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
+            $unread_message_num = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->where('sender', 0)->where('unread', 1)->count();
+            
             if(empty($latestMessage)){
                 $body = "まだメッセージがありません。";
             }else{
@@ -46,12 +48,14 @@ class ChatController extends Controller
                     'nickname' => $chat->st_user->nickname,
                     'imagePath' => $chat->st_user->image_path,
                     'latestMessage' => $body,
+                    'unread' => $unread_message_num,
                 ],
             ]);
         }
         
         foreach ($chats as $chat) {
             $latestMessage = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
+            $unread_message_num = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->where('sender', 0)->where('unread', 1)->count();
             if(empty($latestMessage)){
                 $body = "まだメッセージがありません。";
             }else{
@@ -63,6 +67,7 @@ class ChatController extends Controller
                     'nickname' => $chat->st_user->nickname,
                     'imagePath' => $chat->st_user->image_path,
                     'latestMessage' => $body,
+                    'unread' => $unread_message_num,
                 ],
             ]);
         }
@@ -96,6 +101,12 @@ class ChatController extends Controller
         $st = User::find($id);
         $stNickname = $st->nickname;
         $stImgPath = $st->image_path;
+
+        $unread_messages = Message::where('hr_id', $hrId)->where('st_id', $id)->where('sender', 0)->get();
+        foreach($unread_messages as $unread_message){
+            $unread_message->unread = 0;
+            $unread_message->save();
+        }
 
         return view('hr.chat.talk', compact('id', 'spFlag', 'stNickname', 'stImgPath', 'hrImgPath')); 
     }

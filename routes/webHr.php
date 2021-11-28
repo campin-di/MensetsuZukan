@@ -118,19 +118,6 @@ use App\Models\Video;
     Route::post('/interview/cancel/{id}/done', 'Hr_InterviewController@cancel')->name('hr.interview.cancel');
     /*=== end:スケジュール登録 関係 ===============================================*/
 
-    /*=== 質問リスト登録 関係 ===============================================*/
-    //detail to question form
-    Route::get('/interview/question/add/{id}', 'Hr_QuestionListController@add')->name('hr.interview.question.add');
-
-    //question form to comfirm page
-    Route::post('/interview/question/post', 'Hr_QuestionListController@post')->name('hr.interview.question.post');
-
-    Route::get('/interview/question/confirm', "Hr_QuestionListController@confirm")->name('hr.interview.question.confirm');
-    Route::post('/interview/question/confirm', "Hr_QuestionListController@send")->name('hr.interview.question.send');
-
-    Route::get('/interview/question/{id}/thanks', "Hr_QuestionListController@complete")->name('hr.interview.question.complete');
-    /*=== end:質問リスト登録 関係 ===============================================*/
-
     /*=== 質問リスト編集 関係 ===============================================*/
     //detail to question form
     Route::get('/interview/question/edit/{id}', 'Hr_QuestionListController@edit')->name('hr.interview.question.edit');

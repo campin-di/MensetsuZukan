@@ -34,23 +34,7 @@ class ChatController extends Controller
         $chatCollection = collect([]);
         foreach ($chats as $chat) {
             $latestMessage = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->orderBy('id', 'desc')->first();
-            if(empty($latestMessage)){
-                $body = "まだメッセージがありません。";
-            }else{
-                $body = $latestMessage->body;
-            }
-            $chatCollection = $chatCollection->concat([
-            [
-                'id' => $chat->hr_user->id,
-                'nickname' => $chat->hr_user->nickname,
-                'imagePath' => $chat->hr_user->imagePath,
-                'latestMessage' => $body,
-            ],
-            ]);
-        }
-
-        foreach($chatsOffer as $chat){
-            $latestMessage = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->orderBy('id', 'desc')->first();
+            $unread_message_num = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->where('sender', 1)->where('unread', 1)->count();
             if(empty($latestMessage)){
                 $body = "まだメッセージがありません。";
             }else{
@@ -62,6 +46,26 @@ class ChatController extends Controller
                     'nickname' => $chat->hr_user->nickname,
                     'imagePath' => $chat->hr_user->imagePath,
                     'latestMessage' => $body,
+                    'unread' => $unread_message_num
+                ],
+            ]);
+        }
+
+        foreach($chatsOffer as $chat){
+            $latestMessage = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->orderBy('id', 'desc')->first();
+            $unread_message_num = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->where('sender', 1)->where('unread', 1)->count();
+            if(empty($latestMessage)){
+                $body = "まだメッセージがありません。";
+            }else{
+                $body = $latestMessage->body;
+            }
+            $chatCollection = $chatCollection->concat([
+                [
+                    'id' => $chat->hr_user->id,
+                    'nickname' => $chat->hr_user->nickname,
+                    'imagePath' => $chat->hr_user->imagePath,
+                    'latestMessage' => $body,
+                    'unread' => $unread_message_num
                 ],
             ]);
         }
@@ -95,6 +99,12 @@ class ChatController extends Controller
         $hr = HrUser::find($id);
         $hrNickname = $hr->nickname;
         $hrImgPath = $hr->image_path;
+
+        $unread_messages = Message::where('hr_id', $id)->where('st_id', $stId)->where('sender', 1)->get();
+        foreach($unread_messages as $unread_message){
+            $unread_message->unread = 0;
+            $unread_message->save();
+        }
 
         return view('st.chat.talk', compact('id', 'spFlag', 'hrNickname', 'stImgPath', 'hrImgPath')); 
     }

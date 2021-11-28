@@ -15,7 +15,18 @@
           </a>
           <a href="{{ route('hr.interview.chat.talk', $chat['id']) }}" class="right-child">
             <div class="chat-name">{{ $chat['nickname'] }}</div>
-            <div class="chat-body">{{ $chat['latestMessage'] }}</div>
+            <div class="chat-under-flex">
+                <div class="chat-body-wrapepr">
+                  <span class="chat-body">
+                    {{ $chat['latestMessage'] }}
+                  </span>
+                </div>
+                <div class="unread-flag-wrapper">
+                  @if($chat['unread'] != 0)
+                    <div>{{ $chat['unread'] }}</div>
+                  @endif
+                </div>
+              </div>
           </a>
         </div>
       </div>
