@@ -6,7 +6,7 @@
 @include('components.parts.page_title', ['title'=>'新着メッセージ'])
 
 <div class="container">
-  @if(isset($chatCollection[0]))
+  @if(isset($chatCollection[0]))
     @foreach($chatCollection as $chat)
         <div class="hr-profile-wrapper">
           <div class="flex">
@@ -15,7 +15,18 @@
             </a>
             <a href="{{ route('interview.chat.talk', $chat['id']) }}" class="right-child">
               <div class="chat-name">{{ $chat['nickname'] }}</div>
-              <div class="chat-body">{{ $chat['latestMessage'] }}</div>
+              <div class="chat-under-flex">
+                <div class="chat-body-wrapepr">
+                  <span class="chat-body">
+                    {{ $chat['latestMessage'] }}
+                  </span>
+                </div>
+                <div class="unread-flag-wrapper">
+                  @if($chat['unread'] != 0)
+                    <div>{{ $chat['unread'] }}</div>
+                  @endif
+                </div>
+              </div>
             </a>
           </div>
         </div>

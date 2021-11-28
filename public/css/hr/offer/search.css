@@ -79,6 +79,37 @@
   font-weight: 500;
 }
 
+.interview_flag_wrapper{
+  width: 30%;
+  text-align: center;
+}
+.interview_flag{
+  margin: auto;
+  background-color: #EEE;
+  width: 100%;
+  font-size: 14px;
+  border-radius: 40px;
+  padding: 5px 0px;
+}
+
+.hr_profile_under_wrapper{
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.offer_button_wrapper{
+  width: 80%;
+  text-align: center;
+  margin: 20px 0 -10px;
+}
+.offer_button_wrapper a{
+  background: linear-gradient(to right,#7CC4FF, #9681FF);
+  color: #FFFFFF;
+  padding: 10px 40px;
+  font-weight: 500;
+}
+
 .company-information-wrapper div{
   margin-right: 15px;
   font-size: 14px;
@@ -98,7 +129,7 @@
   font-size: 14px;
 }
 .st-mypage::before{
-  content: '>>';
+  content: '▶︎ ';
 }
 
 /* === start: 面接リクエストない場合 部分 =================================================*/
@@ -163,29 +194,26 @@
 
   .interview_flag_wrapper{
     width: 25%;
-    text-align: center;
   }
   .interview_flag{
-    margin: auto;
-    background-color: #EEE;
     width: 70%;
-    border-radius: 40px;
-    padding: 5px 0px;
+    font-size: 16px;
   }
 
   .hr_profile_under_wrapper{
     justify-content: space-between;
     align-items: flex-end;
+    flex-direction: row;
   }
 
   .offer_button_wrapper{
     width: 25%;
     text-align: center;
+    margin: 0;
   }
   .offer_button_wrapper a{
     background: linear-gradient(to right,#7CC4FF, #9681FF);
     color: #FFFFFF;
-    font-weight: bold;
     padding: 12px 50px;
     font-weight: 500;
   }
@@ -227,5 +255,4 @@
   }
 
   /* === end: 面接リクエストない場合 部分 =================================================*/
-
 }

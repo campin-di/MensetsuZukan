@@ -51,6 +51,7 @@ class ChatController extends Controller
         $message->date = $today;
         $message->time = $now;
         $message->body = $request->message;
+        $message->unread = 1;
         $message->save();
 
         $this->lineNotification($st, $hr);

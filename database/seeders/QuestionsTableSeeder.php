@@ -19,6 +19,7 @@ class QuestionsTableSeeder extends Seeder
       $questionArray = [
         '自己紹介',
         'ガクチカ',
+        '志望動機',
         '１番の挑戦',
         '１番の失敗',
         '長所と短所',

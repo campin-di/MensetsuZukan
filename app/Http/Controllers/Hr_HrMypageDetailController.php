@@ -34,18 +34,6 @@ class Hr_HrMypageDetailController extends Controller
 
     $input = $request->all();
 
-    //===== validator処理====================================
-    //================================================
-  /*
-    $validator = Validator::make($input, $this->validator);
-    if($validator->fails()){
-      return redirect()->action("MypageDetailController@show")
-        ->withInput()
-        ->withErrors($validator);
-    }
-  */
-    //================================================
-    //================================================
     $request->session()->put("step2", $input);
 
     return redirect()->action("Hr_HrMypageDetailController@confirm");
@@ -69,7 +57,6 @@ class Hr_HrMypageDetailController extends Controller
       'site' => '企業ページURL',
       'recruitment' => '採用ページURL',
       'selection_phase' => '普段担当する選考フェーズ',
-
       'introduction' => '簡単な自己紹介',
       'pr' => '面接官PR',
     ];
