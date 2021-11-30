@@ -4,10 +4,14 @@
 @section('content')
 <script src="{{ asset('js/app.js') }}"></script>
 
-@include('components.parts.page_title', ['title'=> $stNickname])
-<div class="interview-reservation-wrapper">
-    <a href="{{ route('hr.interview.schedule.form', $id) }}">面接予約</a>
+
+<div class="page_title_wrapper">
+    <div class="page_title">{{$stName}} ({{$stNickname}})</div>
+    <a href="{{ route('hr.interview.schedule.form', $id) }}" class="interview-reservation-wrapper">
+        <span>面接予約</span>
+    </a>
 </div>
+
 <div id="chat">
     <div class="line__container" id="scroll">
         <div class="line__contents" id="scroll-inner">

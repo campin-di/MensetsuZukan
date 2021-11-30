@@ -24,6 +24,7 @@ class Hr_ScoringController extends Controller
       // :point_down: チャンネルシークレット
       $this->channel_secret = env('LINE_CHANNEL_SECRET');
   }
+  
   //== 質問リスト作成 関係　=======================================================
   public function form($id)
   {

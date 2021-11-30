@@ -29,22 +29,19 @@ class ComandController extends Controller
             if(array_key_exists(5, $contentArray)){
                 continue;
             }
-            $folderName = $contentArray[0];
-            $question1_end = $this->cut($contentArray[2]);
-            $question2_end = $this->cut($contentArray[3]);
+            if(isset($contentArray[0])){
+                $folderName = $contentArray[0];
+            }else{
+                break;
+            }
+            $question1_start = $this->cut($contentArray[1]);
             $question3_end = $this->cut($contentArray[4]);
             
-            $question1_start = $this->cut($contentArray[1]);
-            $question2_start = $question1_end - 2;
-            $question3_start = $question2_end - 2;
-            
-            $question1_while = $question1_end - $question1_start + 2;
-            $question2_while = $question2_end - $question1_end + 2;
-            $question3_while = $question3_end - $question2_end + 2;
-            
+            $question_while = $question3_end - $question1_start;
+
             $cmd = [
                 'make folder name="' . $folderName .'"',
-                'make edit name="'. $folderName .'" st1="' . $question1_start . '" end1="'. $question1_while. '" st2="'. $question2_start .'" end2="'. $question2_while .'" st3="'. $question3_start .'" end3="' . $question3_while. '"',
+                'make edit name="'. $folderName .'" st="' . $question1_start . '" end="'. $question_while.'"',
                 'make join name="'. $folderName .'"',
             ];
             $values->setValues([
