@@ -28,11 +28,30 @@ class ChatController extends Controller
         //==========================================================================
         $userId = Auth::user()->id;
 
-        $chats = InterviewRequest::where('status', 1)->where('st_id', $userId)->with('hr_user:id,nickname,image_path')->get();
         $chatsOffer = Offer::where('st_id', $userId)->with('hr_user:id,nickname,image_path')->get();
+        $offerCollection = collect([]);
+        foreach ($chatsOffer as $chat) {
+            $latestMessage = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->orderBy('id', 'desc')->first();
+            $unread_message_num = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->where('sender', 1)->where('unread', 1)->count();
+            if(empty($latestMessage)){
+                $body = "まだメッセージがありません。";
+            }else{
+                $body = $latestMessage->body;
+            }
+            $offerCollection = $offerCollection->concat([
+                [
+                    'id' => $chat->hr_user->id,
+                    'nickname' => $chat->hr_user->nickname,
+                    'imagePath' => $chat->hr_user->imagePath,
+                    'latestMessage' => $body,
+                    'unread' => $unread_message_num
+                ],
+            ]);
+        }
         
+        $chats = InterviewRequest::where('status', 1)->where('st_id', $userId)->with('hr_user:id,nickname,image_path')->get();
         $chatCollection = collect([]);
-        foreach ($chats as $chat) {
+        foreach($chats as $chat){
             $latestMessage = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->orderBy('id', 'desc')->first();
             $unread_message_num = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->where('sender', 1)->where('unread', 1)->count();
             if(empty($latestMessage)){
@@ -51,26 +70,7 @@ class ChatController extends Controller
             ]);
         }
 
-        foreach($chatsOffer as $chat){
-            $latestMessage = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->orderBy('id', 'desc')->first();
-            $unread_message_num = Message::where('st_id', $userId)->where('hr_id', $chat->hr_user->id)->where('sender', 1)->where('unread', 1)->count();
-            if(empty($latestMessage)){
-                $body = "まだメッセージがありません。";
-            }else{
-                $body = $latestMessage->body;
-            }
-            $chatCollection = $chatCollection->concat([
-                [
-                    'id' => $chat->hr_user->id,
-                    'nickname' => $chat->hr_user->nickname,
-                    'imagePath' => $chat->hr_user->imagePath,
-                    'latestMessage' => $body,
-                    'unread' => $unread_message_num
-                ],
-            ]);
-        }
-
-        return view('st.chat.list', compact('chatCollection')); 
+        return view('st.chat.list', compact('chatCollection', 'offerCollection')); 
     }
 
     public function chat($id, Request $request)

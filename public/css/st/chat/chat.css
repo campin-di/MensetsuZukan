@@ -19,19 +19,30 @@ button, select {
 }
 
 /* === start: 人事利用時 =================================*/
+
+.page_title_wrapper{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    border-bottom: solid 2px #AAA;
+}
+
 .interview-reservation-wrapper{
     text-align: center;
     background: linear-gradient(to right, #7CC4FF, #9681FF);
     padding: 5px 0px;
-    width: 90%;
+    width: 30%;
     border-radius: 5px;
-    margin: -25px auto 0;
+    margin: 0px 5px auto;
     z-index: 10000;
     position: relative;
 }
-.interview-reservation-wrapper a{
+.interview-reservation-wrapper span{
     color: #FFFFFF;
-    font-weight: 600;
+    font-weight: 500;
 }
 /* === end: 人事利用時 =================================*/
 
@@ -194,10 +205,14 @@ button, select {
 
     .interview-reservation-wrapper{
         padding: 10px 0px;
-        width: 75%;
+        width: 25%;
+        margin: 0 5% auto;
         border-radius: 7.5px;
-        margin: -15px auto 0;
         max-width: 1000px;
+    }
+
+    .page_title_wrapper{
+        font-size: 18px;
     }
 
     .line__message-wrapper{

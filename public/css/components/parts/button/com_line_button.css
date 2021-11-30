@@ -4,7 +4,7 @@
 
 .line-register{
   background-color:#19BC03;
-  border-radius: 30px;
+  border-radius: 10px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@
 }
 .line-register span{
   color: #FFF !important;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 20px;
 }
 

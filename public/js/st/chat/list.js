@@ -11,7 +11,7 @@ const selectCutElement = ($class, $length) => {
       let strings = document.getElementsByClassName($class);
       strings = Array.from(strings);
       strings.forEach(string => {
-        let text = string.innerText;
+        let text = string.innerText.trim();
         string.innerText = cutString(text, $length);
       });
     }

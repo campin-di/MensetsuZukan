@@ -65,7 +65,6 @@ class SearchController extends Controller
             config('const.USER_STATUS.AVAILABLE'),
         ];
 
-        
         $request_industry = request('industry');
         $request_jobtype = request('jobtype');
         $request_company_type = request('company_type');
