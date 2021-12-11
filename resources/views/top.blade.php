@@ -61,7 +61,6 @@
           ○○業界の面接傾向は？<br>
           検索機能を活用して、<br>
           気になる疑問を解消しよう。<br>
-          <a href="https://storyset.com/work">Work illustrations by Storyset</a>
         </div>
         <div class="right-child">
           <img src="{{ asset('/img/top/illustration/Bookmarks-rafiki.svg') }}" alt="採点＆フィードバック">
@@ -79,7 +78,7 @@
           フィードバック付きの<br>
           採点結果を見られるので、<br>
           面接力UP間違いなし！<br>
-          <a href="https://storyset.com/work">Work illustrations by Storyset</a>
+          
         </div>
         <div class="right-child">
           <img src="{{ asset('/img/top/illustration/Development focus-amico.svg') }}" alt="採点＆フィードバック">
@@ -96,7 +95,7 @@
           日本全国の企業から<br>
           『1次面接免除以上』の<br>
           特別オファーが届く！<br>
-          <a href="https://storyset.com/work">Work illustrations by Storyset</a>
+          
         </div>
         <div class="right-child">
           <img src="{{ asset('/img/top/illustration/Agreement-amico.svg') }}" alt="オファー">
