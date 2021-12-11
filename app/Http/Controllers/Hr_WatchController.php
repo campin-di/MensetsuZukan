@@ -62,8 +62,7 @@ class Hr_WatchController extends Controller
 
     $typeArray = TypeDisplayClass::TypeDisplay($video[0]);
 
-    $flag = Schedule::where('hr_id', Auth::guard('hr')->id())->select('st_id')->groupBy('st_id')->get()->count();
-
-    return view('hr.watch',compact('mainVideo', 'typeArray', 'scoreDetailsArray', 'flag', 'scoringFeatures'));
+  
+    return view('hr.watch',compact('mainVideo', 'typeArray', 'scoreDetailsArray', 'scoringFeatures'));
   }
 }

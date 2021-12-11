@@ -9,7 +9,7 @@
   <div class="container_detail">
   <div class="item">
       <input id="acd-check14" class="acd-check" type="checkbox">
-      <label class="acd-label" for="acd-check14">企業の基本情報</label>
+      <label class="acd-label" for="acd-check14">学生の基本情報</label>
       <div class="acd-content">
         <div class="company_info">
           <table>

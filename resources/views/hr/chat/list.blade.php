@@ -81,24 +81,21 @@
           @endforeach
         @else
           <div class="none-block">
-            <h1>学生とマッチングしていません</h1>
+            <h1>承諾されたオファーがありません。</h1>
             <div class="description">
-              学生から面接申し込みがあるまでお待ちください。<br>
-              またプロフィールを充実させておくと、申し込み率がアップします！<br>
+              まずはオファーを行ってください。<br>
+              プロフィールを充実させておくと、オファー承諾率がアップします！<br>
             </div>
           </div>
-
-          <a href="{{ route('hr.mypage') }}">
+          <a href="{{ route('hr.offer.search') }}">
             <div class="button">
-              <span>マイページ</span>
+              <span>オファーする学生を探す</span>
             </div>
           </a>
         @endif
       </div>
     </div>
   </div>
-
-
 
 <script type="text/javascript" src="{{ asset('/js/st/chat/list.js') }}"></script>
 @endsection
