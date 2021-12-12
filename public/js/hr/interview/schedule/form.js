@@ -7,14 +7,26 @@ window.addEventListener('DOMContentLoaded', function(){
   });
 });
 
+let tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+let yyyy = tomorrow.getFullYear();
+let mm = ("0"+(tomorrow.getMonth()+1)).slice(-2);
+let dd = ("0"+tomorrow.getDate()).slice(-2);
+
 let input_date = document.getElementById('date');
 input_date.addEventListener("input", function(){
-  elements.forEach(element => {
-    element.style.display = 'block';
-  });
-
-  let deleteDate = document.getElementById('delete-date');
-  deleteDate.style.display = 'none';
+  let date = new Date(input_date.value);
+  if(date <= tomorrow){
+    alert("日程は明後日以降の日程を入力してください。")
+    input_date.value=yyyy+'-'+mm+'-'+dd;
+  }else{
+    elements.forEach(element => {
+      element.style.display = 'block';
+    });
+    
+    let deleteDate = document.getElementById('delete-date');
+    deleteDate.style.display = 'none';
+  }
 });
 
 let checkboxs = document.getElementsByClassName('check');

@@ -120,6 +120,9 @@ class ScheduleController extends Controller
     $this->recordInSpreadsheet($st, $hr, $interview);
     $this->lineNotification($st, $hr);
 
+    $opeLine = User::find(109);
+    $this->lineOperationNotification($opeLine, $interview);
+
     // メッセージに自動送信 
     $requestDate = '・'.$date.'：'. $timeArray[$timeKey];
     $autoMessage = "※本メッセージは自動配信です。\n\n".$hr->nickname."さんと、下記の日程での模擬面接の実施が決定しました！\n\n". $requestDate. "\n\nその他、模擬面接に関する詳細情報は、マイページ「面接予定」よりご確認ください。\n"."面接日程がどうしても合わなくなった場合は、".$hr->nickname."さんに事情を伝え、面接日程を変更してもらってください。\n\nこのメッセージへの返信は不要です。";
@@ -190,6 +193,30 @@ class ScheduleController extends Controller
       $builder->add($value);
     }
     $response = $bot->pushMessage($st->line_id, $builder);
+
+    // 配信成功・失敗
+    if ($response->isSucceeded()) {
+        Log::info('Line 送信完了');
+    } else {
+        Log::error('投稿失敗: ' . $response->getRawBody());
+    }
+  }
+
+  public function lineOperationNotification($user, $interview) { // 面接予約時にLINE通知する関数
+    //本会員登録リンク 送信部分
+    $http_client = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($this->access_token);
+    $bot         = new \LINE\LINEBot($http_client, ['channelSecret' => $this->channel_secret]);
+
+    $builder = new \LINE\LINEBot\MessageBuilder\MultiMessageBuilder();
+    // ビルダーにメッセージをすべて追加
+    $msgs = [
+        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('面接予約が行われました。日程は以下の通りです。'),
+        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($interview->date . ':'. $interview->time),
+    ];
+    foreach($msgs as $value){
+      $builder->add($value);
+    }
+    $response = $bot->pushMessage($user->line_id, $builder);
 
     // 配信成功・失敗
     if ($response->isSucceeded()) {
