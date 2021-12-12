@@ -62,7 +62,6 @@ class Hr_WatchController extends Controller
 
     $typeArray = TypeDisplayClass::TypeDisplay($video[0]);
 
-  
     return view('hr.watch',compact('mainVideo', 'typeArray', 'scoreDetailsArray', 'scoringFeatures'));
   }
 }

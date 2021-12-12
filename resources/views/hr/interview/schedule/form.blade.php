@@ -30,5 +30,5 @@
     @include('components.parts.button.form.next_button')
   </form>
 </div>
-<script type="text/javascript" src="{{ asset('/js/st/interview/schedule/form.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/hr/interview/schedule/form.js') }}"></script>
 @endsection
