@@ -127,7 +127,7 @@ class RequestController extends Controller
         if($input['reaction'] != 'reject'){
             // メッセージに自動送信 
             $requestDate = $interviewRequest->schedule_candidate;
-            $autoMessage = "※本メッセージは自動配信です。\n\n".$st->nickname."さんは、下記の日程での模擬面接を希望しています。\n-----------------\n". $requestDate. "\n-----------------\n".$hr->nickname."さんの日程と合う場合は「面接予約」へ。\n合わない場合は".$st->nickname."さんと日程調整を行ってください。\n\n面接予約に進まれる場合、このメッセージへの返信は不要です。";
+            $autoMessage = "※本メッセージは自動配信です。\n\n".$st->nickname."さんは、下記の日程での模擬面接を希望しています。\n-----------------\n". $requestDate. "\n-----------------\n".$hr->nickname."さんの日程と合う場合は「面接予約」へ。\n合わない場合は".$st->nickname."さんと日程調整を行ってください。\n\n面接予約に進まれる場合、このメッセージへの返信は不要です。";
 
             $today = date("n/j");
             $now = date("G:i");
@@ -162,7 +162,7 @@ class RequestController extends Controller
             ];
         } else {
             $msgs = [
-                new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("面接リクエストが見送られました。\n--- 理由 --------\n".$rejectMessage. "\n-----------------"),
+                new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($hr->nickname . "さんへの面接リクエストが見送られました。\n--- 理由 --------\n".$rejectMessage. "\n-----------------"),
                 new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('別の人事にも面接申し込みを行ってみてください！'),
             ];
         }
