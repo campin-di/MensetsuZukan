@@ -3,13 +3,13 @@
 }
 
 .line-register{
-  background-color:#19BC03;
+  background-color:#00b900;
   border-radius: 10px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: -15px;
+  margin-left: -30px;
   width: 65%;
   margin: 0 auto;
   padding: 0px;
