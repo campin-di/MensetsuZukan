@@ -73,11 +73,51 @@
       </div>
 
       <div class="form-input-wrapper">
+        <label for="gymnasium" class="form-title">部活動*</label>
+        <div class="form-input">
+          <select id="gymnasium" class="form-control" name="gymnasium" required>
+            <option value="">選択してください。</option>
+              <option value="0" @if(old('gymnasium') == "0") selected @endif>体育会に所属している。</option>
+              <option value="1" @if(old('gymnasium') == "1") selected @endif>体育会に所属していない。</option>
+          </select>
+          @if ($errors->has('gymnasium'))
+            <span class="help-block">
+              <strong>{{ $errors->first('gymnasium') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
+      <div class="form-input-wrapper">
+        <label for="birthplace" class="form-title">出身地</label>
+        <div class="form-input">
+          <select id="birthplace" class="form-control" name="birthplace" required>
+            <option value="">選択してください。</option>
+            @foreach($prefecturesArray as $area => $prefectureArray)
+              @if($area != "▼ その他")
+                <optgroup label="{{ $area }}">
+                  @foreach($prefectureArray as $prefecture)
+                    <option value="{{ $prefecture }}" @if(old('workplace') == "{{ $prefecture }}") selected @endif>{{ $prefecture }}</option>
+                  @endforeach
+                </optgroup>
+              @endif
+            @endforeach
+            <option value="回答したくない。">回答したくない。</option>
+          </select>
+          @if ($errors->has('birthplace'))
+            <span class="help-block">
+              <strong>{{ $errors->first('birthplace') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
+      <div class="form-input-wrapper">
         <label for="graduate_year" class="form-title">卒業年度*</label>
         <div class="form-input">
           <select id="graduate_year" class="form-control" name="graduate_year" required>
             <option value="">----</option>
-            @for ($i = 2022; $i <= 2025; $i++)
+            @for ($i = 2023; $i <= 2026; $i++)
               <option value="{{ $i }}" @if(old('graduate_year') == $i) selected @endif>{{ $i }}</option>
             @endfor
           </select>

@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
             $table->string('university_class')->default('設定されていません。');
             $table->string('faculty')->nullable();
             $table->string('department')->nullable();
+            $table->tinyInteger('gymnasium')->unsigned()->nullable()->comment('0：非体育会系, 1：体育会系');
+            $table->string('birthplace')->nullable();
             $table->integer('status')->comment('0:仮登録, 1:本登録, 2:メール認証済, 10:視聴不可, 11:視聴可, 99:退会済, 100:管理者');
             $table->string('channel')->nullable();
             //stProfile分

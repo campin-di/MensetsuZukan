@@ -242,12 +242,16 @@ class RegisterController extends Controller
       //セッションに書き込む
       $request->session()->put("register_input", $input);
 
-      return view('st/auth.main.register2');
+      $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+
+      return view('st/auth.main.register2', compact('prefecturesArray'));
      }
 
      public function redirectShowForm2()
      {
-       return view('st/auth.main.register2');
+      $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+
+      return view('st/auth.main.register2', compact('prefecturesArray'));
      }
 
      public function showForm3(Request $request)
@@ -389,6 +393,8 @@ class RegisterController extends Controller
        $user->faculty = $register2_input['faculty'];
        $user->department = $register2_input['department'];
        $user->major = $register2_input['major'];
+       $user->gymnasium = $register2_input['gymnasium'];
+       $user->birthplace = $register2_input['birthplace'];
        $user->graduate_year = $register2_input['graduate_year'];
        $user->gender = $register_input['gender'];
        $user->status = config('const.USER_STATUS.UNAVAILABLE');

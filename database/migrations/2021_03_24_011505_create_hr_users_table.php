@@ -36,7 +36,6 @@ class CreateHrUsersTable extends Migration
         $table->string('site', 1000)->default('設定されていません。');
         $table->string('introduction', 1000)->default('設定されていません。');
         $table->string('pr', 1000)->default('設定されていません。');
-
         $table->integer('status')->comment('0:仮登録, 1:本登録, 2:メール認証済, 10:視聴不可, 11:視聴可, 99:退会済, 100:管理者');
         //$table->string('schedule_ids')->nullable();
         $table->timestamp('email_verified_at')->nullable();

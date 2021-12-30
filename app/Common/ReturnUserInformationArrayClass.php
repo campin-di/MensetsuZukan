@@ -10,6 +10,7 @@ class ReturnUserInformationArrayClass
       $channelArray = [
         'Twitter',
         'Instagram',
+        'TikTok',
         '知人/運営からの紹介',
         '所属組織/団体',
         'その他',
