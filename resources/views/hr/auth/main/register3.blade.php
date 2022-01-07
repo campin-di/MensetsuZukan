@@ -5,7 +5,6 @@
 
 @include('components.parts.page_title_reverse', ['title'=>'STEP3'])
 
-
   @isset($message)
     <div class="card-body">
       {{$message}}
@@ -22,97 +21,91 @@
       </div>
 
       <div class="form-input-wrapper">
-        <label for="selection_phase" class="form-title">普段担当している選考フェーズ *</label>
+      <label for="company" class="form-title">企業名*</label>
+        <div class="form-input flex">
+          <input id="company" type="text" class="form-control {{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="株式会社ぱむ" required>
+          @if ($errors->has('company'))
+            <span class="invalid-feedback">
+              <strong>{{ $errors->first('company') }}</strong>
+            </span>
+          @endif
+        </div>
+      </div>
+
+      <div class="form-input-wrapper">
+        <label for="industry" class="form-title">所属業界*</label>
         <div class="form-input">
-          <select id="selection_phase" class="form-control" name="selection_phase" required>
-            @foreach($selectionPhaseArray as $phase)
-              <option value="{{ $phase }}" @if(old('selection_phase') == "{{ $phase }}") selected @endif>{{ $phase }}</option>
+          <select id="industry" class="form-control" name="industry" required>
+            <option value="">所属企業の業界を選択してください。</option>
+            @foreach($industryArray as $industry)
+              <option value="{{ $industry }}" @if(old('industry') == "{{ $industry }}") selected @endif>{{ $industry }}</option>
             @endforeach
           </select>
-
-          @if ($errors->has('selection_phase'))
+          @if ($errors->has('industry'))
             <span class="help-block">
-              <strong>{{ $errors->first('selection_phase') }}</strong>
+              <strong>{{ $errors->first('industry') }}</strong>
             </span>
           @endif
         </div>
       </div>
 
+      
       <div class="form-input-wrapper">
-        <label for="face" class="form-title">面接時に顔を公開したくありませんか？ *</label>
+        <label for="company_type" class="form-title">企業区分*</label>
         <div class="form-input">
-          <select id="face" class="form-control" name="face" required>
-              <option value="1" @if(old('face') == "公開しても構わない") selected @endif>公開しても構わない</option>
-              <option value="0" @if(old('face') == "公開できない（モザイク加工をして欲しい）") selected @endif>公開できない(モザイク加工をして欲しい)</option>
+          <select id="company_type" class="form-control" name="company_type" required>
+            <option value="">企業区分を選択してください。</option>
+            @foreach($companyTypeArray as $company_type)
+            <option value="{{ $company_type }}" @if(old('company_type') == "{{ $company_type }}") selected @endif>{{ $company_type }}</option>
+            @endforeach
           </select>
-
-          @if ($errors->has('face'))
-            <span class="help-block">
-              <strong>{{ $errors->first('face') }}</strong>
-            </span>
+          @if ($errors->has('company_type'))
+          <span class="help-block">
+            <strong>{{ $errors->first('company_type') }}</strong>
+          </span>
           @endif
         </div>
       </div>
-
+      
+      
       <div class="form-input-wrapper">
-        <label for="workplace" class="form-title">主な勤務地</label>
+        <label for="stock_type" class="form-title">上場区分*</label>
         <div class="form-input">
-          <select id="workplace" class="form-control" name="workplace">
-            <option value="">主な勤務地を選択してください。</option>
+          <select id="stock_type" class="form-control" name="stock_type" required>
+            <option value="">上場区分を選択してください。</option>
+            @foreach($stockTypeArray as $stock_type)
+            <option value="{{ $stock_type }}" @if(old('stock_type') == "{{ $stock_type }}") selected @endif>{{ $stock_type }}</option>
+            @endforeach
+          </select>
+          @if ($errors->has('stock_type'))
+          <span class="help-block">
+            <strong>{{ $errors->first('stock_type') }}</strong>
+          </span>
+          @endif
+        </div>
+      </div>
+      
+      <div class="form-input-wrapper">
+        <label for="location" class="form-title">本社所在地</label>
+        <div class="form-input">
+          <select id="location" class="form-control" name="location">
+            <option value="">本社所在地を選択してください。</option>
             @foreach($prefecturesArray as $area => $prefectureArray)
               <optgroup label="{{ $area }}">
                 @foreach($prefectureArray as $prefecture)
-                  <option value="{{ $prefecture }}" @if(old('workplace') == "{{ $prefecture }}") selected @endif>{{ $prefecture }}</option>
+                  <option value="{{ $prefecture }}" @if(old('location') == "{{ $prefecture }}") selected @endif>{{ $prefecture }}</option>
                 @endforeach
               </optgroup>
             @endforeach
           </select>
-          @if ($errors->has('workplace'))
+          @if ($errors->has('location'))
             <span class="help-block">
-              <strong>{{ $errors->first('workplace') }}</strong>
+              <strong>{{ $errors->first('location') }}</strong>
             </span>
           @endif
         </div>
       </div>
-
-      <div class="form-input-wrapper">
-      <label for="summary" class="form-title">事業概要</label>
-        <div class="form-input flex">
-          <input id="summary" type="text" class="form-control {{ $errors->has('summary') ? ' is-invalid' : '' }}" name="summary" value="{{ old('summary') }}" placeholder="事業概要を入力してください。">
-
-          @if ($errors->has('summary'))
-            <span class="invalid-feedback">
-              <strong>{{ $errors->first('summary') }}</strong>
-            </span>
-          @endif
-        </div>
-      </div>
-
-      <div class="form-input-wrapper">
-      <label for="site" class="form-title">企業ページURL</label>
-        <div class="form-input flex">
-          <input id="site" type="text" class="form-control {{ $errors->has('site') ? ' is-invalid' : '' }}" name="site" value="{{ old('site') }}" placeholder="URLを入力してください。">
-
-          @if ($errors->has('site'))
-            <span class="invalid-feedback">
-              <strong>{{ $errors->first('site') }}</strong>
-            </span>
-          @endif
-        </div>
-      </div>
-
-      <div class="form-input-wrapper">
-      <label for="recruitment" class="form-title">採用ページURL</label>
-        <div class="form-input flex">
-          <input id="recruitment" type="text" class="form-control {{ $errors->has('recruitment') ? ' is-invalid' : '' }}" name="recruitment" value="{{ old('recruitment') }}" placeholder="URLを入力してください。">
-
-          @if ($errors->has('recruitment'))
-            <span class="invalid-feedback">
-              <strong>{{ $errors->first('recruitment') }}</strong>
-            </span>
-          @endif
-        </div>
-      </div>
+      
       @include('components.parts.button.form.next_button')
     </form>
   </div>
