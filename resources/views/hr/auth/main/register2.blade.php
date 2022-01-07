@@ -1,9 +1,9 @@
-@section('title', '勤務情報の入力')
-<link href="{{ asset('/css/st/auth/main/register3.css') }}" rel="stylesheet">
-@extends('layouts.hr.reverse')
+@section('title', '基本情報の入力')
+<link href="{{ asset('/css/st/auth/main/register.css') }}" rel="stylesheet">
+@extends('layouts.st.reverse')
 @section('content')
 
-@include('components.parts.page_title_reverse', ['title'=>'STEP2'])
+  @include('components.parts.page_title_reverse', ['title'=>'STEP2'])
 
   @isset($message)
     <div class="card-body">
@@ -19,93 +19,95 @@
       <div class="attention" style="margin: 10px 0 20px 10px;">
         <span class="asterisk" style="color: #6B8BE9;">*</span> は入力必須の項目です。
       </div>
+      
+      @if($plan == "面接官プラン")
+        <div class="form-input-wrapper">
+          <label for="gender" class="form-title">性別*</label>
+          <div class="form-input">
+            <select id="gender" class="form-control" name="gender">
+              <option value="">性別を選択してください。</option>
+              <option value="1">男</option>
+              <option value="2">女</option>
+            </select>
+            @if ($errors->has('gender'))
+              <span class="help-block">
+                <strong>{{ $errors->first('gender') }}</strong>
+              </span>
+            @endif
+          </div>
+        </div>
+      @endif
 
       <div class="form-input-wrapper">
-      <label for="company" class="form-title">企業名*</label>
+        <label for="lastname" class="form-title">
+        @if($plan == "面接官プラン")  氏名* @else 社名* @endif
+        </label>
         <div class="form-input flex">
-          <input id="company" type="text" class="form-control {{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" placeholder="株式会社ぱむ" required>
-          @if ($errors->has('company'))
+          <div class="form-left-child">
+            @if($plan == "面接官プラン")
+              <input id="lastname" type="text" class="form-control {{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" placeholder="姓" required>
+            @else
+              <input id="lastname" type="text" class="form-control {{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" placeholder="株式会社（PAM）" required> 
+            @endif
+            @if ($errors->has('lastname'))
             <span class="invalid-feedback">
-              <strong>{{ $errors->first('company') }}</strong>
+              <strong>{{ $errors->first('lastname') }}</strong>
             </span>
-          @endif
+            @endif
+          </div>
+          <div class="form-right-child">
+            @if($plan == "面接官プラン")
+              <input id="firstname" type="text" class="form-control {{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" placeholder="名" required>
+            @else
+              <input id="firstname" type="text" class="form-control {{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" placeholder="PAM（株式会社）" required>
+            @endif
+            @if ($errors->has('firstname'))
+            <span class="invalid-feedback">
+              <strong>{{ $errors->first('firstname') }}</strong>
+            </span>
+            @endif
+          </div>
         </div>
       </div>
+      
+      @if($plan == "面接官プラン")
+        <div class="form-input-wrapper">
+          <label for="kana_lastname" class="form-title">フリガナ*</label>
+          <div class="form-input flex">
+            <div class="form-left-child">
+              <input id="kana_lastname" type="text" class="form-control{{ $errors->has('kana_lastname') ? ' is-invalid' : '' }}" name="kana_lastname" value="{{ old('kana_lastname') }}" placeholder="セイ" required>
+              @if ($errors->has('kana_lastname'))
+                <span class="invalid-feedback">
+                  <strong>{{ $errors->first('kana_lastname') }}</strong>
+                </span>
+              @endif
+            </div>
+            <div class="form-right-child">
+              <input id="kana_firstname" type="text" class="form-control{{ $errors->has('kana_firstname') ? ' is-invalid' : '' }}" name="kana_firstname" value="{{ old('kana_firstname') }}" placeholder="メイ" required>
+              @if ($errors->has('kana_firstname'))
+                <span class="invalid-feedback">
+                  <strong>{{ $errors->first('kana_firstname') }}</strong>
+                </span>
+              @endif
+            </div>
+          </div>
+        </div>
 
-      <div class="form-input-wrapper">
-        <label for="industry" class="form-title">所属業界*</label>
-        <div class="form-input">
-          <select id="industry" class="form-control" name="industry" required>
-            <option value="">所属企業の業界を選択してください。</option>
-            @foreach($industryArray as $industry)
-              <option value="{{ $industry }}" @if(old('industry') == "{{ $industry }}") selected @endif>{{ $industry }}</option>
-            @endforeach
-          </select>
-          @if ($errors->has('industry'))
-            <span class="help-block">
-              <strong>{{ $errors->first('industry') }}</strong>
-            </span>
-          @endif
-        </div>
-      </div>
+        <div class="form-input-wrapper">
+        <label for="nickname" class="form-title">ニックネーム*</label>
+          <div class="form-input flex">
+            <input id="nickname" type="text" class="form-control {{ $errors->has('nickname') ? ' is-invalid' : '' }}" name="nickname" value="{{ old('nickname') }}" placeholder="例：よっしー" required>
 
-      
-      <div class="form-input-wrapper">
-        <label for="company_type" class="form-title">企業区分*</label>
-        <div class="form-input">
-          <select id="company_type" class="form-control" name="company_type" required>
-            <option value="">企業区分を選択してください。</option>
-            @foreach($companyTypeArray as $company_type)
-            <option value="{{ $company_type }}" @if(old('company_type') == "{{ $company_type }}") selected @endif>{{ $company_type }}</option>
-            @endforeach
-          </select>
-          @if ($errors->has('company_type'))
-          <span class="help-block">
-            <strong>{{ $errors->first('company_type') }}</strong>
-          </span>
-          @endif
+            @if ($errors->has('nickname'))
+              <span class="invalid-feedback">
+                <strong>{{ $errors->first('nickname') }}</strong>
+              </span>
+            @endif
+          </div>
         </div>
-      </div>
-      
-      
-      <div class="form-input-wrapper">
-        <label for="stock_type" class="form-title">上場区分*</label>
-        <div class="form-input">
-          <select id="stock_type" class="form-control" name="stock_type" required>
-            <option value="">上場区分を選択してください。</option>
-            @foreach($stockTypeArray as $stock_type)
-            <option value="{{ $stock_type }}" @if(old('stock_type') == "{{ $stock_type }}") selected @endif>{{ $stock_type }}</option>
-            @endforeach
-          </select>
-          @if ($errors->has('stock_type'))
-          <span class="help-block">
-            <strong>{{ $errors->first('stock_type') }}</strong>
-          </span>
-          @endif
-        </div>
-      </div>
-      
-      <div class="form-input-wrapper">
-        <label for="location" class="form-title">本社所在地</label>
-        <div class="form-input">
-          <select id="location" class="form-control" name="location">
-            <option value="">本社所在地を選択してください。</option>
-            @foreach($prefecturesArray as $area => $prefectureArray)
-              <optgroup label="{{ $area }}">
-                @foreach($prefectureArray as $prefecture)
-                  <option value="{{ $prefecture }}" @if(old('location') == "{{ $prefecture }}") selected @endif>{{ $prefecture }}</option>
-                @endforeach
-              </optgroup>
-            @endforeach
-          </select>
-          @if ($errors->has('location'))
-            <span class="help-block">
-              <strong>{{ $errors->first('location') }}</strong>
-            </span>
-          @endif
-        </div>
-      </div>
-      
+      @endif
+
+      <input type="hidden" id="plan" class="button" name="plan" value="{{ $plan }}" required>
       @include('components.parts.button.form.next_button')
     </form>
   </div>

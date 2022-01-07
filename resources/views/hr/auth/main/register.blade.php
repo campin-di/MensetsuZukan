@@ -1,104 +1,40 @@
-@section('title', '基本情報の入力')
-<link href="{{ asset('/css/st/auth/main/register.css') }}" rel="stylesheet">
-@extends('layouts.st.reverse')
+@section('title', 'プラン選択')
+<link href="{{ asset('/css/st/auth/main/register4.css') }}" rel="stylesheet">
+@extends('layouts.hr.reverse')
 @section('content')
+@include('components.parts.page_title_reverse', ['title'=>'STEP1'])
 
-  @include('components.parts.page_title_reverse', ['title'=>'STEP1'])
+<div class="container form-wrapper">
+    @isset($message)
+      <div class="card-body">
+        {{$message}}
+      </div>
+    @endisset
 
-  @isset($message)
-    <div class="card-body">
-      {{$message}}
-    </div>
-  @endisset
+    @empty($message)
+      <div class="select-button">
+        <button id="hr">面接官プラン</button>
+        <button id="offer">オファープラン</button>
+      </div>
 
-  @empty($message)
-    <div class="card-body form-wrapper">
       <form method="POST" action="{{ route('hr.register2') }}">
       @csrf
-
-      <div class="attention" style="margin: 10px 0 20px 10px;">
-        <span class="asterisk" style="color: #6B8BE9;">*</span> は入力必須の項目です。
-      </div>
-
-      <div class="form-input-wrapper">
-        <label for="gender" class="form-title">性別*</label>
-        <div class="form-input">
-          <select id="gender" class="form-control" name="gender">
-            <option value="">性別を選択してください。</option>
-            <option value="1">男</option>
-            <option value="2">女</option>
-          </select>
-          @if ($errors->has('gender'))
-            <span class="help-block">
-              <strong>{{ $errors->first('gender') }}</strong>
-            </span>
-          @endif
+        <div class="card">
+          <div class="title"><span class="description-title">面接官プラン</span>とは？</div>
+          <p class="description-content-1">
+          面接官ユーザーとして面接図鑑に参画していただくプランです。<br>
+          全国の学生の面接を無料でご覧いただけます。<br>
+          </p>
+          <p class="description-content-2">
+            ※月額課金などは一切ございません
+          </p>
         </div>
-      </div>
-
-      <div class="form-input-wrapper">
-        <label for="lastname" class="form-title">氏名*</label>
-        <div class="form-input flex">
-          <div class="form-left-child">
-            <input id="lastname" type="text" class="form-control {{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" placeholder="姓" required>
-            @if ($errors->has('lastname'))
-            <span class="invalid-feedback">
-              <strong>{{ $errors->first('lastname') }}</strong>
-            </span>
-            @endif
-          </div>
-          <div class="form-right-child">
-            <input id="firstname" type="text" class="form-control {{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" placeholder="名" required>
-            @if ($errors->has('firstname'))
-            <span class="invalid-feedback">
-              <strong>{{ $errors->first('firstname') }}</strong>
-            </span>
-            @endif
-          </div>
-        </div>
-      </div>
-
-      <div class="form-input-wrapper">
-        <label for="kana_lastname" class="form-title">フリガナ*</label>
-        <div class="form-input flex">
-          <div class="form-left-child">
-            <input id="kana_lastname" type="text" class="form-control{{ $errors->has('kana_lastname') ? ' is-invalid' : '' }}" name="kana_lastname" value="{{ old('kana_lastname') }}" placeholder="セイ" required>
-            @if ($errors->has('kana_lastname'))
-              <span class="invalid-feedback">
-                <strong>{{ $errors->first('kana_lastname') }}</strong>
-              </span>
-            @endif
-          </div>
-          <div class="form-right-child">
-            <input id="kana_firstname" type="text" class="form-control{{ $errors->has('kana_firstname') ? ' is-invalid' : '' }}" name="kana_firstname" value="{{ old('kana_firstname') }}" placeholder="メイ" required>
-            @if ($errors->has('kana_firstname'))
-              <span class="invalid-feedback">
-                <strong>{{ $errors->first('kana_firstname') }}</strong>
-              </span>
-            @endif
-          </div>
-        </div>
-      </div>
-
-      <div class="form-input-wrapper">
-      <label for="nickname" class="form-title">ニックネーム*</label>
-        <div class="form-input flex">
-          <input id="nickname" type="text" class="form-control {{ $errors->has('nickname') ? ' is-invalid' : '' }}" name="nickname" value="{{ old('nickname') }}" placeholder="例：よっしー" required>
-
-          @if ($errors->has('nickname'))
-            <span class="invalid-feedback">
-              <strong>{{ $errors->first('nickname') }}</strong>
-            </span>
-          @endif
-        </div>
-      </div>
-
-       <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>
-
-       @include('components.parts.button.form.next_button')
-    </form>
-  </div>
+        <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>
+        <input type="hidden" id="plan" class="button" name="plan" value="面接官プラン" required>
+        @include('components.parts.button.form.next_button')
+      </form>
   @endempty
+</div>
 
-<script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
+<script type="text/javascript" src="{{ asset('/js/auth/hr/main/register.js') }}"></script>
 @endsection

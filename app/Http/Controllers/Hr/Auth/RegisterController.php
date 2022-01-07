@@ -127,6 +127,32 @@ class RegisterController extends Controller
 
     public function showForm2(Request $request)
     {
+      if(!empty($request->all())){
+        $input = $request->all();
+        
+        //セッションに書き込む
+        $request->session()->put("register_input", $input);
+      }
+      
+      // どちらのプランかを示す変数
+      $plan = $request->session()->get("register_input")['plan'];
+      if($plan == "オファープラン"){
+        //セッションに書き込む
+        $request->session()->put("register2_input", NULL);
+
+        $industryArray = ReturnUserInformationArrayClass::returnIndustry();
+        $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+        $companyTypeArray = ReturnUserInformationArrayClass::returnCompanyTypeArray();
+        $stockTypeArray = ReturnUserInformationArrayClass::returnStockTypeArray();
+
+        return view('hr.auth.main.register3',  compact('industryArray', 'prefecturesArray', 'companyTypeArray', 'stockTypeArray'));
+      }
+
+      return view('hr.auth.main.register2', compact('plan'));
+    }
+
+    public function showForm3(Request $request)
+    {
       $input = $request->all();
 
       //== Validator処理 ======================================================
@@ -161,28 +187,31 @@ class RegisterController extends Controller
       $validated = $validator->validate(); //元のページにリダイレクトしてくれる。
       //=======================================================================
 
-        //セッションに書き込む
-        $request->session()->put("register_input", $input);
+      //セッションに書き込む
+      $request->session()->put("register2_input", $input);
 
-        $industryArray = ReturnUserInformationArrayClass::returnIndustry();
-        $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
-        $companyTypeArray = ReturnUserInformationArrayClass::returnCompanyTypeArray();
-        $stockTypeArray = ReturnUserInformationArrayClass::returnStockTypeArray();
+      $industryArray = ReturnUserInformationArrayClass::returnIndustry();
+      $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+      $companyTypeArray = ReturnUserInformationArrayClass::returnCompanyTypeArray();
+      $stockTypeArray = ReturnUserInformationArrayClass::returnStockTypeArray();
 
-        return view('hr.auth.main.register2', compact('industryArray', 'prefecturesArray', 'companyTypeArray', 'stockTypeArray'));
+      return view('hr.auth.main.register3', compact('industryArray', 'prefecturesArray', 'companyTypeArray', 'stockTypeArray'));
     }
 
-    public function showForm3(Request $request)
+    public function showForm4(Request $request)
     {
-        $input = $request->all();
+      $input = $request->all();
 
-        //セッションに書き込む
-        $request->session()->put("register2_input", $input);
+      //セッションに書き込む
+      $request->session()->put("register3_input", $input);
 
-        $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
-        $selectionPhaseArray = ReturnUserInformationArrayClass::returnSelectionPhaseArray();
+      // どちらのプランかを示す変数
+      $plan = $request->session()->get("register_input")['plan'];
 
-        return view('hr.auth.main.register3',compact('prefecturesArray', 'selectionPhaseArray'));
+      $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+      $selectionPhaseArray = ReturnUserInformationArrayClass::returnSelectionPhaseArray();
+
+      return view('hr.auth.main.register4',compact('plan', 'prefecturesArray', 'selectionPhaseArray'));
     }
 
     //リダイレクト時にGETメソッドが送られるため
@@ -190,41 +219,30 @@ class RegisterController extends Controller
     {
       $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
       $selectionPhaseArray = ReturnUserInformationArrayClass::returnSelectionPhaseArray();
-      return view('hr.auth.main.register3',compact('prefecturesArray', 'selectionPhaseArray'));
-    }
-
-    public function showForm4(Request $request)
-    {
-        $input = $request->all();
-
-        //== Validator処理 ======================================================
-        $rules = [
-          'position' => 'nullable|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
-          'summary' => 'nullable|string',
-          'site' => 'nullable|url',
-          'recruitment' => 'nullable|url',
-        ];
-        $messages = [
-          'position.string' => '文字列で入力してください。',
-          'position.regex' => '日本語で入力してください。',
-          'position.summary' => '文字列で入力してください。',
-          'site.url' => 'URLの形式で入力してください。',
-          'recruitment.url' => 'URLの形式で入力してください。',
-        ];
-        $validator = Validator::make($input, $rules, $messages);
-        $validated = $validator->validate(); //元のページにリダイレクトしてくれる。
-        //=======================================================================
-
-
-        //セッションに書き込む
-        $request->session()->put("register3_input", $input);
-
-        return view('hr.auth.main.register4');
+      return view('hr.auth.main.register4',compact('prefecturesArray', 'selectionPhaseArray'));
     }
 
     public function post(Request $request)
     {
       $input = $request->all();
+
+      //== Validator処理 ======================================================
+      $rules = [
+        'position' => 'nullable|string|regex:/^[^\x01-\x7E\x{FF61}-\x{FF9F}]+$/u',
+        'summary' => 'nullable|string',
+        'site' => 'nullable|url',
+        'recruitment' => 'nullable|url',
+      ];
+      $messages = [
+        'position.string' => '文字列で入力してください。',
+        'position.regex' => '日本語で入力してください。',
+        'position.summary' => '文字列で入力してください。',
+        'site.url' => 'URLの形式で入力してください。',
+        'recruitment.url' => 'URLの形式で入力してください。',
+      ];
+      $validator = Validator::make($input, $rules, $messages);
+      $validated = $validator->validate(); //元のページにリダイレクトしてくれる。
+      //=======================================================================
 
       //セッションに書き込む
       $request->session()->put("register4_input", $input);
@@ -239,63 +257,87 @@ class RegisterController extends Controller
       $register3_input = $request->session()->get("register3_input");
       $register4_input = $request->session()->get("register4_input");
 
-      $gender = "男";
-      if($register_input['gender'] == 2){
-        $gender = '女';
+      if($register_input['plan'] == "面接官プラン"){
+        $gender = "男";
+        if($register2_input['gender'] == 2){
+          $gender = '女';
+        }
       }
 
       $location = "未入力";
-      if(!is_null($register2_input['location'])){
-        $location = $register2_input['location'];
+      if(!is_null($register3_input['location'])){
+        $location = $register3_input['location'];
       }
 
       $workplace = "未入力";
-      if(!is_null($register3_input['workplace'])){
-        $workplace = $register3_input['workplace'];
+      if(!is_null($register4_input['workplace'])){
+        $workplace = $register4_input['workplace'];
       }
 
       $summary = "未入力";
-      if(!is_null($register3_input['summary'])){
-        $summary = $register3_input['summary'];
+      if(!is_null($register4_input['summary'])){
+        $summary = $register4_input['summary'];
       }
 
       $site = "未入力";
-      if(!is_null($register3_input['site'])){
-        $site = $register3_input['site'];
+      if(!is_null($register4_input['site'])){
+        $site = $register4_input['site'];
       }
 
       $recruitment = "未入力";
-      if(!is_null($register3_input['recruitment'])){
-        $recruitment = $register3_input['recruitment'];
+      if(!is_null($register4_input['recruitment'])){
+        $recruitment = $register4_input['recruitment'];
+      }
+      if($register_input['plan'] == "面接官プラン"){
+        $face = '公開できない(モザイク加工をしてほしい)';
+        if($register4_input['face']== 1){
+          $face = '公開しても構わない';
+        }
       }
 
-      $face = '公開できない(モザイク加工をしてほしい)';
-      if($register3_input['face']== 1){
-        $face = '公開しても構わない';
+      if($register_input['plan'] == "面接官プラン"){
+        $confirmArray = [
+          '性別' => $gender,
+          '名前' => $register2_input['lastname']. ' '. $register2_input['firstname'],
+          'フリガナ' => $register2_input['kana_lastname']. ' '. $register2_input['kana_firstname'],
+          'ニックネーム' => $register2_input['nickname'],
+          '企業名' => $register3_input['company'],
+          '所属業界' => $register3_input['industry'],
+          '本社所在地' => $location,
+          '企業区分' => $register3_input['company_type'],
+          '上場区分' => $register3_input['stock_type'],
+          '担当選考フェーズ' => $register4_input['selection_phase'],
+          '面接時に顔を公開したくありませんか？' => $face,
+          '主な勤務地' => $workplace,
+          '事業概要' => $summary,
+          '企業ページURL' => $site,
+          '募集要項URL' => $recruitment,
+          'プラン' => $register_input['plan'],
+        ];
+      } else{
+        $confirmArray = [
+          '企業名' => $register3_input['company'],
+          '所属業界' => $register3_input['industry'],
+          '本社所在地' => $location,
+          '企業区分' => $register3_input['company_type'],
+          '上場区分' => $register3_input['stock_type'],
+          '主な勤務地' => $workplace,
+          '事業概要' => $summary,
+          '企業ページURL' => $site,
+          '募集要項URL' => $recruitment,
+          'プラン' => $register_input['plan'],
+        ];
       }
-
-      $confirmArray = [
-        '性別' => $gender,
-        '名前' => $register_input['lastname']. ' '. $register_input['firstname'],
-        'フリガナ' => $register_input['kana_lastname']. ' '. $register_input['kana_firstname'],
-        'ニックネーム' => $register_input['nickname'],
-        '企業名' => $register2_input['company'],
-        '所属業界' => $register2_input['industry'],
-        '本社所在地' => $location,
-        '企業区分' => $register2_input['company_type'],
-        '上場区分' => $register2_input['stock_type'],
-        '担当選考フェーズ' => $register3_input['selection_phase'],
-        '面接時に顔を公開したくありませんか？' => $face,
-        '主な勤務地' => $workplace,
-        '事業概要' => $summary,
-        '企業ページURL' => $site,
-        '募集要項URL' => $recruitment,
-        'プラン' => $register4_input['plan'],
-      ];
 
       //セッションに値が無い時はホームに戻る
-      if(!($register_input && $register2_input && $register3_input && $register4_input)){
-        return redirect()->route('home');
+      if(!($register_input && $register3_input && $register4_input)){
+        if($register_input['plan'] == "面接官プラン"){
+          return redirect()->route('home');
+        } else {
+          if(!($register2_input)){
+            return redirect()->route('home');
+          }
+        }
       }
       return view('hr.auth.main.register_comfirm', compact('confirmArray'));
     }
@@ -314,45 +356,55 @@ class RegisterController extends Controller
       }
 
       //セッションに値が無い時はフォームに戻る
-      if(!($register_input && $register2_input)){
-        return redirect()->route('home');
+      if($register_input['plan'] == "面接官プラン"){
+        if(!($register_input && $register2_input)){
+          return redirect()->route('home');
+        }
+      } else{
+        if(!($register_input)){
+          return redirect()->route('home');
+        }
       }
 
       //=====処理内容====================================
       $user = HrUser::where('email_verify_token', $register_input['email_verify_token'])->first();
-      $user->name = $register_input['lastname']. ' '. $register_input['firstname'];
-      $user->kana_name = $register_input['kana_lastname']. ' '. $register_input['kana_firstname'];
-      $user->nickname = $register_input['nickname'];
-      $user->gender = $register_input['gender'];
-      $user->company = $register2_input['company'];
-      $user->industry = $register2_input['industry'];
-      $user->company_type = $register2_input['company_type'];
-      $user->stock_type = $register2_input['stock_type'];
-      $user->selection_phase = $register3_input['selection_phase'];
-      $user->face = $register3_input['face'];
+      if($register_input['plan'] == "面接官プラン"){
+        $user->name = $register2_input['lastname']. ' '. $register2_input['firstname'];
+        $user->kana_name = $register2_input['kana_lastname']. ' '. $register2_input['kana_firstname'];
+        $user->nickname = $register2_input['nickname'];
+        $user->gender = $register2_input['gender'];
 
-      $user->status = config('const.USER_STATUS.UNAVAILABLE');
+        $user->selection_phase = $register4_input['selection_phase'];
+        $user->face = $register4_input['face'];
+      }
+      $user->company = $register3_input['company'];
+      $user->industry = $register3_input['industry'];
+      $user->company_type = $register3_input['company_type'];
+      $user->stock_type = $register3_input['stock_type'];
+      
 
-      if($register4_input['plan'] == 'オファープラン'){
+      $user->status = config('const.USER_STATUS.AVAILABLE');
+
+      if($register_input['plan'] == 'オファープラン'){
         $user->plan = "offer";
       } else{
         $user->plan = "hr";
       }
 
-      if(!is_null($register2_input['location'])){
-        $user->location = $register2_input['location'];
+      if(!is_null($register3_input['location'])){
+        $user->location = $register3_input['location'];
       }
-      if(!is_null($register3_input['workplace'])){
-        $user->workplace = $register3_input['workplace'];
+      if(!is_null($register4_input['workplace'])){
+        $user->workplace = $register4_input['workplace'];
       }
-      if(!is_null($register3_input['summary'])){
-        $user->summary = $register3_input['summary'];
+      if(!is_null($register4_input['summary'])){
+        $user->summary = $register4_input['summary'];
       }
-      if(!is_null($register3_input['recruitment'])){
-        $user->recruitment = $register3_input['recruitment'];
+      if(!is_null($register4_input['recruitment'])){
+        $user->recruitment = $register4_input['recruitment'];
       }
-      if(!is_null($register3_input['site'])){
-        $user->site = $register3_input['site'];
+      if(!is_null($register4_input['site'])){
+        $user->site = $register4_input['site'];
       }
 
       $user->save();

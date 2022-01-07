@@ -7,7 +7,7 @@ hrButton.style.color = '#FFFFFF';
 const offerButton = document.getElementById("offer");
 offerButton.style.color = '#555555';
 
-/*
+
 //description-titleクラスの値を引数に変更
 const changeString = ($class, $string) => {
   let elements = document.getElementsByClassName($class);
@@ -26,8 +26,8 @@ offerButton.onclick = () => {
   offerButton.style.color = '#FFFFFF';
 
   changeString('description-title', 'オファープラン');
-  changeString('description-content-1', '全国の学生の面接を無料でご覧いただけます。<br>ただし、面接採点機能（無料）を<br>ご利用いただく必要があります。');
-  changeString('description-content-2', '※3ヶ月以上面接採点機能のご利用がない場合、<br>自動的に面接動画が視聴不可となります。');
+  changeString('description-content-1', '全国の学生の採点付き面接コンテンツを無料でご覧いただけます。<br>さらに、気になった学生にはオファーをすることが可能です。');
+  changeString('description-content-2', '※成功報酬型（内定承諾時）の料金プランです。');
 
   planInput.value = "オファープラン";
 }
@@ -40,9 +40,8 @@ hrButton.onclick = () => {
   offerButton.style.color = '#555555';
 
   changeString('description-title', '面接官プラン');
-  changeString('description-content-1', '全国の学生の面接を無料でご覧いただけます。<br>ただし、面接採点機能（無料）を<br>ご利用いただく必要があります。');
-  changeString('description-content-2', '※3ヶ月以上面接採点機能のご利用がない場合、<br>自動的に面接動画が視聴不可となります。');
+  changeString('description-content-1', '面接官ユーザーとして面接図鑑に参画していただくプランです。<br>全国の学生の面接を無料でご覧いただけます。');
+  changeString('description-content-2', '※月額課金などは一切ございません。');
 
   planInput.value = "面接官プラン";
 }
-*/
