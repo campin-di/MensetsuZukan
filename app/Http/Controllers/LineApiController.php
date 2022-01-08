@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Log;
 
+use App\Common\ReturnUserInformationArrayClass;
+
 class LineApiController extends Controller
 {
     protected $access_token;
@@ -65,11 +67,28 @@ class LineApiController extends Controller
                     "質問10" => "一度通信が安定するまでお待ちいただき、通信環境が改善されましたら再開します。再開の目途が立たない場合は後日面接を再設定となりますので、できるだけ通信環境を整えてご参加ください。",
                 ];
 
+                $prefecturesArray = ReturnUserInformationArrayClass::returnPrefectures();
+                $birthplace = NULL;
+                foreach($prefecturesArray as $key => $prefectures){
+                    if(in_array($inputText, $prefectures)){
+                        $birthplace = $inputText;
+                        break;
+                    }
+                }
+
                 if(array_key_exists($inputText, $answerArray)){
                     $msgs = [
                         new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($answerArray[$inputText]),
                     ];
-                } else if($inputText == 'お問い合わせ'){
+                } else if(!is_null($birthplace)){
+                    $line_user_id = $request['events'][0]['source']['userId'];
+                    $userData = User::where('line_id', $line_user_id)->first();
+                    $userData->birthplace = $birthplace;
+                    $userData->save();
+                    $msgs = [
+                        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("ご回答ありがとうございます。".$emoticon),
+                    ];
+                }else if($inputText == 'お問い合わせ'){
                     $questionObject = [
                             "質問1"  => ["面接までの不安・質問", "顔・氏名など個人情報が公開されたくありません。", "https://cdni.iconscout.com/illustration/free/thumb/virtual-assistant-2130746-1793975.png"],
                             "質問2"  => ["面接までの不安・質問", "面接官の企業名は事前に知ることができますか？", "https://cdni.iconscout.com/illustration/free/thumb/concept-of-data-privacy-and-policy-2112520-1785599.png"],
@@ -96,14 +115,24 @@ class LineApiController extends Controller
                         $carousel_message,
                         new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("①上記以外の質問がしたい。\n②面接図鑑の利用中の不具合。\n③個別に相談したいことがある。\nこの３点に当てはまる方は、\nmensetsu-zukan@pampam.co.jp\nにメールをお送りください".$emoticon),
                     ];
-                /*
-                } 
-                else if($inputText == '私は体育会系の部活に所属していました。'){
+                }
+                else if($inputText == '私は体育会系です！'){
                     $line_user_id = $request['events'][0]['source']['userId'];
                     $userData = User::where('line_id', $line_user_id)->first();
-                    Log::info($userData->id);
+                    $userData->gymnasium = 0;
+                    $userData->save();
+                    $msgs = [
+                        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("ご回答ありがとうございます。".$emoticon),
+                    ];
 
-                */
+                } else if($inputText == '私は非体育会系です！'){
+                    $line_user_id = $request['events'][0]['source']['userId'];
+                    $userData = User::where('line_id', $line_user_id)->first();
+                    $userData->gymnasium = 1;
+                    $userData->save();
+                    $msgs = [
+                        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("ご回答ありがとうございます。".$emoticon),
+                    ];
                 } else {
                     $msgs = [
                         new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("メッセージありがとうございます。\n面接図鑑です".$emoticon),
