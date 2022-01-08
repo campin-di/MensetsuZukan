@@ -2,9 +2,10 @@
 <link rel="stylesheet" href="{{ asset('css/st/home.css') }}">
 @extends('layouts.st.common')
 @section('content')
-
+  <!--
   @include('components.parts.modal.interview_practice')
-
+  -->
+  @include('components.parts.modal.advertisement_sanyoushinbun')
   <div class="filter-wrapper flex">
     <div class="form-input-wrapper">
       <div class="form-input">

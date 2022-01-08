@@ -91,9 +91,27 @@
       </label>
         <div class="form-input flex">
           @if($plan == "面接官プラン")
-            <textarea id="summary" type="text" rows="8" class="form-control {{ $errors->has('summary') ? ' is-invalid' : '' }}" name="summary" value="{{ old('summary') }}" placeholder="事業概要を入力してください。"></textarea>
+            <textarea id="summary" type="text" rows="8" class="form-control {{ $errors->has('summary') ? ' is-invalid' : '' }}" name="summary" value="{{ old('summary') }}" placeholder=
+"例）PAMグループの各事業では、領域やソリューションに特化することにより専門性を追求し、高い営業力をもってサービス提供することでお客様の期待に応え続けています。BtoB、BtoCでの無形商材の営業経験を積むことでプロフェッショナル人材としての市場価値を高めてほしいと考えています。
+  目指すはNo1、Only1。その高みを目指して成長と変革を繰り返す会社です。一緒に未来を創り上げていきましょう。
+
+～広告マーケティング事業～
+Web制作、デザイン、広告、コンサルティングなど幅広いテーマに精通し、 クライアントの課題・ニーズに対して最善の解決策をご提供いたします。中でも金融業界においては、金融専門のマーケティングチームを有し、 「Fintech」に代表される最新の技術を開発・運用しており、 多数の取引実績、事例があります。
+
+～クリエイティブ制作事業～
+クリエイティブとテクノロジーで、「人」「お金」「地域」の課題解決に向き合います。Webサイト制作、動画制作、グラフィックデザイン、アプリ開発はもちろん、会社案内、採用ツール、パッケージ、地域活性、イベント企画など、課題に合わせて提案します。">
+</textarea>
           @else
-            <textarea id="summary" type="text" rows="8" class="form-control {{ $errors->has('summary') ? ' is-invalid' : '' }}" name="summary" value="{{ old('summary') }}" placeholder="事業概要を入力してください。" required></textarea>
+            <textarea id="summary" type="text" rows="8" class="form-control {{ $errors->has('summary') ? ' is-invalid' : '' }}" name="summary" value="{{ old('summary') }}" placeholder=
+"例）PAMグループの各事業では、領域やソリューションに特化することにより専門性を追求し、高い営業力をもってサービス提供することでお客様の期待に応え続けています。BtoB、BtoCでの無形商材の営業経験を積むことでプロフェッショナル人材としての市場価値を高めてほしいと考えています。
+  目指すはNo1、Only1。その高みを目指して成長と変革を繰り返す会社です。一緒に未来を創り上げていきましょう。
+
+～広告マーケティング事業～
+Web制作、デザイン、広告、コンサルティングなど幅広いテーマに精通し、 クライアントの課題・ニーズに対して最善の解決策をご提供いたします。中でも金融業界においては、金融専門のマーケティングチームを有し、 「Fintech」に代表される最新の技術を開発・運用しており、 多数の取引実績、事例があります。
+
+～クリエイティブ制作事業～
+クリエイティブとテクノロジーで、「人」「お金」「地域」の課題解決に向き合います。Webサイト制作、動画制作、グラフィックデザイン、アプリ開発はもちろん、会社案内、採用ツール、パッケージ、地域活性、イベント企画など、課題に合わせて提案します。">
+</textarea>
           @endif
           @if ($errors->has('summary'))
             <span class="invalid-feedback">
