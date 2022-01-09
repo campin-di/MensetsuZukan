@@ -376,6 +376,8 @@ class RegisterController extends Controller
 
         $user->selection_phase = $register4_input['selection_phase'];
         $user->face = $register4_input['face'];
+      } else{
+        $user->name = $register3_input['company'];
       }
       $user->company = $register3_input['company'];
       $user->industry = $register3_input['industry'];
