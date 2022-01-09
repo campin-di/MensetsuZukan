@@ -32,9 +32,11 @@
                 <a class="dropdown-item" href="{{ route('hr.offer.search') }}">
                     オファーする
                 </a>
-                <a class="dropdown-item" href="{{ route('hr.interview.request') }}">
-                    面接の申し込み確認
-                </a>
+                @if(Auth::guard('hr')->user()->plan != 'offer')
+                  <a class="dropdown-item" href="{{ route('hr.interview.request') }}">
+                      面接の申し込み確認
+                  </a>
+                @endif
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">

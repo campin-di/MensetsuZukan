@@ -15,6 +15,10 @@ class St_HrMypageController extends Controller
   {
     $userData = HrUser::find($id);
 
+    if($userData->plan == "offer"){
+      return view('st/hrpage/hrpage_offer', compact('userData'));
+    }
+
     $userDataArray = [
       'id' => $id,
       'status' => $userData->status,

@@ -28,6 +28,7 @@ class ChatController extends Controller
         //==========================================================================
 
         $userId = Auth::guard('hr')->id();
+        $userData = HrUser::find($userId);
 
         $chatsOffer = Offer::where('hr_id', $userId)->with('st_user:id,name,nickname,image_path,university')->get();
         $offerCollection = collect([]);
@@ -76,7 +77,11 @@ class ChatController extends Controller
             ]);
         }
 
-        return view('hr.chat.list', compact('offerCollection', 'chatCollection')); 
+        if($userData->plan == "hr"){
+            return view('hr.chat.list', compact('offerCollection', 'chatCollection')); 
+        } else{
+            return view('hr.chat.list_offer', compact('offerCollection', 'chatCollection')); 
+        }
     }
 
     public function chat($id, Request $request)

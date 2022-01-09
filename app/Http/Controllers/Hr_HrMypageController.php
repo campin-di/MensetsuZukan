@@ -12,6 +12,7 @@ use App\Models\Interview;
 use App\Models\InterviewRequest;
 
 use App\Common\VideoDisplayClass;
+use App\Common\RetOfferPlanClass;
 
 class Hr_HrMypageController extends Controller
 {
@@ -19,6 +20,10 @@ class Hr_HrMypageController extends Controller
   {
     $userId = Auth::guard('hr')->id();
     $userData = HrUser::find($userId);
+
+    if($userData->plan == "offer"){
+      return view('hr/mypage/mypage_offer', compact('userData'));
+    }
 
     $pastVideos = Video::where('hr_id', $userId)->where('type', 1)->get();
     $pastVideosCollection = VideoDisplayClass::VideoDisplay($pastVideos);
