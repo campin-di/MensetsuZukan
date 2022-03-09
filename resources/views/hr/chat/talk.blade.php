@@ -7,9 +7,11 @@
 
 <div class="page_title_wrapper">
     <div class="page_title">{{$stName}} ({{$stNickname}})</div>
-    <a href="{{ route('hr.interview.schedule.form', $id) }}" class="interview-reservation-wrapper">
-        <span>面接予約</span>
-    </a>
+    @if($plan == 'hr')
+        <a href="{{ route('hr.interview.schedule.form', $id) }}" class="interview-reservation-wrapper">
+            <span>面接予約</span>
+        </a>
+    @endif
 </div>
 
 <div id="chat">
@@ -41,7 +43,7 @@
     </div>
     <div class="line__message-wrapper">
         <div class="line__textarea">
-            <textarea v-model="message" placeholder="メッセージを入力"></textarea>       
+            <textarea v-model="message" placeholder="メッセージを入力（※絵文字を使うと送信できません）"></textarea>       
         </div>
         <div class="send-button-wrapper">
             <button type="button" @click="send()">

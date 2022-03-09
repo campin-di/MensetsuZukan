@@ -34,7 +34,7 @@
     </div>
     <div class="line__message-wrapper">
         <div class="line__textarea">
-            <textarea v-model="message" placeholder="メッセージを入力"></textarea>
+            <textarea v-model="message" placeholder="メッセージを入力（※絵文字を使うと送信できません）"></textarea>
         </div>
         <div class="send-button-wrapper">
             <button type="button" @click="send()">

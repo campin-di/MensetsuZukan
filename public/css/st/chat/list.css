@@ -64,6 +64,22 @@ input[name="tab_item"] {
   color: #fff;
 }
 /* === end: タブ切り替え部分 ==============================================*/
+
+.mark-discription{
+  display: flex;
+  font-size: 14px;
+  margin: -10px 5% 20px;
+}
+.mark-discription .slow-reply{
+  background: #555 !important;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  color: #FFF;
+  font-weight: 500;
+  font-size: 15px;
+}
+
 /* === begin: 各人事部分 =================================================*/
 .hr-profile-wrapper{
   margin: 30px auto;
@@ -110,6 +126,9 @@ input[name="tab_item"] {
   color: #FFF;
   font-weight: 500;
   font-size: 15px;
+}
+.slow-reply{
+  background: #555 !important;
 }
 
 .hr-photo{

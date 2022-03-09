@@ -19,6 +19,7 @@ class CreateOffersTable extends Migration
             $table->integer('st_id')->unsigned();
             $table->string('content');
             $table->string('message');
+            $table->integer('status')->comment('0:未返信, 1:承諾, 2:辞退, 3:見送り')->default(0);
             $table->timestamps();
         });
     }

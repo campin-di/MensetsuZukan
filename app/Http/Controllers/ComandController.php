@@ -84,7 +84,7 @@ class ComandController extends Controller
         $spreadsheet_id = '1N_IZkPLLnB-dcg4T8Qr5vSC46AGA-NsINPwLdJd1rCA';
         $contentsArray = $spreadsheet_service->spreadsheets_values->get($spreadsheet_id, '質問の区切れ!A2:F')["values"];
         $values = new \Google_Service_Sheets_ValueRange();
-        $a_month_ago = date("Y-m-d H:i:s",strtotime("-1 month"));
+        $a_month_ago = date("Y-m-d H:i:s",strtotime("-2 month"));
         $interviews = Interview::orderBy('date', 'asc')->where('created_at', '>', $a_month_ago)->where('available', -1)->with('hr_user:id,name,nickname')->with('st_user:id,name,nickname')->with('question1')->with('question2')->with('question3')->get();
         
         foreach($interviews as $interview){
