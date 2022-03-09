@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Common\RedirectClass;
 
 use Auth;
+use Carbon\Carbon;
 
 use App\Models\User;
 use App\Models\HrUser;
@@ -30,11 +31,25 @@ class ChatController extends Controller
         $userId = Auth::guard('hr')->id();
         $userData = HrUser::find($userId);
 
-        $chatsOffer = Offer::where('hr_id', $userId)->with('st_user:id,name,nickname,image_path,university')->get();
+        // 面接官プランの時
+        if($userData->plan == 'hr'){
+            list($offerCollection, $chatCollection) = $this->hrCollection($userId);
+            return view('hr.chat.list', compact('offerCollection', 'chatCollection')); 
+        }
+
+        // オファープランの時
+        list($offerCollection, $rejectOfferCollection) = $this->offerCollection($userId);
+        return view('hr.chat.list_offer', compact('offerCollection', 'rejectOfferCollection')); 
+    }
+
+    //面接官プラン用のコレクションを返す関数
+    public function hrCollection($hrId)
+    {
+        $chatsOffer = Offer::where('hr_id', $hrId)->with('st_user:id,name,nickname,image_path,university')->get();
         $offerCollection = collect([]);
         foreach($chatsOffer as $chat){
-            $latestMessage = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
-            $unread_message_num = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->where('sender', 0)->where('unread', 1)->count();
+            $latestMessage = Message::where('hr_id', $hrId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
+            $unread_message_num = Message::where('hr_id', $hrId)->where('st_id', $chat->st_user->id)->where('sender', 0)->where('unread', 1)->count();
             
             if(empty($latestMessage)){
                 $body = "まだメッセージがありません。";
@@ -53,12 +68,13 @@ class ChatController extends Controller
                 ],
             ]);
         }
+        $offerCollection = $offerCollection->sortByDesc('unread');
         
-        $chats = InterviewRequest::where('status', 1)->where('hr_id', $userId)->with('st_user:id,name,nickname,image_path,university')->get();
+        $chats = InterviewRequest::where('status', 1)->where('hr_id', $hrId)->with('st_user:id,name,nickname,image_path,university')->get();
         $chatCollection = collect([]);
         foreach ($chats as $chat) {
-            $latestMessage = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
-            $unread_message_num = Message::where('hr_id', $userId)->where('st_id', $chat->st_user->id)->where('sender', 0)->where('unread', 1)->count();
+            $latestMessage = Message::where('hr_id', $hrId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
+            $unread_message_num = Message::where('hr_id', $hrId)->where('st_id', $chat->st_user->id)->where('sender', 0)->where('unread', 1)->count();
             if(empty($latestMessage)){
                 $body = "まだメッセージがありません。";
             }else{
@@ -76,12 +92,75 @@ class ChatController extends Controller
                 ],
             ]);
         }
+        $chatCollection = $chatCollection->sortByDesc('unread');
 
-        if($userData->plan == "hr"){
-            return view('hr.chat.list', compact('offerCollection', 'chatCollection')); 
-        } else{
-            return view('hr.chat.list_offer', compact('offerCollection', 'chatCollection')); 
+        return [$offerCollection, $chatCollection];
+    }
+
+    //オファープラン用のコレクションを返す関数
+    public function offerCollection($hrId)
+    {
+        $offer = Offer::where('hr_id', $hrId)->whereIn('status', [0, 1])->with('st_user:id,name,nickname,image_path,university')->get();
+        $offerCollection = collect([]);
+        foreach($offer as $chat){
+            $latestMessage = Message::where('hr_id', $hrId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
+            $unread_message_num = Message::where('hr_id', $hrId)->where('st_id', $chat->st_user->id)->where('sender', 0)->where('unread', 1)->count();
+            $slowReply = FALSE;
+
+            if(empty($latestMessage)){
+                $body = "まだメッセージがありません。";
+            }else{
+                $body = $latestMessage->body;
+                if($latestMessage->created_at < Carbon::now()->subWeek(1)){
+                    $slowReply = TRUE;
+                }
+            }
+            $offerCollection = $offerCollection->concat([
+                [
+                    'id' => $chat->st_user->id,
+                    'name' => $chat->st_user->name,
+                    'nickname' => $chat->st_user->nickname,
+                    'university' => $chat->st_user->university,
+                    'imagePath' => $chat->st_user->image_path,
+                    'latestMessage' => $body,
+                    'slowReply' => $slowReply,
+                    'unread' => $unread_message_num,
+                ],
+            ]);
         }
+        $offerCollection = $offerCollection->sortByDesc('unread')->sortBy('slowReply');
+
+        $rejectOffer = Offer::where('hr_id', $hrId)->whereIn('status', [2, 3])->with('st_user:id,name,nickname,image_path,university')->get();
+        $rejectOfferCollection = collect([]);
+        foreach($rejectOffer as $chat){
+            $latestMessage = Message::where('hr_id', $hrId)->where('st_id', $chat->st_user->id)->orderBy('id', 'desc')->first();
+            $unread_message_num = Message::where('hr_id', $hrId)->where('st_id', $chat->st_user->id)->where('sender', 0)->where('unread', 1)->count();
+            $slowReply = FALSE;
+
+            if(empty($latestMessage)){
+                $body = "まだメッセージがありません。";
+            }else{
+                $body = $latestMessage->body;
+                if($latestMessage->created_at < Carbon::now()->subWeek(1)){
+                    $slowReply = TRUE;
+                }
+            }
+            $rejectOfferCollection = $rejectOfferCollection->concat([
+                [
+                    'id' => $chat->st_user->id,
+                    'name' => $chat->st_user->name,
+                    'nickname' => $chat->st_user->nickname,
+                    'university' => $chat->st_user->university,
+                    'imagePath' => $chat->st_user->image_path,
+                    'latestMessage' => $body,
+                    'slowReply' => $slowReply,
+                    'unread' => $unread_message_num,
+                ],
+            ]);
+        }
+        $rejectOfferCollection = $rejectOfferCollection->sortByDesc('unread')->sortBy('slowReply');
+
+        return [$offerCollection, $rejectOfferCollection];
     }
 
     public function chat($id, Request $request)
@@ -105,7 +184,9 @@ class ChatController extends Controller
         }
 
         $hrId = Auth::guard('hr')->id();
-        $hrImgPath = HrUser::find($hrId)->image_path;
+        $hrData = HrUser::find($hrId);
+        $plan = $hrData->plan;
+        $hrImgPath = $hrData->image_path;
 
         $st = User::find($id);
         $stName = $st->name;
@@ -118,6 +199,6 @@ class ChatController extends Controller
             $unread_message->save();
         }
 
-        return view('hr.chat.talk', compact('id', 'spFlag', 'stName', 'stNickname', 'stImgPath', 'hrImgPath')); 
+        return view('hr.chat.talk', compact('id', 'plan', 'spFlag', 'stName', 'stNickname', 'stImgPath', 'hrImgPath')); 
     }
 }
