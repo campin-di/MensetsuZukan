@@ -850,7 +850,7 @@ img{
   }
   
   .features-content-wrapper{
-    margin: 25px 0px;
+    margin: 25px 10px;
     padding: 20px;
     transition: .5s;
   }
@@ -878,6 +878,10 @@ img{
 　　-ms-flex-order:1;
 　　-webkit-order:1;
     order: 1;
+  }
+
+  .features-content .right-child img{
+    width: 100%;
   }
 
   /* === end: "デジマ面接図鑑の特徴" 部分 =================================================*/
