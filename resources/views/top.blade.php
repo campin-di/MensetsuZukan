@@ -4,7 +4,7 @@
   <div class="firstview-content">
     <div class="flex-pc">
       <div class="left-child-pc">
-        <img class="firstview-logo" src="{{ asset('/img/logo/logo_white.png') }}" alt="ロゴ">
+        <img class="firstview-logo" src="{{ asset('/img/logo/logo_white.png') }}" alt="デジマ面接図鑑">
         <div class='arrow_box'>ネット広告・デジタルマーケティング業界で働く</div>
         <P class="firstview-main-msg">
           現役人事と模擬面接！<br>
@@ -51,9 +51,26 @@
 
 <div class="features-wrapper">
   <h1>面接図鑑の特徴</h1>
-  <div class="flex-pc">
+  <div class="flex-pc-feature">
     <div class="features-content-wrapper hover-action">
       <span>01</span>
+      <h2 class="font-gradient">ネット広告・デジタルマーケティング業界特価型！</h2>
+      <div class="features-content flex">
+        <div class="features-content-description left-child">
+          デジマ業界ではどんなポイントが<br>
+          見られているの？<br>
+          業界ならではの選定基準が<br>
+          知りたい！<br>
+          現役社員からのフィードバックを<br>
+          参考に面接無双！<br>
+        </div>
+        <div class="right-child">
+          <img src="{{ asset('/img/top/illustration/digital-marketing-click.svg') }}" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="features-content-wrapper hover-action">
+      <span>02</span>
       <h2 class="font-gradient">全ての面接が見放題！</h2>
       <div class="features-content flex">
         <div class="features-content-description left-child">
@@ -70,7 +87,7 @@
       </div>
     </div>
     <div class="features-content-wrapper hover-action">
-      <span>02</span>
+      <span>03</span>
       <h2 class="font-gradient">現役人事による採点！</h2>
       <div class="features-content flex">
         <div class="features-content-description left-child">
@@ -87,7 +104,7 @@
       </div>
     </div>
     <div class="features-content-wrapper hover-action">
-      <span>03</span>
+      <span>04</span>
       <h2 class="font-gradient">企業からのオファー！</h2>
       <div class="features-content flex">
         <div class="features-content-description left-child">
