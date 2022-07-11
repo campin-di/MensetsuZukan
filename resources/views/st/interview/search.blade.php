@@ -7,6 +7,7 @@
 
 <div class="container">
   <div class="filter-wrapper flex">
+    <?php /* ?>
     <div class="form-input-wrapper">
       <label for="industry" class="form-title">業界</label>
       <div class="form-input">
@@ -18,6 +19,7 @@
         </select>
       </div>
     </div>
+    <?php */ ?>
     <div class="form-input-wrapper">
       <label for="prefecture" class="form-title">所在地</label>
       <div class="form-input">
@@ -58,10 +60,12 @@
       </div>
     </div>
     <div class="company-information-wrapper flex">
+    <?php /* ?>
       <div class="company-industry">
         <img class="icon" src="{{ asset('/img/icon/industry.png') }}" alt="アイコン">
         <span class="company-information">{{ $hr['industry'] }}</span>
       </div>
+    <?php */ ?>
       <div class="company-location">
         <img class="icon" src="{{ asset('/img/icon/location.png') }}" alt="アイコン">
         <span>{{ $hr['location'] }}</span>

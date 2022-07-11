@@ -30,7 +30,7 @@ const displayElement = ($industry, $prefecture, $stockType) => {
   });
 }
 
-let industrySelect = document.getElementById('industry');
+// let industrySelect = document.getElementById('industry');
 let prefectureSelect = document.getElementById('prefecture');
 let stockTypeSelect = document.getElementById('stockType');
 
@@ -38,7 +38,8 @@ let stockTypeSelect = document.getElementById('stockType');
 const onchange = () => {
   displayNoneElement();
 
-  let industry = industrySelect.value.trim();
+  // let industry = industrySelect.value.trim();
+  let industry = '全業界';
   let prefecture = prefectureSelect.value.trim();
   let stockType = stockTypeSelect.value.trim();
 
@@ -58,9 +59,9 @@ const onchange = () => {
   displayElement(industry, prefecture, stockType);
 }
 
-document.getElementById('industry').onchange = function(){
-  onchange();
-}
+// document.getElementById('industry').onchange = function(){
+//   onchange();
+// }
 document.getElementById('prefecture').onchange = function(){
   onchange();
 }
