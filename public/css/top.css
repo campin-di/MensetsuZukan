@@ -58,8 +58,8 @@ img{
 }
 
 .firstview-logo{
-  width: 200px;
-  margin: 25px 0 0 0;
+
+  margin: 25px 0 25px 0;
 }
 
 .firstview-content p{
@@ -70,7 +70,7 @@ img{
 
 .firstview-main-msg{
   font-size: 22px;
-  margin: 30px 0 10px;
+  margin: 10px 0 10px;
   padding-bottom: 15px;
   border-bottom: solid 1px #FFF;
   font-weight: 600 !important;
@@ -765,7 +765,7 @@ img{
     background-repeat: no-repeat;
     margin: -5px calc(50% - 50vw);
     width: 100vw;
-    height: 65vh;
+    height: 80vh;
     padding: 100px 10vw 0;
   }
   .features-content-wrapper::after {
@@ -786,7 +786,6 @@ img{
   }
 
   .firstview-logo{
-    width: 300px;
   }
 
   .firstview-main-msg {
@@ -1184,12 +1183,11 @@ img{
 
 .arrow_box{
   position:relative;
-  width:474px;
-  height:32px;
+  max-width: 550px;
   background:#ffffff;
   text-align:center;
   color:#7FB9FC;
-  font-size:20px;
+  font-size:24px;
   font-weight:bold;
   border-radius:40px;
   -webkit-border-radius:40px;
