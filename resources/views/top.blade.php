@@ -5,6 +5,7 @@
     <div class="flex-pc">
       <div class="left-child-pc">
         <img class="firstview-logo" src="{{ asset('/img/logo/logo_white.png') }}" alt="ロゴ">
+        <div class='arrow_box'>ネット広告・デジタルマーケティング業界で働く</div>
         <P class="firstview-main-msg">
           現役人事と模擬面接！<br>
           就活生の面接が見放題！
