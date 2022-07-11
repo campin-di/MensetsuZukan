@@ -251,6 +251,10 @@ img{
 .features-content{
   margin: 25px auto 10px;
 }
+
+.features-content .right-child img{
+  width: 100%;
+}
 /* === end: "デジマ面接図鑑の特徴" 部分 =================================================*/
 
 /* === begin: "サービス概要" 部分 =================================================*/
@@ -878,10 +882,6 @@ img{
 　　-ms-flex-order:1;
 　　-webkit-order:1;
     order: 1;
-  }
-
-  .features-content .right-child img{
-    width: 100%;
   }
 
   /* === end: "デジマ面接図鑑の特徴" 部分 =================================================*/
