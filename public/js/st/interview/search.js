@@ -18,13 +18,13 @@ const displayAllElement = () => {
 //selectで選択した値に該当するコンテンツを表示
 const displayElement = ($industry, $prefecture, $stockType) => {
   elements.forEach(element => {
-    if(element.children[0].innerText.trim() !== $industry && $industry !== 'null'){
+    // if(element.children[0].innerText.trim() !== $industry && $industry !== 'null'){
+    //   element.closest(".hr-profile-wrapper").style.display = "none";
+    // }
+    if(element.children[0].innerText.trim() !== $prefecture && $prefecture !== 'null'){
       element.closest(".hr-profile-wrapper").style.display = "none";
     }
-    if(element.children[1].innerText.trim() !== $prefecture && $prefecture !== 'null'){
-      element.closest(".hr-profile-wrapper").style.display = "none";
-    }
-    if(element.children[2].innerText.trim() !== $stockType && $stockType !== 'null'){
+    if(element.children[1].innerText.trim() !== $stockType && $stockType !== 'null'){
       element.closest(".hr-profile-wrapper").style.display = "none";
     }
   });
