@@ -205,7 +205,7 @@ img{
 
 .features-content-wrapper{
   position: relative;
-  width: 48%;
+  width: 90%;
   margin: 20px auto;
   padding: 20px 5%;
   box-shadow: 0 0 6px #CCC;
@@ -292,7 +292,7 @@ img{
   margin-bottom: 10px;
 }
 .outline-logo img{
-  width: 125px;
+  width: 300px;
 }
 .outline-description{
   font-size: 18px;
@@ -854,6 +854,7 @@ img{
   }
   
   .features-content-wrapper{
+    width: 48%;
     margin: 25px 10px;
     padding: 20px;
     transition: .5s;
