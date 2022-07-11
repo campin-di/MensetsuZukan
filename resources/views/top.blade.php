@@ -50,8 +50,8 @@
 </div>
 
 <div class="features-wrapper">
-  <h1>面接図鑑の特徴</h1>
-  <div class="flex-pc-feature">
+  <h1>デジマ面接図鑑の特徴</h1>
+  <div class="flex-pc">
     <div class="features-content-wrapper hover-action">
       <span>01</span>
       <h2 class="font-gradient">ネット広告・デジタルマーケティング業界特価型！</h2>
@@ -129,7 +129,7 @@
     <img class="outline-logo" src="{{ asset('/img/logo/logo_white.png') }}" alt="ロゴ">
   </div>
   <div class="outline-description">
-    面接図鑑 は「面接って楽しい」を、<br>
+    デジマ面接図鑑 は「面接って楽しい」を、<br>
     スタンダードにしていくサービスです。
   </div>
   <div class="outline-achievement-wrapper">
@@ -145,7 +145,7 @@
     </div>
     <span class="outline-achievement-comment">※β版実績</span>
   </div>
-  <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/568076489?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="面接図鑑 サービス紹介動画"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+  <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/568076489?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="デジマ面接図鑑 サービス紹介動画"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
   <img class="outline-under-background" src="{{ asset('/img/top/outline-bottom.png') }}" alt="サービス概要下部の背景画像">
 </div>
 
@@ -308,9 +308,9 @@
     <h1>コンテンツはどんな感じ？</h1>
   </div>
   <div class="outline-description contents-detail">
-    面接図鑑には全国の就活生が行った<br>面接動画が公開されています。
+    デジマ面接図鑑には全国の就活生が行った<br>面接動画が公開されています。
   </div>
-  <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/581707645?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="面接図鑑 サービス紹介動画"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+  <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/581707645?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="デジマ面接図鑑 サービス紹介動画"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
   <img class="outline-under-background" src="{{ asset('/img/top/outline-bottom.png') }}" alt="サービス概要下部の背景画像">
 </div>
 

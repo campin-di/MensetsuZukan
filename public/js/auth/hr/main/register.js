@@ -40,7 +40,7 @@ hrButton.onclick = () => {
   offerButton.style.color = '#555555';
 
   changeString('description-title', '面接官プラン');
-  changeString('description-content-1', '面接官ユーザーとして面接図鑑に参画していただくプランです。<br>全国の学生の面接を無料でご覧いただけます。');
+  changeString('description-content-1', '面接官ユーザーとしてデジマ面接図鑑に参画していただくプランです。<br>全国の学生の面接を無料でご覧いただけます。');
   changeString('description-content-2', '※月額課金などは一切ございません。');
 
   planInput.value = "面接官プラン";

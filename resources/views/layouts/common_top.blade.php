@@ -11,22 +11,22 @@
     </script>
     
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>面接図鑑｜就活生の面接が見放題！</title>
-    <meta name="description" content="面接図鑑は、実際の人事と面接を行うことで、面接力をどんどんアップデートできるサービスです。さらに全国の就活生の面接も得点＆アドバイス付きで見放題！">
+    <title>デジマ面接図鑑｜就活生の面接が見放題！</title>
+    <meta name="description" content="デジマ面接図鑑は、実際の人事と面接を行うことで、面接力をどんどんアップデートできるサービスです。さらに全国の就活生の面接も得点＆アドバイス付きで見放題！">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="Cache-Control" content="no-cache">
     
     <!-- begin:ODP -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="面接図鑑|トップページ">
-    <meta property="og:site_name" content="面接図鑑">
+    <meta property="og:title" content="デジマ面接図鑑|トップページ">
+    <meta property="og:site_name" content="デジマ面接図鑑">
     <meta property="og:url" content="https://mensetsu-zukan.online/">
     <!-- end:ODP -->
 
     <!-- begin:Twitter ODP -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@mensetsuZukan" />
-    <meta name="twitter:title" content="面接図鑑" />
+    <meta name="twitter:title" content="デジマ面接図鑑" />
     <meta name="twitter:description" content="全国の就活生の面接を分析＆模擬面接で面接力をアップさせよう！" />
     <meta name="twitter:image" content="{{ asset('/img/top/Twitter.jpg') }}" />
     <!-- end:Twitter ODP -->

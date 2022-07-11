@@ -101,7 +101,7 @@ class NotificationController extends Controller
         // ビルダーにメッセージをすべて追加
         $imageUrl = "https://pbs.twimg.com/media/FCDZgdFVcAAsyzd?format=jpg&name=large";
         $msgs = [
-            new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st->nickname."さん！\n面接図鑑をご利用いただきありがとうございます。\n\nこの度、利用者数＆Twitterフォロワー300人突破を記念して、Amazonギフト券・スタバドリンクチケットがもらえるキャンペーンを開始します！\n\n詳細は下記ポスターよりご確認ください！"),
+            new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($st->nickname."さん！\nデジマ面接図鑑をご利用いただきありがとうございます。\n\nこの度、利用者数＆Twitterフォロワー300人突破を記念して、Amazonギフト券・スタバドリンクチケットがもらえるキャンペーンを開始します！\n\n詳細は下記ポスターよりご確認ください！"),
             new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder($imageUrl, $imageUrl),
         ];
         foreach($msgs as $value){

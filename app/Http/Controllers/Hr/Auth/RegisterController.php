@@ -84,7 +84,7 @@ class RegisterController extends Controller
 
       Mail::send('hr.auth.email.pre_register', ['token' => $user['email_verify_token'] ], function ($message) use ($data){
         $message->subject('仮登録が完了しました');
-        $message->from('mensetsu_zukan@example.com', '面接図鑑');
+        $message->from('mensetsu_zukan@example.com', 'デジマ面接図鑑');
         $message->to($data['email']);
       });
 

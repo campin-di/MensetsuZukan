@@ -260,12 +260,12 @@ class Hr_ScheduleController extends Controller
     if($flag == 1){
       $msgs = [
           new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('面接リクエストが承認されました！'),
-          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('トーク画面右下の「マイページ」より面接図鑑にログインし、「面接予定」から面接に関する詳細情報をご確認ください。'),
+          new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('トーク画面右下の「マイページ」よりデジマ面接図鑑にログインし、「面接予定」から面接に関する詳細情報をご確認ください。'),
       ];
     } else {
       $msgs = [
         new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('リクエストしていただいた候補日と面接官の予定が合わなかったため、面接リクエストが却下されました。'),
-        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('トーク画面右下の「マイページ」より面接図鑑にログインし、「現役人事と面接練習！」から別の日程で面接リクエストを送信してください！'),
+        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('トーク画面右下の「マイページ」よりデジマ面接図鑑にログインし、「現役人事と面接練習！」から別の日程で面接リクエストを送信してください！'),
       ];
     }
     foreach($msgs as $value){

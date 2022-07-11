@@ -113,7 +113,7 @@ class LineApiController extends Controller
 
                     $msgs = [
                         $carousel_message,
-                        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("①上記以外の質問がしたい。\n②面接図鑑の利用中の不具合。\n③個別に相談したいことがある。\nこの３点に当てはまる方は、\nmensetsu-zukan@pampam.co.jp\nにメールをお送りください".$emoticon),
+                        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("①上記以外の質問がしたい。\n②デジマ面接図鑑の利用中の不具合。\n③個別に相談したいことがある。\nこの３点に当てはまる方は、\nmensetsu-zukan@pampam.co.jp\nにメールをお送りください".$emoticon),
                     ];
                 }
                 else if($inputText == '私は体育会系です！'){
@@ -135,7 +135,7 @@ class LineApiController extends Controller
                     ];
                 } else {
                     $msgs = [
-                        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("メッセージありがとうございます。\n面接図鑑です".$emoticon),
+                        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("メッセージありがとうございます。\nデジマ面接図鑑です".$emoticon),
                         new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('お問い合わせ or よくある質問を知りたい方は、トーク画面下部の「お問い合わせ」をクリックしてください！'),
                     ];
                 }

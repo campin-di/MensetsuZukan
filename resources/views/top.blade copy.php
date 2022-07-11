@@ -44,7 +44,7 @@
 </div>
 
 <div class="features-wrapper">
-  <h1>面接図鑑の特徴</h1>
+  <h1>デジマ面接図鑑の特徴</h1>
   <div class="flex-pc">
     <div class="features-content-wrapper hover-action">
       <span>01</span>
@@ -110,7 +110,7 @@
     <h1>サービス概要</h1>
   </div>
   <div class="outline-description">
-    面接図鑑 は「面接って楽しい」を、<br>
+    デジマ面接図鑑 は「面接って楽しい」を、<br>
     スタンダードにしていくサービスです。
   </div>
   <div class="outline-achievement-wrapper">

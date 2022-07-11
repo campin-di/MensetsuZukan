@@ -6,9 +6,9 @@ const supplementArray = ['知人/運営からの紹介', '所属組織/団体', 
 channel.onchange = function(){
   if(supplementArray.includes(channel.value)){
     if(channel.value == '知人/運営からの紹介'){
-      inputSupplement.placeholder = '例：吉田裕哉';
+      inputSupplement.placeholder = '例：田中太郎';
     }else if(channel.value == '所属組織/団体'){
-      inputSupplement.placeholder = '例：面接図鑑キャリア';
+      inputSupplement.placeholder = '例：デジマ面接図鑑キャリア';
     }else{
       inputSupplement.placeholder = '例：ネット検索・広告';
     }

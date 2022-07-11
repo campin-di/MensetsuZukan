@@ -22,7 +22,7 @@
         <div class="card">
           <div class="title"><span class="description-title">面接官プラン</span>とは？</div>
           <p class="description-content-1">
-          面接官ユーザーとして面接図鑑に参画していただくプランです。<br>
+          面接官ユーザーとしてデジマ面接図鑑に参画していただくプランです。<br>
           全国の学生の面接を無料でご覧いただけます。<br>
           </p>
           <p class="description-content-2">

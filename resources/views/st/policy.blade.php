@@ -8,9 +8,9 @@
         <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" />
         <label class="tab-label" for="TAB-01"><h1>利用規約</h1></label>
         <div class="tab-content">
-          <h2>第1条：（面接図鑑）</h2>
+          <h2>第1条：（デジマ面接図鑑）</h2>
           <ol type="1" class="list-box">
-            <li>｢面接図鑑｣とは、株式会社ぱむ（以下「当社」という）が提供するインターネット上における面接採点及び面接シェアサービス（以下「本アプリ」という）をいいます。なお、本アプリに付随するメール配信、コミュニティなどの就職支援サービス、他本アプリ会員を対象とした各種サービス（以下総称して「本サービス」という）を提供致します。</li>
+            <li>｢デジマ面接図鑑｣とは、株式会社ぱむ（以下「当社」という）が提供するインターネット上における面接採点及び面接シェアサービス（以下「本アプリ」という）をいいます。なお、本アプリに付随するメール配信、コミュニティなどの就職支援サービス、他本アプリ会員を対象とした各種サービス（以下総称して「本サービス」という）を提供致します。</li>
           </ol>
 
           <h2>第2条：（会員）</h2>
@@ -178,7 +178,7 @@
 
         <h2>＜本方針に関するお問合せ先＞</h2>
 
-        面接図鑑 運営事務局 
+        デジマ面接図鑑 運営事務局 
         <div class="email-box">
         mensetsu-zukan@pampam.co.jp
         </div>
@@ -187,7 +187,7 @@
         <input id="TAB-03" type="radio" name="TAB" class="tab-switch" />
         <label class="tab-label" for="TAB-03"><h1>お問い合わせ</h1></label>
         <div class="tab-content">
-          ＜ 面接図鑑 運営事務局 ＞ 
+          ＜ デジマ面接図鑑 運営事務局 ＞ 
           <div class="email-box">
           mensetsu-zukan@pampam.co.jp
           </div>

@@ -109,7 +109,7 @@
             </span>
           @endif
         </div>
-        <input id="supplement" type="text" class="form-control {{ $errors->has('supplement') ? ' is-invalid' : '' }}" name="supplement" value="{{ old('supplement') }}" placeholder="例：吉田裕哉">
+        <input id="supplement" type="text" class="form-control {{ $errors->has('supplement') ? ' is-invalid' : '' }}" name="supplement" value="{{ old('supplement') }}" placeholder="例：田中　太郎">
       </div>
 
       <input type="hidden" name="email_verify_token" value="{{ $email_token }}" required>

@@ -187,7 +187,7 @@ class ScheduleController extends Controller
     // ビルダーにメッセージをすべて追加
     $msgs = [
         new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('面接日程が決定しました！'),
-        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('トーク画面右下の「マイページ」より面接図鑑にログインし、「面接予定」から面接の詳細情報をご確認ください。'),
+        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('トーク画面右下の「マイページ」よりデジマ面接図鑑にログインし、「面接予定」から面接の詳細情報をご確認ください。'),
     ];
     foreach($msgs as $value){
       $builder->add($value);

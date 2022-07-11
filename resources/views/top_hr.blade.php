@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="firstview-register-wrapper">
-      <span class="firstview-register-upper">面接図鑑について詳しく知りたい方は</span>
+      <span class="firstview-register-upper">デジマ面接図鑑について詳しく知りたい方は</span>
       <a href="#contact">
         <div class="firstview-register-button updown-btn">
           お問い合わせ
@@ -48,7 +48,7 @@
 </div>
 
 <div class="features-wrapper">
-  <h1>面接図鑑の特徴</h1>
+  <h1>デジマ面接図鑑の特徴</h1>
   <div class="flex-pc">
     <div class="features-content-wrapper hover-action">
       <span>01</span>
@@ -108,7 +108,7 @@
     <img class="outline-logo" src="{{ asset('/img/logo/logo_white.png') }}" alt="ロゴ">
   </div>
   <div class="outline-description">
-    面接図鑑 は「面接って楽しい」を、<br>
+    デジマ面接図鑑 は「面接って楽しい」を、<br>
     スタンダードにしていくサービスです。
   </div>
   <div class="outline-achievement-wrapper">
@@ -124,7 +124,7 @@
     </div>
     <span class="outline-achievement-comment">※β版実績</span>
   </div>
-  <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/568076489?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="面接図鑑 サービス紹介動画"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+  <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/568076489?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="デジマ面接図鑑 サービス紹介動画"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
   <img class="outline-under-background" src="{{ asset('/img/top/outline-bottom.png') }}" alt="サービス概要下部の背景画像">
 </div>
 

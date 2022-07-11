@@ -10,7 +10,7 @@
           <img src="../img/unavailable/line-auth.svg" alt="LINEを連携しているイラスト">
         </div>
         <div class="description">
-          面接図鑑ではLINE連携が<b>必須</b>となりました。<br>
+          デジマ面接図鑑ではLINE連携が<b>必須</b>となりました。<br>
           オファー通知などは公式LINEから行われます。<br>
           「LINE連携」よりLINEと連携してください。<br>
         </div>

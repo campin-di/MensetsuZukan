@@ -127,7 +127,7 @@ class Hr_OfferController extends Controller
     // ビルダーにメッセージをすべて追加
     $msgs = [
         new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($hr->company. 'からオファーがありました！'),
-        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('面接図鑑にログインし、「メッセージ」からオファー内容に返信してください。'),
+        new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('デジマ面接図鑑にログインし、「メッセージ」からオファー内容に返信してください。'),
     ];
     foreach($msgs as $value){
       $builder->add($value);

@@ -15,7 +15,7 @@
     @hasSection('description')
       <meta name="description" itemprop="description" content="@yield('description')">
     @else
-      <meta name="description" itemprop="description" content="面接図鑑|就活生の面接が見放題！">
+      <meta name="description" itemprop="description" content="デジマ面接図鑑|就活生の面接が見放題！">
     @endif
     <meta name="viewport" content="width=device-width,user-scalable=no">
     
@@ -35,7 +35,7 @@
     <!-- begin:Twitter ODP -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@mensetsuZukan" />
-    <meta name="twitter:title" content="面接図鑑" />
+    <meta name="twitter:title" content="デジマ面接図鑑" />
     <meta name="twitter:description" content="全国の就活生の面接を分析＆模擬面接で面接力をアップさせよう！" />
     <meta name="twitter:image" content="{{ asset('/img/top/Twitter.jpg') }}" />
     <!-- end:Twitter ODP -->

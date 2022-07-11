@@ -12,7 +12,7 @@
   <br>
   ================<br>
   【発行元】<br>
-  面接図鑑 運営<br>
+  デジマ面接図鑑 運営<br>
   <br>
   【お問い合わせ用メールアドレス】<br>
   mensetsuzukan@pampam.co.jp<br>

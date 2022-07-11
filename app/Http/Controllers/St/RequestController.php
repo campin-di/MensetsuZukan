@@ -73,7 +73,7 @@ class RequestController extends Controller
             Mail::send('st/interview/request/mail/reservation', ['hr' => $hr, 'st' => $st],
                 function ($message) use ($hr, $st){
                     $message->subject($st->nickname. 'さんから面接リクエストがありました！');
-                    $message->from('mensetsuzukan@pampam.co.jp', '面接図鑑');
+                    $message->from('mensetsuzukan@pampam.co.jp', 'デジマ面接図鑑');
                     $message->to($hr->email);
                 }
             );

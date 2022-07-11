@@ -71,7 +71,7 @@ class ChatController extends Controller
         // ビルダーにメッセージをすべて追加
         $msgs = [
             new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($hr->nickname.'さんから新着メッセージを受信しました！'),
-            new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('トーク画面下「マイページ」より面接図鑑にログインし、「メッセージ」からご確認ください。'),
+            new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('トーク画面下「マイページ」よりデジマ面接図鑑にログインし、「メッセージ」からご確認ください。'),
         ];
         foreach($msgs as $value){
             $builder->add($value);

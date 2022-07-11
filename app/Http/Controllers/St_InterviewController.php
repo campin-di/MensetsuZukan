@@ -80,7 +80,7 @@ class St_InterviewController extends Controller
     Mail::send('st/interview/schedule/mail/cancel', ['mailDateArray' => $mailDateArray, 'hr' => $hr, 'st' => $st],
       function ($message) use ($hr, $st){
         $message->subject($st->name. 'さんとの面接がキャンセルされました。');
-        $message->from('mensetsuzukan@pampam.co.jp', '面接図鑑');
+        $message->from('mensetsuzukan@pampam.co.jp', 'デジマ面接図鑑');
         $message->to($hr->email);
       }
     );

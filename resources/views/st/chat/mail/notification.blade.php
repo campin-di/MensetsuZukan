@@ -3,7 +3,7 @@
     {{ $st->nickname }}さんから新着メッセージがありました。
   </div>
   <br>
-  下記URLから面接図鑑にログインいただき、メッセージをご確認ください。<br>
+  下記URLからデジマ面接図鑑にログインいただき、メッセージをご確認ください。<br>
   <br>
   https://localhost/hr/interview/chat/list
   <br>
@@ -11,7 +11,7 @@
   <br>
   ================<br>
   【発行元】<br>
-  面接図鑑 運営<br>
+  デジマ面接図鑑 運営<br>
   <br>
   【お問い合わせ用メールアドレス】<br>
   mensetsuzukan@pampam.co.jp<br>

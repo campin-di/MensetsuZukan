@@ -19,9 +19,9 @@ class HrUsersTableSeeder extends Seeder
         [
           'email' => 'yuu.yoshi12@outlook.jp',
           'password' => Hash::make('password'),
-          'name' => '吉田 裕哉',
-          'kana_name' => 'ヨシダ ユウヤ',
-          'nickname' => 'ヨッシー',
+          'name' => '出井　愛',
+          'kana_name' => 'デイ　アイ',
+          'nickname' => 'アイ',
           'gender' => 1,
           'plan' => 'hr',
           'company' => '株式会社ぱむ',
