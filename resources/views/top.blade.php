@@ -159,8 +159,7 @@
     </div>
     <div class="contributor-content-wrapper flex">
       <div class="contributor-content-description left-child">
-        業界を指定し、<br>
-        人事を検索可能。<br>
+        所在地、企業区分から人事を検索可能。<br>
         人事マイページを参照して、<br>
         面接をしたい人事を選択し、<br>
         日程を調整する。<br>
