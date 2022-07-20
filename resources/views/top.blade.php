@@ -163,7 +163,6 @@
         人事マイページを参照して、<br>
         面接をしたい人事を選択し、<br>
         日程を調整する。<br>
-        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child">
         <img src="{{ asset('/img/top/illustration/calendar-rafiki.svg') }}" alt="日程調整">
@@ -184,7 +183,6 @@
         質問への深掘りが行われ、<br>
         終了後は質問ごとに<br>
         採点･フィｰドバックがある。<br>
-        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child flex-reverse-2">
       <img src="{{ asset('/img/top/illustration/Interview-pana.svg') }}" alt="面接＆フィードバック">
@@ -205,7 +203,6 @@
         モザイク処理で個人が<br>
         特定できない状態に<br>
         加工した動画が公開される。<br>
-        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child">
         <img src="{{ asset('/img/top/illustration/upload-pana.svg') }}" alt="動画のアップロード">
@@ -226,7 +223,6 @@
         最低でも一次面接免除が<br>
         確約された特別フローで<br>
         選考に招待される。<br>
-        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child flex-reverse-2">
         <img src="{{ asset('/img/top/illustration/messages-rafiki.svg') }}" alt="特別オファー">
@@ -250,7 +246,6 @@
         面接での頻出質問を網羅。<br>
         その中から自分が<br>
         気になった質問を検索できる。<br>
-        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child">
         <img src="{{ asset('/img/top/illustration/select-amico.svg') }}" alt="質問の検索">
@@ -271,7 +266,6 @@
         オンライン面接における<br>
         間のとり方や適切な言葉遣い<br>
         などを学ぶことができる。<br>
-        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child flex-reverse-2">
         <img src="{{ asset('/img/top/illustration/files-amico.svg') }}" alt="動画の選択・視聴">
@@ -291,7 +285,6 @@
         どのように答えたら、<br>
         人事に良い評価をもらえるか<br>
         知ることができる。<br>
-        <a href="https://storyset.com/work" style="color: #EEE;font-size: 10px;">Work illustrations by Storyset</a>
       </div>
       <div class="right-child">
       <img src="{{ asset('/img/top/illustration/survey-amico.svg') }}" alt="採点・フィードバック">
