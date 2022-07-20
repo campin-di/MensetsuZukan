@@ -1198,7 +1198,8 @@ img{
   background:#ffffff;
   text-align:center;
   color:#7FB9FC;
-  font-size:24px;
+  font-size:20px;
+  padding:10px 24px;
   font-weight:bold;
   border-radius:40px;
   -webkit-border-radius:40px;
