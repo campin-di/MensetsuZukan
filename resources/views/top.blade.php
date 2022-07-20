@@ -17,7 +17,7 @@
         </p>
       </div>
       <div class="right-child-pc">
-        <img class="firstview-pc-img" src="{{ asset('/img/top/firstview-pc.svg') }}" alt="PCイラスト">
+        <img class="firstview-pc-img" src="{{ asset('/img/top/firstview-pc.svg') }}" alt="">
       </div>
     </div>
     <div class="firstview-register-wrapper">

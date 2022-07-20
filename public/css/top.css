@@ -780,7 +780,7 @@ img{
   .firstview-pc-img{
     width: 100%;
     max-width: 600px;
-    margin-top: -50px !important;
+    margin-top: 50px !important;
   }
 
   .firstview-content .left-child-pc{
