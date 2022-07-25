@@ -54,7 +54,7 @@
   <div class="flex-pc">
     <div class="features-content-wrapper hover-action">
       <span>01</span>
-      <h2 class="font-gradient">ネット広告・デジタルマーケティング業界特価型！</h2>
+      <h2 class="font-gradient">ネット広告・デジタル<br class="br-sp">マーケティング業界特価型！</h2>
       <div class="features-content flex">
         <div class="features-content-description left-child">
           デジマ業界ではどんなポイントが<br>
