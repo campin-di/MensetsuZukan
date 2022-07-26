@@ -1,6 +1,6 @@
 <footer>
 	<a class="footer-logo" href="{{ url('/') }}">
-		<img src="{{ asset('/img/logo/logo_origin.png') }}" alt="ロゴ">
+		<img src="{{ asset('/img/logo/logo_gradation.svg') }}" alt="ロゴ">
 	</a>
 	<ul class="footer-nav">
     <li><a href="{{ route('policy') }}">お問い合わせ</a></li>
