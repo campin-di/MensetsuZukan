@@ -230,7 +230,7 @@ class St_ScheduleController extends Controller
       Mail::send('st/interview/schedule/mail/reservation', ['mailDateArray' => $mailDateArray, 'hr' => $hr, 'st' => $st],
         function ($message) use ($hr, $st){
           $message->subject($st->nickname. 'さんから面接リクエストがありました！');
-          $message->from('mensetsuzukan@pampam.co.jp', 'デジマ面接図鑑');
+          $message->from('mensetsu-zukan@digitalidentity.co.jp', 'デジマ面接図鑑');
           $message->to($hr->email);
         }
       );

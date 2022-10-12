@@ -76,7 +76,7 @@ class Hr_InterviewController extends Controller
     Mail::send('hr/interview/cancel/mail/cancel', ['mailDateArray' => $mailDateArray, 'hr' => $hr, 'st' => $st],
       function ($message) use ($hr, $st){
         $message->subject($st->nickname. 'さんとの面接がキャンセルされました。');
-        $message->from('mensetsuzukan@pampam.co.jp', 'デジマ面接図鑑');
+        $message->from('mensetsu-zukan@digitalidentity.co.jp', 'デジマ面接図鑑');
         $message->to($hr->email);
       }
     );

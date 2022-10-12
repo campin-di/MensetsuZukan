@@ -42,7 +42,7 @@ class ChatController extends Controller
         Mail::send('st/chat/mail/notification', ['hr' => $hr, 'st' => $st],
             function ($mail) use ($hr, $st){
                 $mail->subject($st->nickname. 'さんからの新着メッセージ');
-                $mail->from('mensetsuzukan@pampam.co.jp', 'デジマ面接図鑑');
+                $mail->from('mensetsu-zukan@digitalidentity.co.jp', 'デジマ面接図鑑');
                 $mail->to($hr->email);
             }
         );

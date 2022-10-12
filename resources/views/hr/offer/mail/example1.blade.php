@@ -40,7 +40,7 @@
   デジマ面接図鑑 運営<br>
   <br>
   【お問い合わせ用メールアドレス】<br>
-  mensetsuzukan@pampam.co.jp<br>
+  mensetsu-zukan@digitalidentity.co.jp<br>
   本メールに掲載された内容を許可なく転載することを禁じます。<br>
   ================<br>
 </div>
