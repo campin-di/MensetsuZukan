@@ -1,0 +1,94 @@
+/* === begin: リクエスト通知部分 =================================================*/
+.pc{
+  display: none;
+}
+.popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: .6s;
+}
+.popup.is-show {
+  opacity: 1;
+  visibility: visible;
+}
+.popup-inner {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 85%;
+  max-width: 400px;
+  padding: 50px 20px;
+  background-color: #fff;
+  z-index: 2;
+  border-radius: 15px;
+}
+.popup-inner h2{
+  font-size: 1.2rem;
+}
+.popup-inner img {
+  width: 60%;
+}
+.popup-inner p {
+  font-size: 14px;
+  width: 95%;
+  margin: 15px auto 0px;
+  text-align: left;
+}
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.close-btn::before {
+  content: '×';
+  font-size: 35px;
+}
+.black-background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.8);
+  z-index: 1;
+  cursor: pointer;
+}
+
+@media screen and (min-width:1025px) {
+  .sp{
+    display: none;
+  }
+  .pc{
+    display: block;
+  }
+  .popup-inner {
+    padding: 50px;
+    width: 80%;
+    max-width: 600px;
+  }
+  .popup-inner h2{
+    font-size: 1.8rem;
+  }
+  .popup-inner p {
+    width: 80%;
+    font-size: 16px;
+    margin: auto;
+  }
+}
+  /* === end: リクエスト通知部分 =================================================*/
+  
+  

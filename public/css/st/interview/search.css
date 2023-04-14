@@ -1,0 +1,163 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #FFFFFF;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: タグ部分 =================================================*/
+.filter-wrapper{
+  justify-content: space-between;
+  margin: 30px;
+}
+
+.form-input-wrapper{
+  width: 30%;
+}
+.form-input-wrapper select{
+  border-radius: 30px;
+}
+.form-input-wrapper label{
+  margin-left: 15px;
+}
+/* === end: タグ部分 =================================================*/
+
+/* === begin: 各人事部分 =================================================*/
+.hr-profile-wrapper{
+  margin: 30px auto;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #CCC;
+}
+
+.hr-profile-wrapper .flex{
+  align-items: center;
+  margin: 15px auto 10px;
+}
+
+.hr-profile-wrapper .right-child{
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.hr-photo{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #9681FF;
+}
+
+.company-information-wrapper div{
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.icon{
+  width: 20px;
+}
+
+.pr-message{
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.hr-mypage{
+  font-size: 14px;
+}
+.hr-mypage::before{
+  content: '>>';
+}
+
+/* === start: 面接リクエストない場合 部分 =================================================*/
+.none-block{
+  width: 90%;
+  margin: auto;
+}
+.none-block h1{
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #9681FF;
+}
+
+.none-img{
+  width: 60%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.description{
+  font-size: 14px;;
+}
+
+/* === end: 面接リクエストない場合 部分 =================================================*/
+
+/* === end: 各人事部分 =================================================*/
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none;
+  }
+  .pc{
+    display: block !important;
+  }
+
+  .form-input-wrapper label {
+      font-size: 20px;
+  }
+  .form-input-wrapper select {
+      font-size: 18px;
+  }
+
+  .hr-profile-wrapper .right-child {
+    margin-left: 20px;
+    font-size: 24px;
+  }
+
+  .hr-photo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .company-information-wrapper div {
+    margin-right: 30px;
+    font-size: 18px;
+  }
+
+  .pr-message {
+    margin-top: 15px;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .hr-mypage{
+    font-size: 14px;
+  }
+
+  /* === start: 面接リクエストない場合 部分 =================================================*/
+  .none-block h1{
+    font-size: 22px;
+    margin: 50px auto;
+  }
+
+  .none-img{
+    width: 50%;
+  }
+
+  .description{
+    width: 70%;
+    margin: auto;
+    font-size: 16px;
+  }
+
+  /* === end: 面接リクエストない場合 部分 =================================================*/
+
+}

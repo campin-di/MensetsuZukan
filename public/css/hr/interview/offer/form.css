@@ -1,0 +1,163 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #FFFFFF;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content{
+  padding: 25px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === begin: 学生プロフィール部分 =================================================*/
+.st-information-wrapper{
+  text-align: center;
+}
+
+.st-profile-img img{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 3px solid #7CC4FF;
+  border-radius: 50%;
+}
+
+.st-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px auto 0;
+}
+
+.st-company{
+  font-size: 14px;
+}
+
+.st-pr{
+  margin: 25px auto;
+}
+/* === end: 人事プロフィール部分 =================================================*/
+
+/* === begin: 内容 部分 =================================================*/
+.offer-wrapper form{
+  text-align: center;
+}
+
+.content-title h2{
+  font-size: 18px;
+  font-weight: bold;
+  margin: 50px auto 20px;
+}
+
+.content-offer-wrapper{
+  margin: 50px auto;
+}
+
+.content-offer{
+  margin: 20px 0;
+  text-align: center;
+}
+.content-offer select{
+  width: 90%;
+  height: 50px;
+  border-radius: 30px;
+  border: 2px solid #D5E3FF;
+  padding: 0 20px;
+}
+
+.content-msg textarea {
+  width: 95%;
+  height: 180px;
+  padding: 20px 10px;
+  border: 1px solid #BCE0FD;
+  text-align: center;
+}
+
+.button-wrapper{
+  margin: 45px auto 20px;
+  text-align: center;
+}
+.button-wrapper button{
+  width: 80%;
+  border-radius: 5px;
+  font-weight: bold;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+  font-size: 18px;
+  color: #FFF;
+}
+/* === end: 内容 部分 =================================================*/
+
+
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none;
+  }
+  .pc{
+    display: block !important;
+  }
+
+  .top-content h1{
+    font-size: 32px;
+  }
+
+  /* === begin: 人事プロフィール部分 =================================================*/
+  .st-information-wrapper{
+    margin: 25px auto 50px;
+  }
+
+  .st-profile-img img {
+      width: 150px;
+      height: 150px;
+  }
+
+  .st-name {
+    font-size: 28px;
+  }
+
+  .st-company{
+    font-size: 18px;
+  }
+  /* === end: 人事プロフィール部分 =================================================*/
+
+  .offer-wrapper{
+    width: 60% !important;
+  }
+
+  .content-offer{
+    font-size: 18px;
+  }
+
+  .content-title h2 {
+    font-size: 24px;
+  }
+
+  .content-msg textarea{
+    padding: 20px 5%;
+  }
+
+
+  .button-wrapper{
+    margin-top: 50px;
+  }
+
+
+}

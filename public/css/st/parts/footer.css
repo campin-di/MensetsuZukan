@@ -1,0 +1,68 @@
+footer {
+  background-color: #F3F3F3;
+  position: relative;
+  z-index: 1000;
+  text-align: center;
+  padding-top: 25px;
+}
+footer ul{
+  margin: 0;
+  padding: 0;
+}
+
+.footer-logo img{
+  width: 150px;
+}
+
+.footer-nav{
+  margin: 25px auto;
+}
+.footer-nav li{
+  list-style: none;
+  margin: 5px auto;
+}
+.footer-nav li a{
+  color: #333;
+}
+
+.copyright{
+  padding: 5px 0;
+    background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+.copyright p{
+  font-size: 12px;
+  color: #FFF;
+}
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  footer{
+    background: #FFF;
+  }
+
+  .footer-logo img{
+    width: 200px;
+  }
+
+  .footer-nav{
+    margin: 25px auto 5px;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .copyright{
+    padding: 5px 0;
+    background: #FFF;
+    font-weight: 500;
+    width: 100vw;
+    margin-left: calc(((100vw - 100%) / 2) * -1);
+    margin-right: calc(((100vw - 100%) / 2) * -1);
+    overflow-x: hidden;
+  }
+  .copyright p{
+    line-height: 3;
+    color: #9681FF;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,254 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #FFFFFF;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content{
+  padding: 25px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === begin: 学生プロフィール部分 =================================================*/
+.st-information-wrapper{
+  text-align: center;
+}
+
+.st-profile-img img{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 3px solid #7CC4FF;
+  border-radius: 50%;
+}
+
+.st-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px auto 0;
+}
+
+.st-company{
+  font-size: 14px;
+}
+
+.st-pr{
+  margin: 25px auto;
+}
+/* === end: 人事プロフィール部分 =================================================*/
+
+/* === begin: 内容 部分 =================================================*/
+.content-wrapper{
+  width: 90% !important;
+}
+
+.content{
+  margin-bottom: 20px;
+}
+
+.content-title{
+  margin-bottom: 10px;
+}
+.content-title h2{
+  font-size: 18px;
+  color: #6B8BE9;
+  font-weight: bold;
+}
+
+.date{
+  font-size: 18px;
+}
+
+.zoom{
+  margin-left: -20px;
+}
+.zoom li{
+  margin-bottom: 3px;
+}
+
+
+.button-wrapper{
+  margin: 0px auto 20px;
+  text-align: center;
+}
+.button-wrapper button{
+  width: 80%;
+  border-radius: 5px;
+  font-weight: bold;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+  font-size: 18px;
+  transition: .3s;
+  color: #FFF;
+}
+.button-wrapper a{
+  color: #FFF;
+}
+.button-wrapper button:hover {
+  transform: translateY(-0.1875em);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+}
+
+.button-wrapper-unavailable{
+  text-align: center;
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 5px;
+  background: #AAA;
+  border: none;
+  line-height: 2.8;
+}
+.button-wrapper-unavailable span{
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFF;
+}
+
+.edit button{
+  background: #FFF;
+  border: 2px solid #D5E3FF;
+}
+.edit button a{
+    color: #555;
+}
+.dl button{
+  background: rgba(150, 129, 255, 0.6);
+  opacity: 0.8;
+}
+.uppest{
+  margin-top: 50px !important;
+}
+/* === end: 内容 部分 =================================================*/
+
+.cancel{
+  text-align: center;
+}
+
+/* === begin: 注意事項 部分 =================================================*/
+.attention-wrapper{
+  margin: 50px auto;
+  padding: 20px 10px;
+  border: 8px solid #EEEEEE;
+}
+.attention-wrapper h2{
+  text-align: center;
+  font-size: 20px;
+  font-weight:bold;
+  margin-bottom: 20px;
+}
+
+.attention{
+  list-style: none;
+  margin-left: -20px;
+}
+.attention li::before{
+  content: "※";
+  margin-left: -1em;
+}
+.attention li{
+  margin-bottom: 3px;
+  font-size: 14px;
+}
+
+/* === end: 注意事項 部分 =================================================*/
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none;
+  }
+  .pc{
+    display: block !important;
+  }
+
+  .top-content h1{
+    font-size: 32px;
+  }
+
+  .content-wrapper{
+    width: 70% !important;
+    margin-bottom: 100px;
+  }
+
+  .content {
+    margin: 0 auto 40px 10%;
+  }
+
+  .content-title h2{
+    font-size: 24px;
+  }
+
+  .date{
+    font-size: 20px;
+  }
+
+  .zoom li {
+    font-size: 18px;
+  }
+
+  .content-description{
+    font-size: 18px;
+  }
+
+  /* === begin: 人事プロフィール部分 =================================================*/
+  .st-information-wrapper{
+    margin: 25px auto 50px;
+  }
+
+  .st-profile-img img {
+      width: 150px;
+      height: 150px;
+  }
+
+  .st-name {
+    font-size: 28px;
+  }
+
+  .st-company{
+    font-size: 20px;
+  }
+  /* === end: 人事プロフィール部分 =================================================*/
+
+  .uppest{
+    margin-top: 100px !important;
+  }
+
+  .button-wrapper{
+    margin-top: 20px;
+  }
+
+    /* === begin: 注意事項 部分 =================================================*/
+    .attention-wrapper {
+      width: 100%;
+      margin: 50px auto;
+      padding: 20px 5%;
+    }
+    .attention-wrapper h2 {
+      font-size: 28px;
+      text-align: center;
+    }
+  
+    .attention li {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    /* === end: 注意事項 部分 =================================================*/
+
+}

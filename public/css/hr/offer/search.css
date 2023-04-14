@@ -1,0 +1,258 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #FFFFFF;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: タグ部分 =================================================*/
+.filter-wrapper{
+  justify-content: space-between;
+  border: solid 1px #CCCCCC;
+}
+
+.filter-wrapper form .flex{
+  margin: 25px 15px 0;
+  justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.form-input-wrapper{
+  width: 30%;
+  margin-bottom: 10px;
+}
+.form-input-wrapper select{
+  border-radius: 30px;
+}
+
+.transition-button{
+  margin-top: 50px;
+  text-align: center;
+}
+.transition-button button{
+  width: 90%;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+  transition: .2s;
+}
+/* === end: タグ部分 =================================================*/
+
+/* === begin: 各人事部分 =================================================*/
+.st-profile-wrapper{
+  margin: 30px auto;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #CCC;
+}
+
+.st-profile-wrapper .flex{
+  align-items: center;
+  margin: 15px auto 10px 0px;
+}
+
+.st-profile-wrapper .right-child{
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.st-photo{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #7CC4FF;
+}
+
+.university_name{
+  font-size: 12px;
+  color: #333;
+  font-weight: 500;
+}
+
+.interview_flag_wrapper{
+  width: 30%;
+  text-align: center;
+}
+.interview_flag{
+  margin: auto;
+  background-color: #EEE;
+  width: 100%;
+  font-size: 14px;
+  border-radius: 40px;
+  padding: 5px 0px;
+}
+
+.hr_profile_under_wrapper{
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.offer_button_wrapper{
+  width: 80%;
+  text-align: center;
+  margin: 20px 0 -10px;
+}
+.offer_button_wrapper a{
+  background: linear-gradient(to right,#7CC4FF, #9681FF);
+  color: #FFFFFF;
+  padding: 10px 40px;
+  font-weight: 500;
+}
+
+.company-information-wrapper div{
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.icon{
+  width: 20px;
+}
+
+.pr-message{
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.st-mypage{
+  font-size: 14px;
+}
+.st-mypage::before{
+  content: '▶︎ ';
+}
+
+/* === start: 面接リクエストない場合 部分 =================================================*/
+.none-block{
+  width: 90%;
+  margin: auto;
+}
+.none-block h1{
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #9681FF;
+}
+
+.none-img{
+  width: 60%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.description{
+  font-size: 14px;;
+}
+
+/* === end: 面接リクエストない場合 部分 =================================================*/
+
+/* === end: 各人事部分 =================================================*/
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none;
+  }
+  .pc{
+    display: block !important;
+  }
+
+  .form-input-wrapper label {
+      font-size: 16px;
+  }
+  .form-input-wrapper select {
+      font-size: 14px;
+  }
+
+  .transition-button{
+    width: 250px;
+    margin: 25px auto;
+  }
+  .transition-button span{
+    font-size: 16px;
+  }
+  .transition-button button:hover {
+    transform: translateY(-0.1875em);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+    background: linear-gradient(to right, #7CC4FF, #7F66FF);
+  }
+
+  .st-profile-wrapper .right-child {
+    margin-left: 20px;
+    font-size: 20px;
+  }
+
+  .interview_flag_wrapper{
+    width: 25%;
+  }
+  .interview_flag{
+    width: 70%;
+    font-size: 16px;
+  }
+
+  .hr_profile_under_wrapper{
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: row;
+  }
+
+  .offer_button_wrapper{
+    width: 25%;
+    text-align: center;
+    margin: 0;
+  }
+  .offer_button_wrapper a{
+    background: linear-gradient(to right,#7CC4FF, #9681FF);
+    color: #FFFFFF;
+    padding: 12px 50px;
+    font-weight: 500;
+  }
+
+  .st-photo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .company-information-wrapper div {
+    margin-right: 30px;
+    font-size: 14px;
+  }
+
+  .pr-message {
+    margin-top: 15px;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .st-mypage{
+    font-size: 14px;
+  }
+
+  /* === start: 面接リクエストない場合 部分 =================================================*/
+  .none-block h1{
+    font-size: 22px;
+    margin: 50px auto;
+  }
+
+  .none-img{
+    width: 50%;
+  }
+
+  .description{
+    width: 70%;
+    margin: auto;
+    font-size: 16px;
+  }
+
+  /* === end: 面接リクエストない場合 部分 =================================================*/
+}

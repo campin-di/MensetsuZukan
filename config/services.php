@@ -30,4 +30,23 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'stripe' => [
+        'model' => App\User::class,
+        'key' => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+        'webhook' => [
+            'secret' => env('STRIPE_WEBHOOK_SECRET'),
+            'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
+        ],
+        'plans' => [
+            env('STRIPE_BASIC_ID') => '視聴者プラン（１ヶ月契約）',
+            env('STRIPE_PREMIUM_ID') => '視聴者プラン（３ヶ月契約）'
+        ]
+    ],
+
+    'line' => [
+        'client_id' => env('LINE_CLIENT_ID'),
+        'client_secret' => env('LINE_CLIENT_SECRET'),
+        'redirect' => env('LINE_REDIRECT_URI')
+    ]
 ];

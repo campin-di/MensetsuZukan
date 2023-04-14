@@ -11,10 +11,20 @@
         "php": "^7.3|^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "google/apiclient": "^2.0",
+        "guzzlehttp/guzzle": "7.2",
+        "intervention/image": "^2.6",
+        "laracasts/utilities": "^3.2",
+        "laravel/cashier": "^13.1",
         "laravel/framework": "^8.12",
+        "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "2.*"
+        "laravel/ui": "3.*",
+        "lcobucci/jwt": "3.2.5",
+        "linecorp/line-bot-sdk": "^7.1",
+        "pusher/pusher-php-server": "^7.0",
+        "socialiteproviders/line": "^4.1",
+        "stripe/stripe-php": "^7.85"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -40,7 +50,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "classmap":[
+          "app/Common"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

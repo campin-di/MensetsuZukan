@@ -1,0 +1,945 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #FFFFFF;
+}
+
+@font-face{
+  font-family:'digital';
+  src: url('../../img/digital-7.ttf');
+ }
+
+ .digital{
+  font-family: 'digital', sans-serif;
+ }
+/* === end: 共通部分 =================================================*/
+
+/* === begin: オファーボタン 部分(人事のみ) =================================================*/
+.fixed-button{
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  z-index: 999;
+  text-align: center;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.fixed-button a{
+  height: 50px;
+  list-style: none;
+  line-height: 3;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.bottom-button-left{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.bottom-button-right{
+  background: linear-gradient(to right, #FEAA92, #FF96AD);
+}
+/* === end: オファーボタン 部分(人事のみ) =================================================*/
+
+/*=== begin: iframe要素のアスペクト比を保ったまま可変の大きさにする方法 ========*/
+.video-iframe {
+    position: relative;
+    width: 100%;
+}
+.video-iframe:before {
+    content:"";
+    display: block;
+    padding-top: 56.25%;
+}
+.video-iframe iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100%;
+}
+
+.video-iframe-under::before {
+  content: "";
+  color: rgb(0, 173, 239);
+  padding: 0px 6px;
+  margin: 0 5px;
+  border: 5px solid #FFF;
+  background: rgb(0, 173, 239);
+  border-radius: 50%;
+}
+.video-iframe-under {
+  font-size: 12px;
+  text-align: center;
+  color: #FFF;
+  padding: 5px 0;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+/*=== end ========*/
+
+.video-title{
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px auto;
+}
+
+.video-view-good-wrapper{
+  font-size: 14px;
+  justify-content: space-between;
+}
+
+.other-question-wrapper{
+  margin: 15px auto;
+  display: flex;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.other-question-wrapper div{
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.other-question-selected{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  color: #FFF;
+}
+
+.other-question{
+  background-color: #D5E3FF;
+}
+
+.video-user-score-wrapper{
+  justify-content: space-between;
+  align-items: center;
+}
+.video-user-score-wrapper .right-child{
+  color: #FFF;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 2.5;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  background-color: #E6B422;
+  border-radius: 5px;
+}
+
+.video-st-user{
+  font-size: 16px;
+}
+/* === end: 再生動画 部分 =================================================*/
+
+.public{
+  color: #7CC4FF;
+}
+
+/* === begin: 学生・人事タイプ 部分 =================================================*/
+.type-wrapper{
+  margin: 0 auto;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.type-child{
+  border-radius: 8px;
+  border: solid 2px #e6e6e6;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+.type{
+  list-style: none;
+  padding-left: 10px;
+}
+
+/* === end: 学生・人事タイプ 部分 =================================================*/
+.profile{
+  text-align: center;
+}
+.profile img{
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.profile a{
+  color: #606060;
+  align-items: center;
+}
+.profile a:hover{
+  color: #030303;
+}
+.profile .nickname{
+  font-size: 18px;
+  margin: 5px auto 15px;
+}
+
+.profile-st-user{
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+.profile-st-user img{
+  border: 2px solid #7CC4FF;
+}
+.profile-hr-user img{
+  border: 2px solid #9681FF;
+}
+
+.profile-comment img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+/* === begin: 面接採点DX 部分 =================================================*/
+.score{
+  display: flex;
+  flex-direction: column;
+}
+.each-score{
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto 5px;
+  align-items: center;
+}
+.each-score::before{
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border: 1px solid;
+  border-radius: 50%;
+  margin: auto -30px auto 0px;
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+}
+.score-value{
+  font-size: 24px;
+  margin-left: -20px;
+}
+.score-value .count-up{
+  display: inline-block;
+  text-align: right;
+}
+.score-unit{
+  font-size: 14px;
+}
+
+.score-basic{
+  border-bottom: 2px solid #13CA91;
+  color: #13CA91; 
+  text-shadow:0px 1px 1px #E7FCF6,0px 0px 1px #E7FCF6,1px 0px 1px #E7FCF6,0px -1px 1px #E7FCF6,-1px -1px 1px #E7FCF6,-1px 0px 1px #E7FCF6;
+}
+.score-basic::before{
+  background-image: url(../../img/icon/basic.svg);
+  border-color: #13CA91;
+}
+
+.score-logic{
+  border-bottom: 2px solid #75D5FD;
+  color: #75D5FD; 
+  text-shadow:0px 1px 1px #E8F8FC,0px 0px 1px #E8F8FC,1px 0px 1px #E8F8FC,0px -1px 1px #E8F8FC,-1px -1px 1px #E8F8FC,-1px 0px 1px #E8F8FC;
+}
+.score-logic::before{
+  background-image: url(../../img/icon/logical.svg);
+  border-color: #75D5FD;
+}
+
+.score-expression{
+  border-bottom: 2px solid #FE53BB;
+  color: #FE53BB; 
+  text-shadow:0px 1px 1px #FEE5F5,0px 0px 1px #FEE5F5,1px 0px 1px #FEE5F5,0px -1px 1px #FEE5F5,-1px -1px 1px #FEE5F5,-1px 0px 1px #FEE5F5;
+}
+.score-expression::before{
+  background-image: url(../../img/icon/expression.svg);
+  border-color: #FE53BB;
+}
+
+.score-creative{
+  border-bottom: 2px solid #B76CFD;
+  color: #B76CFD; 
+  text-shadow:0px 1px 1px #F2E5FE,0px 0px 1px #F2E5FE,1px 0px 1px #F2E5FE,0px -1px 1px #F2E5FE,-1px -1px 1px #F2E5FE,-1px 0px 1px #F2E5FE;
+}
+.score-creative::before{
+  background-image: url(../../img/icon/creative.svg);
+  border-color: #B76CFD;
+}
+
+.score-vitality{
+  border-bottom: 2px solid #F5D300;
+  color: #F5D300; 
+  text-shadow:0px 1px 1px #FFFBE5,0px 0px 1px #FFFBE5,1px 0px 1px #FFFBE5,0px -1px 1px #FFFBE5,-1px -1px 1px #FFFBE5,-1px 0px 1px #FFFBE5;
+}
+.score-vitality::before{
+  background-image: url(../../img/icon/vitality.svg);
+  border-color: #F5D300;
+}
+
+.total-score-wrapper{
+  text-align: center;
+  color: #FFF;
+  margin: 15px auto;
+  padding: 15px 30px;
+  border: 1px solid #EEE;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #7CC4FF, #9681FF);
+  text-shadow:0px 1px 1px #CBCBCB,0px 0px 1px #CBCBCB,1px 0px 1px #CBCBCB,0px -1px 1px #CBCBCB,-1px -1px 1px #CBCBCB,-1px 0px 1px #CBCBCB; 
+}
+
+.total-score-title{
+  font-size: 16px;
+  margin-top: 5px;
+}
+.total-score{
+  font-size: 100px;
+  margin: -35px auto -50px;
+  width: 120px;
+}
+.total-score::before{
+  box-sizing: initial;
+}
+.total-score::after{
+  box-sizing: initial;
+}
+.total-score-under{
+  font-size: 24px;
+}
+.total-score-under .count-up{
+  font-size: 24px;
+}
+
+.child_1{
+  order: 2;
+}
+.child_2{
+  order: 1;
+}
+
+.fix-width{
+  display: inline-block;
+  width: 45px;
+  text-align: center;
+}
+/* === end: 面接採点DX 部分 =================================================*/
+
+/* === begin: 人事のレビュー 部分 =================================================*/
+.review-wrapper{
+  margin: 40px auto;
+}
+
+.review-title-wrapper{
+  justify-content: space-between;
+  border: solid 1.5px #D5E3FF;
+  padding: 5px 10px 0px;
+  margin-bottom: 20px;
+}
+
+.review-title h2{
+  line-height: 2;
+  font-size: 18px;
+}
+
+.review-mark{
+  line-height: 2;
+  color: #6B8BE9;
+}
+
+.review{
+  width: 90%;
+  margin: 0 auto;
+}
+.review .nickname{
+  font-size: 18px;
+}
+.review a{
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.review h3{
+  color: #9681FF;
+  font-weight: bold;
+  font-size: 16px;
+}
+.review p{
+  font-size: 15px;
+}
+/* === end: 人事のレビュー 部分 =================================================*/
+
+/* === start: 採点表部分 =================================================*/
+.List {
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+}
+.List .item-title p{
+  color: #333;
+  font-size: 14px;
+  padding-bottom: 0px;
+  font-weight: 400;
+}
+.List-Item {
+  border-top: 1px solid #DDD;
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+}
+.List-Item:first-child {
+  border-top: none;
+}
+.List-Item-Title {
+  width: 55%;
+  padding-top: 10px;
+  line-height: 1.8;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.List-Item-force {
+  width: 25%;
+  line-height: 1.8;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #AAA;
+}
+.List-Item-Text {
+  width: 20%;
+  line-height: 1.8;
+  margin: 0 auto;
+  font-weight: bold;
+  color: #9681FF;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.force-logo{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 3px;
+  margin: auto 2px;
+}
+.basic{
+  border: solid 2px #13CA91;
+}
+.expression{
+  border: solid 2px #FE53BB;
+}
+.logical{
+  border: solid 2px #75D5FD;
+}
+.vitality{
+  border: solid 2px #F5D300;
+}
+.creative{
+  border: solid 2px #B76CFD;
+}
+.score-detail{
+  text-align: center;
+  margin: 10px auto 0;
+  position: relative;
+}
+
+.score-description-wrapper{
+  width: 90%;
+  margin: auto;
+  border-radius: 8px;
+  border: solid 1px #e6e6e6;
+  padding: 20px;
+  margin-top: 50px;
+  font-size: 14px;
+}
+.score-description{
+  margin: 5px auto;
+}
+.score-signal{
+  margin: 5px auto;
+  color: #9681FF;
+  min-width: 45px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.score-signal span{
+  color: #333;
+  font-weight: 400;
+}
+
+/* --- start: 得点の特徴・改善策 部分 --------------------------------*/
+
+.btn-primary {
+  background: linear-gradient(to right, #7CC4FF, #9681FF) !important;
+  border-color: transparent !important;
+}
+
+.close { 
+  font-size: 3rem !important;
+  line-height: 0 !important;
+  color: #FFF !important;
+  text-shadow: 0 1px 0 #fff !important;
+}
+
+.modal-body-wrapper{
+  overflow: hidden;
+
+}
+.modal-body{
+  width: 80%;
+  margin: auto;
+  padding: 1rem 0rem !important;
+}
+.modal-header{
+  border-bottom: solid 0px !important;
+}
+.modal-content{
+  border: 0px solid rgba(0, 0, 0, 0.2) !important;
+  background-color: transparent !important;
+}
+
+.modal-title-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  border-style: none none dotted !important;
+  align-items: center;
+  padding: 5px 0 15px;
+}
+
+.modal-score{
+  display: flex;
+  width: 40%;
+  margin: auto;
+  align-items: center;
+}
+
+.modal-score-ave{
+  font-size: 15px;
+}
+
+.modal-total-score-title{
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.modal-total-score{
+  font-size: 65px;
+  margin: -20px auto -30px;
+}
+.modal-total-score span{
+  font-size: 40px;
+}
+
+.swiper-container {
+  height: 450px;
+}
+.swiper-slide{
+  border-radius: 15px;
+  background: #FFF;
+  padding: 15px 0px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+.swiper-slide h2{
+  font-size: 18px;
+  margin-bottom: 0 !important;
+}
+
+.swiper-pagination {
+  bottom: 15px !important;
+}
+
+.swiper-button-next{
+  right: -25px !important;
+  color: #9681FF !important;
+}
+.swiper-button-prev{
+  left: -25px !important;
+  color: #7CC4FF !important;
+}
+
+.features{
+  font-size: 14px;
+  letter-spacing: 0.4px;
+}
+
+.features-item{
+  margin: 15px auto;
+  text-align: left;
+  padding: 0 20px;
+}
+.features-item .title{
+  font-size: 15px;
+  margin: 5px 0;
+  font-weight: 600;
+}
+
+/* -- 面接基礎力 ----------------------------*/
+.slide-basic .modal-title-wrapper{
+  border-bottom: solid 5px #13CA91;
+}
+.slide-basic .features-item .title{
+  color: #13CA91;
+}
+.slide-basic .modal-title-wrapper h2{
+  color: #13CA91;
+}
+
+/* -- 自己表現力 ----------------------------*/
+.slide-expression .modal-title-wrapper{
+  border-bottom: solid 5px #FE53BB;
+}
+.slide-expression .features-item .title{
+  color: #FE53BB;
+}
+.slide-expression .modal-title-wrapper h2{
+  color: #FE53BB;
+}
+
+/* -- ロジカル力 ----------------------------*/
+.slide-logical .modal-title-wrapper{
+  border-bottom: solid 5px #75D5FD;
+}
+.slide-logical .features-item .title{
+  color: #75D5FD;
+}
+.slide-logical .modal-title-wrapper h2{
+  color: #75D5FD;
+}
+
+/* -- バイタリティ ----------------------------*/
+.slide-vitality .modal-title-wrapper{
+  border-bottom: solid 5px #F5D300;
+}
+.slide-vitality .features-item .title{
+  color: #F5D300;
+}
+.slide-vitality .modal-title-wrapper h2{
+  color: #F5D300;
+}
+
+/* -- 創造力 ----------------------------*/
+.slide-creative .modal-title-wrapper{
+  border-bottom: solid 5px #B76CFD;
+}
+.slide-creative .features-item .title{
+  color: #B76CFD;
+}
+.slide-creative .modal-title-wrapper h2{
+  color: #B76CFD;
+}
+
+/* --- end: 得点の特徴・改善策 部分 --------------------------------*/
+
+/* --- start: モザイク部分 --------------------------------*/
+.recomend-wrapper{
+  position: absolute;
+  z-index: 100;
+  text-align: center;
+  width: 100%;
+  margin-top: 75px;
+}
+.recomend-wrapper h1{
+  font-size: 22px;
+  font-weight: 600;
+  background: linear-gradient(to right,#7CC4FF, #9681FF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.recomend-wrapper .button{
+  width: 75%;
+  margin: 40px auto 0;
+  border-radius: 40px;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+.recomend-wrapper .button span{
+  font-size: 20px;
+  color: #FFF;
+  line-height: 3;
+}
+.recomend-message{
+  font-size: 15px;
+  letter-spacing: -.5;
+}
+.recomend-img{
+  margin: 30px auto;
+}
+.recomend-img img{
+  width: 300px;
+  max-width: 90%;
+}
+.mosaic{
+	-ms-filter: blur(10px);
+	filter: blur(10px);
+}
+/* --- end: モザイク部分 --------------------------------*/
+
+/* === end: 採点表部分 =================================================*/
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none;
+  }
+  .pc{
+    display: block !important;
+  }
+
+  /* === begin: オファーボタン 部分(人事のみ) =================================================*/
+  .fixed-button{
+    width: 100vw;
+    left: 0px;
+  }
+
+  .fixed-button a{
+    font-size: 22px;
+    height: 60px;
+    line-height: 3;
+  }
+  /* === end: オファーボタン 部分(人事のみ) =================================================*/
+  .video-iframe{
+    background-color: #000;
+  }
+
+  .video-iframe iframe{
+    max-width: 1008px;
+    width: 100%;
+  }
+
+  .video-iframe-under {
+    font-size: 16px;
+    padding: 5px 0 10px;
+  }
+  .video-iframe-under::before {
+    padding: 0px 8px;
+
+  }
+
+  .video-title{
+    font-size: 24px;
+    margin: 30px auto 10px;
+  }
+
+  .video-view-good-wrapper{
+    font-size: 16px;
+  }
+
+  .other-question-wrapper {
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+    margin-top: 10px;
+  }
+  .other-question-wrapper div {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .video-user-score-wrapper{
+    align-items: center;
+  }
+  .video-user-score-wrapper .left-child{
+    display: flex;
+  }
+  .video-user-score-wrapper .right-child{
+    font-size: 22px;
+    line-height: 2.5;
+    width: 300px;
+    height: 75px;
+    border-radius: 10px;
+  }
+  .video-user-score-wrapper .right-child span{
+    font-size: 34px;
+  }
+
+  .video-st-user{
+    font-size: 18px;
+    margin-right: 20px;
+  }
+
+  .video-hr-user{
+    font-size: 18px;
+  }
+
+  .profile a{
+    font-size: 18px;
+  }
+
+  /* === start: 学生・人事タイプ ===========================================================*/
+  .type-wrapper{
+    flex-direction: row;
+  }
+  .type-child{
+    padding: 40px;
+    width: 45%;
+  }
+
+  /* === end: 学生・人事タイプ ===========================================================*/
+
+  .score{
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .each-score {
+    width: initial;
+    margin: 15px auto;
+    padding-bottom: 3px;
+  }
+  .each-score::before {
+    width: 40px;
+    height: 40px;
+    border: 2px solid;
+    margin: auto 10px auto 0px;
+  }
+  .each-score .item{
+    font-size: 18px;
+  }
+
+  .score-value{
+    font-size: 30px;
+    margin-left: 25px;
+  }
+  .score-value .count-up {
+    text-align: right;
+  }
+  .child_1{
+    order: 1;
+    width: 50%;
+    padding: 0 20px;
+  }
+  .child_2{
+    order: 2;
+    width: 50%;
+  }
+
+  .total-score-wrapper{
+    padding: 25px;
+    width: initial;
+  }
+  .total-score-title{
+    font-size: 24px;
+  }
+  .total-score {
+    font-size: 150px;
+    margin: -50px auto -75px;
+    width: 200px;
+  }
+  .total-score-under{
+    font-size: 28px;
+  }
+  .total-score-under .count-up{
+    font-size: 28px;
+  }
+  .total-score-under span{
+    font-size: 20px;
+  }
+
+  .review-title-wrapper {
+    padding: 10px 20px 0px;
+  }
+
+  .review-title h2 {
+    font-size: 22px;
+  }
+
+  .review-mark {
+    font-size: 22px;
+    line-height: 2;
+  }
+
+  .review{
+    width: 80%;
+  }
+
+  .review a{
+    font-size: 24px;
+    margin-left: -50px;
+  }
+  .review h3{
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  .review p{
+    font-size: 18px;
+  }
+
+  /*--- start: スコア別の特徴・改善方法 ------- */
+  .btn-primary {
+    width: 50%;
+    padding: 10px 0px !important;
+  }
+ 
+  /*--- end: スコア別の特徴・改善方法 ------- */
+
+  /* === start: 評価の内訳部分 ===============================*/
+  .List-Item{
+    width: 100%;
+    margin: 5px auto;
+    padding-top: 5px;
+  }
+  .List .item-title p{
+    font-size: 16px;
+  }
+  .List-Item-Title{
+    padding-left: 5%;
+  }
+
+  .force-logo{
+    width: 30px;
+    height: 30px;
+  }
+  .recomend-wrapper h1 {
+    font-size: 24px;
+  }
+  .recomend-pc-flex{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .recomend-img,
+  .recomend-message{
+    width: 50%;
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+  .recomend-wrapper .button {
+    width: 50%;
+    margin: 25px auto 0;
+  }
+  /* === end: 評価の内訳部分 ===============================*/
+  .score-description-wrapper{
+    width: 80%;
+  }
+  .score-description-wrapper .flex{
+    width: 70%;
+    margin: 0 auto;
+  }
+  .score-description{
+    width: 100%;
+  }
+}

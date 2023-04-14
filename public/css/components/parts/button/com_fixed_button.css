@@ -1,0 +1,39 @@
+.fixed-button{
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  bottom: 60px;
+  left: 0;
+  z-index: 9999;
+}
+.fixed-button span{
+  font-size: 14px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.fixed-button a{
+  font-size: 18px;
+  display: block;
+  background: linear-gradient(to right, #7CC4FF, #9681FF) !important;
+  line-height: 3;
+  color: #FFF;
+  font-weight: 500;
+  transition: all 0.3s ease 0s;
+}
+.fixed-button a:hover {
+  transform: scale(1.05, 1.05);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  background: linear-gradient(to right, #7CC4FF, #7F66FF);
+}
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .fixed-button a{
+    line-height: 3;
+    font-size: 22px;
+  }
+  .fixed-button span{
+    font-size: 18px;
+  }
+}

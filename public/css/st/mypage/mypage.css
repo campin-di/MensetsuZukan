@@ -1,0 +1,206 @@
+.container_profile_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container_profile_btn a {
+  font-size: 14px;
+  width: 360px;
+  padding: 12px 0px;
+  font-weight: 500;
+  background-color: #7cc4ff;
+  border-color: #7cc4ff;
+}
+
+.container_profile_btn_profile {
+  background: -webkit-gradient(linear, left top, right top, from(#7cc4ff), to(#9681ff));
+  background: linear-gradient(to right, #7cc4ff, #9681ff);
+  border: none;
+}
+
+.container_profile_btn_info {
+  background-color: #fff;
+  color: #6b8be9;
+  border: 2px solid #d5e3ff;
+}
+
+.container_schedule_title {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  margin: 50px auto 30px;
+}
+
+.container_schedule_list {
+  list-style: none;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+
+.container_schedule_list li {
+  padding: 15px 0;
+  border-bottom: 1px solid #555555;
+}
+
+.container_schedule_list li .item {
+  line-height: 40px;
+  color: #333333;
+  height: 40px;
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+}
+
+.container_schedule_list li .item_img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #9681ff;
+  margin-right: 10px;
+}
+
+.container_schedule_list li .item_name {
+  font-weight: 500;
+  display: block;
+  -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+  margin-bottom: 0;
+  max-width: 110px;
+  overflow-x: hidden;
+  margin-bottom: 0;
+}
+.container_schedule_list li .item .left_child{
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.container_schedule_list li .item_date {
+  display: block;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.container_schedule_reservation {
+  width: 100vw;
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
+  border-radius: 0;
+  padding: 15px;
+  text-align: left;
+  padding-left: 20px;
+  background: -webkit-gradient(linear, left top, right top, from(#7cc4ff), to(#9681ff));
+  background: linear-gradient(to right, #7cc4ff, #9681ff);
+  border: none;
+  margin-top: 65px;
+}
+
+.none-reservation-wrapper img{
+  width: 80%;
+}
+
+
+
+
+.container_pastVideo {
+  margin-top: 30px;
+}
+
+.container_pastVideo_title {
+  width: 100%;
+  font-size: 22px;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin: 50px auto 30px;
+  border-bottom: 3px solid;
+  border-image: linear-gradient(to right, #7cc4ff, #9681ff);
+  border-image-slice: 1;
+}
+
+.interview-wrapper{
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .container_title {
+    font-size: 32px;
+  }
+
+  .container_profile_btn {
+    width: 650px;
+    margin: 60px auto 50px auto;
+    height: 70px;
+  }
+  .container_profile_btn a {
+    padding: 0px;
+    line-height: 3.5;
+  }
+  .container_profile_btn_profile {
+    font-size: 18px !important;
+    line-height: 44px;
+  }
+  .container_profile_btn_info {
+    font-size: 18px !important;
+    line-height: 44px;
+  }
+  .container_schedule_title {
+    font-size: 32px;
+    margin: 100px auto 50px;
+  }
+  .container_schedule_list li {
+    width: 650px;
+    height: 80px;
+    margin: 30px auto 0;
+    padding-bottom: 75px;
+  }
+  .container_schedule_list li .item {
+    width: 650px;
+    font-size: 24px;
+    margin-right: 0;
+  }
+  .container_schedule_list li .item_img {
+    width: 80px;
+    height: 80px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 40px;
+    margin-right: 20px;
+  }
+  .container_schedule_list li .item .item_date{
+    font-size: 20px;
+  }
+
+  .container_schedule_reservation {
+    height: 100px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 70px;
+  }
+
+  .container_pastVideo_title {
+    font-size: 32px;
+    padding-bottom: 15px;
+    margin: 100px auto 50px;
+    border-bottom: 5px solid;
+  }
+
+  /* === begin : 人事利用時のstpage 部分 ========================================*/
+  .container_profile_btn_offer{
+    font-size: 18px !important;
+  }
+  /* === end : 人事利用時のstpage 部分 ========================================*/
+
+}
+/*# sourceMappingURL=mypage.css.map */

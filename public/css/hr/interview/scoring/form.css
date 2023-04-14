@@ -1,0 +1,570 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #FFFFFF;
+}
+.container h2{
+  font-size: 26px;
+  font-weight: 700;
+  margin: 50px auto 20px;
+}
+.container h3{
+  font-size: 20px;
+  font-weight: 700;
+  margin: 50px auto 20px;
+  color: #6A4CFF;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content{
+  padding: 25px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === begin: 採点 部分 =================================================*/
+.form-wrapper{
+  margin: 50px auto;
+  text-align: center;
+}
+
+
+/*=== start: 採点基準 部分 =================================*/
+.description{
+  width: 95%;
+  margin: 50px auto 0px;
+}
+
+.evaluation-wrapper h2{ 
+  font-weight: bold;
+  font-size: 20px;
+}
+
+ol.evaluation{
+  counter-reset:list;
+  list-style-type:none;
+  padding: 10px 0px;
+}
+ol.evaluation li{
+  position:relative;
+  margin: 7px 0 7px 0px;
+  padding-left:40px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  border-radius:20px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+
+ol.evaluation li:before{
+  counter-increment: list;
+  content: counter(list);
+  position: absolute;
+  left: 0px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  color: #fff;
+  line-height:30px;
+  border-radius: 50%;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+ol.evaluation li:hover{
+  color: #fff;
+}
+ol.evaluation li:hover:before{
+  background: #fff;
+}
+
+ol.evaluation-logic li:before{
+  background: #9681ff;
+  border: solid 1px #9681ff;
+}
+ol.evaluation-personality li:before{
+  background: #7CC4FF;
+  border: solid 1px #7CC4FF;
+}
+
+/*=== start: アコーディオン基準 部分 =================================*/
+
+.container_detail .item {
+  margin-bottom: 20px;
+}
+
+.container_detail .item .acd-check {
+  display: none;
+}
+
+.container_detail .item .acd-label {
+  font-weight: bold;
+  display: block;
+  position: relative;
+  margin-bottom: 1px;
+  padding: 10px;
+  border-bottom: 1px solid #6b8be9;
+  font-size: 18px;
+}
+
+.container_detail .item .acd-label a {
+  color: #6b8be9;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.container_detail .item .acd-label:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: 0px;
+  border-top: solid 2px #6b8be9;
+  border-right: solid 2px #6b8be9;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  margin-top: -4px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+  position: absolute;
+  right: 5%;
+}
+
+.container_detail .item .acd-content {
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  padding: 0px 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  visibility: hidden;
+}
+
+.container_detail .item .acd-check:checked + .acd-label + .acd-content {
+  height: auto;
+  opacity: 1;
+  padding: 10px;
+  visibility: visible;
+}
+/*=== end: アコーディオン基準 部分 =================================*/
+.review{
+  margin: 50px auto;
+}
+.review textarea{
+  width: 90%;
+  margin: 10px auto;
+  padding: 15px 5px;
+  font-size: 14px;
+  height: 150px;
+  border: solid 2px #ADDAFF;
+}
+.memo{
+  width: 100%;
+  margin: 10px auto;
+  padding: 15px 5px;
+  font-size: 14px;
+  height: 150px;
+  border: solid 2px #ADDAFF;
+}
+
+/*=== end: 採点基準 部分 =================================*/
+
+.content{
+  margin: 30px auto;
+}
+
+.question{
+  margin: 20px 0;
+  text-align: center;
+}
+.question select{
+  width: 90%;
+  height: 45px;
+  border-radius: 30px;
+  border: 2px solid #D5E3FF;
+  padding: 0 20px;
+}
+
+/*===== start:５段階評価部======================================*/
+
+body{
+  padding-bottom:10%;
+}
+h1{
+  text-align: center;
+  margin: 20% 0 5%;
+  font-family: verdana;
+  font-weight: 100;
+}
+.score{
+  margin: 25px auto;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scoring_term{
+  font-size: 14px;
+  text-align: left;
+  width: 90%;
+}
+
+.logic-title, .personality-title{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.logic-value, .personality-value{
+  margin-top: 10px;
+}
+.logic-value{
+  color: #6A4CFF;
+}
+.personality-value{
+  color: #1495FF;
+}
+
+.radios{
+  position:relative;
+  width: 80%;
+  margin:15px auto;
+}
+.radios label img{
+  width: 50px;
+  margin: 3px 0;
+}
+.score-triangle{
+  width: 30px !important;
+  margin: 13px auto !important;
+}
+input[type="radio"]{
+  position:absolute;
+  right:1000%;
+}
+form label{
+  float:left;
+  width:20%; 
+  padding-bottom:0%;
+  margin:0 2.5%;
+  border-radius:50%;
+  cursor:pointer;
+}
+.logic label{
+  background:#BFB2FF;
+}
+.logic .slide{
+  background:#6A4CFF;
+}
+.personality label{
+  background:#ADDAFF;
+}
+.personality .slide{
+  background:#1495FF;
+}
+
+.slide{
+  position:absolute;
+  left:0%; 
+  top:0;
+  width:10%; 
+  padding-bottom:10%;
+  margin:5% 0 0 5%;
+  transition:transform 1s;
+  border-radius:50%;
+  animation-timing-function: ease-in-out;
+  animation-duration:.3s;
+  animation-fill-mode: forwards;
+  transition: 0.2s left .05s ease-in-out;
+}
+
+#term1-1:checked  ~ #term-slider1{ animation-name: logic1-1; left:2.5%; }
+#term1-2:checked  ~ #term-slider1{ animation-name: logic1-2; left:27.5%; }
+#term1-3:checked  ~ #term-slider1{ animation-name: logic1-3; left:52.5%; }
+#term1-4:checked  ~ #term-slider1{ animation-name: logic1-4; left:77.5%; }
+
+#term2-1:checked  ~ #term-slider2{ animation-name: logic1-1; left:2.5%; }
+#term2-2:checked  ~ #term-slider2{ animation-name: logic1-2; left:27.5%; }
+#term2-3:checked  ~ #term-slider2{ animation-name: logic1-3; left:52.5%; }
+#term2-4:checked  ~ #term-slider2{ animation-name: logic1-4; left:77.5%; }
+
+#term3-1:checked  ~ #term-slider3{ animation-name: logic1-1; left:2.5%; }
+#term3-2:checked  ~ #term-slider3{ animation-name: logic1-2; left:27.5%; }
+#term3-3:checked  ~ #term-slider3{ animation-name: logic1-3; left:52.5%; }
+#term3-4:checked  ~ #term-slider3{ animation-name: logic1-4; left:77.5%; }
+
+#term4-1:checked  ~ #term-slider4{ animation-name: logic1-1; left:2.5%; }
+#term4-2:checked  ~ #term-slider4{ animation-name: logic1-2; left:27.5%; }
+#term4-3:checked  ~ #term-slider4{ animation-name: logic1-3; left:52.5%; }
+#term4-4:checked  ~ #term-slider4{ animation-name: logic1-4; left:77.5%; }
+
+#term5-1:checked  ~ #term-slider5{ animation-name: logic1-1; left:2.5%; }
+#term5-2:checked  ~ #term-slider5{ animation-name: logic1-2; left:27.5%; }
+#term5-3:checked  ~ #term-slider5{ animation-name: logic1-3; left:52.5%; }
+#term5-4:checked  ~ #term-slider5{ animation-name: logic1-4; left:77.5%; }
+
+#term6-1:checked  ~ #term-slider6{ animation-name: logic1-1; left:2.5%; }
+#term6-2:checked  ~ #term-slider6{ animation-name: logic1-2; left:27.5%; }
+#term6-3:checked  ~ #term-slider6{ animation-name: logic1-3; left:52.5%; }
+#term6-4:checked  ~ #term-slider6{ animation-name: logic1-4; left:77.5%; }
+
+#term7-1:checked  ~ #term-slider7{ animation-name: logic1-1; left:2.5%; }
+#term7-2:checked  ~ #term-slider7{ animation-name: logic1-2; left:27.5%; }
+#term7-3:checked  ~ #term-slider7{ animation-name: logic1-3; left:52.5%; }
+#term7-4:checked  ~ #term-slider7{ animation-name: logic1-4; left:77.5%; }
+
+#term8-1:checked  ~ #term-slider8{ animation-name: logic1-1; left:2.5%; }
+#term8-2:checked  ~ #term-slider8{ animation-name: logic1-2; left:27.5%; }
+#term8-3:checked  ~ #term-slider8{ animation-name: logic1-3; left:52.5%; }
+#term8-4:checked  ~ #term-slider8{ animation-name: logic1-4; left:77.5%; }
+
+#term9-1:checked  ~ #term-slider9{ animation-name: logic1-1; left:2.5%; }
+#term9-2:checked  ~ #term-slider9{ animation-name: logic1-2; left:27.5%; }
+#term9-3:checked  ~ #term-slider9{ animation-name: logic1-3; left:52.5%; }
+#term9-4:checked  ~ #term-slider9{ animation-name: logic1-4; left:77.5%; }
+
+#term10-1:checked  ~ #term-slider10{ animation-name: logic1-1; left:2.5%; }
+#term10-2:checked  ~ #term-slider10{ animation-name: logic1-2; left:27.5%; }
+#term10-3:checked  ~ #term-slider10{ animation-name: logic1-3; left:52.5%; }
+#term10-4:checked  ~ #term-slider10{ animation-name: logic1-4; left:77.5%; }
+
+@keyframes logic1-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic1-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic1-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic1-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic1-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic2-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic2-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic2-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic2-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic2-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic3-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic3-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic3-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic3-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic3-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic4-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic4-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic4-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic4-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic4-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic5-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic5-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic5-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic5-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic5-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic6-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic6-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic6-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic6-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic6-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic7-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic7-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic7-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic7-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic7-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic8-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic8-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic8-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic8-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic8-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic9-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic9-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic9-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic9-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic9-5{ 30%, 70% { transform:scale(0.5); } }
+
+@keyframes logic10-1{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic10-2{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic10-3{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic10-4{ 30%, 70% { transform:scale(0.5); } }
+@keyframes logic10-5{ 30%, 70% { transform:scale(0.5); } }
+/*======= end:５段階評価部=========================================*/
+
+.content textarea{
+  width: 95%;
+  height: 200px;
+  padding: 20px 0;
+  margin: 30px auto;
+  border: 1px solid #BCE0FD;
+  text-align: center;
+}
+/* === end: 採点 部分 =================================================*/
+
+/* === begin: ボタン 部分 =================================================*/
+.button-wrapper{
+  margin: 0px auto 20px;
+  text-align: center;
+}
+.button-wrapper button{
+  width: 90%;
+  border-radius: 5px;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+  color: #FFF;
+  font-weight: bold;
+}
+/* === end: ボタン 部分 =================================================*/
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none;
+  }
+  .pc{
+    display: block !important;
+  }
+
+  .top-content h1{
+    font-size: 32px;
+  }
+
+  /*=== start: 採点基準 部分 =================================*/
+  .description{
+    width: 80%;
+  }
+
+  ol.evaluation li{
+    font-size:16px;
+    line-height: 30px;
+  }
+  ol.evaluation-logic li:hover{
+    background: #9681ff;
+  }
+  ol.evaluation-logic li:hover:before{
+    color: #9681ff;
+  }
+
+  ol.evaluation-personality li:hover{
+    background: #7CC4FF;
+  }
+  ol.evaluation-personality li:hover:before{
+    color: #7CC4FF;
+  }
+
+  /* ===  start:折りたたみ部分 === */
+  .review textarea{ 
+    width: 80%;
+    margin: 15px auto;
+    padding: 15px;
+    font-size: 16px;
+    height: 150px;
+  }
+  .memo{ 
+    width: 100%;
+    margin: 15px auto;
+    padding: 15px;
+    font-size: 16px;
+    height: 150px;
+  }
+  
+  /*=== end: 採点基準 部分 =================================*/
+
+  .content {
+    margin: 100px auto;
+  }
+  .content h2{
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 50px;
+  }
+  
+
+  .question-select-wrapper{
+    display: inline-flex;
+  }
+  .question select{
+    font-size: 18px;
+    height: 60px;
+    width: 80%;
+  }
+
+  .radios{
+    width: 30% !important;
+  }
+  .score-triangle{
+    margin: 10px auto;
+  }
+  .score{
+    margin: 0px auto;
+    flex-direction: initial;
+  }
+  .score div{
+    width: 50%;
+  }
+  .score div span{
+    font-size: 20px;
+  }
+  .scoring_term{
+    font-size: 16px;
+    text-align: left;
+    padding-left: 15%;
+    white-space: nowrap;
+  }
+
+  .content textarea {
+    width: 80%;
+    padding: 30px 0;
+    font-size: 18px;
+  }
+
+  .button-wrapper {
+    width: 80%;
+    margin: 50px auto;
+  }
+  .description{
+    font-size: 18px;
+  }
+  .container_detail .item .acd-label {
+    font-size: 20px;
+  }
+
+}

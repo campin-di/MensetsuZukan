@@ -1,0 +1,16 @@
+.upload{
+  margin: 50px auto 100px;
+  text-align: center;
+}
+
+.upload input[type="file"]{
+
+}
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .upload{
+    margin: 100px auto 200px;
+    font-size: 18px;
+  }
+}

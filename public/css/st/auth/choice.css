@@ -1,0 +1,134 @@
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content-wrapper{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.top-content{
+  padding: 50px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #FFF;
+}
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === begin: フォーム部分 =================================================*/
+
+.select-button{
+  margin: 50px auto 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.select-button button{
+  width: 48%;
+  color: #FFF;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  line-height: 2;
+}
+
+.card{
+  padding: 0 5%;
+  text-align: center;
+}
+.card span{
+  display: contents;
+}
+.card p{
+  margin: 20px auto 50px;
+  font-size: 14px;
+}
+
+.title{
+  margin: 20px auto 50px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+/* === end: フォーム部分 =================================================*/
+
+
+/* === begin: 既にアカウントをお持ちの方は 部分 =================================================*/
+.fixed-register-wrapper{
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+}
+.fixed-register-wrapper span{
+  display: block;
+  margin-bottom: 5px;
+}
+.fixed-register-wrapper a{
+  display: block;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  line-height: 3;
+  color: #FFF;
+  font-weight: bold;
+}
+
+/* === end: 既にアカウントをお持ちの方は 部分 =================================================*/
+
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+
+/* === begin: 画面タイトル 部分 =================================================*/
+  .top-content-wrapper{
+    width: 100vw;
+    margin-left: calc(((100vw - 100%) / 2) * -1);
+    margin-right: calc(((100vw - 100%) / 2) * -1);
+    overflow-x: hidden;
+  }
+
+  .top-content{
+    padding: 50px 0;
+  }
+  .top-content h1{
+    font-size: 28px;
+  }
+  /* === end: 画面タイトル 部分 =================================================*/
+
+  /* === begin: フォーム部分 =================================================*/
+  .form-wrapper{
+    padding: 0 10% !important;
+  }
+
+  .select-button{
+    margin: 100px auto 10px;
+  }
+  .select-button button{
+    padding: 10px 0;
+    font-size: 20px;
+  }
+
+  .card{
+    font-size: 18px;
+  }
+
+  .title{
+    font-size: 24px;
+    margin: 50px auto 25px;
+  }
+
+  .card p {
+    font-size: 16px;
+  }
+
+
+  /* === begin: フォーム部分 =================================================*/
+
+  .fixed-register-wrapper a{
+    line-height: 3;
+    font-size: 22px;
+  }
+  .fixed-register-wrapper span{
+    font-size: 18px;
+  }
+}

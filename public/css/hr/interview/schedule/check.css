@@ -1,0 +1,201 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #FFFFFF;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 日付部分 =================================================*/
+.date-wrapper input{
+  font-size: 18px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+/* === end: 日付部分 =================================================*/
+
+/*=== start: アコーディオン基準 部分 =================================*/
+.container_detail .item {
+  margin-bottom: 20px;
+}
+
+.container_detail .item .acd-check {
+  display: none;
+}
+
+.container_detail .item .acd-label {
+  font-weight: bold;
+  display: block;
+  position: relative;
+  margin-bottom: 1px;
+  padding: 10px;
+  border-bottom: 1px solid #6b8be9;
+  font-size: 18px;
+}
+
+.container_detail .item .acd-label a {
+  color: #6b8be9;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.container_detail .item .acd-label:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: 0px;
+  border-top: solid 2px #6b8be9;
+  border-right: solid 2px #6b8be9;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  margin-top: -4px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+  position: absolute;
+  right: 5%;
+}
+
+.container_detail .item .acd-content {
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  padding: 0px 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  visibility: hidden;
+}
+
+.container_detail .item .acd-check:checked + .acd-label + .acd-content {
+  height: auto;
+  opacity: 1;
+  padding: 10px;
+  visibility: visible;
+}
+
+/*=== end: アコーディオン基準 部分 =================================*/
+
+/* === begin: 時間部分 =================================================*/
+
+.inputGroup {
+  background-color: #fff;
+  display: block;
+  margin: 20px 0;
+  position: relative;
+}
+.inputGroup label {
+  border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  transition: .3s;
+  padding: 10px 30px;
+  width: 100%;
+  display: block;
+  text-align: left;
+  color: #3C454C;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 200ms ease-in;
+  overflow: hidden;
+}
+.inputGroup label:before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  content: "";
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale3d(1, 1, 1);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  z-index: -1;
+}
+.inputGroup label:after {
+  width: 32px;
+  height: 32px;
+  content: "";
+  border: 2px solid #D1D7DC;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+  background-repeat: no-repeat;
+  background-position: 2px 3px;
+  border-radius: 50%;
+  z-index: 2;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+.inputGroup input:checked ~ label {
+  color: #fff;
+}
+.inputGroup input:checked ~ label:before {
+  transform: translate(-50%, -50%) scale3d(56, 56, 1);
+  opacity: 1;
+}
+.inputGroup input:checked ~ label:after {
+  background-color: #7CC4FF;
+  border-color: #7CC4FF;
+}
+.inputGroup input {
+  width: 32px;
+  height: 32px;
+  order: 1;
+  z-index: 2;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.form {
+  padding: 0 16px;
+  max-width: 550px;
+  margin: 50px auto;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 36px;
+}
+/* === end: 時間部分 =================================================*/
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none;
+  }
+  .pc{
+    display: block !important;
+  }
+
+}

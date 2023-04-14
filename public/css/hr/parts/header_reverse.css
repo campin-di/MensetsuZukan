@@ -1,0 +1,37 @@
+.header-wrapper{
+  width: 100vw;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.header{
+  max-width: 1000px;
+}
+
+.header-logo img{
+  width: 100px;
+}
+
+.header-dropdown {
+  text-align: end;
+}
+
+.header-dropdown-menu{
+  text-align: center;
+}
+.nav-link{
+  color: #FFF !important;
+}
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .header-wrapper{
+    width: 105vw;
+    margin-left: -25%;
+    overflow-x: hidden;
+  }
+
+  .header-logo img{
+    width: 200px;
+  }
+
+}

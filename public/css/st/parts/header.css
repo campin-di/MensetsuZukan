@@ -1,0 +1,40 @@
+body{
+  background: url("/img/background-pc.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #FFF;
+  height: 100%;
+}
+.white{
+  background: #FFFFFF !important;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+.header{
+  background-color: #FFF !important;
+}
+
+.header-wrapper{
+  width: 100vw;
+  max-width: 1000px;
+  background-color: #FFFFFF !important;
+}
+
+.header-logo img{
+  width: 120px;
+}
+
+.header-dropdown-menu{
+  text-align: center;
+}
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .header-logo img{
+    width: 200px;
+  }
+
+}

@@ -1,0 +1,105 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #FFFFFF;
+}
+
+/* === end: 共通部分 =================================================*/
+
+/* === begin: タグ部分 =================================================*/
+.filter-wrapper{
+  justify-content: space-between;
+  padding: 0px 10px 20px;
+  margin-top: 20px;
+  z-index: 999;
+  background: #FFFFFF;
+}
+
+.form-input-wrapper{
+  width: 30%;
+}
+.form-input-wrapper select{
+  border-radius: 30px;
+}
+.form-input-wrapper label{
+  margin-left: 15px;
+}
+/* === end: タグ部分 =================================================*/
+
+.contents-wrapper{
+  margin-top: 25px;
+}
+
+/* === start: モザイク部分 ===========================================*/
+.video-wrapper{
+  position: relative;
+}
+.recomend-wrapper{
+  position: absolute;
+  z-index: 1000;
+  text-align: center;
+  width: 100%;
+  bottom: 15%;
+}
+.recomend-message{
+  font-weight: bold;
+}
+.mosaic{
+	-ms-filter: blur(10px);
+	filter: blur(10px);
+}
+
+.button{
+  width: 60%;
+  margin: 20px auto 0;
+  border-radius: 40px;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+.button span{
+  font-size: 20px;
+  color: #FFF;
+  line-height: 3;
+}
+/* === end: モザイク部分 ===========================================*/
+
+/* === end: 動画コンテンツ部分 =================================================*/
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none;
+  }
+  .pc{
+    display: block;
+  }
+  .flex-pc{
+    display: flex;
+  }
+  
+  /* === begin: 質問タグ部分 =================================================*/
+  .filter-wrapper{
+    justify-content: space-between;
+    margin: 20px auto;
+  }
+  .form-input-wrapper label {
+      font-size: 20px;
+  }
+  .form-input-wrapper select {
+      font-size: 18px;
+  }
+  /* === end: 質問タグ部分 =================================================*/
+
+  /* === start: モザイク部分 ===========================================*/
+  .recomend-wrapper{
+    width: 50%;
+    left: 45%;
+    bottom: 25%;
+  }
+
+/* === end: モザイク部分 ===========================================*/
+}

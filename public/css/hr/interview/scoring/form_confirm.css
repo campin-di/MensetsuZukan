@@ -1,0 +1,176 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none !important;
+}
+
+.flex{
+  display: flex;
+}
+.container{
+  background-color: #FFFFFF;
+}
+.container h2{
+  font-size: 26px;
+  font-weight: 700;
+  margin: 50px auto 20px;
+}
+.container h3{
+  font-size: 20px;
+  font-weight: 700;
+  margin: 50px auto 20px;
+  color: #6A4CFF;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: 画面タイトル 部分 =================================================*/
+.top-content{
+  padding: 25px 0 25px;
+  text-align: center;
+}
+.top-content h1{
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+/* === end: 画面タイトル 部分 =================================================*/
+
+/* === begin: 採点 部分 =================================================*/
+.form-wrapper{
+  margin: 0px auto;
+  text-align: center;
+}
+
+.content{
+  margin: 30px auto;
+  width: 90%;
+}
+
+.question-select-wrapper{
+  flex-direction: column;
+}
+
+.question-title {
+  font-size: 18px;
+  border: 2px solid #7CC4FF;
+  width: 100%;
+  padding: 10px 0;
+  color: #333;
+  border-radius: 30px;
+  margin: 5px auto;
+}
+/* === end: 採点 部分 =================================================*/
+
+
+table, th, td {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  line-height: 1.5;
+  margin: 25px auto;
+}
+
+table.type06 th {
+  padding: 5px 10px;
+  font-weight: bold;
+  vertical-align: top;
+  background: #888888;
+  color: #ffffff;
+}
+table.type06 .left-th{
+  width: 80%;
+}
+table.type06 .right-th{
+  width: 20%;
+}
+table.type06 td {
+  padding: 10px;
+  vertical-align: top;
+}
+
+tr:nth-child(even) {
+  background: #f5f5f5;
+}
+
+/* === begin: ボタン 部分 =================================================*/
+.button-wrapper{
+  margin: 0px auto 20px;
+  text-align: center;
+}
+.button-wrapper button{
+  width: 90%;
+  border-radius: 5px;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 18px;
+}
+/* === end: ボタン 部分 =================================================*/
+
+.review{
+  margin: 50px auto;
+}
+.review .textarea{
+  width: 85%;
+  margin: 10px auto;
+  padding: 15px;
+  font-size: 14px;
+  height: 150px;
+  border: solid 2px #ADDAFF;
+}
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .sp{
+    display: none;
+  }
+  .pc{
+    display: block !important;
+  }
+  .pc-flex {
+    display: flex;
+  }
+
+  .top-content h1{
+    font-size: 32px;
+  }
+
+  .content {
+    margin: 100px auto;
+  }
+
+  .question-select-wrapper{
+    flex-direction: row;
+  }
+
+  .question-title {
+    font-size: 20px;
+    width: 30%;
+    padding: 15px 0;
+    margin: 0 auto;
+    border-radius: 40px;
+  }
+
+  .score div{
+    width: 50%;
+  }
+
+  .button-wrapper {
+    width: 80%;
+    margin: 50px auto;
+  }
+
+
+  .review{
+    margin: 50px auto;
+  }
+  .review .textarea{
+    width: 85%;
+    margin: 10px auto;
+    padding: 15px 30px;
+    font-size: 16px;
+    height: 150px;
+    border: solid 2px #ADDAFF;
+    text-align: left;
+  }
+}

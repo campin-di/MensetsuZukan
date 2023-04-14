@@ -1,0 +1,236 @@
+.white {
+    min-height: 100%;
+    max-height: 100%;
+    overflow-y: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 5px !important;
+}
+
+button, select {
+    text-transform: none;
+    background: #555;
+    border-color: transparent;
+}
+
+.top-content{
+    padding: 40px 0 35px !important;
+}
+
+/* === start: 人事利用時 =================================*/
+
+.page_title_wrapper{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    border-bottom: solid 2px #AAA;
+}
+
+.interview-reservation-wrapper{
+    text-align: center;
+    background: linear-gradient(to right, #7CC4FF, #9681FF);
+    padding: 5px 0px;
+    width: 30%;
+    border-radius: 5px;
+    margin: 0px 5px auto;
+    z-index: 10000;
+    position: relative;
+}
+.interview-reservation-wrapper span{
+    color: #FFFFFF;
+    font-weight: 500;
+}
+/* === end: 人事利用時 =================================*/
+
+.line__container {
+    padding: 0;
+    padding-right: 5%;
+    width: 95%;
+    background: #FFF;
+    overflow: hidden;
+    max-width: 400px;
+    height: calc((100vh - 125px) * 0.75);
+    font-size: 80%;
+    overflow-y: scroll;
+    position: absolute;
+    bottom: 125px;
+    right: 0px;
+}
+.line__contents{
+    height: 400px;
+}
+.line__contents img{
+    width: 40px;
+    height: 40px;
+    border: solid 1px #7CC4FF;
+    border-radius: 50%;
+}
+
+.line__content {
+    display: flex;
+}
+.line__content .img-wrapper{
+    margin: 10px auto 0px;
+}
+
+.line__text{
+    width: 90%;
+    margin: 10px 0;
+    display: flex;
+    align-items: flex-end;
+}
+
+.line__text .body-wrapper{
+    max-width: 85%;
+}
+
+.line__text .body-background{
+    position: relative;
+    background-color: #F5F5F5;
+    padding: 8px 12px;
+    margin: 0px 8px 0px 15px;
+    border-radius: 20px;
+    display: inline-block;
+}
+.line__text .body-background::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -10px;
+    top: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #F5F5F5;
+    border-width: 8px 0 8px 16px;
+    transform: rotate(180deg);
+}
+
+.line__text .body{
+    font-size: 14px;
+    letter-spacing: .3px; 
+}
+
+.line__date{
+    width: 15%;
+    color: #CCC;
+}
+.line__date span{
+    display: block;
+}
+.line__date .date{
+    font-size: 12px;
+}
+
+.line__message-wrapper{
+    display: flex;
+    position: fixed;
+    bottom: 60px;
+    width: 100%;
+}
+
+.line__textarea{
+    text-align: center;
+    width: 90%;
+}
+
+.line__textarea textarea {
+    overflow: auto;
+    resize: vertical;
+    width: 100%;
+    height: 65px;
+    border-color: transparent;
+    border-top: solid 1px #CCC;
+    padding: 10px 5px 5px;
+    font-size: 14px;
+}
+
+.send-button-wrapper button{
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFF;
+    padding: 0px 5px;
+}
+.send-button-wrapper img{
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
+.send-button-wrapper span{
+    display: block;
+}
+
+/* === start: 右側に表示するメッセージだけ適応 ======================*/
+.line__right{
+    flex-direction: row-reverse;
+}
+.line__right .line__text{
+    flex-direction: row-reverse;
+}
+.line__right .body-background{
+    background-color: #eaefff;
+    margin: 0px 15px 0px 8px;
+}
+.line__right .body-background::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: -10px;
+    left: initial;
+    top: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #eaefff;
+    border-width: 8px 0 8px 16px;
+    transform: rotate(0deg);
+}
+.line__right .line__date{
+    text-align: end;
+}
+/* === end: 右側に表示するメッセージだけ適応 ======================*/
+
+@media screen and (min-width:1025px) {
+    /*　画面サイズが1025px以上はここを読み込む　*/
+
+    .line__container{
+        max-width: 1000px;
+        width: 80%;
+        right: auto;
+        margin: auto;
+        position: initial;
+    }
+
+    .interview-reservation-wrapper{
+        padding: 10px 0px;
+        width: 25%;
+        margin: 0 5% auto;
+        border-radius: 7.5px;
+        max-width: 1000px;
+    }
+
+    .page_title_wrapper{
+        font-size: 18px;
+    }
+
+    .line__message-wrapper{
+        bottom: 0px;
+        width: 80%;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .line__textarea{
+        width: 80%;
+        margin-left: 10%;
+    }
+    
+    .line__textarea textarea{
+        border-color: #CCC;
+
+    }
+    
+
+}

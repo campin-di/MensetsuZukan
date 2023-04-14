@@ -1,0 +1,1231 @@
+/* === begin: 共通部分 =================================================*/
+h1{
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+h2{
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+img{
+  max-width: 100vw;
+}
+
+.flex{
+  display: flex;
+}
+
+.flex-reverse-1{
+  order: 2;
+}
+
+.flex-reverse-2{
+  order: 1;
+  margin-right: 20px;
+}
+
+.center{
+  text-align: center;
+}
+
+.font-gradient{
+  background: linear-gradient(to right,#7CC4FF, #9681FF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+/* === end: 共通部分 =================================================*/
+
+/* === begin: ファーストビュー 部分 =================================================*/
+.firstview-wrapper{
+  background-image: url(../img/top/firstview-background.png);
+  background-repeat: no-repeat;
+  background-size: 100% 85%;
+  width: 100%;
+}
+
+.firstview-pc-img{
+  width: 100%;
+}
+.firstview-content{
+  width: 90%;
+  margin: 0 auto;
+}
+.firstview-content .right-child-content img{
+  margin-top: -25px;
+}
+
+.firstview-logo{
+  width: 100%;
+  max-width: 500px;
+  margin: 25px 0 25px 0;
+}
+
+.firstview-content p{
+  color: #FFF;
+  letter-spacing: .14em;
+  font-weight: 500;
+}
+
+.firstview-main-msg{
+  font-size: 22px;
+  margin: 10px 0 10px;
+  padding-bottom: 15px;
+  border-bottom: solid 1px #FFF;
+  font-weight: 600 !important;
+}
+
+.firstview-sub-msg{
+  font-size: 14px;
+  padding-bottom: 15px;
+  border-bottom: solid 1px #FFF;
+}
+
+.firstview-register-wrapper{
+  margin: 10px auto;
+  text-align: center;
+}
+
+.firstview-register-upper{
+  color: #6B8BE9;
+  font-weight: 600;
+}
+
+.firstview-register-wrapper span{
+  font-size: 16px;
+}
+
+.firstview-register-button{
+  font-size: 18px;
+  margin: 5px auto;
+  width: 80%;
+  height: 50px;
+  color: #FFF;
+  font-weight: 500;
+  line-height: 3;
+  border-radius: 30px;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  transition: all 0.3s ease 0s;
+}
+.firstview-hr-button{
+  margin: 5px auto;
+  font-weight: 600;
+  color: #555;
+}
+
+/* --- start:ボタンが動くアニメーション部 -------------------- */
+.updown-btn {
+  position: relative;
+  animation: updown-btn 5s infinite;
+  animation-duration: 2.5s;
+  animation-delay: .3s;
+  transition: .5s;
+  box-shadow: 0 3px 0 rgb(100, 100, 100, 0.3);
+}
+.updown-btn:hover{
+  animation: initial;
+}
+@keyframes updown-btn {
+  0% {
+      box-shadow: 0 3px 0 rgb(100, 100, 100, 0.3);
+      top: 0px;
+  }
+  10% {
+    box-shadow: 0 3px 0 rgb(100, 100, 100, 0.3);
+    top: 0px;
+  }
+  20% {
+    box-shadow: 0 3px 0 rgb(100, 100, 100, 0.3);
+    top: 0px;
+  }
+  30% {
+    box-shadow: 0 0 0 rgb(100, 100, 100, 0.3);
+    top: 3px;
+  }
+  40% {
+    box-shadow: 0 3px 0 rgb(100, 100, 100, 0.3);
+    top: 0px;
+  }
+  50% {
+    box-shadow: 0 0 0 rgb(100, 100, 100, 0.3);
+    top: 3px;
+  }
+  60% {
+    box-shadow: 0 3px 0 rgb(100, 100, 100, 0.3);
+    top: 0px;
+  }
+
+}
+/* --- end:ボタンが動くアニメーション部 ------------------------ */
+
+.firstview-register-button:hover{
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.1875em);
+}
+/* === end: ファーストビュー 部分 =================================================*/
+
+/* === begin: 固定ボタン 部分 =================================================*/
+.bottom-fixed-button{
+  display: flex;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  z-index: 999;
+}
+.bottom-fixed-button a{
+  width: 50%;
+  height: 48px;
+  text-align: center;
+  list-style: none;
+  line-height: 3;
+}
+.bottom-fixed-button a li{
+  color: #FFF;
+  font-weight: 500;
+}
+
+.bottom-button-left{
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+}
+
+.bottom-button-right{
+  background: linear-gradient(to right, #FEAA92, #FF96AD);
+}
+/* === end: 固定ボタン 部分 =================================================*/
+
+/* === begin: "デジマ面接図鑑の特徴" 部分 =================================================*/
+.features-wrapper{
+  margin-top: 75px;
+}
+.features-wrapper h1{
+  margin-bottom: 30px;
+}
+
+.features-content-wrapper{
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px 5%;
+  box-shadow: 0 0 6px #CCC;
+}
+.features-content .left-child{
+  width: 65%;
+}
+.features-content .right-child{
+  width: 35%;
+}
+.features-content .right-child a{
+  color: #EEE;
+  font-size: 10px;
+}
+
+.features-content-wrapper::after{
+  display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-right: 60px solid transparent;
+	border-top: 60px solid #D5E3FF;
+	content: "";
+  z-index: -1;
+}
+.features-content-wrapper span{
+  position: absolute;
+  font-size: 30px;
+  color: #6B8BE9;
+  font-weight: 600;
+  top: 5px;
+  left: 10px;
+}
+
+.features-content-description{
+  font-size: 14px;
+}
+.features-content-description a{
+  font-size: 10px;
+  color: #EEE;
+}
+
+.features-content{
+  margin: 25px auto 10px;
+}
+
+.features-content .right-child img{
+  width: 100%;
+}
+/* === end: "デジマ面接図鑑の特徴" 部分 =================================================*/
+
+/* === begin: "サービス概要" 部分 =================================================*/
+.outline-wrapper{
+  margin: 200px 0;
+  color: #FFF;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  position: relative;
+  z-index: 1;
+}
+.outline-wrapper h1{
+  font-size: 20px;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin: 10px auto 25px;
+  border-bottom: solid 1px #FFF;
+}
+
+.outline-upper-background{
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  margin-top: -50px;
+}
+.outline-under-background{
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  margin-top: -30px;
+}
+
+
+.outline-logo{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.outline-logo img{
+  width: 300px;
+}
+.outline-description{
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+}
+.contents-detail{
+  margin-bottom: 25px;
+}
+
+.outline-achievement-wrapper{
+  margin-bottom: 50px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.outline-achievement{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin: 10px auto 0px;
+}
+
+.outline-achievement-value{
+  font-size: 36px;
+  margin: 0 10px;
+  font-weight: 600;
+}
+
+.outline-achievement-comment{
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  right: 10%;
+}
+
+.outline-iframe-wrapper iframe{
+  width: 90%;
+  min-width: 336px;
+  min-height: 189px;
+}
+
+/*=== begin: iframe要素のアスペクト比を保ったまま可変の大きさにする方法 ========*/
+.outline-iframe-wrapper {
+    position: relative;
+    width: 100%;
+}
+.outline-iframe-wrapper:before {
+    content:"";
+    display: block;
+    padding-top: 56.25%;
+}
+.outline-iframe-wrapper iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 90%;
+    height: 100%;
+}
+/*=== end ========*/
+/* === end: "サービス概要" 部分 =================================================*/
+
+/* === begin: "プランの説明" 部分 =================================================*/
+.plan-wrapper{
+  margin: 150px auto 100px;
+}
+
+.plan{
+  margin: 50px auto 0;
+}
+.plan h2{
+  color: #6B8BE9;
+}
+.plan img{
+  width: 50%;
+}
+
+.plan-description {
+  width: 95%;
+  margin: 5px auto 25px;
+}
+.plan-description ol li{
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.plan-description ol div{
+  font-size: 12px;
+}
+/* === end: "プランの説明" 部分 =================================================*/
+.step{
+  font-size: 16px;
+  font-weight: 600;
+  color: #888;
+  display: inline-block;
+  padding-bottom: 5px;
+  border-bottom: solid 2px #888;
+  letter-spacing: .08em;
+}
+
+/* === begin: "投稿者プランの詳細" 部分 =================================================*/
+.dt{
+  background-size: 15px 15px;
+  height: 75px;
+  position: absolute;
+  z-index: 3;
+}
+.dt-left{
+  width: 32%;
+  background-image: radial-gradient(#7CC4FF 10%, transparent 20%);
+}
+.dt-right{
+  width: 40%;
+  background-image: radial-gradient(#9681FF 10%, transparent 20%);
+  right: 0;
+}
+
+.contributor-wrapper h1{
+  width: 100%;
+  padding: 20px 0;
+  color: #333;
+  position: relative;
+  z-index: 10;
+}
+
+.contributor-step{
+  margin: 50px auto 0;
+}
+
+.contributor-step h3{
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.contributor-content-wrapper{
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px 5%;
+}
+.contributor-content-wrapper .left-child{
+  width: 65%;
+}
+.contributor-content-wrapper .right-child{
+  width: 35%;
+}
+.contributor-content-wrapper .right-child img{
+  width: 100%;
+}
+
+.contributor-content-description{
+  font-size: 14px;
+}
+
+.contributor-content-left-img{
+  margin-right: 20px;
+}
+/* === end: "投稿者プランの詳細" 部分 =================================================*/
+
+/* === begin: "視聴者プランの詳細" 部分 =================================================*/
+
+.audience-wrapper{
+  margin-top: 50px;
+}
+.audience-wrapper h1{
+  width: 100%;
+  padding: 20px 0;
+  color: #333;
+  z-index: 10;
+  position: relative;
+}
+
+.audience-step{
+  margin: 50px auto 0;
+}
+.audience-step h2{
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: solid 2px #555;
+}
+.audience-step h3{
+  font-size: 22px;
+  font-weight: 600;
+  color: #6B8BE9;
+  margin-top: 15px;
+}
+
+.audience-content-wrapper{
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px 5%;
+}
+.audience-content-wrapper .left-child{
+  width: 65%;
+}
+.audience-content-wrapper .right-child{
+  width: 35%;
+}
+.audience-content-wrapper .right-child img{
+  width: 100%;
+}
+
+.audience-content-description{
+  font-size: 14px;
+}
+
+.audience-content-left-img{
+  margin-right: 20px;
+}
+/* === end: "視聴者プランの詳細" 部分 =================================================*/
+
+/* === begin: "利用料金" 部分 =================================================*/
+.cost-wrapper {
+  margin: 100px auto 50px;
+  background-color: #F5FAFF;
+  text-align: center;
+  padding: 25px 0;
+}
+
+.cost-title-upper{
+  color: #555;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.cost-img-description{
+  font-size: 14px;
+  color: #555;
+}
+
+.cost-promotion{
+  margin: 50px 0 25px;
+  font-weight: 600;
+  justify-content: center;
+  align-items: baseline;
+}
+.cost-promotion-price{
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.cost-promotion-price span{
+  font-size: 50px;
+  color: #FF98AB;
+  margin: 0 5px;
+}
+/* === end: "利用料金" 部分 =================================================*/
+
+/* === begin: "新規会員登録はここから" 部分 =================================================*/
+.promotion-wrapper{
+  text-align: center;
+}
+
+.promotion{
+  margin: 50px auto;
+}
+.promotion span{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.promotion-button{
+  font-size: 18px;
+  margin: 5px auto;
+  width: 80%;
+  height: 50px;
+  color: #FFF;
+  font-weight: 500;
+  line-height: 3;
+  border-radius: 30px;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  transition: all 0.3s ease 0s;
+}
+
+.promotion-button:hover{
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.1875em);
+}
+/* === end: "新規会員登録はここから" 部分 =================================================*/
+
+/* === begin: "フッター" 部分 =================================================*/
+.footer{
+  margin: 50px auto;
+  padding: 100px 0 5px;
+  text-align: center;
+  color: #333333;
+}
+.footer .flex{
+  justify-content: space-around;
+  width: 60%;
+  margin: 0 auto 10px;
+}
+.footer .flex a{
+  color: #333;
+  font-size: 14px;
+}
+
+.footer {
+  font-size: 12px;
+}
+/* === end: "フッター" 部分 =================================================*/
+
+/* === begin: "よくある質問" 部分 =================================================*/
+/*--- qandaセクション -------------------------------------------------------*/
+.dt-q{
+  width: 20%;
+}
+
+.qanda-wrapper{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 100px;
+}
+
+.qanda-title{
+  color: #FFF;
+  padding: 15px 0;
+  margin-top: 150px;
+  margin-bottom: 45px;
+}
+
+/* begin : 開閉フォーム */
+
+.cp_qa *, .cp_qa *:after, .cp_qa *:before {
+ -webkit-box-sizing: border-box;
+         box-sizing: border-box;
+}
+
+.cp_qa .cp_actab {
+ position: relative;
+  z-index: 1;
+ overflow: hidden;
+ width: 100%;
+ margin-bottom: 15px;
+ color: #333333;
+}
+
+.cp_actab{
+  border-radius: 10px;
+}
+
+.cp_qa .cp_actab input {
+  z-index: 1;
+ position: absolute;
+ opacity: 0;
+}
+
+/* 質問 */
+.cp_qa .cp_actab label {
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin: 0 0 0 0;
+  padding: 0.6em 1em 0.6em 2.5em;
+  cursor: pointer;
+  background-color: #F5F5F5;
+}
+
+/* 答え */
+.cp_qa .cp_actab .cp_actab-content {
+ overflow: hidden;
+ max-height: 0;
+ -webkit-transition: max-height 0.5s ease;
+         transition: max-height 0.5s ease;
+ color: #333333;
+ background-color: #F5F5F5;
+ padding-left: 2.5em; 
+ font-size: 14px;
+}
+.cp_actab-content::before {
+  content: "A";
+  font-size: 16px;
+  font-family: system-ui;
+  margin-left: -25px;
+  position: absolute;
+}
+.cp_actab-content p{
+  font-size: 18pt;
+  line-height: 26pt;
+  width: 80%;
+  margin: 0 auto 25px auto;
+}
+
+.cp_actab-content ol{
+  font-size: 18pt;
+ width: 80%;
+  margin: 0 auto 25px auto;
+}
+
+.cp_actab-content ol p{
+  font-size: 14pt;
+ width: 100%;
+  margin: 10px 0 15px 0;
+}
+
+.cp_actab-content ol p a{
+  border-bottom: 1px solid #333333;
+  color: #333333;
+}
+
+/* 質問を開いた時の仕様 */
+
+/* --答えの高さ */
+.cp_qa .cp_actab input:checked ~ .cp_actab-content {
+  max-height: 100em;
+  padding: 0.6em 1em 0.6em 2.5em;
+}
+
+/* 質問をクリックした時のアイコンの動き */
+.cp_qa .cp_actab label::after {
+ line-height: 0.8;
+ position: absolute;
+ top: 50%;
+ display: block;
+ width: 0px;
+ margin-top: -10px;
+ margin-left: -25px;
+ -webkit-transition: all 0.5s ease;
+         transition: all 0.5s ease;
+ text-align: center;
+}
+
+.cp_qa .cp_actab input[type=checkbox] + label::after {
+ content: 'Q';
+ font-family: system-ui;
+}
+.cp_qa .cp_actab input[type=checkbox]:checked + label::after {
+ -webkit-transform: rotate(360deg);
+ transform: rotate(360deg);
+}
+/* end : 開閉フォーム */
+/* === end: "よくある質問" 部分 =================================================*/
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  /* === begin: 共通部分 =================================================*/
+  body{
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  h1{
+    font-size: 36px;
+  }
+
+  h2{
+    font-size: 22px;
+    margin: 20px auto auto 15px;
+  }
+
+  .flex-pc{
+    display: flex;
+  }
+
+  .br-sp{
+    display: none;
+  }
+
+  .hover-action:hover{
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
+    transform: translateY(-0.3em);
+  }
+
+  /* === end: 共通部分 =================================================*/
+
+  /* === begin: ファーストビュー 部分 =================================================*/
+  .firstview-wrapper{
+    background-image: unset;
+  }
+
+  .firstview-wrapper .flex-pc{
+    background-image: url(../img/top/firstview-background-pc.png);
+    background-repeat: no-repeat;
+    margin: -5px calc(50% - 50vw);
+    width: 100vw;
+    height: 80vh;
+    padding: 50px 10vw 0;
+  }
+  .features-content-wrapper::after {
+    border-right: 75px solid transparent;
+    border-top: 75px solid #D5E3FF;
+  }
+  .firstview-pc-img{
+    width: 100%;
+    max-width: 600px;
+    margin-top: 50px !important;
+  }
+
+  .firstview-content .left-child-pc{
+    width: 50%;
+  }
+  .firstview-content .right-child-pc{
+    width: 50%;
+  }
+
+  .firstview-logo{
+  }
+
+  .firstview-main-msg {
+    font-size: 32px;
+  }
+
+  .firstview-sub-msg {
+    font-size: 20px;
+  }
+
+  .firstview-register-wrapper{
+    margin-top: 50px;
+  }
+  .firstview-register-wrapper span {
+    font-size: 24px;
+  }
+
+  .firstview-register-button{
+    height: 70px;
+    width: 60%;
+    margin: 10px auto;
+    font-size: 30px;
+    line-height: 2.5;
+    border-radius: 35px;
+  }
+  .firstview-hr-button {
+    font-size: 22px;
+  }
+
+  .firstview-register-under{
+    font-size: 22px;
+  }
+  /* === end: ファーストビュー 部分 =================================================*/
+
+  /* === begin: 固定ボタン 部分 =================================================*/
+  .bottom-fixed-button{
+    width: 100vw;
+    left: 0px;
+  }
+
+  .bottom-fixed-button a{
+    height: 60px;
+  }
+
+  .bottom-fixed-button li{
+    font-size: 22px;
+    height: 60px;
+    line-height: 3;
+  }
+
+  /* === end: 固定ボタン 部分 =================================================*/
+
+  /* === begin: "デジマ面接図鑑の特徴" 部分 =================================================*/
+  .features-wrapper{
+    margin-top: 100px;
+  }
+
+  .features-wrapper .flex-pc{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .features-content-wrapper{
+    width: 48%;
+    margin: 25px 10px;
+    padding: 20px;
+    transition: .5s;
+  }
+
+  .features-content{
+    flex-flow: column;
+    text-align: center;
+  }
+
+  .features-content .left-child{
+    width: 100%;
+    margin: 10px auto;
+    font-size: 16px;
+
+    -webkit-box-ordinal-group:2;
+　　-ms-flex-order:2;
+　　-webkit-order:2;
+    order: 2;
+  }
+
+  .features-content .right-child{
+    width: 80%;
+    margin: 0 auto;
+    -webkit-box-ordinal-group:1;
+　　-ms-flex-order:1;
+　　-webkit-order:1;
+    order: 1;
+  }
+
+  /* === end: "デジマ面接図鑑の特徴" 部分 =================================================*/
+
+  /* === begin: "サービス概要" 部分 =================================================*/
+  .outline-wrapper{
+    margin: 0 calc(50% - 50vw);
+    margin-top: 200px;
+    margin-bottom: 400px;
+    width: 100vw;
+    padding: 0 15vw;
+  }
+  .outline-wrapper h1 {
+    font-size: 32px;
+    margin: 30px auto;
+  }
+
+  .outline-upper-background{
+    margin: -10% calc(50% - 50vw);
+    width: 100vw;
+    left: 0;
+  }
+
+  .outline-logo{
+    margin-top: 100px;
+  }
+  .outline-logo img{
+    width: 400px;
+  }
+
+  .outline-description{
+    font-size: 28px;
+    margin: 25px auto 50px;
+  }
+
+  .outline-achievement-wrapper{
+    width: 80%;
+    margin: 0 auto 50px;
+    position: relative;
+  }
+
+  .outline-achievement-title {
+    font-size: 20px;
+  }
+
+  .outline-achievement-value {
+    font-size: 50px;
+    margin: 50px 10px;
+  }
+  .outline-achievement-comment {
+    bottom: 10px;
+  }
+
+  .outline-iframe-wrapper iframe {
+    max-width: 1008px;
+    max-height: 567px;
+  }
+
+  .outline-under-background{
+    margin: 0 calc(50% - 50vw);
+    width: 100vw;
+    left: 0;
+    margin-top: -300px;
+  }
+  /* === end: "サービス概要" 部分 =================================================*/
+
+  /* === begin: "プランの説明" 部分 =================================================*/
+
+  .plan h2{
+    font-size: 30px;
+  }
+  .plan .flex-pc{
+    width: 100%;
+    margin: 20px auto 0;
+    align-items: center;
+  }
+  .plan .flex-pc .left-child-pc{
+    width: 50%;
+  }
+  .plan .flex-pc .right-child-pc{
+    width: 50%;
+  }
+  .plan .flex-pc .left-child-pc img{
+    width: 50%;
+  }
+  .plan img{
+    width: 70%;
+  }
+
+  .plan-description ol div{
+    font-size: 14px;
+  }
+  .plan-description ol li{
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  /* === end: "プランの説明" 部分 =================================================*/
+  .dt{
+    height: 120px;
+  }
+  .dt-left {
+    width: 30%;
+    left: 0;
+  }
+  .dt-right {
+    width: 30%;
+    right: 0;
+  }
+
+  /* === begin: "投稿者プランの詳細" 部分 =================================================*/
+  .contributor-wrapper h1{
+    border-radius: 0px;
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+    padding: 30px 0;
+  }
+
+  .contributor-step{
+    margin-top: 150px;
+  }
+
+  .contributor-content-wrapper{
+    width: 75%;
+  }
+
+  .contributor-content-description {
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .contributor-content-wrapper .left-child {
+    width: 45%;
+    text-align: center;
+  }
+  .contributor-content-wrapper .right-child {
+    width: 55%;
+    text-align: center;
+  }
+  .contributor-content-wrapper .left-child img{
+    margin-top: -30%;
+  }
+  .contributor-content-wrapper .right-child img{
+    margin-top: -30%;
+  }
+
+  .contributor-title-left{
+    width: 60%;
+  }
+  .contributor-title-right{
+    width: 60%;
+    margin-left: 37%;
+  }
+  /* === end: "投稿者プランの詳細" 部分 =================================================*/
+
+  /* === begin: "視聴者プランの詳細" 部分 =================================================*/
+  .audience-wrapper{
+    margin-top: 150px;
+  }
+  .audience-wrapper h1{
+    border-radius: 0px;
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+    padding: 30px 0;
+  }
+
+  .audience-step{
+    margin-top: 150px;
+  }
+
+  .audience-content-wrapper{
+    width: 75%;
+  }
+
+  .audience-content-description {
+    font-size: 20px;
+  }
+
+  .audience-content-wrapper .left-child {
+    width: 45%;
+    text-align: center;
+  }
+  .audience-content-wrapper .right-child {
+    width: 55%;
+    text-align: center;
+  }
+  .audience-content-wrapper .left-child img{
+    margin-top: -35%;
+  }
+  .audience-content-wrapper .right-child img{
+    margin-top: -35%;
+  }
+
+  .audience-title-left{
+    width: 60%;
+  }
+  .audience-title-right{
+    width: 60%;
+    margin-left: 37%;
+  }
+  /* === end: "視聴者プランの詳細" 部分 =================================================*/
+
+  /* === begin: "利用料金" 部分 =================================================*/
+  .cost-wrapper{
+    width: 100vw;
+    margin: -5px calc(50% - 50vw);
+  }
+  .cost-wrapper h1{
+    margin: 25px auto;
+  }
+
+  .cost-wrapper-img{
+    margin: 0 calc(50% - 50vw);
+    width: 100vw;
+    left: 0;
+  }
+  .cost-title-upper {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .cost-table-img{
+    width: 60%;
+    max-width: 1000px;
+  }
+
+  .cost-img-description{
+    font-size: 18px;
+  }
+
+  .cost-promotion div{
+    font-size: 40px;
+  }
+  .cost-promotion-price span{
+    font-size: 65px;
+    margin: 0 10px;
+  }
+  /* === end: "利用料金" 部分 =================================================*/
+
+  /* === start: よくある質問 部分 ==============================================*/
+  .qanda-wrapper {
+    margin: 100px auto 200px;
+  }
+  .cp_qa .cp_actab label {
+    font-size: 16px;
+    margin: 0px auto;
+    padding: 1.5em 4em;
+  }
+  .cp_qa .cp_actab .cp_actab-content {
+    font-size: 16px;
+    padding: 0px 4em;
+  }
+  .cp_qa .cp_actab input:checked ~ .cp_actab-content {
+    padding: 0em 4em 1em 4em;
+}
+  /* === end: よくある質問 部分 ==============================================*/
+
+  /* === begin: "新規会員登録はここから" 部分 =================================================*/
+  .promotion span{
+    font-size: 24px;
+  }
+  .promotion-button{
+    height: 70px;
+    width: 60%;
+    font-size: 30px;
+    line-height: 2.5;
+    border-radius: 35px;
+  }
+  /* === end: "新規会員登録はここから" 部分 =================================================*/
+
+  /* === begin: "フッター" 部分 =================================================*/
+  .footer{
+    margin: 60px calc(50% - 50vw);
+    padding-top: 50px;
+    width: 100vw;
+    left: 0;
+    background-color: #F5F5F5;
+    font-size: 14px;
+  }
+  .footer .flex{
+    margin-bottom: 40px;
+  }
+  .footer .flex a{
+    font-size: 18px;
+  }
+
+ .footer h2 {
+    position: relative;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+ .footer h2:before {
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 5px;
+    content: '';
+    border-radius: 3px;
+  }
+  
+  .footer h2::before{
+    background: linear-gradient(to right, #7CC4FF, #9681FF);
+  }
+
+  /* === end: "フッター" 部分 =================================================*/
+
+}
+
+.arrow_box{
+  position:relative;
+  max-width: 550px;
+  background:#ffffff;
+  text-align:center;
+  color:#7FB9FC;
+  font-size:20px;
+  padding:10px 24px;
+  font-weight:bold;
+  border-radius:40px;
+  -webkit-border-radius:40px;
+  -moz-border-radius:40px;
+}
+.arrow_box:after{
+  border: solid transparent;
+  content:'';
+  height:0;
+  width:0;
+  pointer-events:none;
+  position:absolute;
+  border-color: rgba(255, 255, 255, 0);
+  border-top-width:9px;
+  border-bottom-width:9px;
+  border-left-width:15px;
+  border-right-width:15px;
+  margin-left: -15px;
+  border-top-color:#ffffff;
+  top:100%;
+  left:20%;
+}

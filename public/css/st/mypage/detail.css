@@ -1,0 +1,241 @@
+/*== begin：テーブル部分 =======================================================*/
+.company_info {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 25px 10px;
+}
+.company_info p._a {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 30px 0 0;
+}
+.company_info p._a .link {
+  display: inline-block;
+  color: #607D8B;
+  padding-left: 1.3em;
+  text-indent: -1.3em;
+}
+.company_info p._a .link:before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-top: 2px solid #607D8B;
+  border-right: 2px solid #607D8B;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-right: 10px;
+}
+.company_info table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 16px;
+}
+.company_info table th {
+  width: 22%;
+  background: linear-gradient(to right, #7cc4ff, #9681ff);
+  color: #FFF;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding: 15px;
+  vertical-align: middle;
+  font-weight: bold;
+  text-align: center;
+}
+.company_info table td {
+  background: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding: 15px;
+  vertical-align: top;
+  text-align: left;
+}
+
+
+@media all and (max-width: 767px) {
+  .company_info table th{
+    padding: 5px;
+  }
+  .company_info table th, .company_info table td {
+    display: block;
+    width: 100%;
+    border-bottom: none;
+    text-align: center;
+  }
+  .company_info table tr:last-child td:last-child {
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+/*==end：テーブル部分 =======================================================*/
+
+.container_title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0 30px 0;
+}
+
+.container_profile {
+  display: none;
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.container_profile_img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 10px;
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 60px;
+}
+
+.container_profile_name {
+  font-size: 35px;
+  margin-top: 15px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.container_profile_category {
+  font-size: 18px;
+}
+
+.container_profile_detail {
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+.container_detail .item {
+  margin-bottom: 20px;
+}
+
+.container_detail .item .acd-check {
+  display: none;
+}
+
+.container_detail .item .acd-label {
+  font-weight: bold;
+  display: block;
+  position: relative;
+  margin-bottom: 1px;
+  padding: 10px;
+  border-bottom: 1px solid #6b8be9;
+  font-size: 18px;
+}
+
+.container_detail .item .acd-label a {
+  color: #6b8be9;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.container_detail .item .acd-label:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border: 0px;
+  border-top: solid 2px #6b8be9;
+  border-right: solid 2px #6b8be9;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  margin-top: -4px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.container_detail .item #acd-check1:checked + label:after,
+.container_detail .item #acd-check2:checked + label:after,
+.container_detail .item #acd-check3:checked + label:after,
+.container_detail .item #acd-check4:checked + label:after,
+.container_detail .item #acd-check5:checked + label:after {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+  position: absolute;
+  right: 5%;
+}
+
+.container_detail .item .acd-content {
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  padding: 0px 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  visibility: hidden;
+}
+
+.container_detail .item .acd-check:checked + .acd-label + .acd-content {
+  height: auto;
+  opacity: 1;
+  padding: 10px;
+  visibility: visible;
+}
+
+@media screen and (min-width: 1024px) {
+  .container_title {
+    font-size: 32px;
+    margin-bottom: 60px;
+  }
+  .container_profile {
+    display: block;
+  }
+  .container_detail{
+    width: 90%;
+    margin: 100px auto;
+  }
+  .container_detail .item .acd-label {
+    font-size: 24px;
+  }
+  .container_detail .item .acd-label a {
+    font-size: 18px;
+  }
+  .container_detail .item .acd-label:after {
+    width: 15px;
+    height: 15px;
+    border-top: solid 4px #6b8be9;
+    border-right: solid 4px #6b8be9;
+    top: 40%;
+    right: 3%;
+  }
+  .container_detail .item #acd-check1:checked + label:after,
+  .container_detail .item #acd-check2:checked + label:after,
+  .container_detail .item #acd-check3:checked + label:after,
+  .container_detail .item #acd-check4:checked + label:after,
+  .container_detail .item #acd-check5:checked + label:after {
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+    position: absolute;
+    right: 3%;
+  }
+  .container_detail .item .acd-content {
+    font-size: 18px;
+    padding: 10px 10px 0;
+  }
+  .container_detail .item .acd-check:checked + .acd-label + .acd-content {
+    font-size: 18px;
+  }
+
+  /*==== begin:テーブル部分 ===================================================*/
+  .company_info table {
+    font-size: 20px;
+  }
+  /*==== end:テーブル部分 ===================================================*/
+
+}
+/*# sourceMappingURL=detail.css.map */

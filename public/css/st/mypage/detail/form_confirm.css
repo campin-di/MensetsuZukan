@@ -1,0 +1,80 @@
+/* === begin: 共通部分 =================================================*/
+.pc{
+  display: none;
+}
+
+.flex{
+  display: flex;
+}
+/* === end: 共通部分 =================================================*/
+
+
+/* === begin: フォーム部分 =================================================*/
+.form-input-wrapper{
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.form-title{
+  color: #6B8BE9;
+  margin-left: 10px;
+}
+
+.form-input{
+  justify-content: space-between;
+}
+.form-input span{
+  color: #333;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  height: fit-content !important;
+}
+.form-input select{
+  border-radius: 30px;
+  padding: 0rem 1rem;
+  font-size: 1.1rem;
+}
+
+.button-wrapper{
+  margin-top: 50px;
+  text-align: center;
+}
+.button-wrapper button{
+  width: 100%;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(to right, #7CC4FF, #9681FF);
+  border: none;
+  line-height: 2.8;
+}
+/* === end: フォーム部分 =================================================*/
+
+@media screen and (min-width:1025px) {
+/*　画面サイズが1025px以上はここを読み込む　*/
+  .pc-flex {
+    display: flex;
+  }
+  .top-content-wrapper{
+    width: 105vw;
+    margin-left: -25%;
+    overflow-x: hidden;
+  }
+
+  .form-wrapper{
+    padding: 0 25% !important;
+  }
+
+  .form-input span{
+    font-size: 18px;
+    padding: 15px 20px;
+  }
+
+  .button-wrapper{
+    margin-top: 75px;
+    padding: 0 5%;
+  }
+}
